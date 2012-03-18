@@ -1,0 +1,95 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Очищает и записывает буфер объекта LOB на сервер</title>
+
+ </head>
+ <body><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.oci-lob-export.html">OCI-Lob-&gt;export</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.oci-lob-free.html">OCI-Lob-&gt;free</a></div>
+ <div class="up"><a href="ref.oci8.html">OCI8 (Oracle)</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.oci-lob-flush" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">OCI-Lob->flush</h1>
+  <p class="verinfo">(PHP 5, PECL OCI8 &gt;= 1.1.0)</p><p class="refpurpose"><span class="refname">OCI-Lob-&gt;flush</span> &mdash; <span class="dc-title">Очищает и записывает буфер объекта LOB на сервер</span></p>
+
+ </div>
+ 
+ <div class="refsect1 description" id="refsect1-function.oci-lob-flush-description">
+  <h3 class="title">Описание</h3>
+  <div class="classsynopsis">
+   <div class="ooclass"></div>
+   <div class="methodsynopsis dc-description">
+    <span class="type">bool</span> <span class="methodname"><b>OCI-Lob::flush</b></span>
+     ([ <span class="methodparam"><span class="type">int</span> <tt class="parameter">$flag</tt></span>
+   ] )</div>
+
+  </div>
+  <p class="para">
+   <span class="function"><b>OCI-Lob->flush()</b></span> непосредственно записывает данные на
+   сервер. 
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 parameters" id="refsect1-function.oci-lob-flush-parameters">
+  <h3 class="title">Список параметров</h3>
+  <p class="para">
+   <dl>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">flag</tt></i></span>
+     <dd>
+
+      <p class="para">
+       По умолчанию ресурсы не освобождаются, но используя флаг
+       <b><tt>OCI_LOB_BUFFER_FREE</tt></b> вы можете сделать это
+       принудительно. Однако, вы должны быть точно уверены в том, что вы
+       делаете, так как следующее чтение из объекта будет более ресурсоемко, чем
+       предыдущие из-за необходимости обращения к серверу. Поэтому использовать
+       флаг <b><tt>OCI_LOB_BUFFER_FREE</tt></b> рекомендуется только после
+       того, как работа с объектом уже закончена.
+      </p>
+     </dd>
+
+    </dt>
+
+   </dl>
+
+  </p>
+ </div>
+
+ 
+ 
+ <div class="refsect1 returnvalues" id="refsect1-function.oci-lob-flush-returnvalues">
+  <h3 class="title">Возвращаемые значения</h3>
+  <p class="para">
+   Возвращает <b><tt>TRUE</tt></b> в случае успешного завершения  или <b><tt>FALSE</tt></b> в случае возникновения ошибки.
+  </p>
+  <p class="para">
+   Вернет <b><tt>FALSE</tt></b> в том случае ошибки или, если буферизация объекта не
+   была включена.
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 seealso" id="refsect1-function.oci-lob-flush-seealso">
+  <h3 class="title">Смотрите также</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><a href="function.oci-lob-getbuffering.html" class="xref">OCI-Lob-&gt;getBuffering</a></li>
+    <li class="member"><a href="function.oci-lob-setbuffering.html" class="xref">OCI-Lob-&gt;setBuffering</a></li>
+   </ul>
+  </p>
+ </div>
+
+ 
+</div><hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.oci-lob-export.html">OCI-Lob-&gt;export</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.oci-lob-free.html">OCI-Lob-&gt;free</a></div>
+ <div class="up"><a href="ref.oci8.html">OCI8 (Oracle)</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

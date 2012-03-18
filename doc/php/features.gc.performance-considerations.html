@@ -1,0 +1,205 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Вопросы производительности</title>
+
+ </head>
+ <body><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="features.gc.collecting-cycles.html">Сбор циклических ссылок</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="funcref.html">Справочник функций</a></div>
+ <div class="up"><a href="features.gc.html">Сборка мусора</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="features.gc.performance-considerations" class="sect1">
+   <h2 class="title">Вопросы производительности</h2>
+   <p class="para">
+    В предыдущем разделе нами уже говорилось, что простой сбор корней меньше
+    влияет на производительность.
+    Хотя запись корней в буфер по сравнению с полным отсутствием
+    таковой в PHP 5.2 работает медленней, другие изменения в работе
+    PHP 5.3 сделали эту потерю производительности незаметной.
+   </p>
+   <p class="para">
+    Есть две основные области влияющие на производительность:
+    уменьшение размера используемой памяти и замедление работы при
+    сборке мусора. Рассмотрим их.
+   </p>
+
+   <div class="sect2" id="features.gc.performance-considerations.reduced-mem">
+    <h3 class="title">Уменьшение размера используемой памяти</h3>
+    <p class="para">
+     Прежде всего, основной причиной реализации механизма сборки
+     мусора является уменьшение размера используемой памяти с помощью
+     чистки циклических ссылок, которая происходит при достижении
+     соответствующих условий. В реализации PHP это происходит как
+     только заполнится корневной буфер или при вызове функции
+     <span class="function"><a href="function.gc-collect-cycles.html" class="function">gc_collect_cycles()</a></span>.
+     На графике ниже приведено использование памяти скрипта,
+     запущенного в PHP 5.2 и PHP 5.3, без учета памяти,
+     используемой самим PHP при запуске.
+    </p>
+    <p class="para">
+     <div class="example" id="example-371">
+      <p><b>Пример #1 Пример использования памяти</b></p>
+      <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">class&nbsp;</span><span style="color: #0000BB">Foo<br /></span><span style="color: #007700">{<br />&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;</span><span style="color: #0000BB">$var&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'3.1415962654'</span><span style="color: #007700">;<br />}<br /><br /></span><span style="color: #0000BB">$baseMemory&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">memory_get_usage</span><span style="color: #007700">();<br /><br />for&nbsp;(&nbsp;</span><span style="color: #0000BB">$i&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">;&nbsp;</span><span style="color: #0000BB">$i&nbsp;</span><span style="color: #007700">&lt;=&nbsp;</span><span style="color: #0000BB">100000</span><span style="color: #007700">;&nbsp;</span><span style="color: #0000BB">$i</span><span style="color: #007700">++&nbsp;)<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$a&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">Foo</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$a</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">self&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$a</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(&nbsp;</span><span style="color: #0000BB">$i&nbsp;</span><span style="color: #007700">%&nbsp;</span><span style="color: #0000BB">500&nbsp;</span><span style="color: #007700">===&nbsp;</span><span style="color: #0000BB">0&nbsp;</span><span style="color: #007700">)<br />&nbsp;&nbsp;&nbsp;&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #0000BB">sprintf</span><span style="color: #007700">(&nbsp;</span><span style="color: #DD0000">'%8d:&nbsp;'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$i&nbsp;</span><span style="color: #007700">),&nbsp;</span><span style="color: #0000BB">memory_get_usage</span><span style="color: #007700">()&nbsp;-&nbsp;</span><span style="color: #0000BB">$baseMemory</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />}<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+      </div>
+
+      <div class="mediaobject">
+       
+       <div class="imageobject">
+        <img src="images/12f37b1c6963c1c5c18f30495416a197-gc-benchmark.png" alt="Сравнение использования памяти в PHP 5.2 и PHP 5.3" width="850" height="480" />
+       </div>
+      </div>
+     </div>
+    </p>
+    <p class="para">
+     В этом очень академическом примере мы создаем объект, свойство a которого
+     задается ссылкой на сам объект. Когда в скрипте в следующей итерации цикла переопределяется
+     переменная <var class="varname"><var class="varname">$a</var></var>, то происходит типичная утечка памяти.
+     В данном случае пропадают два контейнера zval (контейнер объекта и контейнер свойства объекта), 
+     но определяется только один корень - удаленная переменная.
+     Как только пройдут 10 000 итераций (максимально в корневом буфере
+     будет 10 000 корней), то запустится механизм сборки мусора и
+     память, занимаемая этими корнями, будет освобождена.
+     Этот процесс хорошо виден на графике использования памяти для PHP 5.3:
+     после каждых 10 000 итераций график проседает.
+     Сам по себе механизм в данном примере совершает не так много работы, потому что
+     структура утечек слишком проста. Из графика видно, что максимальное использование памяти
+     в PHP 5.3 составило около 9 Мб, тогда как в PHP 5.2 оно продолжает возрастать.
+    </p>
+   </div>
+
+   <div class="sect2" id="features.gc.performance-considerations.slowdowns">
+    <h3 class="title">Замедление работы</h3>
+    <p class="para">
+     Второй областью, где сборка мусора влияет на производительность,
+     является потеря времени, когда сборщик мусора освобождает память.
+     Чтобы понять степень этого влияния, мы немного изменим предыдущий скрипт,
+     добавив большее число итераций и промежуточных переменных.
+     Измененный скрипт:
+    </p>
+    <p class="para">
+     <div class="example" id="example-372">
+      <p><b>Пример #2 Влияние на производительность</b></p>
+      <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">class&nbsp;</span><span style="color: #0000BB">Foo<br /></span><span style="color: #007700">{<br />&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;</span><span style="color: #0000BB">$var&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'3.1415962654'</span><span style="color: #007700">;<br />}<br /><br />for&nbsp;(&nbsp;</span><span style="color: #0000BB">$i&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">;&nbsp;</span><span style="color: #0000BB">$i&nbsp;</span><span style="color: #007700">&lt;=&nbsp;</span><span style="color: #0000BB">1000000</span><span style="color: #007700">;&nbsp;</span><span style="color: #0000BB">$i</span><span style="color: #007700">++&nbsp;)<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$a&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">Foo</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$a</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">self&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$a</span><span style="color: #007700">;<br />}<br /><br />echo&nbsp;</span><span style="color: #0000BB">memory_get_peak_usage</span><span style="color: #007700">(),&nbsp;</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+      </div>
+
+     </div>
+    </p>
+    <p class="para">
+     Мы запустим скрипт два раза: с включенной опцией <strong class="option unknown">zend.enable_gc</strong>
+
+     и без нее.
+    </p>
+    <p class="para">
+     <div class="example" id="example-373">
+      <p><b>Пример #3 Запуск скрипта</b></p>
+      <div class="example-contents">
+<div class="shellcode"><pre class="shellcode">time php -dzend.enable_gc=0 -dmemory_limit=-1 -n example2.php
+# and
+time php -dzend.enable_gc=1 -dmemory_limit=-1 -n example2.php</pre>
+</div>
+      </div>
+
+     </div>
+    </p>
+    <p class="para">
+     На тестовой машине первая команда примерно выполняется 10.7 секунд, а 
+     вторая примерно 11.4 секунды. Это примерно на 7% медленнее. Однако,
+     максимальное использование памяти скриптом уменьшилось на 98% с 931 Мб до 10 Мб.
+     Этот тест не очень научный, но он действительно демонстрирует преимущество 
+     по использованию памяти, обеспечиваемое сборщиком мусора. Также хорошо то, что
+     замедление для этого скрипта всегда примерно 7%, тогда как экономия памяти
+     увеличивается все больше и больше при нахождении нового мусора.
+    </p>
+   </div>
+
+   <div class="sect2" id="features.gc.performance-considerations.internal-stats">
+    <h3 class="title">Внутренняя статистика сборщика мусора</h3>
+    <p class="para">
+     Можно получить немного больше информации о том, как механизм сборки
+     мусора выполняется в PHP. Но для этого вам необходимо пересобрать PHP
+     для включения теста производительности и кода для дополнительного сбора данных. Необходимо
+     установить переменную окружения <i>CFLAGS</i> в значение
+     <i>-DGC_BENCH=1</i> до выполнения команды <i>./configure</i>
+     с вашими параметрами. Следующие команды должны сработать:
+    </p>
+    <p class="para">
+     <div class="example" id="example-374">
+      <p><b>Пример #4 Сборка PHP для включения теста производительности GC</b></p>
+      <div class="example-contents">
+<div class="shellcode"><pre class="shellcode">export CFLAGS=-DGC_BENCH=1
+./config.nice
+make clean
+make</pre>
+</div>
+      </div>
+
+     </div>
+    </p>
+    <p class="para">
+     При запуске вышеприведенного примера с обновленным PHP, можно
+     увидеть следующую информацию по завершении работы скрипта:
+    </p>
+    <p class="para">
+     <div class="example" id="example-375">
+      <p><b>Пример #5 Статистика GC</b></p>
+      <div class="example-contents">
+<div class="shellcode"><pre class="shellcode">GC Statistics
+-------------
+Runs:               110
+Collected:          2072204
+Root buffer length: 0
+Root buffer peak:   10000
+
+      Possible            Remove from  Marked
+        Root    Buffered     buffer     grey
+      --------  --------  -----------  ------
+ZVAL   7175487   1491291    1241690   3611871
+ZOBJ  28506264   1527980     677581   1025731</pre>
+</div>
+      </div>
+
+     </div>
+    </p>
+    <p class="para">
+     Наиболее полезная статистика отображена в первом блоке. Можно увидеть,
+     что механизм сборки мусора был запущен 110 раз, и суммарно было освобождено
+     свыше 2 миллионов записей в памяти. Если сборка мусора была запущена хотя бы раз, то
+     максимальное число корней в буфере всегда будет равно 10 000.
+    </p>
+   </div>
+
+   <div class="sect2" id="features.gc.performance-considerations.conclusion">
+    <h3 class="title">Заключение</h3>
+    <p class="para">
+     В целом, сборщик мусора в PHP вызовет ощутимые замедления только во
+     время непосредственной работы механизма сборки циклических ссылок, тогда как
+     в обычных (небольших) скриптах не должно быть никакого падения производительности.
+    </p>
+    <p class="para">
+     Однако в тех случаях, когда механизм сборки должен срабатывать
+     и в обычных скриптах, снижение используемой памяти позволяет
+     одновременно работать на сервере большему их количеству.
+    </p>
+    <p class="para">
+     Преимущества наиболее очевидны для долгоработающих скриптов, таких как
+     большие наборы тестов или демоны. Новый механизм также должен снизить утечки памяти 
+     для приложений <a href="http://gtk.php.net/" class="link external">&raquo;&nbsp;PHP-GTK</a>, которые выполняются
+     обычно дольше, чем веб-скрипты.
+    </p>
+   </div>
+  </div><hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="features.gc.collecting-cycles.html">Сбор циклических ссылок</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="funcref.html">Справочник функций</a></div>
+ <div class="up"><a href="features.gc.html">Сборка мусора</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

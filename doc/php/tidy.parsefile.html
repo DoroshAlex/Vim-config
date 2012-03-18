@@ -1,0 +1,168 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Разбор разметки в файле или URI</title>
+
+ </head>
+ <body><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="tidy.isxml.html">tidy::isXml</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="tidy.parsestring.html">tidy::parseString</a></div>
+ <div class="up"><a href="class.tidy.html">Tidy</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="tidy.parsefile" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">tidy::parseFile</h1>
+  <h1 class="refname">tidy_parse_file</h1>
+  <p class="verinfo">(PHP 5, PECL tidy &gt;= 0.5.2)</p><p class="refpurpose"><span class="refname">tidy::parseFile</span> -- <span class="refname">tidy_parse_file</span> &mdash; <span class="dc-title">Разбор разметки в файле или URI</span></p>
+
+ </div>
+ <div class="refsect1 description" id="refsect1-tidy.parsefile-description">
+  <h3 class="title">Описание</h3>
+  <p class="para">Объектно-ориентированный стиль</p>
+  <div class="methodsynopsis dc-description">
+   <span class="type">bool</span> <span class="methodname"><b>tidy::parseFile</b></span>
+    ( <span class="methodparam"><span class="type">string</span> <tt class="parameter">$filename</tt></span>
+   [, <span class="methodparam"><span class="type"><a href="language.pseudo-types.html#language.types.mixed" class="type mixed">mixed</a></span> <tt class="parameter">$config</tt></span>
+   [, <span class="methodparam"><span class="type">string</span> <tt class="parameter">$encoding</tt></span>
+   [, <span class="methodparam"><span class="type">bool</span> <tt class="parameter">$use_include_path</tt><span class="initializer"> = false</span></span>
+  ]]] )</div>
+
+  <p class="para rdfs-comment">Процедурный стиль</p>
+  <div class="methodsynopsis dc-description">
+   <span class="type"><a href="class.tidy.html" class="type tidy">tidy</a></span> <span class="methodname"><b>tidy_parse_file</b></span>
+    ( <span class="methodparam"><span class="type">string</span> <tt class="parameter">$filename</tt></span>
+   [, <span class="methodparam"><span class="type"><a href="language.pseudo-types.html#language.types.mixed" class="type mixed">mixed</a></span> <tt class="parameter">$config</tt></span>
+   [, <span class="methodparam"><span class="type">string</span> <tt class="parameter">$encoding</tt></span>
+   [, <span class="methodparam"><span class="type">bool</span> <tt class="parameter">$use_include_path</tt><span class="initializer"> = false</span></span>
+  ]]] )</div>
+
+  <p class="para rdfs-comment">
+   Разбор полученного файла.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-tidy.parsefile-parameters">
+  <h3 class="title">Список параметров</h3>
+  <p class="para">
+   <dl>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">filename</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Если получен параметр <i><tt class="parameter">filename</tt></i>, то функция
+       прочитает этот файл и инициализирует объект с этим файлом,
+       так же как делает это функция <span class="function"><b>tidy_parse_file()</b></span>.
+      </p>
+     </dd>
+
+    </dt>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">config</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Настройки <i><tt class="parameter">config</tt></i> могут быть заданы в виде
+       массива или строки. Если задана строка, то это интерпретируется как
+       имя файла конфигурации, в противном случае, параметр
+       интерпретируется как сами настройки.
+      </p>
+      <p class="para">
+       Информацию о каждом параметре можно найти тут: 
+       <a href="http://tidy.sourceforge.net/docs/quickref.html" class="link external">&raquo;&nbsp;http://tidy.sourceforge.net/docs/quickref.html</a>.
+      </p>
+     </dd>
+
+    </dt>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">encoding</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Параметр <i><tt class="parameter">encoding</tt></i> устанавливает кодировку для
+       входных/выходных документов. Возможные значения:
+       <i>ascii</i>, <i>latin0</i>, <i>latin1</i>,
+       <i>raw</i>, <i>utf8</i>, <i>iso2022</i>,
+       <i>mac</i>, <i>win1252</i>, <i>ibm858</i>,
+       <i>utf16</i>, <i>utf16le</i>, <i>utf16be</i>,
+       <i>big5</i>, и <i>shiftjis</i>.
+      </p>
+     </dd>
+
+    </dt>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">use_include_path</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Поиск файла в <a href="ini.core.html#ini.include-path" class="link">include_path</a>.
+      </p>
+     </dd>
+
+    </dt>
+
+   </dl>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-tidy.parsefile-returnvalues">
+  <h3 class="title">Возвращаемые значения</h3>
+  <p class="para">
+   Возвращает <b><tt>TRUE</tt></b> в случае успешного завершения  или <b><tt>FALSE</tt></b> в случае возникновения ошибки.
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-tidy.parsefile-examples">
+  <h3 class="title">Примеры</h3>
+  <p class="para">
+   <div class="example" id="example-3651">
+    <p><b>Пример #1 Пример использования функции <span class="function"><b>tidy::parseFile()</b></span></b></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$tidy&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">tidy</span><span style="color: #007700">();<br /></span><span style="color: #0000BB">$tidy</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">parseFile</span><span style="color: #007700">(</span><span style="color: #DD0000">'file.html'</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">$tidy</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">cleanRepair</span><span style="color: #007700">();<br /><br />if(!empty(</span><span style="color: #0000BB">$tidy</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">errorBuffer</span><span style="color: #007700">))&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"Возникли&nbsp;следующие&nbsp;ошибки&nbsp;или&nbsp;предупреждения:\n"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #0000BB">$tidy</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">errorBuffer</span><span style="color: #007700">;<br />}<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+  </p>
+ </div>
+
+
+ <div class="refsect1 notes" id="refsect1-tidy.parsefile-notes">
+  <h3 class="title">Примечания</h3>
+  <blockquote class="note"><p><b class="note">Замечание</b>: <span class="simpara">
+Необязательные параметры <i><tt class="parameter">config</tt></i> и
+<i><tt class="parameter">enconding</tt></i> были добавлены в Tidy 2.0.</span></p></blockquote>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-tidy.parsefile-seealso">
+  <h3 class="title">Смотрите также</h3>
+  <ul class="simplelist">
+   <li class="member"><span class="function"><a href="tidy.parsestring.html" class="function" rel="rdfs-seeAlso">tidy::parsestring()</a> - Разбор документа, хранимого в строке</span></li>
+   <li class="member"><span class="function"><a href="tidy.repairfile.html" class="function" rel="rdfs-seeAlso">tidy::repairfile()</a> - Воcстанавливает разметку файла и возвращает его в виде строки</span></li>
+   <li class="member"><span class="function"><a href="tidy.repairstring.html" class="function" rel="rdfs-seeAlso">tidy::repairstring()</a> - Восстанавливает строку, используя по возможности конфигурационный файл</span></li>
+  </ul>
+ </div>
+
+ 
+</div><hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="tidy.isxml.html">tidy::isXml</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="tidy.parsestring.html">tidy::parseString</a></div>
+ <div class="up"><a href="class.tidy.html">Tidy</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

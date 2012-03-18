@@ -1,0 +1,106 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Проверяет, является ли значение &quot;не числом&quot;</title>
+
+ </head>
+ <body><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.is-infinite.html">is_infinite</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.lcg-value.html">lcg_value</a></div>
+ <div class="up"><a href="ref.math.html">Математические функции</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.is-nan" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">is_nan</h1>
+  <p class="verinfo">(PHP 4 &gt;= 4.2.0, PHP 5)</p><p class="refpurpose"><span class="refname">is_nan</span> &mdash; <span class="dc-title">Проверяет, является ли значение &quot;не числом&quot;</span></p>
+
+ </div>
+
+ <div class="refsect1 description" id="refsect1-function.is-nan-description">
+  <h3 class="title">Описание</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">bool</span> <span class="methodname"><b>is_nan</b></span>
+    ( <span class="methodparam"><span class="type">float</span> <tt class="parameter">$val</tt></span>
+   )</div>
+
+  <p class="para rdfs-comment">
+   Проверяет, является ли <i><tt class="parameter">val</tt></i> &quot;не числом&quot; (NaN),
+   например, как результат выполнения функции <i>acos(1.01)</i>.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-function.is-nan-parameters">
+  <h3 class="title">Список параметров</h3>
+  <p class="para">
+   <dl>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">val</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Проверяемое значение
+      </p>
+     </dd>
+
+    </dt>
+
+   </dl>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-function.is-nan-returnvalues">
+  <h3 class="title">Возвращаемые значения</h3>
+  <p class="para">
+   Возвращает <b><tt>TRUE</tt></b>, если <i><tt class="parameter">val</tt></i> имеет значение &quot;не число&quot; (NaN),
+   и <b><tt>FALSE</tt></b> в противном случае.
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-function.is-nan-examples">
+  <h3 class="title">Примеры</h3>
+  <p class="para">
+   <div class="example" id="example-3138">
+    <p><b>Пример #1 Пример использования <span class="function"><b>is_nan()</b></span></b></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">//&nbsp;Недопустимое&nbsp;вычисление,&nbsp;возвращает<br />//&nbsp;значение&nbsp;"не&nbsp;число"&nbsp;(NaN)<br /></span><span style="color: #0000BB">$nan&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">acos</span><span style="color: #007700">(</span><span style="color: #0000BB">8</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$nan</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">is_nan</span><span style="color: #007700">(</span><span style="color: #0000BB">$nan</span><span style="color: #007700">));<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+    <div class="example-contents"><p>Результат выполнения данного примера:</p></div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+float(NAN)
+bool(true)
+</pre></div>
+    </div>
+   </div>
+  </p>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-function.is-nan-seealso">
+  <h3 class="title">Смотрите также</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><span class="function"><a href="function.is-finite.html" class="function" rel="rdfs-seeAlso">is_finite()</a> - Проверяет, является ли значение допустимым конечным числом</span></li>
+    <li class="member"><span class="function"><a href="function.is-infinite.html" class="function" rel="rdfs-seeAlso">is_infinite()</a> - Проверяет, является ли значение бесконечным</span></li>
+   </ul>
+  </p>
+ </div>
+
+
+</div><hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.is-infinite.html">is_infinite</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.lcg-value.html">lcg_value</a></div>
+ <div class="up"><a href="ref.math.html">Математические функции</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

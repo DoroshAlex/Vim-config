@@ -1,0 +1,163 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Сортирует массив</title>
+
+ </head>
+ <body><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.sizeof.html">sizeof</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.uasort.html">uasort</a></div>
+ <div class="up"><a href="ref.array.html">Функции для работы с массивами</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.sort" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">sort</h1>
+  <p class="verinfo">(PHP 4, PHP 5)</p><p class="refpurpose"><span class="refname">sort</span> &mdash; <span class="dc-title">Сортирует массив</span></p>
+
+ </div>
+ <div class="refsect1 description" id="refsect1-function.sort-description">
+  <h3 class="title">Описание</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">bool</span> <span class="methodname"><b>sort</b></span>
+    ( <span class="methodparam"><span class="type">array</span> <tt class="parameter reference">&$array</tt></span>
+   [, <span class="methodparam"><span class="type">int</span> <tt class="parameter">$sort_flags</tt><span class="initializer"> = SORT_REGULAR</span></span>
+  ] )</div>
+
+  <p class="para rdfs-comment">
+   Эта функция сортирует массив. После завершения работы функции элементы
+   массива будут расположены в порядке возрастания.
+  </p>
+ </div>
+
+ <div class="refsect1 parameters" id="refsect1-function.sort-parameters">
+  <h3 class="title">Список параметров</h3>
+  <p class="para">
+   <dl>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">array</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Входной массив.
+      </p>
+     </dd>
+
+    </dt>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">sort_flags</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Дополнительный второй параметр <i><tt class="parameter">sort_flags</tt></i>
+       можно использовать для изменения поведения сортировки,
+       используя следующие значения:
+      </p>
+      <p class="para">
+       Флаги сортировки:
+       <ul class="itemizedlist">
+        <li class="listitem">
+         <span class="simpara"><b><tt>SORT_REGULAR</tt></b> - обычное сравнение элементов
+         (без изменения типов)</span>
+        </li>
+        <li class="listitem">
+         <span class="simpara"><b><tt>SORT_NUMERIC</tt></b> - числовое сравнение элементов</span>
+        </li>
+        <li class="listitem">
+         <span class="simpara"><b><tt>SORT_STRING</tt></b> - строковое сравнение элементов</span>
+        </li>
+        <li class="listitem">
+         <span class="simpara"><b><tt>SORT_LOCALE_STRING</tt></b> - строковое сравнение
+          элементов в зависимости от текущей локали.
+          strings, based on the current locale. Добавлено в версиях PHP 4.4.0 и 5.0.2,
+          используется локаль, которая может быть изменена с
+          помощью функции <span class="function"><a href="function.setlocale.html" class="function">setlocale()</a></span>.
+          
+         </span>
+        </li>
+       </ul>
+      </p>
+     </dd>
+
+    </dt>
+
+   </dl>
+
+  </p>
+ </div>
+
+ <div class="refsect1 returnvalues" id="refsect1-function.sort-returnvalues">
+  <h3 class="title">Возвращаемые значения</h3>
+  <p class="para">
+   Возвращает <b><tt>TRUE</tt></b> в случае успешного завершения  или <b><tt>FALSE</tt></b> в случае возникновения ошибки.
+  </p>
+ </div>
+
+ <div class="refsect1 examples" id="refsect1-function.sort-examples">
+  <h3 class="title">Примеры</h3>
+  <p class="para">
+   <div class="example" id="example-4535">
+    <p><b>Пример #1 Пример использования <span class="function"><b>sort()</b></span></b></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /><br />$fruits&nbsp;</span><span style="color: #007700">=&nbsp;array(</span><span style="color: #DD0000">"lemon"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"orange"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"banana"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"apple"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">sort</span><span style="color: #007700">(</span><span style="color: #0000BB">$fruits</span><span style="color: #007700">);<br />foreach&nbsp;(</span><span style="color: #0000BB">$fruits&nbsp;</span><span style="color: #007700">as&nbsp;</span><span style="color: #0000BB">$key&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">$val</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"fruits["&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">$key&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #DD0000">"]&nbsp;=&nbsp;"&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">$val&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br />}<br /><br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+    <div class="example-contents"><p>Результат выполнения данного примера:</p></div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+fruits[0] = apple
+fruits[1] = banana
+fruits[2] = lemon
+fruits[3] = orange
+</pre></div>
+    </div>
+   </div>
+  </p>
+  <p class="para">
+   Фрукты отсортированы в алфавитном порядке.
+  </p>
+ </div>
+
+ <div class="refsect1 notes" id="refsect1-function.sort-notes">
+  <h3 class="title">Примечания</h3>
+  <blockquote class="note"><p><b class="note">Замечание</b>: <span class="simpara">Эта функция присваивает
+новые ключи элементам <i><tt class="parameter">массива</tt></i>.
+Она удалит все существующие ключи, а не просто переупорядочит их.</span></p></blockquote>
+  <blockquote class="note"><p><b class="note">Замечание</b>: 
+   <span class="simpara">
+    Как и большинство функций сортировки в PHP, <span class="function"><b>sort()</b></span> использует
+    реализацию алгоритма <a href="http://en.wikipedia.org/wiki/Quicksort" class="link external">&raquo;&nbsp;быстрой сортировки</a>.
+   </span>
+  </p></blockquote>
+  <div class="warning"><b class="warning">Внимание</b>
+   <p class="simpara">
+    Будьте осторожны при сортировке массивов, содержащих элементы разных типов,
+    так как в этом случае результат работы функции <span class="function"><b>sort()</b></span>
+    может быть непредсказуемым.
+   </p>
+  </div>
+ </div>
+
+ <div class="refsect1 seealso" id="refsect1-function.sort-seealso">
+  <h3 class="title">Смотрите также</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><span class="function"><a href="function.asort.html" class="function" rel="rdfs-seeAlso">asort()</a> - Сортирует массив, сохраняя ключи</span></li>
+    <li class="member"><a href="array.sorting.html" class="link">Сравнение функций сортировки массивов</a></li>
+   </ul>
+  </p>
+ </div>
+
+</div><hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.sizeof.html">sizeof</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.uasort.html">uasort</a></div>
+ <div class="up"><a href="ref.array.html">Функции для работы с массивами</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

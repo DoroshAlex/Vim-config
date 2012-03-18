@@ -1,0 +1,108 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Исключения</title>
+
+ </head>
+ <body><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="language.namespaces.faq.html">Часто задаваемые вопросы (FAQ): вещи, которые вам необходимо знать о пространствах имен</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="language.exceptions.extending.html">Наследование исключений</a></div>
+ <div class="up"><a href="langref.html">Справочник языка</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="language.exceptions" class="chapter">
+  <h1>Исключения</h1>
+<h2>Содержание</h2><ul class="chunklist chunklist_chapter"><li><a href="language.exceptions.extending.html">Наследование исключений</a></li></ul>
+
+
+  <p class="para">
+   Модель исключений (exceptions) в PHP 5 проще, чем в других языках программирования.
+   Исключение можно сгенерировать (как говорят, &quot;выбросить&quot;) при помощи оператора 
+   <i>throw</i>, и можно перехватить (или, как говорят, &quot;поймать&quot;)
+   оператором <i>catch</i>. Код генерирующий исключение, должен
+   быть окружен блоком <i>try</i>, для того чтобы можно было
+   перехватить исключение. Каждый блок <i>try</i>
+   должен иметь как минимум один соответствующий ему блок <i>catch</i>. 
+   Так же можно использовать несколько блоков <i>catch</i>,
+   перехватывающих различные классы исключений.
+   Нормальное выполнение (когда не генерируются исключения в блоках 
+   <i>try</i> или когда класс сгенерированного исключения не
+   совпадает с классами, объявленными в соответствующих блоках
+   <i>catch</i>) будет продолжено за последним блоком
+   <i>catch</i>. Исключения так же могут быть сгенерированы (или
+   вызваны еще раз) оператором <i>throw</i> 
+   внутри блока <i>catch</i>.
+  </p>
+  <p class="para">
+   При генерации исключения код следующий за оператором
+   <i>throw</i> исполнен не будет, а PHP предпримет попытку найти
+   первый блок <i>catch</i>, перехватывающий исключение данного
+   класса. Если исключение не будет перехвачено, PHP выдаст сообщение об
+   ошибке: &quot;<i>Uncaught Exception ...</i>&quot; (Неперехваченное
+   исключение), если не был определен обработчик ошибок при помощи
+   функции <span class="function"><a href="function.set-exception-handler.html" class="function">set_exception_handler()</a></span>.
+  </p>
+  <p class="para">
+   Генерируемый объект должен принадлежать классу <a href="class.exception.html" class="classname">Exception</a>
+   или наследоваться от <a href="class.exception.html" class="classname">Exception</a>. Попытка сгенерировать 
+   исключение другого класса приведет к неисправимой ошибке.
+  </p>
+  <blockquote class="note"><p><b class="note">Замечание</b>: 
+   <p class="para">
+    Внутренние функции PHP в основном используют
+    <a href="errorfunc.configuration.html#ini.error-reporting" class="link">сообщения об ошибках</a>, и только
+    новые <a href="language.oop5.html" class="link">объектно-ориентированные</a>
+    расширения используют исключения. Однако, ошибки можно легко преобразовать
+    в исключения с помощью класса <a href="class.errorexception.html" class="link">ErrorException</a>.
+   </p>
+  </p></blockquote>
+  <div class="tip"><b class="tip">Подсказка</b>
+   <p class="para">
+    <a href="intro.spl.html" class="link">Стандартная библиотека PHP (SPL)</a> предоставляет
+    хороший набор <a href="spl.exceptions.html" class="link">встроенных классов исключений</a>.
+   </p>
+  </div>
+   <div class="example" id="example-255">
+    <p><b>Пример #1 Выброс исключений</b></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">function&nbsp;</span><span style="color: #0000BB">inverse</span><span style="color: #007700">(</span><span style="color: #0000BB">$x</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(!</span><span style="color: #0000BB">$x</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;throw&nbsp;new&nbsp;</span><span style="color: #0000BB">Exception</span><span style="color: #007700">(</span><span style="color: #DD0000">'Деление&nbsp;на&nbsp;ноль.'</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />&nbsp;&nbsp;&nbsp;&nbsp;else&nbsp;return&nbsp;</span><span style="color: #0000BB">1</span><span style="color: #007700">/</span><span style="color: #0000BB">$x</span><span style="color: #007700">;<br />}<br /><br />try&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #0000BB">inverse</span><span style="color: #007700">(</span><span style="color: #0000BB">5</span><span style="color: #007700">)&nbsp;.&nbsp;</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #0000BB">inverse</span><span style="color: #007700">(</span><span style="color: #0000BB">0</span><span style="color: #007700">)&nbsp;.&nbsp;</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br />}&nbsp;catch&nbsp;(</span><span style="color: #0000BB">Exception&nbsp;$e</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">'Выброшено&nbsp;исключение:&nbsp;'</span><span style="color: #007700">,&nbsp;&nbsp;</span><span style="color: #0000BB">$e</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getMessage</span><span style="color: #007700">(),&nbsp;</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br />}<br /><br /></span><span style="color: #FF8000">//&nbsp;Продолжение&nbsp;выполнения<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #DD0000">'Hello&nbsp;World'</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+    <div class="example-contents"><p>Результат выполнения данного примера:</p></div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+0.2
+Выброшено исключение: Деление на ноль.
+Hello World
+</pre></div>
+    </div>
+   </div>
+   <div class="example" id="example-256">
+    <p><b>Пример #2 Вложенные исключения</b></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /><br /></span><span style="color: #007700">class&nbsp;</span><span style="color: #0000BB">MyException&nbsp;</span><span style="color: #007700">extends&nbsp;</span><span style="color: #0000BB">Exception&nbsp;</span><span style="color: #007700">{&nbsp;}<br /><br />class&nbsp;</span><span style="color: #0000BB">Test&nbsp;</span><span style="color: #007700">{<br />&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;function&nbsp;</span><span style="color: #0000BB">testing</span><span style="color: #007700">()&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;try&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;try&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;throw&nbsp;new&nbsp;</span><span style="color: #0000BB">MyException</span><span style="color: #007700">(</span><span style="color: #DD0000">'foo!'</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;catch&nbsp;(</span><span style="color: #0000BB">MyException&nbsp;$e</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">/*&nbsp;повторный&nbsp;выброс&nbsp;исключения&nbsp;*/<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">throw&nbsp;</span><span style="color: #0000BB">$e</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;catch&nbsp;(</span><span style="color: #0000BB">Exception&nbsp;$e</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$e</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getMessage</span><span style="color: #007700">());<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />}<br /><br /></span><span style="color: #0000BB">$foo&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">Test</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$foo</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">testing</span><span style="color: #007700">();<br /><br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+    <div class="example-contents"><p>Результат выполнения данного примера:</p></div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+string(4) &quot;foo!&quot;
+</pre></div>
+    </div>
+   </div>
+   
+  
+
+ </div>
+<hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="language.namespaces.faq.html">Часто задаваемые вопросы (FAQ): вещи, которые вам необходимо знать о пространствах имен</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="language.exceptions.extending.html">Наследование исключений</a></div>
+ <div class="up"><a href="langref.html">Справочник языка</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

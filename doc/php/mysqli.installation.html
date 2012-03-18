@@ -1,0 +1,215 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Установка</title>
+
+ </head>
+ <body><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="mysqli.requirements.html">Требования</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="mysqli.configuration.html">Настройка во время выполнения</a></div>
+ <div class="up"><a href="mysqli.setup.html">Установка и настройка</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="mysqli.installation" class="section">
+
+<h2 class="title">Установка</h2>
+
+ <p class="para">
+  Расширение <i>mysqli</i> было представлено с версией PHP 5.0.0.
+  MySQL Native Driver был включен в PHP версии 5.3.0.
+ </p>
+
+ <div class="section" id="mysqli.installation.linux">
+
+  <h2 class="title">Установка для Linux</h2>
+
+  <p class="para">
+   Большинство дистрибутивов Unix включает бинарные версии PHP, которые в дальнейшем
+   могут быть установлены. Несмортря на то, что бинарные версии, как 
+   правило, собраны с включенной поддержкой расширений MySQL, может
+   потребоваться установка дополнительных пакетов с библиотеками расширений.
+   Убедитесь, что менеджер пакетов, идущий с выбранным дистрибутивом,
+   позволяет установить такие пакеты.
+  </p>
+
+  <p class="para">
+   В случае, если ваш Unix дистрибутив не поставляется с бинарным пакетом PHP
+   с поддержкой расширения <i>mysqli</i>, то необходимо
+   собрать PHP из исходного кода. Сборка PHP из исходного кода позволяет
+   выделить только те расширения MySQL (а также клиентские библиотеки для каждого
+   из расширений), которые требуется использовать.
+  </p>
+
+  <p class="para">
+   Рекомендуется использовать MySQL Native Driver,
+   в результате повышается производительность и имеется доступ к
+   функциям, недоступным при использовании MySQL Client Library. 
+   См. <a href="mysqli.overview.html#mysqli.overview.mysqlnd" class="link">Что такое MySQL Native
+   Driver в PHP?</a> для ознакомления с возможностями MySQL Native
+   Driver.
+  </p>
+
+  <p class="para">
+   Под <i>/path/to/mysql_config</i> подразумевается расположение
+   программы <i>mysql_config</i>, поставляемой вместе с MySQL
+   Server.
+  </p>
+
+  <table class="doctable table">
+   <caption><b>Вспомогательная таблица времени компиляции mysqli</b></caption>
+   
+    <thead valign="middle">
+     <tr valign="middle">
+      <th>Версия PHP</th>
+      <th>По умолчанию</th>
+      <th>Опции настройки: <a href="mysqlnd.overview.html" class="link">mysqlnd</a></th>
+      <th>Опции настройки: <i>libmysql</i></th>
+      <th>Список изменений</th>
+     </tr>
+
+    </thead>
+
+    <tbody valign="middle" class="tbody">
+     <tr valign="middle">
+      <td align="left">5.0.x, 5.1.x, 5.2.x</td>
+      <td align="left">libmysql</td>
+      <td align="left">Недоступно</td>
+      <td align="left"><strong class="option configure">--with-mysqli=/path/to/mysql_config</strong>
+</td>
+      <td class="empty">&nbsp;</td>
+     </tr>
+
+     <tr valign="middle">
+      <td align="left">5.3.x</td>
+      <td align="left">libmysql</td>
+      <td align="left"><strong class="option configure">--with-mysqli=mysqlnd</strong>
+</td>
+      <td align="left"><strong class="option configure">--with-mysqli=/path/to/mysql_config</strong>
+</td>
+      <td align="left">mysqlnd поддерживается</td>
+     </tr>
+
+     <tr valign="middle">
+      <td align="left">5.4.x</td>
+      <td align="left">mysqlnd</td>
+      <td align="left"><strong class="option configure">--with-mysqli</strong>
+</td>
+      <td align="left"><strong class="option configure">--with-mysqli=/path/to/mysql_config</strong>
+</td>
+      <td align="left">mysqlnd по умолчанию</td>
+     </tr>
+
+    </tbody>
+   
+  </table>
+
+
+  <p class="para">
+   Необходимо отметить, что существует возможность свободно перемешивать
+   расширения MySQL и клиентские библиотеки. Например, можно
+   активировать расширение MySQL, позволяющее использовать
+   MySQL Client Library (libmysql), и при этом настроить расширение
+   <i>mysqli</i> для использования MySQL Native Driver.
+   Таким образом, возможны любые перестановки расширений и клиентских библиотек.
+  </p>
+
+  <p class="para">
+   Приведенный ниже пример настрваивает расширение MySQL для использования
+   MySQL Client Library, а расширения <i>mysqli</i> и PDO MYSQL
+   для работы с MySQL Native Driver:
+  </p>
+
+<div class="example-contents"><div class="shellcode"><pre class="shellcode">./configure --with-mysql=/usr/bin/mysql_config  \
+--with-mysqli=mysqlnd \
+--with-pdo-mysql=mysqlnd
+[other options]</pre>
+</div></div>
+
+
+ </div>
+
+ <div class="section" id="mysqli.installation.windows">
+
+  <h2 class="title">Установка для Windows</h2>
+
+  <p class="para">
+   Для Windows PHP в большинстве случаев устанавливается с помощью
+   установщика.
+  </p>
+
+  <div class="section">
+
+   <h2 class="title">PHP 5.0, 5.1, 5.2</h2>
+
+   <p class="para">
+    После установки PHP необходимо произвести настройку для включения
+    расширения <i>mysqli</i> и определения используемой им
+    клиентской библиотеки.
+   </p>
+
+   <p class="para">
+    Расширение <i>mysqli</i> не включено по умолчанию, а
+    следовательно в <var class="filename">php.ini</var> необходимо указать файл DLL 
+    <var class="filename">php_mysqli.dll</var>. Для этого вам необходимо найти
+    файл <var class="filename">php.ini</var> (обычно расположен в <var class="filename">c:\php</var>) и
+    убедиться, что вы сняли знак комментирования (&quot;;&quot;) в начале строки
+    <i>extension=php_mysqli.dll</i>, в разделе
+    <i>[PHP_MYSQLI]</i>.
+   </p>
+
+   <p class="para">
+    Также, если вы хотите использовать MySQL Client Library с
+    <i>mysqli</i>, то вам необходимо убедиться, что
+    PHP может получить доступ к файлу клиентской библиотеки.
+    MySQL Client Library включен в дистрибутив Windows PHP
+    в виде файла <var class="filename">libmysql.dll</var>. Этот файл должен
+    быть доступен в переменной окружения Windows <span class="envar">PATH</span>
+    для того, чтобы его можно было успешно загрузить. По ссылке 
+    &quot;<a href="faq.installation.html#faq.installation.addtopath" class="link">Как мне добавить мою
+    PHP директорию в Windows PATH</a>&quot; находится статья с информацией
+    о том, как это сделать. Если системная директория Windows прописана в 
+    <span class="envar">PATH</span>, то можно скопировать <var class="filename">libmysql.dll</var>
+    в системную директорию Windows (обычно <var class="filename">c:\Windows\system</var>).
+    Однако такой путь не рекомендуется.
+   </p>
+
+   <p class="para">
+    При включении любого расширения PHP (например 
+    <var class="filename">php_mysqli.dll</var>), директива PHP
+    <a href="ini.core.html#ini.extension-dir" class="link">extension_dir</a> должна содержать
+    путь к директории, где находятся расширения PHP. Смотрите также
+    <a href="install.windows.manual.html" class="link">Инструкции по Самостоятельной
+     Установке для Windows</a>. Для примера в PHP 5 значением
+    <i>extension_dir</i> является <var class="filename">c:\php\ext</var>.
+   </p>
+
+   <blockquote class="note"><p><b class="note">Замечание</b>: 
+    <p class="para">
+     Если при загрузке сервера появляется следующее сообщение:
+     <i>&quot;Unable to load dynamic library &#039;./php_mysqli.dll&#039;&quot;</i>,
+     то система не может найти файлы <var class="filename">php_mysqli.dll</var> и/или
+     <var class="filename">libmysql.dll</var>.
+    </p>
+   </p></blockquote>
+  </div>
+
+  <div class="section">
+
+    <h2 class="title">PHP 5.3.0+</h2>
+
+   <p class="para">
+    Для Windows, в версиях PHP 5.3 и старше, расширение <i>mysqli</i>
+    использует MySQL Native Driver по умолчанию. Это значит, что вам не нужно
+    беспокоиться о настройке доступа к файлу <var class="filename">libmysql.dll</var>.
+   </p>
+
+  </div>
+
+ </div>
+
+</div><hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="mysqli.requirements.html">Требования</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="mysqli.configuration.html">Настройка во время выполнения</a></div>
+ <div class="up"><a href="mysqli.setup.html">Установка и настройка</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

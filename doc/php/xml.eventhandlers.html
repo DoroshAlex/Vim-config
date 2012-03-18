@@ -1,0 +1,135 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Обработчики событий</title>
+
+ </head>
+ <body><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="xml.constants.html">Предопределенные константы</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="xml.case-folding.html">Приведение к одному регистру</a></div>
+ <div class="up"><a href="book.xml.html">XML-анализатор</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="xml.eventhandlers" class="article">
+ <h1>Обработчики событий</h1>
+
+ <p class="para">
+  Список обработчиков событий XML:
+  <table class="doctable table">
+   <caption><b>Поддерживаемые XML обработчики</b></caption>
+   
+    <thead valign="middle">
+     <tr valign="middle">
+      <th>Функции PHP для установки обработчика</th>
+      <th>Описание события</th>
+     </tr>
+
+    </thead>
+
+    <tbody valign="middle" class="tbody">
+     <tr valign="middle">
+      <td align="left"><span class="function"><a href="function.xml-set-element-handler.html" class="function">xml_set_element_handler()</a></span></td>
+      <td align="left">
+       События элементов выдаются каждый раз, когда XML парсер
+       встречает начальный или конечный тэги. Есть разные обработчики
+       для начальных и конечных тэгов.
+      </td>
+     </tr>
+
+     <tr valign="middle">
+      <td align="left">
+       <span class="function"><a href="function.xml-set-character-data-handler.html" class="function">xml_set_character_data_handler()</a></span>
+      </td>
+      <td align="left">
+       Символьные данные это примерно всё неразмеченное содержимое
+       XML документов, включая непечатные символы между тэгами.  
+       Отметим, что XML анализатор не добавляет или удаляет никаких
+       непечатных символов, так как это приложение (то есть пользователь) решает
+       где непечатные символы значительны.
+      </td>
+     </tr>
+
+     <tr valign="middle">
+      <td align="left">
+       <span class="function"><a href="function.xml-set-processing-instruction-handler.html" class="function">xml_set_processing_instruction_handler()</a></span>
+      </td>
+      <td align="left">
+       PHP программисты должны быть уже знакомы с инструкциями
+       обработки (PIs). &lt;?php ?&gt; является обрабатывающей
+       инструкцией, где <span class="replaceable">php</span> является вызываемой
+       &quot;PI целью&quot;.  Обработка этих инструкций зависит от программы,
+       за исключением того, что все цели PI начинаются с зарезервированного
+       слова &quot;XML&quot;.
+      </td>
+     </tr>
+
+     <tr valign="middle">
+      <td align="left"><span class="function"><a href="function.xml-set-default-handler.html" class="function">xml_set_default_handler()</a></span></td>
+      <td align="left">
+       Если нет специального обработчика, то вызывается обработчик
+       по умолчанию. Вы получите XML и объявления типов документа 
+       при помощи обработчика по умолчанию.
+      </td>
+     </tr>
+
+     <tr valign="middle">
+      <td align="left">
+       <span class="function"><a href="function.xml-set-unparsed-entity-decl-handler.html" class="function">xml_set_unparsed_entity_decl_handler()</a></span>
+      </td>
+      <td align="left">
+       Этот обработчик будет вызываться для декларирования непроанализированных
+       (NDATA) сущностей.
+      </td>
+     </tr>
+
+     <tr valign="middle">
+      <td align="left">
+       <span class="function"><a href="function.xml-set-notation-decl-handler.html" class="function">xml_set_notation_decl_handler()</a></span>
+      </td>
+      <td align="left">
+       Этот обработчик вызывается при объявлении нотации.
+      </td>
+     </tr>
+
+     <tr valign="middle">
+      <td align="left">
+       <span class="function"><a href="function.xml-set-external-entity-ref-handler.html" class="function">xml_set_external_entity_ref_handler()</a></span>
+      </td>
+      <td align="left">
+       Этот обработчик вызывается когда анализатор XML  находит ссылку
+       на внешнюю сущность. Например, это может быть ссылка 
+       на файл или URL.  Смотрите <a href="example.xml-external-entity.html" class="link">пример внешней сущности</a>.
+      </td>
+     </tr>
+
+     <tr valign="middle">
+      <td align="left">
+       <span class="function"><a href="function.xml-set-start-namespace-decl-handler.html" class="function">xml_set_start_namespace_decl_handler()</a></span>
+      </td>
+      <td align="left">
+       Этот обработчик вызывается в начале объявления пространства имён.
+      </td>
+     </tr>
+
+     <tr valign="middle">
+      <td align="left">
+       <span class="function"><a href="function.xml-set-end-namespace-decl-handler.html" class="function">xml_set_end_namespace_decl_handler()</a></span>
+      </td>
+      <td align="left">
+       Этот обработчик вызывается в конце объявления пространства имён.
+       Отметим, что это событие <em class="emphasis">НЕ</em> входит в состав LibXML.
+      </td>
+     </tr>
+
+    </tbody>
+   
+  </table>
+
+ </p>
+</div>
+<hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="xml.constants.html">Предопределенные константы</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="xml.case-folding.html">Приведение к одному регистру</a></div>
+ <div class="up"><a href="book.xml.html">XML-анализатор</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

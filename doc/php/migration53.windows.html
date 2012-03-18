@@ -1,0 +1,202 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Изменения в поддержке Windows</title>
+
+ </head>
+ <body><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="migration53.new-features.html">Новые возможности</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="migration53.sapi.html">Изменения в модулях SAPI</a></div>
+ <div class="up"><a href="migration53.html">Переход c PHP 5.2.x на PHP 5.3.x</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="migration53.windows" class="section">
+  <h2 class="title">Изменения в поддержке Windows</h2>
+  <p class="simpara">
+   Изменения к выпускам PHP для Windows:
+  </p>
+  <ul class="itemizedlist">
+   <li class="listitem">
+    <span class="simpara">
+     Минимально необходимая версия Windows теперь Windows XP SP3. Windows 98, ME, 2000 и NT4
+     больше не поддерживаются.
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     Бинарные файлы для Windows теперь скомпилированы для i586 и более поздних платформ.
+     Платформы i386 и i486 более не поддерживаются.
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     Теперь есть экспериментальная поддержка для x64 версий PHP под Windows.
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     Теперь присутствует поддержка компилятора Visual C++ 9 (VC9), используемого в Visual Studio
+     2008. Снапшоты и релизы будут также доступны для VC9. Старые бинарные файлы для
+     VC6 все еще поддерживаются и выпускаются в соответствии с VC9.
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     Библиотека <a href="ref.pdo-oci.html" class="link">PDO_OCI</a>
+     <i>php_pdo_oci8.dll</i> (для использования с клиентскими библиотеками для сервера Oracle версии 8)
+     более не собирается. Вместо нее используйте
+     <i>php_pdo_oci.dll</i> (без &#039;8&#039;) с клиентскими библиотеками Oracle 10 или 11.
+     Соединение с базами данных других версий все еще поддерживается.
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     Для расширения <a href="book.oci8.html" class="link">OCI8</a> новая библиотека
+     <i>php_oci8_11g.dll</i> доступна как дополнение к
+     <i>php_oci8.dll</i>. Подключена может быть только одна из библиотек. Используйте
+     <i>php_oci8.dll</i> с клиентскими библиотеками Oracle 10.2. Используйте
+     <i>php_oci8_11g.dll</i> с клиентскими библиотеками Oracle 11.
+     Соединение с базами данных других версий все еще поддерживается.
+    </span>
+   </li>
+  </ul>
+  <p class="simpara">
+   Поддержка Windows была добавлена для следующих функций:
+  </p>
+  <ul class="itemizedlist">
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="function.checkdnsrr.html" class="function">checkdnsrr()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="function.dns-get-record.html" class="function">dns_get_record()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="function.fnmatch.html" class="function">fnmatch()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="function.getmxrr.html" class="function">getmxrr()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="function.getopt.html" class="function">getopt()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="function.imagecolorclosesthwb.html" class="function">imagecolorclosesthwb()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="function.inet-ntop.html" class="function">inet_ntop()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="function.inet-pton.html" class="function">inet_pton()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="function.link.html" class="function">link()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="function.linkinfo.html" class="function">linkinfo()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="function.mcrypt-create-iv.html" class="function">mcrypt_create_iv()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="function.readlink.html" class="function">readlink()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="function.socket-create-pair.html" class="function">socket_create_pair()</a></span>
+     - Эта функция была доступна и прежде на платформе Windows, но была отключена начиная с
+     PHP 4.3.0 по причине ошибки в ней.
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="function.stream-socket-pair.html" class="function">stream_socket_pair()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="function.symlink.html" class="function">symlink()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="function.time-nanosleep.html" class="function">time_nanosleep()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="function.time-sleep-until.html" class="function">time_sleep_until()</a></span>
+    </span>
+   </li>
+  </ul>
+  <p class="simpara">
+   Другие изменения:
+  </p>
+  <ul class="itemizedlist">
+   <li class="listitem">
+    <span class="simpara">
+     Улучшена переносимость функций <span class="function"><a href="function.stat.html" class="function">stat()</a></span>,
+     <span class="function"><a href="function.touch.html" class="function">touch()</a></span>, <span class="function"><a href="function.filemtime.html" class="function">filemtime()</a></span>,
+     <span class="function"><a href="function.filesize.html" class="function">filesize()</a></span> и других функций, связанных с ними (100%
+     переносимость для имеющейся информации).
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     Теперь возможно создание жестких ссылок на Windows используя
+     функцию <span class="function"><a href="function.link.html" class="function">link()</a></span>, и символических ссылок, используя
+     функцию <span class="function"><a href="function.symlink.html" class="function">symlink()</a></span>. Жесткие ссылки доступны начиная с
+     Windows 2000, символические - начиная с Windows Vista.
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     Версия PHP для Windows теперь предоставляет набор констант с префиксом 
+     <i>PHP_WINDOWS_*</i>. Список констант и примеры использования
+     можно найти в разделе <a href="info.constants.html" class="xref">Предопределенные константы</a>.
+    </span>
+   </li>
+  </ul>
+  <div class="warning"><b class="warning">Внимание</b>
+   <p class="simpara">
+    Поддержка модуля ISAPI была прекращена. Вместо него используйте улучшенный модуль
+    FastCGI SAPI.
+   </p>
+  </div>
+  <blockquote class="note"><p><b class="note">Замечание</b>: 
+   <span class="simpara">
+    Стал доступен новый отдельный сайт для PHP под Windows, включающий
+    раздел загрузок, релиз-кандидаты и снапшоты в различных вариантах
+    (thread-safe/not-thread-safe, VC6/VC9, x86/x64). URL этого сайта следующий
+    <a href="http://windows.php.net/" class="link external">&raquo;&nbsp;http://windows.php.net/</a>.
+   </span>
+  </p></blockquote>
+ </div><hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="migration53.new-features.html">Новые возможности</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="migration53.sapi.html">Изменения в модулях SAPI</a></div>
+ <div class="up"><a href="migration53.html">Переход c PHP 5.2.x на PHP 5.3.x</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

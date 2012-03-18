@@ -1,0 +1,140 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Посылает параметризованный запрос на сервер, не ожидает возвращаемого результата</title>
+
+ </head>
+ <body><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.pg-send-prepare.html">pg_send_prepare</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.pg-send-query.html">pg_send_query</a></div>
+ <div class="up"><a href="ref.pgsql.html">PostgreSQL</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.pg-send-query-params" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">pg_send_query_params</h1>
+  <p class="verinfo">(PHP 5 &gt;= 5.1.0)</p><p class="refpurpose"><span class="refname">pg_send_query_params</span> &mdash; <span class="dc-title">
+   Посылает параметризованный запрос на сервер, не ожидает возвращаемого результата
+  </span></p>
+
+ </div>
+
+ <div class="refsect1 description" id="refsect1-function.pg-send-query-params-description">
+  <h3 class="title">Описание</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">bool</span> <span class="methodname"><b>pg_send_query_params</b></span>
+    ( <span class="methodparam"><span class="type">resource</span> <tt class="parameter">$connection</tt></span>
+   , <span class="methodparam"><span class="type">string</span> <tt class="parameter">$query</tt></span>
+   , <span class="methodparam"><span class="type">array</span> <tt class="parameter">$params</tt></span>
+   )</div>
+
+  <p class="para rdfs-comment">
+   Отправляет параметризованный запрос на выполнение и не ждет его завершения. 
+   Параметры передаются отдельно от текста SQL запроса. 
+  </p>
+  <p class="para">
+   Функция является аналогом <span class="function"><a href="function.pg-send-query.html" class="function">pg_send_query()</a></span> за одним 
+   исключением: параметры запроса можно передавать отдельно от строки 
+   запроса. Аргументы функции обрабатываются так же, как и в 
+   <span class="function"><a href="function.pg-query-params.html" class="function">pg_query_params()</a></span>. <span class="function"><a href="function.pg-send-query.html" class="function">pg_send_query()</a></span> 
+   поддерживается на соединениях с серверами PostgreSQL версий 7.4 и 
+   выше. Функция не будет работать с серверами ранних версий. Также 
+   она поддерживает только одну SQL команду в выражении.
+  </p>  
+ </div>
+
+ 
+ <div class="refsect1 parameters" id="refsect1-function.pg-send-query-params-parameters">
+  <h3 class="title">Список параметров</h3>
+  <p class="para">
+   <dl>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">connection</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Ресурс соединения с базой данных PostgreSQL.
+      </p>
+     </dd>
+
+    </dt>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">query</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Параметризованный SQL запрос. Должен содержать только одно выражение 
+       (несколько выражений разделенных точкой с запятой не поддерживаются). 
+       Если в запрос будут передаваться параметры, то они заменят 
+       псевдопеременные $1, $2 и т.д. 
+      </p>
+     </dd>
+
+    </dt>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">params</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Массив значений параметров запроса для замены псевдопеременных $1, $2 и т.д. 
+       в исходной строке запроса. Количество элементов массива должно точно совпадать с 
+       количеством псевдопеременных. 
+      </p>
+     </dd>
+
+    </dt>
+
+   </dl>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-function.pg-send-query-params-returnvalues">
+  <h3 class="title">Возвращаемые значения</h3>
+  <p class="para">Возвращает <b><tt>TRUE</tt></b> в случае успешного завершения  или <b><tt>FALSE</tt></b> в случае возникновения ошибки.</p>
+  <p class="para">
+   Пользуйтесь функцией <span class="function"><a href="function.pg-get-result.html" class="function">pg_get_result()</a></span> для получения 
+   результата запроса. 
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 examples" id="refsect1-function.pg-send-query-params-examples">
+  <h3 class="title">Примеры</h3>
+  <p class="para">
+   <div class="example" id="example-1954">
+    <p><b>Пример #1 Пример использования <span class="function"><b>pg_send_query_params()</b></span></b></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />&nbsp;&nbsp;$dbconn&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">pg_connect</span><span style="color: #007700">(</span><span style="color: #DD0000">"dbname=publisher"</span><span style="color: #007700">)&nbsp;or&nbsp;die(</span><span style="color: #DD0000">"Could&nbsp;not&nbsp;connect"</span><span style="color: #007700">);<br /><br />&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;Использование&nbsp;параметров.&nbsp;Стоит&nbsp;заметить,&nbsp;что&nbsp;нет&nbsp;необходимости&nbsp;<br />&nbsp;&nbsp;//&nbsp;заключать&nbsp;в&nbsp;кавычки&nbsp;и&nbsp;экранировать&nbsp;параметр.<br />&nbsp;&nbsp;</span><span style="color: #0000BB">pg_send_query_params</span><span style="color: #007700">(</span><span style="color: #0000BB">$dbconn</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'select&nbsp;count(*)&nbsp;from&nbsp;authors&nbsp;where&nbsp;city&nbsp;=&nbsp;$1'</span><span style="color: #007700">,&nbsp;array(</span><span style="color: #DD0000">'Perth'</span><span style="color: #007700">));<br />&nbsp;&nbsp;<br />&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;В&nbsp;сравнении&nbsp;с&nbsp;pg_send_query&nbsp;<br />&nbsp;&nbsp;</span><span style="color: #0000BB">$str&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">pg_escape_string</span><span style="color: #007700">(</span><span style="color: #DD0000">'Perth'</span><span style="color: #007700">);<br />&nbsp;&nbsp;</span><span style="color: #0000BB">pg_send_query</span><span style="color: #007700">(</span><span style="color: #0000BB">$dbconn</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"select&nbsp;count(*)&nbsp;from&nbsp;authors&nbsp;where&nbsp;city&nbsp;=&nbsp;'</span><span style="color: #007700">${</span><span style="color: #0000BB">str</span><span style="color: #007700">}</span><span style="color: #DD0000">'"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div> 
+  </p>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-function.pg-send-query-params-seealso">
+  <h3 class="title">Смотрите также</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><span class="function"><a href="function.pg-send-query.html" class="function" rel="rdfs-seeAlso">pg_send_query()</a> - Отправляет асинхронный запрос</span></li>
+   </ul>
+  </p>
+ </div>
+
+</div><hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.pg-send-prepare.html">pg_send_prepare</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.pg-send-query.html">pg_send_query</a></div>
+ <div class="up"><a href="ref.pgsql.html">PostgreSQL</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

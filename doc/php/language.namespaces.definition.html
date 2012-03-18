@@ -1,0 +1,58 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Определение пространств имен</title>
+
+ </head>
+ <body><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="language.namespaces.rationale.html">Обзор пространств имен</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="language.namespaces.nested.html">Определение подпространств имен</a></div>
+ <div class="up"><a href="language.namespaces.html">Пространства имен</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="language.namespaces.definition" class="sect1">
+  <h2 class="title">Определение пространств имен</h2>
+  <p class="verinfo">(PHP 5 &gt;= 5.3.0)</p>
+  <p class="para">
+   Хотя любой исправный PHP-код может находиться внутри пространства имен, только
+   классы, интерфейсы, функции и константы зависят от него.
+  </p>
+  <p class="para">
+   Пространства имен объявляются с помощью зарезервированного слова <i>namespace</i>.
+   Файл, содержащий пространство имен, должен содержать его объявление в начале 
+   перед любым другим кодом, кроме зарезервированного слова
+   <a href="control-structures.declare.html" class="xref">declare</a>.
+   <div class="example" id="example-220">
+    <p><b>Пример #1 Объявление единого пространства имен</b></p>
+    <div class="example-contents">
+     <div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">namespace&nbsp;</span><span style="color: #0000BB">MyProject</span><span style="color: #007700">;<br /><br />const&nbsp;</span><span style="color: #0000BB">CONNECT_OK&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">1</span><span style="color: #007700">;<br />class&nbsp;</span><span style="color: #0000BB">Connection&nbsp;</span><span style="color: #007700">{&nbsp;</span><span style="color: #FF8000">/*&nbsp;...&nbsp;*/&nbsp;</span><span style="color: #007700">}<br />function&nbsp;</span><span style="color: #0000BB">connect</span><span style="color: #007700">()&nbsp;{&nbsp;</span><span style="color: #FF8000">/*&nbsp;...&nbsp;*/&nbsp;&nbsp;</span><span style="color: #007700">}<br /><br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+   Только выражение <i>declare</i> может находиться перед объявлением 
+   пространства имен для указания кодировки файла. Кроме того, объявлению пространства имен
+   не должен предшествовать не PHP-код, в том числе лишние пробелы:
+   <div class="example" id="example-221">
+    <p><b>Пример #2 Объявление простого пространства имен</b></p>
+    <div class="example-contents">
+     <div class="phpcode"><code><span style="color: #000000">
+&lt;html&gt;<br /><span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">namespace&nbsp;</span><span style="color: #0000BB">MyProject</span><span style="color: #007700">;&nbsp;</span><span style="color: #FF8000">//&nbsp;fatal&nbsp;error&nbsp;-&nbsp;объявление&nbsp;пространства&nbsp;имен&nbsp;должно&nbsp;быть&nbsp;первым&nbsp;выражением&nbsp;в&nbsp;скрипте<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+  </p>
+  <p class="para">
+   Кроме того, в отличии от любой другой конструкции PHP, одно и тоже пространство имен
+   можно определять в нескольких файлах, что позволяет распределять находящееся в них по файловой системе.
+  </p>
+ </div><hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="language.namespaces.rationale.html">Обзор пространств имен</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="language.namespaces.nested.html">Определение подпространств имен</a></div>
+ <div class="up"><a href="language.namespaces.html">Пространства имен</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

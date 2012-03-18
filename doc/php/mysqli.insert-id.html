@@ -1,0 +1,122 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Возвращает автоматически генерируемый ID, используя последний запрос</title>
+
+ </head>
+ <body><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="mysqli.init.html">mysqli::init</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="mysqli.kill.html">mysqli::kill</a></div>
+ <div class="up"><a href="class.mysqli.html">MySQLi</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="mysqli.insert-id" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">mysqli::insert_id</h1>
+  <h1 class="refname">mysqli_insert_id</h1>
+  <p class="verinfo">(PHP 5)</p><p class="refpurpose"><span class="refname">mysqli::insert_id</span> -- <span class="refname">mysqli_insert_id</span> &mdash; <span class="dc-title">Возвращает автоматически генерируемый ID, используя последний запрос</span></p>
+
+ </div>
+
+ <div class="refsect1 description" id="refsect1-mysqli.insert-id-description">
+  <h3 class="title">Описание</h3>
+  <p class="para">Объектно-ориентированный стиль</p>
+  <div class="classsynopsis">
+   <div class="ooclass"></div>
+   <div class="fieldsynopsis"><span class="type"><a href="language.pseudo-types.html#language.types.mixed" class="type mixed">mixed</a></span> <var class="varname">$<var class="varname">mysqli-&gt;insert_id</var></var>;</div>
+
+  </div>
+  <p class="para">Процедурный стиль</p>
+  <div class="methodsynopsis dc-description">
+   <span class="type"><a href="language.pseudo-types.html#language.types.mixed" class="type mixed">mixed</a></span> <span class="methodname"><b>mysqli_insert_id</b></span>
+    ( <span class="methodparam"><span class="type"><a href="class.mysqli.html" class="type mysqli">mysqli</a></span> <tt class="parameter">$link</tt></span>
+   )</div>
+
+  <p class="para rdfs-comment">
+   Функция <span class="function"><b>mysqli_insert_id()</b></span> возвращает ID, генерируемый запросом 
+   к таблице, которая содержит колонку с атрибутом AUTO_INCREMENT. Если
+   последний запрос не был INSERT или UPDATE или в модифицируемой
+   таблице отсутствует колонка с атрибутом AUTO_INCREMENT,
+   данная функция вернет ноль.
+  </p>
+  <blockquote class="note"><p><b class="note">Замечание</b>: 
+   <p class="para">
+    Выполнение выражения INSERT или UPDATE, используя функцию LAST_INSERT_ID(),
+    также изменяет значение, возвращаемое функцией
+ <span class="function"><b>mysqli_insert_id()</b></span>.
+   </p>
+  </p></blockquote>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-mysqli.insert-id-parameters">
+  <h3 class="title">Список параметров</h3>
+  <p class="para">
+   <dl>
+
+    <dt>
+<span class="term"><i><tt class="parameter">
+link</tt></i></span><dd>
+<p class="para">Только для процедурного стиля: Идентификатор соединения, полученный с помощью
+<span class="function"><a href="function.mysqli-connect.html" class="function">mysqli_connect()</a></span> или <span class="function"><a href="mysqli.init.html" class="function">mysqli_init()</a></span>
+</p></dd>
+</dt>
+
+   </dl>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-mysqli.insert-id-returnvalues">
+  <h3 class="title">Возвращаемые значения</h3>
+  <p class="para">
+   Значение поля <i>AUTO_INCREMENT</i>, которое было
+   затронуто предыдущим запросом. Возвращает ноль, если предыдущий
+   запрос не затронул таблицы, сожержащие поле <i>AUTO_INCREMENT</i>.
+  </p>
+  <blockquote class="note"><p><b class="note">Замечание</b>: 
+   <p class="para">
+    Если число больше максимального значения int, функция
+ <span class="function"><b>mysqli_insert_id()</b></span> вернет строку.
+   </p>
+  </p></blockquote>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-mysqli.insert-id-examples">
+  <h3 class="title">Примеры</h3>
+  <div class="example" id="example-1573">
+   <p><b>Пример #1 Пример функции <var class="varname"><var class="varname">mysqli->insert_id</var></var></b></p>
+   <div class="example-contents"><p>Объектно-ориентированный стиль</p></div>
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$mysqli&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">mysqli</span><span style="color: #007700">(</span><span style="color: #DD0000">"localhost"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"my_user"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"my_password"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"world"</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">/*&nbsp;проверка&nbsp;соединения&nbsp;*/<br /></span><span style="color: #007700">if&nbsp;(</span><span style="color: #0000BB">mysqli_connect_errno</span><span style="color: #007700">())&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">printf</span><span style="color: #007700">(</span><span style="color: #DD0000">"Соединение&nbsp;не&nbsp;установлено:&nbsp;%s\n"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">mysqli_connect_error</span><span style="color: #007700">());<br />&nbsp;&nbsp;&nbsp;&nbsp;exit();<br />}<br /><br /></span><span style="color: #0000BB">$mysqli</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">query</span><span style="color: #007700">(</span><span style="color: #DD0000">"CREATE&nbsp;TABLE&nbsp;myCity&nbsp;LIKE&nbsp;City"</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">$query&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">"INSERT&nbsp;INTO&nbsp;myCity&nbsp;VALUES&nbsp;(NULL,&nbsp;'Stuttgart',&nbsp;'DEU',&nbsp;'Stuttgart',&nbsp;617000)"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$mysqli</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">query</span><span style="color: #007700">(</span><span style="color: #0000BB">$query</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">printf&nbsp;</span><span style="color: #007700">(</span><span style="color: #DD0000">"ID&nbsp;новой&nbsp;записи:&nbsp;%d.\n"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$mysqli</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">insert_id</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">/*&nbsp;удаление&nbsp;таблицы&nbsp;*/<br /></span><span style="color: #0000BB">$mysqli</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">query</span><span style="color: #007700">(</span><span style="color: #DD0000">"DROP&nbsp;TABLE&nbsp;myCity"</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">/*&nbsp;закрытие&nbsp;соединения&nbsp;*/<br /></span><span style="color: #0000BB">$mysqli</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">close</span><span style="color: #007700">();<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+   </div>
+
+   <div class="example-contents"><p>Процедурный стиль</p></div>
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$link&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">mysqli_connect</span><span style="color: #007700">(</span><span style="color: #DD0000">"localhost"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"my_user"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"my_password"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"world"</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">/*&nbsp;проверка&nbsp;соединения&nbsp;*/<br /></span><span style="color: #007700">if&nbsp;(</span><span style="color: #0000BB">mysqli_connect_errno</span><span style="color: #007700">())&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">printf</span><span style="color: #007700">(</span><span style="color: #DD0000">"Соединение&nbsp;не&nbsp;установлено:&nbsp;%s\n"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">mysqli_connect_error</span><span style="color: #007700">());<br />&nbsp;&nbsp;&nbsp;&nbsp;exit();<br />}<br /><br /></span><span style="color: #0000BB">mysqli_query</span><span style="color: #007700">(</span><span style="color: #0000BB">$link</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"CREATE&nbsp;TABLE&nbsp;myCity&nbsp;LIKE&nbsp;City"</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">$query&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">"INSERT&nbsp;INTO&nbsp;myCity&nbsp;VALUES&nbsp;(NULL,&nbsp;'Stuttgart',&nbsp;'DEU',&nbsp;'Stuttgart',&nbsp;617000)"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">mysqli_query</span><span style="color: #007700">(</span><span style="color: #0000BB">$link</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$query</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">printf&nbsp;</span><span style="color: #007700">(</span><span style="color: #DD0000">"ID&nbsp;новой&nbsp;записи:&nbsp;%d.\n"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">mysqli_insert_id</span><span style="color: #007700">(</span><span style="color: #0000BB">$link</span><span style="color: #007700">));<br /><br /></span><span style="color: #FF8000">/*&nbsp;удаление&nbsp;таблицы&nbsp;*/<br /></span><span style="color: #0000BB">mysqli_query</span><span style="color: #007700">(</span><span style="color: #0000BB">$link</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"DROP&nbsp;TABLE&nbsp;myCity"</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">/*&nbsp;закрытие&nbsp;соединения&nbsp;*/<br /></span><span style="color: #0000BB">mysqli_close</span><span style="color: #007700">(</span><span style="color: #0000BB">$link</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+   </div>
+
+   <div class="example-contents"><p>Результат выполнения данных примеров:</p></div>
+   <div class="example-contents screen">
+<div class="cdata"><pre>
+ID новой записи: 1.
+</pre></div>
+   </div>
+  </div>
+ </div>
+
+
+</div><hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="mysqli.init.html">mysqli::init</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="mysqli.kill.html">mysqli::kill</a></div>
+ <div class="up"><a href="class.mysqli.html">MySQLi</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

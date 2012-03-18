@@ -1,0 +1,154 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Проверяет наличие указанного файла или каталога</title>
+
+ </head>
+ <body><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.fgetss.html">fgetss</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.file-get-contents.html">file_get_contents</a></div>
+ <div class="up"><a href="ref.filesystem.html">Файловая система</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.file-exists" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">file_exists</h1>
+  <p class="verinfo">(PHP 4, PHP 5)</p><p class="refpurpose"><span class="refname">file_exists</span> &mdash; <span class="dc-title">Проверяет наличие указанного файла или каталога</span></p>
+
+ </div>
+ 
+ <div class="refsect1 description" id="refsect1-function.file-exists-description">
+  <h3 class="title">Описание</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">bool</span> <span class="methodname"><b>file_exists</b></span>
+    ( <span class="methodparam"><span class="type">string</span> <tt class="parameter">$filename</tt></span>
+   )</div>
+
+  <p class="para rdfs-comment">
+   Проверяет наличие указанного файла или каталога.
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 parameters" id="refsect1-function.file-exists-parameters">
+  <h3 class="title">Список параметров</h3>
+  <p class="para">
+   <dl>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">filename</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Путь к файлу или каталогу.
+      </p>
+      <p class="para">
+       На платформах Windows, для проверки наличия файлов на сетевых ресурсах, используйте
+       имена, подобные <var class="filename">//computername/share/filename</var> или
+       <var class="filename">\\computername\share\filename</var>.
+      </p>
+     </dd>
+
+    </dt>
+
+   </dl>
+
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 returnvalues" id="refsect1-function.file-exists-returnvalues">
+  <h3 class="title">Возвращаемые значения</h3>
+  <p class="para">
+   Возвращает <b><tt>TRUE</tt></b>, если файл или каталог, указанный параметром
+   <i><tt class="parameter">filename</tt></i>, существует, иначе возвращает
+   <b><tt>FALSE</tt></b>.
+  </p>
+  <blockquote class="note"><p><b class="note">Замечание</b>: 
+   <p class="para">
+    Данная функция возвращает <b><tt>FALSE</tt></b> для символических ссылок,
+    указывающих на несуществующие файлы.
+   </p>
+  </p></blockquote>
+  <div class="warning"><b class="warning">Внимание</b>
+   <p class="para">
+    Если файлы недоступны из-за ограничений, налагаемых
+    <a href="features.safe-mode.html" class="link">безопасным режимом</a>,
+    то данная функция вернет <b><tt>FALSE</tt></b>. Однако, эти файлы все еще могут быть
+    <a href="function.include.html" class="link">подключены</a>, если они
+    располагаются в каталоге 
+    <a href="ini.sect.safe-mode.html#ini.safe-mode-include-dir" class="link">safe_mode_include_dir</a>.
+   </p>
+  </div>
+  <blockquote class="note"><p><b class="note">Замечание</b>: 
+   <p class="para">
+    Проверка происходит с помощью реальных UID/GID, а не
+    эффективных идентификаторов.
+   </p>
+  </p></blockquote>
+  <blockquote class="note"><p><b class="note">Замечание</b>: <span class="simpara">
+Так как тип integer в PHP является целым числом со знаком и многие платформы используют 32-х битные целые числа,
+то некоторые функции файловых систем могут возвращать неожиданные результаты для файлов
+размером больше 2ГБ.
+</span></p></blockquote>
+ </div>
+
+ 
+ <div class="refsect1 examples" id="refsect1-function.file-exists-examples">
+  <h3 class="title">Примеры</h3>
+  <p class="para">
+   <div class="example" id="example-2112">
+    <p><b>Пример #1 Проверка существования файла</b></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$filename&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'/path/to/foo.txt'</span><span style="color: #007700">;<br /><br />if&nbsp;(</span><span style="color: #0000BB">file_exists</span><span style="color: #007700">(</span><span style="color: #0000BB">$filename</span><span style="color: #007700">))&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"Файл&nbsp;</span><span style="color: #0000BB">$filename</span><span style="color: #DD0000">&nbsp;существует"</span><span style="color: #007700">;<br />}&nbsp;else&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"Файл&nbsp;</span><span style="color: #0000BB">$filename</span><span style="color: #DD0000">&nbsp;не&nbsp;существует"</span><span style="color: #007700">;<br />}<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 errors" id="refsect1-function.file-exists-errors">
+  <h3 class="title">Ошибки</h3>
+  <p class="para">
+В случае неудачного завершения работы генерируется ошибка уровня <b><tt>E_WARNING</tt></b>.
+</p>
+ </div>
+
+ 
+ <div class="refsect1 notes" id="refsect1-function.file-exists-notes">
+  <h3 class="title">Примечания</h3>
+  <blockquote class="note"><p><b class="note">Замечание</b>: <span class="simpara">Результаты этой функции
+кэшируются. Более подробную информацию смотрите в разделе
+<span class="function"><a href="function.clearstatcache.html" class="function">clearstatcache()</a></span>.</span></p></blockquote>
+  <div class="tip"><b class="tip">Подсказка</b><p class="simpara">Начиная с
+PHP 5.0.0, эта функция также может быть
+использована с <em class="emphasis">некоторыми</em> обертками url.
+Список оберток, поддерживаемых семейством функций
+<span class="function"><a href="function.stat.html" class="function">stat()</a></span>, смотрите в <a href="wrappers.html" class="xref">Поддерживаемые протоколы и обработчики (wrappers)</a>.</p></div>
+ </div>
+
+ 
+ <div class="refsect1 seealso" id="refsect1-function.file-exists-seealso">
+  <h3 class="title">Смотрите также</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><span class="function"><a href="function.is-readable.html" class="function" rel="rdfs-seeAlso">is_readable()</a> - Определяет существование файла и доступен ли он для чтения</span></li>
+    <li class="member"><span class="function"><a href="function.is-writable.html" class="function" rel="rdfs-seeAlso">is_writable()</a> - Определяет, доступен ли файл для записи</span></li>
+    <li class="member"><span class="function"><a href="function.is-file.html" class="function" rel="rdfs-seeAlso">is_file()</a> - Определяет, является ли файл обычным файлом</span></li>
+    <li class="member"><span class="function"><a href="function.file.html" class="function" rel="rdfs-seeAlso">file()</a> - Читает содержимое файла и помещает его в массив</span></li>
+   </ul>
+  </p>
+ </div>
+
+ 
+</div><hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.fgetss.html">fgetss</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.file-get-contents.html">file_get_contents</a></div>
+ <div class="up"><a href="ref.filesystem.html">Файловая система</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

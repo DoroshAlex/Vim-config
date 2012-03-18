@@ -1,0 +1,151 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Возводит одно число в степень другого и возвращает остаток от деления
+   результата на третье число</title>
+
+ </head>
+ <body><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.bcpow.html">bcpow</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.bcscale.html">bcscale</a></div>
+ <div class="up"><a href="ref.bc.html">BC Math Функции</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.bcpowmod" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">bcpowmod</h1>
+  <p class="verinfo">(PHP 5)</p><p class="refpurpose"><span class="refname">bcpowmod</span> &mdash; <span class="dc-title">
+   Возводит одно число в степень другого и возвращает остаток от деления
+   результата на третье число
+  </span></p>
+
+ </div>
+ 
+ <div class="refsect1 description" id="refsect1-function.bcpowmod-description">
+  <h3 class="title">Описание</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">string</span> <span class="methodname"><b>bcpowmod</b></span>
+    ( <span class="methodparam"><span class="type">string</span> <tt class="parameter">$left_operand</tt></span>
+   , <span class="methodparam"><span class="type">string</span> <tt class="parameter">$right_operand</tt></span>
+   , <span class="methodparam"><span class="type">string</span> <tt class="parameter">$modulus</tt></span>
+   [, <span class="methodparam"><span class="type">int</span> <tt class="parameter">$scale</tt></span>
+  ] )</div>
+
+  <p class="para rdfs-comment">
+   Используйте метод быстрого возведения числа
+   <i><tt class="parameter">left_operand</tt></i> в степень
+   <i><tt class="parameter">right_operand</tt></i> и получения остатка от деления на
+   <i><tt class="parameter">modulus</tt></i>.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-function.bcpowmod-parameters">
+  <h3 class="title">Список параметров</h3>
+  <p class="para">
+   <dl>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">left_operand</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Левый операнд (основание степени) в виде строки.
+      </p>
+     </dd>
+
+    </dt>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">right_operand</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Правый операнд (показатель степени) в виде строки.
+      </p>
+     </dd>
+
+    </dt>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">modulus</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Модуль (на него делится результат) в виде строки.
+      </p>
+     </dd>
+
+    </dt>
+
+    <dt>
+<span class="term"><i><tt class="parameter">
+scale</tt></i></span><dd>
+<p class="para">Этот необязательный параметр используется для установки количества знаков после десятичного разделителя в результате.
+Вы также можете установить этот параметр глобально для всех функций с помощью <span class="function"><a href="function.bcscale.html" class="function">bcscale()</a></span>.</p></dd>
+</dt>
+
+   </dl>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-function.bcpowmod-returnvalues">
+  <h3 class="title">Возвращаемые значения</h3>
+  <p class="para">
+   Возвращает результат в виде строки или <b><tt>NULL</tt></b>, если
+   <i><tt class="parameter">modulus</tt></i> равен 0.
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 notes" id="refsect1-function.bcpowmod-notes">
+  <h3 class="title">Примечания</h3>
+  <blockquote class="note"><p><b class="note">Замечание</b>: 
+   <p class="para">
+    Так как этот метод использует операцию деления по модулю, отрицательные
+    числа могут давать неожидаемый результат.
+   </p>
+  </p></blockquote>
+ </div>
+
+ 
+ <div class="refsect1 examples" id="refsect1-function.bcpowmod-examples">
+  <h3 class="title">Примеры</h3>
+  <p class="para">
+   Следующие выражения дают одинаковый результат. Однако функция
+   <span class="function"><b>bcpowmod()</b></span> работает быстрее и может принимать большие
+   значения аргументов.
+   <div class="informalexample">
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$a&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">bcpowmod</span><span style="color: #007700">(</span><span style="color: #0000BB">$x</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$y</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$mod</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">$b&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">bcmod</span><span style="color: #007700">(</span><span style="color: #0000BB">bcpow</span><span style="color: #007700">(</span><span style="color: #0000BB">$x</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$y</span><span style="color: #007700">),&nbsp;</span><span style="color: #0000BB">$mod</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;$a&nbsp;==&nbsp;$b.<br /><br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 seealso" id="refsect1-function.bcpowmod-seealso">
+  <h3 class="title">Смотрите также</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><span class="function"><a href="function.bcpow.html" class="function" rel="rdfs-seeAlso">bcpow()</a> - Возведение в степень чисел с произвольной точностью</span></li>
+    <li class="member"><span class="function"><a href="function.bcmod.html" class="function" rel="rdfs-seeAlso">bcmod()</a> - Получает остаток от деления чисел с произвольной точностью</span></li>
+   </ul>
+  </p>
+ </div>
+
+</div><hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.bcpow.html">bcpow</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.bcscale.html">bcscale</a></div>
+ <div class="up"><a href="ref.bc.html">BC Math Функции</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

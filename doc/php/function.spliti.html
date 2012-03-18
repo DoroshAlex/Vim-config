@@ -1,0 +1,178 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Разбивает строку в массив с помощью регулярного выражения без учета регистра</title>
+
+ </head>
+ <body><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.split.html">split</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.sql-regcase.html">sql_regcase</a></div>
+ <div class="up"><a href="ref.regex.html">Функции регулярных выражений POSIX</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.spliti" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">spliti</h1>
+  <p class="verinfo">(PHP 4 &gt;= 4.0.1, PHP 5)</p><p class="refpurpose"><span class="refname">spliti</span> &mdash; <span class="dc-title">Разбивает строку в массив с помощью регулярного выражения без учета регистра</span></p>
+
+ </div>
+ 
+ <div class="refsect1 description" id="refsect1-function.spliti-description">
+  <h3 class="title">Описание</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">array</span> <span class="methodname"><b>spliti</b></span>
+    ( <span class="methodparam"><span class="type">string</span> <tt class="parameter">$pattern</tt></span>
+   , <span class="methodparam"><span class="type">string</span> <tt class="parameter">$string</tt></span>
+   [, <span class="methodparam"><span class="type">int</span> <tt class="parameter">$limit</tt><span class="initializer"> = -1</span></span>
+  ] )</div>
+
+  <p class="para rdfs-comment">
+   Разбивает строку <i><tt class="parameter">string</tt></i> в массив с помощью регулярного выражения.
+  </p>
+  <p class="para">
+   Эта функция идентична функции <span class="function"><a href="function.split.html" class="function">split()</a></span> за исключением того, что 
+   она игнорирует регистр символов при сравнении.
+  </p>
+  <div class="warning"><b class="warning">Внимание</b><p class="simpara">С версии PHP 5.3.0 эта функция считается
+<em class="emphasis">УСТАРЕВШЕЙ</em>. Крайне не рекомендуется полагаться на эту возможность.</p></div>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-function.spliti-parameters">
+  <h3 class="title">Список параметров</h3>
+  <p class="para">
+   <dl>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">pattern</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Регистронезависимое регулярное выражение.
+      </p>
+      <p class="para">
+       Если вы хотите разделить строку по символам, которые являются специальными символами 
+       регулярного выражения, вам сначала нужно заэкранировать эти символы.
+       Если вы думаете, что функция <span class="function"><b>spliti()</b></span> (или другая функция
+       для работы с регулярными выражениями) делает что-то странное, пожалуйста, прочитайте файл
+       <var class="filename">regex.7</var>, который находится в папке
+       <var class="filename">regex/</var> дитсрибутива PHP. Этот файл находится в формате
+       manpage, поэтому вы можете прочитать его коммандой
+       <strong class="command">man /usr/local/src/regex/regex.7</strong>.
+      </p>
+     </dd>
+
+    </dt>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">string</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Строка для разделения.
+      </p>
+     </dd>
+
+    </dt>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">limit</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Если установлен <i><tt class="parameter">limit</tt></i>, возвращаемый массив
+    будет содержать максимум <i><tt class="parameter">limit</tt></i> элементов,
+    в котором последний элемент содержит
+    всю строку <i><tt class="parameter">string</tt></i>.
+      </p>
+     </dd>
+
+    </dt>
+
+   </dl>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-function.spliti-returnvalues">
+  <h3 class="title">Возвращаемые значения</h3>
+  <p class="para">
+   Возвращает массив строк, каждая из которых является подстрокой
+   строки <i><tt class="parameter">string</tt></i>, образованный с помощью
+   регистронезависимого разделения регулярным выражением <i><tt class="parameter">pattern</tt></i>.
+  </p>
+  <p class="para">
+   Если встречаются <span class="replaceable">n</span> вхождений <i><tt class="parameter">pattern</tt></i>,
+   возвращаемый массив будет содержать <i><span class="replaceable">n</span>+1</i>
+   элементов. К примеру, если вхождений <i><tt class="parameter">pattern</tt></i> не будет
+   найдено, то будет возвращен массив только с одним элементом.
+   Естественно, это также справедливо, если <i><tt class="parameter">string</tt></i>
+   пустая. Если в процессе возникает ошибка,
+   <span class="function"><b>spliti()</b></span> возвращает <b><tt>FALSE</tt></b>.
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-function.spliti-examples">
+  <h3 class="title">Примеры</h3>
+  <p class="para">
+   Разделение строки, используя &#039;a&#039; как разделитель:
+   <div class="example" id="example-4321">
+    <p><b>Пример #1 Пример <span class="function"><b>spliti()</b></span></b></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$string&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">"aBBBaCCCADDDaEEEaGGGA"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$chunks&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">spliti&nbsp;</span><span style="color: #007700">(</span><span style="color: #DD0000">"a"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$string</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">5</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">print_r</span><span style="color: #007700">(</span><span style="color: #0000BB">$chunks</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+    <div class="example-contents"><p>Результат выполнения данного примера:</p></div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+Array
+(
+  [0] =&gt;
+  [1] =&gt; BBB
+  [2] =&gt; CCC
+  [3] =&gt; DDD
+  [4] =&gt; EEEaGGGA
+)
+</pre></div>
+    </div>
+   </div>
+  </p>
+ </div>
+
+
+ <div class="refsect1 notes" id="refsect1-function.spliti-notes">
+  <h3 class="title">Примечания</h3>
+  <blockquote class="note"><p><b class="note">Замечание</b>: <p class="para">С версии PHP 5.3.0,
+расширение regex помечено устаревшим и заменено <a href="book.pcre.html" class="link">расширением PCRE</a>. Вызов этой функции
+приведет к ошибке уровня <b><tt>E_DEPRECATED</tt></b>. Смотрите <a href="reference.pcre.pattern.posix.html" class="link">список
+отличий</a> для помощи при конвертировании в PCRE.</p></p></blockquote>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-function.spliti-seealso">
+  <h3 class="title">Смотрите также</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><span class="function"><a href="function.preg-split.html" class="function" rel="rdfs-seeAlso">preg_split()</a> - Разбивает строку по регулярному выражению</span></li>
+    <li class="member"><span class="function"><a href="function.split.html" class="function" rel="rdfs-seeAlso">split()</a> - Разбиение строки на массив по регулярному выражению</span></li>
+    <li class="member"><span class="function"><a href="function.explode.html" class="function" rel="rdfs-seeAlso">explode()</a> - Разбивает строку с помощью разделителя</span></li>
+    <li class="member"><span class="function"><a href="function.implode.html" class="function" rel="rdfs-seeAlso">implode()</a> - Объединяет элементы массива в строку</span></li>
+   </ul>
+  </p>
+ </div>
+
+
+</div><hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.split.html">split</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.sql-regcase.html">sql_regcase</a></div>
+ <div class="up"><a href="ref.regex.html">Функции регулярных выражений POSIX</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

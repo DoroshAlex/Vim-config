@@ -1,0 +1,135 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Дублирует замыкание с указанием связанного объекта и области видимости класса</title>
+
+ </head>
+ <body><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="closure.construct.html">Closure::__construct</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="closure.bindto.html">Closure::bindTo</a></div>
+ <div class="up"><a href="class.closure.html">Closure</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="closure.bind" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">Closure::bind</h1>
+  <p class="verinfo">(Информация о версии неизвестна, возможно, только в SVN)</p><p class="refpurpose"><span class="refname">Closure::bind</span> &mdash; <span class="dc-title">
+   Дублирует замыкание с указанием связанного объекта и области видимости класса
+  </span></p>
+
+ </div>
+
+ <div class="refsect1 description" id="refsect1-closure.bind-description">
+  <h3 class="title">Описание</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="modifier">static</span> <span class="type"><a href="class.closure.html" class="type Closure">Closure</a></span> <span class="methodname"><b>Closure::bind</b></span>
+    ( <span class="methodparam"><span class="type"><a href="class.closure.html" class="type Closure">Closure</a></span> <tt class="parameter">$closure</tt></span>
+   , <span class="methodparam"><span class="type">object</span> <tt class="parameter">$newthis</tt></span>
+   [, <span class="methodparam"><span class="type"><a href="language.pseudo-types.html#language.types.mixed" class="type mixed">mixed</a></span> <tt class="parameter">$newscope</tt>
+   <span class="initializer"> = &#039;static&#039;</span></span>
+  ] )</div>
+
+  <p class="para rdfs-comment">
+   Этот метод является статическим вариантом  <span class="methodname"><a href="closure.bindto.html" class="methodname">Closure::bindTo()</a></span>.
+   Смотрите документацию к указанному методу для подробной информации.
+  </p>
+
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-closure.bind-parameters">
+  <h3 class="title">Список параметров</h3>
+  <dl>
+
+   <dt>
+
+    <span class="term"><i><tt class="parameter">closure</tt></i></span>
+    <dd>
+
+     <p class="para">
+      Анонимная функция для привязывания к объекту
+     </p>
+    </dd>
+
+   </dt>
+
+   <dt>
+
+    <span class="term"><i><tt class="parameter">newthis</tt></i></span>
+    <dd>
+
+     <p class="para">
+      Объект, к которому будет привязана переданная функция, или
+      <b><tt>NULL</tt></b> для отсоединения функции от ее текущего объекта.
+     </p>
+    </dd>
+
+   </dt>
+
+   <dt>
+
+    <span class="term"><i><tt class="parameter">newscope</tt></i></span>
+    <dd>
+
+     <p class="para">
+      Область видимости класса, с которой ассоциируется замыкание, или &#039;static&#039;
+      для сохранения текущей области видимости. Если передан объект, то будет
+      использован его класс. Этот параметр определяет видимость protected (защищенных)
+      и private (закрытых) методов привязанного объекта.
+     </p>
+    </dd>
+
+   </dt>
+
+  </dl>
+
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-closure.bind-returnvalues">
+  <h3 class="title">Возвращаемые значения</h3>
+  <p class="para">
+   Возвращает новый объект <a href="class.closure.html" class="classname">Closure</a>  или <b><tt>FALSE</tt></b> в случае возникновения ошибки
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-closure.bind-examples">
+  <h3 class="title">Примеры</h3>
+  <div class="example" id="example-287">
+   <p><b>Пример #1 Пример <span class="function"><b>Closure::bind()</b></span></b></p>
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">class&nbsp;</span><span style="color: #0000BB">A&nbsp;</span><span style="color: #007700">{<br />&nbsp;&nbsp;&nbsp;&nbsp;private&nbsp;static&nbsp;</span><span style="color: #0000BB">$sfoo&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">1</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;private&nbsp;</span><span style="color: #0000BB">$ifoo&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">2</span><span style="color: #007700">;<br />}<br /></span><span style="color: #0000BB">$cl1&nbsp;</span><span style="color: #007700">=&nbsp;static&nbsp;function()&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">A</span><span style="color: #007700">::</span><span style="color: #0000BB">$sfoo</span><span style="color: #007700">;<br />};<br /></span><span style="color: #0000BB">$cl2&nbsp;</span><span style="color: #007700">=&nbsp;function()&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">ifoo</span><span style="color: #007700">;<br />};<br /><br /></span><span style="color: #0000BB">$bcl1&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">Closure</span><span style="color: #007700">::</span><span style="color: #0000BB">bind</span><span style="color: #007700">(</span><span style="color: #0000BB">$cl1</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">null</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'A'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$bcl2&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">Closure</span><span style="color: #007700">::</span><span style="color: #0000BB">bind</span><span style="color: #007700">(</span><span style="color: #0000BB">$cl2</span><span style="color: #007700">,&nbsp;new&nbsp;</span><span style="color: #0000BB">A</span><span style="color: #007700">(),&nbsp;</span><span style="color: #DD0000">'A'</span><span style="color: #007700">);<br />echo&nbsp;</span><span style="color: #0000BB">$bcl1</span><span style="color: #007700">(),&nbsp;</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br />echo&nbsp;</span><span style="color: #0000BB">$bcl2</span><span style="color: #007700">(),&nbsp;</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+   </div>
+
+   <div class="example-contents"><p>Результатом выполнения данного примера
+будет что-то подобное:</p></div>
+   <div class="example-contents screen">
+<div class="cdata"><pre>
+1
+2
+</pre></div>
+   </div>
+  </div>
+ </div>
+
+
+
+ <div class="refsect1 seealso" id="refsect1-closure.bind-seealso">
+  <h3 class="title">Смотрите также</h3>
+  <ul class="simplelist">
+   <li class="member"><a href="functions.anonymous.html" class="link">Анонимные функции</a></li>
+   <li class="member"> <span class="methodname"><a href="closure.bindto.html" class="methodname" rel="rdfs-seeAlso">Closure::bindTo()</a> - Дублирует замыкание с указанием связанного объекта и области видимости класса</span></li>
+  </ul>
+ </div>
+
+
+</div><hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="closure.construct.html">Closure::__construct</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="closure.bindto.html">Closure::bindTo</a></div>
+ <div class="up"><a href="class.closure.html">Closure</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

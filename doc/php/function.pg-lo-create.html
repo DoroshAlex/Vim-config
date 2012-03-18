@@ -1,0 +1,160 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Создает большой объект</title>
+
+ </head>
+ <body><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.pg-lo-close.html">pg_lo_close</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.pg-lo-export.html">pg_lo_export</a></div>
+ <div class="up"><a href="ref.pgsql.html">PostgreSQL</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.pg-lo-create" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">pg_lo_create</h1>
+  <p class="verinfo">(PHP 4 &gt;= 4.2.0, PHP 5)</p><p class="refpurpose"><span class="refname">pg_lo_create</span> &mdash; <span class="dc-title">Создает большой объект</span></p>
+
+ </div>
+
+ <div class="refsect1 description" id="refsect1-function.pg-lo-create-description">
+  <h3 class="title">Описание</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">int</span> <span class="methodname"><b>pg_lo_create</b></span>
+    ([ <span class="methodparam"><span class="type">resource</span> <tt class="parameter">$connection</tt></span>
+   [, <span class="methodparam"><span class="type"><a href="language.pseudo-types.html#language.types.mixed" class="type mixed">mixed</a></span> <tt class="parameter">$object_id</tt></span>
+  ]] )</div>
+
+  <div class="methodsynopsis dc-description">
+   <span class="type">int</span> <span class="methodname"><b>pg_lo_create</b></span>
+    ( <span class="methodparam"><span class="type"><a href="language.pseudo-types.html#language.types.mixed" class="type mixed">mixed</a></span> <tt class="parameter">$object_id</tt></span>
+   )</div>
+
+  <p class="para rdfs-comment">
+   <span class="function"><b>pg_lo_create()</b></span> создает большой объект 
+   и возвращает его <var class="varname"><var class="varname">OID</var></var>. Режимы доступа 
+   PostgreSQL <b><tt>INV_READ</tt></b>, <b><tt>INV_WRITE</tt></b>, 
+   и <b><tt>INV_ARCHIVE</tt></b> не поддерживаются, объект всегда 
+   создается с доступом на чтение и запись. Режим <b><tt>INV_ARCHIVE</tt></b> 
+   убран из PostgreSQL версий 6.3 и выше.
+  </p>
+  <p class="para">
+   Операции с использованием интерфейса больших объектов 
+   необходимо заключать в блок транзакции. 
+  </p>
+  <p class="para">
+   Вместо использования интерфейса больших объектов (который не имеет контроля 
+   доступа и весьма громоздкий сам по себе) пользуйтесь полями PostgreSQL 
+   типа <var class="varname"><var class="varname">bytea</var></var> для хранения двоичных данных и функцией 
+   <span class="function"><a href="function.pg-escape-bytea.html" class="function">pg_escape_bytea()</a></span> для их экранирования.
+  </p>
+  <blockquote class="note"><p><b class="note">Замечание</b>: 
+   <p class="para">
+    Прежнее название функции: <span class="function"><b>pg_locreate()</b></span>.
+   </p>
+  </p></blockquote>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-function.pg-lo-create-parameters">
+  <h3 class="title">Список параметров</h3>
+  <p class="para">
+   <dl>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">connection</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Ресурс подключения к базе данных PostgreSQL. Если параметр
+       <i><tt class="parameter">connection</tt></i> не задан, будет использовано
+       подключение по умолчанию - последнее соединение, открытое функцией  
+       <span class="function"><a href="function.pg-connect.html" class="function">pg_connect()</a></span> или <span class="function"><a href="function.pg-pconnect.html" class="function">pg_pconnect()</a></span>. 
+      </p>
+     </dd>
+
+    </dt>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">object_id</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Если задан аргумент <i><tt class="parameter">object_id</tt></i>, функция 
+       попытается создать объект с этим идентификатором, в противном 
+       случае будет использован свободный идентификатор, назначенный  
+       сервером. Этот аргумент появился в PHP 5.3 и основан на функционале, 
+       впервые реализованном в PostgreSQL 8.1.
+      </p>
+     </dd>
+
+    </dt>
+
+   </dl>
+
+  </p>
+ </div>
+
+
+
+ <div class="refsect1 returnvalues" id="refsect1-function.pg-lo-create-returnvalues">
+  <h3 class="title">Возвращаемые значения</h3>
+  <p class="para">
+   <var class="varname"><var class="varname">OID</var></var> большого объекта, либо <b><tt>FALSE</tt></b> в случае ошибки.
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 changelog" id="refsect1-function.pg-lo-create-changelog">
+  <h3 class="title">Список изменений</h3>
+  <p class="para">
+   <table class="doctable informaltable">
+    
+     <thead valign="middle">
+      <tr valign="middle">
+       <th>Версия</th>
+       <th>Описание</th>
+      </tr>
+
+     </thead>
+
+     <tbody valign="middle" class="tbody">
+      <tr valign="middle">
+       <td align="left">5.3.0</td>
+       <td align="left"><p class="para">
+        Добавлен необязательный параметр <i><tt class="parameter">object_id</tt></i>.
+       </p></td>
+      </tr>
+
+     </tbody>
+    
+   </table>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-function.pg-lo-create-examples">
+  <h3 class="title">Примеры</h3>
+  <p class="para">
+   <div class="example" id="example-1924">
+    <p><b>Пример #1 Пример использования <span class="function"><b>pg_lo_create()</b></span></b></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />&nbsp;&nbsp;&nbsp;$database&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">pg_connect</span><span style="color: #007700">(</span><span style="color: #DD0000">"dbname=jacarta"</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">pg_query</span><span style="color: #007700">(</span><span style="color: #0000BB">$database</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"begin"</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$oid&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">pg_lo_create</span><span style="color: #007700">(</span><span style="color: #0000BB">$database</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"</span><span style="color: #0000BB">$oid</span><span style="color: #DD0000">\n"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$handle&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">pg_lo_open</span><span style="color: #007700">(</span><span style="color: #0000BB">$database</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$oid</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"w"</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"</span><span style="color: #0000BB">$handle</span><span style="color: #DD0000">\n"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">pg_lo_write</span><span style="color: #007700">(</span><span style="color: #0000BB">$handle</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"large&nbsp;object&nbsp;data"</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">pg_lo_close</span><span style="color: #007700">(</span><span style="color: #0000BB">$handle</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">pg_query</span><span style="color: #007700">(</span><span style="color: #0000BB">$database</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"commit"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div> 
+  </p>
+ </div>
+
+</div><hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.pg-lo-close.html">pg_lo_close</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.pg-lo-export.html">pg_lo_export</a></div>
+ <div class="up"><a href="ref.pgsql.html">PostgreSQL</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

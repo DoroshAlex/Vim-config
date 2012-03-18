@@ -1,0 +1,75 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Получает строку, в которой возникло исключение</title>
+
+ </head>
+ <body><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="exception.getfile.html">Exception::getFile</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="exception.gettrace.html">Exception::getTrace</a></div>
+ <div class="up"><a href="class.exception.html">Exception</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="exception.getline" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">Exception::getLine</h1>
+  <p class="verinfo">(PHP 5 &gt;= 5.1.0)</p><p class="refpurpose"><span class="refname">Exception::getLine</span> &mdash; <span class="dc-title">Получает строку, в которой возникло исключение</span></p>
+
+ </div>
+ 
+ <div class="refsect1 description" id="refsect1-exception.getline-description">
+  <h3 class="title">Описание</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span> <span class="type">int</span> <span class="methodname"><b>Exception::getLine</b></span>
+    ( <span class="methodparam">void</span>
+   )</div>
+
+  <p class="para rdfs-comment">
+   Получить номер строки, где исключение было создано
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 parameters" id="refsect1-exception.getline-parameters">
+  <h3 class="title">Список параметров</h3>
+  <p class="para">У этой функции нет параметров.</p>
+ </div>
+
+ 
+ <div class="refsect1 returnvalues" id="refsect1-exception.getline-returnvalues">
+  <h3 class="title">Возвращаемые значения</h3>
+  <p class="para">
+   Возвращает номер строки, где было создано исключение.
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-exception.getline-examples">
+  <h3 class="title">Примеры</h3>
+  <p class="para">
+   <div class="example" id="example-276">
+    <p><b>Пример #1 Пример использования <span class="function"><b>Exception::getLine()</b></span></b></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">try&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;throw&nbsp;new&nbsp;</span><span style="color: #0000BB">Exception</span><span style="color: #007700">(</span><span style="color: #DD0000">"Какое-нибудь&nbsp;сообщение&nbsp;об&nbsp;ошибке"</span><span style="color: #007700">);<br />}&nbsp;catch(</span><span style="color: #0000BB">Exception&nbsp;$e</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"Исключение&nbsp;было&nbsp;создано&nbsp;на&nbsp;строке:&nbsp;"&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">$e</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getLine</span><span style="color: #007700">();<br />}<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+    <div class="example-contents"><p>Результатом выполнения данного примера
+будет что-то подобное:</p></div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+Исключение было создано на строке: 3
+</pre></div>
+    </div>
+   </div>
+  </p>
+ </div>
+
+</div><hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="exception.getfile.html">Exception::getFile</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="exception.gettrace.html">Exception::getTrace</a></div>
+ <div class="up"><a href="class.exception.html">Exception</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

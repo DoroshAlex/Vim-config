@@ -1,0 +1,145 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Импортирует переменные GET/POST/Cookie в глобальную область видимости</title>
+
+ </head>
+ <body><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.gettype.html">gettype</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.intval.html">intval</a></div>
+ <div class="up"><a href="ref.var.html">Функции для работы с переменными</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.import-request-variables" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">import_request_variables</h1>
+  <p class="verinfo">(PHP 4 &gt;= 4.1.0, PHP 5)</p><p class="refpurpose"><span class="refname">import_request_variables</span> &mdash; <span class="dc-title">Импортирует переменные GET/POST/Cookie в глобальную область видимости</span></p>
+
+ </div>
+
+ <div class="refsect1 description" id="refsect1-function.import-request-variables-description">
+  <h3 class="title">Описание</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">bool</span> <span class="methodname"><b>import_request_variables</b></span>
+    ( <span class="methodparam"><span class="type">string</span> <tt class="parameter">$types</tt></span>
+   [, <span class="methodparam"><span class="type">string</span> <tt class="parameter">$prefix</tt></span>
+  ] )</div>
+
+  <p class="para rdfs-comment">
+   Импортирует переменные GET/POST/Cookie в глобальную область видимости. Это бывает полезно, если
+   при отключенной директиве <a href="ini.core.html#ini.register-globals" class="link">register_globals</a> и
+   желании видеть некоторые переменные в глобальной области видимости.
+  </p>
+  <p class="para">
+   Если необходимо импортировать в глобальную область видимости другие переменные,
+   такие, как <var class="varname"><var class="varname"><a href="reserved.variables.server.html" class="classname">$_SERVER</a></var></var>, воспользуйтесь функцией <span class="function"><a href="function.extract.html" class="function">extract()</a></span>.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-function.import-request-variables-parameters">
+  <h3 class="title">Список параметров</h3>
+  <p class="para">
+   <dl>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">types</tt></i></span>
+     <dd>
+
+      <p class="para">
+       С помощью параметра <i><tt class="parameter">types</tt></i>, можно указать,
+       какие переменные запроса необходимо импортировать.
+       Можно использовать символы &#039;G&#039;, &#039;P&#039; и &#039;C&#039; соответственно
+       для GET, POST и Cookie. Данные символы не являются
+       регистро-зависимыми, поэтому также можно использовать любую комбинацию из &#039;g&#039;, &#039;p&#039;
+       и &#039;c&#039;. POST включает в себя информацию о загруженных файлах методом POST.
+      </p>
+      <blockquote class="note"><p><b class="note">Замечание</b>: 
+       <p class="para">
+        Имейте в виду, что порядок букв имеет значение, т.е.
+        при использовании &quot;<i>GP</i>&quot;
+        переменные POST перезапишут переменные GET с таким же
+        именем. Любые буквы, отличные от GPC, игнорируются.
+       </p>
+      </p></blockquote>
+     </dd>
+
+    </dt>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">prefix</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Префикс имени переменной, добавляемый перед всеми именами переменных, импортируемых
+       в глобальную область видимости. То есть, если есть переменная GET с именем
+       &quot;<i>userid</i>&quot;, и указан префикс
+       &quot;<i>pref_</i>&quot;, то результатом будет глобальная переменная с именем
+       <var class="varname"><var class="varname">$pref_userid</var></var>.
+      </p>
+      <blockquote class="note"><p><b class="note">Замечание</b>: 
+       <p class="para">
+        Несмотря на то, что <i><tt class="parameter">prefix</tt></i> - необязательный параметр,
+        будет вызвана ошибка уровня
+        <a href="errorfunc.constants.html#errorfunc.constants.errorlevels.e-notice" class="link"><b><tt>E_NOTICE</tt></b></a>,
+        если префикс не будет указан или будет указана пустая строка в качестве
+        префикса. Это потенциальная брешь в безопасности. Ошибки уровня Notice
+        не отображаются при использовании уровня <a href="errorfunc.configuration.html#ini.error-reporting" class="link">отображения ошибок</a> по умолчанию.
+       </p>
+      </p></blockquote>
+     </dd>
+
+    </dt>
+
+   </dl>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-function.import-request-variables-returnvalues">
+  <h3 class="title">Возвращаемые значения</h3>
+  <p class="para">
+   Возвращает <b><tt>TRUE</tt></b> в случае успешного завершения  или <b><tt>FALSE</tt></b> в случае возникновения ошибки.
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-function.import-request-variables-examples">
+  <h3 class="title">Примеры</h3>
+  <p class="para">
+   <div class="example" id="example-4734">
+    <p><b>Пример #1 Пример использования <span class="function"><b>import_request_variables()</b></span></b></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">//&nbsp;В&nbsp;примере&nbsp;импортируются&nbsp;переменные&nbsp;GET&nbsp;и&nbsp;POST<br />//&nbsp;с&nbsp;префиксом&nbsp;"rvar_"<br /></span><span style="color: #0000BB">import_request_variables</span><span style="color: #007700">(</span><span style="color: #DD0000">"gp"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"rvar_"</span><span style="color: #007700">);<br /><br />echo&nbsp;</span><span style="color: #0000BB">$rvar_foo</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+  </p>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-function.import-request-variables-seealso">
+  <h3 class="title">Смотрите также</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><var class="varname"><var class="varname"><a href="reserved.variables.request.html" class="classname">$_REQUEST</a></var></var></li>
+    <li class="member"><a href="ini.core.html#ini.register-globals" class="link">register_globals</a></li>
+    <li class="member"><a href="language.variables.predefined.html" class="link">Предопределенные переменные</a></li>
+    <li class="member"><span class="function"><a href="function.extract.html" class="function" rel="rdfs-seeAlso">extract()</a> - Импортирует переменные из массива в текущую таблицу символов</span></li>
+   </ul>
+  </p>
+ </div>
+
+
+</div><hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.gettype.html">gettype</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.intval.html">intval</a></div>
+ <div class="up"><a href="ref.var.html">Функции для работы с переменными</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

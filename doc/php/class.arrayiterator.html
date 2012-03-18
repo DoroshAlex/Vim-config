@@ -1,0 +1,403 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>The ArrayIterator class</title>
+
+ </head>
+ <body><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="appenditerator.valid.html">AppendIterator::valid</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="arrayiterator.append.html">ArrayIterator::append</a></div>
+ <div class="up"><a href="spl.iterators.html">Итераторы</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="class.arrayiterator" class="reference">
+ <h1 class="title">The ArrayIterator class</h1>
+ 
+ 
+ <div class="partintro"><p class="verinfo">(PHP 5)</p>
+ 
+
+  <div class="section" id="arrayiterator.intro">
+   <h2 class="title">Введение</h2>
+   <p class="para">
+    Этот итератор позволяет сбрасывать и модифицировать значения и ключи
+    в процессе итерации по массивам и объектам.
+   </p>
+   <p class="para">
+    Когда вы хотите перабрать некоторый массив несколько раз, вы должны 
+    создать экземпляр ArrayObject и позволить ему создать экземпляр ArrayIterator
+    ссылающийся на него при использовании <a href="control-structures.foreach.html" class="link">foreach</a> или при вызове метода getIterator()
+    вручную. 
+   </p>
+  </div>
+
+ 
+  <div class="section" id="arrayiterator.synopsis">
+   <h2 class="title">Обзор классов</h2>
+ 
+
+   <div class="classsynopsis">
+    <div class="ooclass"></div>
+ 
+
+    <div class="classsynopsisinfo">
+     <span class="ooclass">
+      <b class="classname">ArrayIterator</b>
+     </span>
+
+     <span class="oointerface">implements 
+      <span class="interfacename"><a href="class.iterator.html" class="interfacename">Iterator</a></span>
+     </span>
+ 
+     <span class="oointerface">, 
+      <span class="interfacename"><a href="class.traversable.html" class="interfacename">Traversable</a></span>
+     </span>
+ 
+     <span class="oointerface">, 
+      <span class="interfacename"><a href="class.arrayaccess.html" class="interfacename">ArrayAccess</a></span>
+     </span>
+ 
+     <span class="oointerface">, 
+      <span class="interfacename"><a href="class.seekableiterator.html" class="interfacename">SeekableIterator</a></span>
+     </span>
+ 
+     <span class="oointerface">, 
+      <span class="interfacename"><a href="class.countable.html" class="interfacename">Countable</a></span>
+     </span>
+
+     <span class="oointerface">, 
+      <span class="interfacename"><a href="class.serializable.html" class="interfacename">Serializable</a></span>
+     </span>
+ 
+     {</div>
+
+ 
+    
+ 
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Методы */</div>
+    <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">void</span> <span class="methodname"><a href="arrayiterator.append.html" class="methodname">append</a></span>
+    ( <span class="methodparam"><span class="type"><a href="language.pseudo-types.html#language.types.mixed" class="type mixed">mixed</a></span> <tt class="parameter">$value</tt></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">void</span> <span class="methodname"><a href="arrayiterator.asort.html" class="methodname">asort</a></span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+    <span class="methodname"><a href="arrayiterator.construct.html" class="methodname">__construct</a></span>
+    ( <span class="methodparam"><span class="type"><a href="language.pseudo-types.html#language.types.mixed" class="type mixed">mixed</a></span> <tt class="parameter">$array</tt></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">int</span> <span class="methodname"><a href="arrayiterator.count.html" class="methodname">count</a></span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="type">mixed</span> <span class="methodname"><a href="arrayiterator.current.html" class="methodname">current</a></span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">array</span> <span class="methodname"><a href="arrayiterator.getarraycopy.html" class="methodname">getArrayCopy</a></span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">void</span> <span class="methodname"><a href="arrayiterator.getflags.html" class="methodname">getFlags</a></span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="type">mixed</span> <span class="methodname"><a href="arrayiterator.key.html" class="methodname">key</a></span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">void</span> <span class="methodname"><a href="arrayiterator.ksort.html" class="methodname">ksort</a></span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">void</span> <span class="methodname"><a href="arrayiterator.natcasesort.html" class="methodname">natcasesort</a></span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">void</span> <span class="methodname"><a href="arrayiterator.natsort.html" class="methodname">natsort</a></span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="type">void</span> <span class="methodname"><a href="arrayiterator.next.html" class="methodname">next</a></span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">void</span> <span class="methodname"><a href="arrayiterator.offsetexists.html" class="methodname">offsetExists</a></span>
+    ( <span class="methodparam"><span class="type">string</span> <tt class="parameter">$index</tt></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">mixed</span> <span class="methodname"><a href="arrayiterator.offsetget.html" class="methodname">offsetGet</a></span>
+    ( <span class="methodparam"><span class="type">string</span> <tt class="parameter">$index</tt></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">void</span> <span class="methodname"><a href="arrayiterator.offsetset.html" class="methodname">offsetSet</a></span>
+    ( <span class="methodparam"><span class="type">string</span> <tt class="parameter">$index</tt></span>
+   , <span class="methodparam"><span class="type">string</span> <tt class="parameter">$newval</tt></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">void</span> <span class="methodname"><a href="arrayiterator.offsetunset.html" class="methodname">offsetUnset</a></span>
+    ( <span class="methodparam"><span class="type">string</span> <tt class="parameter">$index</tt></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="type">void</span> <span class="methodname"><a href="arrayiterator.rewind.html" class="methodname">rewind</a></span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="type">void</span> <span class="methodname"><a href="arrayiterator.seek.html" class="methodname">seek</a></span>
+    ( <span class="methodparam"><span class="type">int</span> <tt class="parameter">$position</tt></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">string</span> <span class="methodname"><a href="arrayiterator.serialize.html" class="methodname">serialize</a></span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">void</span> <span class="methodname"><a href="arrayiterator.setflags.html" class="methodname">setFlags</a></span>
+    ( <span class="methodparam"><span class="type">string</span> <tt class="parameter">$flags</tt></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">void</span> <span class="methodname"><a href="arrayiterator.uasort.html" class="methodname">uasort</a></span>
+    ( <span class="methodparam"><span class="type">string</span> <tt class="parameter">$cmp_function</tt></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">void</span> <span class="methodname"><a href="arrayiterator.uksort.html" class="methodname">uksort</a></span>
+    ( <span class="methodparam"><span class="type">string</span> <tt class="parameter">$cmp_function</tt></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">string</span> <span class="methodname"><a href="arrayiterator.unserialize.html" class="methodname">unserialize</a></span>
+    ( <span class="methodparam"><span class="type">string</span> <tt class="parameter">$serialized</tt></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="type">bool</span> <span class="methodname"><a href="arrayiterator.valid.html" class="methodname">valid</a></span>
+    ( <span class="methodparam">void</span>
+   )</div>
+
+   }</div>
+ 
+  </div>
+ 
+
+ 
+ </div>
+ 
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+<h2>Содержание</h2><ul class="chunklist chunklist_reference"><li><a href="arrayiterator.append.html">ArrayIterator::append</a> — Добавить элемент</li><li><a href="arrayiterator.asort.html">ArrayIterator::asort</a> — Сортирует массив по значениям</li><li><a href="arrayiterator.construct.html">ArrayIterator::__construct</a> — Создает ArrayIterator</li><li><a href="arrayiterator.count.html">ArrayIterator::count</a> — Посчитать количество элементов</li><li><a href="arrayiterator.current.html">ArrayIterator::current</a> — Возвращает текущий элемент в массиве</li><li><a href="arrayiterator.getarraycopy.html">ArrayIterator::getArrayCopy</a> — Возвращает копию массива</li><li><a href="arrayiterator.getflags.html">ArrayIterator::getFlags</a> — Получает флаги</li><li><a href="arrayiterator.key.html">ArrayIterator::key</a> — Возвращает ключ текущего элемента массива</li><li><a href="arrayiterator.ksort.html">ArrayIterator::ksort</a> — Сортирует массив по ключам</li><li><a href="arrayiterator.natcasesort.html">ArrayIterator::natcasesort</a> — Сортирует массив &quot;натурально&quot;, с учетом регистра</li><li><a href="arrayiterator.natsort.html">ArrayIterator::natsort</a> — Сортирует массив &quot;натурально&quot;</li><li><a href="arrayiterator.next.html">ArrayIterator::next</a> — Перемещает указатель за следующую запись</li><li><a href="arrayiterator.offsetexists.html">ArrayIterator::offsetExists</a> — Проверяет существует ли смещение</li><li><a href="arrayiterator.offsetget.html">ArrayIterator::offsetGet</a> — Получает значение для смещения</li><li><a href="arrayiterator.offsetset.html">ArrayIterator::offsetSet</a> — Устанавливает значение для смещения</li><li><a href="arrayiterator.offsetunset.html">ArrayIterator::offsetUnset</a> — Сбрасывает значение по смещению</li><li><a href="arrayiterator.rewind.html">ArrayIterator::rewind</a> — Перемещает указатель в начало массива</li><li><a href="arrayiterator.seek.html">ArrayIterator::seek</a> — Перещает указатель на выбранную позицию</li><li><a href="arrayiterator.serialize.html">ArrayIterator::serialize</a> — Сериализует массив</li><li><a href="arrayiterator.setflags.html">ArrayIterator::setFlags</a> — Устанавливает флаги, управляющие поведением</li><li><a href="arrayiterator.uasort.html">ArrayIterator::uasort</a> — Сортировка, определенная пользователем</li><li><a href="arrayiterator.uksort.html">ArrayIterator::uksort</a> — Сортировка, определенная пользователем</li><li><a href="arrayiterator.unserialize.html">ArrayIterator::unserialize</a> — Десериализация</li><li><a href="arrayiterator.valid.html">ArrayIterator::valid</a> — Проверяет, содержит ли массив еще записи</li></ul>
+</div>
+<hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="appenditerator.valid.html">AppendIterator::valid</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="arrayiterator.append.html">ArrayIterator::append</a></div>
+ <div class="up"><a href="spl.iterators.html">Итераторы</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

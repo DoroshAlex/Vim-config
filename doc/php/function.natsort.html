@@ -1,0 +1,237 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Сортирует массив, используя алгоритм &quot;natural order&quot;</title>
+
+ </head>
+ <body><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.natcasesort.html">natcasesort</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.next.html">next</a></div>
+ <div class="up"><a href="ref.array.html">Функции для работы с массивами</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.natsort" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">natsort</h1>
+  <p class="verinfo">(PHP 4, PHP 5)</p><p class="refpurpose"><span class="refname">natsort</span> &mdash; <span class="dc-title">Сортирует массив, используя алгоритм &quot;natural order&quot;</span></p>
+
+ </div>
+ <div class="refsect1 description" id="refsect1-function.natsort-description">
+  <h3 class="title">Описание</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">bool</span> <span class="methodname"><b>natsort</b></span>
+    ( <span class="methodparam"><span class="type">array</span> <tt class="parameter reference">&$array</tt></span>
+   )</div>
+
+  <p class="para rdfs-comment">
+   Эта функция реализует алгоритм сортировки, при котором порядок буквенно-цифровых строк
+   будет привычным для человека. Такой алгоритм называется &quot;natural ordering&quot;.
+   Отличие алгоритма &quot;natural ordering&quot; от обычных алгоритмов сортировки, применяемых,
+   например, функцией <span class="function"><a href="function.sort.html" class="function">sort()</a></span> можно увидеть в примере ниже.
+  </p>
+ </div>
+
+ <div class="refsect1 parameters" id="refsect1-function.natsort-parameters">
+  <h3 class="title">Список параметров</h3>
+  <p class="para">
+   <dl>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">array</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Входной массив.
+      </p>
+     </dd>
+
+    </dt>
+
+   </dl>
+
+  </p>
+ </div>
+
+ <div class="refsect1 returnvalues" id="refsect1-function.natsort-returnvalues">
+  <h3 class="title">Возвращаемые значения</h3>
+  <p class="para">
+   Возвращает <b><tt>TRUE</tt></b> в случае успешного завершения  или <b><tt>FALSE</tt></b> в случае возникновения ошибки.
+  </p>
+ </div>
+
+
+ <div class="refsect1 changelog" id="refsect1-function.natsort-changelog">
+  <h3 class="title">Список изменений</h3>
+  <table class="doctable informaltable">
+   
+    <thead valign="middle">
+     <tr valign="middle">
+      <th>Версия</th>
+      <th>Описание</th>
+     </tr>
+
+    </thead>
+
+    <tbody valign="middle" class="tbody">
+     <tr valign="middle">
+      <td align="left">5.2.10</td>
+      <td align="left">
+       В строках, отбитых нулями спереди, (например, &#039;00005&#039;) теперь данная отбивка игнорируется.
+      </td>
+     </tr>
+
+    </tbody>
+   
+  </table>
+
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-function.natsort-examples">
+  <h3 class="title">Примеры</h3>
+  <p class="para">
+   <div class="example" id="example-4527">
+    <p><b>Пример #1 Простой пример использования <span class="function"><b>natsort()</b></span></b></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$array1&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$array2&nbsp;</span><span style="color: #007700">=&nbsp;array(</span><span style="color: #DD0000">"img12.png"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"img10.png"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"img2.png"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"img1.png"</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">asort</span><span style="color: #007700">(</span><span style="color: #0000BB">$array1</span><span style="color: #007700">);<br />echo&nbsp;</span><span style="color: #DD0000">"Обычная&nbsp;сортировка\n"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">print_r</span><span style="color: #007700">(</span><span style="color: #0000BB">$array1</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">natsort</span><span style="color: #007700">(</span><span style="color: #0000BB">$array2</span><span style="color: #007700">);<br />echo&nbsp;</span><span style="color: #DD0000">"\nСортировка&nbsp;natural&nbsp;order\n"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">print_r</span><span style="color: #007700">(</span><span style="color: #0000BB">$array2</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+    <div class="example-contents"><p>Результат выполнения данного примера:</p></div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+Обычная сортировка
+Array
+(
+    [3] =&gt; img1.png
+    [1] =&gt; img10.png
+    [0] =&gt; img12.png
+    [2] =&gt; img2.png
+)
+
+Сортировка natural order
+Array
+(
+    [3] =&gt; img1.png
+    [2] =&gt; img2.png
+    [1] =&gt; img10.png
+    [0] =&gt; img12.png
+)
+</pre></div>
+    </div>
+    <div class="example-contents"><p>
+     Подробнее смотри статью Martin Pool <a href="http://sourcefrog.net/projects/natsort/" class="link external">&raquo;&nbsp;Natural Order String Comparison</a>.
+    </p></div>
+   </div>
+   <div class="example" id="example-4528">
+    <p><b>Пример #2 Примеры использования различных трюков с <span class="function"><b>natsort()</b></span></b></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #DD0000">"Отрицательные&nbsp;числа\n"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$negative&nbsp;</span><span style="color: #007700">=&nbsp;array(</span><span style="color: #DD0000">'-5'</span><span style="color: #007700">,</span><span style="color: #DD0000">'3'</span><span style="color: #007700">,</span><span style="color: #DD0000">'-2'</span><span style="color: #007700">,</span><span style="color: #DD0000">'0'</span><span style="color: #007700">,</span><span style="color: #DD0000">'-1000'</span><span style="color: #007700">,</span><span style="color: #DD0000">'9'</span><span style="color: #007700">,</span><span style="color: #DD0000">'1'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">print_r</span><span style="color: #007700">(</span><span style="color: #0000BB">$negative</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">natsort</span><span style="color: #007700">(</span><span style="color: #0000BB">$negative</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">print_r</span><span style="color: #007700">(</span><span style="color: #0000BB">$negative</span><span style="color: #007700">);<br /><br />echo&nbsp;</span><span style="color: #DD0000">"Отбивка&nbsp;нулями\n"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$zeros&nbsp;</span><span style="color: #007700">=&nbsp;array(</span><span style="color: #DD0000">'09'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'8'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'10'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'009'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'011'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'0'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">print_r</span><span style="color: #007700">(</span><span style="color: #0000BB">$zeros</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">natsort</span><span style="color: #007700">(</span><span style="color: #0000BB">$zeros</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">print_r</span><span style="color: #007700">(</span><span style="color: #0000BB">$zeros</span><span style="color: #007700">);<br /><br />echo&nbsp;</span><span style="color: #DD0000">"Другие&nbsp;символы\n"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$images_oops&nbsp;</span><span style="color: #007700">=&nbsp;array(</span><span style="color: #DD0000">'image_1.jpg'</span><span style="color: #007700">,</span><span style="color: #DD0000">'image_12.jpg'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'image_21.jpg'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'image_4.jpg'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">print_r</span><span style="color: #007700">(</span><span style="color: #0000BB">$images_oops</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">natsort</span><span style="color: #007700">(</span><span style="color: #0000BB">$images_oops</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">print_r</span><span style="color: #007700">(</span><span style="color: #0000BB">$images_oops</span><span style="color: #007700">);<br /><br />echo&nbsp;</span><span style="color: #DD0000">"Сортировка&nbsp;по&nbsp;ключу\n"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$smoothie&nbsp;</span><span style="color: #007700">=&nbsp;array(</span><span style="color: #DD0000">'orange'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">1</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'apple'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">1</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'yogurt'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">4</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'banana'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">4</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">print_r</span><span style="color: #007700">(</span><span style="color: #0000BB">$smoothie</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">uksort</span><span style="color: #007700">(&nbsp;</span><span style="color: #0000BB">$smoothie</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'strnatcmp'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">print_r</span><span style="color: #007700">(</span><span style="color: #0000BB">$smoothie</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+    <div class="example-contents"><p>Результат выполнения данного примера:</p></div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+Отрицательные числа
+Array
+(
+    [0] =&gt; -5
+    [1] =&gt; 3
+    [2] =&gt; -2
+    [3] =&gt; 0
+    [4] =&gt; -1000
+    [5] =&gt; 9
+    [6] =&gt; 1
+)
+Array
+(
+    [2] =&gt; -2
+    [0] =&gt; -5
+    [4] =&gt; -1000
+    [3] =&gt; 0
+    [6] =&gt; 1
+    [1] =&gt; 3
+    [5] =&gt; 9
+)
+
+Отбивка нулями
+Array
+(
+    [0] =&gt; 09
+    [1] =&gt; 8
+    [2] =&gt; 10
+    [3] =&gt; 009
+    [4] =&gt; 011
+    [5] =&gt; 0
+)
+Array
+(
+    [5] =&gt; 0
+    [1] =&gt; 8
+    [3] =&gt; 009
+    [0] =&gt; 09
+    [2] =&gt; 10
+    [4] =&gt; 011
+)
+
+Другие символы
+Array
+(
+    [0] =&gt; image_1.jpg
+    [1] =&gt; image_12.jpg
+    [2] =&gt; image_21.jpg
+    [3] =&gt; image_4.jpg
+)
+Array
+(
+    [0] =&gt; image_1.jpg
+    [3] =&gt; image_4.jpg
+    [1] =&gt; image_12.jpg
+    [2] =&gt; image_21.jpg
+)
+
+Сортировка по ключу
+Array
+(
+    [orange] =&gt; 1
+    [apple]  =&gt; 1
+    [yogurt] =&gt; 4
+    [banana] =&gt; 4
+)
+Array
+(
+    [apple]  =&gt; 1
+    [banana] =&gt; 4
+    [orange] =&gt; 1
+    [yogurt] =&gt; 4
+)
+</pre></div>
+    </div>
+   </div>
+  </p>
+ </div>
+
+ <div class="refsect1 seealso" id="refsect1-function.natsort-seealso">
+  <h3 class="title">Смотрите также</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><span class="function"><a href="function.natcasesort.html" class="function" rel="rdfs-seeAlso">natcasesort()</a> - Сортирует массив, используя алгоритм &quot;natural order&quot; без учета регистра символов</span></li>
+    <li class="member"><a href="array.sorting.html" class="link">Сравнение функций сортировки массивов</a></li>
+    <li class="member"><span class="function"><a href="function.strnatcmp.html" class="function" rel="rdfs-seeAlso">strnatcmp()</a> - Сравнение строк с использованием алгоритма &quot;natural order&quot;</span></li>
+    <li class="member"><span class="function"><a href="function.strnatcasecmp.html" class="function" rel="rdfs-seeAlso">strnatcasecmp()</a> - Сравнение строк без учета регистра с использованием алгоритма &quot;natural order&quot;</span></li>
+   </ul>
+  </p>
+ </div>
+
+</div><hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.natcasesort.html">natcasesort</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.next.html">next</a></div>
+ <div class="up"><a href="ref.array.html">Функции для работы с массивами</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

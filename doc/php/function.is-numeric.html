@@ -1,0 +1,122 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Проверяет, является ли переменная числом или строкой, содержащей число</title>
+
+ </head>
+ <body><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.is-null.html">is_null</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.is-object.html">is_object</a></div>
+ <div class="up"><a href="ref.var.html">Функции для работы с переменными</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.is-numeric" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">is_numeric</h1>
+  <p class="verinfo">(PHP 4, PHP 5)</p><p class="refpurpose"><span class="refname">is_numeric</span> &mdash; <span class="dc-title">
+   Проверяет, является ли переменная числом или строкой, содержащей число
+  </span></p>
+
+ </div>
+
+ <div class="refsect1 description" id="refsect1-function.is-numeric-description">
+  <h3 class="title">Описание</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">bool</span> <span class="methodname"><b>is_numeric</b></span>
+    ( <span class="methodparam"><span class="type"><a href="language.pseudo-types.html#language.types.mixed" class="type mixed">mixed</a></span> <tt class="parameter">$var</tt></span>
+   )</div>
+
+  <p class="para rdfs-comment">
+   Проверяет, является ли данная переменная числом. Строки, содержащие
+   числа, состоят из необязательного знака, любого количества цифр,
+   необязательной десятичной части и необязательной экспоненциальной части.
+   Так, <i>+0123.45e6</i> является верным числовым
+   значением. Шестнадцатеричная запись (<i>0xFF</i>) также допускается, но
+   только без знака, десятичной и экспоненциальной части.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-function.is-numeric-parameters">
+  <h3 class="title">Список параметров</h3>
+  <p class="para">
+   <dl>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">var</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Проверяемая переменная.
+      </p>
+     </dd>
+
+    </dt>
+
+   </dl>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-function.is-numeric-returnvalues">
+  <h3 class="title">Возвращаемые значения</h3>
+  <p class="para">
+   Возвращает <b><tt>TRUE</tt></b>, если <i><tt class="parameter">var</tt></i> является числом или строкой,
+   содержащей число, в противном случае возвращается <b><tt>FALSE</tt></b>.
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-function.is-numeric-examples">
+  <h3 class="title">Примеры</h3>
+  <p class="para">
+   <div class="example" id="example-4742">
+    <p><b>Пример #1 Примеры использования<span class="function"><b>is_numeric()</b></span></b></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$tests&nbsp;</span><span style="color: #007700">=&nbsp;array(<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">"42"</span><span style="color: #007700">,&nbsp;<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">1337</span><span style="color: #007700">,&nbsp;<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">"1e4"</span><span style="color: #007700">,&nbsp;<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">"not&nbsp;numeric"</span><span style="color: #007700">,&nbsp;<br />&nbsp;&nbsp;&nbsp;&nbsp;array(),&nbsp;<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">9.1<br /></span><span style="color: #007700">);<br /><br />foreach&nbsp;(</span><span style="color: #0000BB">$tests&nbsp;</span><span style="color: #007700">as&nbsp;</span><span style="color: #0000BB">$element</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(</span><span style="color: #0000BB">is_numeric</span><span style="color: #007700">(</span><span style="color: #0000BB">$element</span><span style="color: #007700">))&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"'</span><span style="color: #007700">{</span><span style="color: #0000BB">$element</span><span style="color: #007700">}</span><span style="color: #DD0000">'&nbsp;-&nbsp;число"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">PHP_EOL</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;else&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"'</span><span style="color: #007700">{</span><span style="color: #0000BB">$element</span><span style="color: #007700">}</span><span style="color: #DD0000">'&nbsp;-&nbsp;НЕ&nbsp;число"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">PHP_EOL</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />}<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+    <div class="example-contents"><p>Результат выполнения данного примера:</p></div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+&#039;42&#039; - число
+&#039;1337&#039; - число
+&#039;1e4&#039; - число
+&#039;not numeric&#039; - НЕ число
+&#039;Array&#039; - НЕ число
+&#039;9.1&#039; - число
+</pre></div>
+    </div>
+   </div>
+  </p>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-function.is-numeric-seealso">
+  <h3 class="title">Смотрите также</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><span class="function"><a href="function.ctype-digit.html" class="function" rel="rdfs-seeAlso">ctype_digit()</a> - Проверяет на наличие цифровых символов в строке</span></li>
+    <li class="member"><span class="function"><a href="function.is-bool.html" class="function" rel="rdfs-seeAlso">is_bool()</a> - Проверяет, является ли переменная булевой</span></li>
+    <li class="member"><span class="function"><a href="function.is-null.html" class="function" rel="rdfs-seeAlso">is_null()</a> - Проверяет, является ли значение переменной равным NULL</span></li>
+    <li class="member"><span class="function"><a href="function.is-float.html" class="function" rel="rdfs-seeAlso">is_float()</a> - Проверяет, является ли переменная числом с плавающей точкой</span></li>
+    <li class="member"><span class="function"><a href="function.is-int.html" class="function" rel="rdfs-seeAlso">is_int()</a> - Проверяет, является ли переменная переменной целочисленного типа</span></li>
+    <li class="member"><span class="function"><a href="function.is-string.html" class="function" rel="rdfs-seeAlso">is_string()</a> - Проверяет, является ли переменная строкой</span></li>
+    <li class="member"><span class="function"><a href="function.is-object.html" class="function" rel="rdfs-seeAlso">is_object()</a> - Проверяет, является ли переменная объектом</span></li>
+    <li class="member"><span class="function"><a href="function.is-array.html" class="function" rel="rdfs-seeAlso">is_array()</a> - Определяет, является ли переменная массивом</span></li>
+   </ul>
+  </p>
+ </div>
+
+
+</div><hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.is-null.html">is_null</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.is-object.html">is_object</a></div>
+ <div class="up"><a href="ref.var.html">Функции для работы с переменными</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

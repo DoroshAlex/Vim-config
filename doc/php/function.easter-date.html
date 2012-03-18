@@ -1,0 +1,152 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Метка времени Unix соответствующая полуночи на Пасху в заданном году</title>
+
+ </head>
+ <body><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.cal-to-jd.html">cal_to_jd</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.easter-days.html">easter_days</a></div>
+ <div class="up"><a href="ref.calendar.html">Календарь</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.easter-date" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">easter_date</h1>
+  <p class="verinfo">(PHP 4, PHP 5)</p><p class="refpurpose"><span class="refname">easter_date</span> &mdash; <span class="dc-title">
+   Метка времени Unix соответствующая полуночи на Пасху в заданном году
+  </span></p>
+
+ </div>
+
+ <div class="refsect1 description" id="refsect1-function.easter-date-description">
+  <h3 class="title">Описание</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">int</span> <span class="methodname"><b>easter_date</b></span>
+    ([ <span class="methodparam"><span class="type">int</span> <tt class="parameter">$year</tt></span>
+  ] )</div>
+
+  <p class="para rdfs-comment">
+   Возвращает метку времени Unix соответствующую полуночи 
+   на Пасху в заданном году.
+  </p>
+  <div class="warning"><b class="warning">Внимание</b>
+   <p class="para">
+    Функция выдаст предупреждение, если заданный год будет выходить 
+    за пределы диапазона меток времени Unix (с 1970 по 2037 гг).
+   </p>
+  </div>
+  <p class="para">
+   Дата Пасхального дня была введена Консулом Никеи в 325 году до н.э.
+   Это первое воскресенье, следующее за первым полнолунием после 
+   весеннего равноденствия. Днем весеннего равноденствия принято считать 
+   21 марта, так что расчет дня Пасхи сводится к определению даты 
+   полнолуния и следующего за ней воскресенья. Используемый здесь 
+   алгоритм введен Дионисием Малым в 532 году. В Юлианском летоисчислении 
+   (до 1753 года) для отслеживания фаз луны использовался простой 
+   19-летний цикл. В Грегорианском календаре (годы после 1753 - 
+   разработан Христофором Клавиусом и Алоизием Лилиусом и введен 
+   Папой Григорием XIII в октябре 1582г., а в Великобритании и ее 
+   колониях в сентябре 1752г.) было добавлено 2 поправочных 
+   коэффициента увеличивающих точность расчета дат.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-function.easter-date-parameters">
+  <h3 class="title">Список параметров</h3>
+  <p class="para">
+   <dl>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">year</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Год - число между 1970 и 2037
+      </p>
+     </dd>
+
+    </dt>
+  
+   </dl>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-function.easter-date-returnvalues">
+  <h3 class="title">Возвращаемые значения</h3>
+  <p class="para">
+   Дата Пасхи в виде метки времени Unix.
+  </p>
+ </div>
+
+
+ <div class="refsect1 changelog" id="refsect1-function.easter-date-changelog">
+  <h3 class="title">Список изменений</h3>
+  <p class="para">
+   <table class="doctable informaltable">
+    
+     <thead valign="middle">
+      <tr valign="middle">
+       <th>Версия</th>
+       <th>Описание</th>
+      </tr>
+
+     </thead>
+
+     <tbody valign="middle" class="tbody">
+      <tr valign="middle">
+       <td align="left">Начиная с 4.3.0</td>
+       <td align="left">
+        Аргумент <i><tt class="parameter">year</tt></i> необязателен, по умолчанию 
+        принимается текущий год в соответствии с локальным временем.
+       </td>
+      </tr>
+
+     </tbody>
+    
+   </table>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-function.easter-date-examples">
+  <h3 class="title">Примеры</h3>
+  <p class="para">
+   <div class="example" id="example-594">
+    <p><b>Пример #1 Пример использования <span class="function"><b>easter_date()</b></span></b></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /><br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">date</span><span style="color: #007700">(</span><span style="color: #DD0000">"M-d-Y"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">easter_date</span><span style="color: #007700">(</span><span style="color: #0000BB">1999</span><span style="color: #007700">));&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;Apr-04-1999<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">date</span><span style="color: #007700">(</span><span style="color: #DD0000">"M-d-Y"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">easter_date</span><span style="color: #007700">(</span><span style="color: #0000BB">2000</span><span style="color: #007700">));&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;Apr-23-2000<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">date</span><span style="color: #007700">(</span><span style="color: #DD0000">"M-d-Y"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">easter_date</span><span style="color: #007700">(</span><span style="color: #0000BB">2001</span><span style="color: #007700">));&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;Apr-15-2001<br /><br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+  </p>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-function.easter-date-seealso">
+  <h3 class="title">Смотрите также</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member">
+     Функция <span class="function"><a href="function.easter-days.html" class="function" rel="rdfs-seeAlso">easter_days()</a> - Получение количества дней между 21 марта и Пасхой в заданном году</span> расчета дня Пасхи для 
+     годов до 1970 или после 2037
+    </li>
+   </ul>
+  </p>
+ </div>
+
+
+</div><hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.cal-to-jd.html">cal_to_jd</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.easter-days.html">easter_days</a></div>
+ <div class="up"><a href="ref.calendar.html">Календарь</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

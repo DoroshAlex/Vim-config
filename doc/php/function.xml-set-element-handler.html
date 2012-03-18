@@ -1,0 +1,209 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Установка обработчика начального и конечного элементов</title>
+
+ </head>
+ <body><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.xml-set-default-handler.html">xml_set_default_handler</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.xml-set-end-namespace-decl-handler.html">xml_set_end_namespace_decl_handler</a></div>
+ <div class="up"><a href="ref.xml.html">Функции парсера XML</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.xml-set-element-handler" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">xml_set_element_handler</h1>
+  <p class="verinfo">(PHP 4, PHP 5)</p><p class="refpurpose"><span class="refname">xml_set_element_handler</span> &mdash; <span class="dc-title">
+   Установка обработчика начального и конечного элементов
+  </span></p>
+
+ </div>
+ 
+ <div class="refsect1 description" id="refsect1-function.xml-set-element-handler-description">
+  <h3 class="title">Описание</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">bool</span> <span class="methodname"><b>xml_set_element_handler</b></span>
+    ( <span class="methodparam"><span class="type">resource</span> <tt class="parameter">$parser</tt></span>
+   , <span class="methodparam"><span class="type"><a href="language.pseudo-types.html#language.types.callback" class="type callback">callback</a></span> <tt class="parameter">$start_element_handler</tt></span>
+   , <span class="methodparam"><span class="type"><a href="language.pseudo-types.html#language.types.callback" class="type callback">callback</a></span> <tt class="parameter">$end_element_handler</tt></span>
+   )</div>
+
+  <p class="para rdfs-comment">
+   Устанавливает функцию обработчик элементов для XML анализатора
+   <i><tt class="parameter">parser</tt></i>. <i><tt class="parameter">start_element_handler</tt></i>
+   и <i><tt class="parameter">end_element_handler</tt></i> - строки, содержащие имена
+   функций, которые должны быть определены на момент вызова функции
+   <span class="function"><a href="function.xml-parse.html" class="function">xml_parse()</a></span> из анализатора <i><tt class="parameter">parser</tt></i>.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-function.xml-set-element-handler-parameters">
+  <h3 class="title">Список параметров</h3>
+  <p class="para">
+   <dl>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">parser</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Ссылка на XML анализатор.
+      </p>
+     </dd>
+
+    </dt>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">start_element_handler</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Функция с именем <i><tt class="parameter">start_element_handler</tt></i>
+       должна принимать три аргумента:
+       <div class="methodsynopsis dc-description">
+         <span class="methodname"><span class="replaceable">start_element_handler</span></span>
+         ( <span class="methodparam"><span class="type">resource</span> <tt class="parameter">$parser</tt></span>
+        , <span class="methodparam"><span class="type">string</span> <tt class="parameter">$name</tt></span>
+        , <span class="methodparam"><span class="type">array</span> <tt class="parameter">$attribs</tt></span>
+        )</div>
+
+       <dl>
+
+        <dt>
+
+         <span class="term"><i><tt class="parameter">parser</tt></i></span> 
+         <dd>
+
+          <span class="simpara">
+           Первый аргумент <span class="replaceable">parser</span> является ссылкой
+           на XML анализатор вызывающий обработчик.
+          </span>
+         </dd>
+
+        </dt>
+
+        <dt>
+
+         <span class="term"><i><tt class="parameter">name</tt></i></span>
+         <dd>
+
+          <span class="simpara">
+           Второй аргумент <i><tt class="parameter">name</tt></i> содержит имя элемента,
+           для которого этот обработчик вызывается. Если настройка <a href="xml.case-folding.html" class="link">case-folding</a> включена для этого 
+           анализатора, имя элемента будет в верхнем регистре.
+          </span>
+         </dd>
+
+        </dt>
+
+        <dt>
+
+         <span class="term"><i><tt class="parameter">attribs</tt></i></span>
+         <dd>
+
+          <span class="simpara">
+           Третий аргумент <i><tt class="parameter">attribs</tt></i> содержит 
+           ассоциативный массив с атрибутами элемента (если есть). Индексами
+           этого массива будут имена атрибутов, а значения массива будут 
+           соответствовать значениям атрибутов. Имена атрибутов должны быть
+           <a href="xml.case-folding.html" class="link">приведены к регистру</a> в
+           соответствии с теми же критериями, что и имена элементов. Значения
+           атрибутов <em class="emphasis">не</em> приводятся к какому-либо регистру.
+          </span>
+          <span class="simpara">
+           Атрибуты извлекаются из элемента в порядке прямого обхода 
+           по <i><tt class="parameter">attribs</tt></i>, используя функцию 
+           <span class="function"><a href="function.each.html" class="function">each()</a></span>.Первый индекс в массиве соответствует
+           первому атрибуту и так далее.
+          </span>
+         </dd>
+
+        </dt>
+
+       </dl>
+
+      </p>
+      <blockquote class="note"><p><b class="note">Замечание</b>: <span class="simpara">В качестве аргумента вместо имени
+функции может быть передан массив, содержащий ссылку на объект
+и имя метода.</span></p></blockquote>
+     </dd>
+
+    </dt>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">end_element_handler</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Функция с именем <i><tt class="parameter">end_element_handler</tt></i>
+       должна принимать два аргумента:
+       <div class="methodsynopsis dc-description">
+         <span class="methodname"><span class="replaceable">end_element_handler</span></span>
+         ( <span class="methodparam"><span class="type">resource</span> <tt class="parameter">$parser</tt></span>
+        , <span class="methodparam"><span class="type">string</span> <tt class="parameter">$name</tt></span>
+        )</div>
+
+       <dl>
+
+        <dt>
+
+         <span class="term"><i><tt class="parameter">parser</tt></i></span> 
+         <dd>
+
+          <span class="simpara">
+           Первый аргумент <span class="replaceable">parser</span> является ссылкой
+           на XML анализатор вызывающий обработчик.
+          </span>
+         </dd>
+
+        </dt>
+
+        <dt>
+
+         <span class="term"><i><tt class="parameter">name</tt></i></span>
+         <dd>
+
+          <span class="simpara">
+           Второй аргумент <i><tt class="parameter">name</tt></i> содержит имя элемента,
+           для которого этот обработчик вызывается. Если настройка <a href="xml.case-folding.html" class="link">case-folding</a> включена для этого 
+           анализатора, имя элемента будет в верхнем регистре.
+          </span>
+         </dd>
+
+        </dt>
+
+       </dl>
+
+      </p>
+      <p class="para">
+       Если в качестве обработчика передана пустая строка или <b><tt>FALSE</tt></b>, этот
+       обработчик отключается.
+      </p>
+     </dd>
+
+    </dt>
+
+   </dl>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-function.xml-set-element-handler-returnvalues">
+  <h3 class="title">Возвращаемые значения</h3>
+  <p class="para">
+   Возвращает <b><tt>TRUE</tt></b> в случае успешного завершения  или <b><tt>FALSE</tt></b> в случае возникновения ошибки.
+  </p>
+ </div>
+
+
+</div><hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.xml-set-default-handler.html">xml_set_default_handler</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.xml-set-end-namespace-decl-handler.html">xml_set_end_namespace_decl_handler</a></div>
+ <div class="up"><a href="ref.xml.html">Функции парсера XML</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

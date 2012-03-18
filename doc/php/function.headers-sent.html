@@ -1,0 +1,163 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Проверяет были ли и куда отправлены заголовки</title>
+
+ </head>
+ <body><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.headers-list.html">headers_list</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.http-response-code.html">http_response_code</a></div>
+ <div class="up"><a href="ref.network.html">Сетевые Функции</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.headers-sent" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">headers_sent</h1>
+  <p class="verinfo">(PHP 4, PHP 5)</p><p class="refpurpose"><span class="refname">headers_sent</span> &mdash; <span class="dc-title">Проверяет были ли и куда отправлены заголовки</span></p>
+
+ </div>
+ 
+ <div class="refsect1 description" id="refsect1-function.headers-sent-description">
+  <h3 class="title">Описание</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">bool</span> <span class="methodname"><b>headers_sent</b></span>
+    ([ <span class="methodparam"><span class="type">string</span> <tt class="parameter reference">&$file</tt></span>
+   [, <span class="methodparam"><span class="type">int</span> <tt class="parameter reference">&$line</tt></span>
+  ]] )</div>
+
+  <p class="para rdfs-comment">
+   Проверяет были ли и куда отправлены заголовки.
+  </p>
+  <p class="para">
+   Нельзя отправить дополнительные строки заголовков, используя функцию <span class="function"><a href="function.header.html" class="function">header()</a></span> если заголовки уже были отправлены. Используя эту функцию,
+   можно предупредить ошибки, связанные с  HTTP заголовками.
+   Также можно использовать <a href="ref.outcontrol.html" class="link">Буфферизацию вывода</a>.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-function.headers-sent-parameters">
+  <h3 class="title">Список параметров</h3>
+  <p class="para">
+   <dl>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">file</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Если опциональные параметры <i><tt class="parameter">file</tt></i> и
+       <i><tt class="parameter">line</tt></i> установлены, то функция
+       <span class="function"><b>headers_sent()</b></span> поместит имя файла PHP исходника и номер строки, с которой начинается вывод, в переменные <i><tt class="parameter">file</tt></i> и <i><tt class="parameter">line</tt></i>.
+      </p>
+     </dd>
+
+    </dt>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">line</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Номер строки, с которой начинается вывод.
+      </p>
+     </dd>
+
+    </dt>
+
+   </dl>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-function.headers-sent-returnvalues">
+  <h3 class="title">Возвращаемые значения</h3>
+  <p class="para">
+   Функция <span class="function"><b>headers_sent()</b></span> вернет <b><tt>FALSE</tt></b> если HTTP заголовки
+   не были отправлены, либо <b><tt>TRUE</tt></b> если отправлены.
+  </p>
+ </div>
+
+
+ <div class="refsect1 changelog" id="refsect1-function.headers-sent-changelog">
+  <h3 class="title">Список изменений</h3>
+  <p class="para">
+   <table class="doctable informaltable">
+    
+     <thead valign="middle">
+      <tr valign="middle">
+       <th>Версия</th>
+       <th>Описание</th>
+      </tr>
+
+     </thead>
+
+     <tbody valign="middle" class="tbody">
+      <tr valign="middle">
+       <td align="left">4.3.0</td>
+       <td align="left">
+        Были добавлены необязательные параметры <i><tt class="parameter">file</tt></i>  <i><tt class="parameter">line</tt></i>.
+       </td>
+      </tr>
+
+     </tbody>
+    
+   </table>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-function.headers-sent-examples">
+  <h3 class="title">Примеры</h3>
+  <p class="para">
+   <div class="example" id="example-4008">
+    <p><b>Пример #1 Пример использования <span class="function"><b>headers_sent()</b></span></b></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /><br /></span><span style="color: #FF8000">//&nbsp;Если&nbsp;не&nbsp;было&nbsp;отправлено&nbsp;ни&nbsp;одного&nbsp;заголовка,&nbsp;то&nbsp;отправить&nbsp;один<br /></span><span style="color: #007700">if&nbsp;(!</span><span style="color: #0000BB">headers_sent</span><span style="color: #007700">())&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">header</span><span style="color: #007700">(</span><span style="color: #DD0000">'Location:&nbsp;http://www.example.com/'</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;exit;<br />}<br /><br /></span><span style="color: #FF8000">//&nbsp;Пример&nbsp;использования&nbsp;необязательных&nbsp;параметров&nbsp;file&nbsp;и&nbsp;line,&nbsp;как&nbsp;в&nbsp;PHP&nbsp;4.3.0<br />//&nbsp;необходимо&nbsp;отметить,&nbsp;что&nbsp;$filename&nbsp;и&nbsp;$linenum&nbsp;передаются&nbsp;для&nbsp;дальнейшего&nbsp;использования.<br />//&nbsp;Не&nbsp;назначайте&nbsp;их&nbsp;значения&nbsp;заранее.<br /></span><span style="color: #007700">if&nbsp;(!</span><span style="color: #0000BB">headers_sent</span><span style="color: #007700">(</span><span style="color: #0000BB">$filename</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$linenum</span><span style="color: #007700">))&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">header</span><span style="color: #007700">(</span><span style="color: #DD0000">'Location:&nbsp;http://www.example.com/'</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;exit;<br /><br /></span><span style="color: #FF8000">//&nbsp;Скорее&nbsp;всего,&nbsp;ошибка&nbsp;будет&nbsp;происходит&nbsp;здесь.<br /></span><span style="color: #007700">}&nbsp;else&nbsp;{<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"Звголовки&nbsp;уже&nbsp;были&nbsp;отправлены&nbsp;в&nbsp;</span><span style="color: #0000BB">$filename</span><span style="color: #DD0000">&nbsp;в&nbsp;строке&nbsp;</span><span style="color: #0000BB">$linenum</span><span style="color: #DD0000">\n"&nbsp;</span><span style="color: #007700">.<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">"Невозможно&nbsp;перенаправить,&nbsp;пожалуйста,&nbsp;передите&nbsp;по&nbsp;этой&nbsp;&lt;a&nbsp;"&nbsp;</span><span style="color: #007700">.<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">"href=\"http://www.example.com\"&gt;link&lt;/a&gt;&nbsp;ссылке\n"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;exit;<br />}<br /><br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 notes" id="refsect1-function.headers-sent-notes">
+  <h3 class="title">Примечания</h3>
+  <blockquote class="note"><p><b class="note">Замечание</b>: 
+<p class="para">
+ Доступ к заголовкам и их вывод будет осуществляться только в
+ случае, если в используемом вами SAPI есть их поддержка.
+</p>
+</p></blockquote>
+
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-function.headers-sent-seealso">
+  <h3 class="title">Смотрите также</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><span class="function"><a href="function.ob-start.html" class="function" rel="rdfs-seeAlso">ob_start()</a> - Включение буферизации вывода</span></li>
+    <li class="member"><span class="function"><a href="function.trigger-error.html" class="function" rel="rdfs-seeAlso">trigger_error()</a> - Вызывает пользовательскую ошибку/предупреждение/уведомление</span></li>
+    <li class="member"><span class="function"><a href="function.headers-list.html" class="function" rel="rdfs-seeAlso">headers_list()</a> - Возвращает список переданных (или готовых к передаче) заголовков</span></li>
+    <li class="member">
+     См. информацию по функции <span class="function"><a href="function.header.html" class="function" rel="rdfs-seeAlso">header()</a> - Send a raw HTTP header</span> для более детальной информации.
+    </li>
+   </ul>
+  </p>
+ </div>
+
+
+</div><hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.headers-list.html">headers_list</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.http-response-code.html">http_response_code</a></div>
+ <div class="up"><a href="ref.network.html">Сетевые Функции</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

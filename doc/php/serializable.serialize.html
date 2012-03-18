@@ -1,0 +1,80 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Представляет объект в виде строки</title>
+
+ </head>
+ <body><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="class.serializable.html">Serializable</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="serializable.unserialize.html">Serializable::unserialize</a></div>
+ <div class="up"><a href="class.serializable.html">Serializable</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="serializable.serialize" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">Serializable::serialize</h1>
+  <p class="verinfo">(PHP 5 &gt;= 5.1.0)</p><p class="refpurpose"><span class="refname">Serializable::serialize</span> &mdash; <span class="dc-title">Представляет объект в виде строки</span></p>
+
+ </div>
+
+ <div class="refsect1 description" id="refsect1-serializable.serialize-description">
+  <h3 class="title">Описание</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="modifier">abstract</span> <span class="modifier">public</span> <span class="type">string</span> <span class="methodname"><b>Serializable::serialize</b></span>
+    ( <span class="methodparam">void</span>
+   )</div>
+
+  <p class="para rdfs-comment">
+   Возращает строковое представление объекта.
+  </p>
+  <blockquote class="note"><p><b class="note">Замечание</b>: 
+   <p class="para">
+    Этот метод действует как
+    <a href="language.oop5.decon.html#language.oop5.decon.destructor" class="link">деструктор</a> объекта. Метод
+    <span class="function"><b>__destruct()</b></span> <em class="emphasis">не</em> вызывается после этого
+    метода.
+   </p>
+  </p></blockquote>
+
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-serializable.serialize-parameters">
+  <h3 class="title">Список параметров</h3>
+  <p class="para">У этой функции нет параметров.</p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-serializable.serialize-returnvalues">
+  <h3 class="title">Возвращаемые значения</h3>
+  <p class="para">
+   Возвращает строковое представление объекта или <b><tt>NULL</tt></b>
+  </p>
+ </div>
+
+
+ <div class="refsect1 errors" id="refsect1-serializable.serialize-errors">
+  <h3 class="title">Ошибки</h3>
+  <p class="para">
+   Вызывает <a href="class.exception.html" class="classname">Exception</a>, когда возвращает типы, отличные от string или
+   <b><tt>NULL</tt></b>
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 seealso" id="refsect1-serializable.serialize-seealso">
+  <h3 class="title">Смотрите также</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><a href="language.oop5.magic.html#language.oop5.magic.sleep" class="link">__sleep()</a></li>
+   </ul>
+  </p>
+ </div>
+
+
+</div><hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="class.serializable.html">Serializable</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="serializable.unserialize.html">Serializable::unserialize</a></div>
+ <div class="up"><a href="class.serializable.html">Serializable</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

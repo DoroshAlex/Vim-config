@@ -1,0 +1,107 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Возвращает следующую строку из результата запроса в виде
+   ассоциативного массива</title>
+
+ </head>
+ <body><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.oci-fetch-array.html">oci_fetch_array</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.oci-fetch-object.html">oci_fetch_object</a></div>
+ <div class="up"><a href="ref.oci8.html">OCI8 (Oracle)</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.oci-fetch-assoc" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">oci_fetch_assoc</h1>
+  <p class="verinfo">(PHP 5, PECL OCI8 &gt;= 1.1.0)</p><p class="refpurpose"><span class="refname">oci_fetch_assoc</span> &mdash; <span class="dc-title">Возвращает следующую строку из результата запроса в виде
+   ассоциативного массива</span></p>
+
+ </div>
+ 
+ <div class="refsect1 description" id="refsect1-function.oci-fetch-assoc-description">
+  <h3 class="title">Описание</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">array</span> <span class="methodname"><b>oci_fetch_assoc</b></span>
+    ( <span class="methodparam"><span class="type">resource</span> <tt class="parameter">$statement</tt></span>
+   )</div>
+
+  <p class="para rdfs-comment">
+   Возвращает ассоциативный массив, содержащий следующую строку из
+   результата выполнения запроса. Каждый элемент массива соответствует столбцу
+   текущей строки. Эта функция обычно вызывается в цикле, пока не возвращает
+   <b><tt>FALSE</tt></b>, если больше нет строк.
+  </p>
+  <p class="para">
+   Результат выполнения <span class="function"><b>oci_fetch_assoc()</b></span> идентичен
+   выполнению <span class="function"><a href="function.oci-fetch-array.html" class="function">oci_fetch_array()</a></span>
+   with <b><tt>OCI_ASSOC</tt></b>
+   + <b><tt>OCI_RETURN_NULLS</tt></b>.
+  </p>
+  </div>
+
+ 
+ <div class="refsect1 parameters" id="refsect1-function.oci-fetch-assoc-parameters">
+  <h3 class="title">Список параметров</h3>
+  <p class="para">
+   <dl>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">statement</tt></i></span>
+     <dd>
+
+       <p class="para">Корректный идентификатор выражения OCI8, полученный из
+<span class="function"><a href="function.oci-parse.html" class="function">oci_parse()</a></span> и исполненный функцией <span class="function"><a href="function.oci-execute.html" class="function">oci_execute()</a></span>, или идентификатор выражения
+<i>REF CURSOR</i>.</p>
+     </dd>
+
+    </dt>
+
+   </dl>
+
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 returnvalues" id="refsect1-function.oci-fetch-assoc-returnvalues">
+  <h3 class="title">Возвращаемые значения</h3>
+  <p class="para">
+   Возвращает ассоциативный массив. Если в результате запроса строк больше
+   нет, возвращает <b><tt>FALSE</tt></b>.
+  </p>
+ </div>
+
+ 
+   <div class="refsect1 notes" id="refsect1-function.oci-fetch-assoc-notes">
+  <h3 class="title">Примечания</h3>
+  <blockquote class="note"><p><b class="note">Замечание</b>: 
+   <p class="para">
+    См. <span class="function"><a href="function.oci-fetch-array.html" class="function">oci_fetch_array()</a></span> для примеров получаемых строк.
+   </p>
+  </p></blockquote>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-function.oci-fetch-assoc-seealso">
+  <h3 class="title">Смотрите также</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><span class="function"><a href="function.oci-fetch.html" class="function" rel="rdfs-seeAlso">oci_fetch()</a> - Выбирает следующую строку из результата в буфер</span></li>
+    <li class="member"><span class="function"><a href="function.oci-fetch-all.html" class="function" rel="rdfs-seeAlso">oci_fetch_all()</a> - Выбирает все строки из результата запроса в двумерный массив</span></li>
+    <li class="member"><span class="function"><a href="function.oci-fetch-array.html" class="function" rel="rdfs-seeAlso">oci_fetch_array()</a> - Возвращает следующую строку из результата запроса в виде ассоциативного или нумерованного массива</span></li>
+    <li class="member"><span class="function"><a href="function.oci-fetch-object.html" class="function" rel="rdfs-seeAlso">oci_fetch_object()</a> - Возвращает следующую строку из результата запроса в виде
+   объекта</span></li>
+    <li class="member"><span class="function"><a href="function.oci-fetch-row.html" class="function" rel="rdfs-seeAlso">oci_fetch_row()</a> - Возвращает следующую строку из результата запроса в виде
+   нумерованного массива</span></li>
+   </ul>
+  </p>
+ </div>
+
+
+</div><hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.oci-fetch-array.html">oci_fetch_array</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.oci-fetch-object.html">oci_fetch_object</a></div>
+ <div class="up"><a href="ref.oci8.html">OCI8 (Oracle)</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

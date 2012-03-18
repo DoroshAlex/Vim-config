@@ -1,0 +1,40 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Базовое использование</title>
+
+ </head>
+ <body><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="outcontrol.examples.html">Примеры</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="ref.outcontrol.html">Функции контроля вывода</a></div>
+ <div class="up"><a href="outcontrol.examples.html">Примеры</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="outcontrol.examples.basic" class="section">
+  <h2 class="title">Базовое использование</h2>
+  <p class="para">
+   <div class="example" id="example-435">
+    <p><b>Пример #1 Пример контроля вывода</b></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /><br />ob_start</span><span style="color: #007700">();<br />echo&nbsp;</span><span style="color: #DD0000">"Привет\n"</span><span style="color: #007700">;<br /><br /></span><span style="color: #0000BB">setcookie</span><span style="color: #007700">(</span><span style="color: #DD0000">"cookiename"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"cookiedata"</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">ob_end_flush</span><span style="color: #007700">();<br /><br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+  </p>
+  <p class="para">
+   В приведенном выше примере вывод из <span class="function"><a href="function.echo.html" class="function">echo()</a></span>
+   будет храниться в буфере вывода до вызова
+   <span class="function"><a href="function.ob-end-flush.html" class="function">ob_end_flush()</a></span>. В то же время
+   вызов <span class="function"><a href="function.setcookie.html" class="function">setcookie()</a></span> успешно сохранится в
+   cookie браузера, не вызывая ошибки (вы не можете отправлять
+   заголовки в браузер после того, как данные уже были отправлены).
+  </p>
+ </div><hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="outcontrol.examples.html">Примеры</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="ref.outcontrol.html">Функции контроля вывода</a></div>
+ <div class="up"><a href="outcontrol.examples.html">Примеры</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

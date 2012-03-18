@@ -1,0 +1,112 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Возвращает длину указанного поля</title>
+
+ </head>
+ <body><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.mysql-field-flags.html">mysql_field_flags</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.mysql-field-name.html">mysql_field_name</a></div>
+ <div class="up"><a href="ref.mysql.html">MySQL</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.mysql-field-len" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">mysql_field_len</h1>
+  <p class="verinfo">(PHP 4, PHP 5)</p><p class="refpurpose"><span class="refname">mysql_field_len</span> &mdash; <span class="dc-title">Возвращает длину указанного поля</span></p>
+
+ </div>
+
+ <div class="refsect1 description" id="refsect1-function.mysql-field-len-description">
+  <h3 class="title">Описание</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">int</span> <span class="methodname"><b>mysql_field_len</b></span>
+    ( <span class="methodparam"><span class="type">resource</span> <tt class="parameter">$result</tt></span>
+   , <span class="methodparam"><span class="type">int</span> <tt class="parameter">$field_offset</tt></span>
+   )</div>
+
+  <p class="para rdfs-comment">
+   <span class="function"><b>mysql_field_len()</b></span> возвращает длину указанного поля.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-function.mysql-field-len-parameters">
+  <h3 class="title">Список параметров</h3>
+  <p class="para">
+   <dl>
+
+    <dt>
+<span class="term"><i><tt class="parameter">
+result</tt></i></span><dd>
+<p class="para">Обрабатываемый <a href="language.types.resource.html" class="link">результат запроса</a>.
+Этот результат может быть получен с помощью функции <span class="function"><a href="function.mysql-query.html" class="function">mysql_query()</a></span>.</p></dd>
+</dt>
+
+    <dt>
+<span class="term"><i><tt class="parameter">
+field_offset</tt></i></span><dd>
+<p class="para">Числовое смещение поля.
+<i><tt class="parameter">field_offset</tt></i> начинается с <i>0</i>. Если
+<i><tt class="parameter">field_offset</tt></i> не существует, генерируется ошибка уровня
+<b><tt>E_WARNING</tt></b>.</p></dd>
+</dt>
+
+   </dl>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-function.mysql-field-len-returnvalues">
+  <h3 class="title">Возвращаемые значения</h3>
+  <p class="para">
+   Длина указанного поля в случае успеха или <b><tt>FALSE</tt></b> в случае возникновения ошибки.
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-function.mysql-field-len-examples">
+  <h3 class="title">Примеры</h3>
+  <p class="para">
+   <div class="example" id="example-1521">
+    <p><b>Пример #1 Пример использования <span class="function"><b>mysql_field_len()</b></span></b></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$result&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">mysql_query</span><span style="color: #007700">(</span><span style="color: #DD0000">"SELECT&nbsp;id,email&nbsp;FROM&nbsp;people&nbsp;WHERE&nbsp;id&nbsp;=&nbsp;'42'"</span><span style="color: #007700">);<br />if&nbsp;(!</span><span style="color: #0000BB">$result</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">'Не&nbsp;удалось&nbsp;выполнить&nbsp;запрос:&nbsp;'&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">mysql_error</span><span style="color: #007700">();<br />&nbsp;&nbsp;&nbsp;&nbsp;exit;<br />}<br /><br /></span><span style="color: #FF8000">//&nbsp;Получит&nbsp;длину&nbsp;поля&nbsp;id&nbsp;так,&nbsp;как&nbsp;указано&nbsp;в&nbsp;структуре&nbsp;базы&nbsp;данных<br /></span><span style="color: #0000BB">$length&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">mysql_field_len</span><span style="color: #007700">(</span><span style="color: #0000BB">$result</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">);<br />echo&nbsp;</span><span style="color: #0000BB">$length</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+  </p>
+ </div>
+
+
+ <div class="refsect1 notes" id="refsect1-function.mysql-field-len-notes">
+  <h3 class="title">Примечания</h3>
+  <blockquote class="note"><p><b class="note">Замечание</b>: 
+   <p class="para">
+    Для обратной совместимости может быть использован следующий устаревший псевдоним: 
+    <span class="function"><b>mysql_fieldlen()</b></span>
+   </p>
+  </p></blockquote>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-function.mysql-field-len-seealso">
+  <h3 class="title">Смотрите также</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><span class="function"><a href="function.mysql-fetch-lengths.html" class="function" rel="rdfs-seeAlso">mysql_fetch_lengths()</a> - Возвращает длину каждого поля в результате</span></li>
+    <li class="member"><span class="function"><a href="function.strlen.html" class="function" rel="rdfs-seeAlso">strlen()</a> - Возвращает длину строки</span></li>
+   </ul>
+  </p>
+ </div>
+
+</div><hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.mysql-field-flags.html">mysql_field_flags</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.mysql-field-name.html">mysql_field_name</a></div>
+ <div class="up"><a href="ref.mysql.html">MySQL</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

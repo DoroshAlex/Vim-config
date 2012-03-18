@@ -1,0 +1,578 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Класс DOMNode</title>
+
+ </head>
+ <body><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="domnamednodemap.item.html">DOMNamedNodeMap::item</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="domnode.appendchild.html">DOMNode::appendChild</a></div>
+ <div class="up"><a href="book.dom.html">DOM</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="class.domnode" class="reference">
+ <h1 class="title">Класс DOMNode</h1>
+ 
+ 
+ <div class="partintro"><p class="verinfo">(PHP 5)</p>
+ 
+
+ 
+  <div class="section" id="domnode.synopsis">
+   <h2 class="title">Обзор классов</h2>
+ 
+
+   <div class="classsynopsis">
+    <div class="ooclass"></div>
+ 
+
+    <div class="classsynopsisinfo">
+     <span class="ooclass">
+      <b class="classname">DOMNode</b>
+     </span>
+ 
+     {</div>
+
+ 
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Свойства */</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">public</span>
+     <span class="modifier">readonly</span>
+     <span class="type">string</span>
+      <var class="varname"><a href="class.domnode.html#domnode.props.nodename">$<var class="varname">DOMNode-&gt;nodeName</var></a></var>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">public</span>
+     <span class="type">string</span>
+      <var class="varname"><a href="class.domnode.html#domnode.props.nodevalue">$<var class="varname">nodeValue</var></a></var>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">public</span>
+     <span class="modifier">readonly</span>
+     <span class="type">int</span>
+      <var class="varname"><a href="class.domnode.html#domnode.props.nodetype">$<var class="varname">nodeType</var></a></var>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">public</span>
+     <span class="modifier">readonly</span>
+     <span class="type"><a href="class.domnode.html" class="type DOMNode">DOMNode</a></span>
+      <var class="varname"><a href="class.domnode.html#domnode.props.parentnode">$<var class="varname">parentNode</var></a></var>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">public</span>
+     <span class="modifier">readonly</span>
+     <span class="type"><a href="class.domnodelist.html" class="type DOMNodeList">DOMNodeList</a></span>
+      <var class="varname"><a href="class.domnode.html#domnode.props.childnodes">$<var class="varname">childNodes</var></a></var>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">public</span>
+     <span class="modifier">readonly</span>
+     <span class="type"><a href="class.domnode.html" class="type DOMNode">DOMNode</a></span>
+      <var class="varname"><a href="class.domnode.html#domnode.props.firstchild">$<var class="varname">firstChild</var></a></var>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">public</span>
+     <span class="modifier">readonly</span>
+     <span class="type"><a href="class.domnode.html" class="type DOMNode">DOMNode</a></span>
+      <var class="varname"><a href="class.domnode.html#domnode.props.lastchild">$<var class="varname">lastChild</var></a></var>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">public</span>
+     <span class="modifier">readonly</span>
+     <span class="type"><a href="class.domnode.html" class="type DOMNode">DOMNode</a></span>
+      <var class="varname"><a href="class.domnode.html#domnode.props.previoussibling">$<var class="varname">previousSibling</var></a></var>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">public</span>
+     <span class="modifier">readonly</span>
+     <span class="type"><a href="class.domnode.html" class="type DOMNode">DOMNode</a></span>
+      <var class="varname"><a href="class.domnode.html#domnode.props.nextsibling">$<var class="varname">nextSibling</var></a></var>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">public</span>
+     <span class="modifier">readonly</span>
+     <span class="type"><a href="class.domnamednodemap.html" class="type DOMNamedNodeMap">DOMNamedNodeMap</a></span>
+      <var class="varname"><a href="class.domnode.html#domnode.props.attributes">$<var class="varname">attributes</var></a></var>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">public</span>
+     <span class="modifier">readonly</span>
+     <span class="type"><a href="class.domdocument.html" class="type DOMDocument">DOMDocument</a></span>
+      <var class="varname"><a href="class.domnode.html#domnode.props.ownerdocument">$<var class="varname">ownerDocument</var></a></var>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">public</span>
+     <span class="modifier">readonly</span>
+     <span class="type">string</span>
+      <var class="varname"><a href="class.domnode.html#domnode.props.namespaceuri">$<var class="varname">namespaceURI</var></a></var>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">public</span>
+     <span class="type">string</span>
+      <var class="varname"><a href="class.domnode.html#domnode.props.prefix">$<var class="varname">prefix</var></a></var>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">public</span>
+     <span class="modifier">readonly</span>
+     <span class="type">string</span>
+      <var class="varname"><a href="class.domnode.html#domnode.props.localname">$<var class="varname">localName</var></a></var>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">public</span>
+     <span class="modifier">readonly</span>
+     <span class="type">string</span>
+      <var class="varname"><a href="class.domnode.html#domnode.props.baseuri">$<var class="varname">baseURI</var></a></var>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">public</span>
+     <span class="type">string</span>
+      <var class="varname"><a href="class.domnode.html#domnode.props.textcontent">$<var class="varname">textContent</var></a></var>
+    ;</div>
+
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Методы */</div>
+    <div class="methodsynopsis dc-description">
+   <span class="type">DOMNode</span> <span class="methodname"><a href="domnode.appendchild.html" class="methodname">DOMNode::appendChild</a></span>
+    ( <span class="methodparam"><span class="type"><a href="class.domnode.html" class="type DOMNode">DOMNode</a></span> <tt class="parameter">$newnode</tt></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">string</span> <span class="methodname"><a href="domnode.c14n.html" class="methodname">DOMNode::C14N</a></span>
+    ([ <span class="methodparam"><span class="type">bool</span> <tt class="parameter">$exclusive</tt></span>
+   [, <span class="methodparam"><span class="type">bool</span> <tt class="parameter">$with_comments</tt></span>
+   [, <span class="methodparam"><span class="type">array</span> <tt class="parameter">$xpath</tt></span>
+   [, <span class="methodparam"><span class="type">array</span> <tt class="parameter">$ns_prefixes</tt></span>
+  ]]]] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">int</span> <span class="methodname"><a href="domnode.c14nfile.html" class="methodname">DOMNode::C14NFile</a></span>
+    ( <span class="methodparam"><span class="type">string</span> <tt class="parameter">$uri</tt></span>
+   [, <span class="methodparam"><span class="type">bool</span> <tt class="parameter">$exclusive</tt></span>
+   [, <span class="methodparam"><span class="type">bool</span> <tt class="parameter">$with_comments</tt></span>
+   [, <span class="methodparam"><span class="type">array</span> <tt class="parameter">$xpath</tt></span>
+   [, <span class="methodparam"><span class="type">array</span> <tt class="parameter">$ns_prefixes</tt></span>
+  ]]]] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="type">DOMNode</span> <span class="methodname"><a href="domnode.clonenode.html" class="methodname">DOMNode::cloneNode</a></span>
+    ([ <span class="methodparam"><span class="type">bool</span> <tt class="parameter">$deep</tt></span>
+  ] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">int</span> <span class="methodname"><a href="domnode.getlineno.html" class="methodname">DOMNode::getLineNo</a></span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">string</span> <span class="methodname"><a href="domnode.getnodepath.html" class="methodname">DOMNode::getNodePath</a></span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="type">bool</span> <span class="methodname"><a href="domnode.hasattributes.html" class="methodname">DOMNode::hasAttributes</a></span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="type">bool</span> <span class="methodname"><a href="domnode.haschildnodes.html" class="methodname">DOMNode::hasChildNodes</a></span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="type">DOMNode</span> <span class="methodname"><a href="domnode.insertbefore.html" class="methodname">DOMNode::insertBefore</a></span>
+    ( <span class="methodparam"><span class="type"><a href="class.domnode.html" class="type DOMNode">DOMNode</a></span> <tt class="parameter">$newnode</tt></span>
+   [, <span class="methodparam"><span class="type"><a href="class.domnode.html" class="type DOMNode">DOMNode</a></span> <tt class="parameter">$refnode</tt></span>
+  ] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="type">bool</span> <span class="methodname"><a href="domnode.isdefaultnamespace.html" class="methodname">DOMNode::isDefaultNamespace</a></span>
+    ( <span class="methodparam"><span class="type">string</span> <tt class="parameter">$namespaceURI</tt></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="type">bool</span> <span class="methodname"><a href="domnode.issamenode.html" class="methodname">DOMNode::isSameNode</a></span>
+    ( <span class="methodparam"><span class="type"><a href="class.domnode.html" class="type DOMNode">DOMNode</a></span> <tt class="parameter">$node</tt></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="type">bool</span> <span class="methodname"><a href="domnode.issupported.html" class="methodname">DOMNode::isSupported</a></span>
+    ( <span class="methodparam"><span class="type">string</span> <tt class="parameter">$feature</tt></span>
+   , <span class="methodparam"><span class="type">string</span> <tt class="parameter">$version</tt></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="type">string</span> <span class="methodname"><a href="domnode.lookupnamespaceuri.html" class="methodname">DOMNode::lookupNamespaceURI</a></span>
+    ( <span class="methodparam"><span class="type">string</span> <tt class="parameter">$prefix</tt></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="type">string</span> <span class="methodname"><a href="domnode.lookupprefix.html" class="methodname">DOMNode::lookupPrefix</a></span>
+    ( <span class="methodparam"><span class="type">string</span> <tt class="parameter">$namespaceURI</tt></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="type">void</span> <span class="methodname"><a href="domnode.normalize.html" class="methodname">DOMNode::normalize</a></span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="type">DOMNode</span> <span class="methodname"><a href="domnode.removechild.html" class="methodname">DOMNode::removeChild</a></span>
+    ( <span class="methodparam"><span class="type"><a href="class.domnode.html" class="type DOMNode">DOMNode</a></span> <tt class="parameter">$oldnode</tt></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="type">DOMNode</span> <span class="methodname"><a href="domnode.replacechild.html" class="methodname">DOMNode::replaceChild</a></span>
+    ( <span class="methodparam"><span class="type"><a href="class.domnode.html" class="type DOMNode">DOMNode</a></span> <tt class="parameter">$newnode</tt></span>
+   , <span class="methodparam"><span class="type"><a href="class.domnode.html" class="type DOMNode">DOMNode</a></span> <tt class="parameter">$oldnode</tt></span>
+   )</div>
+
+   }</div>
+
+ 
+  </div>
+ 
+
+  <div class="section" id="domnode.props">
+   <h2 class="title">Свойства</h2>
+   <dl>
+
+    <dt id="domnode.props.nodename">
+     <span class="term"><var class="varname"><var class="varname">nodeName</var></var></span>
+     <dd>
+
+      <p class="para">Возвращает имя текущего узла</p>
+     </dd>
+
+    </dt>
+
+    <dt id="domnode.props.nodevalue">
+     <span class="term"><var class="varname"><var class="varname">nodeValue</var></var></span>
+     <dd>
+
+      <p class="para">Возращает значение текущего узла</p>
+     </dd>
+
+    </dt>
+
+    <dt id="domnode.props.nodetype">
+     <span class="term"><var class="varname"><var class="varname">nodeType</var></var></span>
+     <dd>
+
+      <p class="para">
+       Возвращает тип текущего узла. Возможные варианты возвращаемых значений
+       nodeType перечисленны в разделе <a href="dom.constants.html" class="link">констатнты XML_xxx_NODE</a>
+      </p>
+     </dd>
+
+    </dt>
+
+    <dt id="domnode.props.parentnode">
+     <span class="term"><var class="varname"><var class="varname">parentNode</var></var></span>
+     <dd>
+
+      <p class="para">Возвращает родительский узел текущего узла</p>
+     </dd>
+
+    </dt>
+
+    <dt id="domnode.props.childnodes">
+     <span class="term"><var class="varname"><var class="varname">childNodes</var></var></span>
+     <dd>
+
+      <p class="para">
+       Возвращает список <a href="class.domnodelist.html" class="classname">DOMNodeList</a>, содержащий всех потомков текущего узла. 
+       Если у узла нет потомков, возвращает пустой список <a href="class.domnodelist.html" class="classname">DOMNodeList</a>.
+      </p>
+     </dd>
+
+    </dt>
+
+    <dt id="domnode.props.firstchild">
+     <span class="term"><var class="varname"><var class="varname">firstChild</var></var></span>
+     <dd>
+
+      <p class="para">
+       Возвращает первый дочерний узел текущего узла. Если у узла нет потомков, возвращает <b><tt>NULL</tt></b>.
+      </p>
+     </dd>
+
+    </dt>
+
+    <dt id="domnode.props.lastchild">
+     <span class="term"><var class="varname"><var class="varname">lastChild</var></var></span>
+     <dd>
+
+      <p class="para">
+       Возвращает последний дочерний узел текущего узла. Если у узла нет потомков, возвращает <b><tt>NULL</tt></b>.
+      </p>
+     </dd>
+
+    </dt>
+
+    <dt id="domnode.props.previoussibling">
+     <span class="term"><var class="varname"><var class="varname">previousSibling</var></var></span>
+     <dd>
+
+      <p class="para">
+       Возвращает предыдущий узел непосредственно от текущего узла. Если такого узла нет, возвращает <b><tt>NULL</tt></b>.
+      </p>
+     </dd>
+
+    </dt>
+
+    <dt id="domnode.props.nextsibling">
+     <span class="term"><var class="varname"><var class="varname">nextSibling</var></var></span>
+     <dd>
+
+      <p class="para">
+       Возвращает следующий узел после текущего узла. Если такого узла нет, возвращает <b><tt>NULL</tt></b>.
+      </p>
+     </dd>
+
+    </dt>
+
+    <dt id="domnode.props.attributes">
+     <span class="term"><var class="varname"><var class="varname">attributes</var></var></span>
+     <dd>
+
+      <p class="para">
+       Возвращает объект <a href="class.domnamednodemap.html" class="classname">DOMNamedNodeMap</a>, содержащий атрибуты текущего узла 
+       (только если это <a href="class.domelement.html" class="classname">DOMElement</a>), иначе вернёт <b><tt>NULL</tt></b>.
+      </p>
+     </dd>
+
+    </dt>
+
+    <dt id="domnode.props.ownerdocument">
+     <span class="term"><var class="varname"><var class="varname">ownerDocument</var></var></span>
+     <dd>
+
+      <p class="para">Возвращает корневой узел <a href="class.domdocument.html" class="classname">DOMDocument</a> текущего узла.</p>
+     </dd>
+
+    </dt>
+
+    <dt id="domnode.props.namespaceuri">
+     <span class="term"><var class="varname"><var class="varname">namespaceURI</var></var></span>
+     <dd>
+
+      <p class="para">Вернёт пространство имён текущего узла или <b><tt>NULL</tt></b> если оно не установленно.</p>
+     </dd>
+
+    </dt>
+
+    <dt id="domnode.props.prefix">
+     <span class="term"><var class="varname"><var class="varname">prefix</var></var></span>
+     <dd>
+
+      <p class="para">Вернёт префикс текущего узла или <b><tt>NULL</tt></b> если оно не установленно.</p>
+     </dd>
+
+    </dt>
+
+    <dt id="domnode.props.localname">
+     <span class="term"><var class="varname"><var class="varname">localName</var></var></span>
+     <dd>
+
+      <p class="para">Возвращает локальное имя текущего узла.</p>
+     </dd>
+
+    </dt>
+
+    <dt id="domnode.props.baseuri">
+     <span class="term"><var class="varname"><var class="varname">baseURI</var></var></span>
+     <dd>
+
+      <p class="para">
+       Возвращает универсальный код ресурса (URI) текущего узела или <b><tt>NULL</tt></b>,
+       если не удалось получить URI.
+      </p>
+     </dd>
+
+    </dt>
+
+    <dt id="domnode.props.textcontent">
+     <span class="term"><var class="varname"><var class="varname">textContent</var></var></span>
+     <dd>
+
+      <p class="para">Этот атрибут возвращает текстовое содержимое текущего узла и его потомков</p>
+     </dd>
+
+    </dt>
+
+   </dl>
+
+  </div>
+
+
+
+  <div class="section">
+   <h2 class="title">Примечания</h2>
+   <blockquote class="note"><p><b class="note">Замечание</b>: 
+    <p class="para">
+     Расширение DOM использует кодировку UTF-8. Используйте функции <span class="function"><a href="function.utf8-encode.html" class="function">utf8_encode()</a></span>
+     и <span class="function"><a href="function.utf8-decode.html" class="function">utf8_decode()</a></span> для работы с текстами в кодировке ISO-8859-1
+     или функцию <a href="ref.iconv.html" class="link">Iconv</a> для других кодировок.
+    </p>
+   </p></blockquote>
+  </div>
+
+
+
+  <div class="section">
+   <h2 class="title">Смотрите также</h2>
+   <p class="para">
+    <ul class="simplelist">
+     <li class="member"><a href="http://www.w3.org/TR/2003/WD-DOM-Level-3-Core-20030226/DOM3-Core.html#core-ID-1950641247" class="link external">&raquo;&nbsp;Спецификация W3C элемента Node</a></li>
+    </ul>
+   </p>
+  </div>
+
+ 
+ </div>
+ 
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+<h2>Содержание</h2><ul class="chunklist chunklist_reference"><li><a href="domnode.appendchild.html">DOMNode::appendChild</a> — Добавляет новый дочерний узел в конец списка потомков</li><li><a href="domnode.c14n.html">DOMNode::C14N</a> — Canonicalize nodes to a string</li><li><a href="domnode.c14nfile.html">DOMNode::C14NFile</a> — Canonicalize nodes to a file</li><li><a href="domnode.clonenode.html">DOMNode::cloneNode</a> — Клонирует узел</li><li><a href="domnode.getlineno.html">DOMNode::getLineNo</a> — Возвращает номер строки узла</li><li><a href="domnode.getnodepath.html">DOMNode::getNodePath</a> — Получение XPath пути к узлу</li><li><a href="domnode.hasattributes.html">DOMNode::hasAttributes</a> — Проверяет, содержит ли данный узел атрибуты</li><li><a href="domnode.haschildnodes.html">DOMNode::hasChildNodes</a> — Проверяет, содержит ли данный узел потомков</li><li><a href="domnode.insertbefore.html">DOMNode::insertBefore</a> — Добавляет новый дочерний узел перед опорным узлом</li><li><a href="domnode.isdefaultnamespace.html">DOMNode::isDefaultNamespace</a> — Проверяет, совпадает ли URI пространства имен узла с пространством имен по умолчанию</li><li><a href="domnode.issamenode.html">DOMNode::isSameNode</a> — Проверяет, являются ли два узла одним и тем же узлом</li><li><a href="domnode.issupported.html">DOMNode::isSupported</a> — Проверяет, поддерживается ли заданное свойство в определенной версии</li><li><a href="domnode.lookupnamespaceuri.html">DOMNode::lookupNamespaceURI</a> — Получает URI пространства имен узла по префиксу</li><li><a href="domnode.lookupprefix.html">DOMNode::lookupPrefix</a> — Возвращает префикс пространства имен узла из URI пространства имен</li><li><a href="domnode.normalize.html">DOMNode::normalize</a> — Нормализует узел</li><li><a href="domnode.removechild.html">DOMNode::removeChild</a> — Удаляет дочерний узел из списка потомков</li><li><a href="domnode.replacechild.html">DOMNode::replaceChild</a> — Заменяет дочерний узел</li></ul>
+</div>
+<hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="domnamednodemap.item.html">DOMNamedNodeMap::item</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="domnode.appendchild.html">DOMNode::appendChild</a></div>
+ <div class="up"><a href="book.dom.html">DOM</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

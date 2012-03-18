@@ -1,0 +1,269 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Читает содержимое файла и помещает его в массив</title>
+
+ </head>
+ <body><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.file-put-contents.html">file_put_contents</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.fileatime.html">fileatime</a></div>
+ <div class="up"><a href="ref.filesystem.html">Файловая система</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.file" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">file</h1>
+  <p class="verinfo">(PHP 4, PHP 5)</p><p class="refpurpose"><span class="refname">file</span> &mdash; <span class="dc-title">Читает содержимое файла и помещает его в массив</span></p>
+
+ </div>
+
+ <div class="refsect1 description" id="refsect1-function.file-description">
+  <h3 class="title">Описание</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">array</span> <span class="methodname"><b>file</b></span>
+    ( <span class="methodparam"><span class="type">string</span> <tt class="parameter">$filename</tt></span>
+   [, <span class="methodparam"><span class="type">int</span> <tt class="parameter">$flags</tt><span class="initializer"> = 0</span></span>
+   [, <span class="methodparam"><span class="type">resource</span> <tt class="parameter">$context</tt></span>
+  ]] )</div>
+
+  <p class="para rdfs-comment">
+   Читает содержимое файла и помещает его в массив.
+  </p>
+  <blockquote class="note"><p><b class="note">Замечание</b>: 
+   <p class="para">
+    Можно также использовать функцию <span class="function"><a href="function.file-get-contents.html" class="function">file_get_contents()</a></span>
+    для получения файла в виде строки.
+   </p>
+  </p></blockquote>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-function.file-parameters">
+  <h3 class="title">Список параметров</h3>
+  <p class="para">
+   <dl>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">filename</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Путь к файлу.
+      </p>
+      <div class="tip"><b class="tip">Подсказка</b><p class="simpara">Для этой функции вы можете использовать URL
+в качестве имени файла, если была включена опция <a href="filesystem.configuration.html#ini.allow-url-fopen" class="link">fopen wrappers</a>. Смотрите более
+подробную информацию об определении имени файла в описании функции
+<span class="function"><a href="function.fopen.html" class="function">fopen()</a></span>. Смотрите также список поддерживаемых оберток URL, их возможности, замечания по использованию и список
+предопределенных констант в <a href="wrappers.html" class="xref">Поддерживаемые протоколы и обработчики (wrappers)</a>.</p></div>
+     </dd>
+
+    </dt>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">flags</tt></i></span>
+     <dd>
+
+      <p class="para">
+       В качестве необязательного параметра <i><tt class="parameter">flags</tt></i> может
+       можно указать одну или более следующих констант:
+       <dl>
+
+        <dt>
+
+         <span class="term">
+          <b><tt>FILE_USE_INCLUDE_PATH</tt></b>
+         </span>
+         <dd>
+
+          <span class="simpara">
+           Ищет файл в <a href="ini.core.html#ini.include-path" class="link">include_path</a>.
+          </span>
+         </dd>
+
+        </dt>
+
+        <dt>
+
+         <span class="term">
+          <b><tt>FILE_IGNORE_NEW_LINES</tt></b>
+         </span>
+         <dd>
+
+          <span class="simpara">
+           Не добавлять новую строку к концу каждого элемента массива
+          </span>
+         </dd>
+
+        </dt>
+
+        <dt>
+
+         <span class="term">
+          <b><tt>FILE_SKIP_EMPTY_LINES</tt></b>
+         </span>
+         <dd>
+
+          <span class="simpara">
+           Пропускать пустые строки
+          </span>
+         </dd>
+
+        </dt>
+
+        
+       </dl>
+
+      </p>
+     </dd>
+
+    </dt>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">context</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Ресурс контекста, созданный функцией
+       <span class="function"><a href="function.stream-context-create.html" class="function">stream_context_create()</a></span>.
+      </p>
+      <p class="para">
+       <blockquote class="note"><p><b class="note">Замечание</b>: <span class="simpara">Поддержка контекста была добавлена
+в PHP 5.0.0. Для описания <i>контекстов</i> смотрите раздел
+<a href="ref.stream.html" class="xref">Stream Функции</a>.</span></p></blockquote>
+      </p>
+     </dd>
+
+    </dt>
+
+   </dl>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-function.file-returnvalues">
+  <h3 class="title">Возвращаемые значения</h3>
+  <p class="para">
+   Возвращает файл в виде массива. Каждый элемент массива соответствует
+   строке файла, с символами новой строки включительно. В случае
+   ошибки <span class="function"><b>file()</b></span> возвращает <b><tt>FALSE</tt></b>.
+  </p>
+  <blockquote class="note"><p><b class="note">Замечание</b>: 
+   <p class="para">
+    Каждая строка в полученном массиве будет завершаться символами конца
+    строки (если вы не указали флаг <b><tt>FILE_IGNORE_NEW_LINES</tt></b>),
+    поэтому, если вам будет нужно избавиться от этих символов, вы
+    можете использовать функцию <span class="function"><a href="function.rtrim.html" class="function">rtrim()</a></span>.
+   </p>
+  </p></blockquote>
+  <blockquote class="note"><p><b class="note">Замечание</b>: <span class="simpara">Если у вас возникают проблемы
+с распознаванием PHP концов строк при чтении или создании файлов на Macintosh-совместимом компьютере, включение опции
+<a href="filesystem.configuration.html#ini.auto-detect-line-endings" class="link">auto_detect_line_endings</a> может помочь решить проблему.
+</span></p></blockquote>
+ </div>
+
+
+ <div class="refsect1 changelog" id="refsect1-function.file-changelog">
+  <h3 class="title">Список изменений</h3>
+  <p class="para">
+   <table class="doctable informaltable">
+    
+     <thead valign="middle">
+      <tr valign="middle">
+       <th>Версия</th>
+       <th>Описание</th>
+      </tr>
+
+     </thead>
+
+     <tbody valign="middle" class="tbody">
+      
+      <tr valign="middle">
+       <td align="left">5.0.0</td>
+       <td align="left">
+        Добавлен параметр <i><tt class="parameter">context</tt></i>
+       </td>
+      </tr>
+
+      <tr valign="middle">
+       <td align="left">5.0.0</td>
+       <td align="left">
+        До версии PHP 5.0.0 параметр <i><tt class="parameter">flags</tt></i>
+        использовал только <a href="ini.core.html#ini.include-path" class="link">include_path</a>
+        и для его включения необходимо было передать 1
+       </td>
+      </tr>
+
+      <tr valign="middle">
+       <td align="left">4.3.0</td>
+       <td align="left">
+        <span class="function"><b>file()</b></span> стала безопасной для обработки
+        бинарных данных
+       </td>
+      </tr>
+
+     </tbody>
+    
+   </table>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-function.file-examples">
+  <h3 class="title">Примеры</h3>
+  <p class="para">
+   <div class="example" id="example-2119">
+    <p><b>Пример #1 Пример использования <span class="function"><b>file()</b></span></b></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">//&nbsp;Получает&nbsp;содержимое&nbsp;файла&nbsp;в&nbsp;виде&nbsp;массива.&nbsp;В&nbsp;данном&nbsp;примере&nbsp;мы&nbsp;используем<br />//&nbsp;обращение&nbsp;по&nbsp;протоколу&nbsp;HTTP&nbsp;для&nbsp;получения&nbsp;HTML-кода&nbsp;с&nbsp;удаленного&nbsp;сервера.<br /></span><span style="color: #0000BB">$lines&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">file</span><span style="color: #007700">(</span><span style="color: #DD0000">'http://www.example.com/'</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;Осуществим&nbsp;проход&nbsp;массива&nbsp;и&nbsp;выведем&nbsp;содержимое&nbsp;в&nbsp;виде&nbsp;HTML-кода&nbsp;вместе&nbsp;с&nbsp;номерами&nbsp;строк.<br /></span><span style="color: #007700">foreach&nbsp;(</span><span style="color: #0000BB">$lines&nbsp;</span><span style="color: #007700">as&nbsp;</span><span style="color: #0000BB">$line_num&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">$line</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"Строка&nbsp;#&lt;b&gt;</span><span style="color: #007700">{</span><span style="color: #0000BB">$line_num</span><span style="color: #007700">}</span><span style="color: #DD0000">&lt;/b&gt;&nbsp;:&nbsp;"&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">htmlspecialchars</span><span style="color: #007700">(</span><span style="color: #0000BB">$line</span><span style="color: #007700">)&nbsp;.&nbsp;</span><span style="color: #DD0000">"&lt;br&nbsp;/&gt;\n"</span><span style="color: #007700">;<br />}<br /><br /></span><span style="color: #FF8000">//&nbsp;Второй&nbsp;пример.&nbsp;Получим&nbsp;содержание&nbsp;web-страницы&nbsp;в&nbsp;виде&nbsp;одной&nbsp;строки.<br />//&nbsp;См.также&nbsp;описание&nbsp;функции&nbsp;file_get_contents().<br /></span><span style="color: #0000BB">$html&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">implode</span><span style="color: #007700">(</span><span style="color: #DD0000">''</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">file</span><span style="color: #007700">(</span><span style="color: #DD0000">'http://www.example.com/'</span><span style="color: #007700">));<br /><br /></span><span style="color: #FF8000">//&nbsp;Используем&nbsp;необязательный&nbsp;параметр&nbsp;flags&nbsp;(начиная&nbsp;с&nbsp;PHP&nbsp;5)<br /></span><span style="color: #0000BB">$trimmed&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">file</span><span style="color: #007700">(</span><span style="color: #DD0000">'somefile.txt'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">FILE_IGNORE_NEW_LINES&nbsp;</span><span style="color: #007700">|&nbsp;</span><span style="color: #0000BB">FILE_SKIP_EMPTY_LINES</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+  </p>
+ </div>
+
+
+ <div class="refsect1 notes" id="refsect1-function.file-notes">
+  <h3 class="title">Примечания</h3>
+  <div class="warning"><b class="warning">Внимание</b><p class="para">При использовании SSL,
+Microsoft IIS нарушает протокол, закрывая соединение без отправки
+индикатора <i>close_notify</i>. PHP сообщит об этом как &quot;SSL: Fatal Protocol Error&quot;
+в тот момент, когда вы достигнете конца данных. Чтобы обойти это, вы должны
+установить <a href="errorfunc.configuration.html#ini.error-reporting" class="link">error_reporting</a> на
+уровень, исключающий E_WARNING.
+PHP версий 4.3.7 и старше умеет определять, что на стороне сервера находится
+проблемный IIS при открытии потока с помощью обертки <i>https://</i> и не выводит предупреждение.
+Если вы используете <span class="function"><a href="function.fsockopen.html" class="function">fsockopen()</a></span> для создания <i>ssl://</i> сокета,
+вы сами отвечаете за определение и подавление этого предупреждения.</p></div>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-function.file-seealso">
+  <h3 class="title">Смотрите также</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><span class="function"><a href="function.readfile.html" class="function" rel="rdfs-seeAlso">readfile()</a> - Выводит файл</span></li>
+    <li class="member"><span class="function"><a href="function.fopen.html" class="function" rel="rdfs-seeAlso">fopen()</a> - Открывает файл или URL</span></li>
+    <li class="member"><span class="function"><a href="function.fsockopen.html" class="function" rel="rdfs-seeAlso">fsockopen()</a> - Open Internet or Unix domain socket connection</span></li>
+    <li class="member"><span class="function"><a href="function.popen.html" class="function" rel="rdfs-seeAlso">popen()</a> - Открывает файловый указатель процесса</span></li>
+    <li class="member"><span class="function"><a href="function.file-get-contents.html" class="function" rel="rdfs-seeAlso">file_get_contents()</a> - Читает содержимое файла в строку</span></li>
+    <li class="member"><span class="function"><b>include()</b></span></li>
+    <li class="member"><span class="function"><a href="function.stream-context-create.html" class="function" rel="rdfs-seeAlso">stream_context_create()</a> - Создаёт контекст потока</span></li>
+   </ul>
+  </p>
+ </div>
+
+
+</div><hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.file-put-contents.html">file_put_contents</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.fileatime.html">fileatime</a></div>
+ <div class="up"><a href="ref.filesystem.html">Файловая система</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

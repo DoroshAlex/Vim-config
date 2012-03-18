@@ -1,0 +1,434 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Класс DirectoryIterator</title>
+
+ </head>
+ <body><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="callbackfilteriterator.construct.html">CallbackFilterIterator::__construct</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="directoryiterator.construct.html">DirectoryIterator::__construct</a></div>
+ <div class="up"><a href="spl.iterators.html">Итераторы</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="class.directoryiterator" class="reference">
+ <h1 class="title">Класс DirectoryIterator</h1>
+ 
+ 
+ <div class="partintro"><p class="verinfo">(PHP 5)</p>
+ 
+
+  <div class="section" id="directoryiterator.intro">
+   <h2 class="title">Введение</h2>
+   <p class="para">
+    Класс DirectoryIterator предоставляет простой интерфейс для просмотра
+    содержимого каталогов файловой системы.
+   </p>
+  </div>
+
+ 
+  <div class="section" id="directoryiterator.synopsis">
+   <h2 class="title">Обзор классов</h2>
+ 
+
+   <div class="classsynopsis">
+    <div class="ooclass"></div>
+ 
+
+    <div class="classsynopsisinfo">
+     <span class="ooclass">
+      <b class="classname">DirectoryIterator</b>
+     </span>
+
+     <span class="ooclass">
+      <span class="modifier">extends</span>
+      <a href="class.splfileinfo.html" class="classname">SplFileInfo</a>
+     </span>
+
+     <span class="oointerface">implements 
+      <span class="interfacename"><a href="class.iterator.html" class="interfacename">Iterator</a></span>
+     </span>
+ 
+     <span class="oointerface">, 
+      <span class="interfacename"><a href="class.traversable.html" class="interfacename">Traversable</a></span>
+     </span>
+     
+     <span class="oointerface">, 
+      <span class="interfacename"><a href="class.seekableiterator.html" class="interfacename">SeekableIterator</a></span>
+     </span>
+ 
+     {</div>
+
+ 
+    
+ 
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Методы */</div>
+    <div class="constructorsynopsis dc-description">
+    <span class="methodname"><a href="directoryiterator.construct.html" class="methodname">__construct</a></span>
+    ( <span class="methodparam"><span class="type">string</span> <tt class="parameter">$path</tt></span>
+   )</div>
+
+    <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">DirectoryIterator</span> <span class="methodname"><a href="directoryiterator.current.html" class="methodname">current</a></span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">int</span> <span class="methodname"><a href="directoryiterator.getatime.html" class="methodname">getATime</a></span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="type">string</span>
+    <span class="methodname"><a href="directoryiterator.getbasename.html" class="methodname">getBasename</a></span>
+    ([ <span class="methodparam">
+    <span class="type">string</span>
+     <tt class="parameter">$suffix</tt>
+   </span>
+  ] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">int</span> <span class="methodname"><a href="directoryiterator.getctime.html" class="methodname">getCTime</a></span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">string</span> <span class="methodname"><a href="directoryiterator.getextension.html" class="methodname">getExtension</a></span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">string</span> <span class="methodname"><a href="directoryiterator.getfilename.html" class="methodname">getFilename</a></span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">int</span> <span class="methodname"><a href="directoryiterator.getgroup.html" class="methodname">getGroup</a></span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">int</span> <span class="methodname"><a href="directoryiterator.getinode.html" class="methodname">getInode</a></span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">int</span> <span class="methodname"><a href="directoryiterator.getmtime.html" class="methodname">getMTime</a></span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">int</span> <span class="methodname"><a href="directoryiterator.getowner.html" class="methodname">getOwner</a></span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">string</span> <span class="methodname"><a href="directoryiterator.getpath.html" class="methodname">getPath</a></span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">string</span> <span class="methodname"><a href="directoryiterator.getpathname.html" class="methodname">getPathname</a></span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">int</span> <span class="methodname"><a href="directoryiterator.getperms.html" class="methodname">getPerms</a></span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">int</span> <span class="methodname"><a href="directoryiterator.getsize.html" class="methodname">getSize</a></span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">string</span> <span class="methodname"><a href="directoryiterator.gettype.html" class="methodname">getType</a></span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname"><a href="directoryiterator.isdir.html" class="methodname">isDir</a></span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname"><a href="directoryiterator.isdot.html" class="methodname">isDot</a></span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname"><a href="directoryiterator.isexecutable.html" class="methodname">isExecutable</a></span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname"><a href="directoryiterator.isfile.html" class="methodname">isFile</a></span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname"><a href="directoryiterator.islink.html" class="methodname">isLink</a></span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname"><a href="directoryiterator.isreadable.html" class="methodname">isReadable</a></span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname"><a href="directoryiterator.iswritable.html" class="methodname">isWritable</a></span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">string</span>  <span class="methodname"><a href="directoryiterator.key.html" class="methodname">key</a></span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">void</span>  <span class="methodname"><a href="directoryiterator.next.html" class="methodname">next</a></span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">void</span> <span class="methodname"><a href="directoryiterator.rewind.html" class="methodname">rewind</a></span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="type">void</span>
+    <span class="methodname"><a href="directoryiterator.seek.html" class="methodname">seek</a></span>
+    ( <span class="methodparam"><span class="type">int</span> <tt class="parameter">$position</tt></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="type">string</span>
+    <span class="methodname"><a href="directoryiterator.tostring.html" class="methodname">__toString</a></span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname"><a href="directoryiterator.valid.html" class="methodname">valid</a></span>
+    ( <span class="methodparam">void</span>
+   )</div>
+
+   }</div>
+ 
+  </div>
+ 
+
+ 
+ </div>
+ 
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+<h2>Содержание</h2><ul class="chunklist chunklist_reference"><li><a href="directoryiterator.construct.html">DirectoryIterator::__construct</a> — Создаёт новый итератор директорий по пути</li><li><a href="directoryiterator.current.html">DirectoryIterator::current</a> — Возвращает текущий элемент DirectoryIterator</li><li><a href="directoryiterator.getatime.html">DirectoryIterator::getATime</a> — Возвращает время последнего доступа к текущему элементу DirectoryIterator</li><li><a href="directoryiterator.getbasename.html">DirectoryIterator::getBasename</a> — Возвращает имя файла (без расширения) текущего элемента DirectoryIterator</li><li><a href="directoryiterator.getctime.html">DirectoryIterator::getCTime</a> — Возвращает время последнего изменения i-узла текущего элемента DirectoryIterator</li><li><a href="directoryiterator.getextension.html">DirectoryIterator::getExtension</a> — Возвращает расширение файла</li><li><a href="directoryiterator.getfilename.html">DirectoryIterator::getFilename</a> — Возвращает имя файла текущего элемента DirectoryIterator</li><li><a href="directoryiterator.getgroup.html">DirectoryIterator::getGroup</a> — Возвращает идентификатор группы текущего элемента DirectoryIterator</li><li><a href="directoryiterator.getinode.html">DirectoryIterator::getInode</a> — Возвращает inode текущего элемента DirectoryIterator</li><li><a href="directoryiterator.getmtime.html">DirectoryIterator::getMTime</a> — Возвращает время последнего изменения текущего элемента DirectoryIterator</li><li><a href="directoryiterator.getowner.html">DirectoryIterator::getOwner</a> — Возвращает индентификатор владельца текущего элемента DirectoryIterator</li><li><a href="directoryiterator.getpath.html">DirectoryIterator::getPath</a> — Возвращает путь к текущему элементу DirectoryIterator без имени файла</li><li><a href="directoryiterator.getpathname.html">DirectoryIterator::getPathname</a> — Возвращает путь и имя файла текущего элемента DirectoryIterator</li><li><a href="directoryiterator.getperms.html">DirectoryIterator::getPerms</a> — Возвращает набор прав для текущего элемента DirectoryIterator item</li><li><a href="directoryiterator.getsize.html">DirectoryIterator::getSize</a> — Возвращает размер текущего элемента DirectoryIterator</li><li><a href="directoryiterator.gettype.html">DirectoryIterator::getType</a> — Определяет тип текущего элемента DirectoryIterator</li><li><a href="directoryiterator.isdir.html">DirectoryIterator::isDir</a> — Определяет, является ли текущий элемент DirectoryIterator директорией</li><li><a href="directoryiterator.isdot.html">DirectoryIterator::isDot</a> — Определяет, является ли текущий элемент DirectoryIterator '.' или '..'</li><li><a href="directoryiterator.isexecutable.html">DirectoryIterator::isExecutable</a> — Определяет, является ли текущий элемент DirectoryIterator исполняемым</li><li><a href="directoryiterator.isfile.html">DirectoryIterator::isFile</a> — Определяет, является ли текущий элемент DirectoryIterator обычным файлом</li><li><a href="directoryiterator.islink.html">DirectoryIterator::isLink</a> — Определяет, является ли текущий элемент DirectoryIterator символической ссылкой</li><li><a href="directoryiterator.isreadable.html">DirectoryIterator::isReadable</a> — Определяет, доступен ли текущий элемент DirectoryIterator для чтения</li><li><a href="directoryiterator.iswritable.html">DirectoryIterator::isWritable</a> — Определяет, доступен ли текущий элемент DirectoryIterator для записи</li><li><a href="directoryiterator.key.html">DirectoryIterator::key</a> — Возвращает ключ текущего элемента DirectoryIterator</li><li><a href="directoryiterator.next.html">DirectoryIterator::next</a> — Перемещает указатель на следующий элемент DirectoryIterator</li><li><a href="directoryiterator.rewind.html">DirectoryIterator::rewind</a> — Устанавливает указатель на первый элемент DirectoryIterator</li><li><a href="directoryiterator.seek.html">DirectoryIterator::seek</a> — Перемещает указатель DirectoryIterator на определённую позицию</li><li><a href="directoryiterator.tostring.html">DirectoryIterator::__toString</a> — Возвращает имя файла в виде строки</li><li><a href="directoryiterator.valid.html">DirectoryIterator::valid</a> — Проверяет, является ли текущий элемент DirectoryIterator допустимым файлом</li></ul>
+</div>
+<hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="callbackfilteriterator.construct.html">CallbackFilterIterator::__construct</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="directoryiterator.construct.html">DirectoryIterator::__construct</a></div>
+ <div class="up"><a href="spl.iterators.html">Итераторы</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

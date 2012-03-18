@@ -1,0 +1,54 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Объекты и ссылки</title>
+
+ </head>
+ <body><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="language.oop5.late-static-bindings.html">Позднее статическое связывание</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="language.oop5.serialization.html">Сериализация объектов</a></div>
+ <div class="up"><a href="language.oop5.html">Классы и объекты</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="language.oop5.references" class="sect1">
+  <h2 class="title">Объекты и ссылки</h2>
+  <p class="para">
+   Одним из ключевых моментов объктно-ориентированной парадигмы PHP 5, которой
+   часто обсуждается, является &quot;передача объектов по ссылке по умолчанию&quot;. Это не совсем верно.
+   Этот раздел уточняет это понятие используя некоторые примеры.
+  </p>
+
+  <p class="para">
+   Ссылка в PHP это псевдоним (алиас), который позволяет присвоить двум переменным
+   одинаковое значение. Начиная с PHP 5 объектная переменная больше не содержит сам объект
+   как значение. Такая переменная содержит только идентификатор объекта, который позволяет
+   найти конкретный объект при обращении к нему. Когда объект передается
+   как аргумент функции, возвращается или присваивается другой переменной, то эти разные
+   переменные не являются псевдонимами (алиасами): они содержат копию идентификатора,
+   который указывает на один и тот же объект.
+  </p>
+
+  <div class="example" id="example-218">
+   <p><b>Пример #1 Ссылки и объекты</b></p>
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">class&nbsp;</span><span style="color: #0000BB">A&nbsp;</span><span style="color: #007700">{<br />&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;</span><span style="color: #0000BB">$foo&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">1</span><span style="color: #007700">;<br />}&nbsp;&nbsp;<br /><br /></span><span style="color: #0000BB">$a&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">A</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$b&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$a</span><span style="color: #007700">;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;$a&nbsp;и&nbsp;$b&nbsp;копии&nbsp;одного&nbsp;идентификатора<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;($a)&nbsp;=&nbsp;($b)&nbsp;=&nbsp;&lt;id&gt;<br /></span><span style="color: #0000BB">$b</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">foo&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">2</span><span style="color: #007700">;<br />echo&nbsp;</span><span style="color: #0000BB">$a</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">foo</span><span style="color: #007700">.</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br /><br /><br /></span><span style="color: #0000BB">$c&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">A</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$d&nbsp;</span><span style="color: #007700">=&nbsp;&amp;</span><span style="color: #0000BB">$c</span><span style="color: #007700">;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;$c&nbsp;и&nbsp;$d&nbsp;ссылки<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;($c,$d)&nbsp;=&nbsp;&lt;id&gt;<br /><br /></span><span style="color: #0000BB">$d</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">foo&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">2</span><span style="color: #007700">;<br />echo&nbsp;</span><span style="color: #0000BB">$c</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">foo</span><span style="color: #007700">.</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br /><br /><br /></span><span style="color: #0000BB">$e&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">A</span><span style="color: #007700">;<br /><br />function&nbsp;</span><span style="color: #0000BB">foo</span><span style="color: #007700">(</span><span style="color: #0000BB">$obj</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;($obj)&nbsp;=&nbsp;($e)&nbsp;=&nbsp;&lt;id&gt;<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$obj</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">foo&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">2</span><span style="color: #007700">;<br />}<br /><br /></span><span style="color: #0000BB">foo</span><span style="color: #007700">(</span><span style="color: #0000BB">$e</span><span style="color: #007700">);<br />echo&nbsp;</span><span style="color: #0000BB">$e</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">foo</span><span style="color: #007700">.</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br /><br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+   </div>
+
+   <div class="example-contents"><p>Результат выполнения данного примера:</p></div>
+   <div class="example-contents screen">
+<div class="cdata"><pre>
+2
+2
+2
+</pre></div>
+   </div>
+  </div>
+ </div><hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="language.oop5.late-static-bindings.html">Позднее статическое связывание</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="language.oop5.serialization.html">Сериализация объектов</a></div>
+ <div class="up"><a href="language.oop5.html">Классы и объекты</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

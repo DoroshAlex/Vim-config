@@ -1,0 +1,182 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Вычисляет расстояние Левенштейна между двумя строками</title>
+
+ </head>
+ <body><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.lcfirst.html">lcfirst</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.localeconv.html">localeconv</a></div>
+ <div class="up"><a href="ref.strings.html">Обработка строк</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.levenshtein" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">levenshtein</h1>
+  <p class="verinfo">(PHP 4 &gt;= 4.0.1, PHP 5)</p><p class="refpurpose"><span class="refname">levenshtein</span> &mdash; <span class="dc-title">Вычисляет расстояние Левенштейна между двумя строками</span></p>
+
+ </div>
+
+ <div class="refsect1 description" id="refsect1-function.levenshtein-description">
+  <h3 class="title">Описание</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">int</span> <span class="methodname"><b>levenshtein</b></span>
+    ( <span class="methodparam"><span class="type">string</span> <tt class="parameter">$str1</tt></span>
+   , <span class="methodparam"><span class="type">string</span> <tt class="parameter">$str2</tt></span>
+   )</div>
+
+  <div class="methodsynopsis dc-description">
+   <span class="type">int</span> <span class="methodname"><b>levenshtein</b></span>
+    ( <span class="methodparam"><span class="type">string</span> <tt class="parameter">$str1</tt></span>
+   , <span class="methodparam"><span class="type">string</span> <tt class="parameter">$str2</tt></span>
+   , <span class="methodparam"><span class="type">int</span> <tt class="parameter">$cost_ins</tt></span>
+   , <span class="methodparam"><span class="type">int</span> <tt class="parameter">$cost_rep</tt></span>
+   , <span class="methodparam"><span class="type">int</span> <tt class="parameter">$cost_del</tt></span>
+   )</div>
+
+  <p class="para rdfs-comment">
+   Расстояние Левенштейна - это минимальное количество вставок, замен и
+   удалений символов, необходимое для преобразования
+   <i><tt class="parameter">str1</tt></i> в <i><tt class="parameter">str2</tt></i>.
+   Сложность алгоритма равна <i>O(m*n)</i>,
+   где <i>n</i> и <i>m</i> - длины строк
+   <i><tt class="parameter">str1</tt></i> и <i><tt class="parameter">str2</tt></i> (неплохо по
+   сравнению с <span class="function"><a href="function.similar-text.html" class="function">similar_text()</a></span>, имеющей сложность O(max(n,m)**3),
+   но все же довольно много).
+  </p>
+  <p class="para">
+   В простейшей форме функция принимает в качестве аргументов две строки
+   и возвращает минимальное количество вставок, замен и
+   удалений символов, необходимое для преобразования
+   <i><tt class="parameter">str1</tt></i> в <i><tt class="parameter">str2</tt></i>.
+  </p>
+  <p class="para">
+   Второй вариант принимает три дополнительных аргумента, задающих
+   стоимость операций вставки, замены и удаления. Этот вариант
+   универсальнее первого, но не так эффективен.
+  </p>
+ </div>
+
+
+<div class="refsect1 parameters" id="refsect1-function.levenshtein-parameters">
+  <h3 class="title">Список параметров</h3>
+  <p class="para">
+   <dl>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">str1</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Одна из строк, для которых вычисляется расстояние Левенштейна.
+      </p>
+     </dd>
+
+    </dt>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">str2</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Одна из строк, для которых вычисляется расстояние Левенштейна.
+      </p>
+     </dd>
+
+    </dt>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">cost_ins</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Определяет стоимость вставки.
+      </p>
+     </dd>
+
+    </dt>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">cost_rep</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Определяет стоимость замены.
+      </p>
+     </dd>
+
+    </dt>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">cost_del</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Определяет стоимость удаления.
+      </p>
+     </dd>
+
+    </dt>
+
+   </dl>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-function.levenshtein-returnvalues">
+  <h3 class="title">Возвращаемые значения</h3>
+  <p class="para">
+   Эта функция возвращает расстояние Левенштейна между двумя строками, или
+   -1, если хотя бы одна из строк длиннее 255 символов.
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-function.levenshtein-examples">
+  <h3 class="title">Примеры</h3>
+  <p class="para">
+   <div class="example" id="example-4348">
+    <p><b>Пример #1 Пример использования <span class="function"><b>levenshtein()</b></span></b></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">//&nbsp;введенное&nbsp;слово&nbsp;с&nbsp;опечаткой<br /></span><span style="color: #0000BB">$input&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'carrrot'</span><span style="color: #007700">;<br /><br /></span><span style="color: #FF8000">//&nbsp;массив&nbsp;сверяемых&nbsp;слов<br /></span><span style="color: #0000BB">$words&nbsp;&nbsp;</span><span style="color: #007700">=&nbsp;array(</span><span style="color: #DD0000">'apple'</span><span style="color: #007700">,</span><span style="color: #DD0000">'pineapple'</span><span style="color: #007700">,</span><span style="color: #DD0000">'banana'</span><span style="color: #007700">,</span><span style="color: #DD0000">'orange'</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'radish'</span><span style="color: #007700">,</span><span style="color: #DD0000">'carrot'</span><span style="color: #007700">,</span><span style="color: #DD0000">'pea'</span><span style="color: #007700">,</span><span style="color: #DD0000">'bean'</span><span style="color: #007700">,</span><span style="color: #DD0000">'potato'</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;кратчайшее&nbsp;расстояние&nbsp;пока&nbsp;еще&nbsp;не&nbsp;найдено<br /></span><span style="color: #0000BB">$shortest&nbsp;</span><span style="color: #007700">=&nbsp;-</span><span style="color: #0000BB">1</span><span style="color: #007700">;<br /><br /></span><span style="color: #FF8000">//&nbsp;проходим&nbsp;по&nbsp;словам&nbsp;для&nbsp;нахождения&nbsp;самого&nbsp;близкого&nbsp;варианта<br /></span><span style="color: #007700">foreach&nbsp;(</span><span style="color: #0000BB">$words&nbsp;</span><span style="color: #007700">as&nbsp;</span><span style="color: #0000BB">$word</span><span style="color: #007700">)&nbsp;{<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;вычисляем&nbsp;расстояние&nbsp;между&nbsp;входным&nbsp;словом&nbsp;и&nbsp;текущим<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$lev&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">levenshtein</span><span style="color: #007700">(</span><span style="color: #0000BB">$input</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$word</span><span style="color: #007700">);<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;проверяем&nbsp;полное&nbsp;совпадение<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">if&nbsp;(</span><span style="color: #0000BB">$lev&nbsp;</span><span style="color: #007700">==&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">)&nbsp;{<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;это&nbsp;ближайшее&nbsp;слово&nbsp;(точное&nbsp;совпадение)<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$closest&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$word</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$shortest&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">;<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;выходим&nbsp;из&nbsp;цикла&nbsp;-&nbsp;мы&nbsp;нашли&nbsp;точное&nbsp;совпадение<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">break;<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;если&nbsp;это&nbsp;расстояние&nbsp;меньше&nbsp;следующего&nbsp;наименьшего&nbsp;расстояния<br />&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;ИЛИ&nbsp;если&nbsp;следующее&nbsp;самое&nbsp;короткое&nbsp;слово&nbsp;еще&nbsp;не&nbsp;было&nbsp;найдено<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">if&nbsp;(</span><span style="color: #0000BB">$lev&nbsp;</span><span style="color: #007700">&lt;=&nbsp;</span><span style="color: #0000BB">$shortest&nbsp;</span><span style="color: #007700">||&nbsp;</span><span style="color: #0000BB">$shortest&nbsp;</span><span style="color: #007700">&lt;&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;set&nbsp;the&nbsp;closest&nbsp;match,&nbsp;and&nbsp;shortest&nbsp;distance<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$closest&nbsp;&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$word</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$shortest&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$lev</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />}<br /><br />echo&nbsp;</span><span style="color: #DD0000">"Вы&nbsp;ввели:&nbsp;</span><span style="color: #0000BB">$input</span><span style="color: #DD0000">\n"</span><span style="color: #007700">;<br />if&nbsp;(</span><span style="color: #0000BB">$shortest&nbsp;</span><span style="color: #007700">==&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"Найдено&nbsp;точное&nbsp;совпадение:&nbsp;</span><span style="color: #0000BB">$closest</span><span style="color: #DD0000">\n"</span><span style="color: #007700">;<br />}&nbsp;else&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"Вы&nbsp;не&nbsp;имели&nbsp;в&nbsp;виду:&nbsp;</span><span style="color: #0000BB">$closest</span><span style="color: #DD0000">?\n"</span><span style="color: #007700">;<br />}<br /><br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+    <div class="example-contents"><p>Результат выполнения данного примера:</p></div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+Вы ввели: carrrot
+Вы не имели в виду: carrot?
+</pre></div>
+    </div>
+   </div>
+  </p>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-function.levenshtein-seealso">
+  <h3 class="title">Смотрите также</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><span class="function"><a href="function.soundex.html" class="function" rel="rdfs-seeAlso">soundex()</a> - Возвращает ключ soundex для строки</span></li>
+    <li class="member"><span class="function"><a href="function.similar-text.html" class="function" rel="rdfs-seeAlso">similar_text()</a> - Вычисляет степень похожести двух строк</span></li>
+    <li class="member"><span class="function"><a href="function.metaphone.html" class="function" rel="rdfs-seeAlso">metaphone()</a> - Возвращает ключ metaphone для строки</span></li>
+   </ul>
+  </p>
+ </div>
+
+
+</div><hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.lcfirst.html">lcfirst</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.localeconv.html">localeconv</a></div>
+ <div class="up"><a href="ref.strings.html">Обработка строк</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

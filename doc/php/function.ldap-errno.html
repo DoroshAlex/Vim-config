@@ -1,0 +1,102 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Возвратить номер ошибки LDAP последней команды</title>
+
+ </head>
+ <body><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.ldap-err2str.html">ldap_err2str</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.ldap-error.html">ldap_error</a></div>
+ <div class="up"><a href="ref.ldap.html">LDAP</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.ldap-errno" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">ldap_errno</h1>
+  <p class="verinfo">(PHP 4, PHP 5)</p><p class="refpurpose"><span class="refname">ldap_errno</span> &mdash; <span class="dc-title">Возвратить номер ошибки LDAP последней команды</span></p>
+
+ </div>
+ 
+ <div class="refsect1 description" id="refsect1-function.ldap-errno-description">
+  <h3 class="title">Описание</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">int</span> <span class="methodname"><b>ldap_errno</b></span>
+    ( <span class="methodparam"><span class="type">resource</span> <tt class="parameter">$link_identifier</tt></span>
+   )</div>
+
+  <p class="para rdfs-comment">
+   Возвращает стандартизированный код ошибки, возвращенный последней командой LDAP.
+   Это число может быть преобразовано в текстовое сообщение об ошибке, используя
+   <span class="function"><a href="function.ldap-err2str.html" class="function">ldap_err2str()</a></span>.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-function.ldap-errno-parameters">
+  <h3 class="title">Список параметров</h3>
+  <p class="para">
+   <dl>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">link_identifier</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Идентификатор ссылки LDAP, возвращенный <span class="function"><a href="function.ldap-connect.html" class="function">ldap_connect()</a></span>.
+      </p>
+     </dd>
+
+    </dt>
+
+   </dl>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-function.ldap-errno-returnvalues">
+  <h3 class="title">Возвращаемые значения</h3>
+  <p class="para">
+   Возвращает код ошибки LDAP последней команды для этой ссылки.
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-function.ldap-errno-examples">
+  <h3 class="title">Примеры</h3>
+  <p class="para">
+   Если вы не снизите достаточно уровень предупреждений в <var class="filename">php.ini</var>, 
+   или префикс ваших LDAP-команд не будет с символом @ для подавления вывода предупреждений, 
+   генерируемые ошибки будут также отображаться в вашем HTML выводе.   
+   <div class="example" id="example-3921">
+    <p><b>Пример #1 Генерирование и фиксация ошибки</b></p>
+<div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">//&nbsp;Этот&nbsp;пример&nbsp;содержит&nbsp;ошибку,&nbsp;которую&nbsp;мы&nbsp;поймаем<br /></span><span style="color: #0000BB">$ld&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">ldap_connect</span><span style="color: #007700">(</span><span style="color: #DD0000">"localhost"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$bind&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">ldap_bind</span><span style="color: #007700">(</span><span style="color: #0000BB">$ld</span><span style="color: #007700">);<br /></span><span style="color: #FF8000">//&nbsp;синтаксическая&nbsp;ошибка&nbsp;в&nbsp;выражении&nbsp;фильтра&nbsp;(errno&nbsp;87),<br />//&nbsp;должно&nbsp;быть&nbsp;"objectclass=*"&nbsp;для&nbsp;того,&nbsp;чтобы&nbsp;это&nbsp;работало.<br /></span><span style="color: #0000BB">$res&nbsp;</span><span style="color: #007700">=&nbsp;&nbsp;@</span><span style="color: #0000BB">ldap_search</span><span style="color: #007700">(</span><span style="color: #0000BB">$ld</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"o=Myorg,&nbsp;c=DE"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"objectclass"</span><span style="color: #007700">);<br />if&nbsp;(!</span><span style="color: #0000BB">$res</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"LDAP-Errno:&nbsp;"&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">ldap_errno</span><span style="color: #007700">(</span><span style="color: #0000BB">$ld</span><span style="color: #007700">)&nbsp;.&nbsp;</span><span style="color: #DD0000">"&lt;br&nbsp;/&gt;\n"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"LDAP-Error:&nbsp;"&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">ldap_error</span><span style="color: #007700">(</span><span style="color: #0000BB">$ld</span><span style="color: #007700">)&nbsp;.&nbsp;</span><span style="color: #DD0000">"&lt;br&nbsp;/&gt;\n"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;die(</span><span style="color: #DD0000">"Argh!&lt;br&nbsp;/&gt;\n"</span><span style="color: #007700">);<br />}<br /></span><span style="color: #0000BB">$info&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">ldap_get_entries</span><span style="color: #007700">(</span><span style="color: #0000BB">$ld</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$res</span><span style="color: #007700">);<br />echo&nbsp;</span><span style="color: #0000BB">$info</span><span style="color: #007700">[</span><span style="color: #DD0000">"count"</span><span style="color: #007700">]&nbsp;.&nbsp;</span><span style="color: #DD0000">"&nbsp;подходящих&nbsp;записей.&lt;br&nbsp;/&gt;\n"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+  </p>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-function.ldap-errno-seealso">
+  <h3 class="title">Смотрите также</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><span class="function"><a href="function.ldap-err2str.html" class="function" rel="rdfs-seeAlso">ldap_err2str()</a> - Преобразовать код ошибки LDAP в строковое сообщение об ошибке</span></li>
+    <li class="member"><span class="function"><a href="function.ldap-error.html" class="function" rel="rdfs-seeAlso">ldap_error()</a> - Возвратить сообщение об ошибке LDAP последней команды</span></li>
+   </ul>
+  </p>
+ </div>
+
+
+</div><hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.ldap-err2str.html">ldap_err2str</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.ldap-error.html">ldap_error</a></div>
+ <div class="up"><a href="ref.ldap.html">LDAP</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

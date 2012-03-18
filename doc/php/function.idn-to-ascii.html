@@ -1,0 +1,179 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Convert domain name to IDNA ASCII form.</title>
+
+ </head>
+ <body><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="ref.intl.idn.html">IDN Функции</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.idn-to-unicode.html">idn_to_unicode</a></div>
+ <div class="up"><a href="ref.intl.idn.html">IDN Функции</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.idn-to-ascii" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">idn_to_ascii</h1>
+  <p class="verinfo">(PHP 5 &gt;= 5.3.0, PECL intl &gt;= 1.0.2, PECL idn &gt;= 0.1)</p><p class="refpurpose"><span class="refname">idn_to_ascii</span> &mdash; <span class="dc-title">Convert domain name to IDNA ASCII form.</span></p>
+
+ </div>
+ <div class="refsect1 description" id="refsect1-function.idn-to-ascii-description">
+  <h3 class="title">Описание</h3>
+  <p class="para">Procedural style</p>
+  <div class="methodsynopsis dc-description">
+   <span class="type">string</span> <span class="methodname"><b>idn_to_ascii</b></span>
+    ( <span class="methodparam"><span class="type">string</span> <tt class="parameter">$domain</tt></span>
+   [, <span class="methodparam"><span class="type">int</span> <tt class="parameter">$options</tt><span class="initializer"> = 0</span></span>
+   [, <span class="methodparam"><span class="type">int</span> <tt class="parameter">$variant</tt><span class="initializer"> = INTL_IDNA_VARIANT_2003</span></span>
+   [, <span class="methodparam"><span class="type">array</span> <tt class="parameter reference">&$idna_info</tt></span>
+  ]]] )</div>
+
+  <p class="para rdfs-comment">
+   This function converts Unicode domain name to IDNA ASCII-compatible format.  
+  </p> 
+  </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-function.idn-to-ascii-parameters">
+  <h3 class="title">Список параметров</h3>
+  <p class="para">
+   <dl>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">domain</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Domain to convert. In PHP 5 must be UTF-8 encoded.
+      </p>
+     </dd>
+
+    </dt>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">options</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Conversion options - combination of IDNA_* constants
+       (except IDNA_ERROR_* constants).
+      </p>
+     </dd>
+
+    </dt>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">variant</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Either <b><tt>INTL_IDNA_VARIANT_2003</tt></b> for IDNA 2003 or
+       <b><tt>INTL_IDNA_VARIANT_UTS46</tt></b> for UTS #46.
+      </p>
+     </dd>
+
+    </dt>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">idna_info</tt></i></span>
+     <dd>
+
+      <p class="para">
+       This parameter can be used only if
+       <b><tt>INTL_IDNA_VARIANT_UTS46</tt></b> was used for
+       <i><tt class="parameter">variant</tt></i>. In that case, it will be filled with an
+       array with the keys <i>&#039;result&#039;</i>, the possibly illegal
+       result of the transformation,
+       <i>&#039;isTransitionalDifferent&#039;</i>, a boolean indicating
+       whether the usage of the transitional mechanisms of UTS #46 either has
+       or would have changed the result and <i>&#039;errors&#039;</i>,
+       which is an <span class="type"><a href="language.types.integer.html" class="type int">int</a></span> representing a bitset of the error
+       constants IDNA_ERROR_*.
+      </p>
+     </dd>
+
+    </dt>
+
+   </dl>
+
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 returnvalues" id="refsect1-function.idn-to-ascii-returnvalues">
+  <h3 class="title">Возвращаемые значения</h3>
+  <p class="para">
+   Domain name encoded in ASCII-compatible form.  или <b><tt>FALSE</tt></b> в случае возникновения ошибки
+  </p>
+ </div>
+
+
+ <div class="refsect1 changelog" id="refsect1-function.idn-to-ascii-changelog">
+  <h3 class="title">Список изменений</h3>
+  <p class="para">
+   <table class="doctable informaltable">
+    
+     <thead valign="middle">
+      <tr valign="middle">
+       <th>Версия</th>
+       <th>Описание</th>
+      </tr>
+
+     </thead>
+
+     <tbody valign="middle" class="tbody">
+      <tr valign="middle">
+       <td align="left">5.4.0/PECL 2.0.0b1</td>
+       <td align="left">
+        Added the parameters <i><tt class="parameter">variant</tt></i> and
+        <i><tt class="parameter">idna_info</tt></i>; UTS #46 support.
+       </td>
+      </tr>
+
+     </tbody>
+    
+   </table>
+
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 examples" id="refsect1-function.idn-to-ascii-examples">
+  <h3 class="title">Примеры</h3>
+  <div class="example" id="example-2393">
+   <p><b>Пример #1 <span class="function"><b>idn_to_ascii()</b></span> example</b></p>
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /><br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">idn_to_ascii</span><span style="color: #007700">(</span><span style="color: #DD0000">'täst.de'</span><span style="color: #007700">);&nbsp;<br /><br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+   </div>
+
+  </div>
+  <p class="para">Результат выполнения данного примера:</p>
+  <div class="example-contents screen">
+<div class="cdata"><pre>
+xn--tst-qla.de
+</pre></div>
+  </div>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-function.idn-to-ascii-seealso">
+  <h3 class="title">Смотрите также</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><span class="function"><a href="function.idn-to-unicode.html" class="function" rel="rdfs-seeAlso">idn_to_unicode()</a> - Псевдоним idn_to_utf8</span></li>
+   </ul>
+  </p>
+ </div>
+
+</div><hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="ref.intl.idn.html">IDN Функции</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.idn-to-unicode.html">idn_to_unicode</a></div>
+ <div class="up"><a href="ref.intl.idn.html">IDN Функции</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

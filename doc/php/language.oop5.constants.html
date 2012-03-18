@@ -1,0 +1,69 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Константы классов</title>
+
+ </head>
+ <body><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="language.oop5.properties.html">Свойства</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="language.oop5.autoload.html">Автоматическая загрузка классов</a></div>
+ <div class="up"><a href="language.oop5.html">Классы и объекты</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="language.oop5.constants" class="sect1">
+  <h2 class="title">Константы классов</h2>
+  <p class="para">
+   Константы также могут быть объявлены и в пределах одного класса.
+   Отличие переменных и констант состоит в том, что при объявлении последних
+   или при обращении к ним не используется символ <var class="varname"><var class="varname">$</var></var>.
+  </p>
+  <p class="para">
+   Значение должно быть неизменяемым выражением, не (к примеру) переменной,
+   свойством, результатом математической операции или вызовом функции.
+  </p>
+  <p class="para">
+   Интерфейсы также могут содержать константы (<i>constants</i>). За примерами
+   обращайтесь к разделу об <a href="language.oop5.interfaces.html" class="link">интерфейсах</a>.
+  </p>
+  <p class="para">
+   Начиная с версии PHP 5.3.0, стало возможным обратиться к классу с помощью
+   переменной. Значение переменной не должно быть ключевым словом
+   (например, <i>self</i>, <i>parent</i> или
+   <i>static</i>).
+  </p>
+  <div class="example" id="example-163">
+   <p><b>Пример #1 Объявление и использование константы</b></p>
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">class&nbsp;</span><span style="color: #0000BB">MyClass<br /></span><span style="color: #007700">{<br />&nbsp;&nbsp;&nbsp;&nbsp;const&nbsp;</span><span style="color: #0000BB">constant&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'значение&nbsp;константы'</span><span style="color: #007700">;<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;function&nbsp;</span><span style="color: #0000BB">showConstant</span><span style="color: #007700">()&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;&nbsp;</span><span style="color: #0000BB">self</span><span style="color: #007700">::</span><span style="color: #0000BB">constant&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />}<br /><br />echo&nbsp;</span><span style="color: #0000BB">MyClass</span><span style="color: #007700">::</span><span style="color: #0000BB">constant&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br /><br /></span><span style="color: #0000BB">$classname&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">"MyClass"</span><span style="color: #007700">;<br />echo&nbsp;</span><span style="color: #0000BB">$classname</span><span style="color: #007700">::</span><span style="color: #0000BB">constant&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;&nbsp;</span><span style="color: #FF8000">//&nbsp;начиная&nbsp;с&nbsp;версии&nbsp;PHP&nbsp;5.3.0<br /><br /></span><span style="color: #0000BB">$class&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">MyClass</span><span style="color: #007700">();<br /></span><span style="color: #0000BB">$class</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">showConstant</span><span style="color: #007700">();<br /><br />echo&nbsp;</span><span style="color: #0000BB">$class</span><span style="color: #007700">::</span><span style="color: #0000BB">constant</span><span style="color: #007700">.</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;&nbsp;</span><span style="color: #FF8000">//&nbsp;начиная&nbsp;с&nbsp;версии&nbsp;PHP&nbsp;5.3.0<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+   </div>
+
+  </div>
+  
+  <div class="example" id="example-164">
+   <p><b>Пример #2 Пример со статичными данными</b></p>
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">class&nbsp;</span><span style="color: #0000BB">foo&nbsp;</span><span style="color: #007700">{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;Начиная&nbsp;с&nbsp;версии&nbsp;PHP&nbsp;5.3.0<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">const&nbsp;</span><span style="color: #0000BB">bar&nbsp;</span><span style="color: #007700">=&nbsp;&lt;&lt;&lt;'EOT'<br /></span><span style="color: #DD0000">bar<br /></span><span style="color: #007700">EOT;<br />}<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+   </div>
+
+   <div class="example-contents"><p>
+    В отличие от heredoc, nowdoc может быть использован в любом контексте статичных
+    данных.
+   </p></div>
+  </div>
+  <blockquote class="note"><p><b class="note">Замечание</b>: 
+   <p class="para">
+    Поддержка nowdoc была добавлена в версии PHP 5.3.0.
+   </p>
+  </p></blockquote>
+ </div><hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="language.oop5.properties.html">Свойства</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="language.oop5.autoload.html">Автоматическая загрузка классов</a></div>
+ <div class="up"><a href="language.oop5.html">Классы и объекты</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

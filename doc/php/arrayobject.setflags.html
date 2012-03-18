@@ -1,0 +1,129 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Устанавливает флаги поведения</title>
+
+ </head>
+ <body><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="arrayobject.serialize.html">ArrayObject::serialize</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="arrayobject.setiteratorclass.html">ArrayObject::setIteratorClass</a></div>
+ <div class="up"><a href="class.arrayobject.html">ArrayObject</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="arrayobject.setflags" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">ArrayObject::setFlags</h1>
+  <p class="verinfo">(PHP 5 &gt;= 5.1.0)</p><p class="refpurpose"><span class="refname">ArrayObject::setFlags</span> &mdash; <span class="dc-title">Устанавливает флаги поведения</span></p>
+
+ </div>
+ <div class="refsect1 description" id="refsect1-arrayobject.setflags-description">
+  <h3 class="title">Описание</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type"><span class="type void">void</span></span> <span class="methodname"><b>ArrayObject::setFlags</b></span>
+    ( <span class="methodparam"><span class="type">int</span> <tt class="parameter">$flags</tt></span>
+   )</div>
+
+  <p class="para rdfs-comment">
+   Устанавливает флаги, которые влияют на поведение ArrayObject.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-arrayobject.setflags-parameters">
+  <h3 class="title">Список параметров</h3>
+  <p class="para">
+   <dl>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">flags</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Новое поведение ArrayObject.
+       Допускается либо битовую маску, либо именованные константы. 
+       Использование именованных констант настоятельно рекомендуется для обеспечения совместимости 
+       с будущими версиями.
+      </p>
+      <p class="para">
+       Доступные флаги поведения перечислены ниже.
+       Фактические значения этих флагов описаны в разделе <a href="class.arrayobject.html#arrayobject.constants" class="link">предопределенные константы</a>.
+       <table class="doctable table">
+        <caption><b>Флаги поведения ArrayObject</b></caption>
+        
+         <thead valign="middle">
+          <tr valign="middle">
+           <th>Значение</th>
+           <th>Константа</th>
+          </tr>
+
+         </thead>
+
+         <tbody valign="middle" class="tbody">
+          <tr valign="middle">
+           <td align="left">1</td>
+           <td align="left">
+            <a href="class.arrayobject.html#arrayobject.constants.std-prop-list" class="link">ArrayObject::STD_PROP_LIST</a>
+           </td>
+          </tr>
+
+          <tr valign="middle">
+           <td align="left">2</td>
+           <td align="left">
+            <a href="class.arrayobject.html#arrayobject.constants.array-as-props" class="link">ArrayObject::ARRAY_AS_PROPS</a>
+           </td>
+          </tr>
+
+         </tbody>
+        
+       </table>
+
+      </p>
+     </dd>
+
+    </dt>
+
+   </dl>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-arrayobject.setflags-returnvalues">
+  <h3 class="title">Возвращаемые значения</h3>
+  <p class="para">
+   Эта функция не возвращает значения после выполнения.
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-arrayobject.setflags-examples">
+  <h3 class="title">Примеры</h3>
+  <p class="para">
+   <div class="example" id="example-3592">
+    <p><b>Пример #1 Пример использования <span class="function"><b>ArrayObject::setFlags()</b></span></b></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">//&nbsp;Массив&nbsp;с&nbsp;количеством&nbsp;фруктов<br /></span><span style="color: #0000BB">$fruits&nbsp;</span><span style="color: #007700">=&nbsp;array(</span><span style="color: #DD0000">"lemons"&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">1</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"oranges"&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">4</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"bananas"&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">5</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"apples"&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">10</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">$fruitsArrayObject&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">ArrayObject</span><span style="color: #007700">(</span><span style="color: #0000BB">$fruits</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;Попытка&nbsp;использовать&nbsp;ключ&nbsp;массива&nbsp;как&nbsp;свойство<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$fruitsArrayObject</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">lemons</span><span style="color: #007700">);<br /></span><span style="color: #FF8000">//&nbsp;Установка&nbsp;флага,&nbsp;позволяющего&nbsp;использовать&nbsp;ключи&nbsp;массива&nbsp;как&nbsp;свойства&nbsp;ArrayObject<br /></span><span style="color: #0000BB">$fruitsArrayObject</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setFlags</span><span style="color: #007700">(</span><span style="color: #0000BB">ArrayObject</span><span style="color: #007700">::</span><span style="color: #0000BB">ARRAY_AS_PROPS</span><span style="color: #007700">);<br /></span><span style="color: #FF8000">//&nbsp;Новая&nbsp;попытка<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$fruitsArrayObject</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">lemons</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+    <div class="example-contents"><p>Результат выполнения данного примера:</p></div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+NULL
+int(1)
+</pre></div>
+    </div>
+   </div>
+  </p>
+ </div>
+
+
+</div><hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="arrayobject.serialize.html">ArrayObject::serialize</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="arrayobject.setiteratorclass.html">ArrayObject::setIteratorClass</a></div>
+ <div class="up"><a href="class.arrayobject.html">ArrayObject</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

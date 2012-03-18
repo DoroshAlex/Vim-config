@@ -1,0 +1,49 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>else</title>
+
+ </head>
+ <body><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="control-structures.if.html">if</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="control-structures.elseif.html">elseif/else if</a></div>
+ <div class="up"><a href="language.control-structures.html">Управляющие конструкции</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="control-structures.else" class="sect1">
+ <h2 class="title"><i>else</i></h2>
+ <p class="verinfo">(PHP 4, PHP5)</p>
+ <p class="para">
+  Часто необходимо выполнить одно выражение, если определенное условие
+  верно, и другое выражение, если условие не верно. Именно
+  для этого <i>else</i> и используется.  <i>else</i>
+  расширяет оператор <i>if</i>, чтобы выполнить выражение,
+  в лучае если условие в операторе <i>if</i> 
+  равно <b><tt>FALSE</tt></b>.  К примеру, 
+  следующий код выведет <span class="computeroutput">a больше чем
+  b</span>, если <var class="varname"><var class="varname">$a</var></var> больше, чем 
+  <var class="varname"><var class="varname">$b</var></var>, и <span class="computeroutput">a НЕ больше,
+  чем b</span> в противном случае:
+  <div class="informalexample">
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">if&nbsp;(</span><span style="color: #0000BB">$a&nbsp;</span><span style="color: #007700">&gt;&nbsp;</span><span style="color: #0000BB">$b</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"a&nbsp;больше,&nbsp;чем&nbsp;b"</span><span style="color: #007700">;<br />}&nbsp;else&nbsp;{<br />&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"a&nbsp;НЕ&nbsp;больше,&nbsp;чем&nbsp;b"</span><span style="color: #007700">;<br />}<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+   </div>
+
+  </div>
+
+  Выражение <i>else</i> выполняется только, если
+  выражение <i>if</i> эквивалентно 
+  <b><tt>FALSE</tt></b>, и если нет других любых 
+  выражений  <i>elseif</i>, или если они все равны
+  <b><tt>FALSE</tt></b> также (смотри <a href="control-structures.elseif.html" class="link">elseif</a>).
+
+ </p>
+</div><hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="control-structures.if.html">if</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="control-structures.elseif.html">elseif/else if</a></div>
+ <div class="up"><a href="language.control-structures.html">Управляющие конструкции</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

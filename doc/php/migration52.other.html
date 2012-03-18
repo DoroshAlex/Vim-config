@@ -1,0 +1,56 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Другие улучшения</title>
+
+ </head>
+ <body><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="migration52.errorrep.html">Сообщения об ошибках</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="migration51.html">Переход с PHP 5.0.x на PHP 5.1.x</a></div>
+ <div class="up"><a href="migration52.html">Переход с PHP 5.1.x на PHP 5.2.x</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="migration52.other" class="section">
+  <h2 class="title">Другие улучшения</h2>
+  <ul class="itemizedlist">
+   <li class="listitem">
+    <span class="simpara">
+     Улучшено управление памятью и увеличен лимит памяти по умолчанию.
+    </span>
+    <span class="simpara">
+     Новый менеджер памяти выделяет меньше памяти и работает быстрее, чем
+     предыдущая реализация. Он запрашивает память большими блоками и затем
+     управляет кучей сам. Значение <i>memory_limit</i> в
+     <var class="filename">php.ini</var> проверяется не при каждом вызове <i>emalloc()</i>,
+     как раньше, а только при действительном запросе памяти у системы. Это
+     означает, что <i>memory_limit</i> гораздо более точен, чем
+     раньше, так как старый менеджер памяти не учитывал дополнительные затраты
+     библиотеки <i>malloc</i>.
+    </span>
+    <span class="simpara">
+     Благодаря новому механизму может показаться, что используется больше памяти,
+     тогда как на самом деле это не так. Чтобы скомпенсировать это кажущееся
+     увеличение, значение <i>memory_limit</i> также увеличено с 8 до 16
+     мегабайт.
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     Добавлена поддержка конструкторов в интерфейсах. Это позволяет проверять
+     сигнатуру конструкторов в реализациях интерфейса.
+    </span>
+    <span class="simpara">
+     Начиная с PHP 5.2.0, интерфейсы могут содержать конструкторы. Если вы объявляете
+     конструктор в интерфейсе, каждая его реализация должна иметь конструктор с
+     той же сигнатурой, что и конструктор интерфейса. Под &quot;сигнатурой&quot; мы понимаем
+     возвращаемый тип и набор параметров, включая указание типов и передачу параметров
+     по ссылке или значению.
+    </span>
+   </li>
+  </ul>
+ </div><hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="migration52.errorrep.html">Сообщения об ошибках</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="migration51.html">Переход с PHP 5.0.x на PHP 5.1.x</a></div>
+ <div class="up"><a href="migration52.html">Переход с PHP 5.1.x на PHP 5.2.x</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

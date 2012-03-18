@@ -1,0 +1,92 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Извлекает название локального или удалённого сокета</title>
+
+ </head>
+ <body><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.stream-socket-enable-crypto.html">stream_socket_enable_crypto</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.stream-socket-pair.html">stream_socket_pair</a></div>
+ <div class="up"><a href="ref.stream.html">Stream Функции</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.stream-socket-get-name" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">stream_socket_get_name</h1>
+  <p class="verinfo">(PHP 5)</p><p class="refpurpose"><span class="refname">stream_socket_get_name</span> &mdash; <span class="dc-title">Извлекает название локального или удалённого сокета</span></p>
+
+ </div>
+ 
+ <div class="refsect1 description" id="refsect1-function.stream-socket-get-name-description">
+  <h3 class="title">Описание</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">string</span> <span class="methodname"><b>stream_socket_get_name</b></span>
+    ( <span class="methodparam"><span class="type">resource</span> <tt class="parameter">$handle</tt></span>
+   , <span class="methodparam"><span class="type">bool</span> <tt class="parameter">$want_peer</tt></span>
+   )</div>
+
+  <p class="para rdfs-comment">
+   Возвращает локальное или удалённое название указанного сокетного соединения.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-function.stream-socket-get-name-parameters">
+  <h3 class="title">Список параметров</h3>
+  <p class="para">
+   <dl>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">handle</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Сокет, название которого нужно получить.
+      </p>
+     </dd>
+
+    </dt>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">want_peer</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Если установлено в <b><tt>TRUE</tt></b>, то <i>удалённое</i> название сокета будет возвращено, если установлено
+       в <b><tt>FALSE</tt></b>, то <i>локальное</i> название сокета будет возвращено.
+      </p>
+     </dd>
+
+    </dt>
+
+   </dl>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-function.stream-socket-get-name-returnvalues">
+  <h3 class="title">Возвращаемые значения</h3>
+  <p class="para">
+   Название сокета.
+  </p>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-function.stream-socket-get-name-seealso">
+  <h3 class="title">Смотрите также</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><span class="function"><a href="function.stream-socket-accept.html" class="function" rel="rdfs-seeAlso">stream_socket_accept()</a> - Принимает соединение на сокете, созданном c помощью функции stream_socket_server</span></li>
+   </ul>
+  </p>
+ </div>
+
+</div><hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.stream-socket-enable-crypto.html">stream_socket_enable_crypto</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.stream-socket-pair.html">stream_socket_pair</a></div>
+ <div class="up"><a href="ref.stream.html">Stream Функции</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

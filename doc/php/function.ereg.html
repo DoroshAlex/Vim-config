@@ -1,0 +1,201 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Совпадение с регулярным выражением</title>
+
+ </head>
+ <body><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.ereg-replace.html">ereg_replace</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.eregi-replace.html">eregi_replace</a></div>
+ <div class="up"><a href="ref.regex.html">Функции регулярных выражений POSIX</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.ereg" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">ereg</h1>
+  <p class="verinfo">(PHP 4, PHP 5)</p><p class="refpurpose"><span class="refname">ereg</span> &mdash; <span class="dc-title">Совпадение с регулярным выражением</span></p>
+
+ </div>
+ 
+ <div class="refsect1 description" id="refsect1-function.ereg-description">
+  <h3 class="title">Описание</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">int</span> <span class="methodname"><b>ereg</b></span>
+    ( <span class="methodparam"><span class="type">string</span> <tt class="parameter">$pattern</tt></span>
+   , <span class="methodparam"><span class="type">string</span> <tt class="parameter">$string</tt></span>
+   [, <span class="methodparam"><span class="type">array</span> <tt class="parameter reference">&$regs</tt></span>
+  ] )</div>
+
+  <p class="simpara">
+   Ищет в строке <i><tt class="parameter">string</tt></i> совпадения с регулярным 
+   выражением, заданным в <i><tt class="parameter">pattern</tt></i> регистрозависимым 
+   образом.
+  </p>
+  <div class="warning"><b class="warning">Внимание</b><p class="simpara">С версии PHP 5.3.0 эта функция считается
+<em class="emphasis">УСТАРЕВШЕЙ</em>. Крайне не рекомендуется полагаться на эту возможность.</p></div>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-function.ereg-parameters">
+  <h3 class="title">Список параметров</h3>
+  <p class="para">
+   <dl>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">pattern</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Регулярное выражение, чувствительное к регистру.
+      </p>
+     </dd>
+
+    </dt>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">string</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Входная строка.
+      </p>
+     </dd>
+
+    </dt>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">regs</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Если совпадения найдены для подстрок в скобках из
+       <i><tt class="parameter">pattern</tt></i>, и функция вызывается с
+       третьим аргументом <i><tt class="parameter">regs</tt></i>, совпадения будут сохранены
+       в элементах массива <i><tt class="parameter">regs</tt></i>.
+      </p>
+      <p class="para">
+       <var class="varname"><var class="varname">$regs[1]</var></var> будет содержать подстроку, которая начинается с 
+       первой левой круглой скобки; <var class="varname"><var class="varname">$regs[2]</var></var> будет содержать
+       подстроку, начинающуюся со второй, и т.д.
+       <var class="varname"><var class="varname">$regs[0]</var></var> будет содержать полную копию совпавшей строки.
+      </p>
+     </dd>
+
+    </dt>
+
+   </dl>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-function.ereg-returnvalues">
+  <h3 class="title">Возвращаемые значения</h3>
+  <p class="para">
+   Возвращает длину совпавшей строки, если совпадение c 
+   <i><tt class="parameter">pattern</tt></i> найдено в <i><tt class="parameter">string</tt></i>,
+   или <b><tt>FALSE</tt></b>, если совпадений не было или возникла ошибка.
+  </p>
+  <p class="para">
+   Если необязательный параметр <i><tt class="parameter">regs</tt></i> не передан,
+   или длина совпавшей строки равна 0, функция возвращает 1.
+  </p>
+ </div>
+
+
+ <div class="refsect1 changelog" id="refsect1-function.ereg-changelog">
+  <h3 class="title">Список изменений</h3>
+  <p class="para">
+   <table class="doctable informaltable">
+    
+     <thead valign="middle">
+      <tr valign="middle">
+       <th>Версия</th>
+       <th>Описание</th>
+      </tr>
+
+     </thead>
+
+     <tbody valign="middle" class="tbody">
+      <tr valign="middle">
+       <td align="left">4.1.0</td>
+       <td align="left">
+        Вплоть до (и включая) PHP 4.1.0 <var class="varname"><var class="varname">$regs</var></var> будет
+        заполняться точно десятью элементами, хотя реально может совпасть больше или
+        меньше десяти подстрок в скобках. Это не влияет на способность
+        <span class="function"><b>ereg()</b></span> совпадать с большим количеством подстрок.
+        Если совпадения не найдены, <i>$regs</i> не будет изменен
+        функцией  <span class="function"><b>ereg()</b></span>.
+       </td>
+      </tr>
+
+     </tbody>
+    
+   </table>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-function.ereg-examples">
+  <h3 class="title">Примеры</h3>
+  <p class="para">
+   <div class="example" id="example-4316">
+    <p><b>Пример #1 Пример использования <span class="function"><b>ereg()</b></span></b></p>
+    <div class="example-contents"><p>
+     Следующий фрагмент кода принимает дату в формате ISO (YYYY-MM-DD) и 
+     печатает её в формате DD.MM.YYYY:
+    </p></div>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">if&nbsp;(</span><span style="color: #0000BB">ereg&nbsp;</span><span style="color: #007700">(</span><span style="color: #DD0000">"([0-9]{4})-([0-9]{1,2})-([0-9]{1,2})"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$date</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$regs</span><span style="color: #007700">))&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"</span><span style="color: #0000BB">$regs</span><span style="color: #007700">[</span><span style="color: #0000BB">3</span><span style="color: #007700">]</span><span style="color: #DD0000">.</span><span style="color: #0000BB">$regs</span><span style="color: #007700">[</span><span style="color: #0000BB">2</span><span style="color: #007700">]</span><span style="color: #DD0000">.</span><span style="color: #0000BB">$regs</span><span style="color: #007700">[</span><span style="color: #0000BB">1</span><span style="color: #007700">]</span><span style="color: #DD0000">"</span><span style="color: #007700">;<br />}&nbsp;else&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"Недопустимый&nbsp;формат&nbsp;даты:&nbsp;</span><span style="color: #0000BB">$date</span><span style="color: #DD0000">"</span><span style="color: #007700">;<br />}<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+  </p>
+ </div>
+
+
+ <div class="refsect1 notes" id="refsect1-function.ereg-notes">
+  <h3 class="title">Примечания</h3>
+  <blockquote class="note"><p><b class="note">Замечание</b>: <p class="para">С версии PHP 5.3.0,
+расширение regex помечено устаревшим и заменено <a href="book.pcre.html" class="link">расширением PCRE</a>. Вызов этой функции
+приведет к ошибке уровня <b><tt>E_DEPRECATED</tt></b>. Смотрите <a href="reference.pcre.pattern.posix.html" class="link">список
+отличий</a> для помощи при конвертировании в PCRE.</p></p></blockquote>
+  <blockquote class="note"><p><b class="note">Замечание</b>: 
+   <p class="para">
+    Функция <span class="function"><a href="function.preg-match.html" class="function">preg_match()</a></span>, которая использует  Perl-совместимый
+    синтаксис регулярного выражения, часто является более быстрой альтернативой функции 
+    <span class="function"><b>ereg()</b></span>.
+   </p>
+  </p></blockquote>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-function.ereg-seealso">
+  <h3 class="title">Смотрите также</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><span class="function"><a href="function.eregi.html" class="function" rel="rdfs-seeAlso">eregi()</a> - Совпадение с регулярным выражением без учёта регистра</span></li>
+    <li class="member"><span class="function"><a href="function.ereg-replace.html" class="function" rel="rdfs-seeAlso">ereg_replace()</a> - Осуществляет замену по регулярному выражению</span></li>
+    <li class="member"><span class="function"><a href="function.eregi-replace.html" class="function" rel="rdfs-seeAlso">eregi_replace()</a> - Осуществляет замену по регулярному выражению без учета регистра</span></li>
+    <li class="member"><span class="function"><a href="function.preg-match.html" class="function" rel="rdfs-seeAlso">preg_match()</a> - Выполняет проверку на соответствие регулярному выражению</span></li>
+    <li class="member"><span class="function"><a href="function.strpos.html" class="function" rel="rdfs-seeAlso">strpos()</a> - Возвращает позицию первого вхождения подстроки</span></li>
+    <li class="member"><span class="function"><a href="function.strstr.html" class="function" rel="rdfs-seeAlso">strstr()</a> - Находит первое вхождение подстроки</span></li>
+    <li class="member"><span class="function"><a href="function.quotemeta.html" class="function" rel="rdfs-seeAlso">quotemeta()</a> - Экранирует специальные символы</span></li>
+   </ul>
+  </p>
+ </div>
+
+
+</div><hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.ereg-replace.html">ereg_replace</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.eregi-replace.html">eregi_replace</a></div>
+ <div class="up"><a href="ref.regex.html">Функции регулярных выражений POSIX</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

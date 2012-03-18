@@ -1,0 +1,158 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Заменяет дочерний узел</title>
+
+ </head>
+ <body><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="domnode.removechild.html">DOMNode::removeChild</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="class.domnodelist.html">DOMNodeList</a></div>
+ <div class="up"><a href="class.domnode.html">DOMNode</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="domnode.replacechild" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">DOMNode::replaceChild</h1>
+  <p class="verinfo">(PHP 5)</p><p class="refpurpose"><span class="refname">DOMNode::replaceChild</span> &mdash; <span class="dc-title">
+   Заменяет дочерний узел
+  </span></p>
+
+ </div>
+ <div class="refsect1 description" id="refsect1-domnode.replacechild-description">
+  <h3 class="title">Описание</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type"><a href="class.domnode.html" class="type DOMNode">DOMNode</a></span> <span class="methodname"><b>DOMNode::replaceChild</b></span>
+    ( <span class="methodparam"><span class="type"><a href="class.domnode.html" class="type DOMNode">DOMNode</a></span> <tt class="parameter">$newnode</tt></span>
+   , <span class="methodparam"><span class="type"><a href="class.domnode.html" class="type DOMNode">DOMNode</a></span> <tt class="parameter">$oldnode</tt></span>
+   )</div>
+
+  <p class="para rdfs-comment">
+   Функция заменяет дочерний узел <i><tt class="parameter">oldnode</tt></i>
+   новым узлом. Если новый узел уже является дочерним,
+   то не будет добавлен во второй раз.
+   Если замена прошла успешно, то будет возвращен старый
+   (заменяемый) узел.
+  </p>
+ </div>
+
+ <div class="refsect1 parameters" id="refsect1-domnode.replacechild-parameters">
+  <h3 class="title">Список параметров</h3>
+  <p class="para">
+   <dl>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">newnode</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Новый узел. Должен быть частью целевого документа, то есть
+       создан посредством одного из методов DOMDocument-&gt;createXXX()
+       или импортирован в документ через <a href="domdocument.importnode.html" class="xref">DOMDocument::importNode</a>.
+      </p>
+     </dd>
+
+    </dt>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">oldnode</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Старый узел.
+      </p>
+     </dd>
+
+    </dt>
+
+   </dl>
+
+  </p>
+ </div>
+
+ <div class="refsect1 returnvalues" id="refsect1-domnode.replacechild-returnvalues">
+  <h3 class="title">Возвращаемые значения</h3>
+  <p class="para">
+   Старый узел или <b><tt>FALSE</tt></b> в случае возникновения ошибки.
+  </p>
+ </div>
+
+ <div class="refsect1 errors" id="refsect1-domnode.replacechild-errors">
+  <h3 class="title">Ошибки</h3>
+  <p class="para">
+   <dl>
+
+    <dt>
+
+     <span class="term"><b><tt>DOM_NO_MODIFICATION_ALLOWED_ERR</tt></b></span>
+     <dd>
+
+      <p class="para">
+       Возникает, если узел доступен только для чтения или
+       предыдущий родитель вставляемого узла доступен только для чтения.
+      </p>
+     </dd>
+
+    </dt>
+
+    <dt>
+
+     <span class="term"><b><tt>DOM_HIERARCHY_REQUEST_ERR</tt></b></span>
+     <dd>
+
+      <p class="para">
+       Возникает, если тип узла не поддерживает потомков типа,
+       который имеет узел <i><tt class="parameter">newnode</tt></i>, 
+       или же если добавляемый узел является предком целевого узла или им самим.
+      </p>
+     </dd>
+
+    </dt>
+
+    <dt>
+
+     <span class="term"><b><tt>DOM_WRONG_DOCUMENT_ERR</tt></b></span>
+     <dd>
+
+      <p class="para">
+       Возникает, если <i><tt class="parameter">newnode</tt></i> создан в другом документе,
+       отличном от того, в котором был создан этот узел.
+      </p>
+     </dd>
+
+    </dt>
+
+    <dt>
+
+     <span class="term"><b><tt>DOM_NOT_FOUND</tt></b></span>
+     <dd>
+
+      <p class="para">
+       Возникает, если <i><tt class="parameter">oldnode</tt></i> не является дочерним узлом данного узла.
+      </p>
+     </dd>
+
+    </dt>
+
+   </dl>
+
+  </p>
+ </div>
+
+ <div class="refsect1 seealso" id="refsect1-domnode.replacechild-seealso">
+  <h3 class="title">Смотрите также</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"> <span class="methodname"><a href="domnode.appendchild.html" class="methodname" rel="rdfs-seeAlso">DOMNode::appendChild()</a> - Добавляет новый дочерний узел в конец списка потомков</span></li>
+    <li class="member"> <span class="methodname"><a href="domnode.removechild.html" class="methodname" rel="rdfs-seeAlso">DOMNode::removeChild()</a> - Удаляет дочерний узел из списка потомков</span></li>
+   </ul>
+  </p>
+ </div>
+
+</div><hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="domnode.removechild.html">DOMNode::removeChild</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="class.domnodelist.html">DOMNodeList</a></div>
+ <div class="up"><a href="class.domnode.html">DOMNode</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

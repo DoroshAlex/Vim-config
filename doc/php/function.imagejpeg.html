@@ -1,0 +1,165 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Выводит изображение в браузер или пишет в файл</title>
+
+ </head>
+ <body><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.imageistruecolor.html">imageistruecolor</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.imagelayereffect.html">imagelayereffect</a></div>
+ <div class="up"><a href="ref.image.html">GD и функции для работы с изображениями Функции</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.imagejpeg" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">imagejpeg</h1>
+  <p class="verinfo">(PHP 4, PHP 5)</p><p class="refpurpose"><span class="refname">imagejpeg</span> &mdash; <span class="dc-title">Выводит изображение в браузер или пишет в файл</span></p>
+
+ </div>
+ <div class="refsect1 description" id="refsect1-function.imagejpeg-description">
+  <h3 class="title">Описание</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">bool</span> <span class="methodname"><b>imagejpeg</b></span>
+    ( <span class="methodparam"><span class="type">resource</span> <tt class="parameter">$image</tt></span>
+   [, <span class="methodparam"><span class="type">string</span> <tt class="parameter">$filename</tt></span>
+   [, <span class="methodparam"><span class="type">int</span> <tt class="parameter">$quality</tt></span>
+  ]] )</div>
+
+  <p class="para rdfs-comment">
+   Функция <span class="function"><b>imagejpeg()</b></span> создаёт файл <acronym title="Joint Photographic Experts Group">JPEG</acronym> 
+   из изображения<i><tt class="parameter">image</tt></i>.
+  </p>
+ </div>
+
+ <div class="refsect1 parameters" id="refsect1-function.imagejpeg-parameters">
+  <h3 class="title">Список параметров</h3>
+  <p class="para">
+   <dl>
+
+    <dt>
+<span class="term"><i><tt class="parameter">
+image</tt></i></span><dd>
+<p class="para">Ресурс изображения, полученный одной из функций создания изображений,
+например, такой как <span class="function"><a href="function.imagecreatetruecolor.html" class="function">imagecreatetruecolor()</a></span>.</p></dd>
+</dt>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">filename</tt></i></span>
+     <dd>
+
+      <p class="para">Путь для сохранения файла. Если не установлен или равен <b><tt>NULL</tt></b>, изображение будет выведено в поток вывода в бинарном виде.</p>
+      <p class="para">
+       Если вы хотите пропустить этот параметр 
+       и использовать <i><tt class="parameter">quality</tt></i>, то укажите <b><tt>NULL</tt></b>.
+      </p>
+     </dd>
+
+    </dt>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">quality</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Необязательный параметр, и может принимать значения в
+       диапазоне от 0 (низкое качество, маленький размер файла) до 100 (высокое качество, большой размер файла). 
+       По умолчанию используется качество IJG  (около 75).
+      </p>
+     </dd>
+
+    </dt>
+
+   </dl>
+
+  </p>
+ </div>
+
+ <div class="refsect1 returnvalues" id="refsect1-function.imagejpeg-returnvalues">
+  <h3 class="title">Возвращаемые значения</h3>
+  <p class="para">
+   Возвращает <b><tt>TRUE</tt></b> в случае успешного завершения  или <b><tt>FALSE</tt></b> в случае возникновения ошибки.
+  </p>
+ </div>
+
+ <div class="refsect1 examples" id="refsect1-function.imagejpeg-examples">
+  <h3 class="title">Примеры</h3>
+  <p class="para">
+   <div class="example" id="example-2955">
+    <p><b>Пример #1 Вывод JPEG-изображения</b></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">//&nbsp;Создаём&nbsp;пустое&nbsp;изображение&nbsp;и&nbsp;добавляем&nbsp;текст<br /></span><span style="color: #0000BB">$im&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">imagecreatetruecolor</span><span style="color: #007700">(</span><span style="color: #0000BB">120</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">20</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$text_color&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">imagecolorallocate</span><span style="color: #007700">(</span><span style="color: #0000BB">$im</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">233</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">14</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">91</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">imagestring</span><span style="color: #007700">(</span><span style="color: #0000BB">$im</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">1</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">5</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">5</span><span style="color: #007700">,&nbsp;&nbsp;</span><span style="color: #DD0000">'A&nbsp;Simple&nbsp;Text&nbsp;String'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$text_color</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;Устанавливаем&nbsp;тип&nbsp;содержимого&nbsp;в&nbsp;заголовок,&nbsp;в&nbsp;данном&nbsp;случае&nbsp;image/jpeg<br /></span><span style="color: #0000BB">header</span><span style="color: #007700">(</span><span style="color: #DD0000">'Content-Type:&nbsp;image/jpeg'</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;Выводим&nbsp;изображение<br /></span><span style="color: #0000BB">imagejpeg</span><span style="color: #007700">(</span><span style="color: #0000BB">$im</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;Освобождаем&nbsp;память<br /></span><span style="color: #0000BB">imagedestroy</span><span style="color: #007700">(</span><span style="color: #0000BB">$im</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+    <div class="example-contents"><p>Результатом выполнения данного примера
+будет что-то подобное:</p></div>
+    <div class="mediaobject">
+     
+     <div class="imageobject">
+      <img src="images/21009b70229598c6a80eef8b45bf282b-imagejpeg.jpg" alt="Пример выведет изображение JPEG" width="120" height="20" />
+     </div>
+    </div>
+   </div>
+  </p>
+  <p class="para">
+   <div class="example" id="example-2956">
+    <p><b>Пример #2 Сохранение изображения JPEG</b></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">//&nbsp;Создаём&nbsp;пустое&nbsp;изображение&nbsp;и&nbsp;добавляем&nbsp;текст<br /></span><span style="color: #0000BB">$im&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">imagecreatetruecolor</span><span style="color: #007700">(</span><span style="color: #0000BB">120</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">20</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$text_color&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">imagecolorallocate</span><span style="color: #007700">(</span><span style="color: #0000BB">$im</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">233</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">14</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">91</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">imagestring</span><span style="color: #007700">(</span><span style="color: #0000BB">$im</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">1</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">5</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">5</span><span style="color: #007700">,&nbsp;&nbsp;</span><span style="color: #DD0000">'A&nbsp;Simple&nbsp;Text&nbsp;String'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$text_color</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;Сохраняем&nbsp;изображение&nbsp;в&nbsp;'simpletext.jpg'<br /></span><span style="color: #0000BB">imagejpeg</span><span style="color: #007700">(</span><span style="color: #0000BB">$im</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'simpletext.jpg'</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;Освобождаем&nbsp;память<br /></span><span style="color: #0000BB">imagedestroy</span><span style="color: #007700">(</span><span style="color: #0000BB">$im</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+  </p>
+  <p class="para">
+   <div class="example" id="example-2957">
+    <p><b>Пример #3 Вывод JPEG-изображения с 75% качеством</b></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">//&nbsp;Создаём&nbsp;пустое&nbsp;изображение&nbsp;и&nbsp;добавляем&nbsp;текст<br /></span><span style="color: #0000BB">$im&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">imagecreatetruecolor</span><span style="color: #007700">(</span><span style="color: #0000BB">120</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">20</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$text_color&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">imagecolorallocate</span><span style="color: #007700">(</span><span style="color: #0000BB">$im</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">233</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">14</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">91</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">imagestring</span><span style="color: #007700">(</span><span style="color: #0000BB">$im</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">1</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">5</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">5</span><span style="color: #007700">,&nbsp;&nbsp;</span><span style="color: #DD0000">'A&nbsp;Simple&nbsp;Text&nbsp;String'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$text_color</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;Устанавливаем&nbsp;тип&nbsp;содержимого&nbsp;в&nbsp;заголовок,&nbsp;в&nbsp;данном&nbsp;случае&nbsp;image/jpeg<br /></span><span style="color: #0000BB">header</span><span style="color: #007700">(</span><span style="color: #DD0000">'Content-Type:&nbsp;image/jpeg'</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;Пропускаем&nbsp;параметр&nbsp;filename,&nbsp;используя&nbsp;NULL,&nbsp;а&nbsp;затем&nbsp;устанавливаем&nbsp;качество&nbsp;в&nbsp;75%<br /></span><span style="color: #0000BB">imagejpeg</span><span style="color: #007700">(</span><span style="color: #0000BB">$im</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">NULL</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">75</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;Освобождаем&nbsp;память<br /></span><span style="color: #0000BB">imagedestroy</span><span style="color: #007700">(</span><span style="color: #0000BB">$im</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+  </p>
+ </div>
+
+ <div class="refsect1 notes" id="refsect1-function.imagejpeg-notes">
+  <h3 class="title">Примечания</h3>
+  <blockquote class="note"><p><b class="note">Замечание</b>: <span class="simpara">Поддержка JPEG доступна только в случае,
+если PHP был скомпилирован с GD-1.8 или более поздней версии.</span></p></blockquote>
+  <blockquote class="note"><p><b class="note">Замечание</b>: 
+   <p class="para">
+    Если требуется вывести Progressive JPEG (прогрессивное представление данных),
+    то необходимо использовать функцию  <span class="function"><a href="function.imageinterlace.html" class="function">imageinterlace()</a></span> для
+    активации соответствующего режима.
+   </p>
+  </p></blockquote>
+ </div>
+
+ <div class="refsect1 seealso" id="refsect1-function.imagejpeg-seealso">
+  <h3 class="title">Смотрите также</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><span class="function"><a href="function.imagepng.html" class="function" rel="rdfs-seeAlso">imagepng()</a> - Output a PNG image to either the browser or a file</span></li>
+    <li class="member"><span class="function"><a href="function.imagegif.html" class="function" rel="rdfs-seeAlso">imagegif()</a> - Выводит изображение в браузер или пишет в файл</span></li>
+    <li class="member"><span class="function"><a href="function.imagewbmp.html" class="function" rel="rdfs-seeAlso">imagewbmp()</a> - Выводит изображение в браузер или пишет в файл</span></li>
+    <li class="member"><span class="function"><a href="function.imageinterlace.html" class="function" rel="rdfs-seeAlso">imageinterlace()</a> - Enable or disable interlace</span></li>
+    <li class="member"><span class="function"><a href="function.imagetypes.html" class="function" rel="rdfs-seeAlso">imagetypes()</a> - Return the image types supported by this PHP build</span></li>
+   </ul>
+  </p>
+ </div>
+
+</div><hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.imageistruecolor.html">imageistruecolor</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.imagelayereffect.html">imagelayereffect</a></div>
+ <div class="up"><a href="ref.image.html">GD и функции для работы с изображениями Функции</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

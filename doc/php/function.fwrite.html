@@ -1,0 +1,190 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Бинарно-безопасная запись в файл</title>
+
+ </head>
+ <body><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.ftruncate.html">ftruncate</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.glob.html">glob</a></div>
+ <div class="up"><a href="ref.filesystem.html">Файловая система</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.fwrite" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">fwrite</h1>
+  <p class="verinfo">(PHP 4, PHP 5)</p><p class="refpurpose"><span class="refname">fwrite</span> &mdash; <span class="dc-title">Бинарно-безопасная запись в файл</span></p>
+
+ </div>
+
+ <div class="refsect1 description" id="refsect1-function.fwrite-description">
+  <h3 class="title">Описание</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">int</span> <span class="methodname"><b>fwrite</b></span>
+    ( <span class="methodparam"><span class="type">resource</span> <tt class="parameter">$handle</tt></span>
+   , <span class="methodparam"><span class="type">string</span> <tt class="parameter">$string</tt></span>
+   [, <span class="methodparam"><span class="type">int</span> <tt class="parameter">$length</tt></span>
+  ] )</div>
+
+  <p class="simpara">
+   <span class="function"><b>fwrite()</b></span> записывает содержимое
+   <i><tt class="parameter">string</tt></i> в файловый поток
+   <i><tt class="parameter">handle</tt></i>.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-function.fwrite-parameters">
+  <h3 class="title">Список параметров</h3>
+  <p class="para">
+   <dl>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">handle</tt></i></span>
+     <dd>
+
+      <p class="para">Указатель (<span class="type"><a href="language.types.resource.html" class="type resource">resource</a></span>)
+на файл, обычно создаваемый с помощью функции <span class="function"><a href="function.fopen.html" class="function">fopen()</a></span>.</p>
+     </dd>
+
+    </dt>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">string</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Записываемая строка.
+      </p>
+     </dd>
+
+    </dt>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">length</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Если передан аргумент <i><tt class="parameter">length</tt></i>, запись
+       остановится после того, как <i><tt class="parameter">length</tt></i>
+       байтов будут записаны или будет достигнут конец строки
+       <i><tt class="parameter">string</tt></i>, смотря что произойдёт первым.
+      </p>
+      <p class="para">
+       Учтите, что если указан аргумент <i><tt class="parameter">length</tt></i>,
+       то директива <a href="info.configuration.html#ini.magic-quotes-runtime" class="link">magic_quotes_runtime</a>
+       будет проигнорирована и строка <i><tt class="parameter">string</tt></i> не будет
+       очищена от слэшей.
+      </p>
+     </dd>
+
+    </dt>
+
+   </dl>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-function.fwrite-returnvalues">
+  <h3 class="title">Возвращаемые значения</h3>
+  <p class="simpara">
+   <span class="function"><b>fwrite()</b></span> возвращает количество записанных байт
+   или <b><tt>FALSE</tt></b> в случае ошибки.
+  </p>
+ </div>
+
+
+ <div class="refsect1 notes" id="refsect1-function.fwrite-notes">
+  <h3 class="title">Примечания</h3>
+  <blockquote class="note"><p><b class="note">Замечание</b>: 
+   <p class="para">
+    Запись в сетевой поток может прекратиться до того, как будут
+    записаны все данные. Это можно контролировать с помощью проверки
+    возвращаемого значения функции <span class="function"><b>fwrite()</b></span>:
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">function&nbsp;</span><span style="color: #0000BB">fwrite_stream</span><span style="color: #007700">(</span><span style="color: #0000BB">$fp</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$string</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;for&nbsp;(</span><span style="color: #0000BB">$written&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">;&nbsp;</span><span style="color: #0000BB">$written&nbsp;</span><span style="color: #007700">&lt;&nbsp;</span><span style="color: #0000BB">strlen</span><span style="color: #007700">(</span><span style="color: #0000BB">$string</span><span style="color: #007700">);&nbsp;</span><span style="color: #0000BB">$written&nbsp;</span><span style="color: #007700">+=&nbsp;</span><span style="color: #0000BB">$fwrite</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$fwrite&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">fwrite</span><span style="color: #007700">(</span><span style="color: #0000BB">$fp</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">substr</span><span style="color: #007700">(</span><span style="color: #0000BB">$string</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$written</span><span style="color: #007700">));<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(</span><span style="color: #0000BB">$fwrite&nbsp;</span><span style="color: #007700">===&nbsp;</span><span style="color: #0000BB">false</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">$written</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">$written</span><span style="color: #007700">;<br />}<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </p>
+  </p></blockquote>
+
+  <blockquote class="note"><p><b class="note">Замечание</b>: 
+   <p class="para">
+    В системах, различающих двоичные и текстовые файлы (к примеру,
+    Windows), файл должен быть открыт используя флаг &#039;b&#039; в конце
+    аргумента mode функции <span class="function"><a href="function.fopen.html" class="function">fopen()</a></span>.
+   </p>
+  </p></blockquote>
+  <blockquote class="note"><p><b class="note">Замечание</b>: 
+   <p class="para">
+    Если дескриптор <i><tt class="parameter">handle</tt></i> был открыт функцией
+    <span class="function"><a href="function.fopen.html" class="function">fopen()</a></span> в режиме &quot;записи в конец&quot;, то вызовы
+    <span class="function"><b>fwrite()</b></span> будут атомарными (за исключением
+    случая, если <i><tt class="parameter">string</tt></i> размер блока файловой
+    системы, на некоторых платформах, и пока файл хранится на локальной
+    файловой системе). Т.е. нет необходимости блокировать ресурс
+    с помощью <span class="function"><a href="function.flock.html" class="function">flock()</a></span> перед вызовом
+    <span class="function"><b>fwrite()</b></span> - все данные будут записаны без
+    прерываний.
+   </p>
+  </p></blockquote>
+  <blockquote class="note"><p><b class="note">Замечание</b>: 
+   <p class="para">
+    При повторной записи в файловый указатель данные будут добавлены
+    в конец содержимого файла:
+        <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$fp&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">fopen</span><span style="color: #007700">(</span><span style="color: #DD0000">'data.txt'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'w'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">fwrite</span><span style="color: #007700">(</span><span style="color: #0000BB">$fp</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'1'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">fwrite</span><span style="color: #007700">(</span><span style="color: #0000BB">$fp</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'23'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">fclose</span><span style="color: #007700">(</span><span style="color: #0000BB">$fp</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;содержимое&nbsp;'data.txt'&nbsp;теперь&nbsp;123,&nbsp;а&nbsp;не&nbsp;23!<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+        </div>
+
+   </p>
+  </p></blockquote>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-function.fwrite-examples">
+  <h3 class="title">Примеры</h3>
+  <p class="para">
+   <div class="example" id="example-2145">
+    <p><b>Пример #1 Простой пример использования <span class="function"><b>fwrite()</b></span></b></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$filename&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'test.txt'</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$somecontent&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">"Добавить&nbsp;это&nbsp;к&nbsp;файлу\n"</span><span style="color: #007700">;<br /><br /></span><span style="color: #FF8000">//&nbsp;Вначале&nbsp;давайте&nbsp;убедимся,&nbsp;что&nbsp;файл&nbsp;существует&nbsp;и&nbsp;доступен&nbsp;для&nbsp;записи.<br /></span><span style="color: #007700">if&nbsp;(</span><span style="color: #0000BB">is_writable</span><span style="color: #007700">(</span><span style="color: #0000BB">$filename</span><span style="color: #007700">))&nbsp;{<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;В&nbsp;нашем&nbsp;примере&nbsp;мы&nbsp;открываем&nbsp;$filename&nbsp;в&nbsp;режиме&nbsp;"записи&nbsp;в&nbsp;конец".<br />&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;Таким&nbsp;образом,&nbsp;смещение&nbsp;установлено&nbsp;в&nbsp;конец&nbsp;файла&nbsp;и<br />&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;наш&nbsp;$somecontent&nbsp;допишется&nbsp;в&nbsp;конец&nbsp;при&nbsp;использовании&nbsp;fwrite().<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">if&nbsp;(!</span><span style="color: #0000BB">$handle&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">fopen</span><span style="color: #007700">(</span><span style="color: #0000BB">$filename</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'a'</span><span style="color: #007700">))&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"Не&nbsp;могу&nbsp;открыть&nbsp;файл&nbsp;(</span><span style="color: #0000BB">$filename</span><span style="color: #DD0000">)"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;exit;<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;Записываем&nbsp;$somecontent&nbsp;в&nbsp;наш&nbsp;открытый&nbsp;файл.<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">if&nbsp;(</span><span style="color: #0000BB">fwrite</span><span style="color: #007700">(</span><span style="color: #0000BB">$handle</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$somecontent</span><span style="color: #007700">)&nbsp;===&nbsp;</span><span style="color: #0000BB">FALSE</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"Не&nbsp;могу&nbsp;произвести&nbsp;запись&nbsp;в&nbsp;файл&nbsp;(</span><span style="color: #0000BB">$filename</span><span style="color: #DD0000">)"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;exit;<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"Ура!&nbsp;Записали&nbsp;(</span><span style="color: #0000BB">$somecontent</span><span style="color: #DD0000">)&nbsp;в&nbsp;файл&nbsp;(</span><span style="color: #0000BB">$filename</span><span style="color: #DD0000">)"</span><span style="color: #007700">;<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">fclose</span><span style="color: #007700">(</span><span style="color: #0000BB">$handle</span><span style="color: #007700">);<br /><br />}&nbsp;else&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"Файл&nbsp;</span><span style="color: #0000BB">$filename</span><span style="color: #DD0000">&nbsp;недоступен&nbsp;для&nbsp;записи"</span><span style="color: #007700">;<br />}<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+  </p>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-function.fwrite-seealso">
+  <h3 class="title">Смотрите также</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><span class="function"><a href="function.fread.html" class="function" rel="rdfs-seeAlso">fread()</a> - Бинарно-безопасное чтение файла</span></li>
+    <li class="member"><span class="function"><a href="function.fopen.html" class="function" rel="rdfs-seeAlso">fopen()</a> - Открывает файл или URL</span></li>
+    <li class="member"><span class="function"><a href="function.fsockopen.html" class="function" rel="rdfs-seeAlso">fsockopen()</a> - Open Internet or Unix domain socket connection</span></li>
+    <li class="member"><span class="function"><a href="function.popen.html" class="function" rel="rdfs-seeAlso">popen()</a> - Открывает файловый указатель процесса</span></li>
+    <li class="member"><span class="function"><a href="function.file-get-contents.html" class="function" rel="rdfs-seeAlso">file_get_contents()</a> - Читает содержимое файла в строку</span></li>
+   </ul>
+  </p>
+ </div>
+
+
+</div><hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.ftruncate.html">ftruncate</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.glob.html">glob</a></div>
+ <div class="up"><a href="ref.filesystem.html">Файловая система</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

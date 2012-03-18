@@ -1,0 +1,163 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Посылает запрос MySQL</title>
+
+ </head>
+ <body><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.mysql-ping.html">mysql_ping</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.mysql-real-escape-string.html">mysql_real_escape_string</a></div>
+ <div class="up"><a href="ref.mysql.html">MySQL</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.mysql-query" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">mysql_query</h1>
+  <p class="verinfo">(PHP 4, PHP 5)</p><p class="refpurpose"><span class="refname">mysql_query</span> &mdash; <span class="dc-title">Посылает запрос MySQL</span></p>
+
+ </div>
+
+ <div class="refsect1 description" id="refsect1-function.mysql-query-description">
+  <h3 class="title">Описание</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">resource</span> <span class="methodname"><b>mysql_query</b></span>
+    ( <span class="methodparam"><span class="type">string</span> <tt class="parameter">$query</tt></span>
+   [, <span class="methodparam"><span class="type">resource</span> <tt class="parameter">$link_identifier</tt></span>
+  ] )</div>
+
+  <p class="para rdfs-comment">
+   <span class="function"><b>mysql_query()</b></span> посылает один запрос
+   (посылка нескольких запросов не поддерживается) активной базе
+   данных сервера, на который ссылается переданный дескриптор
+   <i><tt class="parameter">link_identifier</tt></i>.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-function.mysql-query-parameters">
+  <h3 class="title">Список параметров</h3>
+  <p class="para">
+   <dl>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">query</tt></i></span>
+     <dd>
+
+      <p class="para">
+       SQL-запрос
+      </p>
+      <p class="para">
+       Запрос не должен заканчиваться точкой с запятой.
+       Данные в запросе должны быть <a href="function.mysql-real-escape-string.html" class="link">корректно проэкранированы</a>.
+      </p>
+     </dd>
+
+    </dt>
+
+    <dt>
+<span class="term"><i><tt class="parameter">
+link_identifier</tt></i></span><dd>
+<p class="para">Соединение MySQL. Если идентификатор соединения не был указан,
+используется последнее соединение, открытое <span class="function"><a href="function.mysql-connect.html" class="function">mysql_connect()</a></span>. Если такое соединение не было найдено,
+функция попытается создать таковое, как если бы <span class="function"><a href="function.mysql-connect.html" class="function">mysql_connect()</a></span> была вызвана без параметров.
+Если соединение не было найдено и не смогло быть создано, генерируется ошибка уровня <b><tt>E_WARNING</tt></b>.</p></dd>
+
+</dt>
+
+   </dl>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-function.mysql-query-returnvalues">
+  <h3 class="title">Возвращаемые значения</h3>
+  <p class="para">
+   Для запросов SELECT, SHOW, DESCRIBE, EXPLAIN и других запросов,
+   возвращающих результат из нескольких рядов,
+   <span class="function"><b>mysql_query()</b></span> возвращает дескриптор результата
+   запроса (<span class="type"><a href="language.types.resource.html" class="type resource">resource</a></span>), или <b><tt>FALSE</tt></b> в случае ошибки.
+  </p>
+  <p class="para">
+   Для других типов SQL-запросов, INSERT, UPDATE, DELETE, DROP и других,
+   <span class="function"><b>mysql_query()</b></span> возвращает <b><tt>TRUE</tt></b> в случае успеха
+   и <b><tt>FALSE</tt></b> в случае ошибки.
+  </p>
+  <p class="para">
+   Полученный дескриптор результата нужно передать в функцию
+   <span class="function"><a href="function.mysql-fetch-array.html" class="function">mysql_fetch_array()</a></span> или любую другую функцию,
+   работающую с результатами запросов.
+  </p>
+  <p class="para">
+   Используйте <span class="function"><a href="function.mysql-num-rows.html" class="function">mysql_num_rows()</a></span> для выяснения
+   количества рядов в результате SELECT-запроса или
+   <span class="function"><a href="function.mysql-affected-rows.html" class="function">mysql_affected_rows()</a></span> для выяснения количества
+   обработанных рядов запросами DELETE, INSERT, REPLACE и UPDATE.
+  </p>
+  <p class="para">
+   <span class="function"><b>mysql_query()</b></span> также завершится с ошибкой и
+   вернет <b><tt>FALSE</tt></b>, если у пользователя нет доступа к какой-либо из
+   таблиц, фигурирующих в запросе.
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-function.mysql-query-examples">
+  <h3 class="title">Примеры</h3>
+  <p class="para">
+   <div class="example" id="example-1539">
+    <p><b>Пример #1 Неверный запрос</b></p>
+    <div class="example-contents"><p>
+     Следующий запрос составлен неправильно и
+     <span class="function"><b>mysql_query()</b></span> вернёт <b><tt>FALSE</tt></b>.
+    </p></div>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$result&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">mysql_query</span><span style="color: #007700">(</span><span style="color: #DD0000">'SELECT&nbsp;*&nbsp;WHERE&nbsp;1=1'</span><span style="color: #007700">);<br />if&nbsp;(!</span><span style="color: #0000BB">$result</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;die(</span><span style="color: #DD0000">'Неверный&nbsp;запрос:&nbsp;'&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">mysql_error</span><span style="color: #007700">());<br />}<br /><br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+  </p>
+  <p class="para">
+   <div class="example" id="example-1540">
+    <p><b>Пример #2 Верный запрос</b></p>
+    <div class="example-contents"><p>
+     Следующий запрос верен, поэтому <span class="function"><b>mysql_query()</b></span>
+     вернет <span class="type"><a href="language.types.resource.html" class="type resource">resource</a></span>.
+    </p></div>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">//&nbsp;Эти&nbsp;данные,&nbsp;к&nbsp;примеру,&nbsp;могли&nbsp;быть&nbsp;получены&nbsp;от&nbsp;пользователя<br /></span><span style="color: #0000BB">$firstname&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'fred'</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$lastname&nbsp;&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'fox'</span><span style="color: #007700">;<br /><br /></span><span style="color: #FF8000">//&nbsp;Формируем&nbsp;запрос<br />//&nbsp;Это&nbsp;лучший&nbsp;способ&nbsp;выполнить&nbsp;SQL-запрос<br />//&nbsp;Еще&nbsp;примеры&nbsp;можно&nbsp;найти&nbsp;в&nbsp;документации&nbsp;mysql_real_escape_string()<br /></span><span style="color: #0000BB">$query&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">sprintf</span><span style="color: #007700">(</span><span style="color: #DD0000">"SELECT&nbsp;firstname,&nbsp;lastname,&nbsp;address,&nbsp;age&nbsp;FROM&nbsp;friends&nbsp;<br />&nbsp;&nbsp;&nbsp;&nbsp;WHERE&nbsp;firstname='%s'&nbsp;AND&nbsp;lastname='%s'"</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">mysql_real_escape_string</span><span style="color: #007700">(</span><span style="color: #0000BB">$firstname</span><span style="color: #007700">),<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">mysql_real_escape_string</span><span style="color: #007700">(</span><span style="color: #0000BB">$lastname</span><span style="color: #007700">));<br /><br /></span><span style="color: #FF8000">//&nbsp;Выполняем&nbsp;запрос<br /></span><span style="color: #0000BB">$result&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">mysql_query</span><span style="color: #007700">(</span><span style="color: #0000BB">$query</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;Проверяем&nbsp;результат<br />//&nbsp;Это&nbsp;показывает&nbsp;реальный&nbsp;запрос,&nbsp;посланный&nbsp;к&nbsp;MySQL,&nbsp;а&nbsp;также&nbsp;ошибку.&nbsp;Удобно&nbsp;при&nbsp;отладке.<br /></span><span style="color: #007700">if&nbsp;(!</span><span style="color: #0000BB">$result</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$message&nbsp;&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'Неверный&nbsp;запрос:&nbsp;'&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">mysql_error</span><span style="color: #007700">()&nbsp;.&nbsp;</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$message&nbsp;</span><span style="color: #007700">.=&nbsp;</span><span style="color: #DD0000">'Запрос&nbsp;целиком:&nbsp;'&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">$query</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;die(</span><span style="color: #0000BB">$message</span><span style="color: #007700">);<br />}<br /><br /></span><span style="color: #FF8000">//&nbsp;Используем&nbsp;результат<br />//&nbsp;Попытка&nbsp;напечатать&nbsp;$result&nbsp;не&nbsp;выведет&nbsp;информацию,&nbsp;которая&nbsp;в&nbsp;нем&nbsp;хранится<br />//&nbsp;Необходимо&nbsp;использовать&nbsp;какую-либо&nbsp;mysql-функцию,&nbsp;работающую&nbsp;с&nbsp;результатом&nbsp;запроса<br />//&nbsp;См.&nbsp;также&nbsp;mysql_result(),&nbsp;mysql_fetch_array(),&nbsp;mysql_fetch_row()&nbsp;и&nbsp;т.п.<br /></span><span style="color: #007700">while&nbsp;(</span><span style="color: #0000BB">$row&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">mysql_fetch_assoc</span><span style="color: #007700">(</span><span style="color: #0000BB">$result</span><span style="color: #007700">))&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #0000BB">$row</span><span style="color: #007700">[</span><span style="color: #DD0000">'firstname'</span><span style="color: #007700">];<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #0000BB">$row</span><span style="color: #007700">[</span><span style="color: #DD0000">'lastname'</span><span style="color: #007700">];<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #0000BB">$row</span><span style="color: #007700">[</span><span style="color: #DD0000">'address'</span><span style="color: #007700">];<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #0000BB">$row</span><span style="color: #007700">[</span><span style="color: #DD0000">'age'</span><span style="color: #007700">];<br />}<br /><br /></span><span style="color: #FF8000">//&nbsp;Освобождаем&nbsp;ресурсы,&nbsp;ассоциированные&nbsp;с&nbsp;результатом<br />//&nbsp;Это&nbsp;делается&nbsp;автоматически&nbsp;в&nbsp;конце&nbsp;скрипта<br /></span><span style="color: #0000BB">mysql_free_result</span><span style="color: #007700">(</span><span style="color: #0000BB">$result</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+  </p>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-function.mysql-query-seealso">
+  <h3 class="title">Смотрите также</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><span class="function"><a href="function.mysql-connect.html" class="function" rel="rdfs-seeAlso">mysql_connect()</a> - Открывает соединение с сервером MySQL</span></li>
+    <li class="member"><span class="function"><a href="function.mysql-error.html" class="function" rel="rdfs-seeAlso">mysql_error()</a> - Возвращает текст ошибки последней операции с MySQL</span></li>
+    <li class="member"><span class="function"><a href="function.mysql-real-escape-string.html" class="function" rel="rdfs-seeAlso">mysql_real_escape_string()</a> - Экранирует специальные символы в строках для использования в выражениях SQL</span></li>
+    <li class="member"><span class="function"><a href="function.mysql-result.html" class="function" rel="rdfs-seeAlso">mysql_result()</a> - Возвращает данные результата запроса</span></li>
+    <li class="member"><span class="function"><a href="function.mysql-fetch-assoc.html" class="function" rel="rdfs-seeAlso">mysql_fetch_assoc()</a> - Возвращает ряд результата запроса в качестве ассоциативного массива</span></li>
+    <li class="member"><span class="function"><a href="function.mysql-unbuffered-query.html" class="function" rel="rdfs-seeAlso">mysql_unbuffered_query()</a> - Посылает запрос MySQL без авто-обработки результата и его буферизации</span></li>
+   </ul>
+  </p>
+ </div>
+
+
+</div><hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.mysql-ping.html">mysql_ping</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.mysql-real-escape-string.html">mysql_real_escape_string</a></div>
+ <div class="up"><a href="ref.mysql.html">MySQL</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

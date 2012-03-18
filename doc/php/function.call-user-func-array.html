@@ -1,0 +1,209 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Вызывает пользовательскую функцию с массивом параметров</title>
+
+ </head>
+ <body><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="ref.funchand.html">Управление функциями</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.call-user-func.html">call_user_func</a></div>
+ <div class="up"><a href="ref.funchand.html">Управление функциями</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.call-user-func-array" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">call_user_func_array</h1>
+  <p class="verinfo">(PHP 4 &gt;= 4.0.4, PHP 5)</p><p class="refpurpose"><span class="refname">call_user_func_array</span> &mdash; <span class="dc-title">Вызывает пользовательскую функцию с массивом параметров</span></p>
+
+ </div>
+
+ <div class="refsect1 description" id="refsect1-function.call-user-func-array-description">
+  <h3 class="title">Описание</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type"><a href="language.pseudo-types.html#language.types.mixed" class="type mixed">mixed</a></span> <span class="methodname"><b>call_user_func_array</b></span>
+    ( <span class="methodparam"><span class="type"><a href="language.pseudo-types.html#language.types.callback" class="type callback">callback</a></span> <tt class="parameter">$callback</tt></span>
+   , <span class="methodparam"><span class="type">array</span> <tt class="parameter">$param_arr</tt></span>
+   )</div>
+
+  <p class="para rdfs-comment">
+   Вызывает пользовательскую функцию <i><tt class="parameter">callback</tt></i>,
+   с параметрами из массива <i><tt class="parameter">param_arr</tt></i>.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-function.call-user-func-array-parameters">
+  <h3 class="title">Список параметров</h3>
+  <p class="para">
+   <dl>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">callback</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Вызываемая <span class="type"><a href="language.pseudo-types.html#language.types.callback" class="type callback">callback</a></span>-функция.
+      </p>
+     </dd>
+
+    </dt>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">param_arr</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Передаваемые в функцию параметры, в виде индексированного массива.
+      </p>
+     </dd>
+
+    </dt>
+
+   </dl>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-function.call-user-func-array-returnvalues">
+  <h3 class="title">Возвращаемые значения</h3>
+  <p class="para">
+   Возвращает результат функции или <b><tt>FALSE</tt></b> в случае ошибки.
+  </p>
+ </div>
+
+
+ <div class="refsect1 changelog" id="refsect1-function.call-user-func-array-changelog">
+  <h3 class="title">Список изменений</h3>
+  <p class="para">
+   <table class="doctable informaltable">
+    
+     <thead valign="middle">
+      <tr valign="middle">
+       <th>Версия</th>
+       <th>Описание</th>
+      </tr>
+
+     </thead>
+
+     <tbody valign="middle" class="tbody">
+      <tr valign="middle">
+       <td align="left">5.3.0</td>
+       <td align="left">
+        Изменилась интерпретация объектно-ориентированных ключевых слов,
+        таких как <i>parent</i> и <i>self</i>.
+        Ранее, их вызов с помощью синтаксиса двойного двоеточия вызывал
+        предупреждение уровня <b><tt>E_STRICT</tt></b>, так как они
+        расценивались как статические вызовы.
+       </td>
+      </tr>
+
+     </tbody>
+    
+   </table>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-function.call-user-func-array-examples">
+  <h3 class="title">Примеры</h3>
+  <p class="para">
+   <div class="example" id="example-4592">
+    <p><b>Пример #1 Использование <span class="function"><b>call_user_func_array()</b></span></b></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">function&nbsp;</span><span style="color: #0000BB">foobar</span><span style="color: #007700">(</span><span style="color: #0000BB">$arg</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$arg2</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #0000BB">__FUNCTION__</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"&nbsp;got&nbsp;</span><span style="color: #0000BB">$arg</span><span style="color: #DD0000">&nbsp;and&nbsp;</span><span style="color: #0000BB">$arg2</span><span style="color: #DD0000">\n"</span><span style="color: #007700">;<br />}<br />class&nbsp;</span><span style="color: #0000BB">foo&nbsp;</span><span style="color: #007700">{<br />&nbsp;&nbsp;&nbsp;&nbsp;function&nbsp;</span><span style="color: #0000BB">bar</span><span style="color: #007700">(</span><span style="color: #0000BB">$arg</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$arg2</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #0000BB">__METHOD__</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"&nbsp;got&nbsp;</span><span style="color: #0000BB">$arg</span><span style="color: #DD0000">&nbsp;and&nbsp;</span><span style="color: #0000BB">$arg2</span><span style="color: #DD0000">\n"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />}<br /><br /><br /></span><span style="color: #FF8000">//&nbsp;Вызываем&nbsp;функцию&nbsp;foobar()&nbsp;с&nbsp;2&nbsp;аргументами<br /></span><span style="color: #0000BB">call_user_func_array</span><span style="color: #007700">(</span><span style="color: #DD0000">"foobar"</span><span style="color: #007700">,&nbsp;array(</span><span style="color: #DD0000">"one"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"two"</span><span style="color: #007700">));<br /><br /></span><span style="color: #FF8000">//&nbsp;Вызываем&nbsp;метод&nbsp;$foo-&gt;bar()&nbsp;с&nbsp;2&nbsp;аргументами<br /></span><span style="color: #0000BB">$foo&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">foo</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">call_user_func_array</span><span style="color: #007700">(array(</span><span style="color: #0000BB">$foo</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"bar"</span><span style="color: #007700">),&nbsp;array(</span><span style="color: #DD0000">"three"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"four"</span><span style="color: #007700">));<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+    <div class="example-contents"><p>Результатом выполнения данного примера
+будет что-то подобное:</p></div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+foobar got one and two
+foo::bar got three and four
+</pre></div>
+    </div>
+   </div>
+   <div class="example" id="example-4593">
+    <p><b>Пример #2 Пример использования <span class="function"><b>call_user_func_array()</b></span> и имени из пространства имен</b></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /><br /></span><span style="color: #007700">namespace&nbsp;</span><span style="color: #0000BB">Foobar</span><span style="color: #007700">;<br /><br />class&nbsp;</span><span style="color: #0000BB">Foo&nbsp;</span><span style="color: #007700">{<br />&nbsp;&nbsp;&nbsp;&nbsp;static&nbsp;public&nbsp;function&nbsp;</span><span style="color: #0000BB">test</span><span style="color: #007700">(</span><span style="color: #0000BB">$name</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print&nbsp;</span><span style="color: #DD0000">"Hello&nbsp;</span><span style="color: #007700">{</span><span style="color: #0000BB">$name</span><span style="color: #007700">}</span><span style="color: #DD0000">!\n"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />}<br /><br /></span><span style="color: #FF8000">//&nbsp;Начиная&nbsp;с&nbsp;версии&nbsp;PHP&nbsp;5.3.0<br /></span><span style="color: #0000BB">call_user_func_array</span><span style="color: #007700">(</span><span style="color: #0000BB">__NAMESPACE__&nbsp;</span><span style="color: #007700">.</span><span style="color: #DD0000">'\Foo::test'</span><span style="color: #007700">,&nbsp;array(</span><span style="color: #DD0000">'Hannes'</span><span style="color: #007700">));<br /><br /></span><span style="color: #FF8000">//&nbsp;Начиная&nbsp;с&nbsp;версии&nbsp;PHP&nbsp;5.3.0<br /></span><span style="color: #0000BB">call_user_func_array</span><span style="color: #007700">(array(</span><span style="color: #0000BB">__NAMESPACE__&nbsp;</span><span style="color: #007700">.</span><span style="color: #DD0000">'\Foo'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'test'</span><span style="color: #007700">),&nbsp;array(</span><span style="color: #DD0000">'Philip'</span><span style="color: #007700">));<br /><br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+    <div class="example-contents"><p>Результатом выполнения данного примера
+будет что-то подобное:</p></div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+Hello Hannes!
+Hello Philip!
+</pre></div>
+    </div>
+   </div>
+   <div class="example" id="example-4594">
+    <p><b>Пример #3 Использование lambda-функции</b></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /><br />$func&nbsp;</span><span style="color: #007700">=&nbsp;function(</span><span style="color: #0000BB">$arg1</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$arg2</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">$arg1&nbsp;</span><span style="color: #007700">*&nbsp;</span><span style="color: #0000BB">$arg2</span><span style="color: #007700">;<br />};<br /><br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">call_user_func_array</span><span style="color: #007700">(</span><span style="color: #0000BB">$func</span><span style="color: #007700">,&nbsp;array(</span><span style="color: #0000BB">2</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">4</span><span style="color: #007700">)));&nbsp;</span><span style="color: #FF8000">/*&nbsp;Начиная&nbsp;с&nbsp;версии&nbsp;PHP&nbsp;5.3.0&nbsp;*/<br /><br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+    <div class="example-contents"><p>Результат выполнения данного примера:</p></div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+int(8)
+</pre></div>
+    </div>
+   </div>
+  </p>
+ </div>
+
+
+ <div class="refsect1 notes" id="refsect1-function.call-user-func-array-notes">
+  <h3 class="title">Примечания</h3>
+  <blockquote class="note"><p><b class="note">Замечание</b>: 
+   <p class="para">
+    Переменные-ссылки в <i><tt class="parameter">param_arr</tt></i> передаются в
+    функцию по ссылке, вне зависимости от того, ожидает ли функция
+    передачу соответствующего параметра по ссылке или нет. Эта форма
+    &quot;динамической&quot; передачи по ссылке не выводит замечания об
+    устаревшем поведении, но тем не менее считается устаревшей, и,
+    скорее всего, будет удалена в следующей версии PHP.
+    Далее, это не влияет на встроенные функции, у которых учитывается
+    сигнатура функции. Передача по значению параметра функции, при
+    ожидаемой передачи по ссылке, вызовет предупреждение и заставит
+    <span class="function"><a href="function.call-user-func.html" class="function">call_user_func()</a></span> вернуть <b><tt>FALSE</tt></b> (за исключением
+    если переданное значение имеет количество ссылок (reference count) равное 1).
+   </p>
+  </p></blockquote>
+  <blockquote class="note"><p><b class="note">Замечание</b>: <p class="para">Callback-функции,
+зарегистрированные такими функциями как <span class="function"><a href="function.call-user-func.html" class="function">call_user_func()</a></span> и <span class="function"><b>call_user_func_array()</b></span>,
+не будут вызваны при наличии не пойманного исключения, брошенного в предыдущей callback-функции.</p></p></blockquote>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-function.call-user-func-array-seealso">
+  <h3 class="title">Смотрите также</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><span class="function"><a href="function.call-user-func.html" class="function" rel="rdfs-seeAlso">call_user_func()</a> - Вызывает пользовательскую функцию, указанную в первом параметре</span></li>
+    <li class="member">информация о типе <a href="language.pseudo-types.html#language.types.callback" class="link">callback</a></li>
+   </ul>
+  </p>
+ </div>
+
+
+</div><hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="ref.funchand.html">Управление функциями</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.call-user-func.html">call_user_func</a></div>
+ <div class="up"><a href="ref.funchand.html">Управление функциями</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

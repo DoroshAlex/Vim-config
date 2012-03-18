@@ -1,0 +1,164 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Разбирает строку в переменные</title>
+
+ </head>
+ <body><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.ord.html">ord</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.print.html">print</a></div>
+ <div class="up"><a href="ref.strings.html">Обработка строк</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.parse-str" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">parse_str</h1>
+  <p class="verinfo">(PHP 4, PHP 5)</p><p class="refpurpose"><span class="refname">parse_str</span> &mdash; <span class="dc-title">Разбирает строку в переменные</span></p>
+
+ </div>
+
+ <div class="refsect1 description" id="refsect1-function.parse-str-description">
+  <h3 class="title">Описание</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type"><span class="type void">void</span></span> <span class="methodname"><b>parse_str</b></span>
+    ( <span class="methodparam"><span class="type">string</span> <tt class="parameter">$str</tt></span>
+   [, <span class="methodparam"><span class="type">array</span> <tt class="parameter reference">&$arr</tt></span>
+  ] )</div>
+
+  <p class="para rdfs-comment">
+   Разбирает строку <i><tt class="parameter">str</tt></i>, которая должна иметь
+   формат строки запроса URL и присваивает значения переменным в текущем
+   контексте.
+  </p>
+  <blockquote class="note"><p><b class="note">Замечание</b>: 
+   <p class="para">
+    Для получения текущей <i>QUERY_STRING</i>, можно использовать
+    переменную <var class="varname"><var class="varname"><a href="reserved.variables.server.html" class="classname">$_SERVER['QUERY_STRING']</a></var></var>.
+    Кроме того, возможно вы захотите прочесть раздел о
+    <a href="language.variables.external.html" class="link">переменных вне PHP</a>.
+   </p>
+  </p></blockquote>
+  <blockquote class="note"><p><b class="note">Замечание</b>: 
+   <p class="para">
+    Опция <a href="info.configuration.html#ini.magic-quotes-gpc" class="link">magic_quotes_gpc</a>
+    влияет на вывод этой функции, так как <span class="function"><b>parse_str()</b></span>
+    использует тот же механизм, что используется в PHP для заполнения
+    <var class="varname"><var class="varname"><a href="reserved.variables.get.html" class="classname">$_GET</a></var></var>, <var class="varname"><var class="varname"><a href="reserved.variables.post.html" class="classname">$_POST</a></var></var> и других
+    переменных.
+   </p>
+  </p></blockquote>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-function.parse-str-parameters">
+  <h3 class="title">Список параметров</h3>
+  <p class="para">
+   <dl>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">str</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Входная строка.
+      </p>
+     </dd>
+
+    </dt>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">arr</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Если указан второй параметр <i><tt class="parameter">arr</tt></i>,
+       то вместо присвоения переменных в текущем контексте они
+       будут сохранены в этом параметре в качестве
+       элементов массива.
+      </p>
+     </dd>
+
+    </dt>
+
+   </dl>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-function.parse-str-returnvalues">
+  <h3 class="title">Возвращаемые значения</h3>
+  <p class="para">
+   Эта функция не возвращает значения после выполнения.
+  </p>
+ </div>
+
+
+ <div class="refsect1 changelog" id="refsect1-function.parse-str-changelog">
+  <h3 class="title">Список изменений</h3>
+  <p class="para">
+   <table class="doctable informaltable">
+    
+     <thead valign="middle">
+      <tr valign="middle">
+       <th>Версия</th>
+       <th>Описание</th>
+      </tr>
+
+     </thead>
+
+     <tbody valign="middle" class="tbody">
+      <tr valign="middle">
+       <td align="left">4.0.3</td>
+       <td align="left">
+        Добавлен параметр <i><tt class="parameter">arr</tt></i>
+       </td>
+      </tr>
+
+     </tbody>
+    
+   </table>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-function.parse-str-examples">
+  <h3 class="title">Примеры</h3>
+  <p class="para">
+   <div class="example" id="example-4361">
+    <p><b>Пример #1 Использование <span class="function"><b>parse_str()</b></span></b></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$str&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">"first=value&amp;arr[]=foo+bar&amp;arr[]=baz"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">parse_str</span><span style="color: #007700">(</span><span style="color: #0000BB">$str</span><span style="color: #007700">);<br />echo&nbsp;</span><span style="color: #0000BB">$first</span><span style="color: #007700">;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;value<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">$arr</span><span style="color: #007700">[</span><span style="color: #0000BB">0</span><span style="color: #007700">];&nbsp;</span><span style="color: #FF8000">//&nbsp;foo&nbsp;bar<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">$arr</span><span style="color: #007700">[</span><span style="color: #0000BB">1</span><span style="color: #007700">];&nbsp;</span><span style="color: #FF8000">//&nbsp;baz<br /><br /></span><span style="color: #0000BB">parse_str</span><span style="color: #007700">(</span><span style="color: #0000BB">$str</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$output</span><span style="color: #007700">);<br />echo&nbsp;</span><span style="color: #0000BB">$output</span><span style="color: #007700">[</span><span style="color: #DD0000">'first'</span><span style="color: #007700">];&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;value<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">$output</span><span style="color: #007700">[</span><span style="color: #DD0000">'arr'</span><span style="color: #007700">][</span><span style="color: #0000BB">0</span><span style="color: #007700">];&nbsp;</span><span style="color: #FF8000">//&nbsp;foo&nbsp;bar<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">$output</span><span style="color: #007700">[</span><span style="color: #DD0000">'arr'</span><span style="color: #007700">][</span><span style="color: #0000BB">1</span><span style="color: #007700">];&nbsp;</span><span style="color: #FF8000">//&nbsp;baz<br /><br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+  </p>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-function.parse-str-seealso">
+  <h3 class="title">Смотрите также</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><span class="function"><a href="function.parse-url.html" class="function" rel="rdfs-seeAlso">parse_url()</a> - Разбирает URL и возвращает его компоненты</span></li>
+    <li class="member"><span class="function"><a href="function.pathinfo.html" class="function" rel="rdfs-seeAlso">pathinfo()</a> - Возвращает информацию о пути к файлу</span></li>
+    <li class="member"><span class="function"><a href="function.http-build-query.html" class="function" rel="rdfs-seeAlso">http_build_query()</a> - Генерирует URL-кодированную строку запроса</span></li>
+    <li class="member"><span class="function"><a href="function.get-magic-quotes-gpc.html" class="function" rel="rdfs-seeAlso">get_magic_quotes_gpc()</a> - Gets the current configuration setting of magic_quotes_gpc</span></li>
+    <li class="member"><span class="function"><a href="function.urldecode.html" class="function" rel="rdfs-seeAlso">urldecode()</a> - Декодирование URL-кодированной строки</span></li>
+   </ul>
+  </p>
+ </div>
+
+
+</div><hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.ord.html">ord</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.print.html">print</a></div>
+ <div class="up"><a href="ref.strings.html">Обработка строк</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

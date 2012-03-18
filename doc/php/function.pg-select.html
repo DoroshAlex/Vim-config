@@ -1,0 +1,158 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Выбирает записи из базы данных</title>
+
+ </head>
+ <body><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.pg-result-status.html">pg_result_status</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.pg-send-execute.html">pg_send_execute</a></div>
+ <div class="up"><a href="ref.pgsql.html">PostgreSQL</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.pg-select" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">pg_select</h1>
+  <p class="verinfo">(PHP 4 &gt;= 4.3.0, PHP 5)</p><p class="refpurpose"><span class="refname">pg_select</span> &mdash; <span class="dc-title">
+   Выбирает записи из базы данных
+  </span></p>
+
+ </div>
+
+ <div class="refsect1 description" id="refsect1-function.pg-select-description">
+  <h3 class="title">Описание</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type"><a href="language.pseudo-types.html#language.types.mixed" class="type mixed">mixed</a></span> <span class="methodname"><b>pg_select</b></span>
+    ( <span class="methodparam"><span class="type">resource</span> <tt class="parameter">$connection</tt></span>
+   , <span class="methodparam"><span class="type">string</span> <tt class="parameter">$table_name</tt></span>
+   , <span class="methodparam"><span class="type">array</span> <tt class="parameter">$assoc_array</tt></span>
+   [, <span class="methodparam"><span class="type">int</span> <tt class="parameter">$options</tt><span class="initializer"> = PGSQL_DML_EXEC</span></span>
+  ] )</div>
+
+  <p class="para rdfs-comment">
+   <span class="function"><b>pg_select()</b></span> выбирает записи из базы данных, 
+   удовлетворяющие условиям <i>field=&gt;value</i>, заданным 
+   в массиве <i>assoc_array</i>.
+  </p>
+  <p class="para">
+   Если задан аргумент <i>options</i>, то к массиву 
+   <i>assoc_array</i> будет применена функция 
+   <span class="function"><a href="function.pg-convert.html" class="function">pg_convert()</a></span> с параметрами, заданными в 
+   качестве аргумента.
+  </p>
+  <div class="warning"><b class="warning">Внимание</b><p class="simpara">
+Эта функция является <em class="emphasis">ЭКСПЕРИМЕНТАЛЬНОЙ</em>.
+Поведение этой функции, ее имя и относящаяся к ней документация
+могут измениться в последующих версиях PHP без уведомления.
+Используйте эту функцию на свой страх и риск.</p></div>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-function.pg-select-parameters">
+  <h3 class="title">Список параметров</h3>
+  <p class="para">
+   <dl>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">connection</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Ресурс соединения с базой данных PostgreSQL.
+      </p>
+     </dd>
+
+    </dt>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">table_name</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Название таблицы, из которой выбираются данные.
+      </p>
+     </dd>
+
+    </dt>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">assoc_array</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Массив (<span class="type"><a href="language.types.array.html" class="type array">array</a></span>), ключи которого соответствуют именам колонок таблицы 
+       <i><tt class="parameter">table_name</tt></i>. Будут выбраны только те строки, 
+       значения полей которых совпадут со значениями массива.
+      </p>
+     </dd>
+
+    </dt>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">options</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Одна из констант <b><tt>PGSQL_CONV_FORCE_NULL</tt></b>, 
+       <b><tt>PGSQL_DML_NO_CONV</tt></b>,
+       <b><tt>PGSQL_DML_EXEC</tt></b>,
+       <b><tt>PGSQL_DML_ASYNC</tt></b>,
+       <b><tt>PGSQL_DML_STRING</tt></b> или их комбинация. 
+       Если <i><tt class="parameter">options</tt></i> содержит 
+       <b><tt>PGSQL_DML_STRING</tt></b>, функция вернет строку.
+      </p>
+     </dd>
+
+    </dt>
+
+   </dl>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-function.pg-select-returnvalues">
+  <h3 class="title">Возвращаемые значения</h3>
+  <p class="para">
+   Возвращает <b><tt>TRUE</tt></b> в случае успешного завершения  или <b><tt>FALSE</tt></b> в случае возникновения ошибки. Функция вернет строку, если <i><tt class="parameter">options</tt></i> 
+   содержит <b><tt>PGSQL_DML_STRING</tt></b>.
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 examples" id="refsect1-function.pg-select-examples">
+  <h3 class="title">Примеры</h3>
+  <p class="para">
+   <div class="example" id="example-1951">
+    <p><b>Пример #1 Пример использования <span class="function"><b>pg_select()</b></span></b></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php&nbsp;<br />&nbsp;&nbsp;$db&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">pg_connect</span><span style="color: #007700">(</span><span style="color: #DD0000">'dbname=foo'</span><span style="color: #007700">);<br />&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;Это&nbsp;безопасно&nbsp;с&nbsp;тех&nbsp;пор&nbsp;как&nbsp;$_POST&nbsp;преобразуется&nbsp;автоматически<br />&nbsp;&nbsp;</span><span style="color: #0000BB">$rec&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">pg_select</span><span style="color: #007700">(</span><span style="color: #0000BB">$db</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'post_log'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$_POST</span><span style="color: #007700">);<br />&nbsp;&nbsp;if&nbsp;(</span><span style="color: #0000BB">$rec</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"Records&nbsp;selected\n"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$rec</span><span style="color: #007700">);<br />&nbsp;&nbsp;}&nbsp;else&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"Должно&nbsp;быть&nbsp;переданы&nbsp;неверные&nbsp;данные\n"</span><span style="color: #007700">;<br />&nbsp;&nbsp;}<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+  </p>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-function.pg-select-seealso">
+  <h3 class="title">Смотрите также</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><span class="function"><a href="function.pg-convert.html" class="function" rel="rdfs-seeAlso">pg_convert()</a> - Преобразует значения ассоциативного массива в приемлемые для использования в SQL запросах</span></li>
+   </ul>
+  </p>
+ </div>
+
+</div><hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.pg-result-status.html">pg_result_status</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.pg-send-execute.html">pg_send_execute</a></div>
+ <div class="up"><a href="ref.pgsql.html">PostgreSQL</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

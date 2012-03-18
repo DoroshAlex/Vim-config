@@ -1,0 +1,195 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Установка даты</title>
+
+ </head>
+ <body><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="datetime.set-state.html">DateTime::__set_state</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="datetime.setisodate.html">DateTime::setISODate</a></div>
+ <div class="up"><a href="class.datetime.html">DateTime</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="datetime.setdate" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">DateTime::setDate</h1>
+  <h1 class="refname">date_date_set</h1>
+  <p class="verinfo">(PHP 5 &gt;= 5.2.0)</p><p class="refpurpose"><span class="refname">DateTime::setDate</span> -- <span class="refname">date_date_set</span> &mdash; <span class="dc-title">Установка даты</span></p>
+
+ </div>
+
+ <div class="refsect1 description" id="refsect1-datetime.setdate-description">
+  <h3 class="title">Описание</h3>
+  <p class="para">Объектно-ориентированный стиль</p>
+  <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type"><a href="class.datetime.html" class="type DateTime">DateTime</a></span> <span class="methodname"><b>DateTime::setDate</b></span>
+    ( <span class="methodparam"><span class="type">int</span> <tt class="parameter">$year</tt></span>
+   , <span class="methodparam"><span class="type">int</span> <tt class="parameter">$month</tt></span>
+   , <span class="methodparam"><span class="type">int</span> <tt class="parameter">$day</tt></span>
+   )</div>
+
+  <p class="para rdfs-comment">Процедурный стиль</p>
+  <div class="methodsynopsis dc-description">
+   <span class="type"><a href="class.datetime.html" class="type DateTime">DateTime</a></span> <span class="methodname"><a href="function.date-date-set.html" class="methodname">date_date_set</a></span>
+    ( <span class="methodparam"><span class="type"><a href="class.datetime.html" class="type DateTime">DateTime</a></span> <tt class="parameter">$object</tt></span>
+   , <span class="methodparam"><span class="type">int</span> <tt class="parameter">$year</tt></span>
+   , <span class="methodparam"><span class="type">int</span> <tt class="parameter">$month</tt></span>
+   , <span class="methodparam"><span class="type">int</span> <tt class="parameter">$day</tt></span>
+   )</div>
+
+  <p class="para rdfs-comment">
+   Переустанавливает текущее значение даты объекта 
+   DateTime в новое значение.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-datetime.setdate-parameters">
+  <h3 class="title">Список параметров</h3>
+  <dl>
+
+   <dt>
+<span class="term"><i><tt class="parameter">object</tt></i></span>
+<dd>
+<p class="para">Только для процедурного стиля: Объект <a href="class.datetime.html" class="classname">DateTime</a>, возвращаемый
+ <span class="function"><a href="function.date-create.html" class="function">date_create()</a></span>.
+ Функция изменяет этот объект.</p></dd>
+</dt>
+
+   <dt>
+
+    <span class="term"><i><tt class="parameter">year</tt></i></span>
+    <dd>
+
+     <p class="para">
+      Год новой даты.
+     </p>
+    </dd>
+
+   </dt>
+
+   <dt>
+
+    <span class="term"><i><tt class="parameter">month</tt></i></span>
+    <dd>
+
+     <p class="para">
+      Месяц новой даты.
+     </p>
+    </dd>
+
+   </dt>
+
+   <dt>
+
+    <span class="term"><i><tt class="parameter">day</tt></i></span>
+    <dd>
+
+     <p class="para">
+      День новой даты.
+     </p>
+    </dd>
+
+   </dt>
+
+  </dl>
+
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-datetime.setdate-returnvalues">
+  <h3 class="title">Возвращаемые значения</h3>
+  <p class="para">
+   Возвращает объект <a href="class.datetime.html" class="classname">DateTime</a> для применения в цепи методов  или <b><tt>FALSE</tt></b> в случае возникновения ошибки.
+  </p>
+ </div>
+
+
+ <div class="refsect1 changelog" id="refsect1-datetime.setdate-changelog">
+  <h3 class="title">Список изменений</h3>
+  <table class="doctable informaltable">
+   
+    <thead valign="middle">
+     <tr valign="middle">
+      <th>Версия</th>
+      <th>Описание</th>
+     </tr>
+
+    </thead>
+
+    <tbody valign="middle" class="tbody">
+     <tr valign="middle"><td align="left">5.3.0</td><td align="left">Изменено
+значение успешной работы функции с <b><tt>NULL</tt></b> на <a href="class.datetime.html" class="classname">DateTime</a>.</td></tr>
+
+    </tbody>
+   
+  </table>
+
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-datetime.setdate-examples">
+  <h3 class="title">Примеры</h3>
+  <div class="example" id="example-614">
+   <p><b>Пример #1 Пример использования <span class="function"><b>DateTime::setDate()</b></span></b></p>
+   <div class="example-contents"><p>Объектно-ориентированный стиль</p></div>
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$date&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">DateTime</span><span style="color: #007700">();<br /></span><span style="color: #0000BB">$date</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setDate</span><span style="color: #007700">(</span><span style="color: #0000BB">2001</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">2</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">3</span><span style="color: #007700">);<br />echo&nbsp;</span><span style="color: #0000BB">$date</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">format</span><span style="color: #007700">(</span><span style="color: #DD0000">'Y-m-d'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+   </div>
+
+   <div class="example-contents"><p>Процедурный стиль</p></div>
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$date&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">date_create</span><span style="color: #007700">();<br /></span><span style="color: #0000BB">date_date_set</span><span style="color: #007700">(</span><span style="color: #0000BB">$date</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">2001</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">2</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">3</span><span style="color: #007700">);<br />echo&nbsp;</span><span style="color: #0000BB">date_format</span><span style="color: #007700">(</span><span style="color: #0000BB">$date</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'Y-m-d'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+   </div>
+
+   <div class="example-contents"><p>Результат выполнения данных примеров:</p></div>
+   <div class="example-contents screen">
+<div class="cdata"><pre>
+2001-02-03
+</pre></div>
+   </div>
+  </div>
+  <div class="example" id="example-615">
+   <p><b>Пример #2 
+    Значения, превышающие диапазон своего поля, добавляются к старшим полям
+   </b></p>
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$date&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">DateTime</span><span style="color: #007700">();<br /><br /></span><span style="color: #0000BB">$date</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setDate</span><span style="color: #007700">(</span><span style="color: #0000BB">2001</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">2</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">28</span><span style="color: #007700">);<br />echo&nbsp;</span><span style="color: #0000BB">$date</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">format</span><span style="color: #007700">(</span><span style="color: #DD0000">'Y-m-d'</span><span style="color: #007700">)&nbsp;.&nbsp;</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br /><br /></span><span style="color: #0000BB">$date</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setDate</span><span style="color: #007700">(</span><span style="color: #0000BB">2001</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">2</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">29</span><span style="color: #007700">);<br />echo&nbsp;</span><span style="color: #0000BB">$date</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">format</span><span style="color: #007700">(</span><span style="color: #DD0000">'Y-m-d'</span><span style="color: #007700">)&nbsp;.&nbsp;</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br /><br /></span><span style="color: #0000BB">$date</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setDate</span><span style="color: #007700">(</span><span style="color: #0000BB">2001</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">14</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">3</span><span style="color: #007700">);<br />echo&nbsp;</span><span style="color: #0000BB">$date</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">format</span><span style="color: #007700">(</span><span style="color: #DD0000">'Y-m-d'</span><span style="color: #007700">)&nbsp;.&nbsp;</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+   </div>
+
+   <div class="example-contents"><p>Результат выполнения данного примера:</p></div>
+   <div class="example-contents screen">
+<div class="cdata"><pre>
+2001-02-28
+2001-03-01
+2002-02-03
+</pre></div>
+   </div>
+  </div>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-datetime.setdate-seealso">
+  <h3 class="title">Смотрите также</h3>
+  <ul class="simplelist">
+   <li class="member"><span class="function"><a href="datetime.setisodate.html" class="function" rel="rdfs-seeAlso">DateTime::setISODate()</a> - Установка ISO даты</span></li>
+   <li class="member"><span class="function"><a href="datetime.settime.html" class="function" rel="rdfs-seeAlso">DateTime::setTime()</a> - Установка времени</span></li>
+  </ul>
+ </div>
+
+
+</div><hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="datetime.set-state.html">DateTime::__set_state</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="datetime.setisodate.html">DateTime::setISODate</a></div>
+ <div class="up"><a href="class.datetime.html">DateTime</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

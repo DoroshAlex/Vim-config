@@ -1,0 +1,165 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Определяет, была ли установлена переменная значением отличным от NULL</title>
+
+ </head>
+ <body><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.is-string.html">is_string</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.print-r.html">print_r</a></div>
+ <div class="up"><a href="ref.var.html">Функции для работы с переменными</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.isset" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">isset</h1>
+  <p class="verinfo">(PHP 4, PHP 5)</p><p class="refpurpose"><span class="refname">isset</span> &mdash; <span class="dc-title">Определяет, была ли установлена переменная значением отличным от <b><tt>NULL</tt></b></span></p>
+
+ </div>
+ 
+ <div class="refsect1 description" id="refsect1-function.isset-description">
+ <h3 class="title">Описание</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">bool</span> <span class="methodname"><b>isset</b></span>
+    ( <span class="methodparam"><span class="type"><a href="language.pseudo-types.html#language.types.mixed" class="type mixed">mixed</a></span> <tt class="parameter">$var</tt></span>
+   [, <span class="methodparam"><span class="type"><a href="language.pseudo-types.html#language.types.mixed" class="type mixed">mixed</a></span> <tt class="parameter">$...</tt></span>
+  ] )</div>
+
+  <p class="para rdfs-comment">
+   Определяет, была ли установлена переменная значением отличным от <b><tt>NULL</tt></b>
+  </p>
+  <p class="para">
+   Если переменная была удалена с помощью <span class="function"><a href="function.unset.html" class="function">unset()</a></span>, то она больше
+   не считается установленной. <span class="function"><b>isset()</b></span> вернет <b><tt>FALSE</tt></b>, если проверяемая
+   переменная имеет значение <b><tt>NULL</tt></b>. Следует помнить, что <b><tt>NULL</tt></b>-байт
+   (<i>&quot;\0&quot;</i>) не является эквивалентом константе PHP <b><tt>NULL</tt></b>.
+  </p>
+  <p class="para">
+   Если были переданы несколько параметров, то <span class="function"><b>isset()</b></span>
+   вернет <b><tt>TRUE</tt></b> только в том случае, если все параметры определены. Проверка происходит
+   слева направо и заканчивается, как только будет встречена неопределенная переменная.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-function.isset-parameters">
+  <h3 class="title">Список параметров</h3>
+  <p class="para">
+   <dl>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">var</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Проверяемая переменная.
+      </p>
+     </dd>
+
+    </dt>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">...</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Другая переменная ...
+      </p>
+     </dd>
+
+    </dt>
+
+   </dl>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-function.isset-returnvalues">
+  <h3 class="title">Возвращаемые значения</h3>
+  <p class="para">
+   Возвращает <b><tt>TRUE</tt></b>, если <i><tt class="parameter">var</tt></i> определена и
+   значение отличное от <b><tt>NULL</tt></b>, и <b><tt>FALSE</tt></b> в противном случае.
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-function.isset-examples">
+  <h3 class="title">Примеры</h3>
+  <p class="para">
+   <div class="example" id="example-4747">
+    <p><b>Пример #1 Пример использования <span class="function"><b>isset()</b></span></b></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /><br />$var&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">''</span><span style="color: #007700">;<br /><br /></span><span style="color: #FF8000">//&nbsp;Проверка&nbsp;вернет&nbsp;TRUE,&nbsp;поэтому&nbsp;текст&nbsp;будет&nbsp;напечатан.<br /></span><span style="color: #007700">if&nbsp;(isset(</span><span style="color: #0000BB">$var</span><span style="color: #007700">))&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"Эта&nbsp;переменная&nbsp;определена,&nbsp;поэтому&nbsp;меня&nbsp;и&nbsp;напечатали."</span><span style="color: #007700">;<br />}<br /><br /></span><span style="color: #FF8000">//&nbsp;В&nbsp;следующем&nbsp;примере&nbsp;мы&nbsp;используем&nbsp;var_dump&nbsp;для&nbsp;вывода<br />//&nbsp;значения,&nbsp;возвращаемого&nbsp;isset().<br /><br /></span><span style="color: #0000BB">$a&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">"test"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$b&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">"anothertest"</span><span style="color: #007700">;<br /><br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(isset(</span><span style="color: #0000BB">$a</span><span style="color: #007700">));&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;TRUE<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(isset(</span><span style="color: #0000BB">$a</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$b</span><span style="color: #007700">));&nbsp;</span><span style="color: #FF8000">//&nbsp;TRUE<br /><br /></span><span style="color: #007700">unset&nbsp;(</span><span style="color: #0000BB">$a</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(isset(</span><span style="color: #0000BB">$a</span><span style="color: #007700">));&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;FALSE<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(isset(</span><span style="color: #0000BB">$a</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$b</span><span style="color: #007700">));&nbsp;</span><span style="color: #FF8000">//&nbsp;FALSE<br /><br /></span><span style="color: #0000BB">$foo&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">NULL</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(isset(</span><span style="color: #0000BB">$foo</span><span style="color: #007700">));&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;FALSE<br /><br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+  </p>
+  <p class="para">
+   Функция также работает с элементами массивов:
+   <div class="informalexample">
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /><br />$a&nbsp;</span><span style="color: #007700">=&nbsp;array&nbsp;(</span><span style="color: #DD0000">'test'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">1</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'hello'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">NULL</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'pie'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;array(</span><span style="color: #DD0000">'a'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'apple'</span><span style="color: #007700">));<br /><br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(isset(</span><span style="color: #0000BB">$a</span><span style="color: #007700">[</span><span style="color: #DD0000">'test'</span><span style="color: #007700">]));&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;TRUE<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(isset(</span><span style="color: #0000BB">$a</span><span style="color: #007700">[</span><span style="color: #DD0000">'foo'</span><span style="color: #007700">]));&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;FALSE<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(isset(</span><span style="color: #0000BB">$a</span><span style="color: #007700">[</span><span style="color: #DD0000">'hello'</span><span style="color: #007700">]));&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;FALSE<br /><br />//&nbsp;Элемент&nbsp;с&nbsp;ключом&nbsp;'hello'&nbsp;равен&nbsp;NULL,&nbsp;поэтому&nbsp;он&nbsp;считается&nbsp;неопределенным<br />//&nbsp;Если&nbsp;Вы&nbsp;хотите&nbsp;проверить&nbsp;существование&nbsp;ключей&nbsp;со&nbsp;значением&nbsp;NULL,&nbsp;используйте:&nbsp;<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">array_key_exists</span><span style="color: #007700">(</span><span style="color: #DD0000">'hello'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$a</span><span style="color: #007700">));&nbsp;</span><span style="color: #FF8000">//&nbsp;TRUE<br /><br />//&nbsp;Проверка&nbsp;вложенных&nbsp;элементов&nbsp;массива<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(isset(</span><span style="color: #0000BB">$a</span><span style="color: #007700">[</span><span style="color: #DD0000">'pie'</span><span style="color: #007700">][</span><span style="color: #DD0000">'a'</span><span style="color: #007700">]));&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;TRUE<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(isset(</span><span style="color: #0000BB">$a</span><span style="color: #007700">[</span><span style="color: #DD0000">'pie'</span><span style="color: #007700">][</span><span style="color: #DD0000">'b'</span><span style="color: #007700">]));&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;FALSE<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(isset(</span><span style="color: #0000BB">$a</span><span style="color: #007700">[</span><span style="color: #DD0000">'cake'</span><span style="color: #007700">][</span><span style="color: #DD0000">'a'</span><span style="color: #007700">][</span><span style="color: #DD0000">'b'</span><span style="color: #007700">]));&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;FALSE<br /><br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+  </p>
+ </div>
+
+
+ <div class="refsect1 notes" id="refsect1-function.isset-notes">
+  <h3 class="title">Примечания</h3>
+  <div class="warning"><b class="warning">Внимание</b>
+   <p class="para">
+    <span class="function"><b>isset()</b></span> работает только с переменными, поэтому передача в качестве параметров любых
+    других значений приведет к ошибке парсинга.  Для проверки определения
+    <a href="language.constants.html" class="link">констант</a> используйте функцию 
+    <span class="function"><a href="function.defined.html" class="function">defined()</a></span>.
+   </p>
+  </div>
+  <blockquote class="note"><p><b class="note">Замечание</b>: <span class="simpara">Поскольку это языковая
+конструкция, а не функция, она не может вызываться при помощи
+<a href="functions.variable-functions.html" class="link">переменных функций</a></span>
+</p></blockquote>
+  <blockquote class="note"><p><b class="note">Замечание</b>: 
+   <p class="para">
+    При использовании <span class="function"><b>isset()</b></span> на недоступных свойствах
+    объекта, будет вызываться перегруженный метод
+    <a href="language.oop5.overloading.html#language.oop5.overloading.members" class="link">__isset</a>,
+    если он существует.
+   </p>
+  </p></blockquote>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-function.isset-seealso">
+  <h3 class="title">Смотрите также</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><span class="function"><a href="function.empty.html" class="function" rel="rdfs-seeAlso">empty()</a> - Проверяет, пуста ли переменная</span></li>
+    <li class="member"><a href="language.oop5.overloading.html#language.oop5.overloading.members" class="link">__isset</a></li>
+    <li class="member"><span class="function"><a href="function.unset.html" class="function" rel="rdfs-seeAlso">unset()</a> - Удаляет переменную</span></li>
+    <li class="member"><span class="function"><a href="function.defined.html" class="function" rel="rdfs-seeAlso">defined()</a> - Проверяет существование указанной именованной константы</span></li>
+    <li class="member"><a href="types.comparisons.html" class="link">Таблица сравнения типов</a></li>
+    <li class="member"><span class="function"><a href="function.array-key-exists.html" class="function" rel="rdfs-seeAlso">array_key_exists()</a> - Проверяет, присутствует ли в массиве указанный ключ или индекс</span></li>
+    <li class="member"><span class="function"><a href="function.is-null.html" class="function" rel="rdfs-seeAlso">is_null()</a> - Проверяет, является ли значение переменной равным NULL</span></li>
+    <li class="member">Оператор управления ошибками <a href="language.operators.errorcontrol.html" class="link">@</a></li>
+   </ul>
+  </p>
+ </div>
+
+
+</div><hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.is-string.html">is_string</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.print-r.html">print_r</a></div>
+ <div class="up"><a href="ref.var.html">Функции для работы с переменными</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

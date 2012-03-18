@@ -1,0 +1,136 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Импорт узла в текущий документ</title>
+
+ </head>
+ <body><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="domdocument.getelementsbytagnamens.html">DOMDocument::getElementsByTagNameNS</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="domdocument.load.html">DOMDocument::load</a></div>
+ <div class="up"><a href="class.domdocument.html">DOMDocument</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="domdocument.importnode" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">DOMDocument::importNode</h1>
+  <p class="verinfo">(PHP 5)</p><p class="refpurpose"><span class="refname">DOMDocument::importNode</span> &mdash; <span class="dc-title">
+   Импорт узла в текущий документ
+  </span></p>
+
+ </div>
+ <div class="refsect1 description" id="refsect1-domdocument.importnode-description">
+  <h3 class="title">Описание</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type"><a href="class.domnode.html" class="type DOMNode">DOMNode</a></span> <span class="methodname"><b>DOMDocument::importNode</b></span>
+    ( <span class="methodparam"><span class="type"><a href="class.domnode.html" class="type DOMNode">DOMNode</a></span> <tt class="parameter">$importedNode</tt></span>
+   [, <span class="methodparam"><span class="type">bool</span> <tt class="parameter">$deep</tt></span>
+  ] )</div>
+
+  <p class="para rdfs-comment">
+   Эта функция возвращает копию импортируемого узла и присоединяет ее к 
+   текущему документу.
+  </p>
+ </div>
+
+ <div class="refsect1 parameters" id="refsect1-domdocument.importnode-parameters">
+  <h3 class="title">Список параметров</h3>
+  <p class="para">
+   <dl>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">importedNode</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Импортируемый узел.
+      </p>
+     </dd>
+
+    </dt>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">deep</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Если установлен в <b><tt>TRUE</tt></b>, этот метод рекурсивно импортирует поддерево узла
+       <i><tt class="parameter">importedNode</tt></i>.
+      </p>
+      <blockquote class="note"><p><b class="note">Замечание</b>: 
+       <p class="para">
+        Чтобы скопировались атрибуты узла, <i><tt class="parameter">deep</tt></i> должен 
+        быть установлен в <b><tt>TRUE</tt></b>.
+       </p>
+      </p></blockquote>
+     </dd>
+
+    </dt>
+
+   </dl>
+
+  </p>
+ </div>
+
+ <div class="refsect1 returnvalues" id="refsect1-domdocument.importnode-returnvalues">
+  <h3 class="title">Возвращаемые значения</h3>
+  <p class="para">
+   Скопированный узел или <b><tt>FALSE</tt></b>, если он не может быть скопирован.
+  </p>
+ </div>
+
+ <div class="refsect1 errors" id="refsect1-domdocument.importnode-errors">
+  <h3 class="title">Ошибки</h3>
+  <p class="para">
+   Если узел не может быть импортирован, будет выброшено исключение
+   <a href="class.domexception.html" class="classname">DOMException</a>.
+  </p>
+ </div>
+
+ <div class="refsect1 examples" id="refsect1-domdocument.importnode-examples">
+  <h3 class="title">Примеры</h3>
+  <p class="para">
+   <div class="example" id="example-4868">
+    <p><b>Пример #1 Пример использования <span class="function"><b>DOMDocument::importNode()</b></span></b></p>
+    <div class="example-contents"><p>
+     Копирование узлов между документами. 
+    </p></div>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /><br />$orgdoc&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">DOMDocument</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$orgdoc</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">loadXML</span><span style="color: #007700">(</span><span style="color: #DD0000">"&lt;root&gt;&lt;element&gt;&lt;child&gt;text&nbsp;in&nbsp;child&lt;/child&gt;&lt;/element&gt;&lt;/root&gt;"</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;Узел,&nbsp;который&nbsp;будет&nbsp;импортирован&nbsp;в&nbsp;новый&nbsp;документ<br /></span><span style="color: #0000BB">$node&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$orgdoc</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getElementsByTagName</span><span style="color: #007700">(</span><span style="color: #DD0000">"element"</span><span style="color: #007700">)-&gt;</span><span style="color: #0000BB">item</span><span style="color: #007700">(</span><span style="color: #0000BB">0</span><span style="color: #007700">);<br /><br /><br /></span><span style="color: #FF8000">//&nbsp;Создание&nbsp;нового&nbsp;документа<br /></span><span style="color: #0000BB">$newdoc&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">DOMDocument</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$newdoc</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">formatOutput&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">true</span><span style="color: #007700">;<br /><br /></span><span style="color: #FF8000">//&nbsp;Добавление&nbsp;разметки<br /></span><span style="color: #0000BB">$newdoc</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">loadXML</span><span style="color: #007700">(</span><span style="color: #DD0000">"&lt;root&gt;&lt;someelement&gt;text&nbsp;in&nbsp;some&nbsp;element&lt;/someelement&gt;&lt;/root&gt;"</span><span style="color: #007700">);<br /><br />echo&nbsp;</span><span style="color: #DD0000">"Новый&nbsp;документ&nbsp;перед&nbsp;добавлением&nbsp;в&nbsp;него&nbsp;узлов:\n"</span><span style="color: #007700">;<br />echo&nbsp;</span><span style="color: #0000BB">$newdoc</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">saveXML</span><span style="color: #007700">();<br /><br /></span><span style="color: #FF8000">//&nbsp;Импорт&nbsp;узла&nbsp;и&nbsp;всех&nbsp;его&nbsp;потомков&nbsp;в&nbsp;документ<br /></span><span style="color: #0000BB">$node&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$newdoc</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">importNode</span><span style="color: #007700">(</span><span style="color: #0000BB">$node</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">true</span><span style="color: #007700">);<br /></span><span style="color: #FF8000">//&nbsp;И&nbsp;затем&nbsp;добавление&nbsp;узла&nbsp;в&nbsp;корень&nbsp;элемента<br /></span><span style="color: #0000BB">$newdoc</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">documentElement</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">appendChild</span><span style="color: #007700">(</span><span style="color: #0000BB">$node</span><span style="color: #007700">);<br /><br />echo&nbsp;</span><span style="color: #DD0000">"\nНовый&nbsp;документ&nbsp;после&nbsp;добавления&nbsp;в&nbsp;него&nbsp;узлов:\n"</span><span style="color: #007700">;<br />echo&nbsp;</span><span style="color: #0000BB">$newdoc</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">saveXML</span><span style="color: #007700">();<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+    <div class="example-contents"><p>Результат выполнения данного примера:</p></div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+Новый документ перед добавлением в него узлов:
+&lt;?xml version=&quot;1.0&quot;?&gt;
+&lt;root&gt;
+  &lt;someelement&gt;text in some element&lt;/someelement&gt;
+&lt;/root&gt;
+
+Новый документ после добавления в него узлов:
+&lt;?xml version=&quot;1.0&quot;?&gt;
+&lt;root&gt;
+  &lt;someelement&gt;text in some element&lt;/someelement&gt;
+  &lt;element&gt;
+    &lt;child&gt;text in child&lt;/child&gt;
+  &lt;/element&gt;
+&lt;/root&gt;
+</pre></div>
+    </div>
+   </div>
+  </p>
+ </div>
+
+ 
+
+</div><hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="domdocument.getelementsbytagnamens.html">DOMDocument::getElementsByTagNameNS</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="domdocument.load.html">DOMDocument::load</a></div>
+ <div class="up"><a href="class.domdocument.html">DOMDocument</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

@@ -1,0 +1,194 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Выбирает срез массива</title>
+
+ </head>
+ <body><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.array-shift.html">array_shift</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.array-splice.html">array_splice</a></div>
+ <div class="up"><a href="ref.array.html">Функции для работы с массивами</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.array-slice" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">array_slice</h1>
+  <p class="verinfo">(PHP 4, PHP 5)</p><p class="refpurpose"><span class="refname">array_slice</span> &mdash; <span class="dc-title">Выбирает срез массива</span></p>
+
+ </div>
+ <div class="refsect1 description" id="refsect1-function.array-slice-description">
+  <h3 class="title">Описание</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">array</span> <span class="methodname"><b>array_slice</b></span>
+    ( <span class="methodparam"><span class="type">array</span> <tt class="parameter">$array</tt></span>
+   , <span class="methodparam"><span class="type">int</span> <tt class="parameter">$offset</tt></span>
+   [, <span class="methodparam"><span class="type">int</span> <tt class="parameter">$length</tt></span>
+   [, <span class="methodparam"><span class="type">bool</span> <tt class="parameter">$preserve_keys</tt><span class="initializer"> = false</span></span>
+  ]] )</div>
+
+  <p class="para rdfs-comment">
+   <span class="function"><b>array_slice()</b></span> возвращает последовательность
+   элементов массива <i><tt class="parameter">array</tt></i>, определённую параметрами
+   <i><tt class="parameter">offset</tt></i> и <i><tt class="parameter">length</tt></i>.
+  </p>
+  <blockquote class="note"><p><b class="note">Замечание</b>: <span class="simpara">Эта функция при вызове
+<a href="function.reset.html" class="link">сбрасывает</a> указатель массива, переданного параметром.</span></p></blockquote>
+ </div>
+
+ <div class="refsect1 parameters" id="refsect1-function.array-slice-parameters">
+  <h3 class="title">Список параметров</h3>
+  <p class="para">
+   <dl>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">array</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Входной массив.
+      </p>
+     </dd>
+
+    </dt>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">offset</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Если параметр <i><tt class="parameter">offset</tt></i> неотрицателен, последовательность
+       начнётся на указанном расстоянии от начала <i><tt class="parameter">array</tt></i>.
+       Если <i><tt class="parameter">offset</tt></i> отрицателен, последовательность
+       начнётся на расстоянии указанном расстоянии от конца <i><tt class="parameter">array</tt></i>.
+      </p>
+     </dd>
+
+    </dt>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">length</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Если в эту функцию передан положительный параметр
+       <i><tt class="parameter">length</tt></i>, последовательность будет
+       включать количество элементов меньшее или равное <i><tt class="parameter">length</tt></i>,
+       <i><tt class="parameter">length</tt></i>, <i><tt class="parameter">length</tt></i>. Если количество
+       элементов массива меньше чем параметр <i><tt class="parameter">length</tt></i>,
+       то только доступные элементы массива будут присутствовать.
+       Если в эту функцию передан отрицательный параметр
+       <i><tt class="parameter">length</tt></i>, последовательность
+       остановится на указанном расстоянии от конца массива.
+       Если он опущен, последовательность будет содержать все элементы
+       с <i><tt class="parameter">offset</tt></i> до конца массива
+       <i><tt class="parameter">array</tt></i>.
+      </p>
+     </dd>
+
+    </dt>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">preserve_keys</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Обратите внимание, что по умолчанию <span class="function"><b>array_slice()</b></span> 
+       сбрасывает ключи массива. Вы можете переопределить это поведение, 
+       установив параметр <i><tt class="parameter">preserve_keys</tt></i> в <b><tt>TRUE</tt></b>.
+      </p>
+     </dd>
+
+    </dt>
+
+   </dl>
+
+  </p>
+ </div>
+
+ <div class="refsect1 returnvalues" id="refsect1-function.array-slice-returnvalues">
+  <h3 class="title">Возвращаемые значения</h3>
+  <p class="para">
+   Возвращает срез.
+  </p>
+ </div>
+
+  <div class="refsect1 changelog" id="refsect1-function.array-slice-changelog">
+  <h3 class="title">Список изменений</h3>
+  <p class="para">
+   <table class="doctable informaltable">
+    
+     <thead valign="middle">
+      <tr valign="middle">
+       <th>Версия</th>
+       <th>Описание</th>
+      </tr>
+
+     </thead>
+
+     <tbody valign="middle" class="tbody">
+      <tr valign="middle">
+       <td align="left">5.0.2</td>
+       <td align="left">
+        Добавлен необязательный параметр <i><tt class="parameter">preserve_keys</tt></i>.
+       </td>
+      </tr>
+
+     </tbody>
+    
+   </table>
+
+  </p>
+ </div>
+
+ <div class="refsect1 examples" id="refsect1-function.array-slice-examples">
+  <h3 class="title">Примеры</h3>
+  <p class="para">
+   <div class="example" id="example-4486">
+    <p><b>Пример #1 Пример использования <span class="function"><b>array_slice()</b></span></b></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$input&nbsp;</span><span style="color: #007700">=&nbsp;array(</span><span style="color: #DD0000">"a"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"b"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"c"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"d"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"e"</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">$output&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">array_slice</span><span style="color: #007700">(</span><span style="color: #0000BB">$input</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">2</span><span style="color: #007700">);&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;возвращает&nbsp;"c",&nbsp;"d",&nbsp;и&nbsp;"e"<br /></span><span style="color: #0000BB">$output&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">array_slice</span><span style="color: #007700">(</span><span style="color: #0000BB">$input</span><span style="color: #007700">,&nbsp;-</span><span style="color: #0000BB">2</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">1</span><span style="color: #007700">);&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;возвращает&nbsp;"d"<br /></span><span style="color: #0000BB">$output&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">array_slice</span><span style="color: #007700">(</span><span style="color: #0000BB">$input</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">3</span><span style="color: #007700">);&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;возвращает&nbsp;"a",&nbsp;"b",&nbsp;и&nbsp;"c"<br /><br />//&nbsp;заметьте&nbsp;разницу&nbsp;в&nbsp;индексах&nbsp;массивов<br /></span><span style="color: #0000BB">print_r</span><span style="color: #007700">(</span><span style="color: #0000BB">array_slice</span><span style="color: #007700">(</span><span style="color: #0000BB">$input</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">2</span><span style="color: #007700">,&nbsp;-</span><span style="color: #0000BB">1</span><span style="color: #007700">));<br /></span><span style="color: #0000BB">print_r</span><span style="color: #007700">(</span><span style="color: #0000BB">array_slice</span><span style="color: #007700">(</span><span style="color: #0000BB">$input</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">2</span><span style="color: #007700">,&nbsp;-</span><span style="color: #0000BB">1</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">true</span><span style="color: #007700">));<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+    <div class="example-contents"><p>Результат выполнения данного примера:</p></div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+Array
+(
+    [0] =&gt; c
+    [1] =&gt; d
+)
+Array
+(
+    [2] =&gt; c
+    [3] =&gt; d
+)
+</pre></div>
+    </div>
+   </div>
+  </p>
+ </div>
+
+ <div class="refsect1 seealso" id="refsect1-function.array-slice-seealso">
+  <h3 class="title">Смотрите также</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><span class="function"><a href="function.array-splice.html" class="function" rel="rdfs-seeAlso">array_splice()</a> - Удаляет часть массива и заменяет её чем-нибудь ещё</span></li>
+    <li class="member"><span class="function"><a href="function.unset.html" class="function" rel="rdfs-seeAlso">unset()</a> - Удаляет переменную</span></li>
+    <li class="member"><span class="function"><a href="function.array-chunk.html" class="function" rel="rdfs-seeAlso">array_chunk()</a> - Разбивает массив на части</span></li>
+   </ul>
+  </p>
+ </div>
+
+</div><hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.array-shift.html">array_shift</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.array-splice.html">array_splice</a></div>
+ <div class="up"><a href="ref.array.html">Функции для работы с массивами</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

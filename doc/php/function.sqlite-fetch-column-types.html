@@ -1,0 +1,185 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Возвращает массив, содержащий информацию о типах полей в таблице</title>
+
+ </head>
+ <body><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.sqlite-fetch-array.html">sqlite_fetch_array</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.sqlite-fetch-object.html">sqlite_fetch_object</a></div>
+ <div class="up"><a href="ref.sqlite.html">SQLite</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.sqlite-fetch-column-types" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">sqlite_fetch_column_types</h1>
+  <h1 class="refname">SQLiteDatabase->fetchColumnTypes</h1>
+  <p class="verinfo">(PHP 5)</p><p class="refpurpose"><span class="refname">sqlite_fetch_column_types</span> -- <span class="refname">SQLiteDatabase-&gt;fetchColumnTypes</span> &mdash; <span class="dc-title">
+   Возвращает массив, содержащий информацию о типах полей в таблице
+  </span></p>
+
+ </div>
+
+ <div class="refsect1 description" id="refsect1-function.sqlite-fetch-column-types-description">
+  <h3 class="title">Описание</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">array</span> <span class="methodname"><b>sqlite_fetch_column_types</b></span>
+    ( <span class="methodparam"><span class="type">string</span> <tt class="parameter">$table_name</tt></span>
+   , <span class="methodparam"><span class="type">resource</span> <tt class="parameter">$dbhandle</tt></span>
+   [, <span class="methodparam"><span class="type">int</span> <tt class="parameter">$result_type</tt><span class="initializer"> = SQLITE_ASSOC</span></span>
+  ] )</div>
+
+  <p class="para rdfs-comment">Объектно-ориентированный стиль (метод):</p>
+  <div class="classsynopsis">
+   <div class="ooclass"></div>
+   <div class="methodsynopsis dc-description">
+    <span class="type">array</span> <span class="methodname"><b>SQLiteDatabase::fetchColumnTypes</b></span>
+     ( <span class="methodparam"><span class="type">string</span> <tt class="parameter">$table_name</tt></span>
+    [, <span class="methodparam"><span class="type">int</span> <tt class="parameter">$result_type</tt><span class="initializer"> = SQLITE_ASSOC</span></span>
+   ] )</div>
+
+  </div>
+  <p class="para">
+   <span class="function"><b>sqlite_fetch_column_types()</b></span> возвращает массив,
+   содержащий информацию о типах полей в указанной таблице
+   <i><tt class="parameter">table_name</tt></i>.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-function.sqlite-fetch-column-types-parameters">
+  <h3 class="title">Список параметров</h3>
+  <p class="para">
+   <dl>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">table_name</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Название опрашиваемой таблицы.
+      </p>
+     </dd>
+
+    </dt>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">dbhandle</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Ресурс базы данных SQLite, полученный из функции <span class="function"><a href="function.sqlite-open.html" class="function">sqlite_open()</a></span>
+       при использовании процедурного подхода. Этот параметр не требуется
+       при использовании объектно-ориентированного подхода.
+      </p>
+     </dd>
+
+    </dt>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">result_type</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Необязательный параметр <i><tt class="parameter">result_type</tt></i>
+       принимает константу в качестве значения и определяет способ
+       индексации возвращаемого массива. Использование константы
+       <b><tt>SQLITE_ASSOC</tt></b> вернет только ассоциативные
+       индексы (именованные поля), тогда как использование 
+       <b><tt>SQLITE_NUM</tt></b> вернет только числовые индексы
+       (порядковые номера полей).
+       По умолчанию используется <b><tt>SQLITE_ASSOC</tt></b>.
+      </p>
+     </dd>
+
+    </dt>
+
+   </dl>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-function.sqlite-fetch-column-types-returnvalues">
+  <h3 class="title">Возвращаемые значения</h3>
+  <p class="para">
+   Возвращает массив с типами полей, или <b><tt>FALSE</tt></b> в случае ошибки.
+  </p>
+  <p class="para">Имена столбцов, возвращаемые
+<b><tt>SQLITE_ASSOC</tt></b> и <b><tt>SQLITE_BOTH</tt></b>, будут
+приведены к нужному регистру согласно значению конфигурационной опции
+<a href="sqlite.configuration.html#ini.sqlite.assoc-case" class="link">sqlite.assoc_case</a>.</p>
+ </div>
+
+
+ <div class="refsect1 changelog" id="refsect1-function.sqlite-fetch-column-types-changelog">
+  <h3 class="title">Список изменений</h3>
+  <p class="para">
+   <table class="doctable informaltable">
+    
+     <thead valign="middle">
+      <tr valign="middle">
+       <th>Версия</th>
+       <th>Описание</th>
+      </tr>
+
+     </thead>
+
+     <tbody valign="middle" class="tbody">
+      <tr valign="middle">
+       <td align="left">5.1.0</td>
+       <td align="left">Добавлен параметр <i><tt class="parameter">result_type</tt></i></td>
+      </tr>
+
+     </tbody>
+    
+   </table>
+
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 examples" id="refsect1-function.sqlite-fetch-column-types-examples">
+  <h3 class="title">Примеры</h3>
+  <p class="para">
+   <div class="example" id="example-1982">
+    <p><b>Пример #1 Процедурный стиль</b></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$db&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">sqlite_open</span><span style="color: #007700">(</span><span style="color: #DD0000">'mysqlitedb'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">sqlite_query</span><span style="color: #007700">(</span><span style="color: #0000BB">$db</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'CREATE&nbsp;TABLE&nbsp;foo&nbsp;(bar&nbsp;varchar(10),&nbsp;arf&nbsp;text)'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$cols&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">sqlite_fetch_column_types</span><span style="color: #007700">(</span><span style="color: #DD0000">'foo'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$db</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">SQLITE_ASSOC</span><span style="color: #007700">);<br /><br />foreach&nbsp;(</span><span style="color: #0000BB">$cols&nbsp;</span><span style="color: #007700">as&nbsp;</span><span style="color: #0000BB">$column&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">$type</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"Поле:&nbsp;</span><span style="color: #0000BB">$column</span><span style="color: #DD0000">&nbsp;&nbsp;Тип:&nbsp;</span><span style="color: #0000BB">$type</span><span style="color: #DD0000">\n"</span><span style="color: #007700">;<br />}<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+  </p>
+  <p class="para">
+   <div class="example" id="example-1983">
+    <p><b>Пример #2 Объектно-ориентированный стиль</b></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$db&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">SQLiteDatabase</span><span style="color: #007700">(</span><span style="color: #DD0000">'mysqlitedb'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$db</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">query</span><span style="color: #007700">(</span><span style="color: #DD0000">'CREATE&nbsp;TABLE&nbsp;foo&nbsp;(bar&nbsp;varchar(10),&nbsp;arf&nbsp;text)'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$cols&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$db</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">fetchColumnTypes</span><span style="color: #007700">(</span><span style="color: #DD0000">'foo'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">SQLITE_ASSOC</span><span style="color: #007700">);<br /><br />foreach&nbsp;(</span><span style="color: #0000BB">$cols&nbsp;</span><span style="color: #007700">as&nbsp;</span><span style="color: #0000BB">$column&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">$type</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"Поле:&nbsp;</span><span style="color: #0000BB">$column</span><span style="color: #DD0000">&nbsp;&nbsp;Тип:&nbsp;</span><span style="color: #0000BB">$type</span><span style="color: #DD0000">\n"</span><span style="color: #007700">;<br />}<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+    <div class="example-contents"><p>Результат выполнения данного примера:</p></div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+Поле: bar  Тип: VARCHAR
+Поле: arf  Тип: TEXT
+</pre></div>
+    </div>
+   </div>
+  </p>
+ </div>
+
+</div><hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.sqlite-fetch-array.html">sqlite_fetch_array</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.sqlite-fetch-object.html">sqlite_fetch_object</a></div>
+ <div class="up"><a href="ref.sqlite.html">SQLite</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

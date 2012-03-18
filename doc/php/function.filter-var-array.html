@@ -1,0 +1,154 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Принимает несколько переменных и, при необходимости, фильтрует их</title>
+
+ </head>
+ <body><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.filter-list.html">filter_list</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.filter-var.html">filter_var</a></div>
+ <div class="up"><a href="ref.filter.html">Фильтрация данных</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.filter-var-array" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">filter_var_array</h1>
+  <p class="verinfo">(PHP 5 &gt;= 5.2.0)</p><p class="refpurpose"><span class="refname">filter_var_array</span> &mdash; <span class="dc-title">Принимает несколько переменных и, при необходимости, фильтрует их</span></p>
+
+ </div>
+ <div class="refsect1 description" id="refsect1-function.filter-var-array-description">
+  <h3 class="title">Описание</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type"><a href="language.pseudo-types.html#language.types.mixed" class="type mixed">mixed</a></span> <span class="methodname"><b>filter_var_array</b></span>
+    ( <span class="methodparam"><span class="type">array</span> <tt class="parameter">$data</tt></span>
+   [, <span class="methodparam"><span class="type"><a href="language.pseudo-types.html#language.types.mixed" class="type mixed">mixed</a></span> <tt class="parameter">$definition</tt></span>
+  ] )</div>
+
+  <p class="para rdfs-comment">
+   Эта функция полезна для получения множества переменных без
+   многократного вызова функции <span class="function"><a href="function.filter-var.html" class="function">filter_var()</a></span>.
+  </p>
+ </div>
+
+ <div class="refsect1 parameters" id="refsect1-function.filter-var-array-parameters">
+  <h3 class="title">Список параметров</h3>
+  <p class="para">
+   <dl>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">data</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Массив со строковыми ключами, содержащий данные для фильтрации.
+      </p>
+     </dd>
+
+    </dt>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">definition</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Массив, определяющий параметры. Допустимый ключ - строка <span class="type"><a href="language.types.string.html" class="type string">string</a></span>,
+       содержащая имя переменной и допустимое значение - или <a href="filter.filters.html" class="link">тип фильтра</a>,
+       или массив <span class="type"><a href="language.types.array.html" class="type array">array</a></span>, при необходимости определяющий фильтр, флаги и
+       параметры. Если значение является массивом, допустимыми ключами являются
+       <i>filter</i>, который определяет <a href="filter.filters.html" class="link">тип фильтра</a>,
+       <i>flags</i>, который определяет любые флаги, применяемые к
+       фильтру, и <i>options</i>, который определяет любые параметры,
+       применяемые к фильтру. См. пример ниже для лучшего понимания.
+      </p>
+      <p class="para">
+       Этот параметр также может быть целым числом, содержащим <a href="filter.constants.html" class="link">предопределенную фильтровую константу</a>. Затем все значения во
+       входном массиве фильтруются этим фильтром.
+      </p>
+     </dd>
+
+    </dt>
+
+   </dl>
+
+  </p>
+ </div>
+
+ <div class="refsect1 returnvalues" id="refsect1-function.filter-var-array-returnvalues">
+  <h3 class="title">Возвращаемые значения</h3>
+  <p class="para">
+   Массив, содержащий значения запрошенных переменных в случае успеха, или <b><tt>FALSE</tt></b> 
+   в случае возникновения ошибки. Значение массива будет <b><tt>FALSE</tt></b>, если фильтрация завершилась неудачей, или <b><tt>NULL</tt></b>, 
+   если если переменная не определена.
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 examples" id="refsect1-function.filter-var-array-examples">
+  <h3 class="title">Примеры</h3>
+  <p class="para">
+   <div class="example" id="example-4590">
+    <p><b>Пример #1 Пример использования <span class="function"><b>filter_var_array()</b></span></b></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />error_reporting</span><span style="color: #007700">(</span><span style="color: #0000BB">E_ALL&nbsp;</span><span style="color: #007700">|&nbsp;</span><span style="color: #0000BB">E_STRICT</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$data&nbsp;</span><span style="color: #007700">=&nbsp;array(<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'product_id'&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'libgd&lt;script&gt;'</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'component'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'10'</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'versions'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'2.0.33'</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'testscalar'&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">=&gt;&nbsp;array(</span><span style="color: #DD0000">'2'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'23'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'10'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'12'</span><span style="color: #007700">),<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'testarray'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'2'</span><span style="color: #007700">,<br />);<br /><br /></span><span style="color: #0000BB">$args&nbsp;</span><span style="color: #007700">=&nbsp;array(<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'product_id'&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">FILTER_SANITIZE_ENCODED</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'component'&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">=&gt;&nbsp;array(</span><span style="color: #DD0000">'filter'&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">FILTER_VALIDATE_INT</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'flags'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">FILTER_FORCE_ARRAY</span><span style="color: #007700">,&nbsp;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'options'&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">=&gt;&nbsp;array(</span><span style="color: #DD0000">'min_range'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">1</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'max_range'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">10</span><span style="color: #007700">)<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;),<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'versions'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">FILTER_SANITIZE_ENCODED</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'doesnotexist'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">FILTER_VALIDATE_INT</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'testscalar'&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">=&gt;&nbsp;array(<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'filter'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">FILTER_VALIDATE_INT</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'flags'&nbsp;&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">FILTER_REQUIRE_SCALAR</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;),<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'testarray'&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">=&gt;&nbsp;array(<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'filter'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">FILTER_VALIDATE_INT</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'flags'&nbsp;&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">FILTER_FORCE_ARRAY</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;)<br /><br />);<br /><br /></span><span style="color: #0000BB">$myinputs&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">filter_var_array</span><span style="color: #007700">(</span><span style="color: #0000BB">$data</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$args</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$myinputs</span><span style="color: #007700">);<br />echo&nbsp;</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+    <div class="example-contents"><p>Результат выполнения данного примера:</p></div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+array(6) {
+  [&quot;product_id&quot;]=&gt;
+  array(1) {
+    [0]=&gt;
+    string(17) &quot;libgd%3Cscript%3E&quot;
+  }
+  [&quot;component&quot;]=&gt;
+  array(1) {
+    [0]=&gt;
+    int(10)
+  }
+  [&quot;versions&quot;]=&gt;
+  array(1) {
+    [0]=&gt;
+    string(6) &quot;2.0.33&quot;
+  }
+  [&quot;doesnotexist&quot;]=&gt;
+  NULL
+  [&quot;testscalar&quot;]=&gt;
+  bool(false)
+  [&quot;testarray&quot;]=&gt;
+  array(1) {
+    [0]=&gt;
+    int(2)
+  }
+}
+</pre></div>
+    </div>
+   </div>
+  </p>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-function.filter-var-array-seealso">
+  <h3 class="title">Смотрите также</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><span class="function"><a href="function.filter-input-array.html" class="function" rel="rdfs-seeAlso">filter_input_array()</a> - Принимает несколько переменных извне PHP и, при необходимости, фильтрует их</span></li>
+    <li class="member"><span class="function"><a href="function.filter-var.html" class="function" rel="rdfs-seeAlso">filter_var()</a> - Фильтрует переменную с помощью определенного фильтра</span></li>
+    <li class="member"><span class="function"><a href="function.filter-input.html" class="function" rel="rdfs-seeAlso">filter_input()</a> - Принимает переменную извне PHP и, при необходимости, фильтрует ее</span></li>
+    <li class="member"><a href="filter.filters.html" class="xref">Types of filters</a></li>
+   </ul>
+  </p>
+ </div>
+
+
+</div><hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.filter-list.html">filter_list</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.filter-var.html">filter_var</a></div>
+ <div class="up"><a href="ref.filter.html">Фильтрация данных</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

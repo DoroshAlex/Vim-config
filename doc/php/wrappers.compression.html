@@ -1,0 +1,142 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Сжатые потоки</title>
+
+ </head>
+ <body><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="wrappers.php.html">php://</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="wrappers.data.html">data://</a></div>
+ <div class="up"><a href="wrappers.html">Поддерживаемые протоколы и обработчики (wrappers)</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="wrappers.compression" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">zlib://</h1>
+  <h1 class="refname">bzip2://</h1>
+  <h1 class="refname">zip://</h1>
+  <p class="refpurpose"><span class="refname">zlib://</span> -- <span class="refname">bzip2://</span> -- <span class="refname">zip://</span> &mdash; <span class="dc-title">Сжатые потоки</span></p>
+
+ </div>
+
+ <div class="refsect1 description" id="refsect1-wrappers.compression-description">
+  <h3 class="title">Описание</h3>
+  <p class="simpara"><var class="filename">zlib:</var> PHP 4.0.4 - PHP 4.2.3 (только на системах с fopencookie)</p>
+  <p class="simpara"><var class="filename">compress.zlib://</var> и <var class="filename">compress.bzip2://</var> PHP 4.3.0 и выше</p>
+
+  <p class="simpara">
+   <var class="filename">zlib:</var> работает как <span class="function"><a href="function.gzopen.html" class="function">gzopen()</a></span> за исключением того,
+   что этот поток может использоваться функцией <span class="function"><a href="function.fread.html" class="function">fread()</a></span> и другими функциями,
+   работающими с файловой системой.  Устарела начиная с PHP 4.3.0
+   ввиду неоднозначности при наличии файлов, содержащих &#039;:&#039;; используйте взамен
+   <var class="filename">compress.zlib://</var>.
+  </p>
+
+  <p class="simpara">
+   <var class="filename">compress.zlib://</var> и
+   <var class="filename">compress.bzip2://</var> соответствуют
+   <span class="function"><a href="function.gzopen.html" class="function">gzopen()</a></span> и <span class="function"><a href="function.bzopen.html" class="function">bzopen()</a></span>
+   соответственно и работают даже в системах, не поддерживающих
+   fopencookie.
+  </p>
+  <p class="para">
+   <a href="book.zip.html" class="link">ZIP-модуль</a> добавляет обертку <var class="filename">zip:</var>.
+  </p>
+ </div>
+
+
+ <div class="refsect1 usage" id="refsect1-wrappers.compression-usage"> 
+  <h3 class="title">Опции</h3>
+  <ul class="itemizedlist">
+   <li class="listitem"><span class="simpara"><var class="filename">zlib:</var></span></li>
+   <li class="listitem"><span class="simpara"><var class="filename">compress.zlib://</var></span></li>
+   <li class="listitem"><span class="simpara"><var class="filename">compress.bzip2://</var></span></li>
+  </ul>
+ </div>
+ 
+
+ <div class="refsect1 options" id="refsect1-wrappers.compression-options">
+  <h3 class="title">Опции</h3>
+  <p class="para">
+   <table class="doctable table">
+    <caption><b>Основная информация</b></caption>
+    
+     <thead valign="middle">
+      <tr valign="middle">
+       <th>Атрибут</th>
+       <th>Поддержка</th>
+      </tr>
+
+     </thead>
+
+     <tbody valign="middle" class="tbody">
+      <tr valign="middle">
+       <td align="left">Ограничение по <a href="filesystem.configuration.html#ini.allow-url-fopen" class="link">allow_url_fopen</a></td>
+       <td align="left">Нет</td>
+      </tr>
+
+      <tr valign="middle">
+       <td align="left">Чтение</td>
+       <td align="left">Да</td>
+      </tr>
+
+      <tr valign="middle">
+       <td align="left">Запись</td>
+       <td align="left">Да (кроме <i>zip://</i>)</td>
+      </tr>
+
+      <tr valign="middle">
+       <td align="left">Добавление</td>
+       <td align="left">Да (кроме <i>zip://</i>)</td>
+      </tr>
+
+      <tr valign="middle">
+       <td align="left">Чтение и запись одновременно</td>
+       <td align="left">Нет</td>
+      </tr>
+
+      <tr valign="middle">
+       <td align="left">Поддержка <span class="function"><a href="function.stat.html" class="function">stat()</a></span></td>
+       <td align="left">
+        Нет, используйте стандартную обертку <i>file://</i>
+  для получения информации по сжатым файлам.
+       </td>
+      </tr>
+
+      <tr valign="middle">
+       <td align="left">Поддержка <span class="function"><a href="function.unlink.html" class="function">unlink()</a></span></td>
+       <td align="left">
+        Нет, используйте стандартную обертку <i>file://</i>
+  для удаления сжатых файлов.
+       </td>
+      </tr>
+
+      <tr valign="middle">
+       <td align="left">Поддержка <span class="function"><a href="function.rename.html" class="function">rename()</a></span></td>
+       <td align="left">Нет</td>
+      </tr>
+
+      <tr valign="middle">
+       <td align="left">Поддержка <span class="function"><a href="function.mkdir.html" class="function">mkdir()</a></span></td>
+       <td align="left">Нет</td>
+      </tr>
+
+      <tr valign="middle">
+       <td align="left">Поддержка <span class="function"><a href="function.rmdir.html" class="function">rmdir()</a></span></td>
+       <td align="left">Нет</td>
+      </tr>
+
+     </tbody>
+    
+   </table>
+
+  </p>
+ </div>
+ 
+
+</div><hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="wrappers.php.html">php://</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="wrappers.data.html">data://</a></div>
+ <div class="up"><a href="wrappers.html">Поддерживаемые протоколы и обработчики (wrappers)</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

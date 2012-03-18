@@ -1,0 +1,112 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Загрузка HTML из файла</title>
+
+ </head>
+ <body><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="domdocument.loadhtml.html">DOMDocument::loadHTML</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="domdocument.loadxml.html">DOMDocument::loadXML</a></div>
+ <div class="up"><a href="class.domdocument.html">DOMDocument</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="domdocument.loadhtmlfile" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">DOMDocument::loadHTMLFile</h1>
+  <p class="verinfo">(PHP 5)</p><p class="refpurpose"><span class="refname">DOMDocument::loadHTMLFile</span> &mdash; <span class="dc-title">
+   Загрузка HTML из файла
+  </span></p>
+
+ </div>
+ <div class="refsect1 description" id="refsect1-domdocument.loadhtmlfile-description">
+  <h3 class="title">Описание</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">bool</span> <span class="methodname"><b>DOMDocument::loadHTMLFile</b></span>
+    ( <span class="methodparam"><span class="type">string</span> <tt class="parameter">$filename</tt></span>
+   )</div>
+
+  <p class="para rdfs-comment">
+   Функция разбирает HTML документ из файла <i><tt class="parameter">filename</tt></i>.
+   В отличие от загрузки XML, HTML документ не обязан быть правильно построенным.
+  </p>
+ </div>
+
+ <div class="refsect1 parameters" id="refsect1-domdocument.loadhtmlfile-parameters">
+  <h3 class="title">Список параметров</h3>
+  <p class="para">
+   <dl>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">filename</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Путь к HTML файлу.
+      </p>
+     </dd>
+
+    </dt>
+
+   </dl>
+
+  </p>
+ </div>
+
+ <div class="refsect1 returnvalues" id="refsect1-domdocument.loadhtmlfile-returnvalues">
+  <h3 class="title">Возвращаемые значения</h3>
+  <p class="para">
+   Возвращает <b><tt>TRUE</tt></b> в случае успешного завершения  или <b><tt>FALSE</tt></b> в случае возникновения ошибки. Если вызвана статически, возвращает объект класса
+   <a href="class.domdocument.html" class="classname">DOMDocument</a> или <b><tt>FALSE</tt></b> в случае возникновения ошибки.
+  </p>
+ </div>
+
+ <div class="refsect1 errors" id="refsect1-domdocument.loadhtmlfile-errors">
+  <h3 class="title">Ошибки</h3>
+  <p class="para">
+   Если через аргумент <i><tt class="parameter">filename</tt></i> передана пустая
+   строка или файл ничего не содержит, будет сгенерировано предупреждение.
+   Это предупреждение генерируется не libxml, поэтому оно не может быть 
+   обработано <a href="function.libxml-use-internal-errors.html" class="link">обработчиками ошибок
+   библиотеки libxml</a>.
+  </p>
+  <p class="para">Этот метод
+<em class="emphasis">может</em> быть вызван статически, но при этом будет сгенерирована ошибка
+уровня <b><tt>E_STRICT</tt></b>.</p>
+ </div>
+
+ <div class="refsect1 examples" id="refsect1-domdocument.loadhtmlfile-examples">
+  <h3 class="title">Примеры</h3>
+  <p class="para">
+   <div class="example" id="example-4871">
+    <p><b>Пример #1 Создание документа</b></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$doc&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">DOMDocument</span><span style="color: #007700">();<br /></span><span style="color: #0000BB">$doc</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">loadHTMLFile</span><span style="color: #007700">(</span><span style="color: #DD0000">"filename.html"</span><span style="color: #007700">);<br />echo&nbsp;</span><span style="color: #0000BB">$doc</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">saveHTML</span><span style="color: #007700">();<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+  </p>
+ </div>
+
+ <div class="refsect1 seealso" id="refsect1-domdocument.loadhtmlfile-seealso">
+  <h3 class="title">Смотрите также</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"> <span class="methodname"><a href="domdocument.loadhtml.html" class="methodname" rel="rdfs-seeAlso">DOMDocument::loadHTML()</a> - Загрузка HTML из строки</span></li>
+    <li class="member"> <span class="methodname"><a href="domdocument.savehtml.html" class="methodname" rel="rdfs-seeAlso">DOMDocument::saveHTML()</a> - Сохраняет документ из внутреннего представления в строку, используя HTML 
+   форматирование</span></li>
+    <li class="member"> <span class="methodname"><a href="domdocument.savehtmlfile.html" class="methodname" rel="rdfs-seeAlso">DOMDocument::saveHTMLFile()</a> - Сохраняет документ из внутреннего представления в файл, используя HTML
+   форматирование</span></li>
+   </ul>
+  </p>
+ </div>
+
+</div><hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="domdocument.loadhtml.html">DOMDocument::loadHTML</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="domdocument.loadxml.html">DOMDocument::loadXML</a></div>
+ <div class="up"><a href="class.domdocument.html">DOMDocument</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

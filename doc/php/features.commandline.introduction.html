@@ -1,0 +1,117 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Введение</title>
+
+ </head>
+ <body><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="features.commandline.html">Использование PHP в командной строке</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="features.commandline.differences.html">Основные отличия от остальных реализаций SAPI</a></div>
+ <div class="up"><a href="features.commandline.html">Использование PHP в командной строке</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="features.commandline.introduction" class="section">
+  <h2 class="title">Введение</h2>
+
+  <p class="para">
+   Начиная с версии 4.3.0, PHP поддерживает <acronym title="Command Line Interpreter/Interface">CLI</acronym> <acronym title="Server Application Programming Interface">SAPI</acronym>.
+   Основная цель этого <acronym title="Server Application Programming Interface">SAPI</acronym> -
+   разработка консольных приложений на PHP.
+   Имеется несколько несущественных различий между
+   <acronym title="Command Line Interpreter/Interface">CLI</acronym> <acronym title="Server Application Programming Interface">SAPI</acronym> и другими видами <acronym title="Server Application Programming Interface">SAPI</acronym>, которые
+   будут рассмотрены в этой главе.
+   Будет полезно заметить, что <acronym title="Command Line Interpreter/Interface">CLI</acronym> <acronym title="Server Application Programming Interface">SAPI</acronym> и <acronym title="Common Gateway Interface">CGI</acronym> -
+   различные <acronym title="Server Application Programming Interface">SAPI</acronym>-интерфейсы, хотя в их поведении много общего.
+  </p>
+
+  <p class="para">
+   <acronym title="Command Line Interpreter/Interface">CLI</acronym> <acronym title="Server Application Programming Interface">SAPI</acronym> включается по умолчанию с помощью опции
+   <strong class="option configure">--enable-cli</strong>
+, но может быть выключен
+   опцией <strong class="option configure">--disable-cli</strong>
+ при запуске
+   <strong class="command">./configure</strong>.
+  </p>
+
+  <p class="para">
+   Имя, расположение и существование бинарных модулей
+   <acronym title="Command Line Interpreter/Interface">CLI</acronym>/<acronym title="Common Gateway Interface">CGI</acronym> зависит от того, как именно
+   установлен PHP в вашей системе. По умолчанию при выполнении
+   <strong class="command">make</strong> создается как <acronym title="Common Gateway Interface">CGI</acronym>,
+   так и <acronym title="Command Line Interpreter/Interface">CLI</acronym> модуль, размещенные в директориях
+   <var class="filename">sapi/cgi/php-cgi</var>
+   и <var class="filename">sapi/cli/php</var> соответственно,
+   внутри директории с исходниками PHP.
+   Cледует заметить, что оба файла имеют одинаковое название:
+   <var class="filename">php</var>.
+   Что произойдет при выполнении <strong class="command">make install</strong>,
+   зависит от того, какие опции вы указали на стадии
+   конфигурирования. В случае, если вы отдали предпочтение
+   такому модулю <acronym title="Server Application Programming Interface">SAPI</acronym> как apxs,
+   либо указали опцию <strong class="option configure">--disable-cgi</strong>
+,
+   модуль <acronym title="Command Line Interpreter/Interface">CLI</acronym> будет скопирован в <var class="filename">{PREFIX}/bin/php</var> при
+   выполнении <strong class="command">make install</strong>, в противном случае
+   будет скопирован <acronym title="Common Gateway Interface">CGI</acronym>-модуль. Например, если
+   вы указали опцию  <strong class="option configure">--with-apxs</strong>
+,
+   то при выполнении <strong class="command">make install</strong>
+   <acronym title="Command Line Interpreter/Interface">CLI</acronym>-версия будет скопирована в <var class="filename">{PREFIX}/bin/php</var>.
+   Если вы хотите перекрыть установленный <acronym title="Common Gateway Interface">CGI</acronym>-модуль,
+   используйте <strong class="command">make install-cli</strong> после выполнения
+   <strong class="command">make install</strong>. В качестве альтернативы
+   вы могли бы указать опцию <strong class="option configure">--disable-cgi</strong>
+
+   в строке конфигурации.
+  </p>
+
+  <blockquote class="note"><p><b class="note">Замечание</b>: 
+   <p class="para">
+    Поскольку обе опции, <strong class="option configure">--enable-cli</strong>
+
+    и <strong class="option configure">--enable-cgi</strong>
+, присутствуют
+    по умолчанию, одного присутствия строки
+    <strong class="option configure">--enable-cli</strong>
+ в команде
+    конфигурации недостаточно для того, чтобы <acronym title="Command Line Interpreter/Interface">CLI</acronym>-версия была установлена
+    в <var class="filename">{PREFIX}/bin/php</var> при выполнении
+    <strong class="command">make install</strong>.
+   </p>
+  </p></blockquote>
+
+  <p class="para">
+   Начиная с PHP 5, бинарный файл <acronym title="Command Line Interpreter/Interface">CLI</acronym> входит в дистрибутив
+   для Windows в основной папке в качестве файла<var class="filename">php.exe</var>.
+   <acronym title="Common Gateway Interface">CGI</acronym>-версия находится в файле <var class="filename">php-cgi.exe</var>.
+   Кроме того, в дистрибутив входит файл <var class="filename">php-win.exe</var>,
+   если PHP был сконфигурирован с помощью <strong class="option configure">--enable-cli-win32</strong>
+.
+   Он полностью эквивалентен <acronym title="Command Line Interpreter/Interface">CLI</acronym>-версии, за исключением того,
+   что абсолютно ничего не выводит, что приводит к отстутствию консоли (окно DOS не появляется на экране).
+  </p>
+
+  <blockquote class="note"><p><b class="note">Замечание</b>: 
+   <b>Какой из вариантов SAPI установлен?</b><br />
+   <p class="para">
+    Выполните из командной строки <strong class="command">php -v</strong>
+    для получения информации о том, является ли <var class="filename">php</var>
+    <acronym title="Common Gateway Interface">CGI</acronym> или <acronym title="Command Line Interpreter/Interface">CLI</acronym>. Также вы можете использовать
+    функцию <span class="function"><a href="function.php-sapi-name.html" class="function">php_sapi_name()</a></span> или константу
+    <b><tt>PHP_SAPI</tt></b>.
+   </p>
+  </p></blockquote>
+
+  <blockquote class="note"><p><b class="note">Замечание</b>: 
+   <p class="para">
+    Соответствующую страницу руководства (<i>man</i>)
+    Unix можно просмотреть с помощью команды <strong class="command">man php</strong>
+    в консоли.
+   </p>
+  </p></blockquote>
+ </div><hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="features.commandline.html">Использование PHP в командной строке</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="features.commandline.differences.html">Основные отличия от остальных реализаций SAPI</a></div>
+ <div class="up"><a href="features.commandline.html">Использование PHP в командной строке</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

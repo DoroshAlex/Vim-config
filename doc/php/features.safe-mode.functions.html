@@ -1,0 +1,365 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Ограниченные или недоступные в безопасном режиме функции</title>
+
+ </head>
+ <body><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="ini.sect.safe-mode.html">Безопасность и безопасный режим</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="features.commandline.html">Использование PHP в командной строке</a></div>
+ <div class="up"><a href="features.safe-mode.html">Безопасный режим</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="features.safe-mode.functions" class="sect1">
+   <h2 class="title">Ограниченные или недоступные в безопасном режиме функции</h2>
+   <p class="para">
+    Ниже приведен, вероятно, неполный и, возможно, не вполне корректный список
+    функций, ограниченных в 
+    <a href="features.safe-mode.html" class="link">безопасном режиме</a>.
+    
+    <table class="doctable table">
+     <caption><b>Функции, ограниченные в безопасном режиме</b></caption>
+     
+      <thead valign="middle">
+       <tr valign="middle">
+        <th>Функция</th>
+        <th>Ограничения</th>
+       </tr>
+
+      </thead>
+
+      <tbody valign="middle" class="tbody">
+       <tr valign="middle">
+        <td align="left"><span class="function"><b>dbmopen()</b></span></td>
+        <td align="left">Проверяет, имеют ли файлы/каталоги, с которыми
+вы собираетесь работать, такой же UID (владельца), как и выполняемый скрипт.</td>
+       </tr>
+
+       <tr valign="middle">
+        <td align="left"><span class="function"><a href="function.dbase-open.html" class="function">dbase_open()</a></span></td>
+        <td align="left">Проверяет, имеют ли файлы/каталоги, с которыми
+вы собираетесь работать, такой же UID (владельца), как и выполняемый скрипт.</td>
+       </tr>
+
+       <tr valign="middle">
+        <td align="left"><span class="function"><a href="function.filepro.html" class="function">filepro()</a></span></td>
+        <td align="left">Проверяет, имеют ли файлы/каталоги, с которыми
+вы собираетесь работать, такой же UID (владельца), как и выполняемый скрипт.</td>
+       </tr>
+
+       <tr valign="middle">
+        <td align="left"><span class="function"><a href="function.filepro-rowcount.html" class="function">filepro_rowcount()</a></span></td>
+        <td align="left">Проверяет, имеют ли файлы/каталоги, с которыми
+вы собираетесь работать, такой же UID (владельца), как и выполняемый скрипт.</td>
+       </tr>
+
+       <tr valign="middle">
+        <td align="left"><span class="function"><a href="function.filepro-retrieve.html" class="function">filepro_retrieve()</a></span></td>
+        <td align="left">Проверяет, имеют ли файлы/каталоги, с которыми
+вы собираетесь работать, такой же UID (владельца), как и выполняемый скрипт.</td>
+       </tr>
+
+       <tr valign="middle">
+        <td align="left">ifx_*</td>
+        <td align="left">sql_safe_mode ограничения (не путать с safe_mode)</td>
+        
+       </tr>
+
+       <tr valign="middle">
+        <td align="left">ingres_*</td>
+        <td align="left">sql_safe_mode ограничения (не путать с safe_mode)</td>
+        
+       </tr>
+
+       <tr valign="middle">
+        <td align="left">mysql_*</td>
+        <td align="left">sql_safe_mode ограничения (не путать с safe_mode)</td>
+        
+       </tr>
+
+       <tr valign="middle">
+        <td align="left"><span class="function"><a href="function.pg-lo-import.html" class="function">pg_lo_import()</a></span></td>
+        <td align="left">Проверяет, имеют ли файлы/каталоги, с которыми
+вы собираетесь работать, такой же UID (владельца), как и выполняемый скрипт.</td>
+        
+       </tr>
+
+       <tr valign="middle">
+        <td align="left"><span class="function"><a href="function.posix-mkfifo.html" class="function">posix_mkfifo()</a></span></td>
+        <td align="left">Проверяет, имеет ли каталог, с которым
+вы собираетесь работать, такой же UID (владельца), как и выполняемый скрипт.</td>
+       </tr>
+
+       <tr valign="middle">
+        <td align="left"><span class="function"><a href="function.putenv.html" class="function">putenv()</a></span></td>
+        <td align="left">Подчиняется настройкам the safe_mode_protected_env_vars и
+        safe_mode_allowed_env_vars. Ознакомьтесь с более подробным описанием
+        функции <span class="function"><a href="function.putenv.html" class="function">putenv()</a></span>.</td>
+        
+       </tr>
+
+       <tr valign="middle">
+        <td align="left"><span class="function"><a href="function.move-uploaded-file.html" class="function">move_uploaded_file()</a></span></td>
+        <td align="left">Проверяет, имеют ли файлы/каталоги, с которыми
+вы собираетесь работать, такой же UID (владельца), как и выполняемый скрипт. </td>
+       </tr>
+
+
+       
+
+       <tr valign="middle">
+        <td align="left"><span class="function"><a href="function.chdir.html" class="function">chdir()</a></span></td>
+        <td align="left">Проверяет, имеет ли каталог, с которым
+вы собираетесь работать, такой же UID (владельца), как и выполняемый скрипт.</td>
+       </tr>
+
+       <tr valign="middle">
+        <td align="left"><span class="function"><a href="function.dl.html" class="function">dl()</a></span></td>
+        <td align="left">Эта функция недоступна в
+<a href="features.safe-mode.html" class="link">безопасном режиме</a>.</td>
+       </tr>
+
+       <tr valign="middle">
+        <td align="left"><a href="language.operators.execution.html" class="link">backtick operator</a></td>
+        <td align="left">Эта функция недоступна в
+<a href="features.safe-mode.html" class="link">безопасном режиме</a>.</td>
+       </tr>
+
+       <tr valign="middle">
+        <td align="left"><span class="function"><a href="function.shell-exec.html" class="function">shell_exec()</a></span> (функция эквивалентна backticks)</td>
+        <td align="left">Эта функция недоступна в
+<a href="features.safe-mode.html" class="link">безопасном режиме</a>.</td>
+       </tr>
+
+       <tr valign="middle">
+        <td align="left"><span class="function"><a href="function.exec.html" class="function">exec()</a></span></td>
+        <td align="left">Вы можете запускать исполняемые файлы, ограниченные деревом
+        каталогов, указанным в <a href="ini.sect.safe-mode.html#ini.safe-mode-exec-dir" class="link">safe_mode_exec_dir</a>.
+        Исходя из практических соображений, использовать <i>..</i> 
+        при указании пути запрещено. Следует заметить, что к аргументу этой функции
+        применяется <span class="function"><a href="function.escapeshellcmd.html" class="function">escapeshellcmd()</a></span>.
+        </td>
+       </tr>
+
+       <tr valign="middle">
+        <td align="left"><span class="function"><a href="function.system.html" class="function">system()</a></span></td>
+        <td align="left">Вы можете запускать исполняемые файлы, ограниченные деревом
+        каталогов, указанным в <a href="ini.sect.safe-mode.html#ini.safe-mode-exec-dir" class="link">safe_mode_exec_dir</a>.
+        Исходя из практических соображений, использовать <i>..</i> 
+        при указании пути запрещено. Следует заметить, что к аргументу этой функции
+        применяется <span class="function"><a href="function.escapeshellcmd.html" class="function">escapeshellcmd()</a></span>
+        </td>
+       </tr>
+
+       <tr valign="middle">
+        <td align="left"><span class="function"><a href="function.passthru.html" class="function">passthru()</a></span></td>
+        <td align="left">Вы можете запускать исполняемые файлы, ограниченные деревом
+        каталогов, указанным в <a href="ini.sect.safe-mode.html#ini.safe-mode-exec-dir" class="link">safe_mode_exec_dir</a>.
+        Исходя из практических соображений, использовать <i>..</i> 
+        при указании пути запрещено. Следует заметить, что к аргументу этой функции
+        применяется <span class="function"><a href="function.escapeshellcmd.html" class="function">escapeshellcmd()</a></span>.
+        </td>
+       </tr>
+
+       <tr valign="middle">
+        <td align="left"><span class="function"><a href="function.popen.html" class="function">popen()</a></span></td>
+        <td align="left">Вы можете запускать исполняемые файлы, ограниченные деревом
+        каталогов, указанным в <a href="ini.sect.safe-mode.html#ini.safe-mode-exec-dir" class="link">safe_mode_exec_dir</a>.
+        Исходя из практических соображений, использовать <i>..</i> 
+        при указании пути запрещено. Следует заметить, что к аргументу этой функции
+        применяется <span class="function"><a href="function.escapeshellcmd.html" class="function">escapeshellcmd()</a></span>.
+        </td>
+        
+       </tr>
+
+       <tr valign="middle">
+        <td align="left"><span class="function"><a href="function.fopen.html" class="function">fopen()</a></span></td>
+        <td align="left">Проверяет, имеет ли каталог, с которым
+вы собираетесь работать, такой же UID (владельца), как и выполняемый скрипт.</td>
+       </tr>
+
+       <tr valign="middle">
+        <td align="left"><span class="function"><a href="function.mkdir.html" class="function">mkdir()</a></span></td>
+        <td align="left">Проверяет, имеет ли каталог, с которым
+вы собираетесь работать, такой же UID (владельца), как и выполняемый скрипт.</td>
+       </tr>
+
+       <tr valign="middle">
+        <td align="left"><span class="function"><a href="function.rmdir.html" class="function">rmdir()</a></span></td>
+        <td align="left">Проверяет, имеет ли каталог, с которым
+вы собираетесь работать, такой же UID (владельца), как и выполняемый скрипт.</td>
+       </tr>
+
+       <tr valign="middle">
+        <td align="left"><span class="function"><a href="function.rename.html" class="function">rename()</a></span></td>
+        <td align="left">Проверяет, имеют ли файлы/каталоги, с которыми
+вы собираетесь работать, такой же UID (владельца), как и выполняемый скрипт. Проверяет, имеет ли каталог, с которым
+вы собираетесь работать, такой же UID (владельца), как и выполняемый скрипт.</td>
+       </tr>
+
+       <tr valign="middle">
+        <td align="left"><span class="function"><a href="function.unlink.html" class="function">unlink()</a></span></td>
+        <td align="left">Проверяет, имеют ли файлы/каталоги, с которыми
+вы собираетесь работать, такой же UID (владельца), как и выполняемый скрипт. Проверяет, имеет ли каталог, с которым
+вы собираетесь работать, такой же UID (владельца), как и выполняемый скрипт.</td>
+       </tr>
+
+       <tr valign="middle">
+        <td align="left"><span class="function"><a href="function.copy.html" class="function">copy()</a></span></td>
+        <td align="left">Проверяет, имеют ли файлы/каталоги, с которыми
+вы собираетесь работать, такой же UID (владельца), как и выполняемый скрипт. Проверяет, имеет ли каталог, с которым
+вы собираетесь работать, такой же UID (владельца), как и выполняемый скрипт. (для
+        параметров <i><tt class="parameter">source</tt></i> и 
+        <i><tt class="parameter">target</tt></i>)</td>
+       </tr>
+
+       <tr valign="middle">
+        <td align="left"><span class="function"><a href="function.chgrp.html" class="function">chgrp()</a></span></td>
+        <td align="left">Проверяет, имеют ли файлы/каталоги, с которыми
+вы собираетесь работать, такой же UID (владельца), как и выполняемый скрипт.</td>
+       </tr>
+
+       <tr valign="middle">
+        <td align="left"><span class="function"><a href="function.chown.html" class="function">chown()</a></span></td>
+        <td align="left">Проверяет, имеют ли файлы/каталоги, с которыми
+вы собираетесь работать, такой же UID (владельца), как и выполняемый скрипт.</td>
+       </tr>
+
+       <tr valign="middle">
+        <td align="left"><span class="function"><a href="function.chmod.html" class="function">chmod()</a></span></td>
+        <td align="left">Проверяет, имеют ли файлы/каталоги, с которыми
+вы собираетесь работать, такой же UID (владельца), как и выполняемый скрипт. Кроме того, вы не можете
+        устанавливать UID, SGID и sticky-биты.</td>
+       </tr>
+
+       <tr valign="middle">
+        <td align="left"><span class="function"><a href="function.touch.html" class="function">touch()</a></span></td>
+        <td align="left">Проверяет, имеют ли файлы/каталоги, с которыми
+вы собираетесь работать, такой же UID (владельца), как и выполняемый скрипт. Проверяет, имеет ли каталог, с которым
+вы собираетесь работать, такой же UID (владельца), как и выполняемый скрипт.</td>
+       </tr>
+
+       <tr valign="middle">
+        <td align="left"><span class="function"><a href="function.symlink.html" class="function">symlink()</a></span></td>
+        <td align="left">Проверяет, имеют ли файлы/каталоги, с которыми
+вы собираетесь работать, такой же UID (владельца), как и выполняемый скрипт. Проверяет, имеет ли каталог, с которым
+вы собираетесь работать, такой же UID (владельца), как и выполняемый скрипт. 
+        (Замечание: проверка выполняется только для параметра target)</td>
+       </tr>
+
+       <tr valign="middle">
+        <td align="left"><span class="function"><a href="function.link.html" class="function">link()</a></span></td>
+        <td align="left">Проверяет, имеют ли файлы/каталоги, с которыми
+вы собираетесь работать, такой же UID (владельца), как и выполняемый скрипт. Проверяет, имеет ли каталог, с которым
+вы собираетесь работать, такой же UID (владельца), как и выполняемый скрипт. 
+        (Замечание: проверка выполняется только для параметра target)</td>
+       </tr>
+
+       <tr valign="middle">
+        <td align="left"><span class="function"><a href="function.apache-request-headers.html" class="function">apache_request_headers()</a></span></td>
+        <td align="left">В безопасном режиме, заголовки, начинающиеся с <i>authorization</i>
+        (независимо от регистра), не возвращаются.</td>
+       </tr>
+
+       <tr valign="middle">
+        <td align="left"><span class="function"><a href="function.header.html" class="function">header()</a></span></td>
+        <td align="left">В безопасном режиме, текущий UID скрипта будет добавлен к
+        <i>realm</i>-части заголовка
+        <i>WWW-Authenticate</i>, если вы его устанавливаете
+        (используется для HTTP-аутентификации).</td>
+       </tr>
+
+       <tr valign="middle">
+        <td align="left"><a href="features.http-auth.html" class="link">переменные PHP_AUTH</a></td>
+        <td align="left">
+         В безопасном режиме, переменные <var class="varname"><var class="varname">PHP_AUTH_USER</var></var>,
+         <var class="varname"><var class="varname">PHP_AUTH_PW</var></var>, и <var class="varname"><var class="varname">AUTH_TYPE</var></var>
+         недоступны как элементы массива <var class="varname"><var class="varname"><a href="reserved.variables.server.html" class="classname">$_SERVER</a></var></var>. 
+         Несмотря на это, вы все еще можете использовать переменную 
+         <var class="varname"><var class="varname">REMOTE_USER</var></var> для идентификации пользователя.
+         (Замечание: актуально только для PHP 4.3.0 и выше)
+        </td>
+       </tr>
+
+       <tr valign="middle">
+        <td align="left">
+         <span class="function"><a href="function.highlight-file.html" class="function">highlight_file()</a></span>,
+         <span class="function"><a href="function.show-source.html" class="function">show_source()</a></span>
+        </td>
+        <td align="left">
+         Проверяет, имеют ли файлы/каталоги, с которыми
+вы собираетесь работать, такой же UID (владельца), как и выполняемый скрипт. Проверяет, имеет ли каталог, с которым
+вы собираетесь работать, такой же UID (владельца), как и выполняемый скрипт. (Замечание: актуально только для PHP 4.2.1 и выше)
+        </td>
+       </tr>
+
+       <tr valign="middle">
+        <td align="left">
+         <span class="function"><a href="function.parse-ini-file.html" class="function">parse_ini_file()</a></span>
+        </td>
+        <td align="left">
+         Проверяет, имеют ли файлы/каталоги, с которыми
+вы собираетесь работать, такой же UID (владельца), как и выполняемый скрипт. Проверяет, имеет ли каталог, с которым
+вы собираетесь работать, такой же UID (владельца), как и выполняемый скрипт. (Замечание: актуально только для PHP 4.2.1 и выше)
+        </td>
+       </tr>
+
+       <tr valign="middle">
+        <td align="left">
+         <span class="function"><a href="function.set-time-limit.html" class="function">set_time_limit()</a></span>
+        </td>
+        <td align="left">
+         Не имеет никакого эффекта, если используется <a href="ini.sect.safe-mode.html#ini.safe-mode" class="link">безопасный режим</a>.
+        </td>
+       </tr>
+
+       <tr valign="middle">
+        <td align="left">
+         <a href="info.configuration.html#ini.max-execution-time" class="link">max_execution_time</a>
+        </td>
+        <td align="left">
+         Не имеет никакого эффекта, если используется <a href="ini.sect.safe-mode.html#ini.safe-mode" class="link">безопасный режим</a>.
+        </td>
+       </tr>
+
+       <tr valign="middle">
+        <td align="left">
+         <span class="function"><a href="function.mail.html" class="function">mail()</a></span>
+        </td>
+        <td align="left">
+         В безопасном режиме пятый параметр недоступен.
+         (Замечание: актуально только для PHP 4.2.3 и выше)
+        </td>
+       </tr>
+
+       <tr valign="middle">
+        <td align="left">
+         <span class="function"><a href="function.session-start.html" class="function">session_start()</a></span>
+        </td>
+        <td align="left">
+         Владелец скрипта должен совпадать с владельцем каталога <a href="session.configuration.html#ini.session.save-path" class="link">session.save_path</a>, если используются
+         хранилище по умолчанию <i>files</i> и <a href="session.configuration.html#ini.session.save-handler" class="link">session.save_handler</a>.
+        </td>
+       </tr>
+
+       <tr valign="middle">
+        <td align="left">Все функции работы с файлами и потоками.
+        </td>
+        <td align="left">
+         Проверяет, имеют ли файлы/каталоги, с которыми
+вы собираетесь работать, такой же UID (владельца), как и выполняемый скрипт. Проверяет, имеет ли каталог, с которым
+вы собираетесь работать, такой же UID (владельца), как и выполняемый скрипт. (смотрите также <var class="filename">php.ini</var>-опцию <a href="ini.sect.safe-mode.html#ini.safe-mode-include-dir" class="link">safe_mode_include_dir</a>.
+        </td>
+       </tr>
+
+      </tbody>
+     
+    </table>
+
+   </p>
+  </div><hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="ini.sect.safe-mode.html">Безопасность и безопасный режим</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="features.commandline.html">Использование PHP в командной строке</a></div>
+ <div class="up"><a href="features.safe-mode.html">Безопасный режим</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

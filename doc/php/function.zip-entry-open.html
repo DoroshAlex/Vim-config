@@ -1,0 +1,116 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Открывает директорию для чтения</title>
+
+ </head>
+ <body><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.zip-entry-name.html">zip_entry_name</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.zip-entry-read.html">zip_entry_read</a></div>
+ <div class="up"><a href="ref.zip.html">Zip Функции</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.zip-entry-open" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">zip_entry_open</h1>
+  <p class="verinfo">(PHP 4 &gt;= 4.1.0, PHP 5 &gt;= 5.2.0, PECL zip &gt;= 1.0.0)</p><p class="refpurpose"><span class="refname">zip_entry_open</span> &mdash; <span class="dc-title">Открывает директорию для чтения</span></p>
+
+ </div>
+ <div class="refsect1 description" id="refsect1-function.zip-entry-open-description">
+  <h3 class="title">Описание</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">bool</span> <span class="methodname"><b>zip_entry_open</b></span>      
+    ( <span class="methodparam"><span class="type">resource</span> <tt class="parameter">$zip</tt></span>
+   , <span class="methodparam"><span class="type">resource</span> <tt class="parameter">$zip_entry</tt></span>
+   [, <span class="methodparam"><span class="type">string</span> <tt class="parameter">$mode</tt></span>
+  ] )</div>
+
+  <p class="para rdfs-comment">
+   Открывает директорию, входящую в ZIP-архив, для чтения.
+  </p>
+ </div>
+
+ <div class="refsect1 parameters" id="refsect1-function.zip-entry-open-parameters">
+  <h3 class="title">Список параметров</h3>
+  <p class="para">
+   <dl>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">zip</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Дескритор, возвращаемый функцией <span class="function"><a href="function.zip-open.html" class="function">zip_open()</a></span>.
+      </p>
+     </dd>
+
+    </dt>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">zip_entry</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Дескриптор директории, возвращаемый функцией <span class="function"><a href="function.zip-read.html" class="function">zip_read()</a></span>.
+      </p>
+     </dd>
+
+    </dt>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">mode</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Доступные режимы приведены в документации к функции
+       <span class="function"><a href="function.fopen.html" class="function">fopen()</a></span>.
+      </p>
+      <blockquote class="note"><p><b class="note">Замечание</b>: 
+       <p class="para">
+        В настоящее время параметр <i><tt class="parameter">mode</tt></i> игнорируется и всегда имеет значение
+        <i>&quot;rb&quot;</i>. Это связано с тем, что ZIP в PHP поддерживается только в режиме чтения.
+       </p>
+      </p></blockquote>
+     </dd>
+
+    </dt>
+
+   </dl>
+
+  </p>
+ </div>
+
+ <div class="refsect1 returnvalues" id="refsect1-function.zip-entry-open-returnvalues">
+  <h3 class="title">Возвращаемые значения</h3>
+  <p class="para">
+   Возвращает <b><tt>TRUE</tt></b> в случае успешного завершения  или <b><tt>FALSE</tt></b> в случае возникновения ошибки.
+  </p>
+  <blockquote class="note"><p><b class="note">Замечание</b>: 
+   <p class="para">
+    В отличии от функции <span class="function"><a href="function.fopen.html" class="function">fopen()</a></span> и других подобных функций, значение,
+    возвращаемое функцией <span class="function"><b>zip_entry_open()</b></span> только информирует нас о 
+    результате выполения операции и не требуется для последующего чтения или закрытия
+    дескриптора директории.
+   </p>
+  </p></blockquote>
+ </div>
+
+ <div class="refsect1 seealso" id="refsect1-function.zip-entry-open-seealso">
+  <h3 class="title">Смотрите также</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><span class="function"><a href="function.zip-entry-close.html" class="function" rel="rdfs-seeAlso">zip_entry_close()</a> - Закрывает дескриптор директории</span></li>
+    <li class="member"><span class="function"><a href="function.zip-entry-read.html" class="function" rel="rdfs-seeAlso">zip_entry_read()</a> - Читает данные из открытого ранее дескриптора директории</span></li>
+   </ul>
+  </p>
+ </div>
+
+</div><hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.zip-entry-name.html">zip_entry_name</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.zip-entry-read.html">zip_entry_read</a></div>
+ <div class="up"><a href="ref.zip.html">Zip Функции</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

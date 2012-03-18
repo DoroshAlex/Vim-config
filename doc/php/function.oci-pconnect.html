@@ -1,0 +1,216 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Устанавливает постоянное соединение с сервером Oracle</title>
+
+ </head>
+ <body><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.oci-password-change.html">oci_password_change</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.oci-result.html">oci_result</a></div>
+ <div class="up"><a href="ref.oci8.html">OCI8 (Oracle)</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.oci-pconnect" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">oci_pconnect</h1>
+  <p class="verinfo">(PHP 5, PECL OCI8 &gt;= 1.1.0)</p><p class="refpurpose"><span class="refname">oci_pconnect</span> &mdash; <span class="dc-title">Устанавливает постоянное соединение с сервером Oracle</span></p>
+
+ </div>
+ 
+ <div class="refsect1 description" id="refsect1-function.oci-pconnect-description">
+  <h3 class="title">Описание</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">resource</span> <span class="methodname"><b>oci_pconnect</b></span>
+    ( <span class="methodparam"><span class="type">string</span> <tt class="parameter">$username</tt></span>
+   , <span class="methodparam"><span class="type">string</span> <tt class="parameter">$password</tt></span>
+   [, <span class="methodparam"><span class="type">string</span> <tt class="parameter">$connection_string</tt></span>
+   [, <span class="methodparam"><span class="type">string</span> <tt class="parameter">$character_set</tt></span>
+   [, <span class="methodparam"><span class="type">int</span> <tt class="parameter">$session_mode</tt></span>
+  ]]] )</div>
+
+  <p class="para rdfs-comment">
+   Создает постоянное соединение с сервером Oracle и выполняет аутентификацию.
+  </p>
+  <p class="para">
+   Постоянные соединения кэшируются и повторно используются при следующих
+   запросах, в результате снижаются накладные расходы при каждой загрузке
+   страницы; типичное приложение PHP имеет одно постоянное подключение к 
+   серверу PHP, реализованное дочерним процессом Apache (или PHP FastCGI/CGI).
+   Для получения подробной информации см. раздел <a href="features.persistent-connections.html" class="link">Постоянные соединения с БД</a>.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-function.oci-pconnect-parameters">
+  <h3 class="title">Список параметров</h3>
+  <p class="para">
+   <dl>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">username</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Имя пользователя Oracle.
+      </p>
+     </dd>
+
+    </dt>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">password</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Пароль пользователя <i><tt class="parameter">username</tt></i>.
+      </p>
+     </dd>
+
+    </dt>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">connection_string</tt></i></span>
+     <dd>
+
+      <p class="para">Содержит
+<i>экземпляр Oracle</i> для подключения. Это может быть
+<a href="http://download.oracle.com/docs/cd/E11882_01/network.112/e10836/naming.htm" class="link external">&raquo;&nbsp;Easy Connect
+ string</a>, или Connect Name из файла
+<var class="filename">tnsnames.ora</var>, или имя локального экземпляра Oracle.
+</p>
+<p class="para">Если не указано отдельно, PHP использует
+ переменные окружения, такие как <b><tt>TWO_TASK</tt></b> (на Linux)
+ или <b><tt>LOCAL</tt></b> (на Windows)
+ и <b><tt>ORACLE_SID</tt></b> для определения
+ <i>экземпляра Oracle</i> для соединения.
+</p>
+<p class="para">
+ Для использования метода Easy Connect, PHP должен быть слинкован с клиентскими библиотеками версии Oracle
+ 10g или старше. Easy Connect string для Oracle 10g принимает следующую форму:
+ <em class="emphasis">[//]host_name[:port][/service_name]</em>. Для Oracle 11g синтаксис таков:
+ <em class="emphasis">[//]host_name[:port][/service_name][:server_type][/instance_name]</em>.
+ Названия служб могут быть определены с помощью запуска Oracle утилиты <i>lsnrctl status</i>
+ на сервере базы данных.
+</p>
+<p class="para">
+ Файл <var class="filename">tnsnames.ora</var> может находиться в поисковом пути Oracle Net, который включает
+ <var class="filename">$ORACLE_HOME/network/admin</var> и <var class="filename">/etc</var>. В качестве альтернативного варианта
+ можно установить <i>TNS_ADMIN</i> таким образом, чтобы путь <var class="filename">$TNS_ADMIN/tnsnames.ora</var> был читаемым.
+ Убедитесь, что веб-сервер имеет доступ к этому файлу.
+</p>
+     </dd>
+
+    </dt>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">character_set</tt></i></span>
+     <dd>
+
+      <p class="para">Определяет кодировку, используемую клиентскими
+библиотеками Oracle. Данная кодировка не обязательно должна совпадать с кодировкой, используемой в самой базе данных.
+Если она не совпадает, Oracle сделает все возможное для конвертирования данных из- и в данную кодировку.
+В зависимости от используемых кодировок это может не всегда давать приемлемые результаты. Преобразование также
+создает некоторые дополнительные временные затраты.
+</p>
+<p class="para">Если кодировка не указана, клиентские библиотеки Oracle будут определять
+ ее из переменной окружения <b><tt>NLS_LANG</tt></b>.
+</p>
+<p class="para">Передача этого параметра может уменьшить время соединения.
+</p>
+     </dd>
+
+    </dt>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">session_mode</tt></i></span>
+     <dd>
+
+      <p class="para">Этот параметр
+доступен начиная с версии PHP 5 (PECL OCI8 1.1) и принимает следующие значения:
+<b><tt>OCI_DEFAULT</tt></b>,
+<b><tt>OCI_SYSOPER</tt></b> и <b><tt>OCI_SYSDBA</tt></b>.
+Если были указаны <b><tt>OCI_SYSOPER</tt></b> или
+<b><tt>OCI_SYSDBA</tt></b>, данная функция попытается установить привилегированное соединение, используя внешние
+данные авторизации.
+По умолчанию привилегированные соединения отключены. Чтобы их включить, необходимо установить
+<a href="oci8.configuration.html#ini.oci8.privileged-connect" class="link">oci8.privileged_connect</a>
+в <i>On</i>.
+</p>
+<p class="para">
+ В версии PHP 5.3 (PECL OCI8 1.3.4) появилось значение
+ <b><tt>OCI_CRED_EXT</tt></b>. Оно указывает Oracle использовать внешнюю аутентификацию или аутентификацию с помощщью
+ операционной системы, что должно быть настроено в базе данных. Флаг <b><tt>OCI_CRED_EXT</tt></b> может быть использован
+ только с именем пользователя &quot;/&quot; и пустым паролем.
+ <a href="oci8.configuration.html#ini.oci8.privileged-connect" class="link">oci8.privileged_connect</a> может принимать значение
+ <i>On</i> или <i>Off</i>.
+</p>
+<p class="para">
+ <b><tt>OCI_CRED_EXT</tt></b> может использоваться совместно с режимами
+ <b><tt>OCI_SYSOPER</tt></b> и
+ <b><tt>OCI_SYSDBA</tt></b>.
+</p>
+<p class="para">
+ <b><tt>OCI_CRED_EXT</tt></b> не поддерживается в Windows по причинам безопасности.
+</p>
+     </dd>
+
+    </dt>
+
+   </dl>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-function.oci-pconnect-returnvalues">
+  <h3 class="title">Возвращаемые значения</h3>
+  <p class="para">
+   Возвращает идентификатор подключения или <b><tt>FALSE</tt></b> в случае ошибки.
+  </p>
+ </div>
+
+
+ <div class="refsect1 notes" id="refsect1-function.oci-pconnect-notes">
+  <h3 class="title">Примечания</h3>
+  <blockquote class="note"><p><b class="note">Замечание</b>: 
+   <span class="simpara">
+    Начиная с версии PHP 5.1.2 и PECL oci8 1.1, продолжительность и 
+    максимальное количество постоянных соединений к серверу Oracle
+    может быть изменено в следующих диррективах:
+    <a href="oci8.configuration.html#ini.oci8.persistent-timeout" class="link">oci8.persistent_timeout</a>,
+    <a href="oci8.configuration.html#ini.oci8.ping-interval" class="link">oci8.ping_interval</a> и
+    <a href="oci8.configuration.html#ini.oci8.max-persistent" class="link">oci8.max_persistent</a>.
+   </span>
+  </p></blockquote>
+  <blockquote class="note"><p><b class="note">Замечание</b>: 
+   <p class="para">
+    В версиях PHP ниже 5.0.0 следует использовать <span class="function"><a href="function.ociplogon.html" class="function">ociplogon()</a></span>.
+    Старое имя функции также может быть использовано в текущих версиях, хотя оно уже устарело
+и не рекомендуется.
+   </p>
+  </p></blockquote>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-function.oci-pconnect-seealso">
+  <h3 class="title">Смотрите также</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><span class="function"><a href="function.oci-connect.html" class="function" rel="rdfs-seeAlso">oci_connect()</a> - Устанавливает соединение с базой данных Oracle</span></li>
+    <li class="member"><span class="function"><a href="function.oci-new-connect.html" class="function" rel="rdfs-seeAlso">oci_new_connect()</a> - Устанавливает новое соединение с сервером Oracle</span></li>
+   </ul>
+  </p>
+ </div>
+
+
+</div><hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.oci-password-change.html">oci_password_change</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.oci-result.html">oci_result</a></div>
+ <div class="up"><a href="ref.oci8.html">OCI8 (Oracle)</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

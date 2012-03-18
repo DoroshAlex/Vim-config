@@ -1,0 +1,268 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Переменные извне PHP</title>
+
+ </head>
+ <body><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="language.variables.variable.html">Переменные переменных</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="language.constants.html">Константы</a></div>
+ <div class="up"><a href="language.variables.html">Переменные</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="language.variables.external" class="sect1">
+   <h2 class="title">Переменные извне PHP</h2>
+   
+   <div class="sect2" id="language.variables.external.form">
+    <h3 class="title">HTML-формы (GET и POST)</h3>
+
+    <p class="simpara">
+     Когда происходит отправка данных формы PHP-скрипту, информация из
+     этой формы автоматически становится доступной ему. Существует
+     много способов получения этой информации, например:
+    </p>
+
+    <p class="para">
+     <div class="example" id="example-97">
+      <p><b>Пример #1 Простая HTML-форма</b></p>
+      <div class="example-contents">
+<div class="htmlcode"><pre class="htmlcode">&lt;form action=&quot;foo.php&quot; method=&quot;post&quot;&gt;
+    Имя:  &lt;input type=&quot;text&quot; name=&quot;username&quot; /&gt;&lt;br /&gt;
+    Email: &lt;input type=&quot;text&quot; name=&quot;email&quot; /&gt;&lt;br /&gt;
+    &lt;input type=&quot;submit&quot; name=&quot;submit&quot; value=&quot;Отправь меня!&quot; /&gt;
+&lt;/form&gt;</pre>
+</div>
+      </div>
+
+     </div>
+    </p>
+
+    <p class="para">
+     В зависимости от вашей индивидуальной установки и личных настроек
+     существует много способов доступа к данным из ваших HTML-форм. Вот
+     несколько примеров:
+    </p>
+
+    
+    <p class="para">
+     <div class="example" id="example-98">
+      <p><b>Пример #2 Доступ к данным из простой HTML POST-формы</b></p>
+      <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php&nbsp;<br /></span><span style="color: #FF8000">//&nbsp;Доступно,&nbsp;начиная&nbsp;с&nbsp;PHP&nbsp;4.1.0<br /><br />&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">$_POST</span><span style="color: #007700">[</span><span style="color: #DD0000">'username'</span><span style="color: #007700">];<br />&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #0000BB">$_REQUEST</span><span style="color: #007700">[</span><span style="color: #DD0000">'username'</span><span style="color: #007700">];<br /><br />&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">import_request_variables</span><span style="color: #007700">(</span><span style="color: #DD0000">'p'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'p_'</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #0000BB">$p_username</span><span style="color: #007700">;<br /><br /></span><span style="color: #FF8000">//&nbsp;Начиная&nbsp;с&nbsp;PHP&nbsp;5.0.0,&nbsp;эти&nbsp;длинные&nbsp;предопределенные<br />//&nbsp;переменные&nbsp;могут&nbsp;быть&nbsp;отключены&nbsp;директивой&nbsp;register_long_arrays.<br /><br />&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">$HTTP_POST_VARS</span><span style="color: #007700">[</span><span style="color: #DD0000">'username'</span><span style="color: #007700">];<br /><br /></span><span style="color: #FF8000">//&nbsp;Доступно,&nbsp;если&nbsp;директива&nbsp;PHP&nbsp;register_globals&nbsp;=&nbsp;on.&nbsp;Начиная<br />//&nbsp;с&nbsp;PHP&nbsp;4.2.0,&nbsp;значение&nbsp;по&nbsp;умолчанию&nbsp;register_globals&nbsp;=&nbsp;off.<br />//&nbsp;Использование/доверие&nbsp;этому&nbsp;методу&nbsp;не&nbsp;рекомендуется.<br /><br />&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">$username</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+      </div>
+
+     </div>
+    </p>
+    <p class="para">
+     GET-форма используется аналогично, за исключением того, что вместо
+     POST, вам нужно будет использовать соответствующую предопределенную
+     переменную GET. GET относится также к <i>QUERY_STRING</i>
+     (информация в URL после &#039;?&#039;). Так, например,
+     <i>http://www.example.com/test.php?id=3</i> содержит
+     GET-данные, доступные как <var class="varname"><var class="varname"><a href="reserved.variables.get.html" class="classname">$_GET['id']</a></var></var>. Смотрите
+     также <var class="varname"><var class="varname"><a href="reserved.variables.request.html" class="classname">$_REQUEST</a></var></var> и <span class="function"><a href="function.import-request-variables.html" class="function">import_request_variables()</a></span>.
+    </p>
+
+    <blockquote class="note"><p><b class="note">Замечание</b>: 
+     <p class="para">
+      <a href="language.variables.superglobals.html" class="link">Суперглобальные массивы</a>, 
+      такие как <var class="varname"><var class="varname"><a href="reserved.variables.post.html" class="classname">$_POST</a></var></var> и <var class="varname"><var class="varname"><a href="reserved.variables.get.html" class="classname">$_GET</a></var></var>, стали 
+      доступны в PHP 4.1.0
+     </p>
+    </p></blockquote>
+
+    <blockquote class="note"><p><b class="note">Замечание</b>: 
+     <p class="para">
+      Точки и пробелы в именах переменных преобразуется в знаки
+      подчеркивания. Например, <i>&lt;input name=&quot;a.b&quot; /&gt;</i> станет
+      <i>$_REQUEST[&quot;a_b&quot;]</i>.
+     </p>
+    </p></blockquote>
+
+    <p class="para">
+     Как уже говорилось, до PHP 4.2.0 значением <a href="ini.core.html#ini.register-globals" class="link">register_globals</a>
+     по умолчанию было <em class="emphasis">on</em> (включено).
+     Сообщество PHP рекомендует всем не
+     полагаться на эту директиву, поскольку предпочтительно
+     присвоить ей значение <em class="emphasis">off</em> и писать программы
+     исходя из этого.
+    </p>
+
+    <blockquote class="note"><p><b class="note">Замечание</b>: 
+     <p class="para">
+      Конфигурационная директива
+      <a href="info.configuration.html#ini.magic-quotes-gpc" class="link">magic_quotes_gpc</a>
+      влияет на значения Get, Post и Cookie. Если она включена,
+      значение (It&#039;s &quot;PHP!&quot;) автоматически станет (It\&#039;s \&quot;PHP!\&quot;).
+      Экранирование необходимо при добавлении в базу данных. Смотрите
+      также <span class="function"><a href="function.addslashes.html" class="function">addslashes()</a></span>, <span class="function"><a href="function.stripslashes.html" class="function">stripslashes()</a></span>
+      и <a href="sybase.configuration.html#ini.magic-quotes-sybase" class="link">magic_quotes_sybase</a>.
+     </p>
+    </p></blockquote>
+    
+    <p class="simpara">
+     PHP также понимает массивы в контексте переменных формы
+     (смотрите <a href="faq.html.html" class="link">соответствующие ЧАВО</a>).
+     К примеру, вы можете сгруппировать связанные переменные вместе
+     или использовать эту возможность для получения значений списка
+     множественного выбора select. Например, давайте отправим форму
+     самой себе, а после отправки отобразим данные:
+    </p>
+
+    <p class="para">
+     <div class="example" id="example-99">
+      <p><b>Пример #3 Более сложные переменные формы</b></p>
+      <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">if&nbsp;(</span><span style="color: #0000BB">$_POST</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">'&lt;pre&gt;'</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #0000BB">htmlspecialchars</span><span style="color: #007700">(</span><span style="color: #0000BB">print_r</span><span style="color: #007700">(</span><span style="color: #0000BB">$_POST</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">true</span><span style="color: #007700">));<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">'&lt;/pre&gt;'</span><span style="color: #007700">;<br />}<br /></span><span style="color: #0000BB">?&gt;<br /></span>&lt;form&nbsp;action=""&nbsp;method="post"&gt;<br />&nbsp;&nbsp;&nbsp;&nbsp;Имя:&nbsp;&nbsp;&lt;input&nbsp;type="text"&nbsp;name="personal[name]"&nbsp;/&gt;&lt;br&nbsp;/&gt;<br />&nbsp;&nbsp;&nbsp;&nbsp;Email:&nbsp;&lt;input&nbsp;type="text"&nbsp;name="personal[email]"&nbsp;/&gt;&lt;br&nbsp;/&gt;<br />&nbsp;&nbsp;&nbsp;&nbsp;Пиво:&nbsp;&lt;br&nbsp;/&gt;<br />&nbsp;&nbsp;&nbsp;&nbsp;&lt;select&nbsp;multiple&nbsp;name="beer[]"&gt;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;option&nbsp;value="warthog"&gt;Warthog&lt;/option&gt;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;option&nbsp;value="guinness"&gt;Guinness&lt;/option&gt;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;option&nbsp;value="stuttgarter"&gt;Stuttgarter&nbsp;Schwabenbräu&lt;/option&gt;<br />&nbsp;&nbsp;&nbsp;&nbsp;&lt;/select&gt;&lt;br&nbsp;/&gt;<br />&nbsp;&nbsp;&nbsp;&nbsp;&lt;input&nbsp;type="submit"&nbsp;value="Отправь&nbsp;меня!"&nbsp;/&gt;<br />&lt;/form&gt;</span>
+</code></div>
+      </div>
+
+     </div>
+    </p>
+
+    <div class="sect3" id="language.variables.external.form.submit">
+     <h4 class="title">Имена переменных кнопки-изображения</h4>
+
+     <p class="simpara">
+      При отправке формы вместо стандартной кнопки можно использовать
+      изображение с помощью тега такого вида:
+     </p>
+
+     <div class="informalexample">
+      <div class="example-contents">
+<div class="htmlcode"><pre class="htmlcode">&lt;input type=&quot;image&quot; src=&quot;image.gif&quot; name=&quot;sub&quot; /&gt;</pre>
+</div>
+      </div>
+
+     </div>
+
+     <p class="simpara">
+      Когда пользователь щелкнет где-нибудь на изображении,
+      соответствующая форма будет передана на сервер с двумя
+      дополнительными переменными - <var class="varname"><var class="varname">sub_x</var></var> и <var class="varname"><var class="varname">sub_y</var></var>.
+      Они содержат координаты нажатия пользователя на изображение. Опытные
+      программисты могут заметить, что на самом деле имена переменных,
+      отправленных браузером, содержат точку, а не подчеркивание, но
+      PHP автоматически конвертирует точку в подчеркивание.
+     </p>
+    </div>
+
+   </div>
+
+   <div class="sect2" id="language.variables.external.cookies">
+    <h3 class="title">HTTP Cookies</h3>
+
+    <p class="simpara">
+     PHP прозрачно поддерживает HTTP cookies как определено в <a href="http://www.faqs.org/rfcs/rfc6265" class="link external">&raquo;&nbsp;RFC 6265</a>. Cookies - это
+     механизм для хранения данных в удаленном браузере и отслеживания и
+     идентификации таким образом вернувшихся пользователей. Вы можете
+     установить cookies, используя функцию <span class="function"><a href="function.setcookie.html" class="function">setcookie()</a></span>.
+     Cookies являются частью HTTP-заголовка, поэтому функция SetCookie
+     должна вызываться до того, как браузеру будет отправлен какой бы то
+     ни было вывод. Это ограничение аналогично ограничению функции
+     <span class="function"><a href="function.header.html" class="function">header()</a></span>. Данные, хранящиеся в cookie, доступны
+     в соответствующих массивах данных cookie, таких как
+     <var class="varname"><var class="varname"><a href="reserved.variables.cookies.html" class="classname">$_COOKIE</a></var></var>, <var class="varname"><var class="varname">$HTTP_COOKIE_VARS</var></var>,
+     а также в <var class="varname"><var class="varname"><a href="reserved.variables.request.html" class="classname">$_REQUEST</a></var></var>. Подробности и примеры
+     смотрите на странице <span class="function"><a href="function.setcookie.html" class="function">setcookie()</a></span> руководства.
+    </p>
+
+    <p class="simpara">
+     Если вы хотите присвоить множество значений одной переменной cookie,
+     вы можете присвоить их как массив. Например:
+    </p>
+
+    <div class="informalexample">
+     <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />&nbsp;&nbsp;setcookie</span><span style="color: #007700">(</span><span style="color: #DD0000">"MyCookie[foo]"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'Testing&nbsp;1'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">time</span><span style="color: #007700">()+</span><span style="color: #0000BB">3600</span><span style="color: #007700">);<br />&nbsp;&nbsp;</span><span style="color: #0000BB">setcookie</span><span style="color: #007700">(</span><span style="color: #DD0000">"MyCookie[bar]"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'Testing&nbsp;2'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">time</span><span style="color: #007700">()+</span><span style="color: #0000BB">3600</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+     </div>
+
+    </div>
+    
+    <p class="simpara">
+     Это создаст две разные cookie, хотя в вашем скрипте <var class="varname"><var class="varname">MyCookie</var></var> будет
+     теперь одним массивом. Если вы хотите установить именно одну cookie 
+     со множеством значений, примите во внимание сначала применение к
+     значениям таких функций, как <span class="function"><a href="function.serialize.html" class="function">serialize()</a></span> или
+     <span class="function"><a href="function.explode.html" class="function">explode()</a></span>.
+    </p>
+
+    <p class="simpara">
+     Обратите внимание, что cookie заменит предыдущую cookie с тем же
+     именем в вашем браузере, если только путь или домен не отличаются.
+     Так, для приложения корзины покупок вы, возможно, захотите
+     сохранить счетчик. То есть:
+    </p>
+
+    <div class="example" id="example-100">
+     <p><b>Пример #4 Пример использования <span class="function"><a href="function.setcookie.html" class="function">setcookie()</a></span></b></p>
+     <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">if&nbsp;(isset(</span><span style="color: #0000BB">$_COOKIE</span><span style="color: #007700">[</span><span style="color: #DD0000">'count'</span><span style="color: #007700">]))&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$count&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$_COOKIE</span><span style="color: #007700">[</span><span style="color: #DD0000">'count'</span><span style="color: #007700">]&nbsp;+&nbsp;</span><span style="color: #0000BB">1</span><span style="color: #007700">;<br />}&nbsp;else&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$count&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">1</span><span style="color: #007700">;<br />}<br /></span><span style="color: #0000BB">setcookie</span><span style="color: #007700">(</span><span style="color: #DD0000">'count'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$count</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">time</span><span style="color: #007700">()+</span><span style="color: #0000BB">3600</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">setcookie</span><span style="color: #007700">(</span><span style="color: #DD0000">"Cart[</span><span style="color: #0000BB">$count</span><span style="color: #DD0000">]"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$item</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">time</span><span style="color: #007700">()+</span><span style="color: #0000BB">3600</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+     </div>
+
+    </div>
+
+   </div>
+
+   <div class="sect2" id="language.variables.external.dot-in-names">
+    <h3 class="title">Точки в именах приходящих переменных</h3>
+
+    <p class="para">
+     Как правило, PHP не меняет передаваемых скрипту имен переменных.
+     Однако следует отметить, что точка не является корректным
+     символом в имени переменной PHP. Поэтому рассмотрим такую запись:
+     <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$varname</span><span style="color: #007700">.</span><span style="color: #0000BB">ext</span><span style="color: #007700">;&nbsp;&nbsp;</span><span style="color: #FF8000">/*&nbsp;неверное&nbsp;имя&nbsp;переменной&nbsp;*/<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+     </div>
+
+     В данном случае интерпретатор видит переменную
+     <var class="varname"><var class="varname">$varname</var></var>, после которой идет оператор
+     конкатенации, а затем голая строка (то есть, не заключенная в
+     кавычки строка, не соответствующая ни одному из ключевых или
+     зарезервированных слов) &#039;ext&#039;. Очевидно, что это не даст
+     ожидаемого результата.
+    </p>
+
+    <p class="para">
+     По этой причине важно заметить, что PHP будет автоматически
+     заменять любые точки в именах приходящих переменных на символы
+     подчеркивания.
+    </p>
+
+   </div>
+
+   <div class="sect2" id="language.variables.determining-type-of">
+    <h3 class="title">Определение типов переменных</h3>
+
+    <p class="para">
+     Поскольку PHP определяет и конвертирует типы переменных (в
+     большинстве случаев) как надо, не всегда очевидно, какой тип
+     имеет данная переменная в конкретный момент времени. PHP
+     содержит несколько функций, позволяющих определить тип
+     переменной, таких как: <span class="function"><a href="function.gettype.html" class="function">gettype()</a></span>,
+     <span class="function"><a href="function.is-array.html" class="function">is_array()</a></span>, <span class="function"><a href="function.is-float.html" class="function">is_float()</a></span>,
+     <span class="function"><a href="function.is-int.html" class="function">is_int()</a></span>, <span class="function"><a href="function.is-object.html" class="function">is_object()</a></span> и
+     <span class="function"><a href="function.is-string.html" class="function">is_string()</a></span>. Смотрите также раздел
+     <a href="language.types.html" class="link">Типы</a>.
+    </p>
+   </div>
+
+  </div><hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="language.variables.variable.html">Переменные переменных</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="language.constants.html">Константы</a></div>
+ <div class="up"><a href="language.variables.html">Переменные</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

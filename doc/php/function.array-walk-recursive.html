@@ -1,0 +1,146 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Рекурсивно применяет пользовательскую функцию к каждому элементу массива</title>
+
+ </head>
+ <body><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.array-values.html">array_values</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.array-walk.html">array_walk</a></div>
+ <div class="up"><a href="ref.array.html">Функции для работы с массивами</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.array-walk-recursive" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">array_walk_recursive</h1>
+  <p class="verinfo">(PHP 5)</p><p class="refpurpose"><span class="refname">array_walk_recursive</span> &mdash; <span class="dc-title">Рекурсивно применяет пользовательскую функцию к каждому элементу массива</span></p>
+
+ </div>
+ <div class="refsect1 description" id="refsect1-function.array-walk-recursive-description">
+  <h3 class="title">Описание</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">bool</span> <span class="methodname"><b>array_walk_recursive</b></span>
+    ( <span class="methodparam"><span class="type">array</span> <tt class="parameter reference">&$input</tt></span>
+   , <span class="methodparam"><span class="type"><a href="language.pseudo-types.html#language.types.callback" class="type callback">callback</a></span> <tt class="parameter">$funcname</tt></span>
+   [, <span class="methodparam"><span class="type"><a href="language.pseudo-types.html#language.types.mixed" class="type mixed">mixed</a></span> <tt class="parameter">$userdata</tt></span>
+  ] )</div>
+
+  <p class="para rdfs-comment">
+   Применяет пользовательскую функцию <i><tt class="parameter">funcname</tt></i> к каждому
+   элементу массива <i><tt class="parameter">input</tt></i>. Эта функция обрабатывает
+   каждый элемент многомерного массива.
+  </p>
+ </div>
+
+ <div class="refsect1 parameters" id="refsect1-function.array-walk-recursive-parameters">
+  <h3 class="title">Список параметров</h3>
+  <p class="para">
+   <dl>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">input</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Входной массив.
+      </p>
+     </dd>
+
+    </dt>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">funcname</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Обычно, <i><tt class="parameter">funcname</tt></i> принимает два параметра.
+       Первым параметром идет значение элемента массива <i><tt class="parameter">input</tt></i>, а
+       вторым - его ключ.
+      </p>
+      <blockquote class="note"><p><b class="note">Замечание</b>: 
+       <p class="para">
+        Если требуется, чтобы функция <i><tt class="parameter">funcname</tt></i> изменила
+        значения в массиве, определите первый параметр
+        <i><tt class="parameter">funcname</tt></i> как
+        <a href="language.references.html" class="link">ссылку</a>. Тогда
+        все изменения будут применены к элементам массива.
+       </p>
+      </p></blockquote>
+     </dd>
+
+    </dt>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">userdata</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Если указан необязательный параметр <i><tt class="parameter">userdata</tt></i>,
+       то он будет передан третьим параметром функции <i><tt class="parameter">funcname</tt></i>.
+      </p>
+     </dd>
+
+    </dt>
+
+   </dl>
+
+  </p>
+ </div>
+
+ 
+ 
+ <div class="refsect1 returnvalues" id="refsect1-function.array-walk-recursive-returnvalues">
+  <h3 class="title">Возвращаемые значения</h3>
+  <p class="para">
+   Возвращает <b><tt>TRUE</tt></b> в случае успешного завершения  или <b><tt>FALSE</tt></b> в случае возникновения ошибки.
+  </p>
+ </div>
+
+ <div class="refsect1 examples" id="refsect1-function.array-walk-recursive-examples">
+  <h3 class="title">Примеры</h3>
+  <p class="para">
+   <div class="example" id="example-4500">
+    <p><b>Пример #1 Пример использования <span class="function"><b>array_walk_recursive()</b></span></b></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$sweet&nbsp;</span><span style="color: #007700">=&nbsp;array(</span><span style="color: #DD0000">'a'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'apple'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'b'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'banana'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$fruits&nbsp;</span><span style="color: #007700">=&nbsp;array(</span><span style="color: #DD0000">'sweet'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">$sweet</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'sour'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'lemon'</span><span style="color: #007700">);<br /><br />function&nbsp;</span><span style="color: #0000BB">test_print</span><span style="color: #007700">(</span><span style="color: #0000BB">$item</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$key</span><span style="color: #007700">)<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"</span><span style="color: #0000BB">$key</span><span style="color: #DD0000">&nbsp;holds&nbsp;</span><span style="color: #0000BB">$item</span><span style="color: #DD0000">\n"</span><span style="color: #007700">;<br />}<br /><br /></span><span style="color: #0000BB">array_walk_recursive</span><span style="color: #007700">(</span><span style="color: #0000BB">$fruits</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'test_print'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+    <div class="example-contents"><p>Результат выполнения данного примера:</p></div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+a holds apple
+b holds banana
+sour holds lemon
+</pre></div>
+    </div>
+    <div class="example-contents"><p>
+     Обратите внимание, что ключ &#039;sweet&#039; никогда не отображается.
+     Любой ключ, содержащий значение типа <span class="type"><a href="language.types.array.html" class="type array">array</a></span>,
+     не будет передаваться в функцию.
+    </p></div>
+   </div>
+  </p>
+ </div>
+
+ <div class="refsect1 seealso" id="refsect1-function.array-walk-recursive-seealso">
+  <h3 class="title">Смотрите также</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><span class="function"><a href="function.array-walk.html" class="function" rel="rdfs-seeAlso">array_walk()</a> - Применяет пользовательскую функцию к каждому элементу массива</span></li>
+    <li class="member">информация о типе <a href="language.pseudo-types.html#language.types.callback" class="link">callback</a></li>
+   </ul>
+  </p>
+ </div>
+
+</div><hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.array-values.html">array_values</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.array-walk.html">array_walk</a></div>
+ <div class="up"><a href="ref.array.html">Функции для работы с массивами</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

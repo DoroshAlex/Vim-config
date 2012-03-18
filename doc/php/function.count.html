@@ -1,0 +1,177 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Подсчитывает количество элементов массива или что-то в объекте</title>
+
+ </head>
+ <body><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.compact.html">compact</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.current.html">current</a></div>
+ <div class="up"><a href="ref.array.html">Функции для работы с массивами</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.count" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">count</h1>
+  <p class="verinfo">(PHP 4, PHP 5)</p><p class="refpurpose"><span class="refname">count</span> &mdash; <span class="dc-title">Подсчитывает количество элементов массива или что-то в объекте</span></p>
+
+ </div>
+ <div class="refsect1 description" id="refsect1-function.count-description">
+  <h3 class="title">Описание</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">int</span> <span class="methodname"><b>count</b></span>
+    ( <span class="methodparam"><span class="type"><a href="language.pseudo-types.html#language.types.mixed" class="type mixed">mixed</a></span> <tt class="parameter">$var</tt></span>
+   [, <span class="methodparam"><span class="type">int</span> <tt class="parameter">$mode</tt><span class="initializer"> = COUNT_NORMAL</span></span>
+  ] )</div>
+
+  <p class="para rdfs-comment">
+   Подсчитывает количество элементов массива или что-то в объекте.
+  </p>
+  <p class="para">
+   Для объектов, если у вас включена поддержка
+   <a href="ref.spl.html" class="link">SPL</a>, вы можете перехватить
+   <span class="function"><b>count()</b></span>, реализуя интерфейс
+   <a href="class.countable.html" class="classname">Countable</a>. Этот интерфейс имеет ровно один метод,
+    <span class="methodname"><a href="countable.count.html" class="methodname">Countable::count()</a></span>, который возвращает значение функции
+   <span class="function"><b>count()</b></span>.
+  </p>
+  <p class="para">
+   Пожалуйста, смотрите раздел
+   &quot;<a href="language.types.array.html" class="link">Массивы</a>&quot; в этом
+   руководстве для более детального представления о
+   реализации и использовании массивов в PHP.
+  </p>
+ </div>
+
+ <div class="refsect1 parameters" id="refsect1-function.count-parameters">
+  <h3 class="title">Список параметров</h3>
+  <p class="para">
+   <dl>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">var</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Массив или объект.
+      </p>
+     </dd>
+
+    </dt>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">mode</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Если необязательный параметр <i><tt class="parameter">mode</tt></i> установлен в
+       <b><tt>COUNT_RECURSIVE</tt></b> (или 1), <span class="function"><b>count()</b></span>
+       будет рекурсивно подсчитывать количество элементов массива.
+       Это особенно полезно для подсчёта всех элементов многомерных
+       массивов.
+       <span class="function"><b>count()</b></span> не обнаруживает бесконечную рекурсию.
+      </p>
+     </dd>
+
+    </dt>
+
+   </dl>
+
+  </p>
+ </div>
+
+ <div class="refsect1 returnvalues" id="refsect1-function.count-returnvalues">
+  <h3 class="title">Возвращаемые значения</h3>
+  <p class="para">
+   Возвращает количество элементов в <i><tt class="parameter">var</tt></i>.
+   Если <i><tt class="parameter">var</tt></i> не является массивом или объектом,
+   реализующим интерфейс <a href="class.countable.html" class="classname">Countable</a>,
+   будет возвращена <i>1</i>.
+   За одним исключением: если <i><tt class="parameter">var</tt></i> - <b><tt>NULL</tt></b>,
+   то будет возвращён <i>0</i>.
+  </p>
+  <div class="caution"><b class="caution">Предостережение</b>
+   <p class="para">
+    <span class="function"><b>count()</b></span> может возвратить 0 для переменных, которые
+    не установлены, но также может возвратить 0 для переменных, которые
+    инициализированы пустым массивом. Используйте функцию
+    <span class="function"><a href="function.isset.html" class="function">isset()</a></span> для того, чтобы протестировать, установлена ли переменная.
+   </p>
+  </div>
+ </div>
+
+ <div class="refsect1 changelog" id="refsect1-function.count-changelog">
+  <h3 class="title">Список изменений</h3>
+  <p class="para">
+   <table class="doctable informaltable">
+    
+     <thead valign="middle">
+      <tr valign="middle">
+       <th>Версия</th>
+       <th>Описание</th>
+      </tr>
+
+     </thead>
+
+     <tbody valign="middle" class="tbody">
+      <tr valign="middle">
+       <td align="left">4.2.0</td>
+       <td align="left">
+        Добавлен необязательный параметр <i><tt class="parameter">mode</tt></i>.
+       </td>
+      </tr>
+
+     </tbody>
+    
+   </table>
+
+  </p>
+ </div>
+
+ <div class="refsect1 examples" id="refsect1-function.count-examples">
+  <h3 class="title">Примеры</h3>
+  <p class="para">
+   <div class="example" id="example-4509">
+    <p><b>Пример #1 Пример использования <span class="function"><b>count()</b></span></b></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$a</span><span style="color: #007700">[</span><span style="color: #0000BB">0</span><span style="color: #007700">]&nbsp;=&nbsp;</span><span style="color: #0000BB">1</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$a</span><span style="color: #007700">[</span><span style="color: #0000BB">1</span><span style="color: #007700">]&nbsp;=&nbsp;</span><span style="color: #0000BB">3</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$a</span><span style="color: #007700">[</span><span style="color: #0000BB">2</span><span style="color: #007700">]&nbsp;=&nbsp;</span><span style="color: #0000BB">5</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$result&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">count</span><span style="color: #007700">(</span><span style="color: #0000BB">$a</span><span style="color: #007700">);<br /></span><span style="color: #FF8000">//&nbsp;$result&nbsp;==&nbsp;3<br /><br /></span><span style="color: #0000BB">$b</span><span style="color: #007700">[</span><span style="color: #0000BB">0</span><span style="color: #007700">]&nbsp;&nbsp;=&nbsp;</span><span style="color: #0000BB">7</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$b</span><span style="color: #007700">[</span><span style="color: #0000BB">5</span><span style="color: #007700">]&nbsp;&nbsp;=&nbsp;</span><span style="color: #0000BB">9</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$b</span><span style="color: #007700">[</span><span style="color: #0000BB">10</span><span style="color: #007700">]&nbsp;=&nbsp;</span><span style="color: #0000BB">11</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$result&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">count</span><span style="color: #007700">(</span><span style="color: #0000BB">$b</span><span style="color: #007700">);<br /></span><span style="color: #FF8000">//&nbsp;$result&nbsp;==&nbsp;3<br /><br /></span><span style="color: #0000BB">$result&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">count</span><span style="color: #007700">(</span><span style="color: #0000BB">null</span><span style="color: #007700">);<br /></span><span style="color: #FF8000">//&nbsp;$result&nbsp;==&nbsp;0<br /><br /></span><span style="color: #0000BB">$result&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">count</span><span style="color: #007700">(</span><span style="color: #0000BB">false</span><span style="color: #007700">);<br /></span><span style="color: #FF8000">//&nbsp;$result&nbsp;==&nbsp;1<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+  </p>
+  <p class="para">
+   <div class="example" id="example-4510">
+    <p><b>Пример #2 Пример рекурсивного использования <span class="function"><b>count()</b></span></b></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$food&nbsp;</span><span style="color: #007700">=&nbsp;array(</span><span style="color: #DD0000">'fruits'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;array(</span><span style="color: #DD0000">'orange'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'banana'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'apple'</span><span style="color: #007700">),<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'veggie'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;array(</span><span style="color: #DD0000">'carrot'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'collard'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'pea'</span><span style="color: #007700">));<br /><br /></span><span style="color: #FF8000">//&nbsp;рекурсивный&nbsp;count<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">count</span><span style="color: #007700">(</span><span style="color: #0000BB">$food</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">COUNT_RECURSIVE</span><span style="color: #007700">);&nbsp;</span><span style="color: #FF8000">//&nbsp;выводит&nbsp;8<br /><br />//&nbsp;обычный&nbsp;count<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">count</span><span style="color: #007700">(</span><span style="color: #0000BB">$food</span><span style="color: #007700">);&nbsp;</span><span style="color: #FF8000">//&nbsp;выводит&nbsp;2<br /><br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+  </p>
+ </div>
+
+ <div class="refsect1 seealso" id="refsect1-function.count-seealso">
+  <h3 class="title">Смотрите также</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><span class="function"><a href="function.is-array.html" class="function" rel="rdfs-seeAlso">is_array()</a> - Определяет, является ли переменная массивом</span></li>
+    <li class="member"><span class="function"><a href="function.isset.html" class="function" rel="rdfs-seeAlso">isset()</a> - Определяет, была ли установлена переменная значением отличным от NULL</span></li>
+    <li class="member"><span class="function"><a href="function.strlen.html" class="function" rel="rdfs-seeAlso">strlen()</a> - Возвращает длину строки</span></li>
+   </ul>
+  </p>
+ </div>
+
+</div><hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.compact.html">compact</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.current.html">current</a></div>
+ <div class="up"><a href="ref.array.html">Функции для работы с массивами</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

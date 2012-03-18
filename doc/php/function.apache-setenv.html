@@ -1,0 +1,142 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Устанавливает переменную subprocess_env Apache</title>
+
+ </head>
+ <body><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.apache-response-headers.html">apache_response_headers</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.getallheaders.html">getallheaders</a></div>
+ <div class="up"><a href="ref.apache.html">Apache</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.apache-setenv" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">apache_setenv</h1>
+  <p class="verinfo">(PHP 4 &gt;= 4.2.0, PHP 5)</p><p class="refpurpose"><span class="refname">apache_setenv</span> &mdash; <span class="dc-title">Устанавливает переменную subprocess_env Apache</span></p>
+
+ </div>
+
+ <div class="refsect1 description" id="refsect1-function.apache-setenv-description">
+  <h3 class="title">Описание</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">bool</span> <span class="methodname"><b>apache_setenv</b></span>
+    ( <span class="methodparam"><span class="type">string</span> <tt class="parameter">$variable</tt></span>
+   , <span class="methodparam"><span class="type">string</span> <tt class="parameter">$value</tt></span>
+   [, <span class="methodparam"><span class="type">bool</span> <tt class="parameter">$walk_to_top</tt><span class="initializer"> = false</span></span>
+  ] )</div>
+
+  <p class="para rdfs-comment">
+   <span class="function"><b>apache_setenv()</b></span> устанавливает значение
+   переменной окружения Apache, определенной как
+   <i><tt class="parameter">variable</tt></i>.
+  </p>
+  <blockquote class="note"><p><b class="note">Замечание</b>: 
+   <p class="para">
+    При установке перенной окружения Apache, соответствующая ей переменная
+    <var class="varname"><var class="varname"><a href="reserved.variables.server.html" class="classname">$_SERVER</a></var></var> не изменяется.
+   </p>
+  </p></blockquote>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-function.apache-setenv-parameters">
+  <h3 class="title">Список параметров</h3>
+  <p class="para">
+   <dl>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">variable</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Переменная окружения, которую требуется установить.
+      </p>
+     </dd>
+
+    </dt>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">value</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Новое значение переменной <i><tt class="parameter">variable</tt></i>.
+      </p>
+     </dd>
+
+    </dt>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">walk_to_top</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Делать ли доступной переменную для всех уровней Apache.
+      </p>
+     </dd>
+
+    </dt>
+
+   </dl>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-function.apache-setenv-returnvalues">
+  <h3 class="title">Возвращаемые значения</h3>
+  <p class="para">
+   Возвращает <b><tt>TRUE</tt></b> в случае успешного завершения  или <b><tt>FALSE</tt></b> в случае возникновения ошибки.
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-function.apache-setenv-examples">
+  <h3 class="title">Примеры</h3>
+  <p class="para">
+   <div class="example" id="example-4268">
+   <p><b>Пример #1 Пример использования <span class="function"><b>apache_setenv()</b></span> для установки переменной окружения Apache.</b></p>
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />apache_setenv</span><span style="color: #007700">(</span><span style="color: #DD0000">"EXAMPLE_VAR"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"Какое-либо&nbsp;значение"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+  </p>
+ </div>
+
+
+ <div class="refsect1 notes" id="refsect1-function.apache-setenv-notes">
+  <h3 class="title">Примечания</h3>
+  <blockquote class="note"><p><b class="note">Замечание</b>: 
+   <p class="para">
+    <span class="function"><b>apache_setenv()</b></span> можно использовать вместе с
+    <span class="function"><a href="function.apache-getenv.html" class="function">apache_getenv()</a></span> на разных страницах или для определения переменных,
+    которые требуется передать включениям на стороне сервера SSI (.shtml), которые, в свою очередь, 
+    были включены в  PHP скрипты.
+   </p>
+  </p></blockquote>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-function.apache-setenv-seealso">
+  <h3 class="title">Смотрите также</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><span class="function"><a href="function.apache-getenv.html" class="function" rel="rdfs-seeAlso">apache_getenv()</a> - Получить переменную окружения подпроцесса сервера Apache</span></li>
+   </ul>
+  </p>
+ </div>
+
+</div><hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.apache-response-headers.html">apache_response_headers</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.getallheaders.html">getallheaders</a></div>
+ <div class="up"><a href="ref.apache.html">Apache</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

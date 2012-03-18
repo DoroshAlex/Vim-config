@@ -1,0 +1,36 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Требования</title>
+
+ </head>
+ <body><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="session.setup.html">Установка и настройка</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="session.installation.html">Установка</a></div>
+ <div class="up"><a href="session.setup.html">Установка и настройка</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="session.requirements" class="section">
+  <h2 class="title">Требования</h2>
+  <p class="para">Для сборки этого расширения не требуются внешние библиотеки.</p>
+  <blockquote class="note"><p><b class="note">Замечание</b>: 
+   <p class="para">
+    При желании можно использовать квотирование разделяемой памяти (mm),
+    разработанное Ralf S. Engelschall, для хранения сессии. Для этого
+    необходимо скачать и установить <a href="http://www.ossp.org/pkg/lib/mm/" class="link external">&raquo;&nbsp;mm</a>.
+    Данная опция не доступна для платформ на базе ОС Windows. Следует также 
+    обратить внимание, что модуль хранения данных сессии при использовании mm
+    не гарантирует блокировку информации сессии при параллельных запросах.
+    Возможно, в таком случае целесообразно использование файловой системы в
+    разделяемой памяти (Например, TMPFS в Solaris/Linux или
+    <var class="filename">/dev/md</var> для BSD), чтобы хранить сессии в файлах,
+    блокируемых при обращении к ним. Поскольку данные сессии хранятся в
+    разделяемой памяти, перезапуск web-сервера приведет к их удалению.
+   </p>
+  </p></blockquote>
+ </div><hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="session.setup.html">Установка и настройка</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="session.installation.html">Установка</a></div>
+ <div class="up"><a href="session.setup.html">Установка и настройка</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

@@ -1,0 +1,185 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Читает строку из файла</title>
+
+ </head>
+ <body><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.fgetcsv.html">fgetcsv</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.fgetss.html">fgetss</a></div>
+ <div class="up"><a href="ref.filesystem.html">Файловая система</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.fgets" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">fgets</h1>
+  <p class="verinfo">(PHP 4, PHP 5)</p><p class="refpurpose"><span class="refname">fgets</span> &mdash; <span class="dc-title">Читает строку из файла</span></p>
+
+ </div>
+
+ <div class="refsect1 description" id="refsect1-function.fgets-description">
+  <h3 class="title">Описание</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">string</span> <span class="methodname"><b>fgets</b></span>
+    ( <span class="methodparam"><span class="type">resource</span> <tt class="parameter">$handle</tt></span>
+   [, <span class="methodparam"><span class="type">int</span> <tt class="parameter">$length</tt></span>
+  ] )</div>
+
+  <p class="para rdfs-comment">
+   Читает строку из файлового указателя.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-function.fgets-parameters">
+  <h3 class="title">Список параметров</h3>
+  <p class="para">
+   <dl>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">handle</tt></i></span>
+     <dd>
+
+      <p class="para">Указатель на файл должен быть корректным и указывать
+на файл, успешно открытый функциями <span class="function"><a href="function.fopen.html" class="function">fopen()</a></span> или
+<span class="function"><a href="function.fsockopen.html" class="function">fsockopen()</a></span> (и все еще не закрытым функцией <span class="function"><a href="function.fclose.html" class="function">fclose()</a></span>).</p>
+     </dd>
+
+    </dt>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">length</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Чтения заканчивается по достижении <i><tt class="parameter">length</tt></i> - 1 байт,
+       если встретилась новая строка (которая включается в возвращаемый результат)
+       или конец файла (что встретилось первым). Если длина не указана, чтение
+       из потока будет продолжаться до тех пор, пока не достигнет
+       конца строки.
+      </p>
+      <blockquote class="note"><p><b class="note">Замечание</b>: 
+       <p class="para">
+        До версии PHP 4.3.0, опущение этого параметра означало, что длина строки
+        будет равна 1024 символам. Если большинство строк в файле больше 8 килобайт,
+        в целях производительности вашего скрипта стоит указать максимальную длину
+        строки.
+       </p>
+      </p></blockquote>
+     </dd>
+
+    </dt>
+
+   </dl>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-function.fgets-returnvalues">
+  <h3 class="title">Возвращаемые значения</h3>
+  <p class="para">
+   Возвращает строку размером в <i><tt class="parameter">length</tt></i> - 1 байт, прочитанную
+   из дескриптора файла, на который указывает параметр <i><tt class="parameter">handle</tt></i>.
+   Если данных для чтения больше нет, то возвращает <b><tt>FALSE</tt></b>.
+  </p>
+  <p class="para">
+   В случае возникновения ошибки возвращает <b><tt>FALSE</tt></b>.
+  </p>
+ </div>
+
+
+ <div class="refsect1 changelog" id="refsect1-function.fgets-changelog">
+  <h3 class="title">Список изменений</h3>
+  <p class="para">
+   <table class="doctable informaltable">
+    
+     <thead valign="middle">
+      <tr valign="middle">
+       <th>Версия</th>
+       <th>Описание</th>
+      </tr>
+
+     </thead>
+
+     <tbody valign="middle" class="tbody">
+      <tr valign="middle">
+       <td align="left">4.3.0</td>
+       <td align="left">
+        <span class="function"><b>fgets()</b></span> теперь безопасна для обработки бинарных данных
+       </td>
+      </tr>
+
+      <tr valign="middle">
+       <td align="left">4.2.0</td>
+       <td align="left">
+        Параметр <i><tt class="parameter">length</tt></i> стал необязательным
+       </td>
+      </tr>
+
+     </tbody>
+    
+   </table>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-function.fgets-examples">
+  <h3 class="title">Примеры</h3>
+  <p class="para">
+   <div class="example" id="example-2110">
+    <p><b>Пример #1 Построчное чтение файла</b></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$handle&nbsp;</span><span style="color: #007700">=&nbsp;@</span><span style="color: #0000BB">fopen</span><span style="color: #007700">(</span><span style="color: #DD0000">"/tmp/inputfile.txt"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"r"</span><span style="color: #007700">);<br />if&nbsp;(</span><span style="color: #0000BB">$handle</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;while&nbsp;((</span><span style="color: #0000BB">$buffer&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">fgets</span><span style="color: #007700">(</span><span style="color: #0000BB">$handle</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">4096</span><span style="color: #007700">))&nbsp;!==&nbsp;</span><span style="color: #0000BB">false</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #0000BB">$buffer</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(!</span><span style="color: #0000BB">feof</span><span style="color: #007700">(</span><span style="color: #0000BB">$handle</span><span style="color: #007700">))&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"Error:&nbsp;unexpected&nbsp;fgets()&nbsp;fail\n"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">fclose</span><span style="color: #007700">(</span><span style="color: #0000BB">$handle</span><span style="color: #007700">);<br />}<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+  </p>
+ </div>
+
+
+ <div class="refsect1 notes" id="refsect1-function.fgets-notes">
+  <h3 class="title">Примечания</h3>
+  <blockquote class="note"><p><b class="note">Замечание</b>: <span class="simpara">Если у вас возникают проблемы
+с распознаванием PHP концов строк при чтении или создании файлов на Macintosh-совместимом компьютере, включение опции
+<a href="filesystem.configuration.html#ini.auto-detect-line-endings" class="link">auto_detect_line_endings</a> может помочь решить проблему.
+</span></p></blockquote>
+  <blockquote class="note"><p><b class="note">Замечание</b>: 
+   <p class="para">
+    Программисты, привыкшие к семантике &#039;C&#039; функции <span class="function"><b>fgets()</b></span>,
+    должны принимать во внимание разницу в том, каким образом возвращается
+    признак достижения конца файла (<i>EOF</i>).
+   </p>
+  </p></blockquote>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-function.fgets-seealso">
+  <h3 class="title">Смотрите также</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><span class="function"><a href="function.fgetss.html" class="function" rel="rdfs-seeAlso">fgetss()</a> - Прочитать строку из файла и отбросить HTML-теги</span></li>
+    <li class="member"><span class="function"><a href="function.fread.html" class="function" rel="rdfs-seeAlso">fread()</a> - Бинарно-безопасное чтение файла</span></li>
+    <li class="member"><span class="function"><a href="function.fgetc.html" class="function" rel="rdfs-seeAlso">fgetc()</a> - Считывает символ из файла</span></li>
+    <li class="member"><span class="function"><a href="function.stream-get-line.html" class="function" rel="rdfs-seeAlso">stream_get_line()</a> - Получает строку из потокового ресурса до указанного разделителя</span></li>
+    <li class="member"><span class="function"><a href="function.fopen.html" class="function" rel="rdfs-seeAlso">fopen()</a> - Открывает файл или URL</span></li>
+    <li class="member"><span class="function"><a href="function.popen.html" class="function" rel="rdfs-seeAlso">popen()</a> - Открывает файловый указатель процесса</span></li>
+    <li class="member"><span class="function"><a href="function.fsockopen.html" class="function" rel="rdfs-seeAlso">fsockopen()</a> - Open Internet or Unix domain socket connection</span></li>
+    <li class="member"><span class="function"><a href="function.stream-set-timeout.html" class="function" rel="rdfs-seeAlso">stream_set_timeout()</a> - Устанавливает значение тайм-аута на потоке</span></li>
+   </ul>
+  </p>
+ </div>
+
+
+</div><hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.fgetcsv.html">fgetcsv</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.fgetss.html">fgetss</a></div>
+ <div class="up"><a href="ref.filesystem.html">Файловая система</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

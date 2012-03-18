@@ -1,0 +1,119 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Предопределенные константы</title>
+
+ </head>
+ <body><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="mysql.resources.html">Типы ресурсов</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="mysql.examples.html">Примеры</a></div>
+ <div class="up"><a href="book.mysql.html">Mysql</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="mysql.constants" class="appendix">
+ <h1>Предопределенные константы</h1>
+
+ <p class="simpara">
+Перечисленные ниже константы определены данным расширением и могут быть
+доступны только в том случае, если PHP был собран с
+поддержкой этого расширения или же в том случае, если
+данное расширение было подгружено во время выполнения.
+</p>
+ <p class="para">
+  Начиная с PHP 4.3.0 можно указать дополнительные клиентские флаги для функций
+  <span class="function"><a href="function.mysql-connect.html" class="function">mysql_connect()</a></span> и <span class="function"><a href="function.mysql-pconnect.html" class="function">mysql_pconnect()</a></span>
+  functions. Предопределены следующие константы:
+  <table id="mysql.client-flags" class="doctable table">
+   <caption><b>Клиентские константы MySQL</b></caption>
+    
+     <thead valign="middle">
+      <tr valign="middle">
+       <th>Константа</th>
+       <th>Описание</th>
+      </tr>
+
+     </thead>
+
+     <tbody valign="middle" class="tbody">
+      <tr valign="middle">
+       <td align="left"><b><tt>MYSQL_CLIENT_COMPRESS</tt></b></td>
+       <td align="left">Использовать протокол сжатия</td>
+      </tr>
+
+      <tr valign="middle">
+       <td align="left"><b><tt>MYSQL_CLIENT_IGNORE_SPACE</tt></b></td>
+       <td align="left">Разрешает использовать пробелы после имён функций</td>
+      </tr>
+
+      <tr valign="middle">
+       <td align="left"><b><tt>MYSQL_CLIENT_INTERACTIVE</tt></b></td>
+       <td align="left">Позволяет interactive_timeout секунд (вместо <strong class="option unknown">wait_timeout</strong>
+)
+        бездействия до закрытия соединения.</td>
+      </tr>
+
+      <tr valign="middle">
+       <td align="left"><b><tt>MYSQL_CLIENT_SSL</tt></b></td>
+       <td align="left">Использовать SSL-шифрование. Этот флаг доступен только начиная
+        с версии 4.x клиентской библиотеки MySQL. Версия 3.23.x поставляется как
+        в PHP 4, так и с бинарным дистрибутивом Windows в PHP 5.
+       </td>
+      </tr>
+
+     </tbody>
+    
+  </table>
+
+ </p>
+
+ <p class="para">
+  Функция <span class="function"><a href="function.mysql-fetch-array.html" class="function">mysql_fetch_array()</a></span> использует константы для
+  определения типа возвращаемого массива. Предопределены следующие константы:
+  <table class="doctable table">
+   <caption><b>Константы выборки MySQL</b></caption>
+   
+    <thead valign="middle">
+     <tr valign="middle">
+      <th>Константа</th>
+      <th>Описание</th>
+     </tr>
+
+    </thead>
+
+    <tbody valign="middle" class="tbody">
+     <tr valign="middle">
+      <td align="left"><b><tt>MYSQL_ASSOC</tt></b></td>
+      <td align="left">
+       Результат возвращается в ассоциативном массиве с именами колонок в качестве
+       индексов.
+      </td>
+     </tr>
+
+     <tr valign="middle">
+      <td align="left"><b><tt>MYSQL_BOTH</tt></b></td>
+      <td align="left">
+       Результат возвращается в массиве, содержащем как численные индексы, так
+       и имена колонок в качестве индексов.
+      </td>
+     </tr>
+
+     <tr valign="middle">
+      <td align="left"><b><tt>MYSQL_NUM</tt></b></td>
+      <td align="left">
+       Результат возвращается в массиве, содержащем численные индексы. Индексы
+       начинаются с 0 (0 содержит первую колонку).
+      </td>
+     </tr>
+
+    </tbody>
+   
+  </table>
+
+ </p>
+</div>
+<hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="mysql.resources.html">Типы ресурсов</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="mysql.examples.html">Примеры</a></div>
+ <div class="up"><a href="book.mysql.html">Mysql</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

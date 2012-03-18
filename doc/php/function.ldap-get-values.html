@@ -1,0 +1,149 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Получает все значения из записи результата</title>
+
+ </head>
+ <body><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.ldap-get-values-len.html">ldap_get_values_len</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.ldap-list.html">ldap_list</a></div>
+ <div class="up"><a href="ref.ldap.html">LDAP</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.ldap-get-values" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">ldap_get_values</h1>
+  <p class="verinfo">(PHP 4, PHP 5)</p><p class="refpurpose"><span class="refname">ldap_get_values</span> &mdash; <span class="dc-title">Получает все значения из записи результата</span></p>
+
+ </div>
+ 
+ <div class="refsect1 description" id="refsect1-function.ldap-get-values-description">
+  <h3 class="title">Описание</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">array</span> <span class="methodname"><b>ldap_get_values</b></span>
+    ( <span class="methodparam"><span class="type">resource</span> <tt class="parameter">$link_identifier</tt></span>
+   , <span class="methodparam"><span class="type">resource</span> <tt class="parameter">$result_entry_identifier</tt></span>
+   , <span class="methodparam"><span class="type">string</span> <tt class="parameter">$attribute</tt></span>
+   )</div>
+
+  <p class="para rdfs-comment">
+   Читает все значения атрибута в записи результата.
+  </p>
+  <p class="para">
+   Эта функция требует <i><tt class="parameter">result_entry_identifier</tt></i>, 
+   а следовательно, перед ней должны быть запущена одна из функций
+   ldap поиска и один из результатов их вызова для получения отдельной
+   записи.
+  </p>
+  <p class="para">
+   В создаваемом приложении необходимо будет использовать сложные конструкции
+   для поиска определённых атрибутов (таких как &quot;фамилия&quot; или &quot;почта&quot;)
+   или необходимо будет использовать функцию <span class="function"><a href="function.ldap-get-attributes.html" class="function">ldap_get_attributes()</a></span>,
+   чтобы разобрать, какие атрибуты существуют для данной записи.
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 parameters" id="refsect1-function.ldap-get-values-parameters">
+  <h3 class="title">Список параметров</h3>
+  <p class="para">
+   <dl>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">link_identifier</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Идентификатор ссылки LDAP, возвращенный <span class="function"><a href="function.ldap-connect.html" class="function">ldap_connect()</a></span>.
+      </p>
+     </dd>
+
+    </dt>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">result_entry_identifier</tt></i></span>
+     <dd>
+
+      <p class="para">
+      </p>
+     </dd>
+
+    </dt>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">attribute</tt></i></span>
+     <dd>
+
+      <p class="para">
+      </p>
+     </dd>
+
+    </dt>
+
+   </dl>
+
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 returnvalues" id="refsect1-function.ldap-get-values-returnvalues">
+  <h3 class="title">Возвращаемые значения</h3>
+  <p class="para">
+   Возвращает массив значений для атрибута в случае успеха, и <b><tt>FALSE</tt></b>
+   в случае ошибки. Число значений может быть найдено по индексу
+   &quot;count&quot; в результирующем массиве. Отдельные значения могут быть
+   доступны по целочисленным индексам в массиве. 
+   Первый индекс 0.
+  </p>
+  <p class="para">
+   LDAP позволяет хранить больше чем одну запись для атрибута, таким
+   образом, можно, например, сохранить много адресов электронной почты
+   для записи каталога одного человека, все маркированные атрибутом
+   &quot;mail&quot;
+   <div class="informalexample">
+    <pre class="literallayout">
+     return_value[&quot;count&quot;] = число значений атрибута
+     return_value[0] = первое значение атрибута 
+     return_value[i] = i-ое значение атрибута 
+    </pre>
+   </div>
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 examples" id="refsect1-function.ldap-get-values-examples">
+  <h3 class="title">Примеры</h3>
+  <p class="para">
+   <div class="example" id="example-3924">
+    <p><b>Пример #1 Список всех значений атрибута &quot;mail&quot; для записи каталога</b></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">//&nbsp;$ds&nbsp;верный&nbsp;идентификатор&nbsp;ссылки&nbsp;на&nbsp;сервер&nbsp;директории<br /><br />//&nbsp;$sr&nbsp;верный&nbsp;результат&nbsp;поиска&nbsp;в&nbsp;директории&nbsp;ldap<br /><br />//&nbsp;$entry&nbsp;верный&nbsp;идентификатор&nbsp;записи&nbsp;из&nbsp;вызова&nbsp;функции<br />//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;вернувшей&nbsp;запись&nbsp;директории<br /><br /></span><span style="color: #0000BB">$values&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">ldap_get_values</span><span style="color: #007700">(</span><span style="color: #0000BB">$ds</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$entry</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"mail"</span><span style="color: #007700">);<br /><br />echo&nbsp;</span><span style="color: #0000BB">$values</span><span style="color: #007700">[</span><span style="color: #DD0000">"count"</span><span style="color: #007700">]&nbsp;.&nbsp;</span><span style="color: #DD0000">"&nbsp;адреса&nbsp;email&nbsp;для&nbsp;этой&nbsp;записи.&lt;br&nbsp;/&gt;"</span><span style="color: #007700">;<br /><br />for&nbsp;(</span><span style="color: #0000BB">$i</span><span style="color: #007700">=</span><span style="color: #0000BB">0</span><span style="color: #007700">;&nbsp;</span><span style="color: #0000BB">$i&nbsp;</span><span style="color: #007700">&lt;&nbsp;</span><span style="color: #0000BB">$values</span><span style="color: #007700">[</span><span style="color: #DD0000">"count"</span><span style="color: #007700">];&nbsp;</span><span style="color: #0000BB">$i</span><span style="color: #007700">++)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #0000BB">$values</span><span style="color: #007700">[</span><span style="color: #0000BB">$i</span><span style="color: #007700">]&nbsp;.&nbsp;</span><span style="color: #DD0000">"&lt;br&nbsp;/&gt;"</span><span style="color: #007700">;<br />}<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 seealso" id="refsect1-function.ldap-get-values-seealso">
+  <h3 class="title">Смотрите также</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><span class="function"><a href="function.ldap-get-values-len.html" class="function" rel="rdfs-seeAlso">ldap_get_values_len()</a> - Получить все бинарные значения из записи результата</span></li>
+   </ul>
+  </p>
+ </div>
+
+ 
+</div><hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.ldap-get-values-len.html">ldap_get_values_len</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.ldap-list.html">ldap_list</a></div>
+ <div class="up"><a href="ref.ldap.html">LDAP</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

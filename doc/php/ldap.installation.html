@@ -1,0 +1,52 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Установка</title>
+
+ </head>
+ <body><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="ldap.requirements.html">Требования</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="ldap.configuration.html">Настройка во время выполнения</a></div>
+ <div class="up"><a href="ldap.setup.html">Установка и настройка</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="ldap.installation" class="section">
+ <h2 class="title">Установка</h2>
+ <p class="para">
+  Поддержка LDAP в PHP не доступна по умолчанию. Для активации нужно 
+  использовать опцию <strong class="option configure">--with-ldap[=DIR]</strong>
+
+  при компиляции PHP, где DIR - это каталог установки базы LDAP.
+  Для включения поддержки SASL, убедитесь что использована опция 
+  <strong class="option configure">--with-ldap-sasl[=DIR]</strong>
+, 
+  и что <var class="filename">sasl.h</var> существует в системе.
+ </p>
+ <blockquote class="note"><p><b class="note">Замечание</b>: 
+  <b>Примечание для пользователей Win32</b><br />
+  <p class="para">
+   Для работы этого расширения системной переменной Windows
+<i>PATH</i>должны быть доступны
+<acronym title="Dynamic Link Library">DLL</acronym>-файлы. Чтобы узнать как этого достичь, обратитесь
+к разделу <acronym title="Frequently Asked Questions">FAQ</acronym> &quot;<a href="faq.installation.html#faq.installation.addtopath" class="link">Как добавить мою директорию с PHP в
+переменную Windows PATH</a>&quot;. Хотя копирование DLL-файлов из директории PHP в системную папку Windows
+также решает проблему (потому что системная директория по умолчанию находится в переменной
+<i>PATH</i>), это не рекомендуется.
+<em class="emphasis">Этому расширению требуются следующие файлы в переменной
+ <i>PATH</i>:</em> 
+   <var class="filename">libeay32.dll</var> и <var class="filename">ssleay32.dll</var>
+  </p>
+  <span class="simpara">
+   Версии до PHP 4.3.0 дополнительно требуют <var class="filename">libsasl.dll</var>.
+  </span>
+ </p></blockquote>
+ <p class="para">
+  Для того чтобы использовать библиотеки Oracle LDAP, должны быть 
+  установлены надлежащие <a href="oci8.requirements.html" class="link">параметры окружающей среды Oracle</a>.
+ </p>
+</div><hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="ldap.requirements.html">Требования</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="ldap.configuration.html">Настройка во время выполнения</a></div>
+ <div class="up"><a href="ldap.setup.html">Установка и настройка</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

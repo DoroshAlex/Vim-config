@@ -1,0 +1,187 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Возвращает позицию последнего вхождения подстроки в строке</title>
+
+ </head>
+ <body><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.strripos.html">strripos</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.strspn.html">strspn</a></div>
+ <div class="up"><a href="ref.strings.html">Обработка строк</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.strrpos" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">strrpos</h1>
+  <p class="verinfo">(PHP 4, PHP 5)</p><p class="refpurpose"><span class="refname">strrpos</span> &mdash; <span class="dc-title">Возвращает позицию последнего вхождения подстроки в строке</span></p>
+
+ </div>
+
+ <div class="refsect1 description" id="refsect1-function.strrpos-description">
+  <h3 class="title">Описание</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">int</span> <span class="methodname"><b>strrpos</b></span>
+    ( <span class="methodparam"><span class="type">string</span> <tt class="parameter">$haystack</tt></span>
+   , <span class="methodparam"><span class="type">string</span> <tt class="parameter">$needle</tt></span>
+   [, <span class="methodparam"><span class="type">int</span> <tt class="parameter">$offset</tt><span class="initializer"> = 0</span></span>
+  ] )</div>
+
+  <p class="para rdfs-comment">
+   Возвращает позицию последнего вхождения
+   <i><tt class="parameter">needle</tt></i> в строку <i><tt class="parameter">haystack</tt></i>.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-function.strrpos-parameters">
+  <h3 class="title">Список параметров</h3>
+  <p class="para">
+   <dl>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">haystack</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Строка, в которой производится поиск.
+      </p>
+     </dd>
+
+    </dt>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">needle</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Если <i><tt class="parameter">needle</tt></i> не является строкой,
+       то он приводится к целому и трактуется как код символа.
+      </p>
+     </dd>
+
+    </dt>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">offset</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Если указан, то поиск прекратится при достижении
+       этого количества символов с начала строки. Если передано
+       отрицательное значение, поиск начнется с указанного количества
+       символов от конца строки.
+      </p>
+     </dd>
+
+    </dt>
+
+   </dl>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-function.strrpos-returnvalues">
+  <h3 class="title">Возвращаемые значения</h3>
+  <p class="para">
+   Возвращает позицию искомой строки. Возвращает <b><tt>FALSE</tt></b>, если строка
+   не была найдена.
+  </p>
+ </div>
+
+
+ <div class="refsect1 changelog" id="refsect1-function.strrpos-changelog">
+  <h3 class="title">Список изменений</h3>
+  <p class="para">
+   <table class="doctable informaltable">
+    
+     <thead valign="middle">
+      <tr valign="middle">
+       <th>Версия</th>
+       <th>Описание</th>
+      </tr>
+
+     </thead>
+
+     <tbody valign="middle" class="tbody">
+      <tr valign="middle">
+       <td align="left">5.0.0</td>
+       <td align="left">
+        Параметр <i><tt class="parameter">needle</tt></i> может быть строкой из
+        более чем одного символа.
+       </td>
+      </tr>
+
+      <tr valign="middle">
+       <td align="left">5.0.0</td>
+       <td align="left">
+        Добавлен параметр <i><tt class="parameter">offset</tt></i>.
+       </td>
+      </tr>
+
+     </tbody>
+    
+   </table>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-function.strrpos-examples">
+  <h3 class="title">Примеры</h3>
+  <p class="para">
+   <div class="example" id="example-4407">
+    <p><b>Пример #1 Проверка существования искомой строки</b></p>
+    <div class="example-contents"><p>
+     Легко ошибиться и перепутать возвращаемые значения в случаях
+     &quot;символ найден в нулевой позиции&quot; и &quot;символ не найден&quot;.
+     Вот так можно узнать разницу:
+    </p></div>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /><br />$pos&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">strrpos</span><span style="color: #007700">(</span><span style="color: #0000BB">$mystring</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"b"</span><span style="color: #007700">);<br />if&nbsp;(</span><span style="color: #0000BB">$pos&nbsp;</span><span style="color: #007700">===&nbsp;</span><span style="color: #0000BB">false</span><span style="color: #007700">)&nbsp;{&nbsp;</span><span style="color: #FF8000">//&nbsp;обратите&nbsp;внимание:&nbsp;три&nbsp;знака&nbsp;равенства<br />&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;не&nbsp;найдено...<br /></span><span style="color: #007700">}<br /><br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+  </p>
+  <p class="para">
+   <div class="example" id="example-4408">
+    <p><b>Пример #2 Поиск со смещением</b></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$foo&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">"0123456789a123456789b123456789c"</span><span style="color: #007700">;<br /><br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">strrpos</span><span style="color: #007700">(</span><span style="color: #0000BB">$foo</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'7'</span><span style="color: #007700">,&nbsp;-</span><span style="color: #0000BB">5</span><span style="color: #007700">));&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;Поиск&nbsp;происходит&nbsp;в&nbsp;обратном&nbsp;направлении&nbsp;и<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;начинается&nbsp;с&nbsp;пятой&nbsp;позиции&nbsp;с&nbsp;конца.&nbsp;Результат:&nbsp;int(17)<br /><br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">strrpos</span><span style="color: #007700">(</span><span style="color: #0000BB">$foo</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'7'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">20</span><span style="color: #007700">));&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;Начинает&nbsp;поиск&nbsp;с&nbsp;20&nbsp;позиции&nbsp;в&nbsp;строке.<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;Результат:&nbsp;int(27)<br /><br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">strrpos</span><span style="color: #007700">(</span><span style="color: #0000BB">$foo</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'7'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">28</span><span style="color: #007700">));&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;Результат:&nbsp;bool(false)<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+  </p>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-function.strrpos-seealso">
+  <h3 class="title">Смотрите также</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><span class="function"><a href="function.strpos.html" class="function" rel="rdfs-seeAlso">strpos()</a> - Возвращает позицию первого вхождения подстроки</span></li>
+    <li class="member"><span class="function"><a href="function.strripos.html" class="function" rel="rdfs-seeAlso">strripos()</a> - Возвращает позицию последнего вхождения подстроки без учета регистра</span></li>
+    <li class="member"><span class="function"><a href="function.strrchr.html" class="function" rel="rdfs-seeAlso">strrchr()</a> - Находит последнее вхождение символа в строке</span></li>
+    <li class="member"><span class="function"><a href="function.substr.html" class="function" rel="rdfs-seeAlso">substr()</a> - Возвращает подстроку</span></li>
+    <li class="member"><span class="function"><a href="function.stristr.html" class="function" rel="rdfs-seeAlso">stristr()</a> - Регистро-независимый вариант функции strstr</span></li>
+    <li class="member"><span class="function"><a href="function.strstr.html" class="function" rel="rdfs-seeAlso">strstr()</a> - Находит первое вхождение подстроки</span></li>
+   </ul>
+  </p>
+ </div>
+
+
+</div><hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.strripos.html">strripos</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.strspn.html">strspn</a></div>
+ <div class="up"><a href="ref.strings.html">Обработка строк</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

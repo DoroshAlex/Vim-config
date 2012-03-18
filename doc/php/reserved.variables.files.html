@@ -1,0 +1,94 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Переменные файлов, загруженных по HTTP</title>
+
+ </head>
+ <body><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="reserved.variables.post.html">$_POST</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="reserved.variables.request.html">$_REQUEST</a></div>
+ <div class="up"><a href="reserved.variables.html">Предопределённые переменные</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="reserved.variables.files" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">$_FILES</h1>
+  <h1 class="refname">$HTTP_POST_FILES [устаревшее]</h1>
+  <p class="verinfo">(PHP 4 &gt;= 4.1.0, PHP 5)</p><p class="refpurpose"><span class="refname">$_FILES</span> -- <span class="refname">$HTTP_POST_FILES [устаревшее]</span> &mdash; <span class="dc-title">Переменные файлов, загруженных по HTTP</span></p>
+
+ </div>
+ 
+ <div class="refsect1 description" id="refsect1-reserved.variables.files-description">
+  <h3 class="title">Описание</h3>
+  <p class="para">
+   Ассоциативный массив (<span class="type"><a href="language.types.array.html" class="type array">array</a></span>) элементов, загруженных в текущий скрипт
+   через метод HTTP POST. 
+  </p>
+
+  <p class="simpara">
+   <var class="varname"><var class="varname">$HTTP_POST_FILES</var></var> содержит ту же начальную
+   информацию, но не является <a href="language.variables.superglobals.html" class="link">суперглобальным</a>. 
+   (Заметьте, что <var class="varname"><var class="varname">$HTTP_POST_FILES</var></var> и <var class="varname"><var class="varname">$_FILES</var></var>
+   являются разными переменными, так что PHP обрабатывает их соответственно)
+  </p>
+
+ </div>
+
+ 
+
+ <div class="refsect1 changelog" id="refsect1-reserved.variables.files-changelog">
+  <h3 class="title">Список изменений</h3>
+  <p class="para">
+   <table class="doctable informaltable">
+    
+     <thead valign="middle">
+      <tr valign="middle">
+       <th>Версия</th>
+       <th>Описание</th>
+      </tr>
+
+     </thead>
+
+     <tbody valign="middle" class="tbody">
+      <tr valign="middle">
+       <td align="left">4.1.0</td>
+       <td align="left">
+        Введен массив <var class="varname"><var class="varname">$_FILES</var></var>, который должен заменить
+        <var class="varname"><var class="varname">$HTTP_POST_FILES</var></var>.
+       </td>
+      </tr>
+
+     </tbody>
+    
+   </table>
+
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 notes" id="refsect1-reserved.variables.files-notes">
+  <h3 class="title">Примечания</h3>
+  <blockquote class="note"><p><b class="note">Замечание</b>: <p class="para">Это &#039;суперглобальная&#039; или
+автоматическая глобальная переменная. Это просто означает что она доступна во всех контекстах скрипта. Нет необходимости
+выполнять <strong class="command">global $variable;</strong> для доступа к ней внутри метода или функции.
+</p></p></blockquote>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-reserved.variables.files-seealso">
+  <h3 class="title">Смотрите также</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><span class="function"><a href="function.move-uploaded-file.html" class="function" rel="rdfs-seeAlso">move_uploaded_file()</a> - Перемещает загруженный файл в новое место</span></li>
+    <li class="member"><a href="features.file-upload.html" class="link">Обработка загрузок файлов</a></li>
+   </ul>
+  </p>
+ </div>
+
+
+</div><hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="reserved.variables.post.html">$_POST</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="reserved.variables.request.html">$_REQUEST</a></div>
+ <div class="up"><a href="reserved.variables.html">Предопределённые переменные</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

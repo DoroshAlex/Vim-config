@@ -1,0 +1,154 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>declare</title>
+
+ </head>
+ <body><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="control-structures.switch.html">switch</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.return.html">return</a></div>
+ <div class="up"><a href="language.control-structures.html">Управляющие конструкции</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="control-structures.declare" class="sect1">
+ <h2 class="title"><i>declare</i></h2>
+ <p class="verinfo">(PHP 4, PHP5)</p>
+ <p class="para">
+  Конструкция <i>declare</i> используется для установки 
+  директив исполнения для блока кода. Синтаксис <i>declare</i>
+  схож с синтаксисом других конструкций управления исполнением:
+  <div class="informalexample">
+   <div class="example-contents">
+<div class="cdata"><pre>
+declare (directive)
+    statement
+</pre></div>
+   </div>
+
+  </div>
+ </p>
+ <p class="para">
+  Секция <i>directive</i> позволяет установить поведение 
+  блока <i>declare</i>.
+  В настоящее время распознаются только две директивы:
+  директива <i>ticks</i> (Дополнительная информация
+  о директиве <a href="control-structures.declare.html#control-structures.declare.ticks" class="link">ticks</a>
+  доступна ниже) и директива <i>encoding</i> (Дополнительная информация
+  о директиве <a href="control-structures.declare.html#control-structures.declare.encoding" class="link">encoding</a>
+  доступна ниже).
+ </p>
+ <blockquote class="note"><p><b class="note">Замечание</b>: 
+  <span class="simpara">
+   Директива encoding была добавлена в PHP 5.3.0
+  </span>
+ </p></blockquote>
+ <p class="para">
+  Часть <i>statement</i> блока <i>declare</i>
+  будет исполнена - как исполняется и какие сторониие эффекты
+  возникают в процессе исполнения может зависеть от набора директив в
+  блоке <i>directive</i>.
+ </p>
+ <p class="para">
+  Конструкция <i>declare</i> может так же быть использована
+  в глобальной области видимости, влияя на весь следующий за ней код
+  (однако если файл с <i>declare</i> был включен, тогда он
+  не имеет воздействия на родительский файл).
+  <div class="informalexample">
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">//&nbsp;выполняется&nbsp;одинаково:<br /><br />//&nbsp;можно&nbsp;так:<br /></span><span style="color: #007700">declare(</span><span style="color: #0000BB">ticks</span><span style="color: #007700">=</span><span style="color: #0000BB">1</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;прочие&nbsp;действия<br /></span><span style="color: #007700">}<br /><br /></span><span style="color: #FF8000">//&nbsp;или&nbsp;так:<br /></span><span style="color: #007700">declare(</span><span style="color: #0000BB">ticks</span><span style="color: #007700">=</span><span style="color: #0000BB">1</span><span style="color: #007700">);<br /></span><span style="color: #FF8000">//&nbsp;прочие&nbsp;действия<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+   </div>
+
+  </div>
+ </p>
+
+ <div class="sect2" id="control-structures.declare.ticks">
+  <h3 class="title">Тики</h3>
+  <p class="para">Тик - это событие, которое случается каждые
+  <var class="varname"><var class="varname">N</var></var> низкоуровневых операций, выполненных
+  парсером внутри блока <i>declare</i>.
+  Значение <var class="varname"><var class="varname">N</var></var> задается, используя
+  <code class="code">ticks=<var class="varname"><var class="varname">N</var></var></code> внутри
+  секции <i>directive</i> блока <i>declare</i>.
+ </p>
+ <p class="para">
+  Не все выражения подсчитываются. Обычно, условные выражения
+  и выражения аргументов не подсчитываются.
+ </p>
+ <p class="para">
+  Событие (или несколько событий), которое возникает на каждом тике
+  определяется, используя <span class="function"><a href="function.register-tick-function.html" class="function">register_tick_function()</a></span>.
+  Смотрите пример ниже для дополнительноый иформации. Имейте в виду,
+  что для одного тика может возникать несколько событий.
+ </p>
+ <p class="para">
+  <div class="example" id="example-123">
+   <p><b>Пример #1 Пример использования тика</b></p>
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /><br /></span><span style="color: #007700">declare(</span><span style="color: #0000BB">ticks</span><span style="color: #007700">=</span><span style="color: #0000BB">1</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;Функция,&nbsp;исполняемая&nbsp;при&nbsp;каждом&nbsp;тике<br /></span><span style="color: #007700">function&nbsp;</span><span style="color: #0000BB">tick_handler</span><span style="color: #007700">()<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"tick_handler()&nbsp;выполнено\n"</span><span style="color: #007700">;<br />}<br /><br /></span><span style="color: #0000BB">register_tick_function</span><span style="color: #007700">(</span><span style="color: #DD0000">'tick_handler'</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">$a&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">1</span><span style="color: #007700">;<br /><br />if&nbsp;(</span><span style="color: #0000BB">$a&nbsp;</span><span style="color: #007700">&gt;&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$a&nbsp;</span><span style="color: #007700">+=&nbsp;</span><span style="color: #0000BB">2</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;print(</span><span style="color: #0000BB">$a</span><span style="color: #007700">);<br />}<br /><br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+   </div>
+
+  </div>
+ </p>
+ <p class="para">
+  <div class="example" id="example-124">
+   <p><b>Пример #2 Пример использования тиков</b></p>
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /><br /></span><span style="color: #007700">function&nbsp;</span><span style="color: #0000BB">tick_handler</span><span style="color: #007700">()<br />{<br />&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"tick_handler()&nbsp;called\n"</span><span style="color: #007700">;<br />}<br /><br /></span><span style="color: #0000BB">$a&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">1</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">tick_handler</span><span style="color: #007700">();<br /><br />if&nbsp;(</span><span style="color: #0000BB">$a&nbsp;</span><span style="color: #007700">&gt;&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$a&nbsp;</span><span style="color: #007700">+=&nbsp;</span><span style="color: #0000BB">2</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">tick_handler</span><span style="color: #007700">();<br />&nbsp;&nbsp;&nbsp;&nbsp;print(</span><span style="color: #0000BB">$a</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">tick_handler</span><span style="color: #007700">();<br />}<br /></span><span style="color: #0000BB">tick_handler</span><span style="color: #007700">();<br /><br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+   </div>
+
+  </div>
+ </p>
+ <p class="simpara">
+  См. также <span class="function"><a href="function.register-tick-function.html" class="function">register_tick_function()</a></span> и
+  <span class="function"><a href="function.unregister-tick-function.html" class="function">unregister_tick_function()</a></span>.
+ </p>
+ </div>
+ <div class="sect2" id="control-structures.declare.encoding">
+  <h3 class="title">Кодировка</h3>
+  <p class="para">
+    Кодировка скрипта может быть указана для каждого скрипта используя директиву encoding.
+  <div class="example" id="example-125">
+   <p><b>Пример #3 Определение кодировки для скрипта.</b></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">declare(</span><span style="color: #0000BB">encoding</span><span style="color: #007700">=</span><span style="color: #DD0000">'ISO-8859-1'</span><span style="color: #007700">);<br /></span><span style="color: #FF8000">//&nbsp;прочий&nbsp;код<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+  </p>
+
+  <div class="caution"><b class="caution">Предостережение</b>
+   <p class="simpara">
+    Скомбинированный с пространством имен, единственно допустимый синтаксис
+    для declare является <i>declare(encoding=&#039;...&#039;);</i> где
+    <i>...</i> это значение кодировки. <i>declare(encoding=&#039;...&#039;) {}</i>
+    приведет к ошибке парсера, если используется вместе с пространством имен.
+   </p>
+  </div>
+  <p class="para">
+   Значение кодировки в declare игнорируется в PHP 5.3 если php скомпилирован с
+   <i>--enable-zend-multibyte</i>.
+  </p>
+  <p class="para">
+   Имейте в виду, что PHP не может показать был ли он скомпилирован с <i>--enable-zend-multibyte</i>
+   иначе как с помощью <span class="function"><a href="function.phpinfo.html" class="function">phpinfo()</a></span>.
+  </p>
+   
+ </div>
+</div><hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="control-structures.switch.html">switch</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.return.html">return</a></div>
+ <div class="up"><a href="language.control-structures.html">Управляющие конструкции</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

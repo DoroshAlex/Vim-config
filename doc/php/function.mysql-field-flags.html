@@ -1,0 +1,138 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Возвращает флаги, связанные с указанным полем результата запроса</title>
+
+ </head>
+ <body><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.mysql-fetch-row.html">mysql_fetch_row</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.mysql-field-len.html">mysql_field_len</a></div>
+ <div class="up"><a href="ref.mysql.html">MySQL</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.mysql-field-flags" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">mysql_field_flags</h1>
+  <p class="verinfo">(PHP 4, PHP 5)</p><p class="refpurpose"><span class="refname">mysql_field_flags</span> &mdash; <span class="dc-title">Возвращает флаги, связанные с указанным полем результата запроса</span></p>
+
+ </div>
+
+ <div class="refsect1 description" id="refsect1-function.mysql-field-flags-description">
+  <h3 class="title">Описание</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">string</span> <span class="methodname"><b>mysql_field_flags</b></span>
+    ( <span class="methodparam"><span class="type">resource</span> <tt class="parameter">$result</tt></span>
+   , <span class="methodparam"><span class="type">int</span> <tt class="parameter">$field_offset</tt></span>
+   )</div>
+
+  <p class="para rdfs-comment">
+   <span class="function"><b>mysql_field_flags()</b></span> возвращает флаги, связанные
+   с указанным полем. Каждый флаг возвращается как отдельное слово,
+   отделённое от предыдущего пробелом. Полученное значение можно
+   разбить в массив, используя функцию <span class="function"><a href="function.explode.html" class="function">explode()</a></span>.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-function.mysql-field-flags-parameters">
+  <h3 class="title">Список параметров</h3>
+  <p class="para">
+   <dl>
+
+    <dt>
+<span class="term"><i><tt class="parameter">
+result</tt></i></span><dd>
+<p class="para">Обрабатываемый <a href="language.types.resource.html" class="link">результат запроса</a>.
+Этот результат может быть получен с помощью функции <span class="function"><a href="function.mysql-query.html" class="function">mysql_query()</a></span>.</p></dd>
+</dt>
+
+    <dt>
+<span class="term"><i><tt class="parameter">
+field_offset</tt></i></span><dd>
+<p class="para">Числовое смещение поля.
+<i><tt class="parameter">field_offset</tt></i> начинается с <i>0</i>. Если
+<i><tt class="parameter">field_offset</tt></i> не существует, генерируется ошибка уровня
+<b><tt>E_WARNING</tt></b>.</p></dd>
+</dt>
+
+   </dl>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-function.mysql-field-flags-returnvalues">
+  <h3 class="title">Возвращаемые значения</h3>
+  <p class="para">
+   Возвращает строку с флагами, связанными с результатом или <b><tt>FALSE</tt></b> в случае возникновения ошибки.
+  </p>
+  <p class="para">
+   Возвращаются следующие флаги, если ваша версия MySQL
+   их уже поддерживает: <i>&quot;not_null&quot;</i>,
+   <i>&quot;primary_key&quot;</i>, <i>&quot;unique_key&quot;</i>,
+   <i>&quot;multiple_key&quot;</i>, <i>&quot;blob&quot;</i>,
+   <i>&quot;unsigned&quot;</i>, <i>&quot;zerofill&quot;</i>,
+   <i>&quot;binary&quot;</i>, <i>&quot;enum&quot;</i>,
+   <i>&quot;auto_increment&quot;</i> и <i>&quot;timestamp&quot;</i>.
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-function.mysql-field-flags-examples">
+  <h3 class="title">Примеры</h3>
+  <p class="para">
+   <div class="example" id="example-1520">
+    <p><b>Пример #1 Пример использования <span class="function"><b>mysql_field_flags()</b></span></b></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$result&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">mysql_query</span><span style="color: #007700">(</span><span style="color: #DD0000">"SELECT&nbsp;id,email&nbsp;FROM&nbsp;people&nbsp;WHERE&nbsp;id&nbsp;=&nbsp;'42'"</span><span style="color: #007700">);<br />if&nbsp;(!</span><span style="color: #0000BB">$result</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">'Ошибка&nbsp;в&nbsp;запросе:&nbsp;'&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">mysql_error</span><span style="color: #007700">();<br />&nbsp;&nbsp;&nbsp;&nbsp;exit;<br />}<br /></span><span style="color: #0000BB">$flags&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">mysql_field_flags</span><span style="color: #007700">(</span><span style="color: #0000BB">$result</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">);<br /><br />echo&nbsp;</span><span style="color: #0000BB">$flags</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">print_r</span><span style="color: #007700">(</span><span style="color: #0000BB">explode</span><span style="color: #007700">(</span><span style="color: #DD0000">'&nbsp;'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$flags</span><span style="color: #007700">));<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+    <div class="example-contents"><p>Результатом выполнения данного примера
+будет что-то подобное:</p></div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+not_null primary_key auto_increment
+Array
+(
+    [0] =&gt; not_null
+    [1] =&gt; primary_key
+    [2] =&gt; auto_increment
+)
+</pre></div>
+    </div>
+   </div>
+  </p>
+ </div>
+
+
+ <div class="refsect1 notes" id="refsect1-function.mysql-field-flags-notes">
+  <h3 class="title">Примечания</h3>
+  <blockquote class="note"><p><b class="note">Замечание</b>: 
+   <p class="para">
+    Для обратной совместимости может быть использован следующий устаревший псевдоним: 
+    <span class="function"><b>mysql_fieldflags()</b></span>
+   </p>
+  </p></blockquote>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-function.mysql-field-flags-seealso">
+  <h3 class="title">Смотрите также</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><span class="function"><a href="function.mysql-field-type.html" class="function" rel="rdfs-seeAlso">mysql_field_type()</a> - Возвращает тип указанного поля из результата запроса</span></li>
+    <li class="member"><span class="function"><a href="function.mysql-field-len.html" class="function" rel="rdfs-seeAlso">mysql_field_len()</a> - Возвращает длину указанного поля</span></li>
+   </ul>
+  </p>
+ </div>
+
+
+</div><hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.mysql-fetch-row.html">mysql_fetch_row</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.mysql-field-len.html">mysql_field_len</a></div>
+ <div class="up"><a href="ref.mysql.html">MySQL</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

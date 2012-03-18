@@ -1,0 +1,146 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Возвращает подробную информацию обо всех типах базы GeoIP</title>
+
+ </head>
+ <body><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.geoip-db-filename.html">geoip_db_filename</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.geoip-id-by-name.html">geoip_id_by_name</a></div>
+ <div class="up"><a href="ref.geoip.html">GeoIP Функции</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.geoip-db-get-all-info" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">geoip_db_get_all_info</h1>
+  <p class="verinfo">(PECL geoip &gt;= 1.0.1)</p><p class="refpurpose"><span class="refname">geoip_db_get_all_info</span> &mdash; <span class="dc-title">Возвращает подробную информацию обо всех типах базы GeoIP</span></p>
+
+ </div>
+ <div class="refsect1 description" id="refsect1-function.geoip-db-get-all-info-description">
+  <h3 class="title">Описание</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">array</span> <span class="methodname"><b>geoip_db_get_all_info</b></span>
+    ( <span class="methodparam">void</span>
+   )</div>
+
+
+  <p class="para rdfs-comment">
+   Функция <span class="function"><b>geoip_db_get_all_info()</b></span> возвращает 
+   подробную информацию обо всех типах базы GeoIP  в виде 
+   многомерного массива.
+  </p>
+  <p class="para">
+   Эта функция доступна даже при отсутствии установленных базы данных.
+   При этом типы будут перечислены и отмечены как недоступные.
+  </p>
+  <p class="para">
+   Имена различных ключей возвращаемого ассоциативного массива:
+  </p>
+  <p class="para">
+   <ul class="itemizedlist">
+    <li class="listitem">
+     <span class="simpara">
+      &quot;available&quot; -- Логический тип, указывает доступна ли база
+      <span class="function"><a href="function.geoip-db-avail.html" class="function">geoip_db_avail()</a></span>)
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      &quot;description&quot; -- Описание базы данных
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      &quot;filename&quot; -- Имя файла базы данных на диске
+      <span class="function"><a href="function.geoip-db-filename.html" class="function">geoip_db_filename()</a></span>)
+     </span>
+    </li>
+   </ul>
+  </p>
+
+ </div>
+
+ <div class="refsect1 returnvalues" id="refsect1-function.geoip-db-get-all-info-returnvalues">
+  <h3 class="title">Возвращаемые значения</h3>
+  <p class="para">
+   Возвращает ассоциативный массив.
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-function.geoip-db-get-all-info-examples">
+  <h3 class="title">Примеры</h3>
+  <p class="para">
+   <div class="example" id="example-3343">
+    <p><b>Пример #1 Пример использования <span class="function"><b>geoip_db_get_all_info()</b></span></b></p>
+    <div class="example-contents"><p>
+     Выводит массив содержащий всю инфрмацию о базе данных.
+    </p></div>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$infos&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">geoip_db_get_all_info</span><span style="color: #007700">();<br />if&nbsp;(</span><span style="color: #0000BB">is_array</span><span style="color: #007700">(</span><span style="color: #0000BB">$infos</span><span style="color: #007700">))&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$infos</span><span style="color: #007700">);<br />}<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+    <div class="example-contents"><p>Результат выполнения данного примера:</p></div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+array(11) {
+  [1]=&gt;
+  array(3) {
+    [&quot;available&quot;]=&gt;
+    bool(true)
+    [&quot;description&quot;]=&gt;
+    string(21) &quot;GeoIP Country Edition&quot;
+    [&quot;filename&quot;]=&gt;
+    string(32) &quot;/usr/share/GeoIP/GeoIP.dat&quot;
+  }
+
+[ ... ]
+
+  [11]=&gt;
+  array(3) {
+    [&quot;available&quot;]=&gt;
+    bool(false)
+    [&quot;description&quot;]=&gt;
+    string(25) &quot;GeoIP Domain Name Edition&quot;
+    [&quot;filename&quot;]=&gt;
+    string(38) &quot;/usr/share/GeoIP/GeoIPDomain.dat&quot;
+  }
+}
+</pre></div>
+    </div>
+   </div>
+  </p>
+
+<p class="para">
+   <div class="example" id="example-3344">
+    <p><b>Пример #2 Пример использования <span class="function"><b>geoip_db_get_all_info()</b></span></b></p>
+    <div class="example-contents"><p>
+     Вы можете использовать разнообразные константы как ключи для получения только конкретной части информации.
+    </p></div>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$infos&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">geoip_db_get_all_info</span><span style="color: #007700">();<br />if&nbsp;(</span><span style="color: #0000BB">$infos</span><span style="color: #007700">[</span><span style="color: #0000BB">GEOIP_COUNTRY_EDITION</span><span style="color: #007700">][</span><span style="color: #DD0000">'available'</span><span style="color: #007700">])&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #0000BB">$infos</span><span style="color: #007700">[</span><span style="color: #0000BB">GEOIP_COUNTRY_EDITION</span><span style="color: #007700">][</span><span style="color: #DD0000">'description'</span><span style="color: #007700">];<br />}<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+    <div class="example-contents"><p>Результат выполнения данного примера:</p></div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+GeoIP Country Edition
+</pre></div>
+    </div>
+   </div>
+  </p>
+ </div>
+
+
+</div><hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.geoip-db-filename.html">geoip_db_filename</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.geoip-id-by-name.html">geoip_id_by_name</a></div>
+ <div class="up"><a href="ref.geoip.html">GeoIP Функции</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

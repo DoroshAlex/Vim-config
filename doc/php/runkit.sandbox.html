@@ -1,0 +1,478 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Класс Runkit Sandbox -- это виртуальная машина PHP</title>
+
+ </head>
+ <body><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="ref.runkit.html">runkit</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="runkit.sandbox-parent.html">Runkit_Sandbox_Parent</a></div>
+ <div class="up"><a href="ref.runkit.html">runkit</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="runkit.sandbox" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">Runkit_Sandbox</h1>
+  <p class="verinfo">(PECL runkit &gt;= 0.7.0)</p><p class="refpurpose"><span class="refname">Runkit_Sandbox</span> &mdash; <span class="dc-title">
+   Класс Runkit Sandbox -- это виртуальная машина PHP
+  </span></p>
+
+ </div>
+ <div class="refsect1 description" id="refsect1-runkit.sandbox-description">
+  <h3 class="title">Описание</h3>
+
+  <p class="para">
+   Экземпляр класса <b class="classname">Runkit_Sandbox</b> создает отдельный поток
+   основного процесса с собственным окружением и выделенной областью памяти (стеком).
+   С помощью дополнительных параметров конструктора можно ограничивать функционал
+   интерпретатора в песочнице, создавая таким образом безопасное окружение для
+   выполнения пользовательского кода.
+  </p>
+
+  <blockquote class="note"><p><b class="note">Замечание</b>: <span class="simpara">Поддержка песочницы (необходима для
+<span class="function"><a href="function.runkit-lint.html" class="function">runkit_lint()</a></span>, <span class="function"><a href="function.runkit-lint-file.html" class="function">runkit_lint_file()</a></span>,
+и класса <b class="classname">Runkit_Sandbox</b>) доступна только начиная с версии
+PHP 5.1.0 или в специально пропатченных версиях PHP 5.0, а также требует потокобезопасной (thread safe) версии PHP.
+Для более подробной информации смотрите файл <var class="filename">README</var>, поставляемый с пакетом runkit.</span></p></blockquote>
+ </div>
+
+
+ <div class="refsect1 constructor" id="refsect1-runkit.sandbox-constructor">
+  <h3 class="title">Constructor</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type"><span class="type void">void</span></span> <span class="methodname"><b>Runkit_Sandbox::__construct</b></span>
+    ([ <span class="methodparam"><span class="type">array</span> <tt class="parameter">$options</tt></span>
+  ] )</div>
+
+
+  <p class="para rdfs-comment">
+   <i><tt class="parameter">options</tt></i> ассоциативный массив, содержащий произвольную
+   комбинацию специальных параметров, перечисленных ниже
+  </p>
+
+  <p class="para">
+   <dl>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">safe_mode</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Если родительский скрипт, в котором создается экземпляр
+       <b class="classname">Runkit_Sandbox</b> выполняется с директивой
+       <i>safe_mode = off</i>, то эту опцию можно задействовать
+       в песочнице для включения режима safe_mode.
+       Данный параметр не может быть использован для отключения
+       <i>safe_mode</i>, если он включен во внешнем окружении.
+      </p>
+     </dd>
+
+    </dt>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">safe_mode_gid</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Если родительский скрипт, в котором создается экземпляр
+       <b class="classname">Runkit_Sandbox</b> выполняется с директивой
+       <i>safe_mode_gid = on</i>, то данную опцию
+       можно задействовать для отключения safe_mode_gid в песочнице.
+       Этот параметр нельзя использовать для включения
+       <i>safe_mode_gid</i>, если он выключен во внешнем
+       окружении.
+      </p>
+     </dd>
+
+    </dt>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">safe_mode_include_dir</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Если родительский скрипт, в котором создается экземпляр
+       <b class="classname">Runkit_Sandbox</b> выполняется c заданной
+       директивой <i>safe_mode_include_dir</i>, то
+       для песочницы может быть указана новая директория, находящаяся
+       внутри заданной. Значение safe_mode_include_dir так же может
+       быть очищено для возврата к начальным настройкам.
+       Если директива safe_mode_include_dir не была настроена для
+       родительского скрипта, подразумевается, что задан корневой раздел.
+       В таком случае для песочницы можно указать любую директорию,
+       при включенном режим safe_mode.
+      </p>
+     </dd>
+
+    </dt>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">open_basedir</tt></i></span>
+     <dd>
+
+      <p class="para">
+       В параметре <i><tt class="parameter">open_basedir</tt></i> может быть задана
+       любая директория, находящаяся внутри назначенной
+       <i>open_basedir</i> родительского скрипта.
+       Если параметр <i>open_basedir</i> в родительском скрипте
+       не задан, в качестве его значения используется корневой раздел.
+       В таком случае для песочницы можно указать любой каталог.
+      </p>
+     </dd>
+
+    </dt>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">allow_url_fopen</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Подобно <i><tt class="parameter">safe_mode</tt></i>, этот параметр может быть изменен
+       только в сторону увеличения ограничений. Допускается устанавливать его значение
+       <b><tt>FALSE</tt></b> в случае, если значение в родительском окружении <b><tt>TRUE</tt></b>.
+      </p>
+     </dd>
+
+    </dt>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">disable_functions</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Список отключенных в песочнице функций через запятую. В этот список не
+       надо вносить уже отключенные в родительском скрипте функции, они
+       таковыми и останутся вне зависимоти от наличия в списке.
+      </p>
+     </dd>
+
+    </dt>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">disable_classes</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Список отключенных в песочнице классов через запятую. В этот список не надо
+       вносить уже отключенные в родительском скрипте классы, они таковыми и
+       останутся вне зависимости от наличия в списке.
+      </p>
+     </dd>
+
+    </dt>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">runkit.superglobal</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Список суперглобальных переменных для песочницы через запятую.
+       Перечисленные переменные будут дополнять список существующих
+       суперглобальных переменных, встроенных и заданных с помощью
+       runkit.superglobal в родительском окружении.
+      </p>
+     </dd>
+
+    </dt>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">runkit.internal_override</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Параметр <i>runkit.internal_override</i> может
+       быть только отключен для песочницы.
+      </p>
+     </dd>
+
+    </dt>
+
+   </dl>
+
+  </p>
+
+  <div class="example" id="example-495">
+   <p><b>Пример #1 Пример создания безопасной песочницы</b></p>
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$options&nbsp;</span><span style="color: #007700">=&nbsp;array(<br />&nbsp;&nbsp;</span><span style="color: #DD0000">'safe_mode'</span><span style="color: #007700">=&gt;</span><span style="color: #0000BB">true</span><span style="color: #007700">,<br />&nbsp;&nbsp;</span><span style="color: #DD0000">'open_basedir'</span><span style="color: #007700">=&gt;</span><span style="color: #DD0000">'/var/www/users/jdoe/'</span><span style="color: #007700">,<br />&nbsp;&nbsp;</span><span style="color: #DD0000">'allow_url_fopen'</span><span style="color: #007700">=&gt;</span><span style="color: #DD0000">'false'</span><span style="color: #007700">,<br />&nbsp;&nbsp;</span><span style="color: #DD0000">'disable_functions'</span><span style="color: #007700">=&gt;</span><span style="color: #DD0000">'exec,shell_exec,passthru,system'</span><span style="color: #007700">,<br />&nbsp;&nbsp;</span><span style="color: #DD0000">'disable_classes'</span><span style="color: #007700">=&gt;</span><span style="color: #DD0000">'myAppClass'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$sandbox&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">Runkit_Sandbox</span><span style="color: #007700">(</span><span style="color: #0000BB">$options</span><span style="color: #007700">);<br /></span><span style="color: #FF8000">/*&nbsp;Незащищенные&nbsp;ini-переменные&nbsp;устанавливаются&nbsp;обычным&nbsp;способом&nbsp;*/<br /></span><span style="color: #0000BB">$sandbox</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">ini_set</span><span style="color: #007700">(</span><span style="color: #DD0000">'html_errors'</span><span style="color: #007700">,</span><span style="color: #0000BB">true</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+   </div>
+
+  </div>
+ </div>
+
+
+ <div class="refsect1 variables" id="refsect1-runkit.sandbox-variables">
+  <h3 class="title">Доступ к переменным</h3>
+  <p class="para">
+   Все глобальные переменные внутри песочницы доступны через
+   свойства объекта Runkit_Sandbox.
+   Необходимо учитывать, что из-за особенностей рапределения  
+   памяти объекты и ресурсы не могут переноситься
+   между родительским процессом и песочницей.
+   Массивы полностью копируются между интерпретаторами и все
+   ссылки внутри массивов удаляются.
+   Это так же означает, что ссылки между интерпретаторами
+   невозможны.
+  </p>
+
+  <div class="example" id="example-496">
+   <p><b>Пример #2 Работа с переменными в песочнице</b></p>
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$sandbox&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">Runkit_Sandbox</span><span style="color: #007700">();<br /><br /></span><span style="color: #0000BB">$sandbox</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">foo&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'bar'</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$sandbox</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">eval</span><span style="color: #007700">(</span><span style="color: #DD0000">'echo&nbsp;"$foo\n";&nbsp;$bar&nbsp;=&nbsp;$foo&nbsp;.&nbsp;"baz";'</span><span style="color: #007700">);<br />echo&nbsp;</span><span style="color: #DD0000">"</span><span style="color: #007700">{</span><span style="color: #0000BB">$sandbox</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">bar</span><span style="color: #007700">}</span><span style="color: #DD0000">\n"</span><span style="color: #007700">;<br />if&nbsp;(isset(</span><span style="color: #0000BB">$sandbox</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">foo</span><span style="color: #007700">))&nbsp;unset(</span><span style="color: #0000BB">$sandbox</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">foo</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$sandbox</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">eval</span><span style="color: #007700">(</span><span style="color: #DD0000">'var_dump(isset($foo));'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+   </div>
+
+  </div>
+  <p class="para">Результат выполнения данного примера:</p>
+  <div class="example-contents screen">
+<div class="cdata"><pre>
+bar
+barbaz
+bool(false)
+</pre></div>
+  </div>
+ </div>
+
+
+ <div class="refsect1 functions" id="refsect1-runkit.sandbox-functions">
+  <h3 class="title">Вызов функций PHP</h3>
+  <p class="para">
+   Любая функция, заданная в песочнице, может быть
+   вызвана через метод объекта Runkit_Sandbox.
+   Так же доступны несколько псевдо-функций:
+   <span class="function"><a href="function.eval.html" class="function">eval()</a></span>,
+   <span class="function"><b>include()</b></span>, <span class="function"><b>include_once()</b></span>,
+   <span class="function"><b>require()</b></span>, <span class="function"><b>require_once()</b></span>,
+   <span class="function"><a href="function.echo.html" class="function">echo()</a></span>, <span class="function"><a href="function.print.html" class="function">print()</a></span>,
+   <span class="function"><a href="function.die.html" class="function">die()</a></span>, and <span class="function"><a href="function.exit.html" class="function">exit()</a></span>.
+  </p>
+
+  <div class="example" id="example-497">
+   <p><b>Пример #3 Использование функций песочницы</b></p>
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$sandbox&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">Runkit_Sandbox</span><span style="color: #007700">();<br /><br />echo&nbsp;</span><span style="color: #0000BB">$sandbox</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">str_replace</span><span style="color: #007700">(</span><span style="color: #DD0000">'a'</span><span style="color: #007700">,</span><span style="color: #DD0000">'f'</span><span style="color: #007700">,</span><span style="color: #DD0000">'abc'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+   </div>
+
+  </div>
+  <p class="para">Результат выполнения данного примера:</p>
+  <div class="example-contents screen">
+<div class="cdata"><pre>
+fbc
+</pre></div>
+  </div>
+
+  <p class="para">
+   Когда функция песочницы вызывается с параметрами, используются
+   значения этих параметров из родительского скрипта. Если необходимо
+   вызвать функцию со значениями из окружения песочницы, следует
+   передавать их как свойства объекта Runkit_Sandbox. Этот механизм
+   проиллюстрирован на следующем примере.
+  </p>
+
+  <div class="example" id="example-498">
+   <p><b>Пример #4 Передача аргументов функциям в песочнице</b></p>
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$sandbox&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">Runkit_Sandbox</span><span style="color: #007700">();<br /><br /></span><span style="color: #0000BB">$foo&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'bar'</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$sandbox</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">foo&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'baz'</span><span style="color: #007700">;<br />echo&nbsp;</span><span style="color: #0000BB">$sandbox</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">str_replace</span><span style="color: #007700">(</span><span style="color: #DD0000">'a'</span><span style="color: #007700">,</span><span style="color: #0000BB">$foo</span><span style="color: #007700">,</span><span style="color: #DD0000">'a'</span><span style="color: #007700">);<br />echo&nbsp;</span><span style="color: #0000BB">$sandbox</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">str_replace</span><span style="color: #007700">(</span><span style="color: #DD0000">'a'</span><span style="color: #007700">,</span><span style="color: #0000BB">$sandbox</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">foo</span><span style="color: #007700">,</span><span style="color: #DD0000">'a'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+   </div>
+
+  </div>
+  <p class="para">Результат выполнения данного примера:</p>
+  <div class="example-contents screen">
+<div class="cdata"><pre>
+bar
+baz
+</pre></div>
+  </div>
+ </div>
+
+
+ <div class="refsect1 settings" id="refsect1-runkit.sandbox-settings">
+  <h3 class="title">Изменение параметров песочницы</h3>
+  <p class="para">
+   По состоянию на версию runkit 0.5, большинство параметров
+   песочницы могут быть изменены &quot;на лету&quot; с помощью
+   синтаксиса интерфейса ArrayAccess. Некоторые параметры,
+   например, <i><tt class="parameter">active</tt></i>, доступны только
+   для чтения. Остальные, например, <i><tt class="parameter">output_handler</tt></i>,
+   могут быть получены и записаны как обычный элемент массива.
+   В будущем могут появиться параметры, доступные только для
+   записи. На текущий момент таких не существует.
+  </p>
+
+  <p class="para">
+   <table class="doctable table">
+    <caption><b>Настройки песочницы. Индикаторы статуса</b></caption>
+    
+     <thead valign="middle">
+      <tr valign="middle">
+       <th>Настройка</th>
+       <th>Тип</th>
+       <th>Назначение</th>
+       <th>По умолчанию</th>
+      </tr>
+
+     </thead>
+
+     <tbody valign="middle" class="tbody">
+      <tr valign="middle">
+       <td align="left"><i>active</i></td>
+       <td align="left"><span class="type"><a href="language.types.boolean.html" class="type Boolean">Boolean</a></span> (только чтение)</td>
+       <td align="left">
+        <b><tt>TRUE</tt></b> если песочница функионирует,
+        <b><tt>FALSE</tt></b> если процесс завершен после вызова die() или exit(),
+        или в результате ошибки при выполнении.
+       </td>
+       <td align="left"><b><tt>TRUE</tt></b> (изначально)</td>
+      </tr>
+
+      <tr valign="middle">
+       <td align="left"><i>output_handler</i></td>
+       <td align="left"><span class="type"><a href="language.pseudo-types.html#language.types.callback" class="type Callback">Callback</a></span></td>
+       <td align="left">
+        Если указана соответствующая callback-функция, весь вывод
+        песочницы перенаправляется в указанную функцию.
+        Обработчики вывода песочницы работают аналогично
+        системным обработчикам вывода.
+       </td>
+       <td align="left">None</td>
+      </tr>
+
+      <tr valign="middle">
+       <td align="left"><i>parent_access</i></td>
+       <td align="left"><span class="type"><a href="language.types.boolean.html" class="type Boolean">Boolean</a></span></td>
+       <td align="left">
+        Параметр управляет доступом к <b class="classname">Runkit_Sandbox_Parent</b>
+        из песочницы.
+        Параметр должен быть включен для работы с функционалом,
+        предоставляемым <b class="classname">Runkit_Sandbox_Parent</b>.
+       </td>
+       <td align="left"><b><tt>FALSE</tt></b></td>
+      </tr>
+
+      <tr valign="middle">
+       <td align="left"><i>parent_read</i></td>
+       <td align="left"><span class="type"><a href="language.types.boolean.html" class="type Boolean">Boolean</a></span></td>
+       <td align="left">
+        Разрешает чтение переменных родительского окружения
+       </td>
+       <td align="left"><b><tt>FALSE</tt></b></td>
+      </tr>
+
+      <tr valign="middle">
+       <td align="left"><i>parent_write</i></td>
+       <td align="left"><span class="type"><a href="language.types.boolean.html" class="type Boolean">Boolean</a></span></td>
+       <td align="left">
+        Разрешает запись переменных родительского окружения
+       </td>
+       <td align="left"><b><tt>FALSE</tt></b></td>
+      </tr>
+
+      <tr valign="middle">
+       <td align="left"><i>parent_eval</i></td>
+       <td align="left"><span class="type"><a href="language.types.boolean.html" class="type Boolean">Boolean</a></span></td>
+       <td align="left">
+        Разрешает выполнение кода в родительском окружении
+        <em class="emphasis">DANGEROUS</em>
+       </td>
+       <td align="left"><b><tt>FALSE</tt></b></td>
+      </tr>
+
+      <tr valign="middle">
+       <td align="left"><i>parent_include</i></td>
+       <td align="left"><span class="type"><a href="language.types.boolean.html" class="type Boolean">Boolean</a></span></td>
+       <td align="left">
+        Разрешает подключать php файлы в родительском
+        окружении <em class="emphasis">DANGEROUS</em>
+       </td>
+       <td align="left"><b><tt>FALSE</tt></b></td>
+      </tr>
+
+      <tr valign="middle">
+       <td align="left"><i>parent_echo</i></td>
+       <td align="left"><span class="type"><a href="language.types.boolean.html" class="type Boolean">Boolean</a></span></td>
+       <td align="left">
+        Разрешает выводить данные в родительском окружении,
+        в обход output_handler.
+       </td>
+       <td align="left"><b><tt>FALSE</tt></b></td>
+      </tr>
+
+      <tr valign="middle">
+       <td align="left"><i>parent_call</i></td>
+       <td align="left"><span class="type"><a href="language.types.boolean.html" class="type Boolean">Boolean</a></span></td>
+       <td align="left">
+        Разрешает вызов функций в родительском окружении
+       </td>
+       <td align="left"><b><tt>FALSE</tt></b></td>
+      </tr>
+
+      <tr valign="middle">
+       <td align="left"><i>parent_die</i></td>
+       <td align="left"><span class="type"><a href="language.types.boolean.html" class="type Boolean">Boolean</a></span></td>
+       <td align="left">
+        Разрешает завершать родительский скрипт (а значит
+        и себя тоже)
+       </td>
+       <td align="left"><b><tt>FALSE</tt></b></td>
+      </tr>
+
+      <tr valign="middle">
+       <td align="left"><i>parent_scope</i></td>
+       <td align="left"><span class="type"><a href="language.types.integer.html" class="type Integer">Integer</a></span></td>
+       <td align="left">
+        Настройка области видимости песочницы для внешнего окружения:
+        0 == Глобальная область видимости, 1 == область вызова,
+        2 == область до области вызова,
+        3 == область до этой области, и т.д.
+       </td>
+       <td align="left"><i>0</i> (Global)</td>
+      </tr>
+
+      <tr valign="middle">
+       <td align="left"><i>parent_scope</i></td>
+       <td align="left"><span class="type"><a href="language.types.string.html" class="type String">String</a></span></td>
+       <td align="left">
+        В случае, когда параметр <i>parent_scope</i>
+        задан строковым значением, он указывает на массив в глобальной
+        области видимости. Если массива не существует - будет создан
+        пустой массив с указанным именем. Если существует переменная с
+        заданным именем, не являющаяся массивом - будет создан массив,
+        содержащий ссылку на существующую переменную.
+       </td>
+       <td class="empty">&nbsp;</td>
+      </tr>
+
+     </tbody>
+    
+   </table>
+
+  </p>
+ </div>
+
+
+</div><hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="ref.runkit.html">runkit</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="runkit.sandbox-parent.html">Runkit_Sandbox_Parent</a></div>
+ <div class="up"><a href="ref.runkit.html">runkit</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

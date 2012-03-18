@@ -1,0 +1,117 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Сортирует массив, используя регистронезависимый алгоритм &quot;natural order&quot;</title>
+
+ </head>
+ <body><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="arrayobject.ksort.html">ArrayObject::ksort</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="arrayobject.natsort.html">ArrayObject::natsort</a></div>
+ <div class="up"><a href="class.arrayobject.html">ArrayObject</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="arrayobject.natcasesort" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">ArrayObject::natcasesort</h1>
+  <p class="verinfo">(PHP 5 &gt;= 5.2.0)</p><p class="refpurpose"><span class="refname">ArrayObject::natcasesort</span> &mdash; <span class="dc-title">Сортирует массив, используя регистронезависимый алгоритм &quot;natural order&quot;</span></p>
+
+ </div>
+ <div class="refsect1 description" id="refsect1-arrayobject.natcasesort-description">
+  <h3 class="title">Описание</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type"><span class="type void">void</span></span> <span class="methodname"><b>ArrayObject::natcasesort</b></span>
+    ( <span class="methodparam">void</span>
+   )</div>
+
+  <p class="para rdfs-comment">
+   Этот метод является регистронезависимой версией <a href="arrayobject.natsort.html" class="link">ArrayObject::natsort</a>.
+  </p>
+  <p class="para">
+   Этот метод реализует алгоритм сортировки, при котором порядок цифробуквенных строк 
+   будет привычным для человека, сохраняя при этом связь ключ/значение.
+   Иными словами, сортирует массив в &quot;естественный порядок&quot; (natural ordering).
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-arrayobject.natcasesort-parameters">
+  <h3 class="title">Список параметров</h3>
+  <p class="para">У этой функции нет параметров.</p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-arrayobject.natcasesort-returnvalues">
+  <h3 class="title">Возвращаемые значения</h3>
+  <p class="para">
+   Эта функция не возвращает значения после выполнения.
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-arrayobject.natcasesort-examples">
+  <h3 class="title">Примеры</h3>
+  <p class="para">
+   <div class="example" id="example-3585">
+    <p><b>Пример #1 Пример использования <span class="function"><b>ArrayObject::natcasesort()</b></span></b></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$array&nbsp;</span><span style="color: #007700">=&nbsp;array(</span><span style="color: #DD0000">'IMG0.png'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'img12.png'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'img10.png'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'img2.png'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'img1.png'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'IMG3.png'</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">$arr1&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">ArrayObject</span><span style="color: #007700">(</span><span style="color: #0000BB">$array</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$arr2&nbsp;</span><span style="color: #007700">=&nbsp;clone&nbsp;</span><span style="color: #0000BB">$arr1</span><span style="color: #007700">;<br /><br /></span><span style="color: #0000BB">$arr1</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">asort</span><span style="color: #007700">();<br />echo&nbsp;</span><span style="color: #DD0000">"Стандартная&nbsp;сортировка\n"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">print_r</span><span style="color: #007700">(</span><span style="color: #0000BB">$arr1</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">$arr2</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">natcasesort</span><span style="color: #007700">();<br />echo&nbsp;</span><span style="color: #DD0000">"\nСортировка&nbsp;в&nbsp;естественном&nbsp;порядке&nbsp;(Вне&nbsp;зависимости&nbsp;от&nbsp;регистра)\n"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">print_r</span><span style="color: #007700">(</span><span style="color: #0000BB">$arr2</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+    <div class="example-contents"><p>Результат выполнения данного примера:</p></div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+Стандартная сортировка
+ArrayObject Object
+(
+    [0] =&gt; IMG0.png
+    [5] =&gt; IMG3.png
+    [4] =&gt; img1.png
+    [2] =&gt; img10.png
+    [1] =&gt; img12.png
+    [3] =&gt; img2.png
+)
+
+Сортировка в естественном порядке (Вне зависимости от регистра)
+ArrayObject Object
+(
+    [0] =&gt; IMG0.png
+    [4] =&gt; img1.png
+    [3] =&gt; img2.png
+    [5] =&gt; IMG3.png
+    [2] =&gt; img10.png
+    [1] =&gt; img12.png
+)
+</pre></div>
+    </div>
+    <div class="example-contents"><p>
+     Для более подробной информации смотрите страницу Мартина Пула (Martin Pool) 
+     <a href="http://sourcefrog.net/projects/natsort/" class="link external">&raquo;&nbsp;Natural Order String Comparison</a>.
+    </p></div>
+   </div>
+  </p>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-arrayobject.natcasesort-seealso">
+  <h3 class="title">Смотрите также</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"> <span class="methodname"><a href="arrayobject.asort.html" class="methodname" rel="rdfs-seeAlso">ArrayObject::asort()</a> - Сортирует записи по значению</span></li>
+    <li class="member"> <span class="methodname"><a href="arrayobject.ksort.html" class="methodname" rel="rdfs-seeAlso">ArrayObject::ksort()</a> - Сортирует записи по ключам</span></li>
+    <li class="member"> <span class="methodname"><a href="arrayobject.natsort.html" class="methodname" rel="rdfs-seeAlso">ArrayObject::natsort()</a> - Сортирует массив, используя алгоритм &quot;natural order&quot;</span></li>
+    <li class="member"> <span class="methodname"><a href="arrayobject.uasort.html" class="methodname" rel="rdfs-seeAlso">ArrayObject::uasort()</a> - Сортирует записи, используя пользовательскую функцию для сравнения элементов и сохраняя при этом связь ключ/значение</span></li>
+    <li class="member"> <span class="methodname"><a href="arrayobject.uksort.html" class="methodname" rel="rdfs-seeAlso">ArrayObject::uksort()</a> - Сортирует массив по ключам, используя пользовательскую функцию для сравнения</span></li>
+   </ul>
+  </p>
+ </div>
+
+
+</div><hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="arrayobject.ksort.html">ArrayObject::ksort</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="arrayobject.natsort.html">ArrayObject::natsort</a></div>
+ <div class="up"><a href="class.arrayobject.html">ArrayObject</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

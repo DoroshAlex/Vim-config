@@ -1,0 +1,110 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Возвращает версию ID3-тега</title>
+
+ </head>
+ <body><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.id3-get-tag.html">id3_get_tag</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.id3-remove-tag.html">id3_remove_tag</a></div>
+ <div class="up"><a href="ref.id3.html">ID3</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.id3-get-version" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">id3_get_version</h1>
+  <p class="verinfo">(PECL id3 &gt;= 0.1)</p><p class="refpurpose"><span class="refname">id3_get_version</span> &mdash; <span class="dc-title">Возвращает версию ID3-тега</span></p>
+
+ </div>
+ <div class="refsect1 description" id="refsect1-function.id3-get-version-description">
+  <h3 class="title">Описание</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">int</span> <span class="methodname"><b>id3_get_version</b></span>
+    ( <span class="methodparam"><span class="type">string</span> <tt class="parameter">$filename</tt></span>
+   )</div>
+
+  <p class="para rdfs-comment">
+   <span class="function"><b>id3_get_version()</b></span> Возвращает версию (версии) ID3-тега(тегов) в MP3-файле.
+  </p>
+  <p class="para">
+   Если файл содержит ID3-тег версии 1.1, он всегда содержит тег версии 1.0, 
+   так как версия 1.1 является расширением версии 1.0.
+  </p>
+ </div>
+
+ <div class="refsect1 parameters" id="refsect1-function.id3-get-version-parameters">
+  <h3 class="title">Список параметров</h3>
+  <p class="para">
+   <dl>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">filename</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Путь к MP3 файлу.
+      </p>
+      <p class="para">
+       Вместо имени файла можно передать потоковый ресурс
+      </p>
+     </dd>
+
+    </dt>
+
+   </dl>
+
+  </p>
+ </div>
+
+ <div class="refsect1 returnvalues" id="refsect1-function.id3-get-version-returnvalues">
+  <h3 class="title">Возвращаемые значения</h3>
+  <p class="para">
+   Возвращает номер версии ID3-тега MP3-файла. Так как тег может содержать ID3-теги 
+   версии 1.х и 2.х, значение, возвращённое функцией, следует побитово сравнить с 
+   предопределёнными константами <b><tt>ID3_V1_0</tt></b>, <b><tt>ID3_V1_1</tt></b> и
+   <b><tt>ID3_V2</tt></b>.
+  </p>
+ </div>
+
+ <div class="refsect1 examples" id="refsect1-function.id3-get-version-examples">
+  <h3 class="title">Примеры</h3>
+  <p class="para">
+   <div class="example" id="example-563">
+    <p><b>Пример #1 Примеры использования <span class="function"><b>id3_get_version()</b></span></b></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$version&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">id3_get_version</span><span style="color: #007700">(&nbsp;</span><span style="color: #DD0000">"path/to/example.mp3"&nbsp;</span><span style="color: #007700">);<br />if&nbsp;(</span><span style="color: #0000BB">$version&nbsp;</span><span style="color: #007700">&amp;&nbsp;</span><span style="color: #0000BB">ID3_V1_0</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"Содержит&nbsp;1.x&nbsp;тэг\n"</span><span style="color: #007700">;<br />}<br />if&nbsp;(</span><span style="color: #0000BB">$version&nbsp;</span><span style="color: #007700">&amp;&nbsp;</span><span style="color: #0000BB">ID3_V1_1</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"Содержит&nbsp;1.1&nbsp;тэг\n"</span><span style="color: #007700">;<br />}<br />if&nbsp;(</span><span style="color: #0000BB">$version&nbsp;</span><span style="color: #007700">&amp;&nbsp;</span><span style="color: #0000BB">ID3_V2</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"Содержит&nbsp;2.x&nbsp;тэг\n"</span><span style="color: #007700">;<br />}<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+    <div class="example-contents"><p>Результатом выполнения данного примера
+будет что-то подобное:</p></div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+Содержит 1.x тэг
+Содержит 1.1 тэг
+</pre></div>
+    </div>
+   </div>
+  </p>
+ </div>
+
+ <div class="refsect1 seealso" id="refsect1-function.id3-get-version-seealso">
+  <h3 class="title">Смотрите также</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><span class="function"><a href="function.id3-set-tag.html" class="function" rel="rdfs-seeAlso">id3_set_tag()</a> - Обновляет информацию в ID3 теге</span></li>
+    <li class="member"><span class="function"><a href="function.id3-get-tag.html" class="function" rel="rdfs-seeAlso">id3_get_tag()</a> - Возвращает всю информацию, сохранённую в ID3-теге</span></li>
+    <li class="member"><span class="function"><a href="function.id3-remove-tag.html" class="function" rel="rdfs-seeAlso">id3_remove_tag()</a> - Удаляет существующий ID3-тег</span></li>
+   </ul>
+  </p>
+ </div>
+
+</div><hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.id3-get-tag.html">id3_get_tag</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.id3-remove-tag.html">id3_remove_tag</a></div>
+ <div class="up"><a href="ref.id3.html">ID3</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

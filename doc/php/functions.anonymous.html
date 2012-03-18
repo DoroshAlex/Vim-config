@@ -1,0 +1,112 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Анонимные функции</title>
+
+ </head>
+ <body><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="functions.internal.html">Встроенные функции</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="language.oop5.html">Классы и объекты</a></div>
+ <div class="up"><a href="language.functions.html">Функции</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="functions.anonymous" class="sect1">
+   <h2 class="title">Анонимные функции</h2>
+
+   <p class="simpara">
+    Анонимные функции, также известные как замыкания (<i>closures</i>),
+    позволяют создавать функции, не имеющие определенных имен.
+    Они наиболее полезны в качестве значений
+    <a href="language.pseudo-types.html#language.types.callback" class="link">callback</a>-параметров,
+    но также могут иметь и множество других применений.
+   </p>
+
+   <div class="example" id="example-152">
+    <p><b>Пример #1 Пример анонимной функции</b></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">preg_replace_callback</span><span style="color: #007700">(</span><span style="color: #DD0000">'~-([a-z])~'</span><span style="color: #007700">,&nbsp;function&nbsp;(</span><span style="color: #0000BB">$match</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">strtoupper</span><span style="color: #007700">(</span><span style="color: #0000BB">$match</span><span style="color: #007700">[</span><span style="color: #0000BB">1</span><span style="color: #007700">]);<br />},&nbsp;</span><span style="color: #DD0000">'hello-world'</span><span style="color: #007700">);<br /></span><span style="color: #FF8000">//&nbsp;выведет&nbsp;helloWorld<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+
+   <p class="simpara">
+    Замыкания также могут быть использованы в качестве значений
+    переменных; PHP автоматически преобразует такие выражения
+    в экземпляры внутреннего класса <a href="class.closure.html" class="classname">Closure</a>.
+    Присвоение замыкания переменной использует тот же синтаксис,
+    что и для любого другого присвоения, включая завершающую
+    точку с запятой:
+   </p>
+
+   <div class="example" id="example-153">
+    <p><b>Пример #2 Пример присвоения анонимной функции переменной</b></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$greet&nbsp;</span><span style="color: #007700">=&nbsp;function(</span><span style="color: #0000BB">$name</span><span style="color: #007700">)<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">printf</span><span style="color: #007700">(</span><span style="color: #DD0000">"Hello&nbsp;%s\r\n"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$name</span><span style="color: #007700">);<br />};<br /><br /></span><span style="color: #0000BB">$greet</span><span style="color: #007700">(</span><span style="color: #DD0000">'World'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$greet</span><span style="color: #007700">(</span><span style="color: #DD0000">'PHP'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+   
+   <p class="simpara">
+    Замыкания могут также наследовать переменные из родительской
+    области видимости. Любая подобная переменная должна быть
+    объявлена в заголовке функции. Наследование переменных из
+    родительской области видимости <em class="emphasis">не</em> то же
+    самое, что использование глобальных переменных.
+    Глобальные переменные существуют в глобальной области видимости,
+    которая не меняется, вне зависимости от того, какая функция
+    выполняется в данный момент. Родительская область видимости
+    - это функция, в которой было объявлено замыкание (не обязательно
+    та же самая, из которой оно было вызвано). Смотрите следующий
+    пример:
+   </p>
+
+   <div class="example" id="example-154">
+    <p><b>Пример #3 Замыкания и область видимости</b></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">//&nbsp;Базовая&nbsp;корзина&nbsp;покупок,&nbsp;содержащая&nbsp;список&nbsp;добавленных<br />//&nbsp;продуктов&nbsp;и&nbsp;количество&nbsp;каждого&nbsp;продукта.&nbsp;Включает&nbsp;метод,<br />//&nbsp;вычисляющий&nbsp;общую&nbsp;цену&nbsp;элементов&nbsp;корзины&nbsp;с&nbsp;помощью<br />//&nbsp;callback-замыкания.<br /></span><span style="color: #007700">class&nbsp;</span><span style="color: #0000BB">Cart<br /></span><span style="color: #007700">{<br />&nbsp;&nbsp;&nbsp;&nbsp;const&nbsp;</span><span style="color: #0000BB">PRICE_BUTTER&nbsp;&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">1.00</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;const&nbsp;</span><span style="color: #0000BB">PRICE_MILK&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">3.00</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;const&nbsp;</span><span style="color: #0000BB">PRICE_EGGS&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">6.95</span><span style="color: #007700">;<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;protected&nbsp;</span><span style="color: #0000BB">$products&nbsp;</span><span style="color: #007700">=&nbsp;array();<br />&nbsp;&nbsp;&nbsp;&nbsp;<br />&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;function&nbsp;</span><span style="color: #0000BB">add</span><span style="color: #007700">(</span><span style="color: #0000BB">$product</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$quantity</span><span style="color: #007700">)<br />&nbsp;&nbsp;&nbsp;&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">products</span><span style="color: #007700">[</span><span style="color: #0000BB">$product</span><span style="color: #007700">]&nbsp;=&nbsp;</span><span style="color: #0000BB">$quantity</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />&nbsp;&nbsp;&nbsp;&nbsp;<br />&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;function&nbsp;</span><span style="color: #0000BB">getQuantity</span><span style="color: #007700">(</span><span style="color: #0000BB">$product</span><span style="color: #007700">)<br />&nbsp;&nbsp;&nbsp;&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;isset(</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">products</span><span style="color: #007700">[</span><span style="color: #0000BB">$product</span><span style="color: #007700">])&nbsp;?&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">products</span><span style="color: #007700">[</span><span style="color: #0000BB">$product</span><span style="color: #007700">]&nbsp;:<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">FALSE</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />&nbsp;&nbsp;&nbsp;&nbsp;<br />&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;function&nbsp;</span><span style="color: #0000BB">getTotal</span><span style="color: #007700">(</span><span style="color: #0000BB">$tax</span><span style="color: #007700">)<br />&nbsp;&nbsp;&nbsp;&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$total&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">0.00</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$callback&nbsp;</span><span style="color: #007700">=<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;function&nbsp;(</span><span style="color: #0000BB">$quantity</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$product</span><span style="color: #007700">)&nbsp;use&nbsp;(</span><span style="color: #0000BB">$tax</span><span style="color: #007700">,&nbsp;&amp;</span><span style="color: #0000BB">$total</span><span style="color: #007700">)<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$pricePerItem&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">constant</span><span style="color: #007700">(</span><span style="color: #0000BB">__CLASS__&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #DD0000">"::PRICE_"&nbsp;</span><span style="color: #007700">.<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">strtoupper</span><span style="color: #007700">(</span><span style="color: #0000BB">$product</span><span style="color: #007700">));<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$total&nbsp;</span><span style="color: #007700">+=&nbsp;(</span><span style="color: #0000BB">$pricePerItem&nbsp;</span><span style="color: #007700">*&nbsp;</span><span style="color: #0000BB">$quantity</span><span style="color: #007700">)&nbsp;*&nbsp;(</span><span style="color: #0000BB">$tax&nbsp;</span><span style="color: #007700">+&nbsp;</span><span style="color: #0000BB">1.0</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;};<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">array_walk</span><span style="color: #007700">(</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">products</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$callback</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">round</span><span style="color: #007700">(</span><span style="color: #0000BB">$total</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">2</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />}<br /><br /></span><span style="color: #0000BB">$my_cart&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">Cart</span><span style="color: #007700">;<br /><br /></span><span style="color: #FF8000">//&nbsp;Добавляем&nbsp;несколько&nbsp;элементов&nbsp;в&nbsp;корзину<br /></span><span style="color: #0000BB">$my_cart</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">add</span><span style="color: #007700">(</span><span style="color: #DD0000">'butter'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">1</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$my_cart</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">add</span><span style="color: #007700">(</span><span style="color: #DD0000">'milk'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">3</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$my_cart</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">add</span><span style="color: #007700">(</span><span style="color: #DD0000">'eggs'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">6</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;Выводим&nbsp;общую&nbsp;сумму&nbsp;с&nbsp;5%&nbsp;налогом&nbsp;на&nbsp;продажу.<br /></span><span style="color: #007700">print&nbsp;</span><span style="color: #0000BB">$my_cart</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getTotal</span><span style="color: #007700">(</span><span style="color: #0000BB">0.05</span><span style="color: #007700">)&nbsp;.&nbsp;</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br /></span><span style="color: #FF8000">//&nbsp;Результатом&nbsp;будет&nbsp;54.29<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+   
+   <p class="simpara">
+    Анонимные функции реализованы с помощью класса
+    <a href="class.closure.html" class="link">
+    <a href="class.closure.html" class="classname">Closure</a></a>.
+   </p>
+   
+   <blockquote class="note"><p><b class="note">Замечание</b>: 
+    <span class="simpara">
+     Анонимные функции доступны начиная с версии PHP 5.3.0.
+    </span>
+   </p></blockquote>
+
+   <blockquote class="note"><p><b class="note">Замечание</b>: 
+    <span class="simpara">
+     До версии PHP 5.4.0 было невозможно использовать
+     <var class="varname"><var class="varname">$this</var></var> в анонимных функциях.
+    </span>
+   </p></blockquote>
+
+   <blockquote class="note"><p><b class="note">Замечание</b>: 
+    <span class="simpara">
+     Совместно с замыканиями можно использовать функции
+     <span class="function"><a href="function.func-num-args.html" class="function">func_num_args()</a></span>,
+     <span class="function"><a href="function.func-get-arg.html" class="function">func_get_arg()</a></span> и <span class="function"><a href="function.func-get-args.html" class="function">func_get_args()</a></span>.
+    </span>
+   </p></blockquote>
+
+  </div><hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="functions.internal.html">Встроенные функции</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="language.oop5.html">Классы и объекты</a></div>
+ <div class="up"><a href="language.functions.html">Функции</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

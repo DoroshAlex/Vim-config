@@ -1,0 +1,73 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Освобождение XML анализатора</title>
+
+ </head>
+ <body><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.xml-parser-create.html">xml_parser_create</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.xml-parser-get-option.html">xml_parser_get_option</a></div>
+ <div class="up"><a href="ref.xml.html">Функции парсера XML</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.xml-parser-free" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">xml_parser_free</h1>
+  <p class="verinfo">(PHP 4, PHP 5)</p><p class="refpurpose"><span class="refname">xml_parser_free</span> &mdash; <span class="dc-title">
+   Освобождение XML анализатора
+  </span></p>
+
+ </div>
+
+ <div class="refsect1 description" id="refsect1-function.xml-parser-free-description">
+  <h3 class="title">Описание</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">bool</span> <span class="methodname"><b>xml_parser_free</b></span>
+    ( <span class="methodparam"><span class="type">resource</span> <tt class="parameter">$parser</tt></span>
+   )</div>
+
+  <p class="para rdfs-comment">
+   Освобождает память, занятую XML анализатором <i><tt class="parameter">parser</tt></i>.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-function.xml-parser-free-parameters">
+  <h3 class="title">Список параметров</h3>
+  <p class="para">
+   <dl>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">parser</tt></i></span>
+     <dd>
+
+      <span class="simpara">
+       Ссылка на очищаемый XML анализатор.
+      </span>
+     </dd>
+
+    </dt>
+
+   </dl>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-function.xml-parser-free-returnvalues">
+  <h3 class="title">Возвращаемые значения</h3>
+  <p class="para">
+   Эта функция возвращает <b><tt>FALSE</tt></b>, если <i><tt class="parameter">parser</tt></i> ссылается
+   на недопустимый анализатор, в остальных случаях она очищает анализатор и 
+   возвращает <b><tt>TRUE</tt></b>.
+  </p>
+ </div>
+
+
+</div><hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.xml-parser-create.html">xml_parser_create</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.xml-parser-get-option.html">xml_parser_get_option</a></div>
+ <div class="up"><a href="ref.xml.html">Функции парсера XML</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

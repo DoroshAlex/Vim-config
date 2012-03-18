@@ -1,0 +1,76 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Установка</title>
+
+ </head>
+ <body><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="xslt.requirements.html">Требования</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="xslt.configuration.html">Настройка во время выполнения</a></div>
+ <div class="up"><a href="xslt.setup.html">Установка и настройка</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="xslt.installation" class="section">
+ <h2 class="title">Установка</h2>
+ <p class="para">
+  На Unix системах выполните <strong class="command">configure</strong> с параметрами
+  <strong class="option configure">--enable-xslt</strong>
+
+  <strong class="option configure">--with-xslt-sablot</strong>
+. 
+  <span class="productname">Sablotron</span> библиотека должна быть установлена в
+  директорию, в которой ваш компилятор сможет ее найти.
+ </p>
+ <p class="para">
+  Убедитесь, что к <span class="productname">Sablotron</span> библиотеке подключены
+  те же библиотеки, что и к PHP. Настройки конфигурации
+  <strong class="option configure">--with-expat-dir=DIR</strong>
+
+  <strong class="option configure">--with-iconv-dir=DIR</strong>
+
+  могут вам помочь задать пути к этим библиотекам. Если будете обращаться за
+  поддержкой, всегда упоминайте эти пути и есть ли другие установленные 
+  в системе версии этих библиотек. Естественно, указывайте все номера версий.
+ </p>
+ <div class="caution"><b class="caution">Предостережение</b>
+  <p class="para">
+   Убедитесь, что ваша <span class="productname">Sablotron</span> библиотека
+   прилинкована к <i>-lstdc++</i>. В противном случае процедура
+   конфигурирования потерпит неудачу, или PHP откажет при загрузке или запуске.
+  </p>
+ </div>
+ <blockquote class="note"><p><b class="note">Замечание</b>: 
+  <b>Поддержка JavaScript E-XSLT</b><br />
+  <span class="simpara">
+   Если <span class="productname">Sablotron</span> библиотека скомпилирована с 
+   поддержкой JavaScript, необходимо задать еще один параметр:
+   <strong class="option configure">--with-sablot-js=DIR</strong>
+.
+  </span>
+ </p></blockquote>
+ <blockquote class="note"><p><b class="note">Замечание</b>: 
+  <b>Заметка для Win32 пользователей</b><br />
+  <p class="para">
+  Для работы этого расширения системной переменной Windows
+<i>PATH</i>должны быть доступны
+<acronym title="Dynamic Link Library">DLL</acronym>-файлы. Чтобы узнать как этого достичь, обратитесь
+к разделу <acronym title="Frequently Asked Questions">FAQ</acronym> &quot;<a href="faq.installation.html#faq.installation.addtopath" class="link">Как добавить мою директорию с PHP в
+переменную Windows PATH</a>&quot;. Хотя копирование DLL-файлов из директории PHP в системную папку Windows
+также решает проблему (потому что системная директория по умолчанию находится в переменной
+<i>PATH</i>), это не рекомендуется.
+<em class="emphasis">Этому расширению требуются следующие файлы в переменной
+ <i>PATH</i>:</em> 
+  <var class="filename">sablot.dll</var>, 
+  <var class="filename">expat.dll</var> и 
+  <var class="filename">iconv.dll</var>
+  </p>
+  <p class="para">
+   Для PHP &lt;= 4.2.0, файл <var class="filename">iconv.dll</var> не требуется.
+  </p>
+ </p></blockquote>
+</div><hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="xslt.requirements.html">Требования</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="xslt.configuration.html">Настройка во время выполнения</a></div>
+ <div class="up"><a href="xslt.setup.html">Установка и настройка</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

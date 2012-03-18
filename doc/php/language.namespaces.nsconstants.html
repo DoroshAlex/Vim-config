@@ -1,0 +1,88 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Ключевое слово namespace и константа __NAMESPACE__</title>
+
+ </head>
+ <body><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="language.namespaces.dynamic.html">Пространства имен и динамические особенности языка</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="language.namespaces.importing.html">Использование пространств имен: импорт/создание псевдонима имени</a></div>
+ <div class="up"><a href="language.namespaces.html">Пространства имен</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="language.namespaces.nsconstants" class="sect1">
+  <h2 class="title">Ключевое слово namespace и константа __NAMESPACE__</h2>
+  <p class="verinfo">(PHP 5 &gt;= 5.3.0)</p>
+  <p class="para">
+   PHP поддерживает два способа к абстрактно доступным элементамв текущем пространстве имен
+   таким, как магическая константа <b><tt>__NAMESPACE__</tt></b> и
+   ключевое слово <i>namespace</i>.
+  </p>
+  <p class="para">
+   Значение константы <b><tt>__NAMESPACE__</tt></b> - это строка, которая содержит
+   имя текущего пространства имен. В глобальном пространстве, вне пространства имен, она
+   содержит пустую строку.
+   <div class="example" id="example-230">
+    <p><b>Пример #1 Пример использование константы __NAMESPACE__ в коде с пространством имен</b></p>
+    <div class="example-contents">
+     <div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">namespace&nbsp;</span><span style="color: #0000BB">MyProject</span><span style="color: #007700">;<br /><br />echo&nbsp;</span><span style="color: #DD0000">'"'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">__NAMESPACE__</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'"'</span><span style="color: #007700">;&nbsp;</span><span style="color: #FF8000">//&nbsp;выводит&nbsp;"MyProject"<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+   <div class="example" id="example-231">
+    <p><b>Пример #2 Пример использование константы __NAMESPACE__ в глобальном пространстве</b></p>
+    <div class="example-contents">
+     <div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /><br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #DD0000">'"'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">__NAMESPACE__</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'"'</span><span style="color: #007700">;&nbsp;</span><span style="color: #FF8000">//&nbsp;выводит&nbsp;""<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+   Константа <b><tt>__NAMESPACE__</tt></b> полезна для динамически конструируемых
+   имен, например:
+   <div class="example" id="example-232">
+    <p><b>Пример #3 использование константы  __NAMESPACE__ для динамического конструирования имени</b></p>
+    <div class="example-contents">
+     <div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">namespace&nbsp;</span><span style="color: #0000BB">MyProject</span><span style="color: #007700">;<br /><br />function&nbsp;</span><span style="color: #0000BB">get</span><span style="color: #007700">(</span><span style="color: #0000BB">$classname</span><span style="color: #007700">)<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$a&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">__NAMESPACE__&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #DD0000">'\\'&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">$classname</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;new&nbsp;</span><span style="color: #0000BB">$a</span><span style="color: #007700">;<br />}<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+  </p>
+  <p class="para">
+   Ключевое слово <i>namespace</i> может быть использовано для
+   явного запроса элемента из текущего пространства имен или из подпространства.
+   Это эквивалент оператора <i>self</i> для классов в пространстве имен.
+   <div class="example" id="example-233">
+    <p><b>Пример #4 Оператор namespace, внутри пространства имен</b></p>
+    <div class="example-contents">
+     <div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">namespace&nbsp;</span><span style="color: #0000BB">MyProject</span><span style="color: #007700">;<br /><br />use&nbsp;</span><span style="color: #0000BB">blah</span><span style="color: #007700">\</span><span style="color: #0000BB">blah&nbsp;</span><span style="color: #007700">as&nbsp;</span><span style="color: #0000BB">mine</span><span style="color: #007700">;&nbsp;</span><span style="color: #FF8000">//&nbsp;см.&nbsp;"Использование&nbsp;пространств&nbsp;имен:&nbsp;импорт/создание&nbsp;псевдонима&nbsp;имени"<br /><br /></span><span style="color: #0000BB">blah</span><span style="color: #007700">\</span><span style="color: #0000BB">mine</span><span style="color: #007700">();&nbsp;</span><span style="color: #FF8000">//&nbsp;вызывает&nbsp;функцию&nbsp;MyProject\blah\mine()<br /></span><span style="color: #007700">namespace\</span><span style="color: #0000BB">blah</span><span style="color: #007700">\</span><span style="color: #0000BB">mine</span><span style="color: #007700">();&nbsp;</span><span style="color: #FF8000">//&nbsp;вызывает&nbsp;функцию&nbsp;MyProject\blah\mine()<br /><br /></span><span style="color: #007700">namespace\</span><span style="color: #0000BB">func</span><span style="color: #007700">();&nbsp;</span><span style="color: #FF8000">//&nbsp;вызывает&nbsp;функцию&nbsp;MyProject\func()<br /></span><span style="color: #007700">namespace\</span><span style="color: #0000BB">sub</span><span style="color: #007700">\</span><span style="color: #0000BB">func</span><span style="color: #007700">();&nbsp;</span><span style="color: #FF8000">//&nbsp;вызывает&nbsp;функцию&nbsp;MyProject\sub\func()<br /></span><span style="color: #007700">namespace\</span><span style="color: #0000BB">cname</span><span style="color: #007700">::</span><span style="color: #0000BB">method</span><span style="color: #007700">();&nbsp;</span><span style="color: #FF8000">//&nbsp;вызывает&nbsp;статический&nbsp;метод&nbsp;"method"&nbsp;класса&nbsp;MyProject\cname<br /></span><span style="color: #0000BB">$a&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;namespace\</span><span style="color: #0000BB">sub</span><span style="color: #007700">\</span><span style="color: #0000BB">cname</span><span style="color: #007700">();&nbsp;</span><span style="color: #FF8000">//&nbsp;Создает&nbsp;экземпляр&nbsp;класса&nbsp;MyProject\sub\cname<br /></span><span style="color: #0000BB">$b&nbsp;</span><span style="color: #007700">=&nbsp;namespace\</span><span style="color: #0000BB">CONSTANT</span><span style="color: #007700">;&nbsp;</span><span style="color: #FF8000">//&nbsp;присваивает&nbsp;значение&nbsp;константы&nbsp;MyProject\CONSTANT&nbsp;переменной&nbsp;$b<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+   <div class="example" id="example-234">
+    <p><b>Пример #5 Оператор namespace в глобальном коде</b></p>
+    <div class="example-contents">
+     <div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /><br /></span><span style="color: #007700">namespace\</span><span style="color: #0000BB">func</span><span style="color: #007700">();&nbsp;</span><span style="color: #FF8000">//&nbsp;вызывает&nbsp;функцию&nbsp;&nbsp;func()<br /></span><span style="color: #007700">namespace\</span><span style="color: #0000BB">sub</span><span style="color: #007700">\</span><span style="color: #0000BB">func</span><span style="color: #007700">();&nbsp;</span><span style="color: #FF8000">//&nbsp;вызывает&nbsp;функцию&nbsp;&nbsp;sub\func()<br /></span><span style="color: #007700">namespace\</span><span style="color: #0000BB">cname</span><span style="color: #007700">::</span><span style="color: #0000BB">method</span><span style="color: #007700">();&nbsp;</span><span style="color: #FF8000">//&nbsp;вызывает&nbsp;статический&nbsp;метод&nbsp;"method"&nbsp;класса&nbsp;cname<br /></span><span style="color: #0000BB">$a&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;namespace\</span><span style="color: #0000BB">sub</span><span style="color: #007700">\</span><span style="color: #0000BB">cname</span><span style="color: #007700">();&nbsp;</span><span style="color: #FF8000">//&nbsp;Создает&nbsp;экземпляр&nbsp;класса&nbsp;sub\cname<br /></span><span style="color: #0000BB">$b&nbsp;</span><span style="color: #007700">=&nbsp;namespace\</span><span style="color: #0000BB">CONSTANT</span><span style="color: #007700">;&nbsp;</span><span style="color: #FF8000">//&nbsp;присваивает&nbsp;значение&nbsp;константы&nbsp;CONSTANT&nbsp;переменной&nbsp;$b<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+  </p>
+ </div><hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="language.namespaces.dynamic.html">Пространства имен и динамические особенности языка</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="language.namespaces.importing.html">Использование пространств имен: импорт/создание псевдонима имени</a></div>
+ <div class="up"><a href="language.namespaces.html">Пространства имен</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

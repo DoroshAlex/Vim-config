@@ -1,0 +1,76 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Разделяет узел на два, начиная с заданной позиции</title>
+
+ </head>
+ <body><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="domtext.iswhitespaceinelementcontent.html">DOMText::isWhitespaceInElementContent</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="class.domxpath.html">DOMXPath</a></div>
+ <div class="up"><a href="class.domtext.html">DOMText</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="domtext.splittext" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">DOMText::splitText</h1>
+  <p class="verinfo">(PHP 5)</p><p class="refpurpose"><span class="refname">DOMText::splitText</span> &mdash; <span class="dc-title">
+   Разделяет узел на два, начиная с заданной позиции
+  </span></p>
+
+ </div>
+ <div class="refsect1 description" id="refsect1-domtext.splittext-description">
+  <h3 class="title">Описание</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type"><a href="class.domtext.html" class="type DOMText">DOMText</a></span> <span class="methodname"><b>DOMText::splitText</b></span>
+    ( <span class="methodparam"><span class="type">int</span> <tt class="parameter">$offset</tt></span>
+   )</div>
+
+  <p class="para rdfs-comment">
+   Разделяет узел на два, вторая часть начинается с позиции
+   <i><tt class="parameter">offset</tt></i>, полученные узлы становятся братьями.
+  </p>
+  <p class="para">
+   После разделения исходный узел будет содержать данные до позиции
+   <i><tt class="parameter">offset</tt></i>. Если исходный узел имеет родителя, то
+   второй, созданный, узел станет следующим братом исходного узла. Если 
+   <i><tt class="parameter">offset</tt></i> равно длине содержимого узла, новый узел
+   все равно будет создан, но не будет содержать данных.
+  </p>
+ </div>
+
+ <div class="refsect1 parameters" id="refsect1-domtext.splittext-parameters">
+  <h3 class="title">Список параметров</h3>
+  <p class="para">
+   <dl>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">offset</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Позиция, с которой узле будет разделен, начиная с 0.
+      </p>
+     </dd>
+
+    </dt>
+
+   </dl>
+
+  </p>
+ </div>
+
+ <div class="refsect1 returnvalues" id="refsect1-domtext.splittext-returnvalues">
+  <h3 class="title">Возвращаемые значения</h3>
+  <p class="para">
+   Новый узел того же типа содержащий данные после 
+   <i><tt class="parameter">offset</tt></i>.
+  </p>
+ </div>
+
+</div><hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="domtext.iswhitespaceinelementcontent.html">DOMText::isWhitespaceInElementContent</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="class.domxpath.html">DOMXPath</a></div>
+ <div class="up"><a href="class.domtext.html">DOMText</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

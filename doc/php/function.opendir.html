@@ -1,0 +1,176 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Открывает дескриптор каталога</title>
+
+ </head>
+ <body><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.getcwd.html">getcwd</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.readdir.html">readdir</a></div>
+ <div class="up"><a href="ref.dir.html">Функции для работы с каталогами</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.opendir" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">opendir</h1>
+  <p class="verinfo">(PHP 4, PHP 5)</p><p class="refpurpose"><span class="refname">opendir</span> &mdash; <span class="dc-title">Открывает дескриптор каталога</span></p>
+
+ </div>
+
+ <div class="refsect1 description" id="refsect1-function.opendir-description">
+  <h3 class="title">Описание</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">resource</span> <span class="methodname"><b>opendir</b></span>
+    ( <span class="methodparam"><span class="type">string</span> <tt class="parameter">$path</tt></span>
+   [, <span class="methodparam"><span class="type">resource</span> <tt class="parameter">$context</tt></span>
+  ] )</div>
+
+  <p class="para rdfs-comment">
+   Открывает дескриптор каталога для последующего использования
+   с функциями <span class="function"><a href="function.closedir.html" class="function">closedir()</a></span>,
+   <span class="function"><a href="function.readdir.html" class="function">readdir()</a></span> и <span class="function"><a href="function.rewinddir.html" class="function">rewinddir()</a></span>.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-function.opendir-parameters">
+  <h3 class="title">Список параметров</h3>
+  <p class="para">
+   <dl>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">path</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Путь к открываемому каталогу
+      </p>
+     </dd>
+
+    </dt>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">context</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Для описания параметра <i><tt class="parameter">context</tt></i>
+       обратитесь к разделу &quot;<a href="ref.stream.html" class="link">Потоки</a>&quot;.
+      </p>
+     </dd>
+
+    </dt>
+
+   </dl>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-function.opendir-returnvalues">
+  <h3 class="title">Возвращаемые значения</h3>
+  <p class="para">
+   Возвращает дескриптор каталога (<span class="type"><a href="language.types.resource.html" class="type resource">resource</a></span>) в случае
+   успеха или <b><tt>FALSE</tt></b> в случае ошибки.
+  </p>
+  <p class="para">
+   Если <i><tt class="parameter">path</tt></i> не существует или каталог,
+   расположенный по указанному пути, не может быть открыт
+   вследствие правовых ограничений или ошибок файловой системы,
+   функция <span class="function"><b>opendir()</b></span> вернет
+   значение <b><tt>FALSE</tt></b> и сгенерирует сообщение PHP об ошибке уровня
+   <a href="errorfunc.constants.html" class="link">E_WARNING</a>.
+   Вы можете запретить вывод сообщения об ошибке, предварив
+   имя функции <span class="function"><b>opendir()</b></span> символом
+   &#039;<a href="language.operators.errorcontrol.html" class="link">@</a>&#039;.
+  </p>
+ </div>
+
+
+ <div class="refsect1 changelog" id="refsect1-function.opendir-changelog">
+  <h3 class="title">Список изменений</h3>
+  <p class="para">
+   <table class="doctable informaltable">
+    
+     <thead valign="middle">
+      <tr valign="middle">
+       <th>Версия</th>
+       <th>Описание</th>
+      </tr>
+
+     </thead>
+
+     <tbody valign="middle" class="tbody">
+      <tr valign="middle">
+       <td align="left">5.0.0</td>
+       <td align="left">
+        <i><tt class="parameter">path</tt></i> теперь поддерживает обертку
+        <i>ftp://</i>.
+       </td>
+      </tr>
+
+      <tr valign="middle">
+       <td align="left">4.3.0</td>
+       <td align="left">
+        Параметр <i><tt class="parameter">path</tt></i> теперь может являться
+        любым URL, поддерживающим передачу списка файлов, однако
+        в PHP 4 поддерживается только обертка
+        <i>file://</i>
+       </td>
+      </tr>
+
+     </tbody>
+    
+   </table>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-function.opendir-examples">
+  <h3 class="title">Примеры</h3>
+  <p class="para">
+   <div class="example" id="example-2086">
+    <p><b>Пример #1 Пример использования функции <span class="function"><b>opendir()</b></span></b></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$dir&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">"/etc/php5/"</span><span style="color: #007700">;<br /><br /></span><span style="color: #FF8000">//&nbsp;Открыть&nbsp;известный&nbsp;каталог&nbsp;и&nbsp;начать&nbsp;считывать&nbsp;его&nbsp;содержимое<br /></span><span style="color: #007700">if&nbsp;(</span><span style="color: #0000BB">is_dir</span><span style="color: #007700">(</span><span style="color: #0000BB">$dir</span><span style="color: #007700">))&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(</span><span style="color: #0000BB">$dh&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">opendir</span><span style="color: #007700">(</span><span style="color: #0000BB">$dir</span><span style="color: #007700">))&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;while&nbsp;((</span><span style="color: #0000BB">$file&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">readdir</span><span style="color: #007700">(</span><span style="color: #0000BB">$dh</span><span style="color: #007700">))&nbsp;!==&nbsp;</span><span style="color: #0000BB">false</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"файл:&nbsp;</span><span style="color: #0000BB">$file</span><span style="color: #DD0000">&nbsp;:&nbsp;тип:&nbsp;"&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">filetype</span><span style="color: #007700">(</span><span style="color: #0000BB">$dir&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">$file</span><span style="color: #007700">)&nbsp;.&nbsp;</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">closedir</span><span style="color: #007700">(</span><span style="color: #0000BB">$dh</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />}<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+    <div class="example-contents"><p>Результатом выполнения данного примера
+будет что-то подобное:</p></div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+файл: . : тип: dir
+файл: .. : тип: dir
+файл: apache : тип: dir
+файл: cgi : тип: dir
+файл: cli : тип: dir
+</pre></div>
+    </div>
+   </div>
+  </p>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-function.opendir-seealso">
+  <h3 class="title">Смотрите также</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><span class="function"><a href="function.is-dir.html" class="function" rel="rdfs-seeAlso">is_dir()</a> - Определяет, является ли имя файла директорией</span></li>
+    <li class="member"><span class="function"><a href="function.readdir.html" class="function" rel="rdfs-seeAlso">readdir()</a> - Получает элемент каталога по его дескриптору</span></li>
+    <li class="member"><a href="class.dir.html" class="link">Dir</a></li>
+   </ul>
+  </p>
+ </div>
+
+</div><hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.getcwd.html">getcwd</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.readdir.html">readdir</a></div>
+ <div class="up"><a href="ref.dir.html">Функции для работы с каталогами</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

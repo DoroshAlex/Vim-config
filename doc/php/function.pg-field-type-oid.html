@@ -1,0 +1,134 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Возвращает идентификатор типа заданного поля</title>
+
+ </head>
+ <body><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.pg-field-table.html">pg_field_table</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.pg-field-type.html">pg_field_type</a></div>
+ <div class="up"><a href="ref.pgsql.html">PostgreSQL</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.pg-field-type-oid" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">pg_field_type_oid</h1> 
+  <p class="verinfo">(PHP 5 &gt;= 5.1.0)</p><p class="refpurpose"><span class="refname">pg_field_type_oid</span> &mdash; <span class="dc-title">
+   Возвращает идентификатор типа заданного поля
+  </span></p>
+
+ </div>
+
+ <div class="refsect1 description" id="refsect1-function.pg-field-type-oid-description">
+  <h3 class="title">Описание</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">int</span> <span class="methodname"><b>pg_field_type_oid</b></span>
+    ( <span class="methodparam"><span class="type">resource</span> <tt class="parameter">$result</tt></span>
+   , <span class="methodparam"><span class="type">int</span> <tt class="parameter">$field_number</tt></span>
+   )</div>
+
+  <p class="para rdfs-comment">
+   <span class="function"><b>pg_field_type_oid()</b></span> возвращает целочисленный идентификатор 
+   базового типа (OID) значений колонки результата запроса <i><tt class="parameter">result</tt></i> с номером 
+   <i><tt class="parameter">field_number</tt></i>.
+  </p>
+  <p class="para">
+   Более подробную информацию о типе значений можно получить, отправив запрос
+   с полученным OID к системной таблице PostgreSQL <i>pg_type</i>. 
+   Функция PostgreSQL <span class="function"><b>format_type()</b></span> преобразует OID в 
+   стандартное имя типа SQL.
+  </p>
+  <blockquote class="note"><p><b class="note">Замечание</b>: 
+   <p class="para">
+    Если в качестве типа значений используется PostgreSQL домен (вместо базового 
+    типа), функция вернет OID типа внутри домена, а не OID самого домена.
+   </p>
+  </p></blockquote>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-function.pg-field-type-oid-parameters">
+  <h3 class="title">Список параметров</h3>
+  <p class="para">
+   <dl>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">result</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Ресурс результата запроса PostgreSQL, возвращаемый функциями 
+       <span class="function"><a href="function.pg-query.html" class="function">pg_query()</a></span>, <span class="function"><a href="function.pg-query-params.html" class="function">pg_query_params()</a></span> 
+       или <span class="function"><a href="function.pg-execute.html" class="function">pg_execute()</a></span> (в числе прочих). 
+      </p>
+     </dd>
+
+    </dt>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">field_number</tt></i></span>
+      <dd>
+
+       <p class="para">
+        Порядковый номер поля, начиная с нуля.
+       </p>
+     </dd>
+
+    </dt>
+
+   </dl>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-function.pg-field-type-oid-returnvalues">
+  <h3 class="title">Возвращаемые значения</h3>
+  <p class="para">
+   OID базового типа значений поля, либо <b><tt>FALSE</tt></b> в случае ошибки.
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 examples" id="refsect1-function.pg-field-type-oid-examples">
+  <h3 class="title">Примеры</h3>
+  <p class="para">
+   <div class="example" id="example-1912">
+    <p><b>Пример #1 Получение информации о полях выборки</b></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />&nbsp;&nbsp;$dbconn&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">pg_connect</span><span style="color: #007700">(</span><span style="color: #DD0000">"dbname=publisher"</span><span style="color: #007700">)&nbsp;or&nbsp;die(</span><span style="color: #DD0000">"Невозможно&nbsp;соединиться&nbsp;с&nbsp;базой"</span><span style="color: #007700">);<br /><br />&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;Допустим,&nbsp;'title'&nbsp;имеет&nbsp;тип&nbsp;varchar<br />&nbsp;&nbsp;</span><span style="color: #0000BB">$res&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">pg_query</span><span style="color: #007700">(</span><span style="color: #0000BB">$dbconn</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"select&nbsp;title&nbsp;from&nbsp;authors&nbsp;where&nbsp;author&nbsp;=&nbsp;'Orwell'"</span><span style="color: #007700">);<br /><br />&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"Title&nbsp;field&nbsp;type&nbsp;OID:&nbsp;"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">pg_field_type_oid</span><span style="color: #007700">(</span><span style="color: #0000BB">$res</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+    <div class="example-contents"><p>Результат выполнения данного примера:</p></div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+Title field type OID: 1043
+</pre></div>
+    </div>
+   </div> 
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 seealso" id="refsect1-function.pg-field-type-oid-seealso">
+  <h3 class="title">Смотрите также</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><span class="function"><a href="function.pg-field-type.html" class="function" rel="rdfs-seeAlso">pg_field_type()</a> - Возвращает имя типа заданного поля</span></li>
+    <li class="member"><span class="function"><a href="function.pg-field-prtlen.html" class="function" rel="rdfs-seeAlso">pg_field_prtlen()</a> - Возвращает количество печатаемых символов</span></li>
+    <li class="member"><span class="function"><a href="function.pg-field-name.html" class="function" rel="rdfs-seeAlso">pg_field_name()</a> - Возвращает наименование поля</span></li>
+   </ul>
+  </p>
+ </div>
+
+</div><hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.pg-field-table.html">pg_field_table</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.pg-field-type.html">pg_field_type</a></div>
+ <div class="up"><a href="ref.pgsql.html">PostgreSQL</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

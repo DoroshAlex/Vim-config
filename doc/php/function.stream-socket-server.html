@@ -1,0 +1,215 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Создаёт интернет-сокет или доменный сокет Unix</title>
+
+ </head>
+ <body><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.stream-socket-sendto.html">stream_socket_sendto</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.stream-socket-shutdown.html">stream_socket_shutdown</a></div>
+ <div class="up"><a href="ref.stream.html">Stream Функции</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.stream-socket-server" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">stream_socket_server</h1>
+  <p class="verinfo">(PHP 5)</p><p class="refpurpose"><span class="refname">stream_socket_server</span> &mdash; <span class="dc-title">Создаёт интернет-сокет или доменный сокет Unix</span></p>
+
+ </div>
+ <div class="refsect1 description" id="refsect1-function.stream-socket-server-description">
+  <h3 class="title">Описание</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">resource</span> <span class="methodname"><b>stream_socket_server</b></span>
+    ( <span class="methodparam"><span class="type">string</span> <tt class="parameter">$local_socket</tt></span>
+   [, <span class="methodparam"><span class="type">int</span> <tt class="parameter reference">&$errno</tt></span>
+   [, <span class="methodparam"><span class="type">string</span> <tt class="parameter reference">&$errstr</tt></span>
+   [, <span class="methodparam"><span class="type">int</span> <tt class="parameter">$flags</tt><span class="initializer"> = STREAM_SERVER_BIND | STREAM_SERVER_LISTEN</span></span>
+   [, <span class="methodparam"><span class="type">resource</span> <tt class="parameter">$context</tt></span>
+  ]]]] )</div>
+
+  <p class="para rdfs-comment">
+   Создаёт потоковый или датаграммный сокет на указанном
+   <i><tt class="parameter">local_socket</tt></i>.    
+  </p>
+  <p class="para">
+   Эта функция только создаёт сокет. Чтобы начать принимать соединения
+   используйте <span class="function"><a href="function.stream-socket-accept.html" class="function">stream_socket_accept()</a></span>.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-function.stream-socket-server-parameters">
+  <h3 class="title">Список параметров</h3>
+  <p class="para">
+   <dl>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">local_socket</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Тип создаваемого сокета определяется по транспорту, указанному с
+       использованием стандартного форматирования URL: <i>transport://target</i>.
+      </p>
+      <p class="para">
+       Для доменных сокетов интернета (<b><tt>AF_INET</tt></b>), таких, как TCP и UDP, часть
+       <i>target</i> параметра
+       <i><tt class="parameter">remote_socket</tt></i> должна состоять из имени хоста
+       или IP-адреса с последующием двоеточием и номера порта. Для доменных сокетов 
+       Unix часть <i>target</i> должна указывать 
+       на файл сокета в файловой системе.
+      </p>
+      <p class="para">
+       В зависимости от окружения, доменные сокеты Unix могут быть недоступны.
+       Список доступных транспортов может быть получен при помощи функции
+       <span class="function"><a href="function.stream-get-transports.html" class="function">stream_get_transports()</a></span>. Смотрите
+       <a href="transports.html" class="xref">Список поддерживаемых транспортных протоколов</a> для списка встроенных транспортов.
+      </p>
+     </dd>
+
+    </dt>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">errno</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Если необязательные аргументы <i><tt class="parameter">errno</tt></i> и <i><tt class="parameter">errstr</tt></i>
+       присутствуют, то они будут установлены для указания действительного уровня
+       системной ошибки, которая происходит при системных вызовах <i>socket()</i>,
+       <i>bind()</i> и <i>listen()</i>. Если значение, 
+       возвращаемое в  <i><tt class="parameter">errno</tt></i>, равно
+       <i>0</i> и функция возвратила  <b><tt>FALSE</tt></b>, это означает, 
+       что ошибка произошла до вызова <i>bind()</i>. 
+       Скорее всего это произошло из-за проблемы инициализации сокета.
+       Примите во внимание, что аргументы <i><tt class="parameter">errno</tt></i> и
+       <i><tt class="parameter">errstr</tt></i> должны всегда передаваться по ссылке.
+      </p>
+     </dd>
+
+    </dt>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">errstr</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Смотрите описание параметра <i><tt class="parameter">errno</tt></i>.
+      </p>
+     </dd>
+
+    </dt>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">flags</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Битовая маска, которая может быть установлена в любую комбинацию флагов
+       для создания сокета.
+      </p>
+      <blockquote class="note"><p><b class="note">Замечание</b>: 
+       <p class="para">
+        Для UDP-сокетов вы должны использовать <b><tt>STREAM_SERVER_BIND</tt></b> в 
+        качестве параметра <i><tt class="parameter">flags</tt></i>.
+       </p>
+      </p></blockquote>
+     </dd>
+
+    </dt>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">context</tt></i></span>
+     <dd>
+
+      <p class="para">
+      </p>
+     </dd>
+
+    </dt>
+
+   </dl>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-function.stream-socket-server-returnvalues">
+  <h3 class="title">Возвращаемые значения</h3>
+  <p class="para">
+   Возвращает созданный поток, или <b><tt>FALSE</tt></b> в случае ошибки.
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-function.stream-socket-server-examples">
+  <h3 class="title">Примеры</h3>
+  <p class="para">
+   <div class="example" id="example-3636">
+    <p><b>Пример #1 Пример использования серверных сокетов TCP</b></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$socket&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">stream_socket_server</span><span style="color: #007700">(</span><span style="color: #DD0000">"tcp://0.0.0.0:8000"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$errno</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$errstr</span><span style="color: #007700">);<br />if&nbsp;(!</span><span style="color: #0000BB">$socket</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"</span><span style="color: #0000BB">$errstr</span><span style="color: #DD0000">&nbsp;(</span><span style="color: #0000BB">$errno</span><span style="color: #DD0000">)&lt;br&nbsp;/&gt;\n"</span><span style="color: #007700">;<br />}&nbsp;else&nbsp;{<br />&nbsp;&nbsp;while&nbsp;(</span><span style="color: #0000BB">$conn&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">stream_socket_accept</span><span style="color: #007700">(</span><span style="color: #0000BB">$socket</span><span style="color: #007700">))&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">fwrite</span><span style="color: #007700">(</span><span style="color: #0000BB">$conn</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'Локальное&nbsp;время&nbsp;'&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">date</span><span style="color: #007700">(</span><span style="color: #DD0000">'n/j/Y&nbsp;g:i&nbsp;a'</span><span style="color: #007700">)&nbsp;.&nbsp;</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">fclose</span><span style="color: #007700">(</span><span style="color: #0000BB">$conn</span><span style="color: #007700">);<br />&nbsp;&nbsp;}<br />&nbsp;&nbsp;</span><span style="color: #0000BB">fclose</span><span style="color: #007700">(</span><span style="color: #0000BB">$socket</span><span style="color: #007700">);<br />}<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+  </p>
+  <p class="para">
+   Пример ниже показывает, как работать в качестве сервера времени, который может отвечать 
+   на запросы времени, как показано в примере функции <span class="function"><a href="function.stream-socket-client.html" class="function">stream_socket_client()</a></span>.
+   <blockquote class="note"><p><b class="note">Замечание</b>: 
+    <span class="simpara">
+     Большинство систем требуют доступа с правами  root для создания серверного сокета на порту
+     ниже, чем  1024.
+    </span>
+   </p></blockquote>
+   <div class="example" id="example-3637">
+    <p><b>Пример #2 Пример использования серверных сокетов UDP</b></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$socket&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">stream_socket_server</span><span style="color: #007700">(</span><span style="color: #DD0000">"udp://127.0.0.1:1113"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$errno</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$errstr</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">STREAM_SERVER_BIND</span><span style="color: #007700">);<br />if&nbsp;(!</span><span style="color: #0000BB">$socket</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;die(</span><span style="color: #DD0000">"</span><span style="color: #0000BB">$errstr</span><span style="color: #DD0000">&nbsp;(</span><span style="color: #0000BB">$errno</span><span style="color: #DD0000">)"</span><span style="color: #007700">);<br />}<br /><br />do&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$pkt&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">stream_socket_recvfrom</span><span style="color: #007700">(</span><span style="color: #0000BB">$socket</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">1</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$peer</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"</span><span style="color: #0000BB">$peer</span><span style="color: #DD0000">\n"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">stream_socket_sendto</span><span style="color: #007700">(</span><span style="color: #0000BB">$socket</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">date</span><span style="color: #007700">(</span><span style="color: #DD0000">"D&nbsp;M&nbsp;j&nbsp;H:i:s&nbsp;Y\r\n"</span><span style="color: #007700">),&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$peer</span><span style="color: #007700">);<br />}&nbsp;while&nbsp;(</span><span style="color: #0000BB">$pkt&nbsp;</span><span style="color: #007700">!==&nbsp;</span><span style="color: #0000BB">false</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+  </p>
+ </div>
+
+
+ <div class="refsect1 notes" id="refsect1-function.stream-socket-server-notes">
+  <h3 class="title">Примечания</h3>
+  <blockquote class="note"><p><b class="note">Замечание</b>: <span class="simpara">При указании числового адреса IPv6
+(например, <i>fe80::1</i>) вы должны заключать его в квадратные скобки. Например,
+<i>tcp://[fe80::1]:80</i>.</span></p></blockquote>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-function.stream-socket-server-seealso">
+  <h3 class="title">Смотрите также</h3>
+  <ul class="simplelist">
+   <li class="member"><span class="function"><a href="function.stream-socket-client.html" class="function" rel="rdfs-seeAlso">stream_socket_client()</a> - Открывает соединение с интернет-сокетом или с доменным сокетом Unix</span></li>
+   <li class="member"><span class="function"><a href="function.stream-set-blocking.html" class="function" rel="rdfs-seeAlso">stream_set_blocking()</a> - Устанавливает блокирующий/неблокирующий режим на потоке</span></li>
+   <li class="member"><span class="function"><a href="function.stream-set-timeout.html" class="function" rel="rdfs-seeAlso">stream_set_timeout()</a> - Устанавливает значение тайм-аута на потоке</span></li>
+   <li class="member"><span class="function"><a href="function.fgets.html" class="function" rel="rdfs-seeAlso">fgets()</a> - Читает строку из файла</span></li>
+   <li class="member"><span class="function"><a href="function.fgetss.html" class="function" rel="rdfs-seeAlso">fgetss()</a> - Прочитать строку из файла и отбросить HTML-теги</span></li>
+   <li class="member"><span class="function"><a href="function.fwrite.html" class="function" rel="rdfs-seeAlso">fwrite()</a> - Бинарно-безопасная запись в файл</span></li>
+   <li class="member"><span class="function"><a href="function.fclose.html" class="function" rel="rdfs-seeAlso">fclose()</a> - Закрывает открытый дескриптор файла</span></li>
+   <li class="member"><span class="function"><a href="function.feof.html" class="function" rel="rdfs-seeAlso">feof()</a> - Проверяет, достигнут ли конец файла</span></li>
+   <li class="member"><a href="ref.curl.html" class="link">Расширение curl</a></li>
+  </ul>
+ </div>
+
+</div><hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.stream-socket-sendto.html">stream_socket_sendto</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.stream-socket-shutdown.html">stream_socket_shutdown</a></div>
+ <div class="up"><a href="ref.stream.html">Stream Функции</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

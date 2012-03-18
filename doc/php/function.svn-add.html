@@ -1,0 +1,158 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Добавляет элементы в список запланированных для добавления в рабочую копию</title>
+
+ </head>
+ <body><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="ref.svn.html">SVN</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.svn-auth-get-parameter.html">svn_auth_get_parameter</a></div>
+ <div class="up"><a href="ref.svn.html">SVN</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.svn-add" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">svn_add</h1>
+  <p class="verinfo">(PECL svn &gt;= 0.1.0)</p><p class="refpurpose"><span class="refname">svn_add</span> &mdash; <span class="dc-title">Добавляет элементы в список запланированных для добавления в рабочую копию</span></p>
+
+ </div>
+
+ <div class="refsect1 description" id="refsect1-function.svn-add-description">
+  <h3 class="title">Описание</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">bool</span> <span class="methodname"><b>svn_add</b></span>
+    ( <span class="methodparam"><span class="type">string</span> <tt class="parameter">$path</tt></span>
+   [, <span class="methodparam"><span class="type">bool</span> <tt class="parameter">$recursive</tt><span class="initializer"> = true</span></span>
+   [, <span class="methodparam"><span class="type">bool</span> <tt class="parameter">$force</tt><span class="initializer"> = false</span></span>
+  ]] )</div>
+
+  <p class="para rdfs-comment">
+   Добавляет файл, папку или символическую ссылку <i><tt class="parameter">path</tt></i>
+   в рабочую копию. Данные будут добавлены в репозиторий 
+   при следующием вызове метода <span class="function"><a href="function.svn-commit.html" class="function">svn_commit()</a></span> для рабочей копии.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-function.svn-add-parameters">
+  <h3 class="title">Список параметров</h3>
+  <p class="para">
+   <dl>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">path</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Путь к добавляемой папке, файлу или ссылке.
+      </p>
+      <blockquote class="note"><p><b class="note">Замечание</b>: <span class="simpara">Относительные пути будут вычислены,
+как если бы текущая рабочая директория являлась домашней папкой самого PHP. Чтобы использовать рабочую директорию
+вызывающего скрипта, используйте <span class="function"><a href="function.realpath.html" class="function">realpath()</a></span> или dirname(__FILE__).</span></p></blockquote>
+     </dd>
+
+    </dt>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">recursive</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Если добавляется директория, флаг определят будет ли рекурсивно добавлено
+       всё ее содержимое. По умолчанию <b><tt>TRUE</tt></b>
+      </p>
+     </dd>
+
+    </dt>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">force</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Если значение параметра эквивалентно <b><tt>TRUE</tt></b> -- Subversion будет рекурсивно просматривать 
+       уже известные директории, для того, чтобы добавить
+       файлы, которые находятся в этих директориях, но не были взяты под контроль Subversion.
+       По умолчанию <b><tt>FALSE</tt></b>
+      </p>
+     </dd>
+
+    </dt>
+
+   </dl>
+
+  </p>
+
+ </div>
+
+ <div class="refsect1 returnvalues" id="refsect1-function.svn-add-returnvalues">
+  <h3 class="title">Возвращаемые значения</h3>
+  <p class="para">
+   Возвращает <b><tt>TRUE</tt></b> в случае успешного завершения  или <b><tt>FALSE</tt></b> в случае возникновения ошибки.
+  </p>
+ </div>
+
+
+ <div class="refsect1 notes" id="refsect1-function.svn-add-notes">
+  <h3 class="title">Примечания</h3>
+  <div class="warning"><b class="warning">Внимание</b><p class="simpara">
+Эта функция является <em class="emphasis">ЭКСПЕРИМЕНТАЛЬНОЙ</em>.
+Поведение этой функции, ее имя и относящаяся к ней документация
+могут измениться в последующих версиях PHP без уведомления.
+Используйте эту функцию на свой страх и риск.</p></div>
+ </div>
+
+
+ 
+
+ 
+
+ <div class="refsect1 examples" id="refsect1-function.svn-add-examples">
+  <h3 class="title">Примеры</h3>
+  <p class="para">
+   <div class="example" id="example-4175">
+    <p><b>Пример #1 <span class="function"><b>svn_add()</b></span> example</b></p>
+    <div class="example-contents"><p>
+     В рабочей директории, где <strong class="userinput"><code>svn status</code></strong>
+     возвращает:
+    </p></div>
+    <div class="example-contents screen">
+<div class="examplescode"><pre class="examplescode">$ svn status
+?      foobar.txt</pre>
+</div>
+    </div>
+    <div class="example-contents"><p>...данный код:</p></div>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />svn_add</span><span style="color: #007700">(</span><span style="color: #DD0000">'foobar.txt'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+    <div class="example-contents"><p>
+     ...пометит файл <var class="filename">foobar.txt</var> как запланированный на добавление в репозиторий.
+    </p></div>
+   </div>
+  </p>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-function.svn-add-seealso">
+  <h3 class="title">Смотрите также</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><a href="http://svnbook.red-bean.com/en/1.2/svn.ref.svn.c.add.html" class="link external">&raquo;&nbsp;SVN документация по команде svn add</a></li>
+   </ul>
+  </p>
+ </div>
+
+
+</div><hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="ref.svn.html">SVN</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.svn-auth-get-parameter.html">svn_auth_get_parameter</a></div>
+ <div class="up"><a href="ref.svn.html">SVN</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

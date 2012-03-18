@@ -1,0 +1,121 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Проверяет на наличие печатных символов</title>
+
+ </head>
+ <body><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.ctype-lower.html">ctype_lower</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.ctype-punct.html">ctype_punct</a></div>
+ <div class="up"><a href="ref.ctype.html">Ctype</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.ctype-print" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">ctype_print</h1>
+  <p class="verinfo">(PHP 4 &gt;= 4.0.4, PHP 5)</p><p class="refpurpose"><span class="refname">ctype_print</span> &mdash; <span class="dc-title">Проверяет на наличие печатных символов</span></p>
+
+ </div>
+ 
+ <div class="refsect1 description" id="refsect1-function.ctype-print-description">
+  <h3 class="title">Описание</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">bool</span> <span class="methodname"><b>ctype_print</b></span>
+    ( <span class="methodparam"><span class="type">string</span> <tt class="parameter">$text</tt></span>
+   )</div>
+
+  <p class="para rdfs-comment">
+   Проверяет, все ли символы в переданной строке
+   <i><tt class="parameter">text</tt></i> являются печатными.
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 parameters" id="refsect1-function.ctype-print-parameters">
+  <h3 class="title">Список параметров</h3>
+  <p class="para">
+   <dl>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">text</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Проверяемая строка.
+      </p>
+     </dd>
+
+    </dt>
+
+   </dl>
+
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 returnvalues" id="refsect1-function.ctype-print-returnvalues">
+  <h3 class="title">Возвращаемые значения</h3>
+  <p class="para">
+   Возвращает <b><tt>TRUE</tt></b>, если каждый символ в строке <i><tt class="parameter">text</tt></i> 
+   фактически создает вывод (включая пустой). Возвращает <b><tt>FALSE</tt></b>, если 
+   <i><tt class="parameter">text</tt></i> содержит управляющие символы, или символы, 
+   которые вообще не имеют никакого вывода или функции управления.
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 examples" id="refsect1-function.ctype-print-examples">
+  <h3 class="title">Примеры</h3>
+  <p class="para">
+   <div class="example" id="example-4578">
+    <p><b>Пример #1 Пример использования <span class="function"><b>ctype_print()</b></span></b></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$strings&nbsp;</span><span style="color: #007700">=&nbsp;array(</span><span style="color: #DD0000">'string1'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">"asdf\n\r\t"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'string2'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'arf12'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'string3'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'LKA#@%.54'</span><span style="color: #007700">);<br />foreach&nbsp;(</span><span style="color: #0000BB">$strings&nbsp;</span><span style="color: #007700">as&nbsp;</span><span style="color: #0000BB">$name&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">$testcase</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(</span><span style="color: #0000BB">ctype_print</span><span style="color: #007700">(</span><span style="color: #0000BB">$testcase</span><span style="color: #007700">))&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"Строка&nbsp;'</span><span style="color: #0000BB">$name</span><span style="color: #DD0000">'&nbsp;состоит&nbsp;только&nbsp;из&nbsp;печатных&nbsp;символов.\n"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;else&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"Строка&nbsp;'</span><span style="color: #0000BB">$name</span><span style="color: #DD0000">'&nbsp;не&nbsp;состоит&nbsp;только&nbsp;из&nbsp;печатных&nbsp;символов.\n"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />}<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+    <div class="example-contents"><p>Результат выполнения данного примера:</p></div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+Строка &#039;string1&#039; не состоит только из печатных символов.
+Строка &#039;string2&#039; состоит только из печатных символов.
+Строка &#039;string3&#039; состоит только из печатных символов.
+</pre></div>
+    </div>
+   </div>
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 notes" id="refsect1-function.ctype-print-notes">
+  <h3 class="title">Примечания</h3>
+  <blockquote class="note"><p><b class="note">Замечание</b>: <p class="para">
+Если передан <span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span> в диапазоне между -128 и 255 включительно,
+то он будет обработан как ASCII-код одного символа (к отрицательным
+значениям будет прибавлено 256 для возможности представления символов из
+расширенного диапазона ASCII). Любое другое целое число будет обработано
+как строка, содержащая десятичные цифры этого числа.</p></p></blockquote>
+ </div>
+
+ 
+ <div class="refsect1 seealso" id="refsect1-function.ctype-print-seealso">
+  <h3 class="title">Смотрите также</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><span class="function"><a href="function.ctype-cntrl.html" class="function" rel="rdfs-seeAlso">ctype_cntrl()</a> - Проверяет на наличие управляющих символов</span></li>
+    <li class="member"><span class="function"><a href="function.ctype-graph.html" class="function" rel="rdfs-seeAlso">ctype_graph()</a> - Проверяет наличие всех печатных символов, кроме пробела</span></li>
+    <li class="member"><span class="function"><a href="function.ctype-punct.html" class="function" rel="rdfs-seeAlso">ctype_punct()</a> - Проверяет на наличие печатных символов, которые в то же время
+   не являются пробельными или буквенно-цифровыми символами</span></li>
+   </ul>
+  </p>
+ </div>
+
+</div><hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.ctype-lower.html">ctype_lower</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.ctype-punct.html">ctype_punct</a></div>
+ <div class="up"><a href="ref.ctype.html">Ctype</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

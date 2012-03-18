@@ -1,0 +1,111 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Отправляет серверу команду SITE</title>
+
+ </head>
+ <body><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.ftp-set-option.html">ftp_set_option</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.ftp-size.html">ftp_size</a></div>
+ <div class="up"><a href="ref.ftp.html">FTP Функции</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.ftp-site" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">ftp_site</h1>
+  <p class="verinfo">(PHP 4, PHP 5)</p><p class="refpurpose"><span class="refname">ftp_site</span> &mdash; <span class="dc-title">Отправляет серверу команду SITE</span></p>
+
+ </div>
+ <div class="refsect1 description" id="refsect1-function.ftp-site-description">
+  <h3 class="title">Описание</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">bool</span> <span class="methodname"><b>ftp_site</b></span>
+    ( <span class="methodparam"><span class="type">resource</span> <tt class="parameter">$ftp_stream</tt></span>
+   , <span class="methodparam"><span class="type">string</span> <tt class="parameter">$command</tt></span>
+   )</div>
+
+  <p class="para rdfs-comment">
+   <span class="function"><b>ftp_site()</b></span> отправляет указанную команду
+   <i>SITE</i> FTP-серверу.
+  </p>
+  <p class="para">
+   Команды <i>SITE</i> не стандартизированы, и зависят от
+   FTP-сервера. Они могут быть полезны для изменения прав доступа к файлам или
+   смены владельца или группы.
+  </p>
+ </div>
+
+ <div class="refsect1 parameters" id="refsect1-function.ftp-site-parameters">
+  <h3 class="title">Список параметров</h3>
+  <p class="para">
+   <dl>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">ftp_stream</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Идентификатор соединения с FTP-сервером.
+      </p>
+     </dd>
+
+    </dt>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">command</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Команда SITE. Обратите внимание, что этот параметр не проходит
+       экранирование спецсимволов, так что могут возникнуть проблемы с
+       именами, содержащими пробелы и прочие подобные символы.
+      </p>
+     </dd>
+
+    </dt>
+
+   </dl>
+
+  </p>
+ </div>
+
+ <div class="refsect1 returnvalues" id="refsect1-function.ftp-site-returnvalues">
+  <h3 class="title">Возвращаемые значения</h3>
+  <p class="para">
+   Возвращает <b><tt>TRUE</tt></b> в случае успешного завершения  или <b><tt>FALSE</tt></b> в случае возникновения ошибки.
+  </p>
+ </div>
+
+ <div class="refsect1 examples" id="refsect1-function.ftp-site-examples">
+  <h3 class="title">Примеры</h3>
+  <p class="para">
+   <div class="example" id="example-3834">
+    <p><b>Пример #1 Отправка команды SITE FTP-серверу</b></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">//&nbsp;Соединение&nbsp;с&nbsp;FTP-сервером<br /></span><span style="color: #0000BB">$conn&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">ftp_connect</span><span style="color: #007700">(</span><span style="color: #DD0000">'ftp.example.com'</span><span style="color: #007700">);<br />if&nbsp;(!</span><span style="color: #0000BB">$conn</span><span style="color: #007700">)&nbsp;die(</span><span style="color: #DD0000">'Не&nbsp;удалось&nbsp;подключиться&nbsp;к&nbsp;ftp.example.com'</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;Вход&nbsp;под&nbsp;именем&nbsp;"user"&nbsp;с&nbsp;паролем&nbsp;"pass"<br /></span><span style="color: #007700">if&nbsp;(!</span><span style="color: #0000BB">ftp_login</span><span style="color: #007700">(</span><span style="color: #0000BB">$conn</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'user'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'pass'</span><span style="color: #007700">))&nbsp;die(</span><span style="color: #DD0000">'Не&nbsp;удалось&nbsp;войти&nbsp;на&nbsp;ftp.example.com'</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;Отправка&nbsp;"SITE&nbsp;CHMOD&nbsp;0600&nbsp;/home/user/privatefile"&nbsp;FTP-серверу<br /></span><span style="color: #007700">if&nbsp;(</span><span style="color: #0000BB">ftp_site</span><span style="color: #007700">(</span><span style="color: #0000BB">$conn</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'CHMOD&nbsp;0600&nbsp;/home/user/privatefile'</span><span style="color: #007700">))&nbsp;{<br />&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"Команда&nbsp;выполнена.\n"</span><span style="color: #007700">;<br />}&nbsp;else&nbsp;{<br />&nbsp;&nbsp;&nbsp;die(</span><span style="color: #DD0000">'Команда&nbsp;не&nbsp;выполнена.'</span><span style="color: #007700">);<br />}<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+  </p>
+ </div>
+
+ <div class="refsect1 seealso" id="refsect1-function.ftp-site-seealso">
+  <h3 class="title">Смотрите также</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><span class="function"><a href="function.ftp-raw.html" class="function" rel="rdfs-seeAlso">ftp_raw()</a> - Отправляет произвольную команду FTP-серверу</span></li>
+   </ul>
+  </p>
+ </div>
+
+</div><hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.ftp-set-option.html">ftp_set_option</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.ftp-size.html">ftp_size</a></div>
+ <div class="up"><a href="ref.ftp.html">FTP Функции</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

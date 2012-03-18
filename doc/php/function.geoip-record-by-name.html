@@ -1,0 +1,215 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Возвращает подробную информацию об адресе, найденом в базе GeoIP</title>
+
+ </head>
+ <body><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.geoip-org-by-name.html">geoip_org_by_name</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.geoip-region-by-name.html">geoip_region_by_name</a></div>
+ <div class="up"><a href="ref.geoip.html">GeoIP Функции</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.geoip-record-by-name" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">geoip_record_by_name</h1>
+  <p class="verinfo">(PECL geoip &gt;= 0.2.0)</p><p class="refpurpose"><span class="refname">geoip_record_by_name</span> &mdash; <span class="dc-title">Возвращает подробную информацию об адресе, найденом в базе GeoIP</span></p>
+
+ </div>
+ <div class="refsect1 description" id="refsect1-function.geoip-record-by-name-description">
+  <h3 class="title">Описание</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">array</span> <span class="methodname"><b>geoip_record_by_name</b></span>
+    ( <span class="methodparam"><span class="type">string</span> <tt class="parameter">$hostname</tt></span>
+   )</div>
+
+
+  <p class="para rdfs-comment">
+   Функция <span class="function"><b>geoip_record_by_name()</b></span> возвращает информацию
+   о соответствующем имени хоста или IP адреса.
+  </p>
+  <p class="para">
+   Функция доступна для бесплатной версии GeoLite City Edition и коммерческой GeoIP
+   City Edition. Если необходимые базы отсутствует, выводится предупреждение.
+  </p>
+  <p class="para">
+   Имена ключей возвращаемого ассоциативного массива:
+  </p>
+  <p class="para">
+   <ul class="itemizedlist">
+    <li class="listitem">
+     <span class="simpara">
+      &quot;continent_code&quot; -- Две буквы кода континента (начиная с версии  1.0.4 с 
+      libgeoip 1.4.3 или более поздней)
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      &quot;country_code&quot; -- Две буквы кода страны (см.
+      <span class="function"><a href="function.geoip-country-code-by-name.html" class="function">geoip_country_code_by_name()</a></span>)
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      &quot;country_code3&quot; -- Три буквы кода страны (см.
+      <span class="function"><a href="function.geoip-country-code3-by-name.html" class="function">geoip_country_code3_by_name()</a></span>)
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      &quot;country_name&quot; -- Название страны (см.
+      <span class="function"><a href="function.geoip-country-name-by-name.html" class="function">geoip_country_name_by_name()</a></span>)
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      &quot;region&quot; -- Код Региона (например: CA для Калифорнии)
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      &quot;city&quot; -- Город.
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      &quot;postal_code&quot; -- Почтовый индекс.
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      &quot;latitude&quot; -- Широта, знаковое вещественное число (signed double).
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      &quot;longitude&quot; -- Долгота, знаковое вещественное число (signed double).
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      &quot;dma_code&quot; -- Код рыночной зоны (DMA, только для США и Канады)
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      &quot;area_code&quot; -- Код телефонной сети общего пользования (PSTN, например: 212)
+     </span>
+    </li>
+   </ul>
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-function.geoip-record-by-name-parameters">
+  <h3 class="title">Список параметров</h3>
+  <p class="para">
+   <dl>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">hostname</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Имя хоста или IP адрес, данные о котором должны быть получены.
+      </p>
+     </dd>
+
+    </dt>
+
+   </dl>
+
+  </p>
+ </div>
+
+ <div class="refsect1 returnvalues" id="refsect1-function.geoip-record-by-name-returnvalues">
+  <h3 class="title">Возвращаемые значения</h3>
+  <p class="para">
+   Возвращает ассоциативный массив в случае успеха или <b><tt>FALSE</tt></b>, 
+   если адрес не может быть найден в базе.
+  </p>
+ </div>
+
+
+ <div class="refsect1 changelog" id="refsect1-function.geoip-record-by-name-changelog">
+  <h3 class="title">Список изменений</h3>
+  <p class="para">
+   <table class="doctable informaltable">
+    
+     <thead valign="middle">
+      <tr valign="middle">
+       <th>Версия</th>
+       <th>Описание</th>
+      </tr>
+
+     </thead>
+
+     <tbody valign="middle" class="tbody">
+      <tr valign="middle">
+       <td align="left">1.0.4</td>
+       <td align="left">
+        Добавленен код континента (continent_code) с GeoIP Library 1.4.3 или более поздними.
+       </td>
+      </tr>
+
+      <tr valign="middle">
+       <td align="left">1.0.3</td>
+       <td align="left">
+        Добавлен трехбуквенный код страны (country_code3) и название страны (and country_name).
+       </td>
+      </tr>
+
+     </tbody>
+    
+   </table>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-function.geoip-record-by-name-examples">
+  <h3 class="title">Примеры</h3>
+  <p class="para">
+   <div class="example" id="example-3348">
+    <p><b>Пример #1 Пример использования <span class="function"><b>geoip_record_by_name()</b></span></b></p>
+    <div class="example-contents"><p>
+     Выведет массив, содержащий запись о хосте example.com.
+    </p></div>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$record&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">geoip_record_by_name</span><span style="color: #007700">(</span><span style="color: #DD0000">'www.example.com'</span><span style="color: #007700">);<br />if&nbsp;(</span><span style="color: #0000BB">$record</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">print_r</span><span style="color: #007700">(</span><span style="color: #0000BB">$record</span><span style="color: #007700">);<br />}<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+    <div class="example-contents"><p>Результат выполнения данного примера:</p></div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+Array
+(
+    [continent_code] =&gt; NA
+    [country_code] =&gt; US
+    [country_code3] =&gt; USA
+    [country_name] =&gt; United States
+    [region] =&gt; CA
+    [city] =&gt; Marina Del Rey
+    [postal_code] =&gt; 
+    [latitude] =&gt; 33.9776992798
+    [longitude] =&gt; -118.435096741
+    [dma_code] =&gt; 803
+    [area_code] =&gt; 310
+)
+</pre></div>
+    </div>
+   </div>
+  </p>
+ </div>
+
+
+</div><hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.geoip-org-by-name.html">geoip_org_by_name</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.geoip-region-by-name.html">geoip_region_by_name</a></div>
+ <div class="up"><a href="ref.geoip.html">GeoIP Функции</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

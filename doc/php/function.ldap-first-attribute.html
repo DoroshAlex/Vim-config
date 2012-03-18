@@ -1,0 +1,146 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Вернуть первый атрибут</title>
+
+ </head>
+ <body><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.ldap-explode-dn.html">ldap_explode_dn</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.ldap-first-entry.html">ldap_first_entry</a></div>
+ <div class="up"><a href="ref.ldap.html">LDAP</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.ldap-first-attribute" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">ldap_first_attribute</h1>
+  <p class="verinfo">(PHP 4, PHP 5)</p><p class="refpurpose"><span class="refname">ldap_first_attribute</span> &mdash; <span class="dc-title">Вернуть первый атрибут</span></p>
+
+ </div>
+ 
+ <div class="refsect1 description" id="refsect1-function.ldap-first-attribute-description">
+  <h3 class="title">Описание</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">string</span> <span class="methodname"><b>ldap_first_attribute</b></span>
+    ( <span class="methodparam"><span class="type">resource</span> <tt class="parameter">$link_identifier</tt></span>
+   , <span class="methodparam"><span class="type">resource</span> <tt class="parameter">$result_entry_identifier</tt></span>
+   )</div>
+
+  <p class="para rdfs-comment">
+   Получает первый атрибут в данной записи. Остающиеся атрибуты получаются последовательным вызовом 
+ <span class="function"><a href="function.ldap-next-attribute.html" class="function">ldap_next_attribute()</a></span>.
+  </p>
+  <p class="para">
+   Подобно чтению записей, атрибуты также читаются один за другим из отдельного элемента.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-function.ldap-first-attribute-parameters">
+  <h3 class="title">Список параметров</h3>
+  <p class="para">
+   <dl>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">link_identifier</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Идентификатор ссылки LDAP, возвращенный <span class="function"><a href="function.ldap-connect.html" class="function">ldap_connect()</a></span>.
+      </p>
+     </dd>
+
+    </dt>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">result_entry_identifier</tt></i></span>
+     <dd>
+
+      <p class="para">
+      </p>
+     </dd>
+
+    </dt>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">ber_identifier</tt></i></span>
+     <dd>
+
+      <p class="para">
+       <i><tt class="parameter">ber_identifier</tt></i> является идентификатором внутреннего
+    указателя ячейки памяти. Он передается по ссылке. Также <i><tt class="parameter">ber_identifier</tt></i>
+    передается в <span class="function"><a href="function.ldap-next-attribute.html" class="function">ldap_next_attribute()</a></span>, которая изменяет этот указатель.
+      </p>
+      <blockquote class="note"><p><b class="note">Замечание</b>: 
+       <p class="para">
+        Этот параметр больше не используется, поскольку теперь автоматически обрабатывается 
+        PHP. Для целей обратной совместимости, PHP не выдает ошибку, если этот параметр все же передаётся.
+       </p>
+      </p></blockquote>
+     </dd>
+
+    </dt>
+
+   </dl>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-function.ldap-first-attribute-returnvalues">
+  <h3 class="title">Возвращаемые значения</h3>
+  <p class="para">
+   Возвращает первый атрибут в записи, в случае успеха, и <b><tt>FALSE</tt></b> в случае ошибки.
+  </p>
+ </div>
+
+
+ <div class="refsect1 changelog" id="refsect1-function.ldap-first-attribute-changelog">
+  <h3 class="title">Список изменений</h3>
+  <p class="para">
+   <table class="doctable informaltable">
+    
+     <thead valign="middle">
+      <tr valign="middle">
+       <th>Версия</th>
+       <th>Описание</th>
+      </tr>
+
+     </thead>
+
+     <tbody valign="middle" class="tbody">
+      <tr valign="middle">
+       <td align="left">5.2.4</td>
+       <td align="left">
+        Параметр <i><tt class="parameter">ber_identifier</tt></i> был удалён. 
+        В настоящее время обрабатывается PHP автоматически.
+       </td>
+      </tr>
+
+     </tbody>
+    
+   </table>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-function.ldap-first-attribute-seealso">
+  <h3 class="title">Смотрите также</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><span class="function"><a href="function.ldap-next-attribute.html" class="function" rel="rdfs-seeAlso">ldap_next_attribute()</a> - Получить следующий атрибут из результата</span></li>
+    <li class="member"><span class="function"><a href="function.ldap-get-attributes.html" class="function" rel="rdfs-seeAlso">ldap_get_attributes()</a> - Получает атрибуты из записи в результатах поиска</span></li>
+   </ul>
+  </p>
+ </div>
+
+
+</div><hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.ldap-explode-dn.html">ldap_explode_dn</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.ldap-first-entry.html">ldap_first_entry</a></div>
+ <div class="up"><a href="ref.ldap.html">LDAP</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

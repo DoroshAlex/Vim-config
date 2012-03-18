@@ -1,0 +1,261 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Форматирует интервал</title>
+
+ </head>
+ <body><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="dateinterval.createfromdatestring.html">DateInterval::createFromDateString</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="class.dateperiod.html">DatePeriod</a></div>
+ <div class="up"><a href="class.dateinterval.html">DateInterval</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="dateinterval.format" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">DateInterval::format</h1>
+  <p class="verinfo">(PHP 5 &gt;= 5.3.0)</p><p class="refpurpose"><span class="refname">DateInterval::format</span> &mdash; <span class="dc-title">Форматирует интервал</span></p>
+
+ </div>
+
+ <div class="refsect1 description" id="refsect1-dateinterval.format-description">
+  <h3 class="title">Описание</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">string</span> <span class="methodname"><b>DateInterval::format</b></span>
+    ( <span class="methodparam"><span class="type">string</span> <tt class="parameter">$format</tt></span>
+   )</div>
+
+  <p class="para rdfs-comment">
+   Форматирует интервал.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-dateinterval.format-parameters">
+  <h3 class="title">Список параметров</h3>
+  <p class="para">
+   <dl>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">format</tt></i></span>
+     <dd>
+
+      <p class="para">
+       <table class="doctable table">
+        <caption><b>
+         В строке <i><tt class="parameter">format</tt></i> распознаются следующие символы.
+         Каждому такому символу должен предшествовать знак процента (<i>%</i>).
+        </b></caption>
+        
+         <thead valign="middle">
+          <tr valign="middle">
+           <th>Символ в строке<i><tt class="parameter">format</tt></i></th>
+           <th>Описание</th>
+           <th>Пример значения</th>
+          </tr>
+
+         </thead>
+
+         <tbody valign="middle" class="tbody">
+          <tr valign="middle">
+           <td align="left"><i>%</i></td>
+           <td align="left">Символ <i>%</i></td>
+           <td align="left"><i>%</i></td>
+          </tr>
+
+          <tr valign="middle">
+           <td align="left"><i>Y</i></td>
+           <td align="left">Годы, число, минимум две цифры с ведущими нулями</td>
+           <td align="left"><i>01</i>, <i>03</i></td>
+          </tr>
+
+          <tr valign="middle">
+           <td align="left"><i>y</i></td>
+           <td align="left">Годы, число</td>
+           <td align="left"><i>1</i>, <i>3</i></td>
+          </tr>
+
+          <tr valign="middle">
+           <td align="left"><i>M</i></td>
+           <td align="left">Месяцы, число, минимум две цифры с ведущими нулями</td>
+           <td align="left"><i>01</i>, <i>03</i>, <i>12</i></td>
+          </tr>
+
+          <tr valign="middle">
+           <td align="left"><i>m</i></td>
+           <td align="left">Месяцы, число</td>
+           <td align="left"><i>1</i>, <i>3</i>, <i>12</i></td>
+          </tr>
+
+          <tr valign="middle">
+           <td align="left"><i>D</i></td>
+           <td align="left">Дни, число, минимум две цифры с ведущими нулями</td>
+           <td align="left"><i>01</i>, <i>03</i>, <i>31</i></td>
+          </tr>
+
+          <tr valign="middle">
+           <td align="left"><i>d</i></td>
+           <td align="left">Дни, число</td>
+           <td align="left"><i>1</i>, <i>3</i>, <i>31</i></td>
+          </tr>
+
+          <tr valign="middle">
+           <td align="left"><i>a</i></td>
+           <td align="left">Общее количество дней</td>
+           <td align="left"><i>4</i>, <i>18</i>, <i>8123</i></td>
+          </tr>
+
+          <tr valign="middle">
+           <td align="left"><i>H</i></td>
+           <td align="left">Часы, число, минимум две цифры с ведущими нулями</td>
+           <td align="left"><i>01</i>, <i>03</i>, <i>23</i></td>
+          </tr>
+
+          <tr valign="middle">
+           <td align="left"><i>h</i></td>
+           <td align="left">Часы, число</td>
+           <td align="left"><i>1</i>, <i>3</i>, <i>23</i></td>
+          </tr>
+
+          <tr valign="middle">
+           <td align="left"><i>I</i></td>
+           <td align="left">Минуты, число, минимум две цифры с ведущими нулями</td>
+           <td align="left"><i>01</i>, <i>03</i>, <i>59</i></td>
+          </tr>
+
+          <tr valign="middle">
+           <td align="left"><i>i</i></td>
+           <td align="left">Минуты, число</td>
+           <td align="left"><i>1</i>, <i>3</i>, <i>59</i></td>
+          </tr>
+
+          <tr valign="middle">
+           <td align="left"><i>S</i></td>
+           <td align="left">Секунды, число, минимум две цифры с ведущими нулями</td>
+           <td align="left"><i>01</i>, <i>03</i>, <i>57</i></td>
+          </tr>
+
+          <tr valign="middle">
+           <td align="left"><i>s</i></td>
+           <td align="left">Секунды, число</td>
+           <td align="left"><i>1</i>, <i>3</i>, <i>57</i></td>
+          </tr>
+
+          <tr valign="middle">
+           <td align="left"><i>R</i></td>
+           <td align="left">Знак &quot;<i>-</i>&quot; при отрицательном числе, &quot;<i>+</i>&quot; при положительном</td>
+           <td align="left"><i>-</i>, <i>+</i></td>
+          </tr>
+
+          <tr valign="middle">
+           <td align="left"><i>r</i></td>
+           <td align="left">Знак &quot;<i>-</i>&quot; при отрицательном числе, пусто при положительном</td>
+           <td align="left"><i>-</i>, <i></td>
+          </tr>
+
+         </tbody>
+        
+       </table>
+
+      </p>
+     </dd>
+
+    </dt>
+
+   </dl>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-dateinterval.format-returnvalues">
+  <h3 class="title">Возвращаемые значения</h3>
+  <p class="para">
+   Возвращает отформатированный интервал.
+  </p>
+ </div>
+
+
+ <div class="refsect1 notes" id="refsect1-dateinterval.format-notes">
+  <h3 class="title">Примечания</h3>
+  <blockquote class="note"><p><b class="note">Замечание</b>: 
+   <p class="para">
+    Метод  <span class="methodname"><b>DateInterval::format()</b></span> 
+    не делает пересчета и переноса единиц времени при переполнении значений дат.    
+    Это ожидаемое поведение, поскольку невозможно реализовать перенос при значениях, например, 
+    <i>&quot;32 days&quot;</i>, которые могут интерпретироваться по-разному, начиная 
+    <i>&quot;1 month and 4 days&quot;</i> и заканчивая <i>&quot;1 month and 1 day&quot;</i>.
+   </p>
+  </p></blockquote>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-dateinterval.format-examples">
+  <h3 class="title">Примеры</h3>
+  <p class="para">
+   <div class="example" id="example-634">
+    <p><b>Пример #1 Пример использования <a href="class.dateinterval.html" class="classname">DateInterval</a></b></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /><br />$interval&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">DateInterval</span><span style="color: #007700">(</span><span style="color: #DD0000">'P2Y4DT6H8M'</span><span style="color: #007700">);<br />echo&nbsp;</span><span style="color: #0000BB">$interval</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">format</span><span style="color: #007700">(</span><span style="color: #DD0000">'%d&nbsp;days'</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+    <div class="example-contents"><p>Результат выполнения данного примера:</p></div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+4 days
+</pre></div>
+    </div>
+   </div>
+  </p>
+  <p class="para">
+   <div class="example" id="example-635">
+    <p><b>Пример #2 <a href="class.dateinterval.html" class="classname">DateInterval</a> и перенос единиц</b></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /><br />$interval&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">DateInterval</span><span style="color: #007700">(</span><span style="color: #DD0000">'P32D'</span><span style="color: #007700">);<br />echo&nbsp;</span><span style="color: #0000BB">$interval</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">format</span><span style="color: #007700">(</span><span style="color: #DD0000">'%d&nbsp;days'</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+    <div class="example-contents"><p>Результат выполнения данного примера:</p></div>
+   <div class="example-contents screen">
+<div class="cdata"><pre>
+32 days
+</pre></div>
+    </div>
+   </div>
+  </p>
+  <p class="para">
+   <div class="example" id="example-636">
+    <p><b>Пример #3 
+     <a href="class.dateinterval.html" class="classname">DateInterval</a> и 
+      <span class="methodname"><a href="datetime.diff.html" class="methodname">DateTime::diff()</a></span> с модификаторами %a и %d
+    </b></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /><br />$january&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">DateTime</span><span style="color: #007700">(</span><span style="color: #DD0000">'2010-01-01'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$february&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">DateTime</span><span style="color: #007700">(</span><span style="color: #DD0000">'2010-02-01'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$interval&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$february</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">diff</span><span style="color: #007700">(</span><span style="color: #0000BB">$january</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;%a&nbsp;выведет&nbsp;общее&nbsp;количество&nbsp;дней.<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">$interval</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">format</span><span style="color: #007700">(</span><span style="color: #DD0000">'%a&nbsp;total&nbsp;days'</span><span style="color: #007700">).</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br /><br /></span><span style="color: #FF8000">//&nbsp;В&nbsp;то&nbsp;время&nbsp;как&nbsp;%d&nbsp;выведет&nbsp;только&nbsp;число&nbsp;дней,&nbsp;не&nbsp;покрытых&nbsp;месяцем<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">$interval</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">format</span><span style="color: #007700">(</span><span style="color: #DD0000">'%m&nbsp;month,&nbsp;%d&nbsp;days'</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+    <div class="example-contents"><p>Результат выполнения данного примера:</p></div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+31 total days
+1 month, 0 days
+</pre></div>
+    </div>
+   </div>
+  </p>
+ </div>
+
+
+</div><hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="dateinterval.createfromdatestring.html">DateInterval::createFromDateString</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="class.dateperiod.html">DatePeriod</a></div>
+ <div class="up"><a href="class.dateinterval.html">DateInterval</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

@@ -1,0 +1,141 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>&quot;Волшебные&quot; константы</title>
+
+ </head>
+ <body><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="language.constants.syntax.html">Синтаксис</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="language.expressions.html">Выражения</a></div>
+ <div class="up"><a href="language.constants.html">Константы</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="language.constants.predefined" class="sect1">
+   <h2 class="title">&quot;Волшебные&quot; константы</h2>
+
+   <p class="simpara">
+    PHP предоставляет большой список <a href="reserved.constants.html" class="link">
+    предопределенных констант</a> для каждого выполняемого скрипта. Многие из
+    этих констант определяются различными модулями и будут присутствовать только
+    в том случае, если эти модули доступны в результате динамической загрузки
+    или в результате статической сборки.
+   </p>
+   
+   <p class="para">
+    Есть семь волшебных констант, которые меняют свое значение в
+    зависимости от контекста, в котором они используются.
+    Например, значение <b><tt>__LINE__</tt></b> зависит от строки в скрипте,
+    на которой эта константа указана. Специальные константы нечувствительны
+    к регистру и их список приведен ниже:
+   </p>
+   <p class="para">
+    <table class="doctable table">
+     <caption><b>Некоторые &quot;волшебные&quot; константы PHP</b></caption>
+     
+      <thead valign="middle">
+       <tr valign="middle">
+        <th>Имя</th>
+        <th>Описание</th>
+       </tr>
+
+      </thead>
+
+      <tbody valign="middle" class="tbody">
+       <tr valign="middle">
+        <td align="left"><b><tt>__LINE__</tt></b></td>
+        <td align="left">
+         Текущий номер строки в файле.
+        </td>
+       </tr>
+
+       <tr valign="middle">
+        <td align="left"><b><tt>__FILE__</tt></b></td>
+        <td align="left">
+         Полный путь и имя текущего файла. Если используется внутри
+         подключаемого файла, то возвращается имя данного файла.
+         Начиная с версии PHP 4.0.2, <b><tt>__FILE__</tt></b>
+         всегда содержит абсолютный путь с разрешенными символическими
+         ссылками, тогда как в старых версиях в некоторых обстоятельствах
+         возвращался относительный путь.
+        </td>
+       </tr>
+
+       <tr valign="middle">
+        <td align="left"><b><tt>__DIR__</tt></b></td>
+        <td align="left">
+         Директория файла.  Если используется внутри подключаемого файла,
+         то возвращается директория этого файла. Это эквивалентно вызову
+         <i>dirname(__FILE__)</i>. Возвращаемое имя директории
+         не оканчивается на слэш, за исключением корневой директории
+         (добавлена в PHP 5.3.0.)
+        </td>
+       </tr>
+
+       <tr valign="middle">
+        <td align="left"><b><tt>__FUNCTION__</tt></b></td>
+        <td align="left">
+         Имя функции. (Добавлена в PHP 4.3.0.) Начиная с PHP 5 эта константа
+         возвращает имя функции точно так, как оно было объявлено (с учетом
+         регистра). В PHP 4 это значение всегда было в нижнем регистре.
+        </td>
+       </tr>
+
+       <tr valign="middle">
+        <td align="left"><b><tt>__CLASS__</tt></b></td>
+        <td align="left">
+         Имя класса. (Добавлена в PHP 4.3.0) Начиная с PHP 5 эта константа
+         возвращает имя класса точно так, как оно было объявлено (с учетом
+         регистра). В PHP 4 это значение всегда было в нижнем регистре. Имя класса
+         содержит название пространства имен, в котором класс был объявлен 
+         (например, <i>Foo\Bar</i>).
+         Обратите внимание, что начиная с PHP5.4 __CLASS__ также работает в
+         трейтах. При использовании в методах трейтов __CLASS__ является именем
+         класса, в котором эти методы используется.
+        </td>
+       </tr>
+
+       <tr valign="middle">
+        <td align="left"><b><tt>__TRAIT__</tt></b></td>
+        <td align="left">
+         Имя трейта. (Добавлена в PHP 5.4.0) Начиная с PHP 5.4 эта константа 
+         возвращает имя трейта точно так, как оно было объявлено (с учетом
+         регистра). Это имя содержит название пространства имен, в котором трейт
+         был объявлен (например, <i>Foo\Bar</i>).
+        </td>
+       </tr>
+
+       
+       <tr valign="middle">
+        <td align="left"><b><tt>__METHOD__</tt></b></td>
+        <td align="left">
+         Имя метода класса. (Добавлена в PHP 5.0.0) Имя метода возвращается так,
+         как оно было объявлено (с учетом регистра).
+        </td>
+       </tr>
+
+       <tr valign="middle">
+        <td align="left"><b><tt>__NAMESPACE__</tt></b></td>
+        <td align="left">
+         Имя текущего пространства имен (с учетом регистра). Эта константа
+         определяется во время компиляции (Добавлена в версии PHP 5.3.0).
+        </td>
+       </tr>
+
+      </tbody>
+     
+    </table>
+
+   </p>
+   <p class="para">
+    Смотрите также
+    <span class="function"><a href="function.get-class.html" class="function">get_class()</a></span>,
+    <span class="function"><a href="function.get-object-vars.html" class="function">get_object_vars()</a></span>,
+    <span class="function"><a href="function.file-exists.html" class="function">file_exists()</a></span> и
+    <span class="function"><a href="function.function-exists.html" class="function">function_exists()</a></span>.
+   </p>
+  </div><hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="language.constants.syntax.html">Синтаксис</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="language.expressions.html">Выражения</a></div>
+ <div class="up"><a href="language.constants.html">Константы</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

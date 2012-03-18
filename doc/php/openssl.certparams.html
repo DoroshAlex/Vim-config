@@ -1,0 +1,92 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Параметры Ключа/Сертификата</title>
+
+ </head>
+ <body><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="openssl.constsni.html">Константа SNI (Server Name Indication)</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="openssl.cert.verification.html">Проверка сертификатов</a></div>
+ <div class="up"><a href="book.openssl.html">OpenSSL</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="openssl.certparams" class="appendix">
+ <h1>Параметры Ключа/Сертификата</h1>
+
+ <p class="para">
+  Некоторые функции openssl требуют параметры в виде ключа или сертификата.
+  В версии PHP 4.0.5 и более ранних должны использоваться ключ или сертификат,
+  определенные как ресурс (<span class="type"><a href="language.types.resource.html" class="type resource">resource</a></span>), возвращаемый функциями 
+  <i>openssl_get_xxx()</i>.
+  В более поздних версиях PHP можно использовать один из следующих вариантов:
+  <ul class="itemizedlist">
+   <li class="listitem">
+    <p class="para">
+     Сертификаты
+     <ol type="1">
+      <li class="listitem">
+       <span class="simpara">
+        Ресурс X.509 возвращаемый функцией
+        <span class="function"><a href="function.openssl-x509-read.html" class="function">openssl_x509_read()</a></span>
+       </span>
+      </li>
+      <li class="listitem">
+       <span class="simpara">Строка формата 
+        <var class="filename">file://path/to/cert.pem</var>; указанный файл должен содержать
+        сертификат в формате PEM
+       </span>
+      </li>
+      <li class="listitem">
+       <span class="simpara">
+        Строка, в которой находится содержииое сертификата/ключа, формат PEM
+       </span>
+      </li>
+     </ol>
+    </p>
+   </li>
+   
+   <li class="listitem">
+    <p class="para">
+     Публичные/Приватные Ключи
+     <ol type="1">
+      <li class="listitem">
+       <span class="simpara">Ресурс Ключ, возвращаемый функциями
+        <span class="function"><a href="function.openssl-get-publickey.html" class="function">openssl_get_publickey()</a></span> или
+        <span class="function"><a href="function.openssl-get-privatekey.html" class="function">openssl_get_privatekey()</a></span>
+       </span>
+      </li>
+      <li class="listitem">
+       <span class="simpara">Только для открытых ключей: ресурс X.509</span>
+      </li>
+      <li class="listitem">
+       <span class="simpara">Строка формата
+        <var class="filename">file://path/to/file.pem</var>;указанный файл должен содержать
+        сертификат в формате PEM (может содержать оба ключа)
+       </span>
+      </li>
+      <li class="listitem">
+       <span class="simpara">
+        Строка, в которой находится содержииое сертификата/ключа, формат PEM
+       </span>
+      </li>
+      <li class="listitem">
+       <span class="simpara">
+        Для приватных ключей возможно использование синтаксиса
+        <i>array($key, $passphrase)</i> где <var class="varname"><var class="varname">$key</var></var> представляет
+        ключ указанный при помощи формата file:// или текстовое содержимое описанное выше, и
+        <var class="varname"><var class="varname">$passphrase</var></var> представляет строку, содержащую пароль для указанного
+        приватного ключа
+       </span>
+      </li>
+     </ol>
+    </p> 
+   </li>
+  </ul>
+ </p>
+</div>
+<hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="openssl.constsni.html">Константа SNI (Server Name Indication)</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="openssl.cert.verification.html">Проверка сертификатов</a></div>
+ <div class="up"><a href="book.openssl.html">OpenSSL</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

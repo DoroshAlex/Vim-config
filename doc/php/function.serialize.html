@@ -1,0 +1,180 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Генерирует пригодное для хранения представление переменной</title>
+
+ </head>
+ <body><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.print-r.html">print_r</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.settype.html">settype</a></div>
+ <div class="up"><a href="ref.var.html">Функции для работы с переменными</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.serialize" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">serialize</h1>
+  <p class="verinfo">(PHP 4, PHP 5)</p><p class="refpurpose"><span class="refname">serialize</span> &mdash; <span class="dc-title">Генерирует пригодное для хранения представление переменной</span></p>
+
+ </div>
+ 
+ <div class="refsect1 description" id="refsect1-function.serialize-description">
+  <h3 class="title">Описание</h3>
+   <div class="methodsynopsis dc-description">
+    <span class="type">string</span> <span class="methodname"><b>serialize</b></span>
+     ( <span class="methodparam"><span class="type"><a href="language.pseudo-types.html#language.types.mixed" class="type mixed">mixed</a></span> <tt class="parameter">$value</tt></span>
+    )</div>
+
+  <p class="para rdfs-comment">
+   Генерирует пригодное для хранения представление переменной
+  </p>
+  <p class="para">
+   Это полезно для хранения или передачи значений PHP между скриптами без
+   потери их типа и структуры.
+  </p>
+  <p class="para">
+   Для превращения сериализованной строки обратно в PHP-значение, используйте
+   функцию <span class="function"><a href="function.unserialize.html" class="function">unserialize()</a></span>.  
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-function.serialize-parameters">
+  <h3 class="title">Список параметров</h3>
+  <p class="para">
+   <dl>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">value</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Значение, которое необходимо сериализовать. <span class="function"><b>serialize()</b></span>
+       обрабатывает все типы, кроме <span class="type"><a href="language.types.resource.html" class="type resource">resource</a></span>.
+       Возможно также сериализовать массивы, которые содержат
+       ссылки на себя. Циклические ссылки внутри сериализуемого
+       массива/объекта также сохраняются. Любые другие
+       ссылки будут потеряны.
+      </p>
+      <p class="para">
+       При сериализации объекта PHP пытается вызвать магический метод
+       <a href="language.oop5.magic.html#language.oop5.magic.sleep" class="link">__sleep</a> перед сериализацией.
+       Это делается для того, чтобы позволить объекту в последний
+       момент произвести очистку и тому подобные операции перед сериализацией.
+       Аналогично, когда объект восстанавливается функцией
+       <span class="function"><a href="function.unserialize.html" class="function">unserialize()</a></span>, вызывается магический метод <a href="language.oop5.magic.html#language.oop5.magic.sleep" class="link">__wakeup</a>.
+      </p>
+      <blockquote class="note"><p><b class="note">Замечание</b>: 
+       <p class="para">
+        В начало имен приватных членов объекта дополняется имя класса,
+        а в начало имен защищенных членов &#039;*&#039;. Эти дополненные
+        значения окружаются нулевым байтом (0x00) с обеих сторон.
+       </p>
+      </p></blockquote>
+     </dd>
+
+    </dt>
+
+   </dl>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-function.serialize-returnvalues">
+  <h3 class="title">Возвращаемые значения</h3>
+  <p class="para">
+   Возвращает строку, содержащую потоковое представление переменной 
+   <i><tt class="parameter">value</tt></i>, которая может быть сохранена где угодно.
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-function.serialize-examples">
+  <h3 class="title">Примеры</h3>
+  <p class="para">
+   <div class="example" id="example-4750">
+    <p><b>Пример #1 Пример использования <span class="function"><b>serialize()</b></span></b></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">//&nbsp;$session_data&nbsp;содержит&nbsp;многомерный&nbsp;массив&nbsp;с&nbsp;сессионной<br />//&nbsp;информацией&nbsp;о&nbsp;текущем&nbsp;пользователе.&nbsp;Мы&nbsp;используем&nbsp;serialize()&nbsp;для&nbsp;сохранения<br />//&nbsp;этой&nbsp;информации&nbsp;в&nbsp;базе&nbsp;данных&nbsp;в&nbsp;конце&nbsp;запроса.<br /><br /></span><span style="color: #0000BB">$conn&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">odbc_connect</span><span style="color: #007700">(</span><span style="color: #DD0000">"webdb"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"php"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"chicken"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$stmt&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">odbc_prepare</span><span style="color: #007700">(</span><span style="color: #0000BB">$conn</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">"UPDATE&nbsp;sessions&nbsp;SET&nbsp;data&nbsp;=&nbsp;?&nbsp;WHERE&nbsp;id&nbsp;=&nbsp;?"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$sqldata&nbsp;</span><span style="color: #007700">=&nbsp;array&nbsp;(</span><span style="color: #0000BB">serialize</span><span style="color: #007700">(</span><span style="color: #0000BB">$session_data</span><span style="color: #007700">),&nbsp;</span><span style="color: #0000BB">$_SERVER</span><span style="color: #007700">[</span><span style="color: #DD0000">'PHP_AUTH_USER'</span><span style="color: #007700">]);<br />if&nbsp;(!</span><span style="color: #0000BB">odbc_execute</span><span style="color: #007700">(</span><span style="color: #0000BB">$stmt</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$sqldata</span><span style="color: #007700">))&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$stmt&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">odbc_prepare</span><span style="color: #007700">(</span><span style="color: #0000BB">$conn</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">"INSERT&nbsp;INTO&nbsp;sessions&nbsp;(id,&nbsp;data)&nbsp;VALUES(?,&nbsp;?)"</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(!</span><span style="color: #0000BB">odbc_execute</span><span style="color: #007700">(</span><span style="color: #0000BB">$stmt</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$sqldata</span><span style="color: #007700">))&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">/*&nbsp;Код,&nbsp;выполняемый&nbsp;при&nbsp;ошибке..&nbsp;*/<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">}<br />}<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+  </p>
+ </div>
+
+
+ <div class="refsect1 changelog" id="refsect1-function.serialize-changelog">
+  <h3 class="title">Список изменений</h3>
+  <p class="para">
+   <table class="doctable informaltable">
+    
+     <thead valign="middle">
+      <tr valign="middle">
+       <th>Версия</th>
+       <th>Описание</th>
+      </tr>
+
+     </thead>
+
+     <tbody valign="middle" class="tbody">
+      <tr valign="middle">
+       <td align="left">4.0.7</td>
+       <td align="left">
+        Был исправлен процесс сериализации объектов.
+       </td>
+      </tr>
+
+     </tbody>
+    
+   </table>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 notes" id="refsect1-function.serialize-notes">
+  <h3 class="title">Примечания</h3>
+  <blockquote class="note"><p><b class="note">Замечание</b>: 
+   <p class="para">
+    Заметьте, что много встроенных в PHP объектов не может быть
+    сериализовано. Однако, те из них, которые поддерживают эту
+    возможность, реализуют или интерфейс
+    <span class="interfacename"><a href="class.serializable.html" class="interfacename">Serializable</a></span>, или
+    магические методы <a href="language.oop5.magic.html#language.oop5.magic.sleep" class="link">__sleep</a>
+    и <a href="language.oop5.magic.html#language.oop5.magic.sleep" class="link">__wakeup</a>. Если
+    встроенный класс не удовлетворяет этим требованиям,
+    он не может быть надежно сериализован.
+   </p>
+   <p class="para">
+    Исторически есть некоторые исключения из вышеуказанного правила,
+    когда некоторые внутренние объекты могут быть сериализованы без
+    реализации интерфейса или магических методов. К примеру,
+    <a href="class.arrayobject.html" class="classname">ArrayObject</a> до PHP 5.2.0.
+   </p>
+  </p></blockquote>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-function.serialize-seealso">
+  <h3 class="title">Смотрите также</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><span class="function"><a href="function.unserialize.html" class="function" rel="rdfs-seeAlso">unserialize()</a> - Создает PHP-значение из хранимого представления</span></li>
+    <li class="member"><a href="language.oop5.serialization.html" class="link">Сериализация объектов</a></li>
+    <li class="member"><a href="language.oop5.magic.html#language.oop5.magic.sleep" class="link">__sleep</a></li>
+    <li class="member"><a href="language.oop5.magic.html#language.oop5.magic.sleep" class="link">__wakeup</a></li>
+   </ul>
+  </p>
+ </div>
+
+
+</div><hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.print-r.html">print_r</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.settype.html">settype</a></div>
+ <div class="up"><a href="ref.var.html">Функции для работы с переменными</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

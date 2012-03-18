@@ -1,0 +1,96 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>continue</title>
+
+ </head>
+ <body><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="control-structures.break.html">break</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="control-structures.switch.html">switch</a></div>
+ <div class="up"><a href="language.control-structures.html">Управляющие конструкции</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="control-structures.continue" class="sect1">
+ <h2 class="title"><i>continue</i></h2>
+ <p class="verinfo">(PHP 4, PHP5)</p>
+ <p class="simpara">
+  <i>continue</i> используется внутри циклических структур для
+  пропуска оставшейся части текущей итерации цикла и, при соблюдении условий,
+  начала следующей итерации.
+ </p>
+ <blockquote class="note"><p><b class="note">Замечание</b>: 
+  <span class="simpara">
+   Заметим, что в PHP структура
+   <a href="control-structures.switch.html" class="link">switch</a> считается
+   циклической, и внутри нее может использоваться
+   <i>continue</i>.
+  </span>
+ </p></blockquote>
+ <p class="simpara">
+  <i>continue</i> принимает необязательный числовой аргумент,
+  который указывает сколько итераций будет пропущено.
+ </p>
+ <blockquote class="note"><p><b class="note">Замечание</b>: 
+  <p class="para">
+   <i>continue 0;</i> и <i>continue 1;</i> есть одно и то же, что и
+   <i>continue;</i>.
+  </p>
+ </p></blockquote>
+ <p class="para">
+  <div class="informalexample">
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">while&nbsp;(list(</span><span style="color: #0000BB">$key</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$value</span><span style="color: #007700">)&nbsp;=&nbsp;</span><span style="color: #0000BB">each</span><span style="color: #007700">(</span><span style="color: #0000BB">$arr</span><span style="color: #007700">))&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(!(</span><span style="color: #0000BB">$key&nbsp;</span><span style="color: #007700">%&nbsp;</span><span style="color: #0000BB">2</span><span style="color: #007700">))&nbsp;{&nbsp;</span><span style="color: #FF8000">//&nbsp;пропуск&nbsp;нечетных&nbsp;чисел<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">continue;<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">do_something_odd</span><span style="color: #007700">(</span><span style="color: #0000BB">$value</span><span style="color: #007700">);<br />}<br /><br /></span><span style="color: #0000BB">$i&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">;<br />while&nbsp;(</span><span style="color: #0000BB">$i</span><span style="color: #007700">++&nbsp;&lt;&nbsp;</span><span style="color: #0000BB">5</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"Снаружи&lt;br&nbsp;/&gt;\n"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;while&nbsp;(</span><span style="color: #0000BB">1</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"В&nbsp;середине&lt;br&nbsp;/&gt;\n"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;while&nbsp;(</span><span style="color: #0000BB">1</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"Внутри&lt;br&nbsp;/&gt;\n"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;continue&nbsp;</span><span style="color: #0000BB">3</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"Это&nbsp;никогда&nbsp;не&nbsp;будет&nbsp;выведено.&lt;br&nbsp;/&gt;\n"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"Это&nbsp;тоже.&lt;br&nbsp;/&gt;\n"</span><span style="color: #007700">;<br />}<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+   </div>
+
+  </div>
+ </p>
+ <p class="para">
+  Пропуск точки запятой после <i>continue</i> может привести
+  к путанице. Пример как не надо делать.
+ </p>
+ <p class="para">
+  <div class="informalexample">
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">for&nbsp;(</span><span style="color: #0000BB">$i&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">;&nbsp;</span><span style="color: #0000BB">$i&nbsp;</span><span style="color: #007700">&lt;&nbsp;</span><span style="color: #0000BB">5</span><span style="color: #007700">;&nbsp;++</span><span style="color: #0000BB">$i</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(</span><span style="color: #0000BB">$i&nbsp;</span><span style="color: #007700">==&nbsp;</span><span style="color: #0000BB">2</span><span style="color: #007700">)<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;continue<br />&nbsp;&nbsp;&nbsp;&nbsp;print&nbsp;</span><span style="color: #DD0000">"</span><span style="color: #0000BB">$i</span><span style="color: #DD0000">\n"</span><span style="color: #007700">;<br />}<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+   </div>
+
+   <p class="para">
+    Ожидается, что результат будет такой:
+   </p>
+   <div class="example-contents screen">
+<div class="cdata"><pre>
+0
+1
+3
+4
+</pre></div>
+   </div>
+   <p class="para">
+    Но этот скрипт выведет следующее:
+   </p>
+   <div class="example-contents screen">
+<div class="cdata"><pre>
+2
+</pre></div>
+   </div>
+   <p class="para">
+    Потому что выражение <i>continue print &quot;$i\n&quot;;</i> воспринимается
+    как единое выражение, и <span class="function"><a href="function.print.html" class="function">print()</a></span> вызыватеся только тогда, 
+    когда выражение <i>$i == 2</i> истинно. (Возвращаемое значение от
+    <i>print</i> передается к <i>continue</i> как
+    числовой аргумент.)
+   </p>
+  </div>
+ </p>
+</div><hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="control-structures.break.html">break</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="control-structures.switch.html">switch</a></div>
+ <div class="up"><a href="language.control-structures.html">Управляющие конструкции</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

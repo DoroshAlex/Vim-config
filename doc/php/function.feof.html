@@ -1,0 +1,109 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Проверяет, достигнут ли конец файла</title>
+
+ </head>
+ <body><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.fclose.html">fclose</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.fflush.html">fflush</a></div>
+ <div class="up"><a href="ref.filesystem.html">Файловая система</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.feof" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">feof</h1>
+  <p class="verinfo">(PHP 4, PHP 5)</p><p class="refpurpose"><span class="refname">feof</span> &mdash; <span class="dc-title">Проверяет, достигнут ли конец файла</span></p>
+
+ </div>
+
+ <div class="refsect1 description" id="refsect1-function.feof-description">
+  <h3 class="title">Описание</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">bool</span> <span class="methodname"><b>feof</b></span>
+    ( <span class="methodparam"><span class="type">resource</span> <tt class="parameter">$handle</tt></span>
+   )</div>
+
+  <p class="para rdfs-comment">
+   Проверяет, достигнут ли конец файла.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-function.feof-parameters">
+  <h3 class="title">Список параметров</h3>
+  <p class="para">
+   <dl>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">handle</tt></i></span>
+     <dd>
+
+      <p class="para">Указатель на файл должен быть корректным и указывать
+на файл, успешно открытый функциями <span class="function"><a href="function.fopen.html" class="function">fopen()</a></span> или
+<span class="function"><a href="function.fsockopen.html" class="function">fsockopen()</a></span> (и все еще не закрытым функцией <span class="function"><a href="function.fclose.html" class="function">fclose()</a></span>).</p>
+     </dd>
+
+    </dt>
+
+   </dl>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-function.feof-returnvalues">
+  <h3 class="title">Возвращаемые значения</h3>
+  <p class="para">
+   Возвращает <b><tt>TRUE</tt></b>, если указатель файла указывает на EOF или
+   произошла ошибка (в том числе таймаут сокета), иначе возвращает <b><tt>FALSE</tt></b>.
+  </p>
+ </div>
+
+
+ <div class="refsect1 notes" id="refsect1-function.feof-notes">
+  <h3 class="title">Примечания</h3>
+  <div class="warning"><b class="warning">Внимание</b>
+   <p class="para">
+    Если подключение, открытое при помощи <span class="function"><a href="function.fsockopen.html" class="function">fsockopen()</a></span>
+    не было закрыто сервером, <span class="function"><b>feof()</b></span> повиснет.
+    Для варианта обхода этого поведения смотрите следующий пример:
+    <div class="example" id="example-2105">
+     <p><b>Пример #1 Обработка таймаутов с функцией <span class="function"><b>feof()</b></span></b></p>
+     <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">function&nbsp;</span><span style="color: #0000BB">safe_feof</span><span style="color: #007700">(</span><span style="color: #0000BB">$fp</span><span style="color: #007700">,&nbsp;&amp;</span><span style="color: #0000BB">$start&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">NULL</span><span style="color: #007700">)&nbsp;{<br />&nbsp;</span><span style="color: #0000BB">$start&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">microtime</span><span style="color: #007700">(</span><span style="color: #0000BB">true</span><span style="color: #007700">);<br /><br />&nbsp;return&nbsp;</span><span style="color: #0000BB">feof</span><span style="color: #007700">(</span><span style="color: #0000BB">$fp</span><span style="color: #007700">);<br />}<br /><br /></span><span style="color: #FF8000">/*&nbsp;Предположим,&nbsp;что&nbsp;$fp&nbsp;был&nbsp;ранее&nbsp;открыт&nbsp;с&nbsp;помощью&nbsp;fsockopen()&nbsp;*/<br /><br /></span><span style="color: #0000BB">$start&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">NULL</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$timeout&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">ini_get</span><span style="color: #007700">(</span><span style="color: #DD0000">'default_socket_timeout'</span><span style="color: #007700">);<br /><br />while(!</span><span style="color: #0000BB">safe_feof</span><span style="color: #007700">(</span><span style="color: #0000BB">$fp</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$start</span><span style="color: #007700">)&nbsp;&amp;&amp;&nbsp;(</span><span style="color: #0000BB">microtime</span><span style="color: #007700">(</span><span style="color: #0000BB">true</span><span style="color: #007700">)&nbsp;-&nbsp;</span><span style="color: #0000BB">$start</span><span style="color: #007700">)&nbsp;&lt;&nbsp;</span><span style="color: #0000BB">$timeout</span><span style="color: #007700">)<br />{<br />&nbsp;</span><span style="color: #FF8000">/*&nbsp;Обработка&nbsp;*/<br /></span><span style="color: #007700">}<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+     </div>
+
+    </div>
+   </p>
+  </div>
+  <div class="warning"><b class="warning">Внимание</b>
+   <p class="para">
+    Если передан неверный файловый указатель, то вы можете получить
+    бесконечный цикл, так как <span class="function"><b>feof()</b></span> не сможет
+    вернуть <b><tt>TRUE</tt></b>.
+    <div class="example" id="example-2106">
+     <p><b>Пример #2 Пример <span class="function"><b>feof()</b></span> с неверным файловым указателем</b></p>
+     <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">//&nbsp;если&nbsp;файл&nbsp;не&nbsp;может&nbsp;быть&nbsp;прочтен&nbsp;или&nbsp;не&nbsp;существует,&nbsp;fopen&nbsp;вернет&nbsp;FALSE<br /></span><span style="color: #0000BB">$file&nbsp;</span><span style="color: #007700">=&nbsp;@</span><span style="color: #0000BB">fopen</span><span style="color: #007700">(</span><span style="color: #DD0000">"no_such_file"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"r"</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;FALSE&nbsp;от&nbsp;fopen&nbsp;вызовет&nbsp;предупреждение&nbsp;и&nbsp;следующий&nbsp;цикл&nbsp;станет&nbsp;бесконечным<br /></span><span style="color: #007700">while&nbsp;(!</span><span style="color: #0000BB">feof</span><span style="color: #007700">(</span><span style="color: #0000BB">$file</span><span style="color: #007700">))&nbsp;{<br />}<br /><br /></span><span style="color: #0000BB">fclose</span><span style="color: #007700">(</span><span style="color: #0000BB">$file</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+     </div>
+
+    </div>
+   </p>
+  </div>
+ </div>
+
+
+</div><hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.fclose.html">fclose</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.fflush.html">fflush</a></div>
+ <div class="up"><a href="ref.filesystem.html">Файловая система</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

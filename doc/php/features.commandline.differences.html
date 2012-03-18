@@ -1,0 +1,242 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Основные отличия от остальных реализаций SAPI</title>
+
+ </head>
+ <body><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="features.commandline.introduction.html">Введение</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="features.commandline.options.html">Опции</a></div>
+ <div class="up"><a href="features.commandline.html">Использование PHP в командной строке</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="features.commandline.differences" class="section">
+  <h2 class="title">Основные отличия от остальных реализаций <acronym title="Server Application Programming Interface">SAPI</acronym></h2>
+
+  <p class="para">
+   Основные отличия <acronym title="Command Line Interpreter/Interface">CLI</acronym> <acronym title="Server Application Programming Interface">SAPI</acronym> от остальных реализаций
+   <acronym title="Server Application Programming Interface">SAPI</acronym>:
+   <ul class="itemizedlist">
+    <li class="listitem">
+     <p class="para">
+      В отличие от <acronym title="Common Gateway Interface">CGI</acronym> <acronym title="Server Application Programming Interface">SAPI</acronym>,
+      заголовки не пишутся в поток вывода.
+     </p>
+     <p class="para">
+      Несмотря на то, что в <acronym title="Common Gateway Interface">CGI</acronym> <acronym title="Server Application Programming Interface">SAPI</acronym>
+      есть способ подавления HTTP-заголовков, в <acronym title="Command Line Interpreter/Interface">CLI</acronym> <acronym title="Server Application Programming Interface">SAPI</acronym> нет
+      возможности их включить.
+     </p>
+     <p class="para">
+      <acronym title="Command Line Interpreter/Interface">CLI</acronym> по умолчанию запускается в тихом режиме, тем не менее,
+      ключи <strong class="option unknown">-q</strong>
+ и <strong class="option unknown">--no-header</strong>
+
+      сохранены для обратной совместимости, что позволяет
+      использовать старые <acronym title="Common Gateway Interface">CGI</acronym>-скрипты.
+     </p>
+     <p class="para">
+      Текущая директория не изменяется на рабочую директорию скрипта.
+      (Ключи <strong class="option unknown">-C</strong>
+ и <strong class="option unknown">--no-chdir</strong>
+
+      сохранены для обратной совместимости)
+     </p>
+     <p class="para">
+      Сообщения об ошибках выдаются в текстовом режиме
+      (без <acronym title="Hyper Text Markup Language">HTML</acronym>-форматирования).
+     </p>
+    </li>
+
+    <li class="listitem">
+     <p class="para">
+      Некоторые настройки <var class="filename">php.ini</var> переопределены  в <acronym title="Command Line Interpreter/Interface">CLI</acronym> <acronym title="Server Application Programming Interface">SAPI</acronym>,
+      поскольку они не имеют особого смысла при работе в командной строке:
+     </p>
+     <p class="para">
+      <table class="doctable table">
+       <caption><b>Переопределяемые директивы <var class="filename">php.ini</var></b></caption>
+       
+        <thead valign="middle">
+         <tr valign="middle">
+          <th>Директива</th>
+          <th>Значение по умолчанию в <acronym title="Command Line Interpreter/Interface">CLI</acronym> <acronym title="Server Application Programming Interface">SAPI</acronym></th>
+          <th>Комментарий</th>
+         </tr>
+
+        </thead>
+
+        <tbody valign="middle" class="tbody">
+         <tr valign="middle">
+          <td align="left"><a href="errorfunc.configuration.html#ini.html-errors" class="link">html_errors</a></td>
+          <td align="left"><b><tt>FALSE</tt></b></td>
+          <td align="left">
+           По умолчанию <b><tt>FALSE</tt></b>, т.к. бывает достаточно сложно читать в консоли 
+           сообщения об ошибке, когда они наполнены бессмысленными <acronym title="Hyper Text Markup Language">HTML</acronym>-тегами.
+          </td>
+         </tr>
+
+         <tr valign="middle">
+          <td align="left"><a href="outcontrol.configuration.html#ini.implicit-flush" class="link">implicit_flush</a></td>
+          <td align="left"><b><tt>TRUE</tt></b></td>
+          <td align="left">
+           Обычно в консоли желательно отображать вывод, например из
+           из <span class="function"><a href="function.print.html" class="function">print()</a></span>, <span class="function"><a href="function.echo.html" class="function">echo()</a></span> и др.,
+           сразу же минуя буфер. Тем не менее, попрежнему можно использовать
+           <a href="ref.outcontrol.html" class="link">буферизацию вывода</a> для
+           отложенного вывода или манипуляций с ним.
+          </td>
+         </tr>
+
+         <tr valign="middle">
+          <td align="left"><a href="info.configuration.html#ini.max-execution-time" class="link">max_execution_time</a></td>
+          <td align="left">0 (без ограничений)</td>
+          <td align="left">
+           PHP, выполняемый в консоли, как правило используется для более широкого диапазона
+           задач, чем обычные web-скрипты. И так как они могут выполняться очень долго,
+           то максимальное время выполнения не ограничено.
+          </td>
+         </tr>
+
+         <tr valign="middle">
+          <td align="left"><a href="ini.core.html#ini.register-argc-argv" class="link">register_argc_argv</a></td>
+          <td align="left"><b><tt>TRUE</tt></b></td>
+          <td align="left">
+          <p class="para">
+           Установка этой опции в значение <b><tt>TRUE</tt></b> означает, что скрипты
+           запускаемые через <acronym title="Command Line Interpreter/Interface">CLI</acronym> <acronym title="Server Application Programming Interface">SAPI</acronym> всегда
+           имеют доступ к <em class="emphasis">argc</em>(количество аргументов при запуске приложения)
+           и <em class="emphasis">argv</em> (массив текущих аргументов).
+          </p>
+          <p class="para">
+           При использовании <acronym title="Command Line Interpreter/Interface">CLI</acronym> <acronym title="Server Application Programming Interface">SAPI</acronym>
+           переменные <var class="varname"><var class="varname"><a href="reserved.variables.argc.html" class="classname">$argc</a></var></var> и <var class="varname"><var class="varname"><a href="reserved.variables.argv.html" class="classname">$argv</a></var></var>
+           автоматически заполняются соответствующими значениями. Эти
+           значения можно также найти в массиве <var class="varname"><var class="varname"><a href="reserved.variables.server.html" class="classname">$_SERVER</a></var></var>.
+           Пример:
+           <var class="varname"><var class="varname"><a href="reserved.variables.server.html" class="classname">$_SERVER['argv']</a></var></var>
+          </p>
+          </td>
+         </tr>
+
+         <tr valign="middle">
+          <td align="left"><a href="outcontrol.configuration.html#ini.output-buffering" class="link">output_buffering</a></td>
+          <td align="left"><b><tt>FALSE</tt></b></td>
+          <td align="left">
+           <p class="para">
+            Несмотря на то, что эта опция <var class="filename">php.ini</var> жестко установлена в <b><tt>FALSE</tt></b>,
+            функции <a href="book.outcontrol.html" class="link">буферизации вывода</a> все еще
+            доступны.
+           </p>
+          </td>
+         </tr>
+
+         <tr valign="middle">
+          <td align="left"><a href="info.configuration.html#ini.max-input-time" class="link">max_input_time</a></td>
+          <td align="left"><b><tt>FALSE</tt></b></td>
+          <td align="left">
+           <p class="para">
+            PHP <acronym title="Command Line Interpreter/Interface">CLI</acronym> не поддерживает GET, POST или загрузку файлов.
+           </p>
+          </td>
+         </tr>
+
+        </tbody>
+       
+      </table>
+
+     </p>
+     <blockquote class="note"><p><b class="note">Замечание</b>: 
+      <p class="para">
+       Эти директивы не могут быть инициализированы другими значениями
+       из конфигурационного файла <var class="filename">php.ini</var> или любого другого (в случае, если он указан).
+       Это является ограничением, поскольку указанные выше значения по умолчанию применяются
+       после обработки конфигурационных файлов. Тем не менее, эти значения
+       могут быть изменены во время работы скрипта (хотя это не имеет особого смысла
+       для указанных директив, например, для <a href="ini.core.html#ini.register-argc-argv" class="link">register_argc_argv</a>).
+      </p>
+     </p></blockquote>
+     <blockquote class="note"><p><b class="note">Замечание</b>: 
+      <p class="para">
+       Рекомендуется установить опцию
+       <a href="misc.configuration.html#ini.ignore-user-abort" class="link">ignore_user_abort</a> для
+       скриптов, используемых из командной строки. За подробностями
+       обращайтесь к функции <span class="function"><a href="function.ignore-user-abort.html" class="function">ignore_user_abort()</a></span>.
+      </p>
+     </p></blockquote>
+    </li>
+
+    <li class="listitem">
+     <p class="para">
+      Для облегчения работы в консольном окружении было определено
+      некоторое количество констант для
+      <a href="features.commandline.io-streams.html" class="link">потоков ввода/вывода</a>.
+     </p>
+    </li>
+
+    <li class="listitem">
+     <p class="para">
+      <acronym title="Command Line Interpreter/Interface">CLI</acronym> <acronym title="Server Application Programming Interface">SAPI</acronym> <em class="emphasis">не</em>
+      изменяет текущую директорию на директорию исполняемого скрипта.
+     </p>
+     <div class="example" id="example-341">
+      <p><b>Пример #1 
+       Пример, демонстрирующий отличие <acronym title="Common Gateway Interface">CGI</acronym> <acronym title="Server Application Programming Interface">SAPI</acronym>:
+      </b></p>
+      <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">//&nbsp;Простейший&nbsp;тестовый&nbsp;скрипт&nbsp;под&nbsp;названием&nbsp;test.php<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">getcwd</span><span style="color: #007700">(),&nbsp;</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+      </div>
+
+      <div class="example-contents"><p>
+       В случае, если используется <acronym title="Common Gateway Interface">CGI</acronym>-версия, результат работы будет следующим:
+      </p></div>
+      <div class="example-contents screen">
+<div class="cdata"><pre>
+$ pwd
+/tmp
+
+$ php -q another_directory/test.php
+/tmp/another_directory
+</pre></div>
+      </div>
+      <div class="example-contents"><p>
+       Это наглядно демонстрирует тот факт, что PHP изменяет
+       текущую директорию на директорию исполняемого скрипта.
+      </p></div>
+      <div class="example-contents"><p>
+       Использование <acronym title="Command Line Interpreter/Interface">CLI</acronym> <acronym title="Server Application Programming Interface">SAPI</acronym> дает другой результат:
+      </p></div>
+      <div class="example-contents screen">
+<div class="cdata"><pre>
+$ pwd
+/tmp
+
+$ php -f another_directory/test.php
+/tmp
+</pre></div>
+      </div>
+      <div class="example-contents"><p>
+       Это позволяет писать более гибкие консольные скрипты на PHP.
+      </p></div>
+     </div>
+     <blockquote class="note"><p><b class="note">Замечание</b>: 
+      <p class="para">
+       <acronym title="Common Gateway Interface">CGI</acronym> <acronym title="Server Application Programming Interface">SAPI</acronym> позволяет
+       получить аналогичное <acronym title="Command Line Interpreter/Interface">CLI</acronym> <acronym title="Server Application Programming Interface">SAPI</acronym> поведение в случае
+       использования ключа <strong class="option unknown">-C</strong>
+
+       при запуске из командной строки.
+      </p>
+     </p></blockquote>
+    </li>
+   </ul>
+  </p>
+ </div><hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="features.commandline.introduction.html">Введение</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="features.commandline.options.html">Опции</a></div>
+ <div class="up"><a href="features.commandline.html">Использование PHP в командной строке</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

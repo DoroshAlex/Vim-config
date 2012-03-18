@@ -1,0 +1,83 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Обрезает LOB до указанной длины</title>
+
+ </head>
+ <body><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.oci-lob-tell.html">OCI-Lob-&gt;tell</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.oci-lob-write.html">OCI-Lob-&gt;write</a></div>
+ <div class="up"><a href="ref.oci8.html">OCI8 (Oracle)</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.oci-lob-truncate" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">OCI-Lob->truncate</h1>
+  <p class="verinfo">(PHP 5, PECL OCI8 &gt;= 1.1.0)</p><p class="refpurpose"><span class="refname">OCI-Lob-&gt;truncate</span> &mdash; <span class="dc-title">Обрезает LOB до указанной длины</span></p>
+
+ </div>
+ 
+ <div class="refsect1 description" id="refsect1-function.oci-lob-truncate-description">
+  <h3 class="title">Описание</h3>
+  <div class="classsynopsis">
+   <div class="ooclass"></div>
+   <div class="methodsynopsis dc-description">
+    <span class="type">bool</span> <span class="methodname"><b>OCI-Lob::truncate</b></span>
+     ([ <span class="methodparam"><span class="type">int</span> <tt class="parameter">$length</tt><span class="initializer"> = 0</span></span>
+   ] )</div>
+
+  </div>
+  <p class="para">
+   Обрезает объект LOB.
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 parameters" id="refsect1-function.oci-lob-truncate-parameters">
+  <h3 class="title">Список параметров</h3>
+  <p class="para">
+   <dl>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">length</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Если указан, то LOB обрезается до указанной в <i><tt class="parameter">length</tt></i>
+       длины в байтах. Иначе LOB очищается полностью.
+      </p>
+     </dd>
+
+    </dt>
+
+   </dl>
+
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 returnvalues" id="refsect1-function.oci-lob-truncate-returnvalues">
+  <h3 class="title">Возвращаемые значения</h3>
+  <p class="para">
+   Возвращает <b><tt>TRUE</tt></b> в случае успешного завершения  или <b><tt>FALSE</tt></b> в случае возникновения ошибки.
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 seealso" id="refsect1-function.oci-lob-truncate-seealso">
+  <h3 class="title">Смотрите также</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><a href="function.oci-lob-erase.html" class="xref">OCI-Lob-&gt;erase</a></li>
+   </ul>
+  </p>
+ </div>
+
+ 
+</div><hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.oci-lob-tell.html">OCI-Lob-&gt;tell</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.oci-lob-write.html">OCI-Lob-&gt;write</a></div>
+ <div class="up"><a href="ref.oci8.html">OCI8 (Oracle)</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

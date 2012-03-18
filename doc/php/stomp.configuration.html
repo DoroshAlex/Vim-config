@@ -1,0 +1,162 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Настройка во время выполнения</title>
+
+ </head>
+ <body><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="stomp.installation.html">Установка</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="stomp.resources.html">Типы ресурсов</a></div>
+ <div class="up"><a href="stomp.setup.html">Установка и настройка</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="stomp.configuration" class="section">
+ <h2 class="title">Настройка во время выполнения</h2>
+ <p class="simpara">
+Поведение этих функций зависит от установок в <var class="filename">php.ini</var>.
+</p>
+ <p class="para">
+  <table class="doctable table">
+   <caption><b>Опции настройки</b></caption>
+   
+    <thead valign="middle">
+     <tr valign="middle">
+      <th>Имя</th>
+      <th>По умолчанию</th>
+      <th>Меняемо</th>
+      <th>Список изменений</th>
+     </tr>
+
+    </thead>
+
+    <tbody valign="middle" class="tbody">
+     <tr valign="middle">
+      <td align="left">stomp.default_broker</td>
+      <td align="left">tcp://localhost:61613</td>
+      <td align="left">PHP_INI_ALL</td>
+      <td align="left"></td>
+     </tr>
+
+     <tr valign="middle">
+      <td align="left">stomp.default_connection_timeout_sec</td>
+      <td align="left">2</td>
+      <td align="left">PHP_INI_ALL</td>
+      <td align="left"></td>
+     </tr>
+
+     <tr valign="middle">
+      <td align="left">stomp.default_connection_timeout_usec</td>
+      <td align="left">0</td>
+      <td align="left">PHP_INI_ALL</td>
+      <td align="left"></td>
+     </tr>
+
+
+     <tr valign="middle">
+      <td align="left">stomp.default_read_timeout_sec</td>
+      <td align="left">2</td>
+      <td align="left">PHP_INI_ALL</td>
+      <td align="left"></td>
+     </tr>
+
+     <tr valign="middle">
+      <td align="left">stomp.default_read_timeout_usec</td>
+      <td align="left">0</td>
+      <td align="left">PHP_INI_ALL</td>
+      <td align="left"></td>
+     </tr>
+
+</tbody>
+   
+  </table>
+
+ </p>
+
+ <p class="para">Краткое разъяснение конфигурационных
+директив.</p>
+
+ <p class="para">
+  <dl>
+
+   <dt id="ini.stomp.default-broker">
+     <span class="term">
+      <i><tt class="parameter">stomp.default_broker</tt></i>
+      <span class="type"><a href="language.types.string.html" class="type string">string</a></span>
+     </span>
+     <dd>
+
+      <p class="para">
+       Брокер URK по умолчанию, используемый при подключении к брокеру сообщений,
+       если прочие URI не указаны.
+      </p>
+     </dd>
+
+    </dt>
+
+    <dt id="ini.stomp.default-connection-timeout-sec">
+     <span class="term">
+      <i><tt class="parameter">stomp.default_connection_timeout_sec</tt></i>
+      <span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>
+     </span>
+     <dd>
+
+      <p class="para">
+       Секундная часть времени ожидания подключения по умолчанию.
+      </p>
+     </dd>
+
+    </dt>
+
+    <dt id="ini.stomp.default-connection-timeout-usec">
+     <span class="term">
+      <i><tt class="parameter">stomp.default_connection_timeout_usec</tt></i>
+      <span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>
+     </span>
+     <dd>
+
+      <p class="para">
+       Микросекундная часть времени ожидания подключения по умолчанию.
+      </p>
+     </dd>
+
+    </dt>
+
+
+    <dt id="ini.stomp.default-read-timeout-sec">
+     <span class="term">
+      <i><tt class="parameter">stomp.default_read_timeout_sec</tt></i>
+      <span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>
+     </span>
+     <dd>
+
+      <p class="para">
+       Секундная часть времени ожидания операции чтения чтения по умолчанию.        
+      </p>
+     </dd>
+
+    </dt>
+
+    <dt id="ini.stomp.default-read-timeout-usec">
+     <span class="term">
+      <i><tt class="parameter">stomp.default_read_timeout_usec</tt></i>
+      <span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>
+     </span>
+     <dd>
+
+      <p class="para">
+       Микросекундная часть времени ожидания операции чтения по умолчанию.        
+      </p>
+     </dd>
+
+    </dt>
+
+
+  </dl>
+
+ </p>
+</div><hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="stomp.installation.html">Установка</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="stomp.resources.html">Типы ресурсов</a></div>
+ <div class="up"><a href="stomp.setup.html">Установка и настройка</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

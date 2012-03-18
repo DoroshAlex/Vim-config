@@ -1,0 +1,97 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Получает количество полей базы данных</title>
+
+ </head>
+ <body><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.dbase-get-record.html">dbase_get_record</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.dbase-numrecords.html">dbase_numrecords</a></div>
+ <div class="up"><a href="ref.dbase.html">dBase</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.dbase-numfields" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">dbase_numfields</h1>
+  <p class="verinfo">(PHP 4, PHP 5)</p><p class="refpurpose"><span class="refname">dbase_numfields</span> &mdash; <span class="dc-title">Получает количество полей базы данных</span></p>
+
+ </div>
+ <div class="refsect1 description" id="refsect1-function.dbase-numfields-description">
+  <h3 class="title">Описание</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">int</span> <span class="methodname"><b>dbase_numfields</b></span>
+    ( <span class="methodparam"><span class="type">int</span> <tt class="parameter">$dbase_identifier</tt></span>
+   )</div>
+
+  <p class="para rdfs-comment">
+   Получает количество полей (колонок) в указанной базе данных. 
+  </p>
+  <blockquote class="note"><p><b class="note">Замечание</b>: 
+   <p class="para">
+    Поле номеруются от 0 до dbase_numfields($db)-1,
+    тогда как записи базы данных от 1 до dbase_numrecords($db).
+   </p>
+  </p></blockquote>
+ </div>
+
+ <div class="refsect1 parameters" id="refsect1-function.dbase-numfields-parameters">
+  <h3 class="title">Список параметров</h3>
+  <p class="para">
+   <dl>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">dbase_identifier</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Идентификатор базы данных, возвращаемый функцией <span class="function"><a href="function.dbase-open.html" class="function">dbase_open()</a></span>
+       или <span class="function"><a href="function.dbase-create.html" class="function">dbase_create()</a></span>.
+      </p>
+     </dd>
+
+    </dt>
+
+   </dl>
+
+  </p>
+ </div>
+
+ <div class="refsect1 returnvalues" id="refsect1-function.dbase-numfields-returnvalues">
+  <h3 class="title">Возвращаемые значения</h3>
+  <p class="para">
+   Количество полей в базе данных, или <b><tt>FALSE</tt></b> в случае ошибки.
+  </p>
+ </div>
+
+ <div class="refsect1 examples" id="refsect1-function.dbase-numfields-examples">
+  <h3 class="title">Примеры</h3>
+  <p class="para">
+   <div class="example" id="example-1121">
+    <p><b>Пример #1 Пример использования <span class="function"><b>dbase_numfields()</b></span></b></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">//открытие&nbsp;БД&nbsp;для&nbsp;чтения<br /></span><span style="color: #0000BB">$db&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">dbase_open</span><span style="color: #007700">(</span><span style="color: #DD0000">'.\tmp\test.dbf'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//если&nbsp;соединение&nbsp;успешно,&nbsp;то&nbsp;выполняем&nbsp;действия<br /></span><span style="color: #007700">if&nbsp;(</span><span style="color: #0000BB">$db</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;</span><span style="color: #FF8000">//получение&nbsp;количества&nbsp;записей&nbsp;БД<br />&nbsp;&nbsp;</span><span style="color: #0000BB">$record_numbers&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">dbase_numrecords</span><span style="color: #007700">(</span><span style="color: #0000BB">$db</span><span style="color: #007700">);<br />&nbsp;&nbsp;</span><span style="color: #FF8000">//получение&nbsp;количества&nbsp;полей&nbsp;БД<br />&nbsp;&nbsp;</span><span style="color: #0000BB">$nf&nbsp;&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">dbase_numfields</span><span style="color: #007700">(</span><span style="color: #0000BB">$db</span><span style="color: #007700">);<br />&nbsp;&nbsp;</span><span style="color: #FF8000">//вывод&nbsp;всех&nbsp;записей&nbsp;БД<br />&nbsp;&nbsp;//построчный&nbsp;обход<br />&nbsp;&nbsp;</span><span style="color: #007700">for&nbsp;(</span><span style="color: #0000BB">$j&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">1</span><span style="color: #007700">;&nbsp;&nbsp;</span><span style="color: #0000BB">$j&nbsp;</span><span style="color: #007700">&lt;=&nbsp;</span><span style="color: #0000BB">$record_numbers</span><span style="color: #007700">;&nbsp;&nbsp;</span><span style="color: #0000BB">$j</span><span style="color: #007700">++)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//вывод&nbsp;номера&nbsp;строки<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">$j</span><span style="color: #007700">.</span><span style="color: #DD0000">"=&gt;"&nbsp;</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//получение&nbsp;строки&nbsp;по&nbsp;номеру&nbsp;(индексу)<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$rec&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">dbase_get_record</span><span style="color: #007700">(</span><span style="color: #0000BB">$db</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$j</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//обход&nbsp;по&nbsp;столбцам<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">for&nbsp;(</span><span style="color: #0000BB">$i&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">;&nbsp;</span><span style="color: #0000BB">$i&nbsp;</span><span style="color: #007700">&lt;&nbsp;</span><span style="color: #0000BB">$nf</span><span style="color: #007700">;&nbsp;</span><span style="color: #0000BB">$i</span><span style="color: #007700">++)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//вывод&nbsp;данных&nbsp;поля<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">$rec</span><span style="color: #007700">[</span><span style="color: #0000BB">$i</span><span style="color: #007700">],&nbsp;</span><span style="color: #DD0000">"\t"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"&lt;br&gt;"</span><span style="color: #007700">;<br />&nbsp;&nbsp;}<br /></span><span style="color: #0000BB">dbase_close</span><span style="color: #007700">(</span><span style="color: #0000BB">$db</span><span style="color: #007700">);<br />}&nbsp;else&nbsp;echo&nbsp;</span><span style="color: #DD0000">"Не&nbsp;удалось&nbsp;подключиться&nbsp;к&nbsp;БД"</span><span style="color: #007700">;<br /><br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+  </p>
+ </div>
+
+ <div class="refsect1 seealso" id="refsect1-function.dbase-numfields-seealso">
+  <h3 class="title">Смотрите также</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><span class="function"><a href="function.dbase-numrecords.html" class="function" rel="rdfs-seeAlso">dbase_numrecords()</a> - Получает количество записей в базе данных</span></li>
+   </ul>
+  </p>
+ </div>
+
+</div><hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.dbase-get-record.html">dbase_get_record</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.dbase-numrecords.html">dbase_numrecords</a></div>
+ <div class="up"><a href="ref.dbase.html">dBase</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

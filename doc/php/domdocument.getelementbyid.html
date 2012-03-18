@@ -1,0 +1,108 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Ищет элемент с заданным id</title>
+
+ </head>
+ <body><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="domdocument.createtextnode.html">DOMDocument::createTextNode</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="domdocument.getelementsbytagname.html">DOMDocument::getElementsByTagName</a></div>
+ <div class="up"><a href="class.domdocument.html">DOMDocument</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="domdocument.getelementbyid" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">DOMDocument::getElementById</h1>
+  <p class="verinfo">(PHP 5)</p><p class="refpurpose"><span class="refname">DOMDocument::getElementById</span> &mdash; <span class="dc-title">
+   Ищет элемент с заданным id
+  </span></p>
+
+ </div>
+ <div class="refsect1 description" id="refsect1-domdocument.getelementbyid-description">
+  <h3 class="title">Описание</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type"><a href="class.domelement.html" class="type DOMElement">DOMElement</a></span> <span class="methodname"><b>DOMDocument::getElementById</b></span>
+    ( <span class="methodparam"><span class="type">string</span> <tt class="parameter">$elementId</tt></span>
+   )</div>
+
+  <p class="para rdfs-comment">
+   Эта функция является аналогом 
+   <a href="domdocument.getelementsbytagname.html" class="xref">DOMDocument::getElementsByTagName</a>, но ищет элемент по
+   его id.
+  </p>
+  <p class="para">
+   Для работы этой функции необходимо либо задать ID атрибуты элементов 
+   посредством <a href="domelement.setidattribute.html" class="xref">DOMElement::setIdAttribute</a>, либо понадобится 
+   DTD, которая определяет атрибут как имеющий тип ID. В последнем случае 
+   перед использованием этой функции потребуется проверять документ на 
+   действительность посредством
+   <a href="domdocument.validate.html" class="xref">DOMDocument::validate</a> или
+   <i>DOMDocument-&gt;validateOnParse</i>.
+  </p>
+ </div>
+
+ <div class="refsect1 parameters" id="refsect1-domdocument.getelementbyid-parameters">
+  <h3 class="title">Список параметров</h3>
+  <p class="para">
+   <dl>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">elementId</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Уникальный id элемента.
+      </p>
+     </dd>
+
+    </dt>
+
+   </dl>
+
+  </p>
+ </div>
+
+ <div class="refsect1 returnvalues" id="refsect1-domdocument.getelementbyid-returnvalues">
+  <h3 class="title">Возвращаемые значения</h3>
+  <p class="para">
+   Returns the <a href="class.domelement.html" class="classname">DOMElement</a> or <b><tt>NULL</tt></b> if the element is
+   not found. 
+  </p>
+ </div>
+
+ <div class="refsect1 examples" id="refsect1-domdocument.getelementbyid-examples">
+  <h3 class="title">Примеры</h3>
+  <div class="example" id="example-4866">
+   <p><b>Пример #1 Пример использования DOMDocument-&gt;getElementById()</b></p>
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /><br />$doc&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">DomDocument</span><span style="color: #007700">;<br /><br /></span><span style="color: #FF8000">//&nbsp;Необходимо&nbsp;проверить&nbsp;документ&nbsp;на&nbsp;действительность&nbsp;перед&nbsp;тем&nbsp;как&nbsp;<br />//&nbsp;ссылаться&nbsp;на&nbsp;id<br /></span><span style="color: #0000BB">$doc</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">validateOnParse&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">true</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$doc</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">Load</span><span style="color: #007700">(</span><span style="color: #DD0000">'book.xml'</span><span style="color: #007700">);<br /><br />echo&nbsp;</span><span style="color: #DD0000">"Элемент&nbsp;с&nbsp;id&nbsp;'books':&nbsp;"&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">$doc</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getElementById</span><span style="color: #007700">(</span><span style="color: #DD0000">'books'</span><span style="color: #007700">)-&gt;</span><span style="color: #0000BB">tagName&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br /><br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+   </div>
+
+   <div class="example-contents"><p>Результат выполнения данного примера:</p></div>
+   <div class="example-contents screen">
+<div class="cdata"><pre>
+Элемент с id &#039;books&#039;: chapter
+</pre></div>
+   </div>
+  </div>
+ </div>
+
+ <div class="refsect1 seealso" id="refsect1-domdocument.getelementbyid-seealso">
+  <h3 class="title">Смотрите также</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"> <span class="methodname"><a href="domdocument.getelementsbytagname.html" class="methodname" rel="rdfs-seeAlso">DOMDocument::getElementsByTagName()</a> - Ищет все элементы с заданным именем</span></li>
+   </ul>
+  </p>
+ </div>
+
+</div><hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="domdocument.createtextnode.html">DOMDocument::createTextNode</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="domdocument.getelementsbytagname.html">DOMDocument::getElementsByTagName</a></div>
+ <div class="up"><a href="class.domdocument.html">DOMDocument</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

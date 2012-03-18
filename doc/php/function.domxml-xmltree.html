@@ -1,0 +1,79 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Создает дерево объектов PHP из XML документа</title>
+
+ </head>
+ <body><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.domxml-version.html">domxml_version</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.domxml-xslt-stylesheet-doc.html">domxml_xslt_stylesheet_doc</a></div>
+ <div class="up"><a href="ref.domxml.html">DOM XML (PHP 4) Функции</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.domxml-xmltree" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">domxml_xmltree</h1>
+  <p class="verinfo">(PHP 4 &gt;= 4.2.0)</p><p class="refpurpose"><span class="refname">domxml_xmltree</span> &mdash; <span class="dc-title">
+   Создает дерево объектов PHP из XML документа
+  </span></p>
+
+ </div>
+ <div class="refsect1 description" id="refsect1-function.domxml-xmltree-description">
+  <h3 class="title">Описание</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type"><a href="class.domdocument.html" class="type DomDocument">DomDocument</a></span> <span class="methodname"><b>domxml_xmltree</b></span>
+    ( <span class="methodparam"><span class="type">string</span> <tt class="parameter">$str</tt></span>
+   )</div>
+
+  <p class="para rdfs-comment">
+   Функция разбирает XML документ из строки <i><tt class="parameter">str</tt></i> и
+   возвращает соответствующее дерево объектов PHP.
+  </p>
+  <p class="para">
+   Эта функция изолирована от остальных, это означает, что невозможно 
+   получить доступ к дереву, используя другие функции. Изменение дерева, 
+   например добавление к нему узлов, не имеет смысла, потому как на данный
+   момент нет способа получить из этого дерева обратно XML файл.
+  </p>
+  <p class="para">
+   Тем не менее, эта функция может оказаться полезной, если требуется только
+   прочитать файл и исследовать содержимое.
+  </p>
+ </div>
+
+ <div class="refsect1 parameters" id="refsect1-function.domxml-xmltree-parameters">
+  <h3 class="title">Список параметров</h3>
+  <p class="para">
+   <dl>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">str</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Содержимое XML файла.
+      </p>
+     </dd>
+
+    </dt>
+
+   </dl>
+
+  </p>
+ </div>
+
+ <div class="refsect1 returnvalues" id="refsect1-function.domxml-xmltree-returnvalues">
+  <h3 class="title">Возвращаемые значения</h3>
+  <p class="para">
+   Возвращает дерево DOM объектов, начиная с 
+   <a href="class.domdocument.html" class="classname">DomDocument</a>.
+  </p>
+ </div>
+
+</div><hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.domxml-version.html">domxml_version</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.domxml-xslt-stylesheet-doc.html">domxml_xslt_stylesheet_doc</a></div>
+ <div class="up"><a href="ref.domxml.html">DOM XML (PHP 4) Функции</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

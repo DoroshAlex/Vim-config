@@ -1,0 +1,127 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Изменяет группу владельцев файла</title>
+
+ </head>
+ <body><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.basename.html">basename</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.chmod.html">chmod</a></div>
+ <div class="up"><a href="ref.filesystem.html">Файловая система</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.chgrp" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">chgrp</h1>
+  <p class="verinfo">(PHP 4, PHP 5)</p><p class="refpurpose"><span class="refname">chgrp</span> &mdash; <span class="dc-title">Изменяет группу владельцев файла</span></p>
+
+ </div>
+
+ <div class="refsect1 description" id="refsect1-function.chgrp-description">
+  <h3 class="title">Описание</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">bool</span> <span class="methodname"><b>chgrp</b></span>
+    ( <span class="methodparam"><span class="type">string</span> <tt class="parameter">$filename</tt></span>
+   , <span class="methodparam"><span class="type"><a href="language.pseudo-types.html#language.types.mixed" class="type mixed">mixed</a></span> <tt class="parameter">$group</tt></span>
+   )</div>
+
+  <p class="para rdfs-comment">
+   Осуществляет попытку смены группы файла <i><tt class="parameter">filename</tt></i>
+   на группу <i><tt class="parameter">group</tt></i>.
+  </p>
+  <p class="para">
+   Только суперпользователь может произвольно менять группу файла;
+   остальные пользователи могут менять группу файла только на те
+   группы, членами которых они являются.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-function.chgrp-parameters">
+  <h3 class="title">Список параметров</h3>
+  <p class="para">
+   <dl>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">filename</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Путь к файлу.
+      </p>
+     </dd>
+
+    </dt>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">group</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Название или номер группы.
+      </p>
+     </dd>
+
+    </dt>
+
+   </dl>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-function.chgrp-returnvalues">
+  <h3 class="title">Возвращаемые значения</h3>
+  <p class="para">
+   Возвращает <b><tt>TRUE</tt></b> в случае успешного завершения  или <b><tt>FALSE</tt></b> в случае возникновения ошибки.
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-function.chgrp-examples">
+  <h3 class="title">Примеры</h3>
+  <p class="para">
+   <div class="example" id="example-2097">
+    <p><b>Пример #1 Изменение группы файла</b></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$filename&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'shared_file.txt'</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$format&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">"%s's&nbsp;Group&nbsp;ID&nbsp;@&nbsp;%s:&nbsp;%d\n"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">printf</span><span style="color: #007700">(</span><span style="color: #0000BB">$format</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$filename</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">date</span><span style="color: #007700">(</span><span style="color: #DD0000">'r'</span><span style="color: #007700">),&nbsp;</span><span style="color: #0000BB">filegroup</span><span style="color: #007700">(</span><span style="color: #0000BB">$filename</span><span style="color: #007700">));<br /></span><span style="color: #0000BB">chgrp</span><span style="color: #007700">(</span><span style="color: #0000BB">$filename</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">8</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">clearstatcache</span><span style="color: #007700">();&nbsp;</span><span style="color: #FF8000">//&nbsp;сбрасываем&nbsp;кэш&nbsp;filegroup()<br /></span><span style="color: #0000BB">printf</span><span style="color: #007700">(</span><span style="color: #0000BB">$format</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$filename</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">date</span><span style="color: #007700">(</span><span style="color: #DD0000">'r'</span><span style="color: #007700">),&nbsp;</span><span style="color: #0000BB">filegroup</span><span style="color: #007700">(</span><span style="color: #0000BB">$filename</span><span style="color: #007700">));<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+  </p>
+ </div>
+
+
+ <div class="refsect1 notes" id="refsect1-function.chgrp-notes">
+  <h3 class="title">Примечания</h3>
+  <blockquote class="note"><p><b class="note">Замечание</b>: <span class="simpara">Эта функция неприменима для
+работы с <a href="features.remote-files.html" class="link">удаленными файлами</a>, поскольку
+файл должен быть доступен через файловую систему сервера.</span></p></blockquote>
+  <blockquote class="note"><p><b class="note">Замечание</b>: <span class="simpara">Когда опция <a href="features.safe-mode.html" class="link">safe mode</a> включена, PHP проверяет,
+имеют ли файлы/каталоги, с которыми вы собираетесь работать, такой
+же UID (владельца), как и выполняемый скрипт.</span></p></blockquote>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-function.chgrp-seealso">
+  <h3 class="title">Смотрите также</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><span class="function"><a href="function.chown.html" class="function" rel="rdfs-seeAlso">chown()</a> - Изменяет владельца файла</span></li>
+    <li class="member"><span class="function"><a href="function.chmod.html" class="function" rel="rdfs-seeAlso">chmod()</a> - Изменяет режим доступа к файлу</span></li>
+   </ul>
+  </p>
+ </div>
+
+
+</div><hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.basename.html">basename</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.chmod.html">chmod</a></div>
+ <div class="up"><a href="ref.filesystem.html">Файловая система</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

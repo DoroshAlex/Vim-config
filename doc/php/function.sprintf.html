@@ -1,0 +1,424 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Возвращает отформатированную строку</title>
+
+ </head>
+ <body><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.soundex.html">soundex</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.sscanf.html">sscanf</a></div>
+ <div class="up"><a href="ref.strings.html">Обработка строк</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.sprintf" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">sprintf</h1>
+  <p class="verinfo">(PHP 4, PHP 5)</p><p class="refpurpose"><span class="refname">sprintf</span> &mdash; <span class="dc-title">Возвращает отформатированную строку</span></p>
+
+ </div>
+
+ <div class="refsect1 description" id="refsect1-function.sprintf-description">
+  <h3 class="title">Описание</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">string</span> <span class="methodname"><b>sprintf</b></span>
+    ( <span class="methodparam"><span class="type">string</span> <tt class="parameter">$format</tt></span>
+   [, <span class="methodparam"><span class="type"><a href="language.pseudo-types.html#language.types.mixed" class="type mixed">mixed</a></span> <tt class="parameter">$args</tt></span>
+   [, <span class="methodparam"><span class="type"><a href="language.pseudo-types.html#language.types.mixed" class="type mixed">mixed</a></span> <tt class="parameter">$...</tt></span>
+  ]] )</div>
+
+  <p class="para rdfs-comment">
+   Возвращает строку, созданную с использованием строки формата
+   <i><tt class="parameter">format</tt></i>.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-function.sprintf-parameters">
+  <h3 class="title">Список параметров</h3>
+  <p class="para">
+   <dl>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">format</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Строка формата состоит из нуля и более директив:
+       обычных символов (за исключением <i>%</i>), которые
+       копируются напрямую в результирующую строку, и <em class="emphasis">описателей
+       преобразований</em>, каждый из которых заменяется на один из
+       параметров. Это относится как к <span class="function"><b>sprintf()</b></span>,
+       так и к <span class="function"><a href="function.printf.html" class="function">printf()</a></span>.
+      </p>
+      <p class="para">
+       Каждый описатель преобразований состоит из знака процента
+       (<i>%</i>), за которым следует один или более
+       дополнительных элементов (в том порядке, в котором они здесь
+       перечислены):
+       <ol type="1">
+        <li class="listitem">
+         <span class="simpara">
+          Необязательный <em class="emphasis">описатель знака</em>, указывающий
+          как знак (- или +) будет применен к числу. По умолчанию, используется
+          только знак минус, если число отрицательное. Этот описатель
+          заставляет положительные числа также отображать знак плюс,
+          он был добавлен в PHP 4.3.0.
+         </span>
+        </li>
+        <li class="listitem">
+         <span class="simpara">
+          Необязательный <em class="emphasis">описатель заполнения</em>, который
+          определяет, какой символ будет использоваться для дополнения
+          результата до необходимой длины. Это может быть пробел или
+          <i>0</i>. По умолчанию используется пробел.
+          Альтернативный символ может быть указан с помощью одиночной
+          кавычки (<i>&#039;</i>).
+          См. примеры ниже.
+         </span>
+        </li>
+        <li class="listitem">
+         <span class="simpara">
+          Необязательный <em class="emphasis">описатель выравнивания</em>,
+          определяющий выранивание влево или вправо. По умолчанию
+          выравнивается вправо, <i>-</i> используется для
+          выравнивания влево.
+         </span>
+        </li>
+        <li class="listitem">
+         <span class="simpara">
+          Необязательное число, <em class="emphasis">описатель ширины</em>,
+          определяющий минимальное число символов, которое будет содержать
+          результат этого преобразования.
+         </span>
+        </li>
+        <li class="listitem">
+         <span class="simpara">
+          Необязательный <em class="emphasis">описатель точности</em>, указанный
+          в форме точки (&#039;.&#039;), после которой следует необязательная строка
+          из десятичных чисел, определяющая, сколько десятичных разрядов
+          отображать для чисел с плавающей точкой. При использовании со
+          строками этот описатель выступает в роли обрезающей точки,
+          устанавливающей максимальный лимит символов.
+         </span>
+        </li>
+        <li class="listitem">
+         <p class="para">
+          <em class="emphasis">Описатель типа</em>, определяющий, как трактовать
+          тип данных аргумента. Допустимые типы:
+          <ul class="simplelist">
+           <li class="member">
+            <i>%</i> - символ процента. Аргумент не используется.
+           </li>
+           <li class="member">
+            <i>b</i> - аргумент трактуется как целое и выводится
+            в виде двоичного числа.
+           </li>
+           <li class="member">
+            <i>c</i> - аргумент трактуется как целое и выводится
+            в виде символа с соответствующим кодом ASCII.
+           </li>
+           <li class="member">
+            <i>d</i> - аргумент трактуется как целое и выводится
+            в виде десятичного числа со знаком.
+           </li>
+           <li class="member">
+            <i>e</i> - аргумент трактуется как число в
+            в научной нотации  (например, 1.2e+2).
+            Описатель точности указывает на количество знаков после
+            запятой, начиная с версии PHP 5.2.1. В более ранних версиях
+            он обозначал количество значащих цифр (на один знак меньше).
+           </li>
+           <li class="member">
+            <i>E</i> - аналогично <i>%e</i>, но
+            использует заглавную букву (например, 1.2E+2).
+           </li>
+           <li class="member">
+            <i>u</i> - аргумент трактуется как целое и выводится
+            в виде десятичного числа без знака.
+           </li>
+           <li class="member">
+            <i>f</i> - аргумент трактуется как число с плавающей
+            точкой и также выводится в зависимости от локали.
+           </li>
+           <li class="member">
+            <i>F</i> - аргумент трактуется как число с
+            плавающей точкой и также выводится, но без зависимости от локали.
+            Доступно, начиная с версии PHP 4.3.10 и PHP 5.0.3.
+           </li>
+           <li class="member">
+            <i>g</i> - выбирает самую краткую запись из <i>%e</i> и
+            <i>%f</i>.
+           </li>
+           <li class="member">
+            <i>G</i> - выбирает самую краткую запись из <i>%E</i> и
+            <i>%f</i>.
+           </li>
+           <li class="member">
+            <i>o</i> - аргумент трактуется как целое и выводится
+            в виде восьмеричного числа.
+           </li>
+           <li class="member">
+            <i>s</i> - аргумент трактуется как строка.
+           </li>
+           <li class="member">
+            <i>x</i> - аргумент трактуется как целое и выводится
+            в виде шестнадцатиричного числа (в нижнем регистре).
+           </li>
+           <li class="member">
+            <i>X</i> - аргумент трактуется как целое и выводится
+            в виде шестнадцатиричного числа (в верхнем регистре).
+           </li>
+          </ul>
+         </p>
+        </li>
+       </ol>
+      </p>
+      <p class="para">
+       В строке формата поддерживается нумерация и изменение
+       порядка параметров. Например:
+       <div class="example" id="example-4369">
+        <p><b>Пример #1 Изменение порядка параметров</b></p>
+        <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$num&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">5</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$location&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'дереве'</span><span style="color: #007700">;<br /><br /></span><span style="color: #0000BB">$format&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'%d&nbsp;обезьян&nbsp;сидят&nbsp;на&nbsp;%s'</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">printf</span><span style="color: #007700">(</span><span style="color: #0000BB">$format</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$num</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$location</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+        </div>
+
+       </div>
+       Этот код выведет &quot;5 обезьян сидят на дереве&quot;. Теперь
+       представьте, что строка формата содержится в отдельном файле, который
+       потом будет переведен на другой язык, и мы переписываем ее в таком
+       виде:
+       <div class="example" id="example-4370">
+        <p><b>Пример #2 Изменение порядка параметров</b></p>
+        <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$format&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'На&nbsp;%s&nbsp;сидят&nbsp;%d&nbsp;обезьян'</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">printf</span><span style="color: #007700">(</span><span style="color: #0000BB">$format</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$num</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$location</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+        </div>
+
+       </div>
+       Появляется проблема: порядок описателей преобразования не соответствует
+       порядку аргументов. Мы не хотим менять код, и нам нужно указать,
+       какому аргументу соответствует тот или иной описатель преобразования.
+       <div class="example" id="example-4371">
+        <p><b>Пример #3 Изменение порядка параметров</b></p>
+        <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$format&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'На&nbsp;%2$s&nbsp;сидят&nbsp;%1$d&nbsp;обезьян'</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">printf</span><span style="color: #007700">(</span><span style="color: #0000BB">$format</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$num</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$location</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+        </div>
+
+       </div>
+       Нумерация аргументов имеет еще одно применение: она позволяет вывести
+       один и тот же аргумент несколько раз без передачи функции
+       дополнительных параметров.
+       <div class="example" id="example-4372">
+        <p><b>Пример #4 Изменение порядка параметров</b></p>
+        <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$format&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'На&nbsp;%2$s&nbsp;сидят&nbsp;%1$d&nbsp;обезьян.<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Как&nbsp;здорово,&nbsp;когда&nbsp;на&nbsp;%2$s&nbsp;сидят&nbsp;%1$d&nbsp;обезьян.'</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">printf</span><span style="color: #007700">(</span><span style="color: #0000BB">$format</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$num</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$location</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+        </div>
+
+       </div>
+       При изменении порядка параметров
+       <em class="emphasis">описатель позиции</em> <i>n$</i>
+       должен идти сразу за знаком процента (<i>%</i>) прежде
+       всех остальных описателей, как показано в примере ниже.
+       <div class="example" id="example-4373">
+        <p><b>Пример #5 Использование описателя позиции и совместо с другими описателями</b></p>
+        <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$format</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'На&nbsp;%2$s&nbsp;сидят&nbsp;%1$04d&nbsp;обезьян'</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">printf</span><span style="color: #007700">(</span><span style="color: #0000BB">$format</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$num</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$location</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+        </div>
+
+        <div class="example-contents"><p>Результат выполнения данного примера:</p></div>
+        <div class="example-contents screen">
+<div class="cdata"><pre>
+На дереве сидят 0005 обезьян
+</pre></div>
+        </div>
+       </div>
+      </p>
+     </dd>
+
+    </dt>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">args</tt></i></span>
+     <dd>
+
+      <p class="para">
+      </p>
+     </dd>
+
+    </dt>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">...</tt></i></span>
+     <dd>
+
+      <p class="para">
+      </p>
+     </dd>
+
+    </dt>
+
+   </dl>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-function.sprintf-returnvalues">
+  <h3 class="title">Возвращаемые значения</h3>
+  <p class="para">
+   Возвращает строку, отформатированную в соответствии со строкой
+   <i><tt class="parameter">format</tt></i>.
+  </p>
+ </div>
+
+
+ <div class="refsect1 changelog" id="refsect1-function.sprintf-changelog">
+  <h3 class="title">Список изменений</h3>
+  <p class="para">
+   <table class="doctable informaltable">
+    
+     <thead valign="middle">
+      <tr valign="middle">
+       <th>Версия</th>
+       <th>Описание</th>
+      </tr>
+
+     </thead>
+
+     <tbody valign="middle" class="tbody">
+      <tr valign="middle">
+       <td align="left">4.0.6</td>
+       <td align="left">
+        Добавлена поддержка нумерации/изменения порядка аргументов
+       </td>
+      </tr>
+
+     </tbody>
+    
+   </table>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-function.sprintf-examples">
+  <h3 class="title">Примеры</h3>
+  <div class="example" id="example-4374">
+   <p><b>Пример #6 <span class="function"><b>sprintf()</b></span>: заполнение нулями</b></p>
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$n&nbsp;</span><span style="color: #007700">=&nbsp;&nbsp;</span><span style="color: #0000BB">43951789</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$u&nbsp;</span><span style="color: #007700">=&nbsp;-</span><span style="color: #0000BB">43951789</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$c&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">65</span><span style="color: #007700">;&nbsp;</span><span style="color: #FF8000">//&nbsp;ASCII&nbsp;65&nbsp;is&nbsp;'A'<br /><br />//&nbsp;заметьте,&nbsp;двойной&nbsp;%%&nbsp;выводится&nbsp;как&nbsp;одинарный&nbsp;'%'<br /></span><span style="color: #0000BB">printf</span><span style="color: #007700">(</span><span style="color: #DD0000">"%%b&nbsp;=&nbsp;'%b'\n"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$n</span><span style="color: #007700">);&nbsp;</span><span style="color: #FF8000">//&nbsp;двоичное&nbsp;представление<br /></span><span style="color: #0000BB">printf</span><span style="color: #007700">(</span><span style="color: #DD0000">"%%c&nbsp;=&nbsp;'%c'\n"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$c</span><span style="color: #007700">);&nbsp;</span><span style="color: #FF8000">//&nbsp;выводит&nbsp;символ&nbsp;ascii,&nbsp;аналогично&nbsp;функции&nbsp;chr()<br /></span><span style="color: #0000BB">printf</span><span style="color: #007700">(</span><span style="color: #DD0000">"%%d&nbsp;=&nbsp;'%d'\n"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$n</span><span style="color: #007700">);&nbsp;</span><span style="color: #FF8000">//&nbsp;обычное&nbsp;целое&nbsp;число<br /></span><span style="color: #0000BB">printf</span><span style="color: #007700">(</span><span style="color: #DD0000">"%%e&nbsp;=&nbsp;'%e'\n"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$n</span><span style="color: #007700">);&nbsp;</span><span style="color: #FF8000">//&nbsp;научная&nbsp;нотация<br /></span><span style="color: #0000BB">printf</span><span style="color: #007700">(</span><span style="color: #DD0000">"%%u&nbsp;=&nbsp;'%u'\n"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$n</span><span style="color: #007700">);&nbsp;</span><span style="color: #FF8000">//&nbsp;беззнаковое&nbsp;целое&nbsp;представление&nbsp;положительного&nbsp;числа<br /></span><span style="color: #0000BB">printf</span><span style="color: #007700">(</span><span style="color: #DD0000">"%%u&nbsp;=&nbsp;'%u'\n"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$u</span><span style="color: #007700">);&nbsp;</span><span style="color: #FF8000">//&nbsp;беззнаковое&nbsp;целое&nbsp;представление&nbsp;отрицательного&nbsp;числа<br /></span><span style="color: #0000BB">printf</span><span style="color: #007700">(</span><span style="color: #DD0000">"%%f&nbsp;=&nbsp;'%f'\n"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$n</span><span style="color: #007700">);&nbsp;</span><span style="color: #FF8000">//&nbsp;представление&nbsp;числа&nbsp;с&nbsp;плавающей&nbsp;точкой<br /></span><span style="color: #0000BB">printf</span><span style="color: #007700">(</span><span style="color: #DD0000">"%%o&nbsp;=&nbsp;'%o'\n"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$n</span><span style="color: #007700">);&nbsp;</span><span style="color: #FF8000">//&nbsp;восьмеричное&nbsp;представление<br /></span><span style="color: #0000BB">printf</span><span style="color: #007700">(</span><span style="color: #DD0000">"%%s&nbsp;=&nbsp;'%s'\n"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$n</span><span style="color: #007700">);&nbsp;</span><span style="color: #FF8000">//&nbsp;строка<br /></span><span style="color: #0000BB">printf</span><span style="color: #007700">(</span><span style="color: #DD0000">"%%x&nbsp;=&nbsp;'%x'\n"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$n</span><span style="color: #007700">);&nbsp;</span><span style="color: #FF8000">//&nbsp;шестнадцатеричное&nbsp;представление&nbsp;(нижний&nbsp;регистр)<br /></span><span style="color: #0000BB">printf</span><span style="color: #007700">(</span><span style="color: #DD0000">"%%X&nbsp;=&nbsp;'%X'\n"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$n</span><span style="color: #007700">);&nbsp;</span><span style="color: #FF8000">//&nbsp;шестнадцатеричное&nbsp;представление&nbsp;(верхний&nbsp;регистр)<br /><br /></span><span style="color: #0000BB">printf</span><span style="color: #007700">(</span><span style="color: #DD0000">"%%+d&nbsp;=&nbsp;'%+d'\n"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$n</span><span style="color: #007700">);&nbsp;</span><span style="color: #FF8000">//&nbsp;описатель&nbsp;знака&nbsp;с&nbsp;положительным&nbsp;целым&nbsp;числом<br /></span><span style="color: #0000BB">printf</span><span style="color: #007700">(</span><span style="color: #DD0000">"%%+d&nbsp;=&nbsp;'%+d'\n"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$u</span><span style="color: #007700">);&nbsp;</span><span style="color: #FF8000">//&nbsp;описатель&nbsp;знака&nbsp;с&nbsp;отрицательным&nbsp;целым&nbsp;числом<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+   </div>
+
+   <div class="example-contents"><p>Результат выполнения данного примера:</p></div>
+   <div class="example-contents screen">
+<div class="cdata"><pre>
+%b = &#039;10100111101010011010101101&#039;
+%c = &#039;A&#039;
+%d = &#039;43951789&#039;
+%e = &#039;4.39518e+7&#039;
+%u = &#039;43951789&#039;
+%u = &#039;4251015507&#039;
+%f = &#039;43951789.000000&#039;
+%o = &#039;247523255&#039;
+%s = &#039;43951789&#039;
+%x = &#039;29ea6ad&#039;
+%X = &#039;29EA6AD&#039;
+%+d = &#039;+43951789&#039;
+%+d = &#039;-43951789&#039;
+</pre></div>
+   </div>
+  </div>
+  <div class="example" id="example-4375">
+   <p><b>Пример #7 <span class="function"><a href="function.printf.html" class="function">printf()</a></span>: описатели строк</b></p>
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$s&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'monkey'</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$t&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'many&nbsp;monkeys'</span><span style="color: #007700">;<br /><br /></span><span style="color: #0000BB">printf</span><span style="color: #007700">(</span><span style="color: #DD0000">"[%s]\n"</span><span style="color: #007700">,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$s</span><span style="color: #007700">);&nbsp;</span><span style="color: #FF8000">//&nbsp;обычный&nbsp;вывод&nbsp;строки<br /></span><span style="color: #0000BB">printf</span><span style="color: #007700">(</span><span style="color: #DD0000">"[%10s]\n"</span><span style="color: #007700">,&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$s</span><span style="color: #007700">);&nbsp;</span><span style="color: #FF8000">//&nbsp;выравнивание&nbsp;вправо&nbsp;с&nbsp;пробелами<br /></span><span style="color: #0000BB">printf</span><span style="color: #007700">(</span><span style="color: #DD0000">"[%-10s]\n"</span><span style="color: #007700">,&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$s</span><span style="color: #007700">);&nbsp;</span><span style="color: #FF8000">//&nbsp;выравнивание&nbsp;влево&nbsp;с&nbsp;пробелами<br /></span><span style="color: #0000BB">printf</span><span style="color: #007700">(</span><span style="color: #DD0000">"[%010s]\n"</span><span style="color: #007700">,&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$s</span><span style="color: #007700">);&nbsp;</span><span style="color: #FF8000">//&nbsp;дополнение&nbsp;нулями&nbsp;также&nbsp;работает&nbsp;со&nbsp;строками<br /></span><span style="color: #0000BB">printf</span><span style="color: #007700">(</span><span style="color: #DD0000">"[%'#10s]\n"</span><span style="color: #007700">,&nbsp;&nbsp;</span><span style="color: #0000BB">$s</span><span style="color: #007700">);&nbsp;</span><span style="color: #FF8000">//&nbsp;использование&nbsp;собственного&nbsp;дополняющего&nbsp;символа&nbsp;'#'<br /></span><span style="color: #0000BB">printf</span><span style="color: #007700">(</span><span style="color: #DD0000">"[%10.10s]\n"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$t</span><span style="color: #007700">);&nbsp;</span><span style="color: #FF8000">//&nbsp;выравнивание&nbsp;влево&nbsp;с&nbsp;обрезкой&nbsp;в&nbsp;10&nbsp;символов<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+   </div>
+
+   <div class="example-contents"><p>Результат выполнения данного примера:</p></div>
+   <div class="example-contents screen">
+<div class="cdata"><pre>
+[monkey]
+[    monkey]
+[monkey    ]
+[0000monkey]
+[####monkey]
+[many monke]
+</pre></div>
+   </div>
+  </div>
+  <div class="example" id="example-4376">
+   <p><b>Пример #8 <span class="function"><b>sprintf()</b></span>: целые числа, дополненные нулями</b></p>
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$isodate&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">sprintf</span><span style="color: #007700">(</span><span style="color: #DD0000">"%04d-%02d-%02d"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$year</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$month</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$day</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+   </div>
+
+  </div>
+  <div class="example" id="example-4377">
+   <p><b>Пример #9 <span class="function"><b>sprintf()</b></span>: форматирование денежных величин</b></p>
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$money1&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">68.75</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$money2&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">54.35</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$money&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$money1&nbsp;</span><span style="color: #007700">+&nbsp;</span><span style="color: #0000BB">$money2</span><span style="color: #007700">;<br /></span><span style="color: #FF8000">//&nbsp;echo&nbsp;$money&nbsp;выведет&nbsp;"123.1";<br /></span><span style="color: #0000BB">$formatted&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">sprintf</span><span style="color: #007700">(</span><span style="color: #DD0000">"%01.2f"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$money</span><span style="color: #007700">);<br /></span><span style="color: #FF8000">//&nbsp;echo&nbsp;$formatted&nbsp;выведет&nbsp;"123.10"<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+   </div>
+
+  </div>
+  <div class="example" id="example-4378">
+   <p><b>Пример #10 <span class="function"><b>sprintf()</b></span>: научная нотация</b></p>
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$number&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">362525200</span><span style="color: #007700">;<br /><br />echo&nbsp;</span><span style="color: #0000BB">sprintf</span><span style="color: #007700">(</span><span style="color: #DD0000">"%.3e"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$number</span><span style="color: #007700">);&nbsp;</span><span style="color: #FF8000">//&nbsp;выведет&nbsp;3.625e+8<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+   </div>
+
+  </div>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-function.sprintf-seealso">
+  <h3 class="title">Смотрите также</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><span class="function"><a href="function.printf.html" class="function" rel="rdfs-seeAlso">printf()</a> - Выводит отформатированную строку</span></li>
+    <li class="member"><span class="function"><a href="function.sscanf.html" class="function" rel="rdfs-seeAlso">sscanf()</a> - Разбирает строку в соответствии с заданным форматом</span></li>
+    <li class="member"><span class="function"><a href="function.fscanf.html" class="function" rel="rdfs-seeAlso">fscanf()</a> - Обрабатывает данные из файла в соответствии с форматом</span></li>
+    <li class="member"><span class="function"><a href="function.vsprintf.html" class="function" rel="rdfs-seeAlso">vsprintf()</a> - Возвращает отформатированную строку</span></li>
+    <li class="member"><span class="function"><a href="function.number-format.html" class="function" rel="rdfs-seeAlso">number_format()</a> - Форматирует число с разделением групп</span></li>
+   </ul>
+  </p>
+ </div>
+
+
+</div><hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.soundex.html">soundex</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.sscanf.html">sscanf</a></div>
+ <div class="up"><a href="ref.strings.html">Обработка строк</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

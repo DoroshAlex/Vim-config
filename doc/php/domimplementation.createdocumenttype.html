@@ -1,0 +1,158 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Создает пустой объект класса DOMDocumentType</title>
+
+ </head>
+ <body><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="domimplementation.createdocument.html">DOMImplementation::createDocument</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="domimplementation.hasfeature.html">DOMImplementation::hasFeature</a></div>
+ <div class="up"><a href="class.domimplementation.html">DOMImplementation</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="domimplementation.createdocumenttype" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">DOMImplementation::createDocumentType</h1>
+  <p class="verinfo">(PHP 5)</p><p class="refpurpose"><span class="refname">DOMImplementation::createDocumentType</span> &mdash; <span class="dc-title">
+   Создает пустой объект класса DOMDocumentType
+  </span></p>
+
+ </div>
+ <div class="refsect1 description" id="refsect1-domimplementation.createdocumenttype-description">
+  <h3 class="title">Описание</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type"><a href="class.domdocumenttype.html" class="type DOMDocumentType">DOMDocumentType</a></span> <span class="methodname"><b>DOMImplementation::createDocumentType</b></span>
+    ([ <span class="methodparam"><span class="type">string</span> <tt class="parameter">$qualifiedName</tt><span class="initializer"> = <b><tt>NULL</tt></b></span></span>
+   [, <span class="methodparam"><span class="type">string</span> <tt class="parameter">$publicId</tt><span class="initializer"> = <b><tt>NULL</tt></b></span></span>
+   [, <span class="methodparam"><span class="type">string</span> <tt class="parameter">$systemId</tt><span class="initializer"> = <b><tt>NULL</tt></b></span></span>
+  ]]] )</div>
+
+  <p class="para rdfs-comment">
+   Создает пустой объект класса <a href="class.domdocumenttype.html" class="classname">DOMDocumentType</a>.
+   Объявления сущностей и условных обозначений будет недоступно. Ссылки на 
+   сущности не будут заменяться, и умолчания значений атрибутов не будут
+   применены.
+  </p>
+ </div>
+
+ <div class="refsect1 parameters" id="refsect1-domimplementation.createdocumenttype-parameters">
+  <h3 class="title">Список параметров</h3>
+  <p class="para">
+   <dl>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">qualifiedName</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Стандартизованное имя типа документа для создания.
+      </p>
+     </dd>
+
+    </dt>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">publicId</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Общедоступный идентификатор внешнего подмножества.
+      </p>
+     </dd>
+
+    </dt>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">systemId</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Системный идентификатор внешнего подмножества.
+      </p>
+     </dd>
+
+    </dt>
+
+   </dl>
+
+  </p>
+ </div>
+
+ <div class="refsect1 returnvalues" id="refsect1-domimplementation.createdocumenttype-returnvalues">
+  <h3 class="title">Возвращаемые значения</h3>
+  <p class="para">
+   Новый объект класса <a href="class.domdocumenttype.html" class="classname">DOMDocumentType</a> с атрибутом
+   <i>ownerDocument</i> установленным в <b><tt>NULL</tt></b>.
+  </p>
+ </div>
+
+ <div class="refsect1 errors" id="refsect1-domimplementation.createdocumenttype-errors">
+  <h3 class="title">Ошибки</h3>
+  <p class="para">
+   <dl>
+
+    <dt>
+
+     <span class="term"><b><tt>DOM_NAMESPACE_ERR</tt></b></span>
+     <dd>
+
+      <p class="para">
+       Возникает, если обнаружена ошибка в строке
+       <i><tt class="parameter">qualifiedName</tt></i>.
+      </p>
+     </dd>
+
+    </dt>
+
+   </dl>
+
+  </p>
+  <p class="para">Этот метод
+<em class="emphasis">может</em> быть вызван статически, но при этом будет сгенерирована ошибка
+уровня <b><tt>E_STRICT</tt></b>.</p>
+ </div>
+
+ <div class="refsect1 examples" id="refsect1-domimplementation.createdocumenttype-examples">
+  <h3 class="title">Примеры</h3>
+  <p class="para">
+   <div class="example" id="example-4887">
+    <p><b>Пример #1 
+     Создание документа с прикрепленной DTD
+    </b></p>
+    <div class="example-contents">
+ <div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /><br /></span><span style="color: #FF8000">//&nbsp;Создает&nbsp;экземпляр&nbsp;класса&nbsp;DOMImplementation<br /></span><span style="color: #0000BB">$imp&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">DOMImplementation</span><span style="color: #007700">;<br /><br /></span><span style="color: #FF8000">//&nbsp;Создает&nbsp;экземпляр&nbsp;класса&nbsp;DOMDocumentType<br /></span><span style="color: #0000BB">$dtd&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$imp</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">createDocumentType</span><span style="color: #007700">(</span><span style="color: #DD0000">'graph'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">''</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'graph.dtd'</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;Создает&nbsp;объект&nbsp;DOMDocument<br /></span><span style="color: #0000BB">$dom&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$imp</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">createDocument</span><span style="color: #007700">(</span><span style="color: #DD0000">""</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">""</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$dtd</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;установка&nbsp;других&nbsp;параметров<br /></span><span style="color: #0000BB">$dom</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">encoding&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'UTF-8'</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$dom</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">standalone&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">false</span><span style="color: #007700">;<br /><br /></span><span style="color: #FF8000">//&nbsp;создание&nbsp;пустого&nbsp;элемента<br /></span><span style="color: #0000BB">$element&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$dom</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">createElement</span><span style="color: #007700">(</span><span style="color: #DD0000">'graph'</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;присоединение&nbsp;элемента<br /></span><span style="color: #0000BB">$dom</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">appendChild</span><span style="color: #007700">(</span><span style="color: #0000BB">$element</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;извлечение&nbsp;и&nbsp;печать&nbsp;документа<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">$dom</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">saveXML</span><span style="color: #007700">();<br /><br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+    <div class="example-contents"><p>Результат выполнения данного примера:</p></div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; standalone=&quot;no&quot;?&gt;
+&lt;!DOCTYPE graph SYSTEM &quot;graph.dtd&quot;&gt;
+&lt;graph/&gt;
+</pre></div>
+    </div>
+   </div>
+  </p>
+ </div>
+
+ <div class="refsect1 seealso" id="refsect1-domimplementation.createdocumenttype-seealso">
+  <h3 class="title">Смотрите также</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"> <span class="methodname"><a href="domimplementation.createdocument.html" class="methodname" rel="rdfs-seeAlso">DOMImplementation::createDocument()</a> - Создает объект класса DOMDocument заданного типа с элементом document</span></li>
+   </ul>
+  </p>
+ </div>
+
+</div><hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="domimplementation.createdocument.html">DOMImplementation::createDocument</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="domimplementation.hasfeature.html">DOMImplementation::hasFeature</a></div>
+ <div class="up"><a href="class.domimplementation.html">DOMImplementation</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

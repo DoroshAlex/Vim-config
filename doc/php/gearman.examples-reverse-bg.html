@@ -1,0 +1,78 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Основные клиент и обработчик Gearman, фоновый режим</title>
+
+ </head>
+ <body><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="gearman.examples-reverse.html">Basic usage</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="gearman.examples-reverse-task.html">Базовые клиент и обработчик Gearman , передающие задачи</a></div>
+ <div class="up"><a href="gearman.examples.html">Примеры</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="gearman.examples-reverse-bg" class="section">
+  <h2 class="title">Основные клиент и обработчик Gearman, фоновый режим</h2>
+  <p class="para">
+   <div class="example" id="example-3839">
+    <p><b>Пример #1 Основные клиент и обработчик Gearman, фоновый режим</b></p>
+    <div class="example-contents"><p>
+     Этот пример демонстрирует очень простые клиента и обработчик. 
+     Клиент отправляет строку серверу выполнения заданий как фоновое задание, 
+     и обработчик инвертирует строку.
+     Обратите внимание, что работа выполняется асинхронно, т.е. клиент не ждет задания, 
+     чтобы завершить работу и отключиться (а значит, клиент никогда не получает результатов).
+    </p></div>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /><br /></span><span style="color: #FF8000">#&nbsp;создание&nbsp;объекта<br /></span><span style="color: #0000BB">$gmclient</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">GearmanClient</span><span style="color: #007700">();<br /><br /></span><span style="color: #FF8000">#&nbsp;указание&nbsp;сервера&nbsp;по&nbsp;умолчанию&nbsp;(localhost)<br /></span><span style="color: #0000BB">$gmclient</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">addServer</span><span style="color: #007700">();<br /><br /></span><span style="color: #FF8000">#&nbsp;выполнение&nbsp;в&nbsp;фоновом&nbsp;режиме<br /></span><span style="color: #0000BB">$job_handle&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$gmclient</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">doBackground</span><span style="color: #007700">(</span><span style="color: #DD0000">"reverse"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"this&nbsp;is&nbsp;a&nbsp;test"</span><span style="color: #007700">);<br /><br />if&nbsp;(</span><span style="color: #0000BB">$gmclient</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">returnCode</span><span style="color: #007700">()&nbsp;!=&nbsp;</span><span style="color: #0000BB">GEARMAN_SUCCESS</span><span style="color: #007700">)<br />{<br />&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"bad&nbsp;return&nbsp;code\n"</span><span style="color: #007700">;<br />&nbsp;&nbsp;exit;<br />}<br /><br />echo&nbsp;</span><span style="color: #DD0000">"done!\n"</span><span style="color: #007700">;<br /><br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /><br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #DD0000">"Starting\n"</span><span style="color: #007700">;<br /><br /></span><span style="color: #FF8000">#&nbsp;Создание&nbsp;обработчика.<br /></span><span style="color: #0000BB">$gmworker</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">GearmanWorker</span><span style="color: #007700">();<br /><br /></span><span style="color: #FF8000">#&nbsp;Указание&nbsp;сервера&nbsp;по&nbsp;умолчанию&nbsp;(localhost).<br /></span><span style="color: #0000BB">$gmworker</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">addServer</span><span style="color: #007700">();<br /><br /></span><span style="color: #FF8000">#&nbsp;Регистрация&nbsp;функции&nbsp;"reverse"&nbsp;на&nbsp;сервере.&nbsp;Изменение&nbsp;функции&nbsp;обработчика&nbsp;на<br />#&nbsp;"reverse_fn_fast"&nbsp;для&nbsp;более&nbsp;быстрой&nbsp;обработки&nbsp;без&nbsp;вывода.<br /></span><span style="color: #0000BB">$gmworker</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">addFunction</span><span style="color: #007700">(</span><span style="color: #DD0000">"reverse"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"reverse_fn"</span><span style="color: #007700">);<br /><br />print&nbsp;</span><span style="color: #DD0000">"Waiting&nbsp;for&nbsp;job...\n"</span><span style="color: #007700">;<br />while(</span><span style="color: #0000BB">$gmworker</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">work</span><span style="color: #007700">())<br />{<br />&nbsp;&nbsp;if&nbsp;(</span><span style="color: #0000BB">$gmworker</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">returnCode</span><span style="color: #007700">()&nbsp;!=&nbsp;</span><span style="color: #0000BB">GEARMAN_SUCCESS</span><span style="color: #007700">)<br />&nbsp;&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"return_code:&nbsp;"&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">$gmworker</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">returnCode</span><span style="color: #007700">()&nbsp;.&nbsp;</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;break;<br />&nbsp;&nbsp;}<br />}<br /><br />function&nbsp;</span><span style="color: #0000BB">reverse_fn</span><span style="color: #007700">(</span><span style="color: #0000BB">$job</span><span style="color: #007700">)<br />{<br />&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"Received&nbsp;job:&nbsp;"&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">$job</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">handle</span><span style="color: #007700">()&nbsp;.&nbsp;</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br /><br />&nbsp;&nbsp;</span><span style="color: #0000BB">$workload&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$job</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">workload</span><span style="color: #007700">();<br />&nbsp;&nbsp;</span><span style="color: #0000BB">$workload_size&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$job</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">workloadSize</span><span style="color: #007700">();<br /><br />&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"Workload:&nbsp;</span><span style="color: #0000BB">$workload</span><span style="color: #DD0000">&nbsp;(</span><span style="color: #0000BB">$workload_size</span><span style="color: #DD0000">)\n"</span><span style="color: #007700">;<br /><br />&nbsp;&nbsp;</span><span style="color: #FF8000">#&nbsp;Этот&nbsp;цикл&nbsp;не&nbsp;является&nbsp;необходимым,&nbsp;но&nbsp;показывает&nbsp;как&nbsp;выполняется&nbsp;работа<br />&nbsp;&nbsp;</span><span style="color: #007700">for&nbsp;(</span><span style="color: #0000BB">$x</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">;&nbsp;</span><span style="color: #0000BB">$x&nbsp;</span><span style="color: #007700">&lt;&nbsp;</span><span style="color: #0000BB">$workload_size</span><span style="color: #007700">;&nbsp;</span><span style="color: #0000BB">$x</span><span style="color: #007700">++)<br />&nbsp;&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"Sending&nbsp;status:&nbsp;"&nbsp;</span><span style="color: #007700">.&nbsp;(</span><span style="color: #0000BB">$x&nbsp;</span><span style="color: #007700">+&nbsp;</span><span style="color: #0000BB">1</span><span style="color: #007700">)&nbsp;.&nbsp;</span><span style="color: #DD0000">"/</span><span style="color: #0000BB">$workload_size</span><span style="color: #DD0000">&nbsp;complete\n"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$job</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">sendStatus</span><span style="color: #007700">(</span><span style="color: #0000BB">$x</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$workload_size</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">sleep</span><span style="color: #007700">(</span><span style="color: #0000BB">1</span><span style="color: #007700">);<br />&nbsp;&nbsp;}<br /><br />&nbsp;&nbsp;</span><span style="color: #0000BB">$result</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">strrev</span><span style="color: #007700">(</span><span style="color: #0000BB">$workload</span><span style="color: #007700">);<br />&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"Result:&nbsp;</span><span style="color: #0000BB">$result</span><span style="color: #DD0000">\n"</span><span style="color: #007700">;<br /><br />&nbsp;&nbsp;</span><span style="color: #FF8000">#&nbsp;Возвращаем,&nbsp;когда&nbsp;необходимо&nbsp;отправить&nbsp;результат&nbsp;обратно&nbsp;клиенту.<br />&nbsp;&nbsp;</span><span style="color: #007700">return&nbsp;</span><span style="color: #0000BB">$result</span><span style="color: #007700">;<br />}<br /><br /></span><span style="color: #FF8000">#&nbsp;Гораздо&nbsp;более&nbsp;простая&nbsp;и&nbsp;менее&nbsp;подробная&nbsp;версия&nbsp;вышеприведенной&nbsp;функции&nbsp;выглядит&nbsp;так:<br /></span><span style="color: #007700">function&nbsp;</span><span style="color: #0000BB">reverse_fn_fast</span><span style="color: #007700">(</span><span style="color: #0000BB">$job</span><span style="color: #007700">)<br />{<br />&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">strrev</span><span style="color: #007700">(</span><span style="color: #0000BB">$job</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">workload</span><span style="color: #007700">());<br />}<br /><br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+    <div class="example-contents"><p>Результатом выполнения данного примера
+будет что-то подобное:</p></div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+% php reverse_worker.php
+Starting
+Waiting for job...
+Received job: H:foo.local:41
+Workload: this is a test (14)
+1/14 complete
+2/14 complete
+3/14 complete
+4/14 complete
+5/14 complete
+6/14 complete
+7/14 complete
+8/14 complete
+9/14 complete
+10/14 complete
+11/14 complete
+12/14 complete
+13/14 complete
+14/14 complete
+Result: tset a si siht
+</pre></div>
+    </div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+% php reverse_client_bg.php
+done!
+</pre></div>
+    </div>
+   </div>
+  </p>
+ </div><hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="gearman.examples-reverse.html">Basic usage</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="gearman.examples-reverse-task.html">Базовые клиент и обработчик Gearman , передающие задачи</a></div>
+ <div class="up"><a href="gearman.examples.html">Примеры</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

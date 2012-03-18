@@ -1,0 +1,226 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Выбирает строку результата запроса и возвращает данные в виде объекта</title>
+
+ </head>
+ <body><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.pg-fetch-assoc.html">pg_fetch_assoc</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.pg-fetch-result.html">pg_fetch_result</a></div>
+ <div class="up"><a href="ref.pgsql.html">PostgreSQL</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.pg-fetch-object" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">pg_fetch_object</h1>
+  <p class="verinfo">(PHP 4, PHP 5)</p><p class="refpurpose"><span class="refname">pg_fetch_object</span> &mdash; <span class="dc-title">Выбирает строку результата запроса и возвращает данные в виде объекта</span></p>
+
+ </div>
+
+ <div class="refsect1 description" id="refsect1-function.pg-fetch-object-description">
+  <h3 class="title">Описание</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">object</span> <span class="methodname"><b>pg_fetch_object</b></span>
+    ( <span class="methodparam"><span class="type">resource</span> <tt class="parameter">$result</tt></span>
+   [, <span class="methodparam"><span class="type">int</span> <tt class="parameter">$row</tt></span>
+   [, <span class="methodparam"><span class="type">int</span> <tt class="parameter">$result_type</tt><span class="initializer"> = PGSQL_ASSOC</span></span>
+  ]] )</div>
+
+  <div class="methodsynopsis dc-description">
+   <span class="type">object</span> <span class="methodname"><b>pg_fetch_object</b></span>
+    ( <span class="methodparam"><span class="type">resource</span> <tt class="parameter">$result</tt></span>
+   [, <span class="methodparam"><span class="type">int</span> <tt class="parameter">$row</tt></span>
+   [, <span class="methodparam"><span class="type">string</span> <tt class="parameter">$class_name</tt></span>
+   [, <span class="methodparam"><span class="type">array</span> <tt class="parameter">$params</tt></span>
+  ]]] )</div>
+
+  <p class="para rdfs-comment">
+   <span class="function"><b>pg_fetch_object()</b></span> возвращает объект, свойства которого 
+   соответствуют именам полей выборки. Также функция может создать экземпляр  
+   конкретного класса и передать параметры его конструктору.
+  </p>
+  <blockquote class="note"><p><b class="note">Замечание</b>: <span class="simpara">Эта функция устанавливает NULL-поля
+в значение <b><tt>NULL</tt></b> PHP.</span></p></blockquote>
+  <p class="para">
+   По скорости функция идентична <span class="function"><a href="function.pg-fetch-array.html" class="function">pg_fetch_array()</a></span> 
+   и немного медленней <span class="function"><a href="function.pg-fetch-row.html" class="function">pg_fetch_row()</a></span> 
+   (разница незначительна).
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-function.pg-fetch-object-parameters">
+  <h3 class="title">Список параметров</h3>
+  <p class="para">
+   <dl>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">result</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Ресурс результата запроса PostgreSQL, возвращаемый функциями 
+       <span class="function"><a href="function.pg-query.html" class="function">pg_query()</a></span>, <span class="function"><a href="function.pg-query-params.html" class="function">pg_query_params()</a></span> 
+       или <span class="function"><a href="function.pg-execute.html" class="function">pg_execute()</a></span> (в числе прочих). 
+      </p>
+     </dd>
+
+    </dt>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">row</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Номер выбираемой из результата запроса строки. Нумерация начинается 
+       с нуля. Если аргумент опущен или равен <b><tt>NULL</tt></b>, берется следующая по 
+       очереди строка. 
+      </p>
+     </dd>
+
+    </dt>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">result_type</tt></i></span>
+      <dd>
+
+       <p class="para">
+        Устарел и не используется.
+       </p>
+     </dd>
+
+    </dt>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">class_name</tt></i></span>
+      <dd>
+
+       <p class="para">
+        Имя класса создаваемого и возвращаемого объекта. Если не задано, 
+        функция создаст экземпляр класса <b class="classname">stdClass</b>. 
+       </p>
+     </dd>
+
+    </dt>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">params</tt></i></span>
+      <dd>
+
+       <p class="para">
+        Необязательный аргумент. Массив параметров для передачи в конструктор 
+        создаваемого объекта.
+       </p>
+     </dd>
+
+    </dt>
+
+   </dl>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-function.pg-fetch-object-returnvalues">
+  <h3 class="title">Возвращаемые значения</h3>
+  <p class="para">
+   <span class="type"><a href="language.types.object.html" class="type object">object</a></span>, имена и значения свойств которого соответствуют 
+   именам и значениям полей результата запроса. Значения <i>NULL</i> 
+   базы данных преобразуются в PHP <b><tt>NULL</tt></b>. 
+  </p>
+  <p class="para">
+   <b><tt>FALSE</tt></b>, когда <i><tt class="parameter">row</tt></i> превышает число строк в 
+   результате запроса, когда строк в результате не осталось, и при 
+   прочих ошибках.   
+  </p>
+ </div>
+
+
+ <div class="refsect1 changelog" id="refsect1-function.pg-fetch-object-changelog">
+  <h3 class="title">Список изменений</h3>
+  <p class="para">
+   <table class="doctable informaltable">
+    
+     <thead valign="middle">
+      <tr valign="middle">
+       <th>Версия</th>
+       <th>Описание</th>
+      </tr>
+
+     </thead>
+
+     <tbody valign="middle" class="tbody">
+      <tr valign="middle">
+       <td align="left">5.0.0</td>
+       <td align="left">
+        Добавлены аргументы <i><tt class="parameter">class_name</tt></i> и 
+        <i><tt class="parameter">params</tt></i>. Устаревший вариант с 
+        <i><tt class="parameter">result_type</tt></i> оставлен для обратной совместимости.
+       </td>
+      </tr>
+
+      <tr valign="middle">
+       <td align="left">4.3.0</td>
+       <td align="left">
+        Значение по-умолчанию аргумента <i><tt class="parameter">result_type</tt></i> 
+        изменено с <b><tt>PGSQL_BOTH</tt></b> на <b><tt>PGSQL_ASSOC</tt></b> 
+        с тех пор как перестали использоваться численно индексированные массивы. 
+       </td>
+      </tr>
+
+      <tr valign="middle">
+       <td align="left">4.1.0</td>
+       <td align="left">
+        Аргумент <i><tt class="parameter">row</tt></i> стал необязательным.
+       </td>
+      </tr>
+
+     </tbody>
+    
+   </table>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-function.pg-fetch-object-examples">
+  <h3 class="title">Примеры</h3>
+  <p class="para">
+   <div class="example" id="example-1903">
+    <p><b>Пример #1 Пример использования <span class="function"><b>pg_fetch_object()</b></span></b></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php&nbsp;<br /><br />$database&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">"store"</span><span style="color: #007700">;<br /><br /></span><span style="color: #0000BB">$db_conn&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">pg_connect</span><span style="color: #007700">(</span><span style="color: #DD0000">"host=localhost&nbsp;port=5432&nbsp;dbname=</span><span style="color: #0000BB">$database</span><span style="color: #DD0000">"</span><span style="color: #007700">);<br />if&nbsp;(!</span><span style="color: #0000BB">$db_conn</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"Невозможно&nbsp;соединиться&nbsp;с&nbsp;postgres&nbsp;базой&nbsp;</span><span style="color: #0000BB">$database</span><span style="color: #DD0000">\n"</span><span style="color: #007700">;<br />&nbsp;&nbsp;exit;<br />}<br /><br /></span><span style="color: #0000BB">$qu&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">pg_query</span><span style="color: #007700">(</span><span style="color: #0000BB">$db_conn</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"SELECT&nbsp;*&nbsp;FROM&nbsp;books&nbsp;ORDER&nbsp;BY&nbsp;author"</span><span style="color: #007700">);<br /><br /><br />while&nbsp;(</span><span style="color: #0000BB">$data&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">pg_fetch_object</span><span style="color: #007700">(</span><span style="color: #0000BB">$qu</span><span style="color: #007700">))&nbsp;{<br />&nbsp;&nbsp;echo&nbsp;</span><span style="color: #0000BB">$data</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">author&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #DD0000">"&nbsp;("</span><span style="color: #007700">;<br />&nbsp;&nbsp;echo&nbsp;</span><span style="color: #0000BB">$data</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">year&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #DD0000">"):&nbsp;"</span><span style="color: #007700">;<br />&nbsp;&nbsp;echo&nbsp;</span><span style="color: #0000BB">$data</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">title&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #DD0000">"&lt;br&nbsp;/&gt;"</span><span style="color: #007700">;<br />}<br /><br /></span><span style="color: #0000BB">pg_free_result</span><span style="color: #007700">(</span><span style="color: #0000BB">$qu</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">pg_close</span><span style="color: #007700">(</span><span style="color: #0000BB">$db_conn</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+  </p>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-function.pg-fetch-object-seealso">
+  <h3 class="title">Смотрите также</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><span class="function"><a href="function.pg-query.html" class="function" rel="rdfs-seeAlso">pg_query()</a> - Выполняет запрос</span></li>
+    <li class="member"><span class="function"><a href="function.pg-fetch-array.html" class="function" rel="rdfs-seeAlso">pg_fetch_array()</a> - Возвращает строку результата в виде массива</span></li>
+    <li class="member"><span class="function"><a href="function.pg-fetch-assoc.html" class="function" rel="rdfs-seeAlso">pg_fetch_assoc()</a> - Выбирает строку результата запроса и помещает данные в ассоциативный массив</span></li>
+    <li class="member"><span class="function"><a href="function.pg-fetch-row.html" class="function" rel="rdfs-seeAlso">pg_fetch_row()</a> - Выбирает строку результата запроса и помещает данные в массив</span></li>
+    <li class="member"><span class="function"><a href="function.pg-fetch-result.html" class="function" rel="rdfs-seeAlso">pg_fetch_result()</a> - Возвращает запись из результата запроса</span></li>
+   </ul>
+  </p>
+ </div>
+
+</div><hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.pg-fetch-assoc.html">pg_fetch_assoc</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.pg-fetch-result.html">pg_fetch_result</a></div>
+ <div class="up"><a href="ref.pgsql.html">PostgreSQL</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

@@ -1,0 +1,210 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Доступ к URL-адресам по протоколу FTP(s)</title>
+
+ </head>
+ <body><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="wrappers.http.html">http://</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="wrappers.php.html">php://</a></div>
+ <div class="up"><a href="wrappers.html">Поддерживаемые протоколы и обработчики (wrappers)</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="wrappers.ftp" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">ftp://</h1>
+  <h1 class="refname">ftps://</h1>
+  <p class="refpurpose"><span class="refname">ftp://</span> -- <span class="refname">ftps://</span> &mdash; <span class="dc-title">Доступ к URL-адресам по протоколу FTP(s)</span></p>
+
+ </div>
+
+ <div class="refsect1 description" id="refsect1-wrappers.ftp-description">
+  <h3 class="title">Описание</h3>
+  <p class="para">
+   Позволяет читать существующие файлы и создавать новые файлы
+   через FTP. Если сервер FTP не поддерживает режим passive mode,
+   соединение будет невозможно.
+  </p>
+  <p class="simpara">
+   Вы можете открыть файл либо для чтения, либо для записи, но не
+   одновременно для того и другого. Если файл на сервере FTP уже существует,
+   и вы пытаетесь открыть его для записи, но не указали опцию контекста
+   <i>overwrite</i>, соединение будет невозможно.
+   Если вам необходимо перезаписать существующие файлы на FTP,
+   укажите опцию <i>overwrite</i> в контексте
+   и откройте файл для записи. Кроме того, вы можете использовать
+   <a href="ref.ftp.html" class="link">FTP расширение</a>.
+  </p>
+  <p class="simpara">
+   Если вы установили директиву <a href="filesystem.configuration.html#ini.from" class="link">from</a> в
+   файле <var class="filename">php.ini</var>, то это значение будет отправлено как пароль при
+   анонимном подключении к FTP.
+  </p>
+ </div>
+
+
+ <div class="refsect1 usage" id="refsect1-wrappers.ftp-usage"> 
+  <h3 class="title">Опции</h3>
+  <ul class="itemizedlist">
+   <li class="listitem"><span class="simpara"><var class="filename">ftp://example.com/pub/file.txt</var></span></li>
+   <li class="listitem"><span class="simpara"><var class="filename">ftp://user:password@example.com/pub/file.txt</var></span></li>
+   <li class="listitem"><span class="simpara"><var class="filename">ftps://example.com/pub/file.txt</var></span></li>
+   <li class="listitem"><span class="simpara"><var class="filename">ftps://user:password@example.com/pub/file.txt</var></span></li>
+  </ul>
+ </div>
+ 
+
+ <div class="refsect1 options" id="refsect1-wrappers.ftp-options">
+  <h3 class="title">Опции</h3>
+  <p class="para">
+   <table class="doctable table">
+    <caption><b>Основная информация</b></caption>
+    
+     <thead valign="middle">
+      <tr valign="middle">
+       <th>Атрибут</th>
+       <th>PHP 4</th>
+       <th>PHP 5</th>
+      </tr>
+
+     </thead>
+
+     <tbody valign="middle" class="tbody">
+      <tr valign="middle">
+       <td align="left">Ограничение по <a href="filesystem.configuration.html#ini.allow-url-fopen" class="link">allow_url_fopen</a></td>
+       <td align="left">Да</td>
+       <td align="left">Да</td>
+      </tr>
+
+      <tr valign="middle">
+       <td align="left">Чтение</td>
+       <td align="left">Да</td>
+       <td align="left">Да</td>
+      </tr>
+
+      <tr valign="middle">
+       <td align="left">Запись</td>
+       <td align="left">Да (только новые файлы)</td>
+       <td align="left">Да (новые файлы / существующие файлы с опцией <i><tt class="parameter">overwrite</tt></i>)</td>
+      </tr>
+
+      <tr valign="middle">
+       <td align="left">Добавление</td>
+       <td align="left">Нет</td>
+       <td align="left">Да</td>
+      </tr>
+
+      <tr valign="middle">
+       <td align="left">Одновременное чтение и запись</td>
+       <td align="left">Нет</td>
+       <td align="left">Нет</td>
+      </tr>
+
+      <tr valign="middle">
+       <td align="left">Поддержка <span class="function"><a href="function.stat.html" class="function">stat()</a></span></td>
+       <td align="left">Нет</td>
+       <td align="left">
+        Начиная с PHP 5.0.0 доступны только: <span class="function"><a href="function.filesize.html" class="function">filesize()</a></span>,
+        <span class="function"><a href="function.filetype.html" class="function">filetype()</a></span>, <span class="function"><a href="function.file-exists.html" class="function">file_exists()</a></span>,
+        <span class="function"><a href="function.is-file.html" class="function">is_file()</a></span>, и <span class="function"><a href="function.is-dir.html" class="function">is_dir()</a></span>.
+        Начиная с PHP 5.1.0 доступны: <span class="function"><a href="function.filemtime.html" class="function">filemtime()</a></span>.
+       </td>
+      </tr>
+
+      <tr valign="middle">
+       <td align="left">Поддержка <span class="function"><a href="function.unlink.html" class="function">unlink()</a></span></td>
+       <td align="left">Нет</td>
+       <td align="left">Да</td>
+      </tr>
+
+      <tr valign="middle">
+       <td align="left">Поддержка <span class="function"><a href="function.rename.html" class="function">rename()</a></span></td>
+       <td align="left">Нет</td>
+       <td align="left">Да</td>
+      </tr>
+
+      <tr valign="middle">
+       <td align="left">Поддержка <span class="function"><a href="function.mkdir.html" class="function">mkdir()</a></span></td>
+       <td align="left">Нет</td>
+       <td align="left">Да</td>
+      </tr>
+
+      <tr valign="middle">
+       <td align="left">Поддержка <span class="function"><a href="function.rmdir.html" class="function">rmdir()</a></span></td>
+       <td align="left">Нет</td>
+       <td align="left">Да</td>
+      </tr>
+
+     </tbody>
+    
+   </table>
+
+  </p>
+ </div>
+ 
+
+ <div class="refsect1 changelog" id="refsect1-wrappers.ftp-changelog">
+  <h3 class="title">Список изменений</h3>
+  <p class="para">
+   <table class="doctable informaltable">
+    
+     <thead valign="middle">
+      <tr valign="middle">
+       <th>Версия</th>
+       <th>Описание</th>
+      </tr>
+
+     </thead>
+
+     <tbody valign="middle" class="tbody">
+      <tr valign="middle">
+       <td align="left">4.3.0</td>
+       <td align="left">
+        Добавлена поддержка <i>ftps://</i>.
+       </td>
+      </tr>
+
+     </tbody>
+    
+   </table>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 notes" id="refsect1-wrappers.ftp-notes">
+  <h3 class="title">Примечания</h3>
+  <blockquote class="note"><p><b class="note">Замечание</b>: 
+   <p class="para">
+    FTPS поддерживается только когда включена поддержка расширения <a href="book.openssl.html" class="link">OpenSSL</a>.
+   </p>
+   <span class="simpara">
+    Если сервер не поддерживает SSL, то соединение переключается обратно на
+    обычный нешифрованный протокол FTP.
+   </span>
+  </p></blockquote>
+  <blockquote class="note"><p><b class="note">Замечание</b>: 
+   <b>Дополнение</b><br />
+   <span class="simpara">
+    Начиная с PHP 5.0.0 файлы могут быть дописаны с помощью
+    <i>ftp://</i> URL-обертки.  В предыдущих версиях попытка
+    дописать файл через <i>ftp://</i> приводила к ошибке.
+   </span>
+  </p></blockquote>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-wrappers.ftp-seealso">
+  <h3 class="title">Смотрите также</h3>
+  <ul class="simplelist">
+   <li class="member"><a href="context.ftp.html" class="xref">Параметры контекста FTP</a></li>
+  </ul>
+ </div>
+
+
+</div><hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="wrappers.http.html">http://</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="wrappers.php.html">php://</a></div>
+ <div class="up"><a href="wrappers.html">Поддерживаемые протоколы и обработчики (wrappers)</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

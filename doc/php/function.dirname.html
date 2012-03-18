@@ -1,0 +1,183 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Возвращает имя родительского каталога из указанного пути</title>
+
+ </head>
+ <body><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.delete.html">delete</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.disk-free-space.html">disk_free_space</a></div>
+ <div class="up"><a href="ref.filesystem.html">Файловая система</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.dirname" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">dirname</h1>
+  <p class="verinfo">(PHP 4, PHP 5)</p><p class="refpurpose"><span class="refname">dirname</span> &mdash; <span class="dc-title">Возвращает имя родительского каталога из указанного пути</span></p>
+
+ </div>
+
+ <div class="refsect1 description" id="refsect1-function.dirname-description">
+  <h3 class="title">Описание</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">string</span> <span class="methodname"><b>dirname</b></span>
+    ( <span class="methodparam"><span class="type">string</span> <tt class="parameter">$path</tt></span>
+   )</div>
+
+  <p class="para rdfs-comment">
+   Получив строку, содержащую путь к файлу или каталогу, данная
+   функция возвратит родительский каталог данного пути.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-function.dirname-parameters">
+  <h3 class="title">Список параметров</h3>
+  <p class="para">
+   <dl>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">path</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Путь.
+      </p>
+      <p class="para">
+       На платформах Windows в качестве разделителей имен директорий
+       используются оба слэша (прямой <i>/</i> и обратный
+       <i>\</i>). В других операционных системах разделителем
+       служит прямой слэш (<i>/</i>).
+      </p>
+     </dd>
+
+    </dt>
+
+   </dl>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-function.dirname-returnvalues">
+  <h3 class="title">Возвращаемые значения</h3>
+  <p class="para">
+   Возвращает путь к родительской директории. Если в параметре
+   <i><tt class="parameter">path</tt></i> не содержится слэшей, будет возвращена
+   точка (&#039;<i>.</i>&#039;), обозначающая текущую директорию.
+   В другом случае будет возвращен <i><tt class="parameter">path</tt></i>
+   без последнего компонента <i>/component</i>.
+  </p>
+ </div>
+
+
+ <div class="refsect1 changelog" id="refsect1-function.dirname-changelog">
+  <h3 class="title">Список изменений</h3>
+  <p class="para">
+   <table class="doctable informaltable">
+    
+     <thead valign="middle">
+      <tr valign="middle">
+       <th>Версия</th>
+       <th>Описание</th>
+      </tr>
+
+     </thead>
+
+     <tbody valign="middle" class="tbody">
+      <tr valign="middle">
+       <td align="left">5.0.0</td>
+       <td align="left">
+        <span class="function"><b>dirname()</b></span> теперь безопасна для обработки бинарных данных.
+       </td>
+      </tr>
+
+      <tr valign="middle">
+       <td align="left">4.0.3</td>
+       <td align="left">
+        <span class="function"><b>dirname()</b></span> теперь совместима со стандартом POSIX.
+       </td>
+      </tr>
+
+     </tbody>
+    
+   </table>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-function.dirname-examples">
+  <h3 class="title">Примеры</h3>
+  <p class="para">
+   <div class="example" id="example-2101">
+    <p><b>Пример #1 Пример использования функции <span class="function"><b>dirname()</b></span></b></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #DD0000">"1)&nbsp;"&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">dirname</span><span style="color: #007700">(</span><span style="color: #DD0000">"/etc/passwd"</span><span style="color: #007700">)&nbsp;.&nbsp;</span><span style="color: #0000BB">PHP_EOL</span><span style="color: #007700">;&nbsp;</span><span style="color: #FF8000">//&nbsp;1)&nbsp;/etc<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #DD0000">"2)&nbsp;"&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">dirname</span><span style="color: #007700">(</span><span style="color: #DD0000">"/etc/"</span><span style="color: #007700">)&nbsp;.&nbsp;</span><span style="color: #0000BB">PHP_EOL</span><span style="color: #007700">;&nbsp;</span><span style="color: #FF8000">//&nbsp;2)&nbsp;/&nbsp;(или&nbsp;\&nbsp;на&nbsp;Windows)<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #DD0000">"3)&nbsp;"&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">dirname</span><span style="color: #007700">(</span><span style="color: #DD0000">"."</span><span style="color: #007700">);&nbsp;</span><span style="color: #FF8000">//&nbsp;3)&nbsp;.<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+  </p>
+ </div>
+
+
+ <div class="refsect1 notes" id="refsect1-function.dirname-notes">
+  <h3 class="title">Примечания</h3>
+  <blockquote class="note"><p><b class="note">Замечание</b>: 
+   <p class="para">
+    Функция <span class="function"><b>dirname()</b></span> наивно оперирует исключительно
+    исходной строкой и не учитывает реальную файловую систему
+    или компоненты пути типа &quot;<i>..</i>&quot;.
+   </p>
+  </p></blockquote>
+  <blockquote class="note"><p><b class="note">Замечание</b>: 
+   <p class="para">
+    <span class="function"><b>dirname()</b></span> учитывает настройки локали, поэтому
+    для корректной обработки пути с многобайтными символами должна
+    быть установлена соответствующая локаль с помощью функции
+    <span class="function"><a href="function.setlocale.html" class="function">setlocale()</a></span>.
+   </p>
+  </p></blockquote>
+  <blockquote class="note"><p><b class="note">Замечание</b>: 
+   <p class="para">
+    Начиная с версии PHP 4.0.3, функция <span class="function"><b>dirname()</b></span>
+    вернет слэш или точку там, где ранее возвращалась бы пустая строка.
+   </p>
+  </p></blockquote>
+  <p class="para">
+   Посмотрите следующий пример, иллюстрирующий эти изменения:
+   <div class="informalexample">
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /><br /></span><span style="color: #FF8000">//до&nbsp;PHP&nbsp;4.3.0<br /></span><span style="color: #0000BB">dirname</span><span style="color: #007700">(</span><span style="color: #DD0000">'c:/'</span><span style="color: #007700">);&nbsp;</span><span style="color: #FF8000">//&nbsp;возвращала&nbsp;'.'<br /><br />//после&nbsp;PHP&nbsp;4.3.0<br /></span><span style="color: #0000BB">dirname</span><span style="color: #007700">(</span><span style="color: #DD0000">'c:/x'</span><span style="color: #007700">);&nbsp;</span><span style="color: #FF8000">//&nbsp;возвращает&nbsp;'c:\'<br /></span><span style="color: #0000BB">dirname</span><span style="color: #007700">(</span><span style="color: #DD0000">'c:/Temp/x'</span><span style="color: #007700">);&nbsp;</span><span style="color: #FF8000">//&nbsp;возвращает&nbsp;'c:/Temp'<br /></span><span style="color: #0000BB">dirname</span><span style="color: #007700">(</span><span style="color: #DD0000">'/x'</span><span style="color: #007700">);&nbsp;</span><span style="color: #FF8000">//&nbsp;возвращает&nbsp;'\'<br /><br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+  </p>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-function.dirname-seealso">
+  <h3 class="title">Смотрите также</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><span class="function"><a href="function.basename.html" class="function" rel="rdfs-seeAlso">basename()</a> - Возвращает последний компонент имени из указанного пути</span></li>
+    <li class="member"><span class="function"><a href="function.pathinfo.html" class="function" rel="rdfs-seeAlso">pathinfo()</a> - Возвращает информацию о пути к файлу</span></li>
+    <li class="member"><span class="function"><a href="function.realpath.html" class="function" rel="rdfs-seeAlso">realpath()</a> - Возвращает канонизированный абсолютный путь к файлу</span></li>
+   </ul>
+  </p>
+ </div>
+
+
+</div><hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.delete.html">delete</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.disk-free-space.html">disk_free_space</a></div>
+ <div class="up"><a href="ref.filesystem.html">Файловая система</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

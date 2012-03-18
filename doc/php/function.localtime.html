@@ -1,0 +1,230 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Возвращает локальное время</title>
+
+ </head>
+ <body><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.idate.html">idate</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.microtime.html">microtime</a></div>
+ <div class="up"><a href="ref.datetime.html">Функции даты и времени</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.localtime" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">localtime</h1>
+  <p class="verinfo">(PHP 4, PHP 5)</p><p class="refpurpose"><span class="refname">localtime</span> &mdash; <span class="dc-title">Возвращает локальное время</span></p>
+
+ </div>
+
+ <div class="refsect1 description" id="refsect1-function.localtime-description">
+  <h3 class="title">Описание</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">array</span> <span class="methodname"><b>localtime</b></span>
+    ([ <span class="methodparam"><span class="type">int</span> <tt class="parameter">$timestamp</tt><span class="initializer"> = time()</span></span>
+   [, <span class="methodparam"><span class="type">bool</span> <tt class="parameter">$is_associative</tt><span class="initializer"> = false</span></span>
+  ]] )</div>
+
+  <p class="para rdfs-comment">
+   Функция <span class="function"><b>localtime()</b></span> возвращает массив,
+   аналогичный по структуре, возвращаемой соответствующей функцией C.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-function.localtime-parameters">
+  <h3 class="title">Список параметров</h3>
+  <p class="para">
+   <dl>
+
+
+    
+<dt>
+<span class="term"><i><tt class="parameter">timestamp</tt></i></span><dd>
+<p class="para">
+ Необязательный параметр <i><tt class="parameter">timestamp</tt></i> представляет собой
+ <span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span> метку времени, по умолчанию равную текущему локальному времени, если <i><tt class="parameter">timestamp</tt></i>
+ не указан. Другими словами, значение по умолчанию равно результату функции <span class="function"><a href="function.time.html" class="function">time()</a></span>.
+ </p></dd>
+</dt>
+
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">is_associative</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Если установлен в <b><tt>FALSE</tt></b> или не передан, то возвращается
+       обычный массив с числовыми индексами. Если установлен
+       в <b><tt>TRUE</tt></b>, то функция <span class="function"><b>localtime()</b></span> вернет
+       ассоциативный массив, содержащий все различные элементы
+       структуры, возвращаемой вызовом C-функции localtime.
+       Названия этих ключей соответствуют следующим значениям:
+      </p>
+      <p class="para">
+       <ul class="itemizedlist">
+        <li class="listitem">
+         <span class="simpara">
+          &quot;tm_sec&quot; - секунды, с <i>0</i> до <i>59</i>
+         </span>
+        </li>
+        <li class="listitem">
+         <span class="simpara">
+          &quot;tm_min&quot; - минуты, с <i>0</i> до <i>59</i>
+         </span>
+        </li>
+        <li class="listitem">
+         <span class="simpara">
+          &quot;tm_hour&quot; - часы, с <i>0</i> до <i>23</i>
+         </span>
+        </li>
+        <li class="listitem">
+         <span class="simpara">
+          &quot;tm_mday&quot; - день месяца, с <i>1</i> до <i>31</i>
+         </span>
+        </li>
+        <li class="listitem">
+         <span class="simpara">
+          &quot;tm_mon&quot; - месяц года, с <i>0</i> (январь) до <i>11</i> (декабрь)
+         </span>
+        </li>
+        <li class="listitem">
+         <span class="simpara">
+          &quot;tm_year&quot; - количество лет, прошедших с 1900 г.
+         </span>
+        </li>
+        <li class="listitem">
+         <span class="simpara">
+          &quot;tm_wday&quot; - день недели, с <i>0</i> (воскресенье) до <i>6</i> (суббота)
+         </span>
+        </li>
+        <li class="listitem">
+         <span class="simpara">
+          &quot;tm_yday&quot; - порядковый номер дня в году, с <i>0</i> до <i>365</i>
+         </span>
+        </li>
+        <li class="listitem">
+         <span class="simpara">
+          &quot;tm_isdst&quot; - признак летнего времени
+         </span>
+         <span class="simpara">
+          Положителен, если учитывается, <i>0</i>, если не учитывается,
+          отрицателен, если неизвестен.
+         </span>
+        </li>
+       </ul>
+      </p>
+     </dd>
+
+    </dt>
+
+   </dl>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 errors" id="refsect1-function.localtime-errors">
+  <h3 class="title">Ошибки</h3>
+
+   <p class="para">
+Каждый вызов к функциям даты/времени при неправильных настройках временной зоны сгенерирует ошибку уровня <b><tt>E_NOTICE</tt></b>,
+и/или ошибку уровня <b><tt>E_STRICT</tt></b> или <b><tt>E_WARNING</tt></b> при использовании системных
+настроек или переменной окружения <var class="varname"><var class="varname">TZ</var></var>. Смотрите также <span class="function"><a href="function.date-default-timezone-set.html" class="function">date_default_timezone_set()</a></span></p>
+
+ </div>
+
+
+ <div class="refsect1 changelog" id="refsect1-function.localtime-changelog">
+  <h3 class="title">Список изменений</h3>
+  <p class="para">
+   <table class="doctable informaltable">
+    
+     <thead valign="middle">
+      <tr valign="middle">
+       <th>Версия</th>
+       <th>Описание</th>
+      </tr>
+
+     </thead>
+
+     <tbody valign="middle" class="tbody">
+
+      <tr valign="middle"><td align="left">5.1.0</td><td align="left"><p class="para">
+Теперь ошибки, связанные с временными зонами, генерируют ошибки уровня <b><tt>E_STRICT</tt></b> и <b><tt>E_NOTICE</tt></b>.
+</p></td></tr>
+
+
+     </tbody>
+    
+   </table>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-function.localtime-examples">
+  <h3 class="title">Примеры</h3>
+  <p class="para">
+   <div class="example" id="example-656">
+    <p><b>Пример #1 Пример использования <span class="function"><b>localtime()</b></span></b></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$localtime&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">localtime</span><span style="color: #007700">();<br /></span><span style="color: #0000BB">$localtime_assoc&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">localtime</span><span style="color: #007700">(</span><span style="color: #0000BB">time</span><span style="color: #007700">(),&nbsp;</span><span style="color: #0000BB">true</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">print_r</span><span style="color: #007700">(</span><span style="color: #0000BB">$localtime</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">print_r</span><span style="color: #007700">(</span><span style="color: #0000BB">$localtime_assoc</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+    <div class="example-contents"><p>Результатом выполнения данного примера
+будет что-то подобное:</p></div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+Array
+(
+    [0] =&gt; 24
+    [1] =&gt; 3
+    [2] =&gt; 19
+    [3] =&gt; 3
+    [4] =&gt; 3
+    [5] =&gt; 105
+    [6] =&gt; 0
+    [7] =&gt; 92
+    [8] =&gt; 1
+)
+
+Array
+(
+    [tm_sec] =&gt; 24
+    [tm_min] =&gt; 3
+    [tm_hour] =&gt; 19
+    [tm_mday] =&gt; 3
+    [tm_mon] =&gt; 3
+    [tm_year] =&gt; 105
+    [tm_wday] =&gt; 0
+    [tm_yday] =&gt; 92
+    [tm_isdst] =&gt; 1
+)
+</pre></div>
+    </div>
+   </div>
+  </p>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-function.localtime-seealso">
+  <h3 class="title">Смотрите также</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><span class="function"><a href="function.getdate.html" class="function" rel="rdfs-seeAlso">getdate()</a> - Возвращает информацию о дате/времени</span></li>
+   </ul>
+  </p>
+ </div>
+
+
+</div><hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.idate.html">idate</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.microtime.html">microtime</a></div>
+ <div class="up"><a href="ref.datetime.html">Функции даты и времени</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

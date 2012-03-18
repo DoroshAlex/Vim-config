@@ -1,0 +1,183 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Проверяет (и запускает) PHP синтаксис указанного файла</title>
+
+ </head>
+ <body><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.pack.html">pack</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.php-strip-whitespace.html">php_strip_whitespace</a></div>
+ <div class="up"><a href="ref.misc.html">Разные Функции</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.php-check-syntax" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">php_check_syntax</h1>
+  <p class="verinfo">(PHP 5 &lt;= 5.0.4)</p><p class="refpurpose"><span class="refname">php_check_syntax</span> &mdash; <span class="dc-title">
+   Проверяет (и запускает) PHP синтаксис указанного файла
+  </span></p>
+
+ </div>
+ <div class="refsect1 description" id="refsect1-function.php-check-syntax-description">
+  <h3 class="title">Описание</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">bool</span> <span class="methodname"><b>php_check_syntax</b></span>
+    ( <span class="methodparam"><span class="type">string</span> <tt class="parameter">$filename</tt></span>
+   [, <span class="methodparam"><span class="type">string</span> <tt class="parameter reference">&$error_message</tt></span>
+  ] )</div>
+
+  <p class="para rdfs-comment">
+   Выполняет проверку синтаксиса (производит верификацию) файла,
+   указанного в <i><tt class="parameter">filename</tt></i> проверяя ошибки в коде.
+  </p>
+  <p class="para">
+   Действие похоже на использование <strong class="command">php -l</strong> 
+   из <a href="features.commandline.html" class="link">командной строки</a>,
+   исключая то, что эта функция запустит (но не выведет) проверяемый
+   файл из <i><tt class="parameter">filename</tt></i>.
+  </p>
+  <p class="para">
+   К примеру, если функция определена в <i><tt class="parameter">filename</tt></i>,
+   то эта функция будет доступна после в файле, из которого производится
+   запуск функции <span class="function"><b>php_check_syntax()</b></span>, но вывод из
+   файла, указанного в <i><tt class="parameter">filename</tt></i> будет невозможен.
+  </p>
+  <blockquote class="note"><p><b class="note">Замечание</b>: 
+   
+   <p class="para">
+    По техническим причинам эта функция устарела и удалена из PHP.
+    Вместо этой функции используйте <i>php -l somefile.php</i>
+    из <a href="features.commandline.html" class="link">командной строки</a>.
+   </p>
+  </p></blockquote>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-function.php-check-syntax-parameters">
+ <h3 class="title">Список параметров</h3>
+  <p class="para">
+   <dl>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">filename</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Имя проверяемого файла.
+      </p>
+     </dd>
+
+    </dt>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">error_message</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Если используется параметр <i><tt class="parameter">error_message</tt></i>, то
+       в нем будет содержаться сообщение об ошибке, сформированное при проверке
+       синтаксиса.  <i><tt class="parameter">error_message</tt></i> передается по 
+       <a href="language.references.html" class="link">ссылке</a>.
+      </p>
+     </dd>
+
+    </dt>
+
+   </dl>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-function.php-check-syntax-returnvalues">
+  <h3 class="title">Возвращаемые значения</h3>
+  <p class="para">
+   Возвращает <b><tt>TRUE</tt></b> если проверка пройдена, и <b><tt>FALSE</tt></b> если возникла
+   ошибка или файл из <i><tt class="parameter">filename</tt></i> недоступен.
+  </p>
+ </div>
+
+
+ <div class="refsect1 changelog" id="refsect1-function.php-check-syntax-changelog">
+  <h3 class="title">Список изменений</h3>
+  <p class="para">
+   <table class="doctable informaltable">
+    
+     <thead valign="middle">
+      <tr valign="middle">
+       <th>Версия</th>
+       <th>Описание</th>
+      </tr>
+
+     </thead>
+
+     <tbody valign="middle" class="tbody">
+      <tr valign="middle">
+       <td align="left">5.0.5</td>
+       <td align="left">
+        Эта функция была удалена из PHP.
+       </td>
+      </tr>
+
+      <tr valign="middle">
+       <td align="left">5.0.3</td>
+       <td align="left">
+        Вызов функции <span class="function"><a href="function.exit.html" class="function">exit()</a></span> после
+        <span class="function"><b>php_check_syntax()</b></span> передает результат
+        в Segfault.
+       </td>
+      </tr>
+
+      <tr valign="middle">
+       <td align="left">5.0.1</td>
+       <td align="left">
+        <i><tt class="parameter">error_message</tt></i> передается по ссылке.
+       </td>
+      </tr>
+
+     </tbody>
+    
+   </table>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-function.php-check-syntax-examples">
+  <h3 class="title">Примеры</h3>
+  <p class="para">
+   <div class="example-contents screen">
+<div class="examplescode"><pre class="examplescode">php -l somefile.php</pre>
+</div>
+   </div>
+  </p>
+  <p class="para">Результатом выполнения данного примера
+будет что-то подобное:</p>
+  <p class="para">
+   <div class="example-contents screen">
+<div class="examplescode"><pre class="examplescode">PHP Parse error: unexpected T_STRING in /tmp/somefile.php on line 81</pre>
+</div>
+   </div>
+  </p>    
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-function.php-check-syntax-seealso">
+  <h3 class="title">Смотрите также</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><span class="function"><b>include()</b></span></li>
+    <li class="member"><span class="function"><a href="function.is-readable.html" class="function" rel="rdfs-seeAlso">is_readable()</a> - Определяет существование файла и доступен ли он для чтения</span></li>
+   </ul>
+  </p>
+ </div>
+
+
+</div><hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.pack.html">pack</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.php-strip-whitespace.html">php_strip_whitespace</a></div>
+ <div class="up"><a href="ref.misc.html">Разные Функции</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

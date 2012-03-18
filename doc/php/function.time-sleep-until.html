@@ -1,0 +1,149 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Откладывает исполнение скрипта до заданного времени</title>
+
+ </head>
+ <body><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.time-nanosleep.html">time_nanosleep</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.uniqid.html">uniqid</a></div>
+ <div class="up"><a href="ref.misc.html">Разные Функции</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.time-sleep-until" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">time_sleep_until</h1>
+  <p class="verinfo">(PHP 5 &gt;= 5.1.0)</p><p class="refpurpose"><span class="refname">time_sleep_until</span> &mdash; <span class="dc-title">
+   Откладывает исполнение скрипта до заданного времени
+  </span></p>
+
+ </div>
+
+ <div class="refsect1 description" id="refsect1-function.time-sleep-until-description">
+  <h3 class="title">Описание</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">bool</span> <span class="methodname"><b>time_sleep_until</b></span>
+    ( <span class="methodparam"><span class="type">float</span> <tt class="parameter">$timestamp</tt></span>
+   )</div>
+
+  <p class="para rdfs-comment">
+   Откладывает исполнение скрипта до заданной отметки времени, указанной в
+   параметре <i><tt class="parameter">timestamp</tt></i>.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-function.time-sleep-until-parameters">
+  <h3 class="title">Список параметров</h3>
+  <p class="para">
+   <dl>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">timestamp</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Отметка времени продолжения исполнения скрипта.
+      </p>
+     </dd>
+
+    </dt>
+
+   </dl>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-function.time-sleep-until-returnvalues">
+  <h3 class="title">Возвращаемые значения</h3>
+  <p class="para">
+   Возвращает <b><tt>TRUE</tt></b> в случае успешного завершения  или <b><tt>FALSE</tt></b> в случае возникновения ошибки.
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 changelog" id="refsect1-function.time-sleep-until-changelog">
+  <h3 class="title">Список изменений</h3>
+  <p class="para">
+   <table class="doctable informaltable">
+    
+     <thead valign="middle">
+      <tr valign="middle">
+       <th>Версия</th>
+       <th>Описание</th>
+      </tr>
+
+     </thead>
+
+     <tbody valign="middle" class="tbody">
+      <tr valign="middle">
+       <td align="left">5.3.0</td>
+       <td align="left">
+        Эта функция теперь доступна на Windows платформах.
+       </td>
+      </tr>
+
+     </tbody>
+    
+   </table>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 errors" id="refsect1-function.time-sleep-until-errors">
+  <h3 class="title">Ошибки</h3>
+  <p class="para">
+   Если указанная временная отметка <i><tt class="parameter">timestamp</tt></i> просрочена,
+   то функция создаст исключение уровня <b><tt>E_WARNING</tt></b>.
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-function.time-sleep-until-examples">
+  <h3 class="title">Примеры</h3>
+  <p class="para">
+   <div class="example" id="example-3387">
+    <p><b>Пример #1 Пример использования <span class="function"><b>time_sleep_until()</b></span></b></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /><br /></span><span style="color: #FF8000">//возвращает&nbsp;false&nbsp;и&nbsp;выводит&nbsp;предупреждение<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">time_sleep_until</span><span style="color: #007700">(</span><span style="color: #0000BB">time</span><span style="color: #007700">()-</span><span style="color: #0000BB">1</span><span style="color: #007700">));<br /><br /></span><span style="color: #FF8000">//&nbsp;может&nbsp;работать&nbsp;только&nbsp;на&nbsp;быстродействующих&nbsp;компьютерах,&nbsp;выполнение&nbsp;отложено&nbsp;до&nbsp;0.2&nbsp;секунд<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">time_sleep_until</span><span style="color: #007700">(</span><span style="color: #0000BB">microtime</span><span style="color: #007700">(</span><span style="color: #0000BB">true</span><span style="color: #007700">)+</span><span style="color: #0000BB">0.2</span><span style="color: #007700">));<br /><br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+  </p>
+ </div>
+
+
+ <div class="refsect1 notes" id="refsect1-function.time-sleep-until-notes">
+  <h3 class="title">Примечания</h3>
+  <blockquote class="note"><p><b class="note">Замечание</b>: 
+   <span class="simpara">
+    Все сигналы будут доставлены после продолжения исполнения скрипта.
+   </span>
+  </p></blockquote>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-function.time-sleep-until-seealso">
+  <h3 class="title">Смотрите также</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><span class="function"><a href="function.sleep.html" class="function" rel="rdfs-seeAlso">sleep()</a> - Откладывает выполнение</span></li>
+    <li class="member"><span class="function"><a href="function.usleep.html" class="function" rel="rdfs-seeAlso">usleep()</a> - Откладывает выполнение на микросекунды</span></li>
+    <li class="member"><span class="function"><a href="function.time-nanosleep.html" class="function" rel="rdfs-seeAlso">time_nanosleep()</a> - Откладывает исполнение на заданное число секунд и наносекунд</span></li>
+    <li class="member"><span class="function"><a href="function.set-time-limit.html" class="function" rel="rdfs-seeAlso">set_time_limit()</a> - Limits the maximum execution time</span></li>
+   </ul>
+  </p>
+ </div>
+
+</div><hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.time-nanosleep.html">time_nanosleep</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.uniqid.html">uniqid</a></div>
+ <div class="up"><a href="ref.misc.html">Разные Функции</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

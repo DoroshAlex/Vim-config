@@ -1,0 +1,372 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Возвращает метку времени Unix для заданной даты</title>
+
+ </head>
+ <body><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.microtime.html">microtime</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.strftime.html">strftime</a></div>
+ <div class="up"><a href="ref.datetime.html">Функции даты и времени</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.mktime" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">mktime</h1>
+  <p class="verinfo">(PHP 4, PHP 5)</p><p class="refpurpose"><span class="refname">mktime</span> &mdash; <span class="dc-title">Возвращает метку времени Unix для заданной даты</span></p>
+
+ </div>
+
+ <div class="refsect1 description" id="refsect1-function.mktime-description">
+  <h3 class="title">Описание</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">int</span> <span class="methodname"><b>mktime</b></span>
+    ([ <span class="methodparam"><span class="type">int</span> <tt class="parameter">$hour</tt><span class="initializer"> = date(&quot;H&quot;)</span></span>
+   [, <span class="methodparam"><span class="type">int</span> <tt class="parameter">$minute</tt><span class="initializer"> = date(&quot;i&quot;)</span></span>
+   [, <span class="methodparam"><span class="type">int</span> <tt class="parameter">$second</tt><span class="initializer"> = date(&quot;s&quot;)</span></span>
+   [, <span class="methodparam"><span class="type">int</span> <tt class="parameter">$month</tt><span class="initializer"> = date(&quot;n&quot;)</span></span>
+   [, <span class="methodparam"><span class="type">int</span> <tt class="parameter">$day</tt><span class="initializer"> = date(&quot;j&quot;)</span></span>
+   [, <span class="methodparam"><span class="type">int</span> <tt class="parameter">$year</tt><span class="initializer"> = date(&quot;Y&quot;)</span></span>
+   [, <span class="methodparam"><span class="type">int</span> <tt class="parameter">$is_dst</tt><span class="initializer"> = -1</span></span>
+  ]]]]]]] )</div>
+
+  <p class="para rdfs-comment">
+   Функция возвращает метку времени Unix, соответствующую дате и
+   времени, заданным аргументами.
+   Метка времени - это целое число, равное разнице в секундах между
+   заданной датой/временем и началом Эпохи Unix (The Unix Epoch,
+   1 января 1970 00:00:00 GMT).
+  </p>
+  <p class="para">
+   Аргументы могут быть опущены в порядке справа налево. В этом
+   случае их значения по умолчанию равны соответствующим компонентам
+   локальной даты/времени.
+  </p>
+ </div>
+
+
+ <div class="refsect1 notes" id="refsect1-function.mktime-notes">
+  <h3 class="title">Примечания</h3>
+  <blockquote class="note"><p><b class="note">Замечание</b>: 
+   <p class="para">
+    Начиная с версии PHP 5.1, если <span class="function"><b>mktime()</b></span>
+    вызывается без аргументов, то будет сгенерировано замечание
+    уровня <b><tt>E_STRICT</tt></b>. Используйте вместо этого
+    функцию <span class="function"><a href="function.time.html" class="function">time()</a></span>.
+   </p>
+  </p></blockquote>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-function.mktime-parameters">
+  <h3 class="title">Список параметров</h3>
+  <p class="para">
+   <dl>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">hour</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Количество часов, прошедших с начала дня, указанного параметрами
+       <i><tt class="parameter">month</tt></i>, <i><tt class="parameter">day</tt></i> и <i><tt class="parameter">year</tt></i>.
+       Отрицательные значения определяют часы до полуночи указанного
+       дня. Значения большие 23 определяют соответствующий час
+       следующего дня (или дней).
+      </p>
+     </dd>
+
+    </dt>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">minute</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Количество минут, прошедших от начала часа, указанного параметром
+       <i><tt class="parameter">hour</tt></i>.
+       Отрицательные значения определяют минуты предыдущего часа.
+       Значения большие 59 определяют соответствующие минуты следующего часа (или часов).
+      </p>
+     </dd>
+
+    </dt>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">second</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Количество секунд, прошедших от начала минуты, указанной
+       параметром <i><tt class="parameter">minute</tt></i>.
+       Отрицательные знаения определяют секунды из предыдущей минуты.
+       Значения большие 59 определяют соответствующие секунды следующей минуты (или минут).
+      </p>
+     </dd>
+
+    </dt>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">month</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Количество месяцев, прошедших с конца предыдущего года.
+       Значения от 1 до 12 определяют нормальные обычные календарные месяцы года.
+       Значения меньшие 1 (включая отрицательные значения) определяют
+       месяца предыдущего года в обратном порядке, т.е. 0 будет декабрем,
+       -1 - ноябрем и т.д.
+       Значения больше 12 определяют соответствующий месяц в следующем
+       году (или годах).
+      </p>
+     </dd>
+
+    </dt>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">day</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Количество дней, прошедших с конца предыдущего месяца.
+       Значения от 1 до 28, 29, 30 или 31 (в зависимости от месяца)
+       определяют нормальные дни соответствующего месяца.
+       Значения меньшие 1 (включая отрицательные значения) определяют
+       дни предыдущего месяца, таким образом, 0 является последним днем
+       предыдущего месяца, -1 - предпоследним днем предыдущего месяца и т.д.
+       Значения большие количества дней соответствующего месяца определяют
+       соответствующий день следующего месяца (или месяцев).
+      </p>
+     </dd>
+
+    </dt>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">year</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Номер года, может быть указан двумя или четырьмя цифрами,
+       причем значения между 0-69 будут трактованы как 2000-2069,
+       а между 70-100 - как 1970-2000. На тех системах, где
+       time_t является 32-битным знаковым целым (наиболее
+       распространенный вариант на сегодня), корректный диапазон
+       для параметра <i><tt class="parameter">year</tt></i> содержит даты где-то
+       между 1901 и 2038. Однако, до версии PHP 5.1.0, на некоторых системах
+       этот диапазон был ограничен датами между 1970 и 2038 (например,
+       Windows).
+      </p>
+     </dd>
+
+    </dt>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">is_dst</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Данный параметр может быть установлен в 1, если заданной дате
+       соответствует летнее время (DST), 0 в противном случае,
+       или -1 (значение по умолчанию), если неизвестно, действует
+       ли летнее время на заданную дату. В последнем случае PHP
+       пытается определить это самостоятельно. Это можно привести к
+       неожиданному результату (который, тем не менее, не будет
+       неверным).
+       Некоторые даты могут быть неверными, если летнее время применимо
+       к системе, на которой запущен PHP, или параметр
+       <i><tt class="parameter">is_dst</tt></i> установлен в 1.
+       Если переход на летнее время происходит, например, в 2:00, все
+       даты между 2:00 и 3:00 станут некорректными и
+       <span class="function"><b>mktime()</b></span> вернет неопределенное (обычно
+       отрицательное) значение.
+       Некоторые системы (например, Solaris 8) осуществляют переход
+       на летнее время в полночь, так что время 0:30 дня, когда был
+       осуществлен переход на летнее время будет обрабатываться как
+       23:30 предыдущего дня.
+      </p>
+      <blockquote class="note"><p><b class="note">Замечание</b>: 
+       <p class="para">
+        Начиная с версии PHP 5.1.0 этот параметр более не рекомендуется к
+        использованию. Вместо этого рекомендуется устанавливать соответствующую
+        временную зону.
+       </p>
+      </p></blockquote>
+     </dd>
+
+    </dt>
+
+   </dl>
+
+  </p>
+ </div>
+
+
+
+ <div class="refsect1 returnvalues" id="refsect1-function.mktime-returnvalues">
+  <h3 class="title">Возвращаемые значения</h3>
+  <p class="para">
+   <span class="function"><b>mktime()</b></span> возвращает временную метку Unix в
+   соответствии с переданными аргументами.
+   Если были переданы некорректными аргументы, функция вернет <b><tt>FALSE</tt></b> (до версии PHP 5.1
+   возвращалась <i>-1</i>).
+  </p>
+ </div>
+
+
+ <div class="refsect1 errors" id="refsect1-function.mktime-errors">
+  <h3 class="title">Ошибки</h3>
+  <p class="para">
+Каждый вызов к функциям даты/времени при неправильных настройках временной зоны сгенерирует ошибку уровня <b><tt>E_NOTICE</tt></b>,
+и/или ошибку уровня <b><tt>E_STRICT</tt></b> или <b><tt>E_WARNING</tt></b> при использовании системных
+настроек или переменной окружения <var class="varname"><var class="varname">TZ</var></var>. Смотрите также <span class="function"><a href="function.date-default-timezone-set.html" class="function">date_default_timezone_set()</a></span></p>
+ </div>
+
+
+ <div class="refsect1 changelog" id="refsect1-function.mktime-changelog">
+  <h3 class="title">Список изменений</h3>
+  <p class="para">
+   <table class="doctable informaltable">
+    
+     <thead valign="middle">
+      <tr valign="middle">
+       <th>Версия</th>
+       <th>Описание</th>
+      </tr>
+
+     </thead>
+
+     <tbody valign="middle" class="tbody">
+      <tr valign="middle">
+       <td align="left">5.3.0</td>
+       <td align="left">
+        <span class="function"><b>mktime()</b></span> теперь выбрасывает ошибку уровня
+        <b><tt>E_DEPRECATED</tt></b> при использовании параметра
+        <i><tt class="parameter">is_dst</tt></i>.
+       </td>
+      </tr>
+
+      <tr valign="middle">
+       <td align="left">5.1.0</td>
+       <td align="left">
+        Параметр <i><tt class="parameter">is_dst</tt></i> теперь считается устаревшим.
+        Функция теперь возвращает <b><tt>FALSE</tt></b> при ошибке, тогда как раньше
+        возвращалась <i>-1</i>.
+        Теперь функция принимает дату с одновременно установленными
+        в ноль годом, месяцем и днем.
+       </td>
+      </tr>
+
+      <tr valign="middle">
+       <td align="left">5.1.0</td>
+       <td align="left">
+        Если <span class="function"><b>mktime()</b></span> была вызвана без аргументов,
+        то будет сгенерировано замечание уровня
+        <b><tt>E_STRICT</tt></b>. Используйте вместо этого
+        функцию <span class="function"><a href="function.time.html" class="function">time()</a></span>.
+       </td>
+      </tr>
+
+
+      <tr valign="middle"><td align="left">5.1.0</td><td align="left"><p class="para">
+Теперь ошибки, связанные с временными зонами, генерируют ошибки уровня <b><tt>E_STRICT</tt></b> и <b><tt>E_NOTICE</tt></b>.
+</p></td></tr>
+
+
+     </tbody>
+    
+   </table>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-function.mktime-examples">
+  <h3 class="title">Примеры</h3>
+  <p class="para">
+   <div class="example" id="example-659">
+    <p><b>Пример #1 Пример использования функции <span class="function"><b>mktime()</b></span></b></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">//&nbsp;Устанавливаем&nbsp;используемую&nbsp;по&nbsp;умолчанию&nbsp;временную&nbsp;зону.&nbsp;Доступно,&nbsp;начиная&nbsp;с&nbsp;версии&nbsp;PHP&nbsp;5.1<br /></span><span style="color: #0000BB">date_default_timezone_set</span><span style="color: #007700">(</span><span style="color: #DD0000">'UTC'</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;Выводит:&nbsp;July&nbsp;1,&nbsp;2000&nbsp;is&nbsp;on&nbsp;a&nbsp;Saturday<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #DD0000">"July&nbsp;1,&nbsp;2000&nbsp;is&nbsp;on&nbsp;a&nbsp;"&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">date</span><span style="color: #007700">(</span><span style="color: #DD0000">"l"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">mktime</span><span style="color: #007700">(</span><span style="color: #0000BB">0</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">7</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">1</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">2000</span><span style="color: #007700">));<br /><br /></span><span style="color: #FF8000">//&nbsp;Выводит&nbsp;что-то&nbsp;вроде:&nbsp;2006-04-05T01:02:03+00:00<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">date</span><span style="color: #007700">(</span><span style="color: #DD0000">'c'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">mktime</span><span style="color: #007700">(</span><span style="color: #0000BB">1</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">2</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">3</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">4</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">5</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">2006</span><span style="color: #007700">));<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+  </p>
+  <p class="para">
+   <div class="example" id="example-660">
+    <p><b>Пример #2 <span class="function"><b>mktime()</b></span> example</b></p>
+    <div class="example-contents"><p>
+     Функцию <span class="function"><b>mktime()</b></span> удобно использовать для
+     выполнения арифметических операций с датами, так как она
+     вычисляет верные значения при некорректных аргументах. Например,
+     в следующем примере каждая строка выведет &quot;Jan-01-1998&quot;.
+    </p></div>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">date</span><span style="color: #007700">(</span><span style="color: #DD0000">"M-d-Y"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">mktime</span><span style="color: #007700">(</span><span style="color: #0000BB">0</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">12</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">32</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">1997</span><span style="color: #007700">));<br />echo&nbsp;</span><span style="color: #0000BB">date</span><span style="color: #007700">(</span><span style="color: #DD0000">"M-d-Y"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">mktime</span><span style="color: #007700">(</span><span style="color: #0000BB">0</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">13</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">1</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">1997</span><span style="color: #007700">));<br />echo&nbsp;</span><span style="color: #0000BB">date</span><span style="color: #007700">(</span><span style="color: #DD0000">"M-d-Y"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">mktime</span><span style="color: #007700">(</span><span style="color: #0000BB">0</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">1</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">1</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">1998</span><span style="color: #007700">));<br />echo&nbsp;</span><span style="color: #0000BB">date</span><span style="color: #007700">(</span><span style="color: #DD0000">"M-d-Y"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">mktime</span><span style="color: #007700">(</span><span style="color: #0000BB">0</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">1</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">1</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">98</span><span style="color: #007700">));<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+  </p>
+  <p class="para">
+   <div class="example" id="example-661">
+    <p><b>Пример #3 Последний день месяца</b></p>
+    <div class="example-contents"><p>
+     Последний день любого месяца можно вычислить как &quot;нулевой&quot; день
+     следующего месяца, не -1 день. Оба приведенных ниже примера
+     выведут &quot;Последний день февраля 2000 г.: 29&quot;.
+    </p></div>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$lastday&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">mktime</span><span style="color: #007700">(</span><span style="color: #0000BB">0</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">3</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">2000</span><span style="color: #007700">);<br />echo&nbsp;</span><span style="color: #0000BB">strftime</span><span style="color: #007700">(</span><span style="color: #DD0000">"Последний&nbsp;день&nbsp;февраля&nbsp;2000&nbsp;г.:&nbsp;%d"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$lastday</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$lastday&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">mktime</span><span style="color: #007700">(</span><span style="color: #0000BB">0</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">4</span><span style="color: #007700">,&nbsp;-</span><span style="color: #0000BB">31</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">2000</span><span style="color: #007700">);<br />echo&nbsp;</span><span style="color: #0000BB">strftime</span><span style="color: #007700">(</span><span style="color: #DD0000">"Последний&nbsp;день&nbsp;февраля&nbsp;2000&nbsp;г.:&nbsp;%d"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$lastday</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+  </p>
+ </div>
+
+
+ <div class="refsect1 notes" id="refsect1-function.mktime-notes">
+  <h3 class="title">Примечания</h3>
+  <div class="caution"><b class="caution">Предостережение</b>
+   <p class="para">
+    До версии PHP 5.1.0, отрицательные временные метки не поддерживались
+    ни под одной известной версией Windows, а также и некоторыми другими
+    системами. Таким образом, диапазон корректных лет был ограничен
+    датами от 1970 до 2038 г.
+   </p>
+  </div>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-function.mktime-seealso">
+  <h3 class="title">Смотрите также</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><span class="function"><a href="function.checkdate.html" class="function" rel="rdfs-seeAlso">checkdate()</a> - Проверяет корректность даты по григорианскому календарю</span></li>
+    <li class="member"><span class="function"><a href="function.gmmktime.html" class="function" rel="rdfs-seeAlso">gmmktime()</a> - Возвращает метку времени Unix для времени по Гринвичу</span></li>
+    <li class="member"><span class="function"><a href="function.date.html" class="function" rel="rdfs-seeAlso">date()</a> - Форматирует вывод системной даты/времени</span></li>
+    <li class="member"><span class="function"><a href="function.time.html" class="function" rel="rdfs-seeAlso">time()</a> - Возвращает текущую метку времени Unix</span></li>
+   </ul>
+  </p>
+ </div>
+
+</div><hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.microtime.html">microtime</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.strftime.html">strftime</a></div>
+ <div class="up"><a href="ref.datetime.html">Функции даты и времени</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

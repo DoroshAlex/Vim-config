@@ -1,0 +1,119 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Убирает экранирование двоичных данных типа bytea</title>
+
+ </head>
+ <body><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.pg-tty.html">pg_tty</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.pg-untrace.html">pg_untrace</a></div>
+ <div class="up"><a href="ref.pgsql.html">PostgreSQL</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.pg-unescape-bytea" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">pg_unescape_bytea</h1>
+  <p class="verinfo">(PHP 4 &gt;= 4.3.0, PHP 5)</p><p class="refpurpose"><span class="refname">pg_unescape_bytea</span> &mdash; <span class="dc-title">
+   Убирает экранирование двоичных данных типа bytea
+  </span></p>
+
+ </div>
+
+ <div class="refsect1 description" id="refsect1-function.pg-unescape-bytea-description">
+  <h3 class="title">Описание</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">string</span> <span class="methodname"><b>pg_unescape_bytea</b></span>
+    ( <span class="methodparam"><span class="type">string</span> <tt class="parameter">$data</tt></span>
+   )</div>
+
+  <p class="para rdfs-comment">
+   <span class="function"><b>pg_unescape_bytea()</b></span> убирает экранирование спецсимволов 
+   в значениях типа PostgreSQL bytea. Возвращает неэкранированную строку, 
+   содержащую двоичные данные.
+  </p>
+  <blockquote class="note"><p><b class="note">Замечание</b>: 
+   <p class="para">
+    При выборке SQL функцией <i>SELECT</i> данных типа bytea 
+    PostgreSQL возвращает значения в восьмеричной системе счисления с префиксом 
+    &#039;\&#039; (такие как \032). Пользователю необходимо вручную преобразовывать их 
+    в двоичный формат. 
+   </p>
+   <p class="para">
+    Функция поддерживается PostgreSQL версии 7.2 и выше. Для версий 
+    7.2.0 и 7.2.1 значения должны быть преобразованы к типу bytea, 
+    когда включена мультибайтовая поддержка. Тогда как 
+    <i>INSERT INTO test_table (image)VALUES (&#039;$image_escaped&#039;::bytea);</i> 
+    в PostgreSQL 7.2.2 и выше не требует каких-либо преобразований. 
+    Исключение составляет случай, когда клиентская (frontend) кодировка не соответствует 
+    серверной (backend). При этом возникает ошибка мультибайтового потока, и пользователь 
+    должен привести данные к типу bytea, чтобы ее избежать. 
+   </p>
+  </p></blockquote>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-function.pg-unescape-bytea-parameters">
+  <h3 class="title">Список параметров</h3>
+  <p class="para">
+   <dl>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">data</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Строка (<span class="type"><a href="language.types.string.html" class="type string">string</a></span>), содержащая данные типа PostgreSQL bytea и подлежащая 
+       преобразованию в двоичную строку PHP. 
+      </p>
+     </dd>
+
+    </dt>
+
+   </dl>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-function.pg-unescape-bytea-returnvalues">
+  <h3 class="title">Возвращаемые значения</h3>
+  <p class="para">
+   Строка (<span class="type"><a href="language.types.string.html" class="type string">string</a></span>) с неэкранированными спецсимволами.
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-function.pg-unescape-bytea-examples">
+  <h3 class="title">Примеры</h3>
+  <p class="para">
+   <div class="example" id="example-1961">
+    <p><b>Пример #1 Пример использования <span class="function"><b>pg_unescape_bytea()</b></span></b></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php&nbsp;<br />&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;Подключение&nbsp;к&nbsp;базе&nbsp;данных<br />&nbsp;&nbsp;</span><span style="color: #0000BB">$dbconn&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">pg_connect</span><span style="color: #007700">(</span><span style="color: #DD0000">'dbname=foo'</span><span style="color: #007700">);<br />&nbsp;&nbsp;<br />&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;Получение&nbsp;bytea&nbsp;данных<br />&nbsp;&nbsp;</span><span style="color: #0000BB">$res&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">pg_query</span><span style="color: #007700">(</span><span style="color: #DD0000">"SELECT&nbsp;data&nbsp;FROM&nbsp;gallery&nbsp;WHERE&nbsp;name='Pine&nbsp;trees'"</span><span style="color: #007700">);&nbsp;&nbsp;<br />&nbsp;&nbsp;</span><span style="color: #0000BB">$raw&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">pg_fetch_result</span><span style="color: #007700">(</span><span style="color: #0000BB">$res</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'data'</span><span style="color: #007700">);<br />&nbsp;&nbsp;<br />&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;Преобразование&nbsp;в&nbsp;двоичный&nbsp;формат&nbsp;и&nbsp;отправка&nbsp;в&nbsp;броузер<br />&nbsp;&nbsp;</span><span style="color: #0000BB">header</span><span style="color: #007700">(</span><span style="color: #DD0000">'Content-type:&nbsp;image/jpeg'</span><span style="color: #007700">);<br />&nbsp;&nbsp;echo&nbsp;</span><span style="color: #0000BB">pg_unescape_bytea</span><span style="color: #007700">(</span><span style="color: #0000BB">$raw</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 seealso" id="refsect1-function.pg-unescape-bytea-seealso">
+  <h3 class="title">Смотрите также</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><span class="function"><a href="function.pg-escape-bytea.html" class="function" rel="rdfs-seeAlso">pg_escape_bytea()</a> - Экранирует спецсимволы в строке для вставки в поле типа bytea</span></li>
+    <li class="member"><span class="function"><a href="function.pg-escape-string.html" class="function" rel="rdfs-seeAlso">pg_escape_string()</a> - Экранирование спецсимволов в строке запроса</span></li>
+   </ul>
+  </p>
+ </div>
+
+</div><hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.pg-tty.html">pg_tty</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.pg-untrace.html">pg_untrace</a></div>
+ <div class="up"><a href="ref.pgsql.html">PostgreSQL</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

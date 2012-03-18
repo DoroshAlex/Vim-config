@@ -1,0 +1,344 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Применяет callback-функцию ко всем элементам указанных массивов</title>
+
+ </head>
+ <body><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.array-keys.html">array_keys</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.array-merge-recursive.html">array_merge_recursive</a></div>
+ <div class="up"><a href="ref.array.html">Функции для работы с массивами</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.array-map" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">array_map</h1>
+  <p class="verinfo">(PHP 4 &gt;= 4.0.6, PHP 5)</p><p class="refpurpose"><span class="refname">array_map</span> &mdash; <span class="dc-title">Применяет callback-функцию ко всем элементам указанных массивов</span></p>
+
+ </div>
+
+ <div class="refsect1 description" id="refsect1-function.array-map-description">
+  <h3 class="title">Описание</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">array</span> <span class="methodname"><b>array_map</b></span>
+    ( <span class="methodparam"><span class="type"><a href="language.pseudo-types.html#language.types.callback" class="type callback">callback</a></span> <tt class="parameter">$callback</tt></span>
+   , <span class="methodparam"><span class="type">array</span> <tt class="parameter">$arr1</tt></span>
+   [, <span class="methodparam"><span class="type">array</span> <tt class="parameter">$...</tt></span>
+  ] )</div>
+
+  <p class="para rdfs-comment">
+   Функция <span class="function"><b>array_map()</b></span> возвращает массив, содержащий
+   элементы <i><tt class="parameter">arr1</tt></i> после их обработки
+   <i><tt class="parameter">callback</tt></i>-функцией. Количество параметров,
+   передаваемых <i><tt class="parameter">callback</tt></i>-функции, должно совпадать с
+   количеством массивов, переданным функции <span class="function"><b>array_map()</b></span>.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-function.array-map-parameters">
+  <h3 class="title">Список параметров</h3>
+  <p class="para">
+   <dl>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">callback</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Callback-функция, применяемая к каждому элементу в каждом массиве.
+      </p>
+     </dd>
+
+    </dt>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">arr1</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Массив, к которому применяется <i><tt class="parameter">callback</tt></i>-функция.
+      </p>
+     </dd>
+
+    </dt>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">array</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Дополнительные массивы для обработки
+       <i><tt class="parameter">callback</tt></i>-функцией.
+      </p>
+     </dd>
+
+    </dt>
+
+   </dl>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-function.array-map-returnvalues">
+  <h3 class="title">Возвращаемые значения</h3>
+  <p class="para">
+   Возвращает массив, содержащий все элементы <i><tt class="parameter">arr1</tt></i>
+   после применения <i><tt class="parameter">callback</tt></i>-функции к каждому из них.
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-function.array-map-examples">
+  <h3 class="title">Примеры</h3>
+  <p class="para">
+   <div class="example" id="example-4461">
+    <p><b>Пример #1 Пример использования <span class="function"><b>array_map()</b></span></b></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">function&nbsp;</span><span style="color: #0000BB">cube</span><span style="color: #007700">(</span><span style="color: #0000BB">$n</span><span style="color: #007700">)<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;return(</span><span style="color: #0000BB">$n&nbsp;</span><span style="color: #007700">*&nbsp;</span><span style="color: #0000BB">$n&nbsp;</span><span style="color: #007700">*&nbsp;</span><span style="color: #0000BB">$n</span><span style="color: #007700">);<br />}<br /><br /></span><span style="color: #0000BB">$a&nbsp;</span><span style="color: #007700">=&nbsp;array(</span><span style="color: #0000BB">1</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">2</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">3</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">4</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">5</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$b&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">array_map</span><span style="color: #007700">(</span><span style="color: #DD0000">"cube"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$a</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">print_r</span><span style="color: #007700">(</span><span style="color: #0000BB">$b</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+    <div class="example-contents"><p>
+     В результате переменная <var class="varname"><var class="varname">$b</var></var> будет содержать:
+    </p></div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+Array
+(
+    [0] =&gt; 1
+    [1] =&gt; 8
+    [2] =&gt; 27
+    [3] =&gt; 64
+    [4] =&gt; 125
+)
+</pre></div>
+    </div>
+   </div>
+  </p>
+  <p class="para">
+   <div class="example" id="example-4462">
+    <p><b>Пример #2 Использование <span class="function"><b>array_map()</b></span> вместе с lambda-функцией (начиная с версии PHP 5.3.0)</b></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$func&nbsp;</span><span style="color: #007700">=&nbsp;function(</span><span style="color: #0000BB">$value</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">$value&nbsp;</span><span style="color: #007700">*&nbsp;</span><span style="color: #0000BB">2</span><span style="color: #007700">;<br />};<br /><br /></span><span style="color: #0000BB">print_r</span><span style="color: #007700">(</span><span style="color: #0000BB">array_map</span><span style="color: #007700">(</span><span style="color: #0000BB">$func</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">range</span><span style="color: #007700">(</span><span style="color: #0000BB">1</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">5</span><span style="color: #007700">)));<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+Array
+(
+    [0] =&gt; 2
+    [1] =&gt; 4
+    [2] =&gt; 6
+    [3] =&gt; 8
+    [4] =&gt; 10
+)
+</pre></div>
+    </div>
+   </div>
+  </p>
+  <p class="para">
+   <div class="example" id="example-4463">
+    <p><b>Пример #3 Пример использования <span class="function"><b>array_map()</b></span>: обработка нескольких массивов</b></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">function&nbsp;</span><span style="color: #0000BB">show_Spanish</span><span style="color: #007700">(</span><span style="color: #0000BB">$n</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$m</span><span style="color: #007700">)<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;return(</span><span style="color: #DD0000">"Число&nbsp;</span><span style="color: #0000BB">$n</span><span style="color: #DD0000">&nbsp;по-испански&nbsp;-&nbsp;</span><span style="color: #0000BB">$m</span><span style="color: #DD0000">"</span><span style="color: #007700">);<br />}<br /><br />function&nbsp;</span><span style="color: #0000BB">map_Spanish</span><span style="color: #007700">(</span><span style="color: #0000BB">$n</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$m</span><span style="color: #007700">)<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;return(array(</span><span style="color: #0000BB">$n&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">$m</span><span style="color: #007700">));<br />}<br /><br /></span><span style="color: #0000BB">$a&nbsp;</span><span style="color: #007700">=&nbsp;array(</span><span style="color: #0000BB">1</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">2</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">3</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">4</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">5</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$b&nbsp;</span><span style="color: #007700">=&nbsp;array(</span><span style="color: #DD0000">"uno"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"dos"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"tres"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"cuatro"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"cinco"</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">$c&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">array_map</span><span style="color: #007700">(</span><span style="color: #DD0000">"show_Spanish"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$a</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$b</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">print_r</span><span style="color: #007700">(</span><span style="color: #0000BB">$c</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">$d&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">array_map</span><span style="color: #007700">(</span><span style="color: #DD0000">"map_Spanish"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$a&nbsp;</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$b</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">print_r</span><span style="color: #007700">(</span><span style="color: #0000BB">$d</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+    <div class="example-contents"><p>Результат выполнения данного примера:</p></div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+// вывод $c
+Array
+(
+    [0] =&gt; Число 1 по-испански - uno
+    [1] =&gt; Число 2 по-испански - dos
+    [2] =&gt; Число 3 по-испански - tres
+    [3] =&gt; Число 4 по-испански - cuatro
+    [4] =&gt; Число 5 по-испански - cinco
+)
+
+// вывод $d
+Array
+(
+    [0] =&gt; Array
+        (
+            [1] =&gt; uno
+        )
+
+    [1] =&gt; Array
+        (
+            [2] =&gt; dos
+        )
+
+    [2] =&gt; Array
+        (
+            [3] =&gt; tres
+        )
+
+    [3] =&gt; Array
+        (
+            [4] =&gt; cuatro
+        )
+
+    [4] =&gt; Array
+        (
+            [5] =&gt; cinco
+        )
+
+)
+</pre></div>
+    </div>
+   </div>
+  </p>
+  <p class="para">
+   Обычно при обработке двух или более массивов, они имеют одинаковую длину,
+   так как callback-функция применяется параллельно к соответствующим
+   элементам массивов. Если массивы имеют различную длину, самый маленький
+   из них дополняется элементами с пустыми значениями.
+  </p>
+  <p class="para">
+   Интересным эффектом при использовании этой функции является создание
+   массива массивов, что может быть достигнуто путем использования
+   значения <b><tt>NULL</tt></b> в качестве имени callback-функции.
+  </p>
+  <p class="para">
+   <div class="example" id="example-4464">
+    <p><b>Пример #4 Создание массива массивов</b></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$a&nbsp;</span><span style="color: #007700">=&nbsp;array(</span><span style="color: #0000BB">1</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">2</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">3</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">4</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">5</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$b&nbsp;</span><span style="color: #007700">=&nbsp;array(</span><span style="color: #DD0000">"one"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"two"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"three"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"four"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"five"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$c&nbsp;</span><span style="color: #007700">=&nbsp;array(</span><span style="color: #DD0000">"uno"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"dos"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"tres"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"cuatro"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"cinco"</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">$d&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">array_map</span><span style="color: #007700">(</span><span style="color: #0000BB">null</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$a</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$b</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$c</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">print_r</span><span style="color: #007700">(</span><span style="color: #0000BB">$d</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+    <div class="example-contents"><p>Результат выполнения данного примера:</p></div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+Array
+(
+    [0] =&gt; Array
+        (
+            [0] =&gt; 1
+            [1] =&gt; one
+            [2] =&gt; uno
+        )
+
+    [1] =&gt; Array
+        (
+            [0] =&gt; 2
+            [1] =&gt; two
+            [2] =&gt; dos
+        )
+
+    [2] =&gt; Array
+        (
+            [0] =&gt; 3
+            [1] =&gt; three
+            [2] =&gt; tres
+        )
+
+    [3] =&gt; Array
+        (
+            [0] =&gt; 4
+            [1] =&gt; four
+            [2] =&gt; cuatro
+        )
+
+    [4] =&gt; Array
+        (
+            [0] =&gt; 5
+            [1] =&gt; five
+            [2] =&gt; cinco
+        )
+
+)
+</pre></div>
+    </div>
+   </div>
+  </p>
+  <p class="para">
+   Если массив-аргумент содержит строковые ключи, то результирующий
+   массив будет содержать строковые ключи тогда и только тогда, если
+   передан ровно один массив. Если передано больше одного аргумента,
+   то результирующий массив будет всегда содержать числовые ключи.
+  </p>
+  <p class="para">
+   <div class="example" id="example-4465">
+    <p><b>Пример #5 Использование <span class="function"><b>array_map()</b></span> со строковыми ключами</b></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$arr&nbsp;</span><span style="color: #007700">=&nbsp;array(</span><span style="color: #DD0000">"stringkey"&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">"value"</span><span style="color: #007700">);<br />function&nbsp;</span><span style="color: #0000BB">cb1</span><span style="color: #007700">(</span><span style="color: #0000BB">$a</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;array&nbsp;(</span><span style="color: #0000BB">$a</span><span style="color: #007700">);<br />}<br />function&nbsp;</span><span style="color: #0000BB">cb2</span><span style="color: #007700">(</span><span style="color: #0000BB">$a</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$b</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;array&nbsp;(</span><span style="color: #0000BB">$a</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$b</span><span style="color: #007700">);<br />}<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">array_map</span><span style="color: #007700">(</span><span style="color: #DD0000">"cb1"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$arr</span><span style="color: #007700">));<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">array_map</span><span style="color: #007700">(</span><span style="color: #DD0000">"cb2"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$arr</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$arr</span><span style="color: #007700">));<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">array_map</span><span style="color: #007700">(</span><span style="color: #0000BB">null</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$arr</span><span style="color: #007700">));<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">array_map</span><span style="color: #007700">(</span><span style="color: #0000BB">null</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$arr</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$arr</span><span style="color: #007700">));<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+    <div class="example-contents"><p>Результат выполнения данного примера:</p></div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+array(1) {
+  [&quot;stringkey&quot;]=&gt;
+  array(1) {
+    [0]=&gt;
+    string(5) &quot;value&quot;
+  }
+}
+array(1) {
+  [0]=&gt;
+  array(2) {
+    [0]=&gt;
+    string(5) &quot;value&quot;
+    [1]=&gt;
+    string(5) &quot;value&quot;
+  }
+}
+array(1) {
+  [&quot;stringkey&quot;]=&gt;
+  string(5) &quot;value&quot;
+}
+array(1) {
+  [0]=&gt;
+  array(2) {
+    [0]=&gt;
+    string(5) &quot;value&quot;
+    [1]=&gt;
+    string(5) &quot;value&quot;
+  }
+}
+</pre></div>
+    </div>
+   </div>
+  </p>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-function.array-map-seealso">
+  <h3 class="title">Смотрите также</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><span class="function"><a href="function.array-filter.html" class="function" rel="rdfs-seeAlso">array_filter()</a> - Фильтрует элементы массива с помощью callback-функции</span></li>
+    <li class="member"><span class="function"><a href="function.array-reduce.html" class="function" rel="rdfs-seeAlso">array_reduce()</a> - Итеративно уменьшает массив к единственному значению, используя callback-функцию</span></li>
+    <li class="member"><span class="function"><a href="function.array-walk.html" class="function" rel="rdfs-seeAlso">array_walk()</a> - Применяет пользовательскую функцию к каждому элементу массива</span></li>
+    <li class="member"><span class="function"><a href="function.create-function.html" class="function" rel="rdfs-seeAlso">create_function()</a> - Создаёт анонимную (лямбда) функцию</span></li>
+    <li class="member">информация о типе <a href="language.pseudo-types.html#language.types.callback" class="link">callback</a></li>
+   </ul>
+  </p>
+ </div>
+
+</div><hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.array-keys.html">array_keys</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.array-merge-recursive.html">array_merge_recursive</a></div>
+ <div class="up"><a href="ref.array.html">Функции для работы с массивами</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

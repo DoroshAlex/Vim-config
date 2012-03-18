@@ -1,0 +1,109 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Инициализирует сеанс cURL</title>
+
+ </head>
+ <body><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.curl-getinfo.html">curl_getinfo</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.curl-multi-add-handle.html">curl_multi_add_handle</a></div>
+ <div class="up"><a href="ref.curl.html">cURL</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.curl-init" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">curl_init</h1>
+  <p class="verinfo">(PHP 4 &gt;= 4.0.2, PHP 5)</p><p class="refpurpose"><span class="refname">curl_init</span> &mdash; <span class="dc-title">Инициализирует сеанс cURL</span></p>
+
+ </div>
+
+ <div class="refsect1 description" id="refsect1-function.curl-init-description">
+  <h3 class="title">Описание</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">resource</span> <span class="methodname"><b>curl_init</b></span>
+    ([ <span class="methodparam"><span class="type">string</span> <tt class="parameter">$url</tt><span class="initializer"> = <b><tt>NULL</tt></b></span></span>
+  ] )</div>
+
+  <p class="para rdfs-comment">
+   Инициализирует новый сеанс cURL и возвращает дескриптор,
+   который используется с функциями <span class="function"><a href="function.curl-setopt.html" class="function">curl_setopt()</a></span>,
+   <span class="function"><a href="function.curl-exec.html" class="function">curl_exec()</a></span> и <span class="function"><a href="function.curl-close.html" class="function">curl_close()</a></span>.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-function.curl-init-parameters">
+  <h3 class="title">Список параметров</h3>
+  <p class="para">
+   <dl>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">url</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Если указан, опция <b><tt>CURLOPT_URL</tt></b> будет
+       автоматически установлена в значение этого аргумента.
+       Вы можете вручную установить эту опцию с помощью функции
+       <span class="function"><a href="function.curl-setopt.html" class="function">curl_setopt()</a></span>.
+      </p>
+      <blockquote class="note"><p><b class="note">Замечание</b>: 
+       <p class="para">
+        Протокол <i>file</i> становится 
+        недоступным в cURL, если задана опция
+        <a href="ini.core.html#ini.open-basedir" class="link">open_basedir</a>.
+       </p>
+      </p></blockquote>
+     </dd>
+
+    </dt>
+
+   </dl>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-function.curl-init-returnvalues">
+  <h3 class="title">Возвращаемые значения</h3>
+  <p class="para">
+   Возвращает дескриптор cURL при удаче, и <b><tt>FALSE</tt></b> в случае ошибки.
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-function.curl-init-examples">
+  <h3 class="title">Примеры</h3>
+  <p class="para">
+   <div class="example" id="example-3790">
+    <p><b>Пример #1 Инициализация нового сеанса cURL и загрузка web-страницы</b></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">//&nbsp;создание&nbsp;нового&nbsp;ресурса&nbsp;cURL<br /></span><span style="color: #0000BB">$ch&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">curl_init</span><span style="color: #007700">();<br /><br /></span><span style="color: #FF8000">//&nbsp;установка&nbsp;URL&nbsp;и&nbsp;других&nbsp;необходимых&nbsp;параметров<br /></span><span style="color: #0000BB">curl_setopt</span><span style="color: #007700">(</span><span style="color: #0000BB">$ch</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">CURLOPT_URL</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"http://www.example.com/"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">curl_setopt</span><span style="color: #007700">(</span><span style="color: #0000BB">$ch</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">CURLOPT_HEADER</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;загрузка&nbsp;страницы&nbsp;и&nbsp;выдача&nbsp;её&nbsp;браузеру<br /></span><span style="color: #0000BB">curl_exec</span><span style="color: #007700">(</span><span style="color: #0000BB">$ch</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;завершение&nbsp;сеанса&nbsp;и&nbsp;освобождение&nbsp;ресурсов<br /></span><span style="color: #0000BB">curl_close</span><span style="color: #007700">(</span><span style="color: #0000BB">$ch</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+  </p>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-function.curl-init-seealso">
+  <h3 class="title">Смотрите также</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><span class="function"><a href="function.curl-close.html" class="function" rel="rdfs-seeAlso">curl_close()</a> - Завершает сеанс cURL</span></li>
+    <li class="member"><span class="function"><a href="function.curl-multi-init.html" class="function" rel="rdfs-seeAlso">curl_multi_init()</a> - Создает набор cURL-дескрипторов</span></li>
+   </ul>
+  </p>
+ </div>
+
+
+</div><hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.curl-getinfo.html">curl_getinfo</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.curl-multi-add-handle.html">curl_multi_add_handle</a></div>
+ <div class="up"><a href="ref.curl.html">cURL</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

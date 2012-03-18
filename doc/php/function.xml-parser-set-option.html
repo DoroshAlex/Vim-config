@@ -1,0 +1,159 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Установка значения настройки XML анализатора</title>
+
+ </head>
+ <body><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.xml-parser-get-option.html">xml_parser_get_option</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.xml-set-character-data-handler.html">xml_set_character_data_handler</a></div>
+ <div class="up"><a href="ref.xml.html">Функции парсера XML</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.xml-parser-set-option" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">xml_parser_set_option</h1>
+  <p class="verinfo">(PHP 4, PHP 5)</p><p class="refpurpose"><span class="refname">xml_parser_set_option</span> &mdash; <span class="dc-title">
+   Установка значения настройки XML анализатора
+  </span></p>
+
+ </div>
+ 
+ <div class="refsect1 description" id="refsect1-function.xml-parser-set-option-description">
+  <h3 class="title">Описание</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">bool</span> <span class="methodname"><b>xml_parser_set_option</b></span>
+    ( <span class="methodparam"><span class="type">resource</span> <tt class="parameter">$parser</tt></span>
+   , <span class="methodparam"><span class="type">int</span> <tt class="parameter">$option</tt></span>
+   , <span class="methodparam"><span class="type"><a href="language.pseudo-types.html#language.types.mixed" class="type mixed">mixed</a></span> <tt class="parameter">$value</tt></span>
+   )</div>
+
+  <p class="para rdfs-comment">
+   Устанавливает значение настройки XML анализатора.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-function.xml-parser-set-option-parameters">
+  <h3 class="title">Список параметров</h3>
+  <p class="para">
+   <dl>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">parser</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Ссылка на XML анализатор.
+      </p>
+     </dd>
+
+    </dt>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">option</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Какую настройку требуется установить. См. ниже.
+      </p>
+      <p class="para">
+       Доступны следующие настройки:
+       <table class="doctable table">
+        <caption><b>Настройки XML анализатора</b></caption>
+        
+         <thead valign="middle">
+          <tr valign="middle">
+           <th>Константа</th>
+           <th>Тип данных</th>
+           <th>Описание</th>
+          </tr>
+
+         </thead>
+
+         <tbody valign="middle" class="tbody">
+          <tr valign="middle">
+           <td align="left"><b><tt>XML_OPTION_CASE_FOLDING</tt></b></td>
+           <td align="left">integer</td>
+           <td align="left">
+            Требуется ли включить <a href="xml.case-folding.html" class="link">case-folding</a> для этого
+            анализатора. Включено по умолчанию.
+           </td>
+          </tr>
+
+          <tr valign="middle">
+           <td align="left"><b><tt>XML_OPTION_SKIP_TAGSTART</tt></b></td>
+           <td align="left">integer</td> 
+           <td align="left">
+            Задает количество символов с начала имени тэга, которые следует
+            пропустить.
+           </td>
+          </tr>
+
+          <tr valign="middle">
+           <td align="left"><b><tt>XML_OPTION_SKIP_WHITE</tt></b></td>
+           <td align="left">integer</td> 
+           <td align="left">
+            Требуется ли пропускать значения, состоящие из пробелов.
+           </td>
+          </tr>
+
+          <tr valign="middle">
+           <td align="left"><b><tt>XML_OPTION_TARGET_ENCODING</tt></b></td>
+           <td align="left">string</td> 
+           <td align="left">
+            Устанавливает <a href="xml.encoding.html" class="link">кодировку</a>,
+            которая будет использоваться XML анализатором. По умолчанию
+            используется кодировка заданная при вызове функции
+            <span class="function"><a href="function.xml-parser-create.html" class="function">xml_parser_create()</a></span>. Поддерживаются кодировки
+            <i>ISO-8859-1</i>, <i>US-ASCII</i> и
+            <i>UTF-8</i>.
+           </td>
+          </tr>
+
+         </tbody>
+        
+       </table>
+
+      </p>
+     </dd>
+
+    </dt>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">value</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Новое значение настройки.
+      </p>
+     </dd>
+
+    </dt>
+
+   </dl>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-function.xml-parser-set-option-returnvalues">
+  <h3 class="title">Возвращаемые значения</h3>
+  <p class="para">
+   Функция возвращает <b><tt>FALSE</tt></b>, если <i><tt class="parameter">parser</tt></i> ссылается
+   на недопустимый анализатор или если настройка не может быть установлена.
+   В противном случае устанавливается новое значение настройки и возвращается
+   значение <b><tt>TRUE</tt></b>.
+  </p>
+ </div>
+
+
+</div><hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.xml-parser-get-option.html">xml_parser_get_option</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.xml-set-character-data-handler.html">xml_set_character_data_handler</a></div>
+ <div class="up"><a href="ref.xml.html">Функции парсера XML</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

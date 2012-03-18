@@ -1,0 +1,220 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Список опций контекста CURL</title>
+
+ </head>
+ <body><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="context.ssl.html">Опции контекста SSL</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="context.phar.html">Контекстные опции Phar</a></div>
+ <div class="up"><a href="context.html">Контекстные опции и параметры</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="context.curl" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">Опции контекста CURL</h1>
+  <p class="refpurpose"><span class="refname">Опции контекста CURL</span> &mdash; <span class="dc-title">Список опций контекста CURL</span></p>
+
+ </div>
+ 
+ <div class="refsect1 description" id="refsect1-context.curl-description">
+  <h3 class="title">Описание</h3>
+  <p class="para">
+   Опции контекста CURL доступны в том случае, если
+   расширение <a href="intro.curl.html" class="link">CURL</a> скомпилировано, используюя
+   конфигурационную опцию <strong class="option unknown">--with-curlwrappers</strong>
+.
+  </p>
+ </div>
+
+
+ <div class="refsect1 options" id="refsect1-context.curl-options">
+  <h3 class="title">Опции</h3>
+  <p class="para">
+   <dl>
+
+    <dt id="context.curl.method">
+     <span class="term">
+      <i><tt class="parameter">method</tt></i>
+      <span class="type"><a href="language.types.string.html" class="type string">string</a></span>
+     </span>
+     <dd>
+
+      <p class="para">
+       <b><tt>GET</tt></b>, <b><tt>POST</tt></b>, или
+       любой другой HTTP-метод, поддерживаемый удаленным сервером.
+      </p>
+      <p class="para">
+       По умолчанию - <b><tt>GET</tt></b>.
+      </p>
+     </dd>
+
+    </dt>
+
+    <dt id="context.curl.header">
+     <span class="term">
+      <i><tt class="parameter">header</tt></i>
+      <span class="type"><a href="language.types.string.html" class="type string">string</a></span>
+     </span>
+     <dd>
+
+      <p class="para">
+       Дополнительные заголовки для отправки вместе с запросом. Значения
+       в этой опции будут переопределять другие значения (такие как
+       <i>User-agent:</i>, <i>Host:</i>,
+       и <i>Authentication:</i>).
+      </p>
+     </dd>
+
+    </dt>
+
+    <dt id="context.curl.user-agent">
+     <span class="term">
+      <i><tt class="parameter">user_agent</tt></i>
+      <span class="type"><a href="language.types.string.html" class="type string">string</a></span>
+     </span>
+     <dd>
+
+      <p class="para">
+       Значение для отправки вместе с заголовком User-Agent.
+      </p>
+      <p class="para">
+       По умолчанию используется значение директивы
+       <a href="filesystem.configuration.html#ini.user-agent" class="link">user_agent</a>
+       из файла <var class="filename">php.ini</var>.
+      </p>
+     </dd>
+
+    </dt>
+
+    <dt id="context.curl.content">
+     <span class="term">
+      <i><tt class="parameter">content</tt></i>
+      <span class="type"><a href="language.types.string.html" class="type string">string</a></span>
+     </span>
+     <dd>
+
+      <p class="para">
+       Дополнительные данные для отправки после заголовков. Эта опция не используется
+       для запросов <b><tt>GET</tt></b> или <b><tt>HEAD</tt></b>.
+      </p>
+     </dd>
+
+    </dt>
+
+    <dt id="context.curl.proxy">
+     <span class="term">
+      <i><tt class="parameter">proxy</tt></i>
+      <span class="type"><a href="language.types.string.html" class="type string">string</a></span>
+     </span>
+     <dd>
+
+      <p class="para">
+       URI, указывающий адрес прокси-сервера. (Например,
+       <i>tcp://proxy.example.com:5100</i>).
+      </p>
+     </dd>
+
+    </dt>
+
+    <dt id="context.curl.max-redirects">
+     <span class="term">
+      <i><tt class="parameter">max_redirects</tt></i>
+      <span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>
+     </span>
+     <dd>
+
+      <p class="para">
+       Максимальное количество переадресаций, которые можно сделать. Значение <i>1</i> или
+       меньше означает, что никаких переадресаций не будет произведено.
+      </p>
+      <p class="para">
+       По умолчанию <i>20</i>.
+      </p>
+     </dd>
+
+    </dt>
+
+    <dt id="context.curl.curl-verify-ssl-host">
+     <span class="term">
+      <i><tt class="parameter">curl_verify_ssl_host</tt></i>
+      <span class="type"><a href="language.types.boolean.html" class="type boolean">boolean</a></span>
+     </span>
+     <dd>
+
+      <p class="para">
+       Проверить хост.
+      </p>
+      <p class="para">
+       По умолчанию <b><tt>FALSE</tt></b>
+      </p>
+      <blockquote class="note"><p><b class="note">Замечание</b>: 
+       <p class="para">
+        Эта опция доступна для двух оберток протоколов: http и ftp.
+       </p>
+      </p></blockquote>
+     </dd>
+
+    </dt>
+
+    <dt id="context.curl.curl-verify-ssl-peer">
+     <span class="term">
+      <i><tt class="parameter">curl_verify_ssl_peer</tt></i>
+      <span class="type"><a href="language.types.boolean.html" class="type boolean">boolean</a></span>
+     </span>
+     <dd>
+
+      <p class="para">
+       Требовать проверку используемого SSL-сертификата.
+      </p>
+      <p class="para">
+       По умолчанию <b><tt>FALSE</tt></b>
+      </p>
+      <blockquote class="note"><p><b class="note">Замечание</b>: 
+       <p class="para">
+        Эта опция доступна для двух оберток протоколов: http и ftp.
+       </p>
+      </p></blockquote>
+     </dd>
+
+    </dt>
+
+   </dl>
+
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 examples" id="refsect1-context.curl-examples">
+  <h3 class="title">Примеры</h3>
+  <p class="para">
+   <div class="example" id="context.curl.example-post">
+    <p><b>Пример #1 Получает страницу и посылает POST-запрос</b></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /><br />$postdata&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">http_build_query</span><span style="color: #007700">(<br />&nbsp;&nbsp;&nbsp;&nbsp;array(<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'var1'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'некоторое&nbsp;содержимое'</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'var2'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'doh'<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">)<br />);<br /><br /></span><span style="color: #0000BB">$opts&nbsp;</span><span style="color: #007700">=&nbsp;array(</span><span style="color: #DD0000">'http'&nbsp;</span><span style="color: #007700">=&gt;<br />&nbsp;&nbsp;&nbsp;&nbsp;array(<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'method'&nbsp;&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'POST'</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'header'&nbsp;&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'Content-type:&nbsp;application/x-www-form-urlencoded'</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'content'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">$postdata<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">)<br />);<br /><br /></span><span style="color: #0000BB">$context&nbsp;&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">stream_context_create</span><span style="color: #007700">(</span><span style="color: #0000BB">$opts</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">$result&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">file_get_contents</span><span style="color: #007700">(</span><span style="color: #DD0000">'http://example.com/submit.php'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">false</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$context</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+  </p>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-context.curl-seealso">
+  <h3 class="title">Смотрите также</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><a href="context.socket.html" class="xref">Контекстные опции сокета</a></li>
+   </ul>
+  </p>
+ </div>
+
+
+</div><hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="context.ssl.html">Опции контекста SSL</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="context.phar.html">Контекстные опции Phar</a></div>
+ <div class="up"><a href="context.html">Контекстные опции и параметры</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

@@ -1,0 +1,179 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Выводит строковое представление внутреннего значения zend</title>
+
+ </head>
+ <body><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="ref.var.html">Функции для работы с переменными</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.doubleval.html">doubleval</a></div>
+ <div class="up"><a href="ref.var.html">Функции для работы с переменными</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.debug-zval-dump" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">debug_zval_dump</h1>
+  <p class="verinfo">(PHP 4 &gt;= 4.2.0, PHP 5)</p><p class="refpurpose"><span class="refname">debug_zval_dump</span> &mdash; <span class="dc-title">Выводит строковое представление внутреннего значения zend</span></p>
+
+ </div>
+ <div class="refsect1 description" id="refsect1-function.debug-zval-dump-description">
+  <h3 class="title">Описание</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type"><span class="type void">void</span></span> <span class="methodname"><b>debug_zval_dump</b></span>
+    ( <span class="methodparam"><span class="type"><a href="language.pseudo-types.html#language.types.mixed" class="type mixed">mixed</a></span> <tt class="parameter">$variable</tt></span>
+   )</div>
+
+  <p class="para rdfs-comment">
+   Выводит строковое представление внутреннего значения zend.
+  </p>
+ </div>
+
+ <div class="refsect1 parameters" id="refsect1-function.debug-zval-dump-parameters">
+  <h3 class="title">Список параметров</h3>
+  <p class="para">
+   <dl>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">variable</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Обрабатываемая переменная.
+      </p>
+     </dd>
+
+    </dt>
+
+   </dl>
+
+  </p>
+ </div>
+
+ <div class="refsect1 returnvalues" id="refsect1-function.debug-zval-dump-returnvalues">
+  <h3 class="title">Возвращаемые значения</h3>
+  <p class="para">
+   Эта функция не возвращает значения после выполнения.
+  </p>
+ </div>
+
+ <div class="refsect1 examples" id="refsect1-function.debug-zval-dump-examples">
+  <h3 class="title">Примеры</h3>
+  <p class="para">
+   <div class="example" id="example-4726">
+    <p><b>Пример #1 Пример использования <span class="function"><b>debug_zval_dump()</b></span></b></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$var1&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'Hello&nbsp;World'</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$var2&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">''</span><span style="color: #007700">;<br /><br /></span><span style="color: #0000BB">$var2&nbsp;</span><span style="color: #007700">=&amp;&nbsp;</span><span style="color: #0000BB">$var1</span><span style="color: #007700">;<br /><br /></span><span style="color: #0000BB">debug_zval_dump</span><span style="color: #007700">(&amp;</span><span style="color: #0000BB">$var1</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+    <div class="example-contents"><p>Результат выполнения данного примера:</p></div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+&amp;string(11) &quot;Hello World&quot; refcount(3)
+</pre></div>
+    </div>
+   </div>
+  </p>
+  <blockquote class="note"><p><b class="note">Замечание</b>: 
+   <b>Предостережение по поводу <i>refcount</i></b><br />
+   <p class="para">
+    Значение <i>refcount</i>, возвращаемое этой функцией,
+    в некоторых случаях неочевидно. Например, разработчик может
+    ожидать, что в приведенном выше примере значение <i>refcount</i> будет
+    <i>2</i>. Третья ссылка была создана в момент
+    вызова <span class="function"><b>debug_zval_dump()</b></span>.
+   </p>
+   <p class="para">
+    Это поведение более сложно, когда переменная не передается в функцию
+    <span class="function"><b>debug_zval_dump()</b></span> по ссылке. Для иллюстрации рассмотрим
+    немного измененный вариант приведенного выше примера:
+   </p>
+   <p class="para">
+    <div class="example" id="example-4727">
+     
+     <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$var1&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'Hello&nbsp;World'</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$var2&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">''</span><span style="color: #007700">;<br /><br /></span><span style="color: #0000BB">$var2&nbsp;</span><span style="color: #007700">=&amp;&nbsp;</span><span style="color: #0000BB">$var1</span><span style="color: #007700">;<br /><br /></span><span style="color: #0000BB">debug_zval_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$var1</span><span style="color: #007700">);&nbsp;</span><span style="color: #FF8000">//&nbsp;в&nbsp;этот&nbsp;раз&nbsp;не&nbsp;передается&nbsp;по&nbsp;ссылке<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+     </div>
+
+     <div class="example-contents"><p>Результат выполнения данного примера:</p></div>
+     <div class="example-contents screen">
+<div class="cdata"><pre>
+string(11) &quot;Hello World&quot; refcount(1)
+</pre></div>
+     </div>
+    </div>
+   </p>
+   <p class="para">
+    Почему <i>refcount(1)</i>? Потому что копия <i>$var1</i>
+    создается при вызове функции.
+   </p>
+   <p class="para">
+    Эта функция становится еще <em class="emphasis">более</em> сбивающей с толку, когда
+    передается переменная со значением <i>refcount</i>, равным <i>1</i>
+    (копированием по значению):
+   </p>
+   <p class="para">
+    <div class="example" id="example-4728">
+     
+     <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$var1&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'Hello&nbsp;World'</span><span style="color: #007700">;<br /><br /></span><span style="color: #0000BB">debug_zval_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$var1</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+     </div>
+
+     <div class="example-contents"><p>Результат выполнения данного примера:</p></div>
+     <div class="example-contents screen">
+<div class="cdata"><pre>
+string(11) &quot;Hello World&quot; refcount(2)
+</pre></div>
+     </div>
+    </div>
+   </p>
+   <p class="para">
+    Значение <i>refcount</i>, равное <i>2</i>, в данном случае совсем
+    непонятно. Особенно учитывая приведенные выше примеры. Так в чем же дело?
+   </p>
+   <p class="para">
+    Когда переменная имеет единственную ссылку (как было с переменной <i>$var1</i>,
+    перед тем, как ее передали в качестве аргумента в функцию <span class="function"><b>debug_zval_dump()</b></span>),
+    процессор PHP оптимизирует метод, которым она передается в функцию.
+    Внутренне, PHP рассматривает <i>$var1</i> как ссылку (таким образом
+    <i>refcount</i> увеличивается для области видимости
+    функции), при условии, что <em class="emphasis">если</em> в переданную ссылку
+    придется производить запись, то будет создана ее копия, но только в момент
+    записи. Такое поведение известно как &quot;copy on write.&quot;
+   </p>
+   <p class="para">
+    Таким образом, если <span class="function"><b>debug_zval_dump()</b></span> приходится писать в свой единственный
+    параметр (а она не делает этого), то будет создана копия. До этого момента
+    параметр остается ссылкой, приводя к увеличению <i>refcount</i>
+    до <i>2</i> в области видимости вызова функции.
+   </p>
+  </p></blockquote>
+ </div>
+
+ <div class="refsect1 seealso" id="refsect1-function.debug-zval-dump-seealso">
+  <h3 class="title">Смотрите также</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><span class="function"><a href="function.var-dump.html" class="function" rel="rdfs-seeAlso">var_dump()</a> - Выводит информацию о переменной</span></li>
+    <li class="member"><span class="function"><a href="function.debug-backtrace.html" class="function" rel="rdfs-seeAlso">debug_backtrace()</a> - Выводит стек вызовов функций в массив</span></li>
+    <li class="member">&quot;<a href="language.references.html" class="link">Ссылки. Разъяснения</a>&quot;</li>
+    <li class="member">&quot;<a href="http://derickrethans.nl/php_references_article.php" class="link external">&raquo;&nbsp;Ссылки. Разъяснения (от Derick Rethans)</a>&quot;</li>
+   </ul>
+  </p>
+ </div>
+
+</div><hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="ref.var.html">Функции для работы с переменными</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.doubleval.html">doubleval</a></div>
+ <div class="up"><a href="ref.var.html">Функции для работы с переменными</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

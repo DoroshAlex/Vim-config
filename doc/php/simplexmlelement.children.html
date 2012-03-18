@@ -1,0 +1,186 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Поиск дочерних элементов данного узла</title>
+
+ </head>
+ <body><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="simplexmlelement.attributes.html">SimpleXMLElement::attributes</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="simplexmlelement.construct.html">SimpleXMLElement::__construct</a></div>
+ <div class="up"><a href="class.simplexmlelement.html">SimpleXMLElement</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="simplexmlelement.children" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">SimpleXMLElement::children</h1>
+  <p class="verinfo">(PHP 5 &gt;= 5.0.1)</p><p class="refpurpose"><span class="refname">SimpleXMLElement::children</span> &mdash; <span class="dc-title">Поиск дочерних элементов данного узла</span></p>
+
+ </div>
+ 
+ <div class="refsect1 description" id="refsect1-simplexmlelement.children-description">
+  <h3 class="title">Описание</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type"><a href="class.simplexmlelement.html" class="type SimpleXMLElement">SimpleXMLElement</a></span> <span class="methodname"><b>SimpleXMLElement::children</b></span>
+    ([ <span class="methodparam"><span class="type">string</span> <tt class="parameter">$ns</tt></span>
+   [, <span class="methodparam"><span class="type">bool</span> <tt class="parameter">$is_prefix</tt><span class="initializer"> = false</span></span>
+  ]] )</div>
+
+  <p class="para rdfs-comment">
+   Этот метод находит всех дочерних элементов узла. Результат
+   подчиняется стандартным правилам итерации. 
+  </p>
+  <blockquote class="note"><p><b class="note">Замечание</b>: <span class="simpara">SimpleXML содержит правило добавления
+итеративных свойств к большинству методов. Они не могут быть просмотрены с использованием
+<span class="function"><a href="function.var-dump.html" class="function">var_dump()</a></span> или каких-либо других средств анализа объектов.</span></p></blockquote>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-simplexmlelement.children-parameters">
+  <h3 class="title">Список параметров</h3>
+  <p class="para">
+   <dl>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">ns</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Не обязательное пространство имен <acronym title="eXtensible Markup Language">XML</acronym>.
+      </p>
+     </dd>
+
+    </dt>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">is_prefix</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Если <i><tt class="parameter">is_prefix</tt></i> установлен в <b><tt>TRUE</tt></b>,
+       <i><tt class="parameter">ns</tt></i> будет рассмотрен как префикс. Если <b><tt>FALSE</tt></b>,
+       <i><tt class="parameter">ns</tt></i> будет рассмотрен как пространство имен
+       <acronym title="Uniform Resource Locator">URL</acronym>.
+      </p>
+     </dd>
+
+    </dt>
+
+   </dl>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-simplexmlelement.children-returnvalues">
+  <h3 class="title">Возвращаемые значения</h3>
+  <p class="para">
+   Возвращает <a href="class.simplexmlelement.html" class="classname">SimpleXMLElement</a> элемент, даже
+   если узел не имеет дочерних элементов.
+  </p>
+ </div>
+
+
+ <div class="refsect1 changelog" id="refsect1-simplexmlelement.children-changelog">
+  <h3 class="title">Список изменений</h3>
+  <p class="para">
+   <table class="doctable informaltable">
+    
+     <thead valign="middle">
+      <tr valign="middle">
+       <th>Версия</th>
+       <th>Описание</th>
+      </tr>
+
+     </thead>
+
+     <tbody valign="middle" class="tbody">
+      <tr valign="middle">
+       <td align="left">5.2.0</td>
+       <td align="left">
+        Добавлен не обязательный параметр <i><tt class="parameter">is_prefix</tt></i>.
+       </td>
+      </tr>
+
+     </tbody>
+    
+   </table>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-simplexmlelement.children-examples">
+  <h3 class="title">Примеры</h3>
+  <p class="para">
+   <div class="example" id="example-4998">
+    <p><b>Пример #1 Обход псевдо-массива <i>children()</i></b></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$xml&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">SimpleXMLElement</span><span style="color: #007700">(<br /></span><span style="color: #DD0000">'&lt;person&gt;<br />&nbsp;&lt;child&nbsp;role="сын"&gt;<br />&nbsp;&nbsp;&lt;child&nbsp;role="дочь"/&gt;<br />&nbsp;&lt;/child&gt;<br />&nbsp;&lt;child&nbsp;role="дочь"&gt;<br />&nbsp;&nbsp;&lt;child&nbsp;role="сын"&gt;<br />&nbsp;&nbsp;&nbsp;&lt;child&nbsp;role="сын"/&gt;<br />&nbsp;&nbsp;&lt;/child&gt;<br />&nbsp;&lt;/child&gt;<br />&lt;/person&gt;'</span><span style="color: #007700">);<br /><br />foreach&nbsp;(</span><span style="color: #0000BB">$xml</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">children</span><span style="color: #007700">()&nbsp;as&nbsp;</span><span style="color: #0000BB">$second_gen</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">'&nbsp;У&nbsp;человека&nbsp;родился(-ась)&nbsp;'&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">$second_gen</span><span style="color: #007700">[</span><span style="color: #DD0000">'role'</span><span style="color: #007700">];<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;foreach&nbsp;(</span><span style="color: #0000BB">$second_gen</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">children</span><span style="color: #007700">()&nbsp;as&nbsp;</span><span style="color: #0000BB">$third_gen</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">'&nbsp;у&nbsp;которого&nbsp;родился(-ась)&nbsp;'&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">$third_gen</span><span style="color: #007700">[</span><span style="color: #DD0000">'role'</span><span style="color: #007700">]&nbsp;.&nbsp;</span><span style="color: #DD0000">';'</span><span style="color: #007700">;<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;foreach&nbsp;(</span><span style="color: #0000BB">$third_gen</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">children</span><span style="color: #007700">()&nbsp;as&nbsp;</span><span style="color: #0000BB">$fourth_gen</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">'&nbsp;и&nbsp;у&nbsp;'&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">$third_gen</span><span style="color: #007700">[</span><span style="color: #DD0000">'role'</span><span style="color: #007700">]&nbsp;.<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'&nbsp;родился(-ась)&nbsp;'&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">$fourth_gen</span><span style="color: #007700">[</span><span style="color: #DD0000">'role'</span><span style="color: #007700">];<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />}<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+    <div class="example-contents"><p>Результат выполнения данного примера:</p></div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+У человека родился(-ась) сын у которого родился(-ась) дочь; У человека
+родился(-ась) дочь у которого родился(-ась) сын; и у сын родился(-ась) сын
+</pre></div>
+    </div>
+   </div>
+   <div class="example" id="example-4999">
+    <p><b>Пример #2 Использование пространства имен</b></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$xml&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'&lt;example&nbsp;xmlns:foo="my.foo.urn"&gt;<br />&nbsp;&nbsp;&lt;foo:a&gt;Яблоко&lt;/foo:a&gt;<br />&nbsp;&nbsp;&lt;foo:b&gt;Банан&lt;/foo:b&gt;<br />&nbsp;&nbsp;&lt;c&gt;Cherry&lt;/c&gt;<br />&lt;/example&gt;'</span><span style="color: #007700">;<br /><br /></span><span style="color: #0000BB">$sxe&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">SimpleXMLElement</span><span style="color: #007700">(</span><span style="color: #0000BB">$xml</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">$kids&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$sxe</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">children</span><span style="color: #007700">(</span><span style="color: #DD0000">'foo'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">count</span><span style="color: #007700">(</span><span style="color: #0000BB">$kids</span><span style="color: #007700">));<br /><br /></span><span style="color: #0000BB">$kids&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$sxe</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">children</span><span style="color: #007700">(</span><span style="color: #DD0000">'foo'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">TRUE</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">count</span><span style="color: #007700">(</span><span style="color: #0000BB">$kids</span><span style="color: #007700">));<br /><br /></span><span style="color: #0000BB">$kids&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$sxe</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">children</span><span style="color: #007700">(</span><span style="color: #DD0000">'my.foo.urn'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">count</span><span style="color: #007700">(</span><span style="color: #0000BB">$kids</span><span style="color: #007700">));<br /><br /></span><span style="color: #0000BB">$kids&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$sxe</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">children</span><span style="color: #007700">(</span><span style="color: #DD0000">'my.foo.urn'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">TRUE</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">count</span><span style="color: #007700">(</span><span style="color: #0000BB">$kids</span><span style="color: #007700">));<br /><br /></span><span style="color: #0000BB">$kids&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$sxe</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">children</span><span style="color: #007700">();<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">count</span><span style="color: #007700">(</span><span style="color: #0000BB">$kids</span><span style="color: #007700">));<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+int(0)
+int(2)
+int(2)
+int(0)
+int(1)
+</pre></div>
+    </div>
+   </div>
+  </p>
+ </div>
+
+
+ <div class="refsect1 notes" id="refsect1-simplexmlelement.children-notes">
+  <h3 class="title">Примечания</h3>
+
+  <p class="simpara">
+    <span class="methodname"><b>SimpleXMLElement::children()</b></span> вернет узел объекта
+   в любом случае, даже если текущий узел не имеет потомков. Используя
+   <span class="function"><a href="function.count.html" class="function">count()</a></span> для возвращенного значения, можно узнать о
+   существовании потомков. В PHP 5.3.0 вместо этого можно использовать 
+    <span class="methodname"><a href="simplexmlelement.count.html" class="methodname">SimpleXMLElement::count()</a></span>.
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 seealso" id="refsect1-simplexmlelement.children-seealso">
+  <h3 class="title">Смотрите также</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"> <span class="methodname"><a href="simplexmlelement.count.html" class="methodname" rel="rdfs-seeAlso">SimpleXMLElement::count()</a> - Считает количество дочерних элементов у текущего элемента</span></li>
+    <li class="member"><span class="function"><a href="function.count.html" class="function" rel="rdfs-seeAlso">count()</a> - Подсчитывает количество элементов массива или что-то в объекте</span></li>
+   </ul>
+  </p>
+ </div>
+
+
+</div><hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="simplexmlelement.attributes.html">SimpleXMLElement::attributes</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="simplexmlelement.construct.html">SimpleXMLElement::__construct</a></div>
+ <div class="up"><a href="class.simplexmlelement.html">SimpleXMLElement</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

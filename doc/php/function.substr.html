@@ -1,0 +1,259 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Возвращает подстроку</title>
+
+ </head>
+ <body><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.substr-replace.html">substr_replace</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.trim.html">trim</a></div>
+ <div class="up"><a href="ref.strings.html">Обработка строк</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.substr" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">substr</h1>
+  <p class="verinfo">(PHP 4, PHP 5)</p><p class="refpurpose"><span class="refname">substr</span> &mdash; <span class="dc-title">Возвращает подстроку</span></p>
+
+ </div>
+
+ <div class="refsect1 description" id="refsect1-function.substr-description">
+  <h3 class="title">Описание</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">string</span> <span class="methodname"><b>substr</b></span>
+    ( <span class="methodparam"><span class="type">string</span> <tt class="parameter">$string</tt></span>
+   , <span class="methodparam"><span class="type">int</span> <tt class="parameter">$start</tt></span>
+   [, <span class="methodparam"><span class="type">int</span> <tt class="parameter">$length</tt></span>
+  ] )</div>
+
+  <p class="para rdfs-comment">
+   Возвращает подстроку строки <i><tt class="parameter">string</tt></i>, начинающейся
+   с <i><tt class="parameter">start</tt></i> символа по счету и длиной
+   <i><tt class="parameter">length</tt></i> символов.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-function.substr-parameters">
+  <h3 class="title">Список параметров</h3>
+  <p class="para">
+   <dl>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">string</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Входная строка. Должна содержать хотя бы один символ.
+      </p>
+     </dd>
+
+    </dt>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">start</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Если <i><tt class="parameter">start</tt></i> неотрицателен, возвращаемая
+       подстрока начинается с позиции <i><tt class="parameter">start</tt></i> от начала
+       строки, считая от нуля. Например, в строке
+       &#039;<i>abcdef</i>&#039;, в позиции <i>0</i> находится
+       символ &#039;<i>a</i>&#039;, в позиции <i>2</i> -
+       символ &#039;<i>c</i>&#039;, и т.д.
+      </p>
+      <p class="para">
+       Если <i><tt class="parameter">start</tt></i> отрицательный, возвращаемая
+       подстрока начинается с позиции, отстоящей на
+       <i><tt class="parameter">start</tt></i> символов от конца
+       строки <i><tt class="parameter">string</tt></i>.
+      </p>
+      <p class="para">
+       Если <i><tt class="parameter">string</tt></i> меньше либо содержит ровно
+       <i><tt class="parameter">start</tt></i> символов, будет возвращено <b><tt>FALSE</tt></b>.
+      </p>
+      <p class="para">
+       <div class="example" id="example-4423">
+        <p><b>Пример #1 Использование отрицательного параметра <i><tt class="parameter">start</tt></i></b></p>
+        <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$rest&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">substr</span><span style="color: #007700">(</span><span style="color: #DD0000">"abcdef"</span><span style="color: #007700">,&nbsp;-</span><span style="color: #0000BB">1</span><span style="color: #007700">);&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;возвращает&nbsp;"f"<br /></span><span style="color: #0000BB">$rest&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">substr</span><span style="color: #007700">(</span><span style="color: #DD0000">"abcdef"</span><span style="color: #007700">,&nbsp;-</span><span style="color: #0000BB">2</span><span style="color: #007700">);&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;возвращает&nbsp;"ef"<br /></span><span style="color: #0000BB">$rest&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">substr</span><span style="color: #007700">(</span><span style="color: #DD0000">"abcdef"</span><span style="color: #007700">,&nbsp;-</span><span style="color: #0000BB">3</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">1</span><span style="color: #007700">);&nbsp;</span><span style="color: #FF8000">//&nbsp;возвращает&nbsp;"d"<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+        </div>
+
+       </div>
+      </p>
+     </dd>
+
+    </dt>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">length</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Если <i><tt class="parameter">length</tt></i> положительный, возвращаемая строка
+       будет не длиннее <i><tt class="parameter">length</tt></i> символов, начиная
+       с параметра<i><tt class="parameter">start</tt></i> (в зависимости от длины
+       <i><tt class="parameter">string</tt></i>).
+      </p>
+      <p class="para">
+       Если <i><tt class="parameter">length</tt></i> отрицательный, то будет отброшено
+       указанное этим аргументом число символов с конца строки
+       <i><tt class="parameter">string</tt></i> (после того как будет вычислена
+       стартовая позиция, если <i><tt class="parameter">start</tt></i> отрицателен).
+       Если при этом позиция начала
+       подстроки, определяемая аргументом <i><tt class="parameter">start</tt></i>,
+       находится в отброшенной части строки или за ней, возвращается false.
+      </p>
+      <p class="para">
+       Если указан параметр <i><tt class="parameter">length</tt></i> и является
+       одним из <i>0</i>, <b><tt>FALSE</tt></b> или <b><tt>NULL</tt></b>, то будет
+       возвращена пустая строка.
+      </p>
+      <p class="para">
+       Если параметр <i><tt class="parameter">length</tt></i> опущен, то будет
+       возвращена подстрока, начинающаяся с позиции, указанной параметром
+       <i><tt class="parameter">start</tt></i> и длящейся до конца строки.
+      </p>
+      <div class="example" id="example-4424">
+       <p><b>Пример #2 Использование отрицательного параметра <i><tt class="parameter">length</tt></i></b></p>
+       <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$rest&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">substr</span><span style="color: #007700">(</span><span style="color: #DD0000">"abcdef"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">,&nbsp;-</span><span style="color: #0000BB">1</span><span style="color: #007700">);&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;возвращает&nbsp;"abcde"<br /></span><span style="color: #0000BB">$rest&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">substr</span><span style="color: #007700">(</span><span style="color: #DD0000">"abcdef"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">2</span><span style="color: #007700">,&nbsp;-</span><span style="color: #0000BB">1</span><span style="color: #007700">);&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;возвращает&nbsp;"cde"<br /></span><span style="color: #0000BB">$rest&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">substr</span><span style="color: #007700">(</span><span style="color: #DD0000">"abcdef"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">4</span><span style="color: #007700">,&nbsp;-</span><span style="color: #0000BB">4</span><span style="color: #007700">);&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;возвращает&nbsp;false<br /></span><span style="color: #0000BB">$rest&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">substr</span><span style="color: #007700">(</span><span style="color: #DD0000">"abcdef"</span><span style="color: #007700">,&nbsp;-</span><span style="color: #0000BB">3</span><span style="color: #007700">,&nbsp;-</span><span style="color: #0000BB">1</span><span style="color: #007700">);&nbsp;</span><span style="color: #FF8000">//&nbsp;возвращает&nbsp;"de"<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+       </div>
+
+      </div>
+     </dd>
+
+    </dt>
+
+   </dl>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-function.substr-returnvalues">
+  <h3 class="title">Возвращаемые значения</h3>
+  <p class="para">
+   Возвращает извлеченную часть строки,  или <b><tt>FALSE</tt></b> в случае возникновения ошибки или пустую строку.
+  </p>
+ </div>
+
+
+ <div class="refsect1 changelog" id="refsect1-function.substr-changelog">
+  <h3 class="title">Список изменений</h3>
+  <p class="para">
+   <table class="doctable informaltable">
+    
+     <thead valign="middle">
+      <tr valign="middle">
+       <th>Версия</th>
+       <th>Описание</th>
+      </tr>
+
+     </thead>
+
+     <tbody valign="middle" class="tbody">
+      <tr valign="middle">
+       <td align="left">5.2.2 - 5.2.6</td>
+       <td align="left">
+        Если параметр <i><tt class="parameter">start</tt></i> указывает на позицию
+        с отрицательной обрезкой, возвращается <b><tt>FALSE</tt></b>. Другие версии
+        возвращают строку с начала.
+       </td>
+      </tr>
+
+     </tbody>
+    
+   </table>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-function.substr-examples">
+  <h3 class="title">Примеры</h3>
+  <p class="para">
+   <div class="example" id="example-4425">
+    <p><b>Пример #3 Базовое использование <span class="function"><b>substr()</b></span></b></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">substr</span><span style="color: #007700">(</span><span style="color: #DD0000">'abcdef'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">1</span><span style="color: #007700">);&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;bcdef<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">substr</span><span style="color: #007700">(</span><span style="color: #DD0000">'abcdef'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">1</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">3</span><span style="color: #007700">);&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;bcd<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">substr</span><span style="color: #007700">(</span><span style="color: #DD0000">'abcdef'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">4</span><span style="color: #007700">);&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;abcd<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">substr</span><span style="color: #007700">(</span><span style="color: #DD0000">'abcdef'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">8</span><span style="color: #007700">);&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;abcdef<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">substr</span><span style="color: #007700">(</span><span style="color: #DD0000">'abcdef'</span><span style="color: #007700">,&nbsp;-</span><span style="color: #0000BB">1</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">1</span><span style="color: #007700">);&nbsp;</span><span style="color: #FF8000">//&nbsp;f<br /><br />//&nbsp;Получить&nbsp;доступ&nbsp;к&nbsp;отдельному&nbsp;символу&nbsp;в&nbsp;строке<br />//&nbsp;можно&nbsp;также&nbsp;с&nbsp;помощью&nbsp;"квадратных&nbsp;скобок"<br /></span><span style="color: #0000BB">$string&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'abcdef'</span><span style="color: #007700">;<br />echo&nbsp;</span><span style="color: #0000BB">$string</span><span style="color: #007700">[</span><span style="color: #0000BB">0</span><span style="color: #007700">];&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;a<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">$string</span><span style="color: #007700">[</span><span style="color: #0000BB">3</span><span style="color: #007700">];&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;d<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">$string</span><span style="color: #007700">[</span><span style="color: #0000BB">strlen</span><span style="color: #007700">(</span><span style="color: #0000BB">$string</span><span style="color: #007700">)-</span><span style="color: #0000BB">1</span><span style="color: #007700">];&nbsp;</span><span style="color: #FF8000">//&nbsp;f<br /><br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+   <div class="example" id="example-4426">
+    <p><b>Пример #4 <span class="function"><b>substr()</b></span> и приведение типов</b></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">class&nbsp;</span><span style="color: #0000BB">apple&nbsp;</span><span style="color: #007700">{<br />&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;function&nbsp;</span><span style="color: #0000BB">__toString</span><span style="color: #007700">()&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #DD0000">"green"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />}<br /><br />echo&nbsp;</span><span style="color: #DD0000">"1)&nbsp;"</span><span style="color: #007700">.</span><span style="color: #0000BB">var_export</span><span style="color: #007700">(</span><span style="color: #0000BB">substr</span><span style="color: #007700">(</span><span style="color: #DD0000">"pear"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">2</span><span style="color: #007700">),&nbsp;</span><span style="color: #0000BB">true</span><span style="color: #007700">).</span><span style="color: #0000BB">PHP_EOL</span><span style="color: #007700">;<br />echo&nbsp;</span><span style="color: #DD0000">"2)&nbsp;"</span><span style="color: #007700">.</span><span style="color: #0000BB">var_export</span><span style="color: #007700">(</span><span style="color: #0000BB">substr</span><span style="color: #007700">(</span><span style="color: #0000BB">54321</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">2</span><span style="color: #007700">),&nbsp;</span><span style="color: #0000BB">true</span><span style="color: #007700">).</span><span style="color: #0000BB">PHP_EOL</span><span style="color: #007700">;<br />echo&nbsp;</span><span style="color: #DD0000">"3)&nbsp;"</span><span style="color: #007700">.</span><span style="color: #0000BB">var_export</span><span style="color: #007700">(</span><span style="color: #0000BB">substr</span><span style="color: #007700">(new&nbsp;</span><span style="color: #0000BB">apple</span><span style="color: #007700">(),&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">2</span><span style="color: #007700">),&nbsp;</span><span style="color: #0000BB">true</span><span style="color: #007700">).</span><span style="color: #0000BB">PHP_EOL</span><span style="color: #007700">;<br />echo&nbsp;</span><span style="color: #DD0000">"4)&nbsp;"</span><span style="color: #007700">.</span><span style="color: #0000BB">var_export</span><span style="color: #007700">(</span><span style="color: #0000BB">substr</span><span style="color: #007700">(</span><span style="color: #0000BB">true</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">1</span><span style="color: #007700">),&nbsp;</span><span style="color: #0000BB">true</span><span style="color: #007700">).</span><span style="color: #0000BB">PHP_EOL</span><span style="color: #007700">;<br />echo&nbsp;</span><span style="color: #DD0000">"5)&nbsp;"</span><span style="color: #007700">.</span><span style="color: #0000BB">var_export</span><span style="color: #007700">(</span><span style="color: #0000BB">substr</span><span style="color: #007700">(</span><span style="color: #0000BB">false</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">1</span><span style="color: #007700">),&nbsp;</span><span style="color: #0000BB">true</span><span style="color: #007700">).</span><span style="color: #0000BB">PHP_EOL</span><span style="color: #007700">;<br />echo&nbsp;</span><span style="color: #DD0000">"6)&nbsp;"</span><span style="color: #007700">.</span><span style="color: #0000BB">var_export</span><span style="color: #007700">(</span><span style="color: #0000BB">substr</span><span style="color: #007700">(</span><span style="color: #DD0000">""</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">1</span><span style="color: #007700">),&nbsp;</span><span style="color: #0000BB">true</span><span style="color: #007700">).</span><span style="color: #0000BB">PHP_EOL</span><span style="color: #007700">;<br />echo&nbsp;</span><span style="color: #DD0000">"7)&nbsp;"</span><span style="color: #007700">.</span><span style="color: #0000BB">var_export</span><span style="color: #007700">(</span><span style="color: #0000BB">substr</span><span style="color: #007700">(</span><span style="color: #0000BB">1.2e3</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">4</span><span style="color: #007700">),&nbsp;</span><span style="color: #0000BB">true</span><span style="color: #007700">).</span><span style="color: #0000BB">PHP_EOL</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+    <div class="example-contents"><p>Результат выполнения данного примера:</p></div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+1) &#039;pe&#039;
+2) &#039;54&#039;
+3) &#039;gr&#039;
+4) &#039;1&#039;
+5) false
+6) false
+7) &#039;1200&#039;
+</pre></div>
+    </div>
+   </div>
+  </p>
+ </div>
+
+
+ <div class="refsect1 errors" id="refsect1-function.substr-errors">
+  <h3 class="title">Ошибки</h3>
+  <p class="para">
+   Возвращает <b><tt>FALSE</tt></b> в случае ошибки.
+   <div class="example" id="example-4427">
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">substr</span><span style="color: #007700">(</span><span style="color: #DD0000">'a'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">1</span><span style="color: #007700">));&nbsp;</span><span style="color: #FF8000">//&nbsp;bool(false)<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+  </p>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-function.substr-seealso">
+  <h3 class="title">Смотрите также</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><span class="function"><a href="function.strrchr.html" class="function" rel="rdfs-seeAlso">strrchr()</a> - Находит последнее вхождение символа в строке</span></li>
+    <li class="member"><span class="function"><a href="function.substr-replace.html" class="function" rel="rdfs-seeAlso">substr_replace()</a> - Заменяет часть строки</span></li>
+    <li class="member"><span class="function"><a href="function.preg-match.html" class="function" rel="rdfs-seeAlso">preg_match()</a> - Выполняет проверку на соответствие регулярному выражению</span></li>
+    <li class="member"><span class="function"><a href="function.trim.html" class="function" rel="rdfs-seeAlso">trim()</a> - Удаляет пробелы (или другие символы) из начала и конца строки</span></li>
+    <li class="member"><span class="function"><a href="function.mb-substr.html" class="function" rel="rdfs-seeAlso">mb_substr()</a> - Возвращает часть строки</span></li>
+    <li class="member"><span class="function"><a href="function.wordwrap.html" class="function" rel="rdfs-seeAlso">wordwrap()</a> - Переносит строку по указанному количеству символов</span></li>
+    <li class="member"><a href="language.types.string.html#language.types.string.substr" class="link">Посимвольный доступ и изменение строки</a></li>
+   </ul>
+  </p>
+ </div>
+
+
+</div><hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.substr-replace.html">substr_replace</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.trim.html">trim</a></div>
+ <div class="up"><a href="ref.strings.html">Обработка строк</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

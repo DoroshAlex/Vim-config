@@ -1,0 +1,201 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Регистро-независимый вариант функции strstr</title>
+
+ </head>
+ <body><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.stripslashes.html">stripslashes</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.strlen.html">strlen</a></div>
+ <div class="up"><a href="ref.strings.html">Обработка строк</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.stristr" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">stristr</h1>
+  <p class="verinfo">(PHP 4, PHP 5)</p><p class="refpurpose"><span class="refname">stristr</span> &mdash; <span class="dc-title">Регистро-независимый вариант функции <span class="function"><a href="function.strstr.html" class="function">strstr()</a></span></span></p>
+
+ </div>
+
+ <div class="refsect1 description" id="refsect1-function.stristr-description">
+  <h3 class="title">Описание</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">string</span> <span class="methodname"><b>stristr</b></span>
+    ( <span class="methodparam"><span class="type">string</span> <tt class="parameter">$haystack</tt></span>
+   , <span class="methodparam"><span class="type"><a href="language.pseudo-types.html#language.types.mixed" class="type mixed">mixed</a></span> <tt class="parameter">$needle</tt></span>
+   [, <span class="methodparam"><span class="type">bool</span> <tt class="parameter">$before_needle</tt><span class="initializer"> = false</span></span>
+  ] )</div>
+
+  <p class="para rdfs-comment">
+   Возвращает всю строку <i><tt class="parameter">haystack</tt></i> начиная с
+   первого вхождения <i><tt class="parameter">needle</tt></i>.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-function.stristr-parameters">
+  <h3 class="title">Список параметров</h3>
+  <p class="para">
+   <dl>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">haystack</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Строка, в которой производится поиск
+      </p>
+     </dd>
+
+    </dt>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">needle</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Если <i><tt class="parameter">needle</tt></i> не является строкой, он приводится
+       к целому и трактуется как код символа.
+      </p>
+     </dd>
+
+    </dt>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">before_needle</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Если установлен в <b><tt>TRUE</tt></b>, <span class="function"><b>stristr()</b></span>
+       возвращает часть строки <i><tt class="parameter">haystack</tt></i>
+       до первого вхождения <i><tt class="parameter">needle</tt></i>.
+      </p>
+     </dd>
+
+    </dt>
+
+   </dl>
+
+  </p>
+  <p class="para">
+   <i><tt class="parameter">needle</tt></i> и <i><tt class="parameter">haystack</tt></i>
+   обрабатываются без учета регистра.
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-function.stristr-returnvalues">
+  <h3 class="title">Возвращаемые значения</h3>
+  <p class="para">
+   Возвращает указанную подстроку. Если подстрока <i><tt class="parameter">needle</tt></i> не найдена,
+   возвращается <b><tt>FALSE</tt></b>.
+  </p>
+ </div>
+
+
+ <div class="refsect1 changelog" id="refsect1-function.stristr-changelog">
+  <h3 class="title">Список изменений</h3>
+  <p class="para">
+   <table class="doctable informaltable">
+    
+     <thead valign="middle">
+      <tr valign="middle">
+       <th>Версия</th>
+       <th>Описание</th>
+      </tr>
+
+     </thead>
+
+     <tbody valign="middle" class="tbody">
+      <tr valign="middle">
+       <td align="left">5.3.0</td>
+       <td align="left">
+        Добавлен необязательный параметр <i><tt class="parameter">before_needle</tt></i>.
+       </td>
+      </tr>
+
+      <tr valign="middle">
+       <td align="left">4.3.0</td>
+       <td align="left">
+        <span class="function"><b>stristr()</b></span> теперь бинарно-безопасна.
+       </td>
+      </tr>
+
+     </tbody>
+    
+   </table>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-function.stristr-examples">
+  <h3 class="title">Примеры</h3>
+  <p class="para">
+   <div class="example" id="example-4396">
+    <p><b>Пример #1 Пример использования <span class="function"><b>stristr()</b></span></b></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />&nbsp;&nbsp;$email&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'USER@EXAMPLE.com'</span><span style="color: #007700">;<br />&nbsp;&nbsp;echo&nbsp;</span><span style="color: #0000BB">stristr</span><span style="color: #007700">(</span><span style="color: #0000BB">$email</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'e'</span><span style="color: #007700">);&nbsp;</span><span style="color: #FF8000">//&nbsp;выводит&nbsp;ER@EXAMPLE.com<br />&nbsp;&nbsp;</span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">stristr</span><span style="color: #007700">(</span><span style="color: #0000BB">$email</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'e'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">true</span><span style="color: #007700">);&nbsp;</span><span style="color: #FF8000">//&nbsp;Начиная&nbsp;с&nbsp;PHP&nbsp;5.3.0,&nbsp;выводит&nbsp;US<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+  </p>
+  <p class="para">
+   <div class="example" id="example-4397">
+    <p><b>Пример #2 Проверка на вхождение строки</b></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />&nbsp;&nbsp;$string&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'Hello&nbsp;World!'</span><span style="color: #007700">;<br />&nbsp;&nbsp;if(</span><span style="color: #0000BB">stristr</span><span style="color: #007700">(</span><span style="color: #0000BB">$string</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'earth'</span><span style="color: #007700">)&nbsp;===&nbsp;</span><span style="color: #0000BB">FALSE</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">'"earth"&nbsp;не&nbsp;найдена&nbsp;в&nbsp;строке'</span><span style="color: #007700">;<br />&nbsp;&nbsp;}<br /></span><span style="color: #FF8000">//&nbsp;выводит:&nbsp;"earth"&nbsp;не&nbsp;найдена&nbsp;в&nbsp;строке<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+  </p>
+  <p class="para">
+   <div class="example" id="example-4398">
+    <p><b>Пример #3 Использование &quot;нестроки&quot; в поиске</b></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />&nbsp;&nbsp;$string&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'APPLE'</span><span style="color: #007700">;<br />&nbsp;&nbsp;echo&nbsp;</span><span style="color: #0000BB">stristr</span><span style="color: #007700">(</span><span style="color: #0000BB">$string</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">97</span><span style="color: #007700">);&nbsp;</span><span style="color: #FF8000">//&nbsp;97&nbsp;=&nbsp;a&nbsp;в&nbsp;нижнем&nbsp;регистре<br />//&nbsp;выводит:&nbsp;APPLE<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+  </p>
+ </div>
+
+
+ <div class="refsect1 notes" id="refsect1-function.stristr-notes">
+  <h3 class="title">Примечания</h3>
+  <blockquote class="note"><p><b class="note">Замечание</b>: <span class="simpara">Эта функция безопасна
+для обработки данных в двоичной форме.</span></p></blockquote>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-function.stristr-seealso">
+  <h3 class="title">Смотрите также</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><span class="function"><a href="function.strstr.html" class="function" rel="rdfs-seeAlso">strstr()</a> - Находит первое вхождение подстроки</span></li>
+    <li class="member"><span class="function"><a href="function.strrchr.html" class="function" rel="rdfs-seeAlso">strrchr()</a> - Находит последнее вхождение символа в строке</span></li>
+    <li class="member"><span class="function"><a href="function.substr.html" class="function" rel="rdfs-seeAlso">substr()</a> - Возвращает подстроку</span></li>
+    <li class="member"><span class="function"><a href="function.preg-match.html" class="function" rel="rdfs-seeAlso">preg_match()</a> - Выполняет проверку на соответствие регулярному выражению</span></li>
+   </ul>
+  </p>
+ </div>
+
+
+</div><hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.stripslashes.html">stripslashes</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.strlen.html">strlen</a></div>
+ <div class="up"><a href="ref.strings.html">Обработка строк</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

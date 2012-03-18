@@ -1,0 +1,115 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Установка смещения и предельного числа значений для набора результатов</title>
+
+ </head>
+ <body><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="sphinxclient.setindexweights.html">SphinxClient::setIndexWeights</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="sphinxclient.setmatchmode.html">SphinxClient::setMatchMode</a></div>
+ <div class="up"><a href="class.sphinxclient.html">SphinxClient</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="sphinxclient.setlimits" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">SphinxClient::setLimits</h1>
+  <p class="verinfo">(PECL sphinx &gt;= 0.1.0)</p><p class="refpurpose"><span class="refname">SphinxClient::setLimits</span> &mdash; <span class="dc-title">Установка смещения и предельного числа значений для набора результатов</span></p>
+
+ </div>
+
+ <div class="refsect1 description" id="refsect1-sphinxclient.setlimits-description">
+  <h3 class="title">Описание</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname"><b>SphinxClient::setLimits</b></span>
+    ( <span class="methodparam"><span class="type">int</span> <tt class="parameter">$offset</tt></span>
+   , <span class="methodparam"><span class="type">int</span> <tt class="parameter">$limit</tt></span>
+   [, <span class="methodparam"><span class="type">int</span> <tt class="parameter">$max_matches</tt><span class="initializer"> = 0</span></span>
+   [, <span class="methodparam"><span class="type">int</span> <tt class="parameter">$cutoff</tt><span class="initializer"> = 0</span></span>
+  ]] )</div>
+
+  <p class="para rdfs-comment">
+   Устанавливает смещение <i><tt class="parameter">offset</tt></i> для получаемого от сервера
+   набора результатов, и количество записей <i><tt class="parameter">limit</tt></i>, которое необходимо
+   получить с данным смещением. Дополнительно может контролировать максимальное число
+   результатов для данного запроса <i><tt class="parameter">max_matches</tt></i> и
+   пороговое количество совпадений <i><tt class="parameter">cutoff</tt></i>, после превышения
+   которого можно прекратить поиск.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-sphinxclient.setlimits-parameters">
+  <h3 class="title">Список параметров</h3>
+  <p class="para">
+   <dl>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">offset</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Смещение набора результатов.
+      </p>
+     </dd>
+
+    </dt>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">limit</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Количество необходимых к получению результатов.
+      </p>
+     </dd>
+
+    </dt>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">max_matches</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Контролирует количество совпадений, которые searchd будет хранить в оперативной памяти в процессе поиска.
+      </p>
+     </dd>
+
+    </dt>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">cutoff</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Используется для повышенного контроля за производительностью.
+       Параметр указывает searchd принудительно останавливать поиск,
+       как только было найдено и обработано <i><tt class="parameter">cutoff</tt></i> совпадений.
+      </p>
+     </dd>
+
+    </dt>
+
+   </dl>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-sphinxclient.setlimits-returnvalues">
+  <h3 class="title">Возвращаемые значения</h3>
+  <p class="para">
+   Возвращает <b><tt>TRUE</tt></b> в случае успешного завершения  или <b><tt>FALSE</tt></b> в случае возникновения ошибки.
+  </p>
+ </div>
+
+
+</div><hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="sphinxclient.setindexweights.html">SphinxClient::setIndexWeights</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="sphinxclient.setmatchmode.html">SphinxClient::setMatchMode</a></div>
+ <div class="up"><a href="class.sphinxclient.html">SphinxClient</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

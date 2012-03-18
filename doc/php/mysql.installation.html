@@ -1,0 +1,178 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Установка</title>
+
+ </head>
+ <body><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="mysql.requirements.html">Требования</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="mysql.configuration.html">Настройка во время выполнения</a></div>
+ <div class="up"><a href="mysql.setup.html">Установка и настройка</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="mysql.installation" class="section">
+ <h2 class="title">Установка</h2>
+
+ <p class="para" id="mysql.configure">
+  Для компиляции просто используйте опцию конфигурации
+  <strong class="option configure">--with-mysql[=DIR]</strong>
+,
+  где необязательный параметр <i>[DIR]</i> указывает на директорию
+  с установленным MySQL.
+ </p>
+ <p class="para">
+  Несмотря на то, что это расширение MySQL совместимо с MySQL 4.1.0 и
+  выше, оно не поддерживает дополнительную функциональность, предоставляемую
+  этими версиями. Для получения такой возможности воспользуйтесь
+  расширением <a href="ref.mysqli.html" class="link">MySQLi</a>.
+ </p>
+ <p class="para">
+  Если вы хотите установить расширение mysql совместо с mysqli, то
+  для избежания каких-либо конфликтов необходимо использовать одну
+  и ту же клиентскую библиотеку.
+ </p>
+
+ <div class="section" id="mysql.installation.linux">
+  <h2 class="title">Установка на Linux-системы</h2>
+  <p class="para">
+   Примечание: <i>[DIR]</i> является путем к файлам клиентской библиотеки
+   MySQL (<em class="emphasis">заголовкам и библиотекам</em>), которые можно скачать с 
+   <a href="http://www.mysql.com/" class="link external">&raquo;&nbsp;MySQL</a>.
+  </p>
+  <table class="doctable table">
+   <caption><b>Таблица компиляции ext/mysql по версиям PHP</b></caption>
+   
+    <thead valign="middle">
+     <tr valign="middle">
+      <th>PHP Версия</th>
+      <th>По умолчанию</th>
+      <th>Опции настройки: <a href="mysqlnd.overview.html" class="link">mysqlnd</a></th>
+      <th>Опции настройки: <i>libmysql</i></th>
+      <th>Список изменений</th>
+     </tr>
+
+    </thead>
+
+    <tbody valign="middle" class="tbody">
+     <tr valign="middle">
+      <td align="left">4.x.x</td>
+      <td align="left">libmysql</td>
+      <td align="left">Недоступно</td>
+      <td align="left"><strong class="option configure">--without-mysql</strong>
+ для отключения</td>
+      <td align="left">MySQL включен по умолчанию, клиентские библиотеки MySQL входят в поставку PHP</td>
+     </tr>
+
+     <tr valign="middle">
+      <td align="left">5.0.x, 5.1.x, 5.2.x</td>
+      <td align="left">libmysql</td>
+      <td align="left">Недоступно</td>
+      <td align="left"><strong class="option configure">--with-mysql=[DIR]</strong>
+</td>
+      <td align="left">
+       MySQL больше не включен по умолчанию, и клиентские библиотеки MySQL
+       больше <a href="faq.databases.html#faq.databases.mysql.php5" class="link">не входят в поставку PHP</a>
+      </td>
+     </tr>
+
+     <tr valign="middle">
+      <td align="left">5.3.x</td>
+      <td align="left">libmysql</td>
+      <td align="left"><strong class="option configure">--with-mysql=mysqlnd</strong>
+</td>
+      <td align="left"><strong class="option configure">--with-mysql=[DIR]</strong>
+</td>
+      <td align="left">Стал доступен mysqlnd</td>
+     </tr>
+
+     <tr valign="middle">
+      <td align="left">5.4.x</td>
+      <td align="left">mysqlnd</td>
+      <td align="left"><strong class="option configure">--with-mysql</strong>
+</td>
+      <td align="left"><strong class="option configure">--with-mysql=[DIR]</strong>
+</td>
+      <td align="left">mysqlnd выбирается по умолчанию</td>
+     </tr>
+
+    </tbody>
+   
+  </table>
+
+ </div>
+
+ <div class="section" id="mysql.installation.windows">
+  <h2 class="title">Установка на Windows-системы</h2>
+  <div class="section">
+   <h2 class="title">PHP 4</h2>
+   <p class="para">
+    PHP скомпилирован с поддержкой расширения MySQL.
+   </p>
+  </div>
+  <div class="section">
+   <h2 class="title">PHP 5.0.x, 5.1.x, 5.2.x</h2>
+   <p class="para">
+    Поддержка MySQL больше не включена по умолчанию, поэтому для ее
+    включения необходимо подключить <var class="filename">php_mysql.dll</var> DLL
+    внутри <var class="filename">php.ini</var>. Кроме этого, PHP понадобится доступ к клиентской библиотеке
+    MySQL. Файл <var class="filename">libmysql.dll</var> поставляется в Windows дистрибутиве
+    PHP, и для корректного общения PHP с MySQL, данный файл должен быть доступен
+    в системном пути Windows <span class="envar">PATH</span>. О том как это сделать,
+    смотрите FAQ &quot;<a href="faq.installation.html#faq.installation.addtopath" class="link">Как добавить мою PHP
+    директорию в системный <var class="varname"><var class="varname">PATH</var></var> на Windows?</a>&quot;.
+    Хотя копирование <var class="filename">libmysql.dll</var> в системную папку Windows
+    также сработает (потому что системная папка находится по умолчанию в
+    <span class="envar">PATH</span>), это не рекомендуется.
+   </p>
+   <p class="para">
+    Как и при включении любого другого расширения PHP (в том числе и
+    <var class="filename">php_mysql.dll</var>), директива
+    <a href="ini.core.html#ini.extension-dir" class="link">extension_dir</a> должна указывать на
+    директорию, содержащую PHP-расширения. Смотрите также
+    <a href="install.windows.manual.html" class="link">Инструкции по ручной установке в Windows
+    </a>. Пример значения extension_dir для PHP 5:
+    <i>c:\php\ext</i>
+   </p>
+   <blockquote class="note"><p><b class="note">Замечание</b>: 
+    <p class="para">
+     Если при старте веб-сервера происходит подобная ошибка:
+     <i>&quot;Unable to load dynamic library &#039;./php_mysql.dll&#039;&quot;</i>,
+     (&quot;Невозможно подгрузить динамическую библиотеку &#039;./php_mysql.dll&#039;&quot;),
+     то это случается из-за того, что на вашей системе не может быть найдена
+     <var class="filename">php_mysql.dll</var> и/или <var class="filename">libmysql.dll</var>.
+    </p>
+   </p></blockquote>
+  </div>
+  <div class="section">
+   <h2 class="title">PHP 5.3.0+</h2>
+   <p class="para">
+    <a href="mysqlnd.overview.html" class="link">MySQL Native Driver</a> включен
+    по умолчанию. В том числе <var class="filename">php_mysql.dll</var>, но без требования
+    и использования <var class="filename">libmysql.dll</var>.
+   </p>
+  </div>
+ </div>
+
+ <div class="section" id="mysql.installation.notes">
+  <h2 class="title">Замечания по установке MySQL</h2>
+   <div class="warning"><b class="warning">Внимание</b>
+    <p class="para">
+     Сбои в работе PHP могут иметь место при загрузке
+     совместно этого расширения и расширения recode.
+     За дополнительной информацией обращайтесь к разделу о расширении для <a href="ref.recode.html" class="link">recode</a>.
+    </p>
+   </div>
+   <blockquote class="note"><p><b class="note">Замечание</b>: 
+    <p class="para">
+     Если вам требуется поддержка кодировок отличных от <em class="emphasis">latin</em>,
+     (установленной по умолчанию), вам придётся установить внешнюю библиотеку
+     libmysql, скомпилированную с их поддержкой.
+    </p>
+   </p></blockquote>
+ </div>
+</div><hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="mysql.requirements.html">Требования</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="mysql.configuration.html">Настройка во время выполнения</a></div>
+ <div class="up"><a href="mysql.setup.html">Установка и настройка</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

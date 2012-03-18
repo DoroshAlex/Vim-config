@@ -1,0 +1,126 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Добавить высокоприоритетную фоновую задачу для работы в параллельном режиме</title>
+
+ </head>
+ <body><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="gearmanclient.addtaskhigh.html">GearmanClient::addTaskHigh</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="gearmanclient.addtasklow.html">GearmanClient::addTaskLow</a></div>
+ <div class="up"><a href="class.gearmanclient.html">GearmanClient</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="gearmanclient.addtaskhighbackground" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">GearmanClient::addTaskHighBackground</h1>
+  <p class="verinfo">(PECL gearman &gt;= 0.5.0)</p><p class="refpurpose"><span class="refname">GearmanClient::addTaskHighBackground</span> &mdash; <span class="dc-title">Добавить высокоприоритетную фоновую задачу для работы в параллельном режиме</span></p>
+
+ </div>
+
+ <div class="refsect1 description" id="refsect1-gearmanclient.addtaskhighbackground-description">
+  <h3 class="title">Описание</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type"><a href="class.gearmantask.html" class="type GearmanTask">GearmanTask</a></span> <span class="methodname"><b>GearmanClient::addTaskHighBackground</b></span>
+    ( <span class="methodparam"><span class="type">string</span> <tt class="parameter">$function_name</tt></span>
+   , <span class="methodparam"><span class="type">string</span> <tt class="parameter">$workload</tt></span>
+   [, <span class="methodparam"><span class="type"><a href="language.pseudo-types.html#language.types.mixed" class="type mixed">mixed</a></span> <tt class="parameter reference">&$context</tt></span>
+   [, <span class="methodparam"><span class="type">string</span> <tt class="parameter">$unique</tt></span>
+  ]] )</div>
+
+  <p class="para rdfs-comment">
+   Добавляет высокоприоритетную фоновую задачу для параллельной работы с другими задачами.
+   Вызовите этот метод для всех задач, которые будут работать параллельно, а затем вызовите
+    <span class="methodname"><a href="gearmanclient.runtasks.html" class="methodname">GearmanClient::runTasks()</a></span> для выполнения работ. 
+   Задачи с высоким приоритетом будут выбраны из очереди раньше задач с нормальным или низким приоритетом.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-gearmanclient.addtaskhighbackground-parameters">
+  <h3 class="title">Список параметров</h3>
+  <p class="para">
+   <dl>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">function_name</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Зарегистрированная функция, вызываемая рабочим процессом
+      </p>
+     </dd>
+
+    </dt>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">workload</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Сериализованные данные, подлежащие обработке
+      </p>
+     </dd>
+
+    </dt>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">context</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Контекст приложения, связываемый с задачей
+      </p>
+     </dd>
+
+    </dt>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">unique</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Уникальный ID, назначаемый определенной задаче
+      </p>
+     </dd>
+
+    </dt>
+
+   </dl>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-gearmanclient.addtaskhighbackground-returnvalues">
+  <h3 class="title">Возвращаемые значения</h3>
+  <p class="para">
+   Объект <a href="class.gearmantask.html" class="classname">GearmanTask</a> или <b><tt>FALSE</tt></b>, если задача не может быть добавлена.
+  </p>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-gearmanclient.addtaskhighbackground-seealso">
+  <h3 class="title">Смотрите также</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"> <span class="methodname"><a href="gearmanclient.addtask.html" class="methodname" rel="rdfs-seeAlso">GearmanClient::addTask()</a> - Добавить задачу, которая будет выполнена в параллельном режиме</span></li>
+    <li class="member"> <span class="methodname"><a href="gearmanclient.addtaskhigh.html" class="methodname" rel="rdfs-seeAlso">GearmanClient::addTaskHigh()</a> - Добавить высокоприоритетную задачу для работы в параллельном режиме</span></li>
+    <li class="member"> <span class="methodname"><a href="gearmanclient.addtasklow.html" class="methodname" rel="rdfs-seeAlso">GearmanClient::addTaskLow()</a> - Добавить низкоприоритетную задачу для работы в параллельном режиме</span></li>
+    <li class="member"> <span class="methodname"><a href="gearmanclient.addtaskbackground.html" class="methodname" rel="rdfs-seeAlso">GearmanClient::addTaskBackground()</a> - Добавить фоновую задачу для работы в параллельном режиме</span></li>
+    <li class="member"> <span class="methodname"><a href="gearmanclient.addtasklowbackground.html" class="methodname" rel="rdfs-seeAlso">GearmanClient::addTaskLowBackground()</a> - Добавить низкоприоритетную фоновую задачу для работы в параллельном режиме</span></li>
+    <li class="member"> <span class="methodname"><a href="gearmanclient.runtasks.html" class="methodname" rel="rdfs-seeAlso">GearmanClient::runTasks()</a> - Запустить список задач в параллельном режиме</span></li>
+   </ul>
+  </p>
+ </div>
+
+
+</div><hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="gearmanclient.addtaskhigh.html">GearmanClient::addTaskHigh</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="gearmanclient.addtasklow.html">GearmanClient::addTaskLow</a></div>
+ <div class="up"><a href="class.gearmanclient.html">GearmanClient</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

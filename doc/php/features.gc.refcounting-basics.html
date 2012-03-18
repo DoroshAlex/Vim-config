@@ -1,0 +1,329 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Основы подсчета ссылок</title>
+
+ </head>
+ <body><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="features.gc.html">Сборка мусора</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="features.gc.collecting-cycles.html">Сбор циклических ссылок</a></div>
+ <div class="up"><a href="features.gc.html">Сборка мусора</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="features.gc.refcounting-basics" class="sect1">
+   <h2 class="title">Основы подсчета ссылок</h2>
+   <p class="para">
+    Переменная PHP хранится в контейнере, называемом &quot;zval&quot;. Контейнер zval,
+    помимо типа и значения переменной, также содержит два дополнительных элемента. 
+    Первый называется &quot;is_ref&quot; и представляет булевое значение, указывающее,
+    является переменная частью &quot;набора ссылок&quot; или нет. Благодаря этому элементу PHP
+    знает как отличать обычные переменные от ссылок. Так как PHP содержит
+    пользовательские ссылки, которые можно создать оператором &amp;, контейнер zval
+    также содержит внутренний механизм подсчета ссылок для оптимизации использования памяти.
+    Эта вторая часть дополнительной информации, называемая &quot;refcount&quot; (счетчик ссылок), содержит
+    количество имен переменных (также называемых символами), которые указывают на данный контейнер zval.
+    Все имена переменных хранятся в таблице имен, отдельной для каждой
+    области видимости переменных. Такая область видимости существует для главного скрипта,
+    а также для каждой функции и метода.
+   </p>
+   <p class="para">
+    Контейнер zval создается при создании новой переменной, которой
+    присваивается константа, например:
+    <div class="example" id="example-362">
+     <p><b>Пример #1 Создание нового контейнера zval</b></p>
+     <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$a&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">"new&nbsp;string"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+     </div>
+
+    </div>
+   </p>
+   <p class="para">
+    В данном примере создается новый символ <i>a</i> в текущей области видимости
+    и новый контейнер переменной с типом <span class="type"><a href="language.types.string.html" class="type string">string</a></span> и значением <i>new string</i>.
+    Бит &quot;is_ref&quot; по умолчанию задается равным <b><tt>FALSE</tt></b>, т.к. не создано ни одной пользовательской
+    ссылки. Значение же &quot;refcount&quot; задается равным <i>1</i>, т.к. только одно имя переменной 
+    указывает на данный контейнер. Отметим, что если &quot;refcount&quot; равен <i>1</i>, то &quot;is_ref&quot;
+    будет всегда равен <b><tt>FALSE</tt></b>. Если у вас установлен <a href="http://xdebug.org/" class="link external">&raquo;&nbsp;Xdebug</a>, то
+    вы можете вывести эту информацию, вызвав функцию <span class="function"><b>xdebug_debug_zval()</b></span>.
+   </p>
+   <p class="para">
+    <div class="example" id="example-363">
+     <p><b>Пример #2 Вывод информации о zval</b></p>
+     <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />xdebug_debug_zval</span><span style="color: #007700">(</span><span style="color: #DD0000">'a'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+     </div>
+
+     <div class="example-contents"><p>Результат выполнения данного примера:</p></div>
+     <div class="example-contents screen">
+<div class="cdata"><pre>
+a: (refcount=1, is_ref=0)=&#039;new string&#039;
+</pre></div>
+     </div>
+    </div>
+   </p>
+   <p class="para">
+    Присвоение этой переменной другой увеличивает счетчик ссылок.
+   </p>
+   <p class="para">
+    <div class="example" id="example-364">
+     <p><b>Пример #3 Увеличение счетчика ссылок zval</b></p>
+     <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$a&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">"new&nbsp;string"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$b&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$a</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">xdebug_debug_zval</span><span style="color: #007700">(&nbsp;</span><span style="color: #DD0000">'a'&nbsp;</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+     </div>
+
+     <div class="example-contents"><p>Результат выполнения данного примера:</p></div>
+     <div class="example-contents screen">
+<div class="cdata"><pre>
+a: (refcount=2, is_ref=0)=&#039;new string&#039;
+</pre></div>
+     </div>
+    </div>
+   </p>
+   <p class="para">
+    Счетчик ссылок здесь равен <i>2</i>, т.к.
+    <var class="varname"><var class="varname">a</var></var> и <var class="varname"><var class="varname">b</var></var> ссылаются на один
+    и тот же контейнер переменной. PHP достаточно умен, чтобы
+    не копировать контейнер, пока в этом нет необходимости. Как только
+    &quot;refcount&quot; станет равным нулю, контейнер уничтожается.
+    &quot;refcount&quot; уменьшается на единицу при уходе переменной
+    из области видимости (например, в конце функции) или при
+    вызове <span class="function"><a href="function.unset.html" class="function">unset()</a></span> с данной переменной.
+   </p>
+   <p class="para">
+    <div class="example" id="example-365">
+     <p><b>Пример #4 Уменьшение счетчика ссылок zval</b></p>
+     <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$a&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">"new&nbsp;string"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$c&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$b&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$a</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">xdebug_debug_zval</span><span style="color: #007700">(&nbsp;</span><span style="color: #DD0000">'a'&nbsp;</span><span style="color: #007700">);<br />unset(&nbsp;</span><span style="color: #0000BB">$b</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$c&nbsp;</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">xdebug_debug_zval</span><span style="color: #007700">(&nbsp;</span><span style="color: #DD0000">'a'&nbsp;</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+     </div>
+
+     <div class="example-contents"><p>Результат выполнения данного примера:</p></div>
+     <div class="example-contents screen">
+<div class="cdata"><pre>
+a: (refcount=3, is_ref=0)=&#039;new string&#039;
+a: (refcount=1, is_ref=0)=&#039;new string&#039;
+</pre></div>
+     </div>
+    </div>
+   </p>
+   <p class="para">
+    Если мы сейчас вызовем <i>unset($a);</i>,
+    то контейнер, включая тип и значение, будет удален из памяти.
+   </p>
+
+   <div class="sect2" id="features.gc.compound-types">
+    <h3 class="title">Составные типы данных</h3>
+
+    <p class="para">
+     Все несколько усложняется с составными типами данных, такими как массивы (<span class="type"><a href="language.types.array.html" class="type array">array</a></span>) и
+     объекты (<span class="type"><a href="language.types.object.html" class="type object">object</a></span>). В отличии от скалярных (<span class="type"><span class="type scalar">scalar</span></span>) значений, массивы и объекты
+     хранят свои свойства в собственных таблицах имен.
+     Это значит, что следующий пример создаст сразу три zval контейнера:
+    </p>
+    <p class="para">
+     <div class="example" id="example-366">
+      <p><b>Пример #5 Создание <span class="type"><a href="language.types.array.html" class="type array">array</a></span> zval</b></p>
+      <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$a&nbsp;</span><span style="color: #007700">=&nbsp;array(&nbsp;</span><span style="color: #DD0000">'meaning'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'life'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'number'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">42&nbsp;</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">xdebug_debug_zval</span><span style="color: #007700">(&nbsp;</span><span style="color: #DD0000">'a'&nbsp;</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+      </div>
+
+      <div class="example-contents"><p>Результатом выполнения данного примера
+будет что-то подобное:</p></div>
+      <div class="example-contents screen">
+<div class="cdata"><pre>
+a: (refcount=1, is_ref=0)=array (
+   &#039;meaning&#039; =&gt; (refcount=1, is_ref=0)=&#039;life&#039;,
+   &#039;number&#039; =&gt; (refcount=1, is_ref=0)=42
+)
+</pre></div>
+      </div>
+      <div class="example-contents"><p>Графически:</p></div>
+      <div class="mediaobject">
+       
+       <div class="imageobject">
+        <img src="images/12f37b1c6963c1c5c18f30495416a197-simple-array.png" alt="Контейнеры для простого массива" width="593" height="143" />
+       </div>
+      </div>
+     </div>
+    </p>
+    <p class="para">
+     Результат - три контейнера: <var class="varname"><var class="varname">a</var></var>, <var class="varname"><var class="varname">meaning</var></var> и <var class="varname"><var class="varname">number</var></var>.
+     Похожие правила применяются и для увеличения и уменьшения &quot;refcounts&quot;.
+     Ниже мы добавляем еще один элемент массива и устанавливаем ему значение уже существующего элемента:
+    </p>
+    <p class="para">
+     <div class="example" id="example-367">
+      <p><b>Пример #6 Добавление уже существующего элемента в массив</b></p>
+      <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$a&nbsp;</span><span style="color: #007700">=&nbsp;array(&nbsp;</span><span style="color: #DD0000">'meaning'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'life'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'number'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">42&nbsp;</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$a</span><span style="color: #007700">[</span><span style="color: #DD0000">'life'</span><span style="color: #007700">]&nbsp;=&nbsp;</span><span style="color: #0000BB">$a</span><span style="color: #007700">[</span><span style="color: #DD0000">'meaning'</span><span style="color: #007700">];<br /></span><span style="color: #0000BB">xdebug_debug_zval</span><span style="color: #007700">(&nbsp;</span><span style="color: #DD0000">'a'&nbsp;</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+      </div>
+
+      <div class="example-contents"><p>Результатом выполнения данного примера
+будет что-то подобное:</p></div>
+      <div class="example-contents screen">
+<div class="cdata"><pre>
+a: (refcount=1, is_ref=0)=array (
+   &#039;meaning&#039; =&gt; (refcount=2, is_ref=0)=&#039;life&#039;,
+   &#039;number&#039; =&gt; (refcount=1, is_ref=0)=42,
+   &#039;life&#039; =&gt; (refcount=2, is_ref=0)=&#039;life&#039;
+)
+</pre></div>
+      </div>
+      <div class="example-contents"><p>Графически:</p></div>
+      <div class="mediaobject">
+       
+       <div class="imageobject">
+        <img src="images/12f37b1c6963c1c5c18f30495416a197-simple-array2.png" alt="Контейнеры для простого массива со ссылками" width="593" height="143" />
+       </div>
+      </div>
+     </div>
+    </p>
+    <p class="para">
+     Вышеприведенный вывод Xdebug показывает, что и старый и новый элементы массива
+     сейчас указывают на контейнер, чей &quot;refcount&quot; равен <i>2</i>.
+     Хотя показано два контейнера со значением <i>&#039;life&#039;</i>, на самом 
+     деле это один контейнер. Функция <span class="function"><b>xdebug_debug_zval()</b></span> не выводит информации об этом,
+     но вы можете проверить это также отобразив указатели памяти.
+    </p>
+    <p class="para">
+     Удаление элемента из массива происходит точно так же, как и удаление имени переменной
+     из области видимости: уменьшается &quot;refcount&quot; контейнера, на который ссылается элемент массива.
+     Опять же, при достижении &quot;refcount&quot; нуля, контейнер удаляется из памяти.
+     Пример:
+    </p>
+    <p class="para">
+     <div class="example" id="example-368">
+      <p><b>Пример #7 Удаление элемента из массива</b></p>
+      <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$a&nbsp;</span><span style="color: #007700">=&nbsp;array(&nbsp;</span><span style="color: #DD0000">'meaning'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'life'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'number'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">42&nbsp;</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$a</span><span style="color: #007700">[</span><span style="color: #DD0000">'life'</span><span style="color: #007700">]&nbsp;=&nbsp;</span><span style="color: #0000BB">$a</span><span style="color: #007700">[</span><span style="color: #DD0000">'meaning'</span><span style="color: #007700">];<br />unset(&nbsp;</span><span style="color: #0000BB">$a</span><span style="color: #007700">[</span><span style="color: #DD0000">'meaning'</span><span style="color: #007700">],&nbsp;</span><span style="color: #0000BB">$a</span><span style="color: #007700">[</span><span style="color: #DD0000">'number'</span><span style="color: #007700">]&nbsp;);<br /></span><span style="color: #0000BB">xdebug_debug_zval</span><span style="color: #007700">(&nbsp;</span><span style="color: #DD0000">'a'&nbsp;</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+      </div>
+
+      <div class="example-contents"><p>Результатом выполнения данного примера
+будет что-то подобное:</p></div>
+      <div class="example-contents screen">
+<div class="cdata"><pre>
+a: (refcount=1, is_ref=0)=array (
+   &#039;life&#039; =&gt; (refcount=1, is_ref=0)=&#039;life&#039;
+)
+</pre></div>
+      </div>
+     </div>
+    </p>
+    <p class="para">
+     Ситуация станет интереснее, если добавить массив новым элементом в самого себя.
+     В следующем примере мы также используем оператор присваивания по ссылке, чтобы
+     PHP не создал копию массива.
+    </p>
+    <p class="para">
+     <div class="example" id="example-369">
+      <p><b>Пример #8 Добавление массива новым элементом в самого себя</b></p>
+      <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$a&nbsp;</span><span style="color: #007700">=&nbsp;array(&nbsp;</span><span style="color: #DD0000">'one'&nbsp;</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$a</span><span style="color: #007700">[]&nbsp;=&amp;&nbsp;</span><span style="color: #0000BB">$a</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">xdebug_debug_zval</span><span style="color: #007700">(&nbsp;</span><span style="color: #DD0000">'a'&nbsp;</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+      </div>
+
+      <div class="example-contents"><p>Результатом выполнения данного примера
+будет что-то подобное:</p></div>
+      <div class="example-contents screen">
+<div class="cdata"><pre>
+a: (refcount=2, is_ref=1)=array (
+   0 =&gt; (refcount=1, is_ref=0)=&#039;one&#039;,
+   1 =&gt; (refcount=2, is_ref=1)=...
+)
+</pre></div>
+      </div>
+      <div class="example-contents"><p>Графически:</p></div>
+      <div class="mediaobject">
+       
+       <div class="imageobject">
+        <img src="images/12f37b1c6963c1c5c18f30495416a197-loop-array.png" alt="Контейнеры массива с циклическими ссылками" width="533" height="144" />
+       </div>
+      </div>
+     </div>
+    </p>
+    <p class="para">
+     Можно увидеть, что переменная с массивом (<var class="varname"><var class="varname">a</var></var>), так же как и второй элемент
+     (<var class="varname"><var class="varname">1</var></var>) сейчас указывают на контейнер с &quot;refcount&quot; равным <i>2</i>.
+     Символы &quot;...&quot; в выводе означают рекурсию и, в нашем случае,
+     указывают на оригинальный массив.
+    </p>
+    <p class="para">
+     Как и ранее, удаление переменной уменьшает счетчик ссылок контейнера на единицу.
+     Если мы применим unset к переменной <var class="varname"><var class="varname">$a</var></var> после вышеприведенного примера,
+     то счетчик ссылок контейнера, на который указывают <var class="varname"><var class="varname">$a</var></var> и элемент &quot;1&quot;,
+     изменится с &quot;2&quot; на &quot;1&quot;:
+    </p>
+    <p class="para">
+     <div class="example" id="example-370">
+      <p><b>Пример #9 Удаление <var class="varname"><var class="varname">$a</var></var></b></p>
+      <div class="example-contents screen">
+<div class="cdata"><pre>
+(refcount=1, is_ref=1)=array (
+   0 =&gt; (refcount=1, is_ref=0)=&#039;one&#039;,
+   1 =&gt; (refcount=1, is_ref=1)=...
+)
+</pre></div>
+      </div>
+      <div class="example-contents"><p>Графически:</p></div>
+      <div class="mediaobject">
+       
+       <div class="imageobject">
+        <img src="images/12f37b1c6963c1c5c18f30495416a197-leak-array.png" alt="Контейнеры после удаления массива с циклическими ссылками, демонстрирующие утечку памяти" width="463" height="144" />
+       </div>
+      </div>
+     </div>
+    </p>
+   </div>
+
+   <div class="sect2" id="features.gc.cleanup-problems">
+    <h3 class="title">Суть проблемы</h3>
+    <p class="para">
+     Хотя во всех областях видимости больше нет имени переменной, ссылающейся на
+     данную структуру, она не может быть очищена, т.к. элемент массива &quot;1&quot; по-прежнему
+     ссылается на этот массив. Т.к. теперь нет никакой возможности пользователю
+     удалить эти данные, то мы получили утечку памяти.
+     К счастью, PHP удалит эти данные при завершении запроса, но до этого момента 
+     данные будут занимать ценное место в памяти. Такая ситуация часто бывает, когда
+     реализуются алгоритмы парсинга или другие, где есть дочерние элементы, 
+     ссылающиеся на родительские. Еще чаще такая ситуация случается с объектами, 
+     потому что они всегда неявно используются по ссылке.
+    </p>
+    <p class="para">
+     Эта не проблема, если такое случается раз или два, но если
+     существуют тысячи или даже миллионы таких утечек памяти, то они уже становятся
+     проблемой. Особенно в долгоработающих скриптах, таких как демоны, где запрос 
+     не заканчивается никогда, или в больших наборах модульных тестов.
+     Последний случай вызвал проблемы при запуске модульных тестов для
+     компонента Template из библиотеки ez Components. В некоторых
+     случаях может потребоваться свыше 2 Гб памяти, которая не всегда
+     есть на тестовом сервере.
+    </p>
+   </div>
+  </div><hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="features.gc.html">Сборка мусора</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="features.gc.collecting-cycles.html">Сбор циклических ссылок</a></div>
+ <div class="up"><a href="features.gc.html">Сборка мусора</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

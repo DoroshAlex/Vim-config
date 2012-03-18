@@ -1,0 +1,130 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Разбивает строку на фрагменты</title>
+
+ </head>
+ <body><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.chr.html">chr</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.convert-cyr-string.html">convert_cyr_string</a></div>
+ <div class="up"><a href="ref.strings.html">Обработка строк</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.chunk-split" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">chunk_split</h1>
+  <p class="verinfo">(PHP 4, PHP 5)</p><p class="refpurpose"><span class="refname">chunk_split</span> &mdash; <span class="dc-title">Разбивает строку на фрагменты</span></p>
+
+ </div>
+
+ <div class="refsect1 description" id="refsect1-function.chunk-split-description">
+  <h3 class="title">Описание</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">string</span> <span class="methodname"><b>chunk_split</b></span>
+    ( <span class="methodparam"><span class="type">string</span> <tt class="parameter">$body</tt></span>
+   [, <span class="methodparam"><span class="type">int</span> <tt class="parameter">$chunklen</tt><span class="initializer"> = 76</span></span>
+   [, <span class="methodparam"><span class="type">string</span> <tt class="parameter">$end</tt><span class="initializer"> = &quot;\r\n&quot;</span></span>
+  ]] )</div>
+
+  <p class="para rdfs-comment">
+   Функция используется для разбиения строки на фрагменты, например, для
+   приведения результата функции <span class="function"><a href="function.base64-encode.html" class="function">base64_encode()</a></span>
+   в соответствие с требованиями RFC 2045. Она вставляет строку
+   <i><tt class="parameter">end</tt></i> после каждых <i><tt class="parameter">chunklen</tt></i>
+   символов.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-function.chunk-split-parameters">
+  <h3 class="title">Список параметров</h3>
+  <p class="para">
+   <dl>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">body</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Разбиваемая строка.
+      </p>
+     </dd>
+
+    </dt>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">chunklen</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Длина фрагмента.
+      </p>
+     </dd>
+
+    </dt>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">end</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Последовательность символов, используемая в качестве конца строки.
+      </p>
+     </dd>
+
+    </dt>
+
+   </dl>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-function.chunk-split-returnvalues">
+  <h3 class="title">Возвращаемые значения</h3>
+  <p class="para">
+   Возвращает преобразованную строку.
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-function.chunk-split-examples">
+  <h3 class="title">Примеры</h3>
+  <p class="para">
+   <div class="example" id="example-4326">
+    <p><b>Пример #1 Пример использования <span class="function"><b>chunk_split()</b></span></b></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">//&nbsp;форматирование&nbsp;данных&nbsp;в&nbsp;соответствии&nbsp;с&nbsp;RFC&nbsp;2045<br /></span><span style="color: #0000BB">$new_string&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">chunk_split</span><span style="color: #007700">(</span><span style="color: #0000BB">base64_encode</span><span style="color: #007700">(</span><span style="color: #0000BB">$data</span><span style="color: #007700">));<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+  </p>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-function.chunk-split-seealso">
+  <h3 class="title">Смотрите также</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><span class="function"><a href="function.str-split.html" class="function" rel="rdfs-seeAlso">str_split()</a> - Преобразует строку в массив</span></li>
+    <li class="member"><span class="function"><a href="function.explode.html" class="function" rel="rdfs-seeAlso">explode()</a> - Разбивает строку с помощью разделителя</span></li>
+    <li class="member"><span class="function"><a href="function.split.html" class="function" rel="rdfs-seeAlso">split()</a> - Разбиение строки на массив по регулярному выражению</span></li>
+    <li class="member"><span class="function"><a href="function.wordwrap.html" class="function" rel="rdfs-seeAlso">wordwrap()</a> - Переносит строку по указанному количеству символов</span></li>
+    <li class="member"><a href="http://www.faqs.org/rfcs/rfc2045" class="link external">&raquo;&nbsp;RFC 2045</a></li>
+   </ul>
+  </p>
+ </div>
+
+
+</div><hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.chr.html">chr</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.convert-cyr-string.html">convert_cyr_string</a></div>
+ <div class="up"><a href="ref.strings.html">Обработка строк</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

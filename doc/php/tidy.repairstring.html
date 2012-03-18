@@ -1,0 +1,164 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Восстанавливает строку, используя по возможности конфигурационный файл</title>
+
+ </head>
+ <body><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="tidy.repairfile.html">tidy::repairFile</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="tidy.root.html">tidy::root</a></div>
+ <div class="up"><a href="class.tidy.html">Tidy</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="tidy.repairstring" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">tidy::repairString</h1>
+  <h1 class="refname">tidy_repair_string</h1>
+  <p class="verinfo">(PHP 5, PECL tidy &gt;= 0.7.0)</p><p class="refpurpose"><span class="refname">tidy::repairString</span> -- <span class="refname">tidy_repair_string</span> &mdash; <span class="dc-title">Восстанавливает строку, используя по возможности конфигурационный файл</span></p>
+
+ </div>
+ <div class="refsect1 description" id="refsect1-tidy.repairstring-description">
+  <h3 class="title">Описание</h3>
+  <p class="para">Объектно-ориентированный стиль</p>
+  <div class="methodsynopsis dc-description">
+   <span class="type">string</span> <span class="methodname"><b>tidy::repairString</b></span>
+    ( <span class="methodparam"><span class="type">string</span> <tt class="parameter">$data</tt></span>
+   [, <span class="methodparam"><span class="type"><a href="language.pseudo-types.html#language.types.mixed" class="type mixed">mixed</a></span> <tt class="parameter">$config</tt></span>
+   [, <span class="methodparam"><span class="type">string</span> <tt class="parameter">$encoding</tt></span>
+  ]] )</div>
+
+  <p class="para rdfs-comment">Процедурный стиль</p>
+  <div class="methodsynopsis dc-description">
+   <span class="type">string</span> <span class="methodname"><b>tidy_repair_string</b></span>
+    ( <span class="methodparam"><span class="type">string</span> <tt class="parameter">$data</tt></span>
+   [, <span class="methodparam"><span class="type"><a href="language.pseudo-types.html#language.types.mixed" class="type mixed">mixed</a></span> <tt class="parameter">$config</tt></span>
+   [, <span class="methodparam"><span class="type">string</span> <tt class="parameter">$encoding</tt></span>
+  ]] )</div>
+
+  <p class="para rdfs-comment">
+   Восстанавливает полученную строку.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-tidy.repairstring-parameters">
+  <h3 class="title">Список параметров</h3>
+  <p class="para">
+   <dl>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">data</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Данные для восстановления.
+      </p>
+     </dd>
+
+    </dt>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">config</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Настройки <i><tt class="parameter">config</tt></i> могут быть заданы в виде
+       массива или строки. Если задана строка, то это интерпретируется как
+       имя файла конфигурации, в противном случае, параметр
+       интерпретируется как сами настройки.
+      </p>
+      <p class="para">
+       Информацию о каждом параметре можно найти тут: <a href="http://tidy.sourceforge.net/docs/quickref.html" class="link external">&raquo;&nbsp;http://tidy.sourceforge.net/docs/quickref.html</a>.
+      </p>
+     </dd>
+
+    </dt>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">encoding</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Параметр <i><tt class="parameter">encoding</tt></i> устанавливает кодировку для
+       входных/выходных документов. Возможные значения:
+       <i>ascii</i>, <i>latin0</i>, <i>latin1</i>,
+       <i>raw</i>, <i>utf8</i>, <i>iso2022</i>,
+       <i>mac</i>, <i>win1252</i>, <i>ibm858</i>,
+       <i>utf16</i>, <i>utf16le</i>, <i>utf16be</i>,
+       <i>big5</i>, и <i>shiftjis</i>.
+      </p>
+     </dd>
+
+    </dt>
+
+   </dl>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-tidy.repairstring-returnvalues">
+  <h3 class="title">Возвращаемые значения</h3>
+  <p class="para">
+   Возвращает восстановленную строку.
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-tidy.repairstring-examples">
+  <h3 class="title">Примеры</h3>
+  <p class="para">
+   <div class="example" id="example-3654">
+    <p><b>Пример #1 Пример использования функции <span class="function"><b>tidy::repairString()</b></span></b></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />ob_start</span><span style="color: #007700">();<br /></span><span style="color: #0000BB">?&gt;<br /></span><br />&lt;html&gt;<br />&nbsp;&nbsp;&lt;head&gt;<br />&nbsp;&nbsp;&nbsp;&nbsp;&lt;title&gt;тест&lt;/title&gt;<br />&nbsp;&nbsp;&lt;/head&gt;<br />&nbsp;&nbsp;&lt;body&gt;<br />&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&gt;ошибка&lt;/i&gt;<br />&nbsp;&nbsp;&lt;/body&gt;<br />&lt;/html&gt;<br /><br /><span style="color: #0000BB">&lt;?php<br /><br />$buffer&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">ob_get_clean</span><span style="color: #007700">();<br /></span><span style="color: #0000BB">$tidy&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">tidy</span><span style="color: #007700">();<br /></span><span style="color: #0000BB">$clean&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$tidy</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">repairString</span><span style="color: #007700">(</span><span style="color: #0000BB">$buffer</span><span style="color: #007700">);<br /><br />echo&nbsp;</span><span style="color: #0000BB">$clean</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+    <div class="example-contents"><p>Результат выполнения данного примера:</p></div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+&lt;!DOCTYPE html PUBLIC &quot;-//W3C//DTD HTML 3.2//EN&quot;&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;title&gt;тест&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;p&gt;ошибка&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</pre></div>
+    </div>
+   </div>
+  </p>
+ </div>
+
+
+ <div class="refsect1 notes" id="refsect1-tidy.repairstring-notes">
+  <h3 class="title">Примечания</h3>
+  <blockquote class="note"><p><b class="note">Замечание</b>: <span class="simpara">
+Необязательные параметры <i><tt class="parameter">config</tt></i> и
+<i><tt class="parameter">enconding</tt></i> были добавлены в Tidy 2.0.</span></p></blockquote>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-tidy.repairstring-seealso">
+  <h3 class="title">Смотрите также</h3>
+  <ul class="simplelist">
+   <li class="member"><span class="function"><a href="tidy.parsefile.html" class="function" rel="rdfs-seeAlso">tidy::parseFile()</a> - Разбор разметки в файле или URI</span></li>
+   <li class="member"><span class="function"><a href="tidy.parsestring.html" class="function" rel="rdfs-seeAlso">tidy::parseString()</a> - Разбор документа, хранимого в строке</span></li>
+   <li class="member"><span class="function"><a href="tidy.repairfile.html" class="function" rel="rdfs-seeAlso">tidy::repairFile()</a> - Воcстанавливает разметку файла и возвращает его в виде строки</span></li>
+  </ul>
+ </div>
+
+</div><hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="tidy.repairfile.html">tidy::repairFile</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="tidy.root.html">tidy::root</a></div>
+ <div class="up"><a href="class.tidy.html">Tidy</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

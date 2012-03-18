@@ -1,0 +1,95 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Возвращает версию клиентской библиотеки</title>
+
+ </head>
+ <body><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.oci-cancel.html">oci_cancel</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.oci-close.html">oci_close</a></div>
+ <div class="up"><a href="ref.oci8.html">OCI8 (Oracle)</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.oci-client-version" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">oci_client_version</h1>
+  <p class="verinfo">(PHP 5.3.7, PECL OCI8 &gt;= 1.4.6)</p><p class="refpurpose"><span class="refname">oci_client_version</span> &mdash; <span class="dc-title">
+   Возвращает версию клиентской библиотеки 
+  </span></p>
+
+ </div>
+ 
+ <div class="refsect1 description" id="refsect1-function.oci-client-version-description">
+  <h3 class="title">Описание</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">string</span> <span class="methodname"><b>oci_client_version</b></span>
+    ( <span class="methodparam">void</span>
+   )</div>
+
+  <p class="para rdfs-comment">
+   Возвращает номер версии в виде строки клиентской C-библиотеки Oracle, с
+   которой связан PHP.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-function.oci-client-version-parameters">
+  <h3 class="title">Список параметров</h3>
+  <p class="para">
+    Отсутствуют.
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-function.oci-client-version-returnvalues">
+  <h3 class="title">Возвращаемые значения</h3>
+  <p class="para">
+   Возвращает номер версии в виде строки.
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-function.oci-client-version-examples">
+  <h3 class="title">Примеры</h3>
+  <p class="para">
+   <div class="example" id="example-1802">
+    <p><b>Пример #1 Пример использования <span class="function"><b>oci_client_version()</b></span></b></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">echo&nbsp;</span><span style="color: #DD0000">"Версия&nbsp;клиента:&nbsp;"&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">oci_client_version</span><span style="color: #007700">();&nbsp;</span><span style="color: #FF8000">//&nbsp;Версия&nbsp;клиента:&nbsp;11.2.0.2<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+  </p>
+ </div>
+
+
+ <div class="refsect1 notes" id="refsect1-function.oci-client-version-notes">
+  <h3 class="title">Примечания</h3>
+  <blockquote class="note"><p><b class="note">Замечание</b>: 
+   <p class="para">
+    Библиотеки Oracle версий до 10gR2 не имеют необходимого функционала, чтобы
+    выдать номер версии. В этих случаях функция вернет строку &quot;Unknown&quot;.
+   </p>
+  </p></blockquote>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-function.oci-client-version-seealso">
+  <h3 class="title">Смотрите также</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><span class="function"><a href="function.oci-server-version.html" class="function" rel="rdfs-seeAlso">oci_server_version()</a> - Возвращает версию сервера Oracle</span></li>
+   </ul>
+  </p>
+ </div>
+
+
+</div><hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.oci-cancel.html">oci_cancel</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.oci-close.html">oci_close</a></div>
+ <div class="up"><a href="ref.oci8.html">OCI8 (Oracle)</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

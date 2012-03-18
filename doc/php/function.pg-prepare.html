@@ -1,0 +1,158 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Посылает запрос на создание параметризованного SQL выражения 
+  и ждет его завершения</title>
+
+ </head>
+ <body><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.pg-port.html">pg_port</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.pg-put-line.html">pg_put_line</a></div>
+ <div class="up"><a href="ref.pgsql.html">PostgreSQL</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.pg-prepare" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">pg_prepare</h1>
+  <p class="verinfo">(PHP 5 &gt;= 5.1.0)</p><p class="refpurpose"><span class="refname">pg_prepare</span> &mdash; <span class="dc-title"> Посылает запрос на создание параметризованного SQL выражения 
+  и ждет его завершения</span></p>
+
+ </div>
+
+ <div class="refsect1 description" id="refsect1-function.pg-prepare-description">
+  <h3 class="title">Описание</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">resource</span> <span class="methodname"><b>pg_prepare</b></span>
+    ([ <span class="methodparam"><span class="type">resource</span> <tt class="parameter">$connection</tt></span>
+   ], <span class="methodparam"><span class="type">string</span> <tt class="parameter">$stmtname</tt></span>
+   , <span class="methodparam"><span class="type">string</span> <tt class="parameter">$query</tt></span>
+   )</div>
+
+  <p class="para rdfs-comment">
+   <span class="function"><b>pg_prepare()</b></span> создает заготовку SQL выражения на сервере 
+   для последующего запуска функциями <span class="function"><a href="function.pg-execute.html" class="function">pg_execute()</a></span> 
+   или <span class="function"><a href="function.pg-send-execute.html" class="function">pg_send_execute()</a></span>. Это позволяет многократно 
+   выполнять единожды созданные запросы с различными параметрами. 
+   <span class="function"><b>pg_prepare()</b></span> поддерживается PostgreSQL версии 7.4 
+   и выше. Функция не будет работать c серверами ранних версий. 
+  </p>
+  <p class="para">
+   Функция создает заготовку SQL запроса с названием <i><tt class="parameter">stmtname</tt></i> 
+   и телом <i><tt class="parameter">query</tt></i>, которое должно содержать одно 
+   SQL выражение. <i><tt class="parameter">stmtname</tt></i> может быть пустой строкой, 
+   тогда будет создана безымянная заготовка. Если какая-либо безымянная 
+   заготовка уже определена, она будет заменена на новую автоматически. 
+   В остальных случаях совпадение имен новой и существующей в данной сессии 
+   заготовок приведет к ошибке. Если в <i><tt class="parameter">query</tt></i> 
+   будут передаваться параметры, то они заменят псевдопеременные 
+   $1, $2 и т.д. при передаче запроса.
+  </p>
+  <p class="para">
+   Подобные заготовки запросов также можно делать с помощью SQL команды 
+   <i>PREPARE</i> (но <span class="function"><b>pg_prepare()</b></span> 
+   более гибкая, так как не требует строгой типизации своих параметров).
+   Важно отметить, что в PHP нет функций для удаления подготовленных 
+   SQL выражений, для этого используйте команду SQL 
+   <i>DEALLOCATE</i>.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-function.pg-prepare-parameters">
+  <h3 class="title">Список параметров</h3>
+  <p class="para">
+   <dl>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">connection</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Ресурс подключения к базе данных PostgreSQL. Если параметр
+       <i><tt class="parameter">connection</tt></i> не задан, будет использовано
+       подключение по умолчанию - последнее соединение, открытое функцией  
+       <span class="function"><a href="function.pg-connect.html" class="function">pg_connect()</a></span> или <span class="function"><a href="function.pg-pconnect.html" class="function">pg_pconnect()</a></span>.  
+      </p>
+     </dd>
+
+    </dt>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">stmtname</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Имя создаваемой заготовки. Должно быть уникальным в пределах сессии. 
+       Если задана пустая строка, будет создано безымянное SQL выражение. При 
+       этом оно перезапишет уже существующее безымянное выражение, 
+       определенное ранее.
+      </p>
+     </dd>
+
+    </dt>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">query</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Параметризованный SQL запрос. Должен содержать только одно выражение 
+       (несколько выражений разделенных точкой с запятой не поддерживаются). 
+       Если в запрос будут передаваться параметры, то они заменят 
+       псевдопеременные $1, $2 и т.д.  
+      </p>
+     </dd>
+
+    </dt>
+
+   </dl>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-function.pg-prepare-returnvalues">
+  <h3 class="title">Возвращаемые значения</h3>
+  <p class="para">
+   Ресурс результата запроса или <b><tt>FALSE</tt></b> в случае возникновения ошибки.
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 examples" id="refsect1-function.pg-prepare-examples">
+  <h3 class="title">Примеры</h3>
+  <p class="para">
+   <div class="example" id="example-1942">
+    <p><b>Пример #1 Пример использования <span class="function"><b>pg_prepare()</b></span></b></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">//&nbsp;Подключение&nbsp;к&nbsp;базе&nbsp;данных&nbsp;"mary"&nbsp;<br /></span><span style="color: #0000BB">$dbconn&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">pg_connect</span><span style="color: #007700">(</span><span style="color: #DD0000">"dbname=mary"</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;Подготовка&nbsp;запроса&nbsp;<br /></span><span style="color: #0000BB">$result&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">pg_prepare</span><span style="color: #007700">(</span><span style="color: #0000BB">$dbconn</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"my_query"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'SELECT&nbsp;*&nbsp;FROM&nbsp;shops&nbsp;WHERE&nbsp;name&nbsp;=&nbsp;$1'</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;Запуск&nbsp;запроса&nbsp;на&nbsp;выполнение.&nbsp;Стоит&nbsp;отметить,&nbsp;что&nbsp;нет&nbsp;необходимости&nbsp;экранировать&nbsp;<br />//&nbsp;спецсимволы&nbsp;в&nbsp;строке&nbsp;"Joe's&nbsp;Widgets"&nbsp;<br /></span><span style="color: #0000BB">$result&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">pg_execute</span><span style="color: #007700">(</span><span style="color: #0000BB">$dbconn</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"my_query"</span><span style="color: #007700">,&nbsp;array(</span><span style="color: #DD0000">"Joe's&nbsp;Widgets"</span><span style="color: #007700">));<br /><br /></span><span style="color: #FF8000">//&nbsp;Запуск&nbsp;на&nbsp;выполнение&nbsp;того&nbsp;же&nbsp;запроса,&nbsp;но&nbsp;с&nbsp;другим&nbsp;параметром&nbsp;&nbsp;<br /></span><span style="color: #0000BB">$result&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">pg_execute</span><span style="color: #007700">(</span><span style="color: #0000BB">$dbconn</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"my_query"</span><span style="color: #007700">,&nbsp;array(</span><span style="color: #DD0000">"Clothes&nbsp;Clothes&nbsp;Clothes"</span><span style="color: #007700">));<br /><br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 seealso" id="refsect1-function.pg-prepare-seealso">
+  <h3 class="title">Смотрите также</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><span class="function"><a href="function.pg-execute.html" class="function" rel="rdfs-seeAlso">pg_execute()</a> - Запускает выполнение ранее подготовленного параметризованного запроса и ждет результат</span></li>
+    <li class="member"><span class="function"><a href="function.pg-send-execute.html" class="function" rel="rdfs-seeAlso">pg_send_execute()</a> - Запускает предварительно подготовленный SQL запрос и 
+   передает ему параметры; не ожидает возвращаемого результата</span></li>
+   </ul>
+  </p>
+ </div>
+
+</div><hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.pg-port.html">pg_port</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.pg-put-line.html">pg_put_line</a></div>
+ <div class="up"><a href="ref.pgsql.html">PostgreSQL</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

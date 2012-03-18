@@ -1,0 +1,123 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Использование пространств имен: импорт/создание псевдонима имени</title>
+
+ </head>
+ <body><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="language.namespaces.nsconstants.html">Ключевое слово namespace и константа __NAMESPACE__</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="language.namespaces.global.html">Глобальное пространство</a></div>
+ <div class="up"><a href="language.namespaces.html">Пространства имен</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="language.namespaces.importing" class="sect1">
+  <h2 class="title">Использование пространств имен: импорт/создание псевдонима имени</h2>
+  <p class="verinfo">(PHP 5 &gt;= 5.3.0)</p>
+  <p class="para">
+   Возможность ссылаться на внешнее абсолютное имя по псевдониму или импортирование
+   - это важная особенность пространств имен. Это похоже на возможность
+   файловых систем unix создавать символические ссылки на файл или директорию.
+  </p>
+  <p class="para">
+   Пространства имен PHP поддерживают
+   три вида создания псевдонима имени или импорта: создание псевдонима для имени класса, создание псевдонима
+   для имени интерфейса и для имени пространства имен.
+   Обратите внимание, что импорт функций или констант не поддерживается.
+  </p>
+  <p class="para">
+   В PHP создание псевдонима имени выполняется с помощью оператора <i>use</i>. Вот
+   пример, показывающий 3 типа импорта:
+   <div class="example" id="example-235">
+    <p><b>Пример #1 импорт/создание псевдонима имени с помощью оператора use</b></p>
+    <div class="example-contents">
+     <div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">namespace&nbsp;</span><span style="color: #0000BB">foo</span><span style="color: #007700">;<br />use&nbsp;</span><span style="color: #0000BB">My</span><span style="color: #007700">\</span><span style="color: #0000BB">Full</span><span style="color: #007700">\</span><span style="color: #0000BB">Classname&nbsp;</span><span style="color: #007700">as&nbsp;</span><span style="color: #0000BB">Another</span><span style="color: #007700">;<br /><br /></span><span style="color: #FF8000">//&nbsp;это&nbsp;тоже&nbsp;самое,&nbsp;что&nbsp;и&nbsp;использование&nbsp;My\Full\NSname&nbsp;как&nbsp;NSname<br /></span><span style="color: #007700">use&nbsp;</span><span style="color: #0000BB">My</span><span style="color: #007700">\</span><span style="color: #0000BB">Full</span><span style="color: #007700">\</span><span style="color: #0000BB">NSname</span><span style="color: #007700">;<br /><br /></span><span style="color: #FF8000">//&nbsp;импортирование&nbsp;глобального&nbsp;класса<br /></span><span style="color: #007700">use&nbsp;</span><span style="color: #0000BB">ArrayObject</span><span style="color: #007700">;<br /><br /></span><span style="color: #0000BB">$obj&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;namespace\</span><span style="color: #0000BB">Another</span><span style="color: #007700">;&nbsp;</span><span style="color: #FF8000">//&nbsp;создает&nbsp;экземпляр&nbsp;класса&nbsp;foo\Another<br /></span><span style="color: #0000BB">$obj&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">Another</span><span style="color: #007700">;&nbsp;</span><span style="color: #FF8000">//&nbsp;создает&nbsp;объект&nbsp;класса&nbsp;My\Full\Classname<br /></span><span style="color: #0000BB">NSname</span><span style="color: #007700">\</span><span style="color: #0000BB">subns</span><span style="color: #007700">\</span><span style="color: #0000BB">func</span><span style="color: #007700">();&nbsp;</span><span style="color: #FF8000">//&nbsp;вызывает&nbsp;функцию&nbsp;My\Full\NSname\subns\func<br /></span><span style="color: #0000BB">$a&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">ArrayObject</span><span style="color: #007700">(array(</span><span style="color: #0000BB">1</span><span style="color: #007700">));&nbsp;</span><span style="color: #FF8000">//&nbsp;создает&nbsp;объект&nbsp;класса&nbsp;ArrayObject<br />//&nbsp;без&nbsp;выражения&nbsp;"use&nbsp;ArrayObject"&nbsp;мы&nbsp;создадим&nbsp;объект&nbsp;класса&nbsp;foo\ArrayObject<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+   Обратите внимание, что для имен в пространстве имен (абсолютные имена, содержащие
+   разделитель пространств имен, такие как <i>Foo\Bar</i>, в отличие от глобальных имен,
+   которые его не содержат, такие как <i>FooBar</i>) нет необходимости в начальном обратном слеше (\)
+   и его присутствие там не рекомендуется, так как импортируемые имена должны быть абсолютными и не обрабатываются
+   относительно текущего пространства имен.
+  </p>
+  <p class="para">
+   PHP дополнительно поддерживает удобное сокращение для задания нескольких операторов use
+   в одной и той же строке
+   <div class="example" id="example-236">
+    <p><b>Пример #2 импорт/создание псевдонима имени с помощью оператора use, комбинирование нескольких операторов use</b></p>
+    <div class="example-contents">
+     <div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">use&nbsp;</span><span style="color: #0000BB">My</span><span style="color: #007700">\</span><span style="color: #0000BB">Full</span><span style="color: #007700">\</span><span style="color: #0000BB">Classname&nbsp;</span><span style="color: #007700">as&nbsp;</span><span style="color: #0000BB">Another</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">My</span><span style="color: #007700">\</span><span style="color: #0000BB">Full</span><span style="color: #007700">\</span><span style="color: #0000BB">NSname</span><span style="color: #007700">;<br /><br /></span><span style="color: #0000BB">$obj&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">Another</span><span style="color: #007700">;&nbsp;</span><span style="color: #FF8000">//&nbsp;создает&nbsp;объект&nbsp;класса&nbsp;My\Full\Classname<br /></span><span style="color: #0000BB">NSname</span><span style="color: #007700">\</span><span style="color: #0000BB">subns</span><span style="color: #007700">\</span><span style="color: #0000BB">func</span><span style="color: #007700">();&nbsp;</span><span style="color: #FF8000">//&nbsp;вызывает&nbsp;функцию&nbsp;My\Full\NSname\subns\func<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+  </p>
+  <p class="para">
+   Импорт выполняется во время компиляции, и не влияет на имена динамических классов, функций
+   или констант.
+   <div class="example" id="example-237">
+    <p><b>Пример #3 Импорт и динамические имена</b></p>
+    <div class="example-contents">
+     <div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">use&nbsp;</span><span style="color: #0000BB">My</span><span style="color: #007700">\</span><span style="color: #0000BB">Full</span><span style="color: #007700">\</span><span style="color: #0000BB">Classname&nbsp;</span><span style="color: #007700">as&nbsp;</span><span style="color: #0000BB">Another</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">My</span><span style="color: #007700">\</span><span style="color: #0000BB">Full</span><span style="color: #007700">\</span><span style="color: #0000BB">NSname</span><span style="color: #007700">;<br /><br /></span><span style="color: #0000BB">$obj&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">Another</span><span style="color: #007700">;&nbsp;</span><span style="color: #FF8000">//&nbsp;создает&nbsp;объект&nbsp;класса&nbsp;My\Full\Classname<br /></span><span style="color: #0000BB">$a&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'Another'</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$obj&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">$a</span><span style="color: #007700">;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;создает&nbsp;объект&nbsp;класса&nbsp;Another<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+  </p>
+  <p class="para">
+   В дополнение, импорт распространяется только на неполные и полные имена. Абсолютные имена
+   не затрагиваются операцией импорта.
+   <div class="example" id="example-238">
+    <p><b>Пример #4 Импортирование и абсолютные имена</b></p>
+    <div class="example-contents">
+     <div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">use&nbsp;</span><span style="color: #0000BB">My</span><span style="color: #007700">\</span><span style="color: #0000BB">Full</span><span style="color: #007700">\</span><span style="color: #0000BB">Classname&nbsp;</span><span style="color: #007700">as&nbsp;</span><span style="color: #0000BB">Another</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">My</span><span style="color: #007700">\</span><span style="color: #0000BB">Full</span><span style="color: #007700">\</span><span style="color: #0000BB">NSname</span><span style="color: #007700">;<br /><br /></span><span style="color: #0000BB">$obj&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">Another</span><span style="color: #007700">;&nbsp;</span><span style="color: #FF8000">//&nbsp;создает&nbsp;объект&nbsp;класса&nbsp;My\Full\Classname<br /></span><span style="color: #0000BB">$obj&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;\</span><span style="color: #0000BB">Another</span><span style="color: #007700">;&nbsp;</span><span style="color: #FF8000">//&nbsp;создает&nbsp;объект&nbsp;класса&nbsp;Another<br /></span><span style="color: #0000BB">$obj&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">Another</span><span style="color: #007700">\</span><span style="color: #0000BB">thing</span><span style="color: #007700">;&nbsp;</span><span style="color: #FF8000">//&nbsp;создает&nbsp;объект&nbsp;класса&nbsp;My\Full\Classname\thing<br /></span><span style="color: #0000BB">$obj&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;\</span><span style="color: #0000BB">Another</span><span style="color: #007700">\</span><span style="color: #0000BB">thing</span><span style="color: #007700">;&nbsp;</span><span style="color: #FF8000">//&nbsp;создает&nbsp;объект&nbsp;класса&nbsp;Another\thing<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+  </p>
+  <div class="sect2" id="language.namespaces.importing.scope">
+   <h3 class="title">Scoping rules for importing</h3>
+   <p class="para">
+    Ключевое слово <i>use</i> должно быть указано в
+    самом начале файла (в глобальной области) или внутри объявления пространства
+    имен. Это необходимо потому, что импорт выполняется во время компиляции, а
+    не во время исполнения, поэтому оно не может быть заключено в блок.
+    Следующий пример показывает недопустимое применение 
+    ключевого слова <i>use</i>:
+   </p>
+   <p class="para">
+    <div class="example" id="example-239">
+     <p><b>Пример #5 Недопустимое правило импорта</b></p>
+     <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">namespace&nbsp;</span><span style="color: #0000BB">Languages</span><span style="color: #007700">;<br /><br />class&nbsp;</span><span style="color: #0000BB">Greenlandic<br /></span><span style="color: #007700">{<br />&nbsp;&nbsp;&nbsp;&nbsp;use&nbsp;</span><span style="color: #0000BB">Languages</span><span style="color: #007700">\</span><span style="color: #0000BB">Danish</span><span style="color: #007700">;<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;...<br />}<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+     </div>
+
+    </div>
+   </p>
+   <blockquote class="note"><p><b class="note">Замечание</b>: 
+    <p class="para">
+  Правила импорта задаются на каждый файл отдельно. Это означает, что
+  присоединяемые файлы <em class="emphasis">НЕ</em> будут наследовать правила импорта
+  из родительского файла.
+    </p>
+   </p></blockquote>
+  </div>
+ </div><hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="language.namespaces.nsconstants.html">Ключевое слово namespace и константа __NAMESPACE__</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="language.namespaces.global.html">Глобальное пространство</a></div>
+ <div class="up"><a href="language.namespaces.html">Пространства имен</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

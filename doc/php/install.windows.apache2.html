@@ -1,0 +1,196 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Apache 2.x on Microsoft Windows</title>
+
+ </head>
+ <body><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="install.windows.apache1.html">Apache 1.3.x в Microsoft Windows</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="install.windows.sun.html">Sun, iPlanet and Netscape servers on Microsoft Windows</a></div>
+ <div class="up"><a href="install.windows.html">Установка в системах Windows</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="install.windows.apache2" class="sect1">
+ <h2 class="title">Apache 2.x on Microsoft Windows</h2>
+ <p class="para">
+  Этот раздел содержит инструкции по установке PHP для Apache 2.x
+  на системы Microsoft Windows. Мы также имеем <a href="install.windows.apache1.html" class="link">инструкции для
+  пользователей Apache 1.3.x на отдельной странице</a>.
+ </p>
+ <blockquote class="note"><p><b class="note">Замечание</b>: 
+  <p class="para">
+   Сначала вам необходимо прочитать <a href="install.windows.manual.html" class="link">пошаговое
+   руководство по установке</a>
+  </p>
+ </p></blockquote>
+ <blockquote class="note"><p><b class="note">Замечание</b>: 
+  <b>Поддержка Apache 2.2</b><br />
+  <p class="para">
+   Пользователям Apache 2.2 следует отметить, что DLL файл для Apache 2.2 называется
+   <var class="filename">php5apache2_2.dll</var>, а не <var class="filename">php5apache2.dll</var>
+   и он доступен только для PHP 5.2.0 и более поздних версий.
+   Смотрите также <a href="http://snaps.php.net/" class="link external">&raquo;&nbsp;http://snaps.php.net/</a>
+  </p>
+ </p></blockquote>
+ 
+ <p class="para">
+  Вам настоятельно рекомендуется ознакомиться с
+  <a href="http://httpd.apache.org/docs/current/" class="link external">&raquo;&nbsp;Документацией по Apache</a>, чтобы получить
+  базовые знания о Apache 2.x Server. Также перед чтением данной справки обратите внимание
+  на <a href="http://httpd.apache.org/docs/current/platform/windows.html" class="link external">&raquo;&nbsp;Рекомендации для Windows</a>
+  по Apache 2.x.
+ </p>
+ 
+ <p class="para">
+  Apache 2.x предназначен для работы в серверных версиях Windows,
+  таких как Windows NT 4.0, Windows 2000, Windows XP или Windows 7.
+  Хотя Apache 2.x может использоваться на Windows 9x, эти
+  платформы не поддерживаются полностью, и некоторые функции не будут работать
+  правильно. Исправление этой ситуации не планируется.
+ </p>
+
+ <p class="para">
+  Скачайте наиболее актуальную версию <a href="http://httpd.apache.org/" class="link external">&raquo;&nbsp;
+  Apache 2.x</a> и подходящую версию PHP.
+  Следуйте <a href="install.windows.manual.html" class="link">Пошаговому руководству по установке</a>
+  и вернитесь для продолжения интеграции PHP и Apache.
+ </p>
+
+ <p class="para">
+  Существует три пути установки PHP для Apache на Windows.
+  Вы можете запустить PHP как обработчик, как CGI, или под FastCGI.
+ </p>
+ 
+ <blockquote class="note"><p><b class="note">Замечание</b>: <span class="simpara">Помните, что при указании путей
+в конфигурационных файлах Apache под Windows, все обратные слэши, например,
+<var class="filename">c:\directory\file.ext</var> должны быть изменены на прямые:
+<var class="filename">c:/directory/file.ext</var>. Для путей с директориями также может понадобиться слэш в конце.</span></p></blockquote>
+ 
+ <div class="sect2" id="install.windows.apache2.module">
+  <h3 class="title">Установка PHP как обработчика под Apache</h3>
+  <p class="para">
+   Вам необходимо добавить следующие строки в ваш конфигурационный файл Apache
+   <var class="filename">httpd.conf</var> для загрузки PHP-модуля для Apache 2.x:
+   <div class="example" id="example-53">
+    <p><b>Пример #1 PHP как обработчик Apache 2.x</b></p>
+    <div class="example-contents">
+<div class="apache-confcode"><pre class="apache-confcode">#
+LoadModule php5_module &quot;c:/php/php5apache2.dll&quot;
+AddHandler application/x-httpd-php .php
+
+# конфигурирование пути к php.ini
+PHPIniDir &quot;C:/php&quot;</pre>
+</div>
+    </div>
+
+   </div>
+  </p>
+  <blockquote class="note"><p><b class="note">Замечание</b>: 
+   <span class="simpara">
+    Не забудьте указать актуальный путь к директории PHP вместо
+    <var class="filename">C:/php/</var> в приведенном примере. Позаботьтесь, чтобы
+    в директиве LoadModule использовались либо <var class="filename">php5apache2.dll</var> либо
+    <var class="filename">php5apache2_2.dll</var> и удостоверьтесь, что указанный файл
+    фактически находится по пути, который вы указали в директиве.
+   </span>
+  </p></blockquote>
+  <p class="para">
+   Приведенная выше конфигурация позволит PHP обработать любой файл, который имеет
+   расширение .php, даже если имеются другие расширения. К примеру, файл с именем
+   <var class="filename">example.php.txt</var> будет запущен обработчиком PHP. Чтобы гарантировать,
+   что только файлы, которые <em class="emphasis">имеют расширение</em><var class="filename">.php</var>
+   будут запущены, используйте следующую конфигурацию:
+  </p>
+
+  <div class="example" id="example-54">
+   <div class="example-contents">
+<div class="apache-confcode"><pre class="apache-confcode">&lt;FilesMatch \.php$&gt;
+      SetHandler application/x-httpd-php
+ &lt;/FilesMatch&gt;</pre>
+</div>
+   </div>
+
+  </div>
+ </div>
+
+ <div class="sect2" id="install.windows.apache2.cgi">
+  <h3 class="title">Запуск PHP как CGI</h3>
+
+  <p class="para">
+   Вы должны обратиться к документации <a href="http://httpd.apache.org/docs/current/howto/cgi.html" class="link external">&raquo;&nbsp;Apache CGI
+   </a> для более полного понимания о запуске CGI под Apache.
+  </p>
+  
+  <p class="para">
+   Для запуска PHP как CGI, вам необходимо поместить ваши php-cgi файлы в
+   директорию, обозначенную как директория CGI, используя директиву ScriptAlilas.
+  </p>
+
+  <p class="para">
+   После этого вам необходимо добавить строку #! в PHP файлы, указывающую
+   на местоположение исполняемого файла PHP.
+   
+   <div class="example" id="example-55">
+    <p><b>Пример #2 PHP как CGI под Apache 2.x</b></p>
+    <div class="example-contents">
+<div class="cdata"><pre>
+#!C:/php/php.exe
+&lt;?php
+  phpinfo();
+?&gt;
+</pre></div>
+    </div>
+
+   </div>
+  </p>
+  <div class="warning"><b class="warning">Внимание</b><p class="para">Используя установку CGI, ваш сервер
+открыт перед несколькими возможными уязвимостями. Пожалуйста, ознакомьтесь с разделом
+<a href="security.cgi-bin.html" class="link">&quot;Безопасность CGI&quot;</a> чтобы узнать,
+как можно защитить себя от таких атак.</p></div>
+ </div>
+
+ <div class="sect2" id="install.windows.apache2.fastcgi">
+  <h3 class="title">Запуск PHP под FastCGI</h3>
+
+  <p class="para">
+   Запуск PHP под FastCGI имеет ряд преимуществ по сравнению с запуском как
+   CGI. Установка же довольно проста:
+  </p>
+  <p class="para">
+   Получить mod_fcgid здесь:
+   <a href="http://httpd.apache.org/mod_fcgid/" class="link external">&raquo;&nbsp;http://httpd.apache.org/mod_fcgid/</a>.
+   исполняемые файлы под Win32 доступны для скачивания с этого сайта. Установите модуль
+   в соответствии с прилагаемыми инструкциями.
+  </p>
+  <p class="para">
+   Настроить свой веб сервер как указано ниже, позаботившись о соответствии всех
+   путей установки на вашей конкретной системе:
+
+   <div class="example" id="example-56">
+    <p><b>Пример #3 Конфигурация Apache для запуска PHP как FastCGI</b></p>
+    <div class="example-contents">
+<div class="cdata"><pre>
+LoadModule fcgid_module modules/mod_fcgid.so  
+
+# Где находится ваш php.ini?
+FcgidInitialEnv PHPRC        &quot;c:/php&quot;
+
+AddHandler fcgid-script .php  
+FcgidWrapper &quot;c:/php/php-cgi.exe&quot; .php  
+</pre></div>
+    </div>
+
+   </div>
+
+   Файлы с расширением .php в таком случае будут запускаться с помощью
+   оболочки PHP FastCGI.
+  </p>
+
+ </div>
+
+</div><hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="install.windows.apache1.html">Apache 1.3.x в Microsoft Windows</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="install.windows.sun.html">Sun, iPlanet and Netscape servers on Microsoft Windows</a></div>
+ <div class="up"><a href="install.windows.html">Установка в системах Windows</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

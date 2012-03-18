@@ -1,0 +1,136 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Преобразование числа между произвольными системами счисления</title>
+
+ </head>
+ <body><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.atanh.html">atanh</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.bindec.html">bindec</a></div>
+ <div class="up"><a href="ref.math.html">Математические функции</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.base-convert" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">base_convert</h1>
+  <p class="verinfo">(PHP 4, PHP 5)</p><p class="refpurpose"><span class="refname">base_convert</span> &mdash; <span class="dc-title">Преобразование числа между произвольными системами счисления</span></p>
+
+ </div>
+ <div class="refsect1 description" id="refsect1-function.base-convert-description">
+  <h3 class="title">Описание</h3>
+   <div class="methodsynopsis dc-description">
+    <span class="type">string</span> <span class="methodname"><b>base_convert</b></span>
+     ( <span class="methodparam"><span class="type">string</span> <tt class="parameter">$number</tt></span>
+    , <span class="methodparam"><span class="type">int</span> <tt class="parameter">$frombase</tt></span>
+    , <span class="methodparam"><span class="type">int</span> <tt class="parameter">$tobase</tt></span>
+    )</div>
+
+  <p class="para rdfs-comment">
+   Возвращает строку, содержащую число <i><tt class="parameter">number</tt></i>
+   представленное в системе счисления <i><tt class="parameter">tobase</tt></i>.  Система счисления, в которой дано число
+   <i><tt class="parameter">number</tt></i> указана в <i><tt class="parameter">frombase</tt></i>.  Значения
+   <i><tt class="parameter">frombase</tt></i> и <i><tt class="parameter">tobase</tt></i>
+   должны быть между 2 и 36 (включительно).  Цифры в числах, представленных в системе счисления
+   выше десятичной, будут представлены буквами a-z,
+   гда a обозначает 10, b обозначает 11 и z - 35.
+  </p>
+  <div class="warning"><b class="warning">Внимание</b>
+   <p class="simpara">
+    <span class="function"><b>base_convert()</b></span> может потерять точность представления больших чисел
+     из-за свойств связанных с внутренним представлением типов &quot;double&quot; или &quot;float&quot;.
+    См. также раздел руководства <a href="language.types.float.html" class="link">Числа с плавающей точкой</a>
+    для более конкретной информации и ограничений.
+   </p>
+  </div>
+ </div>
+
+ <div class="refsect1 parameters" id="refsect1-function.base-convert-parameters">
+  <h3 class="title">Список параметров</h3>
+  <p class="para">
+   <dl>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">number</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Число для преобразования
+      </p>
+     </dd>
+
+    </dt>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">frombase</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Основание системы счисления числа <i><tt class="parameter">number</tt></i>
+      </p>
+     </dd>
+
+    </dt>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">tobase</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Основание системы счисления для преобразования числа <i><tt class="parameter">number</tt></i>
+      </p>
+     </dd>
+
+    </dt>
+
+   </dl>
+
+  </p>
+ </div>
+
+ <div class="refsect1 returnvalues" id="refsect1-function.base-convert-returnvalues">
+  <h3 class="title">Возвращаемые значения</h3>
+  <p class="para">
+   <i><tt class="parameter">number</tt></i> преобразованное в систему счисления <i><tt class="parameter">tobase</tt></i>
+  </p>
+ </div>
+
+ <div class="refsect1 examples" id="refsect1-function.base-convert-examples">
+  <h3 class="title">Примеры</h3>
+  <p class="para">
+   <div class="example" id="example-3125">
+    <p><b>Пример #1 Пример использования <span class="function"><b>base_convert()</b></span></b></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$hexadecimal&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'A37334'</span><span style="color: #007700">;<br />echo&nbsp;</span><span style="color: #0000BB">base_convert</span><span style="color: #007700">(</span><span style="color: #0000BB">$hexadecimal</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">16</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">2</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+    <div class="example-contents"><p>Результат выполнения данного примера:</p></div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+101000110111001100110100
+</pre></div>
+    </div>
+   </div>
+  </p>
+ </div>
+
+ <div class="refsect1 seealso" id="refsect1-function.base-convert-seealso">
+  <h3 class="title">Смотрите также</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><span class="function"><a href="function.intval.html" class="function" rel="rdfs-seeAlso">intval()</a> - Возвращает целое значение переменной</span></li>
+   </ul>
+  </p>
+ </div>
+
+</div><hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.atanh.html">atanh</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.bindec.html">bindec</a></div>
+ <div class="up"><a href="ref.math.html">Математические функции</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

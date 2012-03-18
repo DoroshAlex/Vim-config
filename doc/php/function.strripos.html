@@ -1,0 +1,150 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Возвращает позицию последнего вхождения подстроки без учета регистра</title>
+
+ </head>
+ <body><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.strrev.html">strrev</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.strrpos.html">strrpos</a></div>
+ <div class="up"><a href="ref.strings.html">Обработка строк</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.strripos" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">strripos</h1>
+  <p class="verinfo">(PHP 5)</p><p class="refpurpose"><span class="refname">strripos</span> &mdash; <span class="dc-title">Возвращает позицию последнего вхождения подстроки без учета регистра</span></p>
+
+ </div>
+
+ <div class="refsect1 description" id="refsect1-function.strripos-description">
+  <h3 class="title">Описание</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">int</span> <span class="methodname"><b>strripos</b></span>
+    ( <span class="methodparam"><span class="type">string</span> <tt class="parameter">$haystack</tt></span>
+   , <span class="methodparam"><span class="type">string</span> <tt class="parameter">$needle</tt></span>
+   [, <span class="methodparam"><span class="type">int</span> <tt class="parameter">$offset</tt><span class="initializer"> = 0</span></span>
+  ] )</div>
+
+  <p class="para rdfs-comment">
+   Возвращает позицию последнего вхождения подстроки.
+   В отличие от <span class="function"><a href="function.strrpos.html" class="function">strrpos()</a></span>, <span class="function"><b>strripos()</b></span>
+   не учитывает регистр символов.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-function.strripos-parameters">
+  <h3 class="title">Список параметров</h3>
+  <p class="para">
+   <dl>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">haystack</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Строка, в которой производится поиск.
+      </p>
+     </dd>
+
+    </dt>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">needle</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Если параметр <i><tt class="parameter">needle</tt></i> не является строкой,
+       то он будет преобразован к целому и обработан как код символа.
+      </p>
+     </dd>
+
+    </dt>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">offset</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Если указан, то поиск прекратится при достижении
+       этого количества символов с начала строки. Если передано
+       отрицательное значение, поиск начнется с указанного количества
+       символов от конца строки.
+      </p>
+     </dd>
+
+    </dt>
+
+   </dl>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-function.strripos-returnvalues">
+  <h3 class="title">Возвращаемые значения</h3>
+  <p class="para">
+   Возвращает номер позиции последнего вхождения <i><tt class="parameter">needle</tt></i>.
+   Учтите, что позиции в строке считаются с 0, а не с 1.
+  </p>
+  <p class="para">
+   Если подстрока <i><tt class="parameter">needle</tt></i> не найдена,
+   возвращается <b><tt>FALSE</tt></b>.
+  </p>
+  <div class="warning"><b class="warning">Внимание</b><p class="simpara">Эта функция
+может возвращать как boolean <b><tt>FALSE</tt></b>, так и не-boolean значение, которое приводится к <b><tt>FALSE</tt></b>,
+например, <i>0</i> или &quot;&quot;. За более подробной информацией обратитесь к разделу
+<a href="language.types.boolean.html" class="link">Булев тип</a>. Используйте <a href="language.operators.comparison.html" class="link">оператор ===</a> для проверки значения,
+возвращаемого этой функцией.</p></div>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-function.strripos-examples">
+  <h3 class="title">Примеры</h3>
+  <p class="para">
+   <div class="example" id="example-4406">
+    <p><b>Пример #1 Пример использования <span class="function"><b>strripos()</b></span></b></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$haystack&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'ababcd'</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$needle&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'aB'</span><span style="color: #007700">;<br /><br /></span><span style="color: #0000BB">$pos&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">strripos</span><span style="color: #007700">(</span><span style="color: #0000BB">$haystack</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$needle</span><span style="color: #007700">);<br /><br />if&nbsp;(</span><span style="color: #0000BB">$pos&nbsp;</span><span style="color: #007700">===&nbsp;</span><span style="color: #0000BB">false</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"К&nbsp;сожалению,&nbsp;(</span><span style="color: #0000BB">$needle</span><span style="color: #DD0000">)&nbsp;не&nbsp;найдена&nbsp;в&nbsp;(</span><span style="color: #0000BB">$haystack</span><span style="color: #DD0000">)"</span><span style="color: #007700">;<br />}&nbsp;else&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"Поздравляем!\n"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"Последнее&nbsp;вхождение&nbsp;(</span><span style="color: #0000BB">$needle</span><span style="color: #DD0000">)&nbsp;найдено&nbsp;в&nbsp;(</span><span style="color: #0000BB">$haystack</span><span style="color: #DD0000">)&nbsp;в&nbsp;позиции&nbsp;(</span><span style="color: #0000BB">$pos</span><span style="color: #DD0000">)"</span><span style="color: #007700">;<br />}<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+    <div class="example-contents"><p>Результат выполнения данного примера:</p></div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+   Поздравляем!
+   Последнее вхождение (aB) найдено в (ababcd) в позиции (2)
+</pre></div>
+    </div>
+   </div>
+  </p>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-function.strripos-seealso">
+  <h3 class="title">Смотрите также</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><span class="function"><a href="function.strpos.html" class="function" rel="rdfs-seeAlso">strpos()</a> - Возвращает позицию первого вхождения подстроки</span></li>
+    <li class="member"><span class="function"><a href="function.stripos.html" class="function" rel="rdfs-seeAlso">stripos()</a> - Возвращает позицию первого вхождения подстроки без учета регистра</span></li>
+    <li class="member"><span class="function"><a href="function.strrchr.html" class="function" rel="rdfs-seeAlso">strrchr()</a> - Находит последнее вхождение символа в строке</span></li>
+    <li class="member"><span class="function"><a href="function.substr.html" class="function" rel="rdfs-seeAlso">substr()</a> - Возвращает подстроку</span></li>
+    <li class="member"><span class="function"><a href="function.stristr.html" class="function" rel="rdfs-seeAlso">stristr()</a> - Регистро-независимый вариант функции strstr</span></li>
+    <li class="member"><span class="function"><a href="function.strstr.html" class="function" rel="rdfs-seeAlso">strstr()</a> - Находит первое вхождение подстроки</span></li>
+   </ul>
+  </p>
+ </div>
+
+
+</div><hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.strrev.html">strrev</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.strrpos.html">strrpos</a></div>
+ <div class="up"><a href="ref.strings.html">Обработка строк</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

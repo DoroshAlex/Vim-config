@@ -1,0 +1,471 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Возвращает SVN статус файлов и директорий рабочей копии</title>
+
+ </head>
+ <body><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.svn-revert.html">svn_revert</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.svn-update.html">svn_update</a></div>
+ <div class="up"><a href="ref.svn.html">SVN</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.svn-status" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">svn_status</h1>
+  <p class="verinfo">(PECL svn &gt;= 0.1.0)</p><p class="refpurpose"><span class="refname">svn_status</span> &mdash; <span class="dc-title">Возвращает SVN статус файлов и директорий рабочей копии</span></p>
+
+ </div>
+
+ <div class="refsect1 description" id="refsect1-function.svn-status-description">
+  <h3 class="title">Описание</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">array</span> <span class="methodname"><b>svn_status</b></span>
+    ( <span class="methodparam"><span class="type">string</span> <tt class="parameter">$path</tt></span>
+   [, <span class="methodparam"><span class="type">int</span> <tt class="parameter">$flags</tt><span class="initializer"> = 0</span></span>
+  ] )</div>
+
+  <p class="para rdfs-comment">
+   Возвращает SVN статус файлов и директорий рабочей копии, подвергнувшихся модификации,
+   добавлению, удалению и прочим изменениям.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-function.svn-status-parameters">
+  <h3 class="title">Список параметров</h3>
+  <p class="para">
+   <dl>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">path</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Локальный путь к файлу или директории для получения статуса.
+      </p>
+      <blockquote class="note"><p><b class="note">Замечание</b>: <span class="simpara">Относительные пути будут вычислены,
+как если бы текущая рабочая директория являлась домашней папкой самого PHP. Чтобы использовать рабочую директорию
+вызывающего скрипта, используйте <span class="function"><a href="function.realpath.html" class="function">realpath()</a></span> или dirname(__FILE__).</span></p></blockquote>
+     </dd>
+
+    </dt>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">flags</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Любая комбинация флагов <b><tt>SVN_NON_RECURSIVE</tt></b>,
+       <b><tt>SVN_ALL</tt></b> (вне зависимости от статуса модификации),
+       <b><tt>SVN_SHOW_UPDATES</tt></b> (к записям будут добавлены пункты
+       со старыми правками), <b><tt>SVN_NO_IGNORE</tt></b> (игнорирование
+       <i>svn:ignore</i> свойств при сканировании новых файлов)
+       и <b><tt>SVN_IGNORE_EXTERNALS</tt></b>.
+      </p>
+     </dd>
+
+    </dt>
+
+   </dl>
+
+  </p>
+
+ </div>
+
+ <div class="refsect1 returnvalues" id="refsect1-function.svn-status-returnvalues">
+  <h3 class="title">Возвращаемые значения</h3>
+  <p class="para">
+   Возвращает пронумерованный массив, состоящий из ассоциативных массивов с
+   подробными статусами элементов в репозитории:
+  </p>
+  <div class="example-contents screen">
+<div class="returnvaluescode"><pre class="returnvaluescode">Array (
+    [0] =&gt; Array (
+        // информация об элементе
+    )
+    [1] =&gt; ...
+)</pre>
+</div>
+  </div>
+  <p class="para">
+   Информация об элементе может быть получена из ассоциативного массива по
+   двум ключам:
+  </p>
+  <dl>
+
+   <dt>
+
+    <span class="term"><var class="varname"><var class="varname">path</var></var></span>
+     <dd>
+
+      <span class="simpara">
+       Путь к файлу/директории в локальной файловой системе.
+      </span>
+     </dd>
+
+   </dt>
+
+   <dt>
+
+    <span class="term"><var class="varname"><var class="varname">text_status</var></var></span>
+     <dd>
+
+      <span class="simpara">
+       Код текстового статуса элемента. См. Для информации о возможных значениях, обратитесь к <a href="svn.constants.html#svn.constants.status" class="link">константам статусов</a>.
+      </span>
+     </dd>
+
+   </dt>
+
+   <dt>
+
+    <span class="term"><var class="varname"><var class="varname">repos_text_status</var></var></span>
+     <dd>
+
+      <span class="simpara">
+       Код текстового статуса элемента в репозитории. Отображается 
+       если <i><tt class="parameter">update</tt></i> установлен в <b><tt>TRUE</tt></b>.
+       См. Для информации о возможных значениях, обратитесь к <a href="svn.constants.html#svn.constants.status" class="link">константам статусов</a>.
+      </span>
+     </dd>
+
+   </dt>
+
+   <dt>
+
+    <span class="term"><var class="varname"><var class="varname">prop_status</var></var></span>
+     <dd>
+
+      <span class="simpara">
+       Код текстового статуса свойств элемента. См. Для информации о возможных значениях, обратитесь к <a href="svn.constants.html#svn.constants.status" class="link">константам статусов</a>.
+      </span>
+     </dd>
+
+   </dt>
+
+   <dt>
+
+    <span class="term"><var class="varname"><var class="varname">repos_prop_status</var></var></span>
+     <dd>
+
+      <span class="simpara">
+       Код текстового статуса свойств элемента в репозитории. Отображается
+       если <i><tt class="parameter">update</tt></i> установлен в <b><tt>TRUE</tt></b>. См. Для информации о возможных значениях, обратитесь к <a href="svn.constants.html#svn.constants.status" class="link">константам статусов</a>.
+      </span>
+     </dd>
+
+   </dt>
+
+   <dt>
+
+    <span class="term"><var class="varname"><var class="varname">locked</var></var></span>
+     <dd>
+
+      <span class="simpara">
+       Будет ли заблокирован элемент или нет. (Устанавливается при <b><tt>TRUE</tt></b>.)
+      </span>
+     </dd>
+
+   </dt>
+
+   <dt>
+
+    <span class="term"><var class="varname"><var class="varname">copied</var></var></span>
+     <dd>
+
+      <span class="simpara">
+       Будет ли скопирован эдемент (запланирован для добавления в истории
+       правок). (Устанавливается при <b><tt>TRUE</tt></b>.)
+      </span>
+     </dd>
+
+   </dt>
+
+   <dt>
+
+    <span class="term"><var class="varname"><var class="varname">switched</var></var></span>
+     <dd>
+
+      <span class="simpara">
+       Будет ли элемент переключен используя команду переключения.
+       (Устанавливается при <b><tt>TRUE</tt></b>)
+      </span>
+     </dd>
+
+   </dt>
+
+  </dl>
+
+  <p class="para">
+   Следующие ниже ключи устанавливаются только если элемент имеет версию:
+  </p>
+  <dl>
+
+   <dt>
+
+    <span class="term"><var class="varname"><var class="varname">name</var></var></span>
+     <dd>
+
+      <span class="simpara">
+       Имя элемента в репозитории.
+      </span>
+     </dd>
+
+   </dt>
+
+   <dt>
+
+    <span class="term"><var class="varname"><var class="varname">url</var></var></span>
+     <dd>
+
+      <span class="simpara">
+       URL адрес элемента в репозитории.
+      </span>
+     </dd>
+
+   </dt>
+
+   <dt>
+
+    <span class="term"><var class="varname"><var class="varname">repos</var></var></span>
+     <dd>
+
+      <span class="simpara">
+       URL адрес репозитория.
+      </span>
+     </dd>
+
+   </dt>
+
+   <dt>
+
+    <span class="term"><var class="varname"><var class="varname">revision</var></var></span>
+     <dd>
+
+      <span class="simpara">
+       Номер ревизии рабочей копии.
+      </span>
+     </dd>
+
+   </dt>
+
+   <dt>
+
+    <span class="term"><var class="varname"><var class="varname">kind</var></var></span>
+     <dd>
+
+      <span class="simpara">
+       Тип элемента, т.е. файл или директория. См. Для информации о возможных значениях, обратитесь к <a href="svn.constants.html#svn.constants.type" class="link">константам типов</a>.
+      </span>
+     </dd>
+
+   </dt>
+
+   <dt>
+
+    <span class="term"><var class="varname"><var class="varname">schedule</var></var></span>
+     <dd>
+
+      <span class="simpara">
+       Запланированное действия для элемента, т.е. добавление или удаления.
+       Константы для данных магичских чисел не доступны, они эмулируются, 
+       согласно правилу:
+      </span>
+       <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">if&nbsp;(!</span><span style="color: #0000BB">defined</span><span style="color: #007700">(</span><span style="color: #DD0000">'svn_wc_schedule_normal'</span><span style="color: #007700">))&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">define</span><span style="color: #007700">(</span><span style="color: #DD0000">'svn_wc_schedule_normal'</span><span style="color: #007700">,&nbsp;&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">);&nbsp;</span><span style="color: #FF8000">//&nbsp;никаких&nbsp;изменений<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">define</span><span style="color: #007700">(</span><span style="color: #DD0000">'svn_wc_schedule_add'</span><span style="color: #007700">,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">1</span><span style="color: #007700">);&nbsp;</span><span style="color: #FF8000">//&nbsp;элемент&nbsp;будет&nbsp;добавлен<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">define</span><span style="color: #007700">(</span><span style="color: #DD0000">'svn_wc_schedule_delete'</span><span style="color: #007700">,&nbsp;&nbsp;</span><span style="color: #0000BB">2</span><span style="color: #007700">);&nbsp;</span><span style="color: #FF8000">//&nbsp;элемент&nbsp;будет&nbsp;удален<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">define</span><span style="color: #007700">(</span><span style="color: #DD0000">'svn_wc_schedule_replace'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">3</span><span style="color: #007700">);&nbsp;</span><span style="color: #FF8000">//&nbsp;элемент&nbsp;будет&nbsp;удален&nbsp;и&nbsp;добавлен<br /></span><span style="color: #007700">}<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+      </div>
+
+     </dd>
+
+   </dt>
+
+   <dt>
+
+    <span class="term"><var class="varname"><var class="varname">deleted</var></var></span>
+     <dd>
+
+      <span class="simpara">
+       Будет или нет элемент будет удален, но ревизия родителя не увеличится
+       (Установлено при <b><tt>TRUE</tt></b>.)
+      </span>
+     </dd>
+
+   </dt>
+
+   <dt>
+
+    <span class="term"><var class="varname"><var class="varname">absent</var></var></span>
+     <dd>
+
+      <span class="simpara">
+       Будет или нет элемент помечен отсутствующим. Subversion будет помнить, что
+       в этом месте что-то расположено, но не будет знать что именно.
+       (Устанавливается при <b><tt>TRUE</tt></b>.)
+      </span>
+     </dd>
+
+   </dt>
+
+   <dt>
+
+    <span class="term"><var class="varname"><var class="varname">incomplete</var></var></span>
+     <dd>
+
+      <span class="simpara">
+       Будет или нет содержимое директории считаться неполным.
+       (Устанавливается при <b><tt>TRUE</tt></b>.)
+      </span>
+     </dd>
+
+   </dt>
+
+   <dt>
+
+    <span class="term"><var class="varname"><var class="varname">cmt_date</var></var></span>
+     <dd>
+
+      <span class="simpara">
+       Отметка времени в формате Unix о дате последней правки (Независит от <i><tt class="parameter">update</tt></i>.)
+      </span>
+     </dd>
+
+   </dt>
+
+   <dt>
+
+    <span class="term"><var class="varname"><var class="varname">cmt_rev</var></var></span>
+     <dd>
+
+      <span class="simpara">
+       Номер ревизии последнего обноваления. (Независит от <i><tt class="parameter">update</tt></i>.)
+      </span>
+     </dd>
+
+   </dt>
+
+   <dt>
+
+    <span class="term"><var class="varname"><var class="varname">cmt_author</var></var></span>
+     <dd>
+
+      <span class="simpara">
+       Имя автора последней правки. (Независит от <i><tt class="parameter">update</tt></i>.)
+      </span>
+     </dd>
+
+   </dt>
+
+   <dt>
+
+    <span class="term"><var class="varname"><var class="varname">prop_time</var></var></span>
+     <dd>
+
+      <span class="simpara">
+       Отметка времени в формате Unix о последней актуальной версии свойств.
+      </span>
+     </dd>
+
+   </dt>
+
+   <dt>
+
+    <span class="term"><var class="varname"><var class="varname">text_time</var></var></span>
+     <dd>
+
+      <span class="simpara">
+       Отметка времени в формате Unix о последней актуальной версии текста.
+      </span>
+     </dd>
+
+   </dt>
+
+   
+  </dl>
+
+ </div>
+
+
+ <div class="refsect1 notes" id="refsect1-function.svn-status-notes">
+  <h3 class="title">Примечания</h3>
+  <div class="warning"><b class="warning">Внимание</b><p class="simpara">
+Эта функция является <em class="emphasis">ЭКСПЕРИМЕНТАЛЬНОЙ</em>.
+Поведение этой функции, ее имя и относящаяся к ней документация
+могут измениться в последующих версиях PHP без уведомления.
+Используйте эту функцию на свой страх и риск.</p></div>
+ </div>
+
+
+ 
+
+ 
+
+ <div class="refsect1 examples" id="refsect1-function.svn-status-examples">
+  <h3 class="title">Примеры</h3>
+  <p class="para">
+   <div class="example" id="example-4190">
+    <p><b>Пример #1 Простой пример</b></p>
+    <div class="example-contents"><p>
+     Приведенный ниже пример иллюстрирует базовое, теоретическое использование данной функции
+    </p></div>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />print_r</span><span style="color: #007700">(</span><span style="color: #0000BB">svn_status</span><span style="color: #007700">(</span><span style="color: #0000BB">realpath</span><span style="color: #007700">(</span><span style="color: #DD0000">'wc'</span><span style="color: #007700">)));<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+    <div class="example-contents"><p>Результатом выполнения данного примера
+будет что-то подобное:</p></div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+Array (
+    [0] =&gt; Array (
+        [path] =&gt; /home/bob/wc/sandwich.txt
+        [text_status] =&gt; 8 // элемент был изменен
+        [repos_text_status] =&gt; 1 // нет доступной информации, выполнить update
+        [prop_status] =&gt; 3 // нет изменений
+        [repos_prop_status] =&gt; 1 // нет доступной информации, выполнить update
+        [name] =&gt; sandwich.txt
+        [url] =&gt; http://www.example.com/svnroot/deli/trunk/sandwich.txt
+        [repos] =&gt; http://www.example.com/svnroot/
+        [revision] =&gt; 123
+        [kind] =&gt; 1 // file
+        [schedule] =&gt; 0 // не запланировано никаких действий
+        [cmt_date] =&gt; 1165543135
+        [cmt_rev] =&gt; 120
+        [cmt_author] =&gt; Alice
+        [prop_time] =&gt; 1180201728
+        [text_time] =&gt; 1180201729
+    )
+)
+</pre></div>
+    </div>
+   </div>
+  </p>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-function.svn-status-seealso">
+  <h3 class="title">Смотрите также</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><span class="function"><a href="function.svn-update.html" class="function" rel="rdfs-seeAlso">svn_update()</a> - Обновляет рабочую копию</span></li>
+    <li class="member"><span class="function"><a href="function.svn-log.html" class="function" rel="rdfs-seeAlso">svn_log()</a> - Возвращает комментарии к правкам в репозитории</span></li>
+    <li class="member"><a href="http://svnbook.red-bean.com/en/1.2/svn.ref.svn.c.status.html" class="link external">&raquo;&nbsp;SVN документация для svn status</a></li>
+   </ul>
+  </p>
+ </div>
+
+
+</div><hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.svn-revert.html">svn_revert</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.svn-update.html">svn_update</a></div>
+ <div class="up"><a href="ref.svn.html">SVN</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

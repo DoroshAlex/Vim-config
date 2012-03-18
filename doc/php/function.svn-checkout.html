@@ -1,0 +1,169 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Получает рабочую копию из репозитория</title>
+
+ </head>
+ <body><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.svn-cat.html">svn_cat</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.svn-cleanup.html">svn_cleanup</a></div>
+ <div class="up"><a href="ref.svn.html">SVN</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.svn-checkout" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">svn_checkout</h1>
+  <p class="verinfo">(PECL svn &gt;= 0.1.0)</p><p class="refpurpose"><span class="refname">svn_checkout</span> &mdash; <span class="dc-title">Получает рабочую копию из репозитория</span></p>
+
+ </div>
+
+ <div class="refsect1 description" id="refsect1-function.svn-checkout-description">
+  <h3 class="title">Описание</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">bool</span> <span class="methodname"><b>svn_checkout</b></span>
+    ( <span class="methodparam"><span class="type">string</span> <tt class="parameter">$repos</tt></span>
+   , <span class="methodparam"><span class="type">string</span> <tt class="parameter">$targetpath</tt></span>
+   [, <span class="methodparam"><span class="type">int</span> <tt class="parameter">$revision</tt></span>
+   [, <span class="methodparam"><span class="type">int</span> <tt class="parameter">$flags</tt><span class="initializer"> = 0</span></span>
+  ]] )</div>
+
+  <p class="para rdfs-comment">
+   Получает рабочую копию с ревизией <i><tt class="parameter">revision</tt></i> 
+   из репозитория <i><tt class="parameter">repos</tt></i> и размещает в <i><tt class="parameter">targetpath</tt></i>.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-function.svn-checkout-parameters">
+  <h3 class="title">Список параметров</h3>
+  <p class="para">
+   <dl>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">repos</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Путь (URL) к директории, которую необходимо получить из репозитория.
+      </p>
+     </dd>
+
+    </dt>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">targetpath</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Локальный путь, куда необходимо получить рабочую копию.
+      </p>
+      <blockquote class="note"><p><b class="note">Замечание</b>: <span class="simpara">Относительные пути будут вычислены,
+как если бы текущая рабочая директория являлась домашней папкой самого PHP. Чтобы использовать рабочую директорию
+вызывающего скрипта, используйте <span class="function"><a href="function.realpath.html" class="function">realpath()</a></span> или dirname(__FILE__).</span></p></blockquote>
+     </dd>
+
+    </dt>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">revision</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Номер ревизии (целое число), которую необходимо получить. По умолчанию
+       HEAD, т.е. самая новая версия.
+      </p>
+     </dd>
+
+    </dt>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">flags</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Комбинации из констант <b><tt>SVN_NON_RECURSIVE</tt></b> и
+       <b><tt>SVN_IGNORE_EXTERNALS</tt></b>.
+      </p>
+     </dd>
+
+    </dt>
+
+   </dl>
+
+  </p>
+
+ </div>
+
+ <div class="refsect1 returnvalues" id="refsect1-function.svn-checkout-returnvalues">
+  <h3 class="title">Возвращаемые значения</h3>
+  <p class="para">
+   Возвращает <b><tt>TRUE</tt></b> в случае успешного завершения  или <b><tt>FALSE</tt></b> в случае возникновения ошибки.
+  </p>
+ </div>
+
+
+ <div class="refsect1 notes" id="refsect1-function.svn-checkout-notes">
+  <h3 class="title">Примечания</h3>
+  <div class="warning"><b class="warning">Внимание</b><p class="simpara">
+Эта функция является <em class="emphasis">ЭКСПЕРИМЕНТАЛЬНОЙ</em>.
+Поведение этой функции, ее имя и относящаяся к ней документация
+могут измениться в последующих версиях PHP без уведомления.
+Используйте эту функцию на свой страх и риск.</p></div>
+ </div>
+
+
+ 
+
+ 
+
+ <div class="refsect1 examples" id="refsect1-function.svn-checkout-examples">
+  <h3 class="title">Примеры</h3>
+  <p class="para">
+   <div class="example" id="example-4179">
+    <p><b>Пример #1 Простой пример</b></p>
+    <div class="example-contents"><p>
+     Этот пример показывает, как получить директорию 
+     из репозитория в папку calc:
+    </p></div>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />svn_checkout</span><span style="color: #007700">(</span><span style="color: #DD0000">'http://www.example.com/svnroot/calc/trunk'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">dirname</span><span style="color: #007700">(</span><span style="color: #0000BB">__FILE__</span><span style="color: #007700">)&nbsp;.&nbsp;</span><span style="color: #DD0000">'/calc'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+    <div class="example-contents"><p>
+     Выражение <i>dirname(__FILE__)</i> используется для     
+     преобразования из относительного пути к calc в абсолютный путь.
+     Если calc существует, то можно использовать <span class="function"><a href="function.realpath.html" class="function">realpath()</a></span> 
+     для получения абсолютного пути.
+    </p></div>
+   </div>
+  </p>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-function.svn-checkout-seealso">
+  <h3 class="title">Смотрите также</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><span class="function"><a href="function.svn-add.html" class="function" rel="rdfs-seeAlso">svn_add()</a> - Добавляет элементы в список запланированных для добавления в рабочую копию</span></li>
+    <li class="member"><span class="function"><a href="function.svn-commit.html" class="function" rel="rdfs-seeAlso">svn_commit()</a> - Отправляет изменения из рабочей директории в репозиторий</span></li>
+    <li class="member"><span class="function"><a href="function.svn-status.html" class="function" rel="rdfs-seeAlso">svn_status()</a> - Возвращает SVN статус файлов и директорий рабочей копии</span></li>
+    <li class="member"><span class="function"><a href="function.svn-update.html" class="function" rel="rdfs-seeAlso">svn_update()</a> - Обновляет рабочую копию</span></li>
+    <li class="member"><a href="http://svnbook.red-bean.com/en/1.2/svn.ref.svn.c.checkout.html" class="link external">&raquo;&nbsp;SVN документация о команде svn checkout</a></li>
+   </ul>
+  </p>
+ </div>
+
+
+</div><hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.svn-cat.html">svn_cat</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.svn-cleanup.html">svn_cleanup</a></div>
+ <div class="up"><a href="ref.svn.html">SVN</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

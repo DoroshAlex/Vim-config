@@ -1,0 +1,118 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Введение</title>
+
+ </head>
+ <body><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="book.dbase.html">dBase</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="dbase.setup.html">Установка и настройка</a></div>
+ <div class="up"><a href="book.dbase.html">dBase</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="intro.dbase" class="preface">
+  <h1 class="title">Введение</h1>
+  <p class="para">
+   Эти функции позволяют получить доступ к записям, 
+   хранящимся в DBase-формате (DBF) баз данных.
+  </p>
+  <p class="para">
+   База данных dBase является просто последовательностью файлов с фиксированной длиной записи. 
+   Записи добавляются в конец файла и удаленные записи будут (физически)
+   хранится до вызова <span class="function"><a href="function.dbase-pack.html" class="function">dbase_pack()</a></span>.
+  </p>
+  <p class="para">
+   Доступные типы полей dBase:
+   <table class="doctable table">
+    <caption><b>Типы полей</b></caption>
+    
+     <thead valign="middle">
+      <tr valign="middle">
+       <th>Поле</th>
+       <th>dBase тип</th>
+       <th>Формат</th>
+       <th>Дополнительная информация</th>
+      </tr>
+
+     </thead>
+
+     <tbody valign="middle" class="tbody">
+      <tr valign="middle">
+       <td align="left"><i>M</i></td>
+       <td align="left">Memo</td>
+       <td align="left">n/a</td>
+       <td align="left">Тип не поддерживается PHP, такое поле будет игнорироваться</td>
+      </tr>
+
+      <tr valign="middle">
+       <td align="left"><i>D</i></td>
+       <td align="left">Date</td>
+       <td align="left"><i>YYYYMMDD</i></td>
+       <td align="left">Длина поля установлена в 8</td>
+      </tr>
+
+      <tr valign="middle">
+       <td align="left"><i>N</i></td>
+       <td align="left">Number</td>
+       <td align="left">Число</td>
+       <td align="left">
+        Вы должны указать длину и точность (количество цифр 
+        после десятичной точки)
+       </td>
+      </tr>
+
+      <tr valign="middle">
+       <td align="left"><i>C</i></td>
+       <td align="left">String</td>
+       <td align="left">A string</td>
+       <td align="left">Вы должны указать длину. При получении данных, строка
+       будет дополнена справа пробелами до заявленной длины.</td>
+      </tr>
+
+      <tr valign="middle">
+       <td align="left"><i>L</i></td>
+       <td align="left">Boolean</td>
+       <td align="left"><i>T</i> или <i>Y</i> соответствует <b><tt>TRUE</tt></b>, 
+       <i>F</i> или <i>N</i> соответствует <b><tt>FALSE</tt></b></td>
+       <td align="left">Хранится и возвращается как целое число (1 или 0)</td>
+      </tr>
+
+      <tr valign="middle">
+       <td align="left"><i>F</i></td>
+       <td align="left">Float</td>
+       <td align="left">Число с плавающей точкой</td>
+       <td align="left">Поддержка этого типа поля была добавлена в PHP 5.2.0</td>
+      </tr>
+
+     </tbody>
+    
+   </table>
+
+  </p>
+  <blockquote class="note"><p><b class="note">Замечание</b>: 
+   <p class="para">
+    Это расширение было перемещено в репозиторий
+<a href="http://pecl.php.net/" class="link external">&raquo;&nbsp;PECL</a>
+и больше не поставляется с PHP 5.3.0.
+   </p>
+  </p></blockquote>
+  <div class="warning"><b class="warning">Внимание</b>
+   <p class="para">
+    Нет никакой поддержки для индексов или мемо-полей. Также нет
+    поддержки захвата записи (lock).  Два параллельных процесса веб-сервера 
+    изменив один файл DBase, весьма вероятно, разрушат вашу базу данных.
+   </p>
+   <p class="para">
+    Рекомендуется не использовать DBase файлы в качестве основной базы данных приложения.
+    Выберете любой SQL сервер, например: <a href="http://www.mysql.com/" class="link external">&raquo;&nbsp;MySQL</a> или <a href="http://www.postgresql.org/" class="link external">&raquo;&nbsp;Postgres</a>
+    поддерживаемые PHP. Поддержка dBase в PHP реализована для
+    импорта и экспорта данных в основную базу данных приложения, потому что формат файлов dBase 
+    обычно хорошо понимается Windows, известными электронными таблицами и вашим руководством.
+   </p>
+  </div>
+ </div><hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="book.dbase.html">dBase</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="dbase.setup.html">Установка и настройка</a></div>
+ <div class="up"><a href="book.dbase.html">dBase</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

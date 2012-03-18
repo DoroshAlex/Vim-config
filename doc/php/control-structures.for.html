@@ -1,0 +1,131 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>for</title>
+
+ </head>
+ <body><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="control-structures.do.while.html">do-while</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="control-structures.foreach.html">foreach</a></div>
+ <div class="up"><a href="language.control-structures.html">Управляющие конструкции</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="control-structures.for" class="sect1">
+ <h2 class="title"><i>for</i></h2>
+ <p class="verinfo">(PHP 4, PHP5)</p>
+ <p class="para">
+  Цикл <i>for</i> самый сложный цикл в PHP.
+Он ведет себя так же как его аналог в языке C. Синтаксис цикла
+  <i>for</i> следующий:
+  <div class="informalexample">
+   <div class="example-contents">
+<div class="cdata"><pre>
+for (expr1; expr2; expr3)
+    statement
+</pre></div>
+   </div>
+
+  </div>
+ </p>
+ <p class="simpara">
+  Первое выражение (<var class="varname"><var class="varname">expr1</var></var>)
+  всегда вычисляется (выполняется) только один раз в начале 
+  цикла.
+ </p>
+ <p class="simpara">
+  В начале каждой итерации оценивается выражение
+  <var class="varname"><var class="varname">expr2</var></var>. Если оно принимает значение
+  <b><tt>TRUE</tt></b>, то цикл продолжается, и вложенные операторы
+  будут выполнены.  Если оно принимает значение 
+  <b><tt>FALSE</tt></b>, выполнение цикла заканчивается.
+ </p>
+ <p class="simpara">
+  В конце каждой итерации выражение <var class="varname"><var class="varname">expr3</var></var>
+  вычисляется (выполняется ).
+ </p>
+ <p class="simpara">
+  Каждое из выражений может быть пустым или содержать несколько 
+  выражений, разделенных запятыми. В <var class="varname"><var class="varname">expr2</var></var> все
+  выражения, разделенные запятыми, вычисляются, но результат берется из
+  последнего.
+  Если выражение <var class="varname"><var class="varname">expr2</var></var> отсутствует, это означает, что цикл
+  будет выполняться бесконечно. (PHP неявно воспринимает это значение как
+  <b><tt>TRUE</tt></b>, также, как в языке C). Это может быть не столь бесполезно, сколь вы
+  могли подумать, так как часто необходимо прервать цикл, используя
+  условный оператор <a href="control-structures.break.html" class="link"><i>break</i></a>
+  вместо использования выражения в цикле <i>for</i>,
+  которое принимает истинное значение.
+ </p>
+ <p class="para">
+  Рассмотрим следующие примеры. Все из них отображают числа
+  от 1 до 10:
+  <div class="informalexample">
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">/*&nbsp;пример&nbsp;1&nbsp;*/<br /><br /></span><span style="color: #007700">for&nbsp;(</span><span style="color: #0000BB">$i&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">1</span><span style="color: #007700">;&nbsp;</span><span style="color: #0000BB">$i&nbsp;</span><span style="color: #007700">&lt;=&nbsp;</span><span style="color: #0000BB">10</span><span style="color: #007700">;&nbsp;</span><span style="color: #0000BB">$i</span><span style="color: #007700">++)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #0000BB">$i</span><span style="color: #007700">;<br />}<br /><br /></span><span style="color: #FF8000">/*&nbsp;пример&nbsp;2&nbsp;*/<br /><br /></span><span style="color: #007700">for&nbsp;(</span><span style="color: #0000BB">$i&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">1</span><span style="color: #007700">;&nbsp;;&nbsp;</span><span style="color: #0000BB">$i</span><span style="color: #007700">++)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(</span><span style="color: #0000BB">$i&nbsp;</span><span style="color: #007700">&gt;&nbsp;</span><span style="color: #0000BB">10</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;break;<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #0000BB">$i</span><span style="color: #007700">;<br />}<br /><br /></span><span style="color: #FF8000">/*&nbsp;пример&nbsp;3&nbsp;*/<br /><br /></span><span style="color: #0000BB">$i&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">1</span><span style="color: #007700">;<br />for&nbsp;(;&nbsp;;&nbsp;)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(</span><span style="color: #0000BB">$i&nbsp;</span><span style="color: #007700">&gt;&nbsp;</span><span style="color: #0000BB">10</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;break;<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #0000BB">$i</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$i</span><span style="color: #007700">++;<br />}<br /><br /></span><span style="color: #FF8000">/*&nbsp;пример&nbsp;4&nbsp;*/<br /><br /></span><span style="color: #007700">for&nbsp;(</span><span style="color: #0000BB">$i&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">1</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$j&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">;&nbsp;</span><span style="color: #0000BB">$i&nbsp;</span><span style="color: #007700">&lt;=&nbsp;</span><span style="color: #0000BB">10</span><span style="color: #007700">;&nbsp;</span><span style="color: #0000BB">$j&nbsp;</span><span style="color: #007700">+=&nbsp;</span><span style="color: #0000BB">$i</span><span style="color: #007700">,&nbsp;print&nbsp;</span><span style="color: #0000BB">$i</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$i</span><span style="color: #007700">++);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+   </div>
+
+  </div>
+ </p>
+ <p class="simpara">
+  Конечно, первый пример кажется самым хорошим (или, возможно,
+  четвертый), но вы можете обнаружить, что возможность использовать пустые
+  выражения в циклах <i>for</i> может стать удобной во многих
+  случаях.
+ </p>
+ <p class="para">
+  PHP также поддерживает альтернативный синтаксис с двоеточием для циклов
+  <i>for</i>.
+  <div class="informalexample">
+   <div class="example-contents">
+<div class="cdata"><pre>
+for (expr1; expr2; expr3):
+    statement
+    ...
+endfor;
+</pre></div>
+   </div>
+
+  </div>
+ </p>
+ <p class="simpara">
+  Перебор массивов как показано ниже - это обычное дело для
+  многих пользователей.
+ </p>
+ <p class="para">
+  <div class="informalexample">
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">/*<br />*&nbsp;Это&nbsp;массив&nbsp;с&nbsp;некоторыми&nbsp;данными,&nbsp;которые&nbsp;мы&nbsp;хотим&nbsp;изменить<br />*&nbsp;при&nbsp;работе&nbsp;цикла.<br />*/<br /></span><span style="color: #0000BB">$people&nbsp;</span><span style="color: #007700">=&nbsp;Array(<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Array(</span><span style="color: #DD0000">'name'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'Kalle'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'salt'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">856412</span><span style="color: #007700">),<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Array(</span><span style="color: #DD0000">'name'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'Pierre'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'salt'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">215863</span><span style="color: #007700">)<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;);<br /><br />for(</span><span style="color: #0000BB">$i&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">;&nbsp;</span><span style="color: #0000BB">$i&nbsp;</span><span style="color: #007700">&lt;&nbsp;</span><span style="color: #0000BB">sizeof</span><span style="color: #007700">(</span><span style="color: #0000BB">$people</span><span style="color: #007700">);&nbsp;++</span><span style="color: #0000BB">$i</span><span style="color: #007700">)<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$people</span><span style="color: #007700">[</span><span style="color: #0000BB">$i</span><span style="color: #007700">][</span><span style="color: #DD0000">'salt'</span><span style="color: #007700">]&nbsp;=&nbsp;</span><span style="color: #0000BB">rand</span><span style="color: #007700">(</span><span style="color: #0000BB">000000</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">999999</span><span style="color: #007700">);<br />}<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+   </div>
+
+  </div>
+ </p>
+ <p class="simpara">
+  Проблема заключается во втором выражении. Этот код может быть
+  медленным, так как он должен вычислять размер массива в каждой итерации.
+  Так как размер массива не меняется, код может быть легко оптимизирован,
+  используя промежуточную переменную для хранения размера и применяя
+  ее в цикле вместо оператора sizeof. Пример ниже это иллюстрирует:
+ </p>
+ <p class="para">
+  <div class="informalexample">
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$people&nbsp;</span><span style="color: #007700">=&nbsp;Array(<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Array(</span><span style="color: #DD0000">'name'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'Kalle'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'salt'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">856412</span><span style="color: #007700">),<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Array(</span><span style="color: #DD0000">'name'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'Pierre'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'salt'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">215863</span><span style="color: #007700">)<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;);<br /><br />for(</span><span style="color: #0000BB">$i&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$size&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">sizeof</span><span style="color: #007700">(</span><span style="color: #0000BB">$people</span><span style="color: #007700">);&nbsp;</span><span style="color: #0000BB">$i&nbsp;</span><span style="color: #007700">&lt;&nbsp;</span><span style="color: #0000BB">$size</span><span style="color: #007700">;&nbsp;++</span><span style="color: #0000BB">$i</span><span style="color: #007700">)<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$people</span><span style="color: #007700">[</span><span style="color: #0000BB">$i</span><span style="color: #007700">][</span><span style="color: #DD0000">'salt'</span><span style="color: #007700">]&nbsp;=&nbsp;</span><span style="color: #0000BB">rand</span><span style="color: #007700">(</span><span style="color: #0000BB">000000</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">999999</span><span style="color: #007700">);<br />}<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+   </div>
+
+  </div>
+ </p>
+</div><hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="control-structures.do.while.html">do-while</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="control-structures.foreach.html">foreach</a></div>
+ <div class="up"><a href="language.control-structures.html">Управляющие конструкции</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

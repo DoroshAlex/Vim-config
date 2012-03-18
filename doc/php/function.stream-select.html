@@ -1,0 +1,273 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Запускает эквивалент системного вызова select() на заданных массивах
+   потоков с таймаутом, указанным параметрами tv_sec и tv_usec</title>
+
+ </head>
+ <body><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.stream-resolve-include-path.html">stream_resolve_include_path</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.stream-set-blocking.html">stream_set_blocking</a></div>
+ <div class="up"><a href="ref.stream.html">Stream Функции</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.stream-select" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">stream_select</h1>
+  <p class="verinfo">(PHP 4 &gt;= 4.3.0, PHP 5)</p><p class="refpurpose"><span class="refname">stream_select</span> &mdash; <span class="dc-title">Запускает эквивалент системного вызова select() на заданных массивах
+   потоков с таймаутом, указанным параметрами tv_sec и tv_usec </span></p>
+
+ </div>
+ <div class="refsect1 description" id="refsect1-function.stream-select-description">
+  <h3 class="title">Описание</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">int</span> <span class="methodname"><b>stream_select</b></span>
+    ( <span class="methodparam"><span class="type">array</span> <tt class="parameter reference">&$read</tt></span>
+   , <span class="methodparam"><span class="type">array</span> <tt class="parameter reference">&$write</tt></span>
+   , <span class="methodparam"><span class="type">array</span> <tt class="parameter reference">&$except</tt></span>
+   , <span class="methodparam"><span class="type">int</span> <tt class="parameter">$tv_sec</tt></span>
+   [, <span class="methodparam"><span class="type">int</span> <tt class="parameter">$tv_usec</tt><span class="initializer"> = 0</span></span>
+  ] )</div>
+
+  <p class="para rdfs-comment">
+   Функция  <span class="function"><b>stream_select()</b></span> получает массивы потоков и ждёт
+   изменения их статуса. Её работа эквивалентна работе функции
+   <span class="function"><a href="function.socket-select.html" class="function">socket_select()</a></span>, за исключением того, что она работает с потоками.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-function.stream-select-parameters">
+  <h3 class="title">Список параметров</h3>
+  <p class="para">
+   <dl>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">read</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Потоки, перечисленные в массиве <i><tt class="parameter">read</tt></i> будут отслеживаться на предмет
+       появления символов, доступных для чтения (точнее отслеживается, что чтение 
+       не будет блокироваться - в частности, потоковый ресурс также готов для чтения в
+       конце файла, но в этом случае функция <span class="function"><a href="function.fread.html" class="function">fread()</a></span> будет возвращать
+       строку нулевой длины).
+      </p>
+     </dd>
+
+    </dt>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">write</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Потоки, перечисленные в массиве <i><tt class="parameter">write</tt></i>, будут отслеживаться
+       на предмет того, что запись в них не будет блокироваться.
+      </p>
+     </dd>
+
+    </dt>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">except</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Потоки, перечисленные в массиве <i><tt class="parameter">except</tt></i>, будут отслеживаться на предмет
+    поступления высокоприоритетных исключительных (внеполосных или &quot;out-of-band&quot;) данных.
+      </p>
+      <blockquote class="note"><p><b class="note">Замечание</b>: 
+       <p class="para">
+        Когда <span class="function"><b>stream_select()</b></span> возвращается, массивы
+        <i><tt class="parameter">read</tt></i>, <i><tt class="parameter">write</tt></i> и
+        <i><tt class="parameter">except</tt></i> изменяются для того, чтобы указать, какие потоковые
+        ресурсы на самом деле изменили статус.
+       </p>
+      </p></blockquote>
+      <span class="simpara">
+       Вам нет необходимости передавать каждый массив функции
+       <span class="function"><b>stream_select()</b></span>. Вы можете использовать вместо этого
+       пустые массивы или <b><tt>NULL</tt></b>. Также не забывайте, что эти массивы передаются
+       <em class="emphasis">по ссылке</em> и  будут изменены после
+       выполнения функции<span class="function"><b>stream_select()</b></span>.
+      </span>
+     </dd>
+
+    </dt>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">tv_sec</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Параметры <i><tt class="parameter">tv_sec</tt></i> и <i><tt class="parameter">tv_usec</tt></i>
+       вместе формируют параметр <em class="emphasis">timeout</em>,
+       <i><tt class="parameter">tv_sec</tt></i> указывает число секунд, а
+       <i><tt class="parameter">tv_usec</tt></i> - число микросекунд.
+       Параметр  <i><tt class="parameter">timeout</tt></i> - это верхняя граница времени, 
+       которое функция <span class="function"><b>stream_select()</b></span> будет ожидать до возвращения.
+       Если параметры <i><tt class="parameter">tv_sec</tt></i> и <i><tt class="parameter">tv_usec</tt></i> 
+       оба установлены в <i>0</i>, то функция <span class="function"><b>stream_select()</b></span> 
+       не будет ожидать данных - вместо этого она вернётся немедленно, указывая текущий 
+       статус потоков.
+      </p>
+      <p class="para">
+       Если параметр <i><tt class="parameter">tv_sec</tt></i> равен <b><tt>NULL</tt></b>, то функция <span class="function"><b>stream_select()</b></span>
+       может выполняться неопределённое время, возвращаясь только тогда, когда происходит событие на одном из
+       отслеживаемых потоков (или если системный вызов прерывается сигналом).
+      </p>
+      <div class="warning"><b class="warning">Внимание</b>
+       <p class="para">
+        Использование значения тайм-аута <i>0</i> позволяет вам
+        мгновенно опросить статус потоков, однако ПЛОХАЯ
+        идея использовать значение тайм-аута <i>0</i> в цикле, так как
+        это заставит ваш скрипт потреблять слишком много процессорного времени.
+       </p>
+       <p class="para">
+        Гораздо лучше указать значение тайм-аута в несколько секунд, хотя
+        если вам нужно проверять и одновременно запускать другой код, использование
+        тайм-аута как минимум <i>200000</i> микросекунд
+        поможет уменьшить использование процессорного времени вашим скриптом.
+       </p>
+       <p class="para">
+        Запомните, что значение тайм-аута - это максимальное время, которое будет затрачено.
+        Функция <span class="function"><b>stream_select()</b></span> вернётся как только
+        запрошенные потоки будут готовы к использованию.
+       </p>
+      </div>
+     </dd>
+
+    </dt>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">tv_usec</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Смотрите описание параметра <i><tt class="parameter">tv_sec</tt></i>.
+      </p>
+     </dd>
+
+    </dt>
+
+   </dl>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-function.stream-select-returnvalues">
+  <h3 class="title">Возвращаемые значения</h3>
+  <p class="para">
+   В случае успеха функция <span class="function"><b>stream_select()</b></span> возвращает количество
+   потоковых ресурсов, содержащееся в изменённых массивах, которое может равно нулю, если
+   истёк тайм-аут до того, как произошло что-то интересное. В случае ошибки возвращается <b><tt>FALSE</tt></b>
+   и возникает предупреждение (это может случится, если системный вызов 
+   прерывается входящим сигналом).
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-function.stream-select-examples">
+  <h3 class="title">Примеры</h3>
+  <p class="para">
+   <div class="example" id="example-3627">
+    <p><b>Пример #1 Пример использования<span class="function"><b>stream_select()</b></span></b></p>
+    <div class="example-contents"><p>
+     Этот пример проверяет, что получены данные для чтения на потоках
+     <i><tt class="parameter">$stream1</tt></i> или <i><tt class="parameter">$stream2</tt></i>.
+     Так как значение тайм-аута равно <i>0</i>, функция возвратится 
+     немедленно:
+    </p></div>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">/*&nbsp;Подготовить&nbsp;массив&nbsp;для&nbsp;чтения&nbsp;*/<br /></span><span style="color: #0000BB">$read&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">=&nbsp;array(</span><span style="color: #0000BB">$stream1</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$stream2</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$write&nbsp;&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">NULL</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$except&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">NULL</span><span style="color: #007700">;<br />if&nbsp;(</span><span style="color: #0000BB">false&nbsp;</span><span style="color: #007700">===&nbsp;(</span><span style="color: #0000BB">$num_changed_streams&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">stream_select</span><span style="color: #007700">(</span><span style="color: #0000BB">$read</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$write</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$except</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">)))&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">/*&nbsp;Обработка&nbsp;ошибок&nbsp;*/<br /></span><span style="color: #007700">}&nbsp;elseif&nbsp;(</span><span style="color: #0000BB">$num_changed_streams&nbsp;</span><span style="color: #007700">&gt;&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">/*&nbsp;Как&nbsp;минимум&nbsp;на&nbsp;одном&nbsp;из&nbsp;потоков&nbsp;произошло&nbsp;что-то&nbsp;интересное&nbsp;*/<br /></span><span style="color: #007700">}<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+  </p>
+ </div>
+
+
+ <div class="refsect1 notes" id="refsect1-function.stream-select-notes">
+  <h3 class="title">Примечания</h3>
+  <blockquote class="note"><p><b class="note">Замечание</b>: 
+   <p class="para">
+    По причине ограничения в текущем  Zend Engine невозможно передать
+    постоянную <b><tt>NULL</tt></b> непосредственно как параметр в функцию,
+    которая ожидает, что этот параметр будет передан по ссылке. Вместо этого используйте
+    временную переменную или выражение, в котором крайний левый член будет
+    временной переменной:
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$e&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">NULL</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">stream_select</span><span style="color: #007700">(</span><span style="color: #0000BB">$r</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$w</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$e</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+   </div>
+
+   </p>
+  </p></blockquote>
+  <blockquote class="note"><p><b class="note">Замечание</b>: 
+   <p class="para">
+   Убедитесь, что используете оператор <i>===</i> при проверке на 
+   ошибку. Так как функция <span class="function"><b>stream_select()</b></span> может возвращать 0,
+   сравнение с  использованием <i>==</i> может возвращать <b><tt>TRUE</tt></b>:
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$e&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">NULL</span><span style="color: #007700">;<br />if&nbsp;(</span><span style="color: #0000BB">false&nbsp;</span><span style="color: #007700">===&nbsp;</span><span style="color: #0000BB">stream_select</span><span style="color: #007700">(</span><span style="color: #0000BB">$r</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$w</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$e</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">))&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"Произошла&nbsp;ошибка&nbsp;при&nbsp;вызове&nbsp;stream_select()\n"</span><span style="color: #007700">;<br />}<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+   </div>
+
+   </p>
+  </p></blockquote>
+  <blockquote class="note"><p><b class="note">Замечание</b>: 
+   <p class="para">
+    Если вы читаете/пишете в поток, возвращаемый в массивах, знайте, что
+    они не обязательно читают/пишут полное количество данных, которое вы 
+    запросили. Будьте готовы к тому, чтобы иметь возможность читать/писать 
+    даже по одному байту.
+   </p>
+  </p></blockquote>
+  <blockquote class="note"><p><b class="note">Замечание</b>: 
+   <p class="para">
+    Некоторые потоки (например, <i>zlib</i>) не могут быть выбраны этой
+    функцией.
+   </p>
+  </p></blockquote>
+  <blockquote class="note"><p><b class="note">Замечание</b>: 
+   <p class="para">
+    Совместимость с Windows: функция <span class="function"><b>stream_select()</b></span>, используемая на канале,
+    возвращённом из функции <span class="function"><a href="function.proc-open.html" class="function">proc_open()</a></span>, может вызвать потерю данных
+    под Windows 98.
+   </p>
+   <p class="para">
+    Использование функции <span class="function"><b>stream_select()</b></span> на
+    файловых дескрипторах, возвращённых функцией <span class="function"><a href="function.proc-open.html" class="function">proc_open()</a></span> не удастся
+    и возвратит <b><tt>FALSE</tt></b> под Windows.
+   </p>
+  </p></blockquote>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-function.stream-select-seealso">
+  <h3 class="title">Смотрите также</h3>
+  <ul class="simplelist">
+   <li class="member"><span class="function"><a href="function.stream-set-blocking.html" class="function" rel="rdfs-seeAlso">stream_set_blocking()</a> - Устанавливает блокирующий/неблокирующий режим на потоке</span></li>
+  </ul>
+ </div>
+
+</div><hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.stream-resolve-include-path.html">stream_resolve_include_path</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.stream-set-blocking.html">stream_set_blocking</a></div>
+ <div class="up"><a href="ref.stream.html">Stream Функции</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

@@ -1,0 +1,150 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Записывает отформатированную строку в поток</title>
+
+ </head>
+ <body><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.explode.html">explode</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.get-html-translation-table.html">get_html_translation_table</a></div>
+ <div class="up"><a href="ref.strings.html">Обработка строк</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.fprintf" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">fprintf</h1>
+  <p class="verinfo">(PHP 5)</p><p class="refpurpose"><span class="refname">fprintf</span> &mdash; <span class="dc-title">Записывает отформатированную строку в поток</span></p>
+
+ </div>
+
+ <div class="refsect1 description" id="refsect1-function.fprintf-description">
+  <h3 class="title">Описание</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">int</span> <span class="methodname"><b>fprintf</b></span>
+    ( <span class="methodparam"><span class="type">resource</span> <tt class="parameter">$handle</tt></span>
+   , <span class="methodparam"><span class="type">string</span> <tt class="parameter">$format</tt></span>
+   [, <span class="methodparam"><span class="type"><a href="language.pseudo-types.html#language.types.mixed" class="type mixed">mixed</a></span> <tt class="parameter">$args</tt></span>
+   [, <span class="methodparam"><span class="type"><a href="language.pseudo-types.html#language.types.mixed" class="type mixed">mixed</a></span> <tt class="parameter">$...</tt></span>
+  ]] )</div>
+
+  <p class="para rdfs-comment">
+   Записывает строку, созданную с использованием строки формата
+   <i><tt class="parameter">format</tt></i>, в поток, дескриптор которого передается
+   в параметре <i><tt class="parameter">handle</tt></i>.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-function.fprintf-parameters">
+  <h3 class="title">Список параметров</h3>
+  <p class="para">
+   <dl>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">handle</tt></i></span>
+     <dd>
+
+      <p class="para">Указатель (<span class="type"><a href="language.types.resource.html" class="type resource">resource</a></span>)
+на файл, обычно создаваемый с помощью функции <span class="function"><a href="function.fopen.html" class="function">fopen()</a></span>.</p>
+     </dd>
+
+    </dt>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">format</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Описание параметра <i><tt class="parameter">format</tt></i> смотрите в
+       описании функции <span class="function"><a href="function.sprintf.html" class="function">sprintf()</a></span>.
+      </p>
+     </dd>
+
+    </dt>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">args</tt></i></span>
+     <dd>
+
+      <p class="para">
+      </p>
+     </dd>
+
+    </dt>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">...</tt></i></span>
+     <dd>
+
+      <p class="para">
+      </p>
+     </dd>
+
+    </dt>
+
+   </dl>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-function.fprintf-returnvalues">
+  <h3 class="title">Возвращаемые значения</h3>
+  <p class="para">
+   Возвращает длину записанной строки.
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-function.fprintf-examples">
+  <h3 class="title">Примеры</h3>
+  <p class="para">
+   <div class="example" id="example-4337">
+    <p><b>Пример #1 <span class="function"><b>fprintf()</b></span>: заполнение нулями</b></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">if&nbsp;(!(</span><span style="color: #0000BB">$fp&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">fopen</span><span style="color: #007700">(</span><span style="color: #DD0000">'date.txt'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'w'</span><span style="color: #007700">)))&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;return;<br />}<br /><br /></span><span style="color: #0000BB">fprintf</span><span style="color: #007700">(</span><span style="color: #0000BB">$fp</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"%04d-%02d-%02d"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$year</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$month</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$day</span><span style="color: #007700">);<br /></span><span style="color: #FF8000">//&nbsp;запишет&nbsp;форматированную&nbsp;ISO&nbsp;дату&nbsp;в&nbsp;файл&nbsp;date.txt<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+   <div class="example" id="example-4338">
+    <p><b>Пример #2 <span class="function"><b>fprintf()</b></span>: форматирование денежных величин</b></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">if&nbsp;(!(</span><span style="color: #0000BB">$fp&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">fopen</span><span style="color: #007700">(</span><span style="color: #DD0000">'currency.txt'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'w'</span><span style="color: #007700">)))&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;return;<br />}<br /><br /></span><span style="color: #0000BB">$money1&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">68.75</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$money2&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">54.35</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$money&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$money1&nbsp;</span><span style="color: #007700">+&nbsp;</span><span style="color: #0000BB">$money2</span><span style="color: #007700">;<br /></span><span style="color: #FF8000">//&nbsp;echo&nbsp;$money&nbsp;выведет&nbsp;"123.1";<br /></span><span style="color: #0000BB">$len&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">fprintf</span><span style="color: #007700">(</span><span style="color: #0000BB">$fp</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'%01.2f'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$money</span><span style="color: #007700">);<br /></span><span style="color: #FF8000">//&nbsp;строка&nbsp;"123.10"&nbsp;записана&nbsp;в&nbsp;файл&nbsp;currency.txt<br /><br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #DD0000">"записано&nbsp;</span><span style="color: #0000BB">$len</span><span style="color: #DD0000">&nbsp;байт&nbsp;в&nbsp;файл&nbsp;currency.txt"</span><span style="color: #007700">;<br /></span><span style="color: #FF8000">//&nbsp;используйте&nbsp;возвращаемое&nbsp;из&nbsp;fprintf&nbsp;значение&nbsp;для&nbsp;определения&nbsp;количества&nbsp;записанных&nbsp;байт<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+  </p>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-function.fprintf-seealso">
+  <h3 class="title">Смотрите также</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><span class="function"><a href="function.printf.html" class="function" rel="rdfs-seeAlso">printf()</a> - Выводит отформатированную строку</span></li>
+    <li class="member"><span class="function"><a href="function.sprintf.html" class="function" rel="rdfs-seeAlso">sprintf()</a> - Возвращает отформатированную строку</span></li>
+    <li class="member"><span class="function"><a href="function.sscanf.html" class="function" rel="rdfs-seeAlso">sscanf()</a> - Разбирает строку в соответствии с заданным форматом</span></li>
+    <li class="member"><span class="function"><a href="function.fscanf.html" class="function" rel="rdfs-seeAlso">fscanf()</a> - Обрабатывает данные из файла в соответствии с форматом</span></li>
+    <li class="member"><span class="function"><a href="function.vsprintf.html" class="function" rel="rdfs-seeAlso">vsprintf()</a> - Возвращает отформатированную строку</span></li>
+    <li class="member"><span class="function"><a href="function.number-format.html" class="function" rel="rdfs-seeAlso">number_format()</a> - Форматирует число с разделением групп</span></li>
+   </ul>
+  </p>
+ </div>
+
+
+</div><hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.explode.html">explode</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.get-html-translation-table.html">get_html_translation_table</a></div>
+ <div class="up"><a href="ref.strings.html">Обработка строк</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

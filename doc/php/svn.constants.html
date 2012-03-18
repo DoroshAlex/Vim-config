@@ -1,0 +1,582 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Предопределенные константы</title>
+
+ </head>
+ <body><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="svn.resources.html">Типы ресурсов</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="ref.svn.html">SVN</a></div>
+ <div class="up"><a href="book.svn.html">SVN</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="svn.constants" class="appendix">
+ <h1>Предопределенные константы</h1>
+
+ <p class="simpara">
+Перечисленные ниже константы определены данным расширением и могут быть
+доступны только в том случае, если PHP был собран с
+поддержкой этого расширения или же в том случае, если
+данное расширение было подгружено во время выполнения.
+</p>
+ <dl>
+
+  <dt>
+
+   <span class="term">
+    <b><tt>SVN_REVISION_HEAD</tt></b>
+     (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
+   </span>
+   <dd>
+
+    <span class="simpara">
+     Магическое число (-1), указывающее на последнюю ревизию
+    </span>
+   </dd>
+
+  </dt>
+
+ </dl>
+
+ <dl>
+
+  <strong class="title">Константы, используемые с <span class="function"><a href="function.svn-auth-set-parameter.html" class="function">svn_auth_set_parameter()</a></span></strong>
+  <dt>
+
+   <span class="term">
+    <b><tt>SVN_AUTH_PARAM_DEFAULT_USERNAME</tt></b> 
+    (<span class="type"><a href="language.types.string.html" class="type string">string</a></span>)
+   </span>
+   <dd>
+
+    <span class="simpara">
+     Свойство, определяющее имя пользователя по умолчанию, которое будет использоваться при выполнении
+     базовой аутентификации
+    </span>
+   </dd>
+
+  </dt>
+
+  <dt>
+
+   <span class="term">
+    <b><tt>SVN_AUTH_PARAM_DEFAULT_PASSWORD</tt></b> 
+    (<span class="type"><a href="language.types.string.html" class="type string">string</a></span>)
+   </span>
+   <dd>
+
+    <span class="simpara">
+     Свойство, определяющее пароль пользователя по умолчанию, которое будет использоваться при выполнении
+     базовой аутентификации
+    </span>
+   </dd>
+
+  </dt>
+
+  <dt>
+
+   <span class="term">
+    <b><tt>SVN_AUTH_PARAM_NON_INTERACTIVE</tt></b> 
+    (<span class="type"><a href="language.types.string.html" class="type string">string</a></span>)
+   </span>
+   <dd>
+<span class="simpara"/></dd>
+
+  </dt>
+
+  <dt>
+
+   <span class="term">
+    <b><tt>SVN_AUTH_PARAM_DONT_STORE_PASSWORDS</tt></b> 
+    (<span class="type"><a href="language.types.string.html" class="type string">string</a></span>)
+   </span>
+   <dd>
+<span class="simpara"/></dd>
+
+  </dt>
+
+  <dt>
+
+   <span class="term">
+    <b><tt>SVN_AUTH_PARAM_NO_AUTH_CACHE</tt></b> 
+    (<span class="type"><a href="language.types.string.html" class="type string">string</a></span>)
+   </span>
+   <dd>
+<span class="simpara"/></dd>
+
+  </dt>
+
+  <dt>
+
+   <span class="term">
+    <b><tt>SVN_AUTH_PARAM_SSL_SERVER_FAILURES</tt></b> 
+    (<span class="type"><a href="language.types.string.html" class="type string">string</a></span>)
+   </span>
+   <dd>
+<span class="simpara"/></dd>
+
+  </dt>
+
+  <dt>
+
+   <span class="term">
+    <b><tt>SVN_AUTH_PARAM_SSL_SERVER_CERT_INFO</tt></b> 
+    (<span class="type"><a href="language.types.string.html" class="type string">string</a></span>)
+   </span>
+   <dd>
+<span class="simpara"/></dd>
+
+  </dt>
+
+  <dt>
+
+   <span class="term">
+    <b><tt>SVN_AUTH_PARAM_CONFIG</tt></b> 
+    (<span class="type"><a href="language.types.string.html" class="type string">string</a></span>)
+   </span>
+   <dd>
+<span class="simpara"/></dd>
+
+  </dt>
+
+  <dt>
+
+   <span class="term">
+    <b><tt>SVN_AUTH_PARAM_SERVER_GROUP</tt></b> 
+    (<span class="type"><a href="language.types.string.html" class="type string">string</a></span>)
+   </span>
+   <dd>
+<span class="simpara"/></dd>
+
+  </dt>
+
+  <dt>
+
+   <span class="term">
+    <b><tt>SVN_AUTH_PARAM_CONFIG_DIR</tt></b> 
+    (<span class="type"><a href="language.types.string.html" class="type string">string</a></span>)
+   </span>
+   <dd>
+<span class="simpara"/></dd>
+
+  </dt>
+
+  <dt>
+
+   <span class="term">
+    <b><tt>PHP_SVN_AUTH_PARAM_IGNORE_SSL_VERIFY_ERRORS</tt></b> 
+    (<span class="type"><a href="language.types.string.html" class="type string">string</a></span>)
+   </span>
+   <dd>
+
+    <span class="simpara">
+      Поле, предписывающее игнорирование ошибок верификации SSL сертификата
+    </span>
+   </dd>
+
+  </dt>
+
+ </dl>
+
+ <dl>
+
+  <strong class="title">Константы файловой системы</strong>
+  <dt>
+
+   <span class="term">
+    <b><tt>SVN_FS_CONFIG_FS_TYPE</tt></b> 
+    (<span class="type"><a href="language.types.string.html" class="type string">string</a></span>)
+   </span>
+   <dd>
+
+    <span class="simpara">
+     Ключ конфигурации, определяющий тип файловой системы
+    </span>
+   </dd>
+
+  </dt>
+
+  <dt>
+
+   <span class="term">
+    <b><tt>SVN_FS_TYPE_BDB</tt></b> 
+    (<span class="type"><a href="language.types.string.html" class="type string">string</a></span>)
+   </span>
+   <dd>
+
+    <span class="simpara">
+     Файловая система, реализуемая Berkeley-DB
+    </span>
+   </dd>
+
+  </dt>
+
+  <dt>
+
+   <span class="term">
+    <b><tt>SVN_FS_TYPE_FSFS</tt></b> 
+    (<span class="type"><a href="language.types.string.html" class="type string">string</a></span>)
+   </span>
+   <dd>
+
+    <span class="simpara">
+     Файловая система, реализуемая стандартным образом
+    </span>
+   </dd>
+
+  </dt>
+
+ </dl>
+
+ <dl>
+
+  <strong class="title">Константы заразервированых свойств</strong>
+  <dt>
+
+   <span class="term">
+    <b><tt>SVN_PROP_REVISION_DATE</tt></b> 
+    (<span class="type"><a href="language.types.string.html" class="type string">string</a></span>)
+   </span>
+   <dd>
+
+    <span class="simpara">
+     svn:date
+    </span>
+   </dd>
+
+  </dt>
+
+  <dt>
+
+   <span class="term">
+    <b><tt>SVN_PROP_REVISION_ORIG_DATE</tt></b> 
+    (<span class="type"><a href="language.types.string.html" class="type string">string</a></span>)
+   </span>
+   <dd>
+
+    <span class="simpara">
+     svn:original-date
+    </span>
+   </dd>
+
+  </dt>
+
+  <dt>
+
+   <span class="term">
+    <b><tt>SVN_PROP_REVISION_AUTHOR</tt></b> 
+    (<span class="type"><a href="language.types.string.html" class="type string">string</a></span>)
+   </span>
+   <dd>
+
+    <span class="simpara">
+     svn:author
+    </span>
+   </dd>
+
+  </dt>
+
+  <dt>
+
+   <span class="term">
+    <b><tt>SVN_PROP_REVISION_LOG</tt></b> 
+    (<span class="type"><a href="language.types.string.html" class="type string">string</a></span>)
+   </span>
+   <dd>
+
+    <span class="simpara">
+     svn:log
+    </span>
+   </dd>
+
+  </dt>
+
+ </dl>
+
+ <dl>
+
+  <strong class="title">Константы статуса рабочей копии</strong>
+  <dt>
+
+   <span class="term">
+    <b><tt>SVN_WC_STATUS_NONE</tt></b> 
+    (<span class="type"><a href="language.types.integer.html" class="type int">int</a></span>)
+   </span>
+   <dd>
+
+    <span class="simpara">
+     Статус отсутствует
+    </span>
+   </dd>
+
+  </dt>
+
+  <dt>
+
+   <span class="term">
+    <b><tt>SVN_WC_STATUS_UNVERSIONED</tt></b> 
+    (<span class="type"><a href="language.types.integer.html" class="type int">int</a></span>)
+   </span>
+   <dd>
+
+    <span class="simpara">
+     Элемент не имеет версии в рабочей копии
+    </span>
+   </dd>
+
+  </dt>
+
+  <dt>
+
+   <span class="term">
+    <b><tt>SVN_WC_STATUS_NORMAL</tt></b> 
+    (<span class="type"><a href="language.types.integer.html" class="type int">int</a></span>)
+   </span>
+   <dd>
+
+    <span class="simpara">
+     Элемент существует, действий над ним не происходит
+    </span>
+   </dd>
+
+  </dt>
+
+  <dt>
+
+   <span class="term">
+    <b><tt>SVN_WC_STATUS_ADDED</tt></b> 
+    (<span class="type"><a href="language.types.integer.html" class="type int">int</a></span>)
+   </span>
+   <dd>
+
+    <span class="simpara">
+     Элемент запланирован к добавлению в репозиторий
+    </span>
+   </dd>
+
+  </dt>
+
+  <dt>
+
+   <span class="term">
+    <b><tt>SVN_WC_STATUS_MISSING</tt></b> 
+    (<span class="type"><a href="language.types.integer.html" class="type int">int</a></span>)
+   </span>
+   <dd>
+
+    <span class="simpara">
+     Элемент имеет версию, но отсутствует в рабочей копии
+    </span>
+   </dd>
+
+  </dt>
+
+  <dt>
+
+   <span class="term">
+    <b><tt>SVN_WC_STATUS_DELETED</tt></b> 
+    (<span class="type"><a href="language.types.integer.html" class="type int">int</a></span>)
+   </span>
+   <dd>
+
+    <span class="simpara">
+     Элемент запланирован к удалению
+    </span>
+   </dd>
+
+  </dt>
+
+  <dt>
+
+   <span class="term">
+    <b><tt>SVN_WC_STATUS_REPLACED</tt></b> 
+    (<span class="type"><a href="language.types.integer.html" class="type int">int</a></span>)
+   </span>
+   <dd>
+
+    <span class="simpara">
+     Элемент был удален, а затем снова добавлен
+    </span>
+   </dd>
+
+  </dt>
+
+  <dt>
+
+   <span class="term">
+    <b><tt>SVN_WC_STATUS_MODIFIED</tt></b> 
+    (<span class="type"><a href="language.types.integer.html" class="type int">int</a></span>)
+   </span>
+   <dd>
+
+    <span class="simpara">
+     Элемент (текст или свойства) был изменен
+    </span>
+   </dd>
+
+  </dt>
+
+  <dt>
+
+   <span class="term">
+    <b><tt>SVN_WC_STATUS_MERGED</tt></b> 
+    (<span class="type"><a href="language.types.integer.html" class="type int">int</a></span>)
+   </span>
+   <dd>
+
+    <span class="simpara">
+     Локальные изменения элемента были объединены с изменениями в репозитории
+    </span>
+   </dd>
+
+  </dt>
+
+  <dt>
+
+   <span class="term">
+    <b><tt>SVN_WC_STATUS_CONFLICTED</tt></b> 
+    (<span class="type"><a href="language.types.integer.html" class="type int">int</a></span>)
+   </span>
+   <dd>
+
+    <span class="simpara">
+     Локальные изменения элемента конфликтуют с изменениями в репозитории
+    </span>
+   </dd>
+
+  </dt>
+
+  <dt>
+
+   <span class="term">
+    <b><tt>SVN_WC_STATUS_IGNORED</tt></b> 
+    (<span class="type"><a href="language.types.integer.html" class="type int">int</a></span>)
+   </span>
+   <dd>
+
+    <span class="simpara">
+     Элемент не имеет версии и игнорируется системой контроля версий
+    </span>
+   </dd>
+
+  </dt>
+
+  <dt>
+
+   <span class="term">
+    <b><tt>SVN_WC_STATUS_OBSTRUCTED</tt></b> 
+    (<span class="type"><a href="language.types.integer.html" class="type int">int</a></span>)
+   </span>
+   <dd>
+
+    <span class="simpara">
+     Элемент, не имеющий версии, связан с ресурсом, имеющим версию.
+    </span>
+   </dd>
+
+  </dt>
+
+  <dt>
+
+   <span class="term">
+    <b><tt>SVN_WC_STATUS_EXTERNAL</tt></b> 
+    (<span class="type"><a href="language.types.integer.html" class="type int">int</a></span>)
+   </span>
+   <dd>
+
+    <span class="simpara">
+     Неверсированный путь, пополняемый с использованием svn:externals
+    </span>
+   </dd>
+
+  </dt>
+
+  <dt>
+
+   <span class="term">
+    <b><tt>SVN_WC_STATUS_INCOMPLETE</tt></b> 
+    (<span class="type"><a href="language.types.integer.html" class="type int">int</a></span>)
+   </span>
+   <dd>
+
+    <span class="simpara">
+     Директория не содержит полного списка записей
+    </span>
+   </dd>
+
+  </dt>
+
+ </dl>
+
+ <dl>
+
+  <strong class="title">Константы типа Node</strong>
+  <dt>
+
+   <span class="term">
+    <b><tt>SVN_NODE_NONE</tt></b> 
+    (<span class="type"><a href="language.types.integer.html" class="type int">int</a></span>)
+   </span>
+   <dd>
+
+    <span class="simpara">
+     Отсутствует
+    </span>
+   </dd>
+
+  </dt>
+
+  <dt>
+
+   <span class="term">
+    <b><tt>SVN_NODE_FILE</tt></b> 
+    (<span class="type"><a href="language.types.integer.html" class="type int">int</a></span>)
+   </span>
+   <dd>
+
+    <span class="simpara">
+     Файл
+    </span>
+   </dd>
+
+  </dt>
+
+  <dt>
+
+   <span class="term">
+    <b><tt>SVN_NODE_DIR</tt></b> 
+    (<span class="type"><a href="language.types.integer.html" class="type int">int</a></span>)
+   </span>
+   <dd>
+
+    <span class="simpara">
+     Директория
+    </span>
+   </dd>
+
+  </dt>
+
+  <dt>
+
+   <span class="term">
+    <b><tt>SVN_NODE_UNKNOWN</tt></b> 
+    (<span class="type"><a href="language.types.integer.html" class="type int">int</a></span>)
+   </span>
+   <dd>
+
+    <span class="simpara">
+     Нечто, неидентифицируемое Subversion
+    </span>
+   </dd>
+
+  </dt>
+
+ </dl>
+
+</div>
+<hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="svn.resources.html">Типы ресурсов</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="ref.svn.html">SVN</a></div>
+ <div class="up"><a href="book.svn.html">SVN</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

@@ -1,0 +1,301 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Класс TidyNode</title>
+
+ </head>
+ <body><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="tidy.root.html">tidy::root</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="tidynode.getparent.html">tidyNode::getParent</a></div>
+ <div class="up"><a href="book.tidy.html">Tidy</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="class.tidynode" class="reference">
+ <h1 class="title">Класс <a href="class.tidynode.html" class="classname">TidyNode</a></h1>
+ 
+ 
+ <div class="partintro"><p class="verinfo">(Информация о версии неизвестна, возможно, только в SVN)</p>
+ 
+
+  <div class="section" id="tidynode.intro">
+   <h2 class="title">Введение</h2>
+   <p class="para">
+    HTML-узел в HTML-файле, обнаруженный Tidy.
+   </p>
+  </div>
+
+ 
+  <div class="section" id="tidynode.synopsis">
+   <h2 class="title">Обзор классов</h2>
+
+
+   <div class="classsynopsis">
+    <div class="ooclass"></div>
+
+
+    <div class="classsynopsisinfo">
+     <span class="ooclass">
+      <b class="classname">TidyNode</b>
+     </span>
+     {</div>
+
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Свойства */</div>
+    <div class="fieldsynopsis"><span class="type"/> <var class="varname"><a href="class.tidynode.html#tidynode.props.value">$<var class="varname">TidyNode-&gt;value</var></a></var>;</div>
+
+    <div class="fieldsynopsis"><span class="type"/> <var class="varname"><a href="class.tidynode.html#tidynode.props.name">$<var class="varname">name</var></a></var>;</div>
+
+    <div class="fieldsynopsis"><span class="type"/> <var class="varname"><a href="class.tidynode.html#tidynode.props.type">$<var class="varname">type</var></a></var>;</div>
+
+    <div class="fieldsynopsis"><span class="type"/> <var class="varname"><a href="class.tidynode.html#tidynode.props.line">$<var class="varname">line</var></a></var>;</div>
+
+    <div class="fieldsynopsis"><span class="type"/> <var class="varname"><a href="class.tidynode.html#tidynode.props.column">$<var class="varname">column</var></a></var>;</div>
+
+    <div class="fieldsynopsis"><span class="type"/> <var class="varname"><a href="class.tidynode.html#tidynode.props.proprietary">$<var class="varname">proprietary</var></a></var>;</div>
+
+    <div class="fieldsynopsis"><span class="type"/> <var class="varname"><a href="class.tidynode.html#tidynode.props.id">$<var class="varname">id</var></a></var>;</div>
+
+    <div class="fieldsynopsis"><span class="type"/> <var class="varname"><a href="class.tidynode.html#tidynode.props.attribute">$<var class="varname">attribute</var></a></var>;</div>
+
+    <div class="fieldsynopsis"><span class="type"/> <var class="varname"><a href="class.tidynode.html#tidynode.props.child">$<var class="varname">child</var></a></var>;</div>
+
+    
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Методы */</div>
+    <div class="methodsynopsis dc-description">
+   <span class="type">tidyNode</span> <span class="methodname"><a href="tidynode.getparent.html" class="methodname">tidyNode::getParent</a></span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="type">bool</span> <span class="methodname"><a href="tidynode.haschildren.html" class="methodname">tidyNode::hasChildren</a></span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="type">bool</span> <span class="methodname"><a href="tidynode.hassiblings.html" class="methodname">tidyNode::hasSiblings</a></span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="type">bool</span> <span class="methodname"><a href="tidynode.isasp.html" class="methodname">tidyNode::isAsp</a></span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="type">bool</span> <span class="methodname"><a href="tidynode.iscomment.html" class="methodname">tidyNode::isComment</a></span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="type">bool</span> <span class="methodname"><a href="tidynode.ishtml.html" class="methodname">tidyNode::isHtml</a></span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="type">bool</span> <span class="methodname"><a href="tidynode.isjste.html" class="methodname">tidyNode::isJste</a></span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="type">bool</span> <span class="methodname"><a href="tidynode.isphp.html" class="methodname">tidyNode::isPhp</a></span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="type">bool</span> <span class="methodname"><a href="tidynode.istext.html" class="methodname">tidyNode::isText</a></span>
+    ( <span class="methodparam">void</span>
+   )</div>
+
+    
+   }</div>
+
+
+  </div>
+
+
+  <div class="section" id="tidynode.props">
+   <h2 class="title">Свойства</h2>
+   <dl>
+
+    <dt id="tidynode.props.value">
+     <span class="term"><var class="varname"><var class="varname">value</var></var></span>
+     <dd>
+
+      <p class="para">HTML-представление узла, включая окружающие теги.</p>
+     </dd>
+
+    </dt>
+
+    <dt id="tidynode.props.name">
+     <span class="term"><var class="varname"><var class="varname">name</var></var></span>
+     <dd>
+
+      <p class="para">Название HTML-узла</p>
+     </dd>
+
+    </dt>
+
+    <dt id="tidynode.props.type">
+     <span class="term"><var class="varname"><var class="varname">type</var></var></span>
+     <dd>
+
+      <p class="para">Тип тэга (одна из констант, описанных выше, таких как <b><tt>TIDY_NODETYPE_PHP</tt></b>)</p>
+     </dd>
+
+    </dt>
+
+    <dt id="tidynode.props.line">
+     <span class="term"><var class="varname"><var class="varname">line</var></var></span>
+     <dd>
+
+      <p class="para">Номер строки, на которой расположен тег в файле</p>
+     </dd>
+
+    </dt>
+
+    <dt id="tidynode.props.column">
+     <span class="term"><var class="varname"><var class="varname">column</var></var></span>
+     <dd>
+
+      <p class="para">Номер столбца, на котором расположен тег в файле</p>
+     </dd>
+
+    </dt>
+
+    <dt id="tidynode.props.proprietary">
+     <span class="term"><var class="varname"><var class="varname">proprietary</var></var></span>
+     <dd>
+
+      <p class="para">Признак проприетарности тега</p>
+     </dd>
+
+    </dt>
+
+    <dt id="tidynode.props.id">
+     <span class="term"><var class="varname"><var class="varname">id</var></var></span>
+     <dd>
+
+      <p class="para">Идентификатор тега (одна из констант, описанных выше, таких как <b><tt>TIDY_TAG_FRAME</tt></b>)</p>
+     </dd>
+
+    </dt>
+
+    <dt id="tidynode.props.attribute">
+     <span class="term"><var class="varname"><var class="varname">attribute</var></var></span>
+     <dd>
+
+      <p class="para">
+       Массив строк, представляющих имена атрибутов (в качестве ключей) текущего узла.
+      </p>
+     </dd>
+
+    </dt>
+
+    <dt id="tidynode.props.child">
+     <span class="term"><var class="varname"><var class="varname">child</var></var></span>
+     <dd>
+
+      <p class="para">
+       Массив, состоящий из экземпляров <b class="classname">TidyNode</b>, представляющий
+       детей текущего узла.
+      </p>
+     </dd>
+
+    </dt>
+
+   </dl>
+
+
+  <p class="para">
+   <table class="doctable informaltable">
+    
+     <thead valign="middle">
+      <tr valign="middle">
+       <th>Версия</th>
+       <th>Описание</th>
+      </tr>
+
+     </thead>
+
+     <tbody valign="middle" class="tbody">
+      <tr valign="middle">
+       <td align="left">5.1.0</td>
+       <td align="left">Были добавлены <var class="varname"><var class="varname">line</var></var>, <var class="varname"><var class="varname">column</var></var>
+       и <var class="varname"><var class="varname">proprietary</var></var></td>
+      </tr>
+
+     </tbody>
+    
+   </table>
+
+  </p>
+
+ </div>
+
+ </div>
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h2>Содержание</h2><ul class="chunklist chunklist_reference"><li><a href="tidynode.getparent.html">tidyNode::getParent</a> — Возвращает родительский узел текущего узла</li><li><a href="tidynode.haschildren.html">tidyNode::hasChildren</a> — Проверяет существование потомков у узла</li><li><a href="tidynode.hassiblings.html">tidyNode::hasSiblings</a> — Проверяет существование соседних узлов</li><li><a href="tidynode.isasp.html">tidyNode::isAsp</a> — Проверяет текущий узел на соответствие ASP</li><li><a href="tidynode.iscomment.html">tidyNode::isComment</a> — Проверяет, является ли узел комментарием</li><li><a href="tidynode.ishtml.html">tidyNode::isHtml</a> — Проверяет, является ли текущий узел частью HTML-документа</li><li><a href="tidynode.isjste.html">tidyNode::isJste</a> — Проверяет текущий узел на соответствие JSTE</li><li><a href="tidynode.isphp.html">tidyNode::isPhp</a> — Проверяет, является ли текущий узел PHP-кодом</li><li><a href="tidynode.istext.html">tidyNode::isText</a> — Проверяет, является ли текущий узел обычным текстом (не разметкой)</li></ul>
+</div>
+<hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="tidy.root.html">tidy::root</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="tidynode.getparent.html">tidyNode::getParent</a></div>
+ <div class="up"><a href="book.tidy.html">Tidy</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

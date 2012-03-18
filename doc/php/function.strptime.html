@@ -1,0 +1,258 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Разбирает строку даты/времени сгенерированную функцией 
+     strftime</title>
+
+ </head>
+ <body><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.strftime.html">strftime</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.strtotime.html">strtotime</a></div>
+ <div class="up"><a href="ref.datetime.html">Функции даты и времени</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.strptime" class="refentry">
+   <div class="refnamediv">
+    <h1 class="refname">strptime</h1>
+    <p class="verinfo">(PHP 5 &gt;= 5.1.0)</p><p class="refpurpose"><span class="refname">strptime</span> &mdash; <span class="dc-title">
+     Разбирает строку даты/времени сгенерированную функцией 
+     <span class="function"><a href="function.strftime.html" class="function">strftime()</a></span>
+    </span></p>
+
+   </div>
+   <div class="refsect1 description" id="refsect1-function.strptime-description">
+    <h3 class="title">Описание</h3>
+    <div class="methodsynopsis dc-description">
+     <span class="type">array</span> <span class="methodname"><b>strptime</b></span>
+      ( <span class="methodparam"><span class="type">string</span> <tt class="parameter">$date</tt></span>
+     , <span class="methodparam"><span class="type">string</span> <tt class="parameter">$format</tt></span>
+     )</div>
+
+    <p class="para rdfs-comment">
+     <span class="function"><b>strptime()</b></span> возвращает массив с данными разбора 
+     строки <i><tt class="parameter">date</tt></i>, либо <b><tt>FALSE</tt></b> в случае ошибки.
+    </p>
+    <p class="para">
+     Названия месяцев и недель, а также другие названия, зависящие от 
+     языка, соответствуют текущим настройкам местоположения, установленным 
+     посредством <span class="function"><a href="function.setlocale.html" class="function">setlocale()</a></span> (<b><tt>LC_TIME</tt></b>).
+    </p>
+   </div>
+
+
+   <div class="refsect1 parameters" id="refsect1-function.strptime-parameters">
+   <h3 class="title">Список параметров</h3>
+   <p class="para">
+    <dl>
+
+     <dt>
+
+      <span class="term"><i><tt class="parameter">date</tt></i> (<span class="type"><a href="language.types.string.html" class="type string">string</a></span>)</span>
+      <dd>
+
+       <p class="para">
+        Строка для разбора (например строковый результат выполнения функции 
+        <span class="function"><a href="function.strftime.html" class="function">strftime()</a></span>).
+       </p>
+      </dd>
+
+     </dt>
+
+     <dt>
+
+      <span class="term"><i><tt class="parameter">format</tt></i> (<span class="type"><a href="language.types.string.html" class="type string">string</a></span>)</span>
+      <dd>
+
+       <p class="para">
+        Формат строки <i><tt class="parameter">date</tt></i> (например формат, 
+        используемый в функции <span class="function"><a href="function.strftime.html" class="function">strftime()</a></span>). Следует 
+        обратить внимание на тот факт, что не все возможности форматирования 
+        используемые в <span class="function"><a href="function.strftime.html" class="function">strftime()</a></span> будут обрабатываться в 
+        <span class="function"><b>strptime()</b></span>; набор поддерживаемых символов 
+        форматирования зависит от ОС и используемой С-библиотеки.
+       </p>
+       <p class="para">
+        За дополнительной информацией о возможностях форматирования 
+        обращайтесь на страницу описания функции 
+        <span class="function"><a href="function.strftime.html" class="function">strftime()</a></span>.
+       </p>
+      </dd>
+
+     </dt>
+
+    </dl>
+
+   </p>
+  </div>
+
+
+  <div class="refsect1 returnvalues" id="refsect1-function.strptime-returnvalues">
+   <h3 class="title">Возвращаемые значения</h3>
+   <p class="para">
+    Возвращает массив или <b><tt>FALSE</tt></b> в случае возникновения ошибки.
+   </p>
+
+    <p class="para">
+     <table class="doctable table">
+      <caption><b>
+       Список элементов возвращаемого массива
+      </b></caption>
+      
+       <thead valign="middle">
+        <tr valign="middle">
+         <th>параметры</th>
+         <th>Описание</th>
+        </tr>
+
+       </thead>
+
+       <tbody valign="middle" class="tbody">
+        <tr valign="middle">
+         <td align="left"><i>&quot;tm_sec&quot;</i></td>
+         <td align="left">
+          Секунды после минут (0-61)
+         </td>
+        </tr>
+
+        <tr valign="middle">
+         <td align="left"><i>&quot;tm_min&quot;</i></td>
+         <td align="left">
+          Минуты после часов (0-59)
+         </td>
+        </tr>
+
+        <tr valign="middle">
+         <td align="left"><i>&quot;tm_hour&quot;</i></td>
+         <td align="left">
+          Часы после полуночи (0-23)
+         </td>
+        </tr>
+
+        <tr valign="middle">
+         <td align="left"><i>&quot;tm_mday&quot;</i></td>
+         <td align="left">День месяца (1-31)</td>
+        </tr>
+
+        <tr valign="middle">
+         <td align="left"><i>&quot;tm_mon&quot;</i></td>
+         <td align="left">Месяцы после Января (0-11)</td>
+        </tr>
+
+        <tr valign="middle">
+         <td align="left"><i>&quot;tm_year&quot;</i></td>
+         <td align="left">Годы после 1900</td>
+        </tr>
+
+        <tr valign="middle">
+         <td align="left"><i>&quot;tm_wday&quot;</i></td>
+         <td align="left">Дни после Воскресенья (0-6)</td>
+        </tr>
+
+        <tr valign="middle">
+         <td align="left"><i>&quot;tm_yday&quot;</i></td>
+         <td align="left">Дни после 1го января (0-365)</td>
+        </tr>
+
+        <tr valign="middle">
+         <td align="left"><i>&quot;unparsed&quot;</i></td>
+         <td align="left">
+          Часть <i><tt class="parameter">date</tt></i>, которую не удалось 
+          распознать в соответствии с <i><tt class="parameter">format</tt></i>
+         </td>
+        </tr>
+
+       </tbody>
+      
+     </table>
+
+    </p>
+
+  </div>
+
+
+  <div class="refsect1 examples" id="refsect1-function.strptime-examples">
+   <h3 class="title">Примеры</h3>
+   <p class="para">
+   <div class="example" id="example-666">
+    <p><b>Пример #1 Пример использования <span class="function"><b>strptime()</b></span></b></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$format&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'%d/%m/%Y&nbsp;%H:%M:%S'</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$strf&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">strftime</span><span style="color: #007700">(</span><span style="color: #0000BB">$format</span><span style="color: #007700">);<br /><br />echo&nbsp;</span><span style="color: #DD0000">"</span><span style="color: #0000BB">$strf</span><span style="color: #DD0000">\n"</span><span style="color: #007700">;<br /><br /></span><span style="color: #0000BB">print_r</span><span style="color: #007700">(</span><span style="color: #0000BB">strptime</span><span style="color: #007700">(</span><span style="color: #0000BB">$strf</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$format</span><span style="color: #007700">));<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+      </div>
+
+      <div class="example-contents"><p>Результатом выполнения данного примера
+будет что-то подобное:</p></div>
+      <div class="example-contents screen">
+<div class="cdata"><pre>
+03/10/2004 15:54:19
+
+Array
+(
+    [tm_sec] =&gt; 19
+    [tm_min] =&gt; 54
+    [tm_hour] =&gt; 15
+    [tm_mday] =&gt; 3
+    [tm_mon] =&gt; 9
+    [tm_year] =&gt; 104
+    [tm_wday] =&gt; 0
+    [tm_yday] =&gt; 276
+    [unparsed] =&gt;
+)
+</pre></div>
+      </div>
+      </div>
+     </p>
+    </div>
+
+
+    <div class="refsect1 notes" id="refsect1-function.strptime-notes">
+     <h3 class="title">Примечания</h3>
+     <blockquote class="note"><p><b class="note">Замечание</b>: <span class="simpara">Для Windows-платформ
+эта функция не реализована.</span></p></blockquote>
+     <blockquote class="note"><p><b class="note">Замечание</b>: 
+      <p class="para">
+       В действительности эта функция вызывает библиотечную функцию 
+       <i>strptime()</i>. В различных ОС поведение функции  
+       может сильно различаться. Функция <span class="function"><a href="function.date-parse-from-format.html" class="function">date_parse_from_format()</a></span> 
+       лишена этого недостатка и рекомендована к использованию в PHP версий 
+       5.3.0 и выше.
+      </p>
+     </p></blockquote>
+     <blockquote class="note"><p><b class="note">Замечание</b>: 
+      <p class="para">
+       <i>&quot;tm_sec&quot;</i> включает несколько секунд високосного года 
+       (на данный момент до 2-х в год). Для получения дополнительной информации 
+       о високосных секундах читайте <a href="http://en.wikipedia.org/wiki/Leap_second" class="link external">&raquo;&nbsp;статью на википедии</a>.
+      </p>
+     </p></blockquote>
+     <blockquote class="note"><p><b class="note">Замечание</b>: 
+      <p class="para">
+       В PHP версий до 5.2.0 эта функция может работать непредсказуемо.  
+       В особенности элементы <i>&quot;tm_sec&quot;</i>, 
+       <i>&quot;tm_min&quot;</i> и <i>&quot;tm_hour&quot;</i> 
+       могут содержать неопределенные значения.
+      </p>
+     </p></blockquote>
+    </div>
+
+
+    <div class="refsect1 seealso" id="refsect1-function.strptime-seealso">
+    <h3 class="title">Смотрите также</h3>
+    <p class="para">
+     <ul class="simplelist">
+      <li class="member"><span class="function"><a href="function.checkdate.html" class="function" rel="rdfs-seeAlso">checkdate()</a> - Проверяет корректность даты по григорианскому календарю</span></li>
+      <li class="member"><span class="function"><a href="function.strftime.html" class="function" rel="rdfs-seeAlso">strftime()</a> - Форматирует текущую дату/время с учетом текущих настроек локали</span></li>
+      <li class="member"><span class="function"><a href="function.date-parse-from-format.html" class="function" rel="rdfs-seeAlso">date_parse_from_format()</a> - Получение информации о заданной в определенном формате дате</span></li>
+      <li class="member"><span class="function"><a href="datetime.createfromformat.html" class="function" rel="rdfs-seeAlso">DateTime::createFromFormat()</a> - Создает и возвращает экземпляр класса DateTime, соответствующий заданному формату</span></li>
+     </ul>
+    </p>
+   </div>
+
+  </div><hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.strftime.html">strftime</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.strtotime.html">strtotime</a></div>
+ <div class="up"><a href="ref.datetime.html">Функции даты и времени</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

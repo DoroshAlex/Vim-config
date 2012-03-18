@@ -1,0 +1,709 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Предопределенные константы</title>
+
+ </head>
+ <body><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="zip.resources.html">Типы ресурсов</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="zip.examples.html">Примеры</a></div>
+ <div class="up"><a href="book.zip.html">Zip</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="zip.constants" class="appendix">
+ <h1>Предопределенные константы</h1>
+
+ <p class="simpara">
+Перечисленные ниже константы определены данным расширением и могут быть
+доступны только в том случае, если PHP был собран с
+поддержкой этого расширения или же в том случае, если
+данное расширение было подгружено во время выполнения.
+</p>
+
+  <p class="para">
+   <a href="class.ziparchive.html" class="classname">ZipArchive</a> использует константы класса. 
+   Есть три типа констант:
+   Флаги (префикс <i>FL_</i>),
+   ошибки (префикс <i>ER_</i>) и
+   константы режима работы (без префикса).
+  </p>
+
+ <dl>
+
+  <dt>
+
+   <span class="term">
+    <b><tt>ZIPARCHIVE::CREATE</tt></b>
+     (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
+   </span>
+   <dd>
+
+    <span class="simpara">
+     Создавать архив, если он не существует.
+    </span>
+   </dd>
+
+  </dt>
+
+  <dt>
+
+   <span class="term">
+    <b><tt>ZIPARCHIVE::OVERWRITE</tt></b>
+     (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
+   </span>
+   <dd>
+
+    <span class="simpara">
+     Всегда создавать новый архив, этот режим перезаписывает файлы, если
+     они существуют.
+    </span>
+   </dd>
+
+  </dt>
+
+
+  <dt>
+
+   <span class="term">
+    <b><tt>ZIPARCHIVE::EXCL</tt></b>
+     (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
+   </span>
+   <dd>
+
+    <span class="simpara">
+     Выводить ошибку, если архив существует.
+    </span>
+   </dd>
+
+  </dt>
+
+  <dt>
+
+   <span class="term">
+    <b><tt>ZIPARCHIVE::CHECKCONS</tt></b>
+     (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
+   </span>
+   <dd>
+
+    <span class="simpara">
+     Выполнять дополнительные проверки на структуру архива, и выдавать ошибку при неудаче.
+    </span>
+   </dd>
+
+  </dt>
+
+  <dt>
+
+   <span class="term">
+    <b><tt>ZIPARCHIVE::FL_NOCASE</tt></b>
+     (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
+   </span>
+   <dd>
+
+    <span class="simpara">
+     Игнорировать регистр символов в именах элементов архива.
+    </span>
+   </dd>
+
+  </dt>
+
+  <dt>
+
+   <span class="term">
+    <b><tt>ZIPARCHIVE::FL_NODIR</tt></b>
+     (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
+   </span>
+   <dd>
+
+    <span class="simpara">
+     Не учитывать пути директорий в архиве.
+    </span>
+   </dd>
+
+  </dt>
+
+  <dt>
+
+   <span class="term">
+    <b><tt>ZIPARCHIVE::FL_COMPRESSED</tt></b>
+     (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
+   </span>
+   <dd>
+
+    <span class="simpara">
+     Читать сжатые данные.
+    </span>
+   </dd>
+
+  </dt>
+
+  <dt>
+
+   <span class="term">
+    <b><tt>ZIPARCHIVE::FL_UNCHANGED</tt></b>
+     (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
+   </span>
+   <dd>
+
+    <span class="simpara">
+     Использовать исходные данные, игнорируя изменения.
+    </span>
+   </dd>
+
+  </dt>
+
+
+  <dt>
+
+   <span class="term">
+    <b><tt>ZIPARCHIVE::CM_DEFAULT</tt></b>
+     (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
+   </span>
+   <dd>
+
+    <span class="simpara">
+     Выбрать лучший метод сжатия deflate или stored (без сжатия).
+    </span>
+   </dd>
+
+  </dt>
+
+  <dt>
+
+   <span class="term">
+    <b><tt>ZIPARCHIVE::CM_STORE</tt></b>
+     (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
+   </span>
+   <dd>
+
+    <span class="simpara">
+     метод сжатия stored (без сжатия).
+    </span>
+   </dd>
+
+  </dt>
+
+  <dt>
+
+   <span class="term">
+    <b><tt>ZIPARCHIVE::CM_SHRINK</tt></b>
+     (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
+   </span>
+   <dd>
+
+    <span class="simpara">
+     метод сжатия shrunk
+    </span>
+   </dd>
+
+  </dt>
+
+  <dt>
+
+   <span class="term">
+    <b><tt>ZIPARCHIVE::CM_REDUCE_1</tt></b>
+     (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
+   </span>
+   <dd>
+
+    <span class="simpara">
+     метод сжатия reduced with factor 1
+    </span>
+   </dd>
+
+  </dt>
+
+  <dt>
+
+   <span class="term">
+    <b><tt>ZIPARCHIVE::CM_REDUCE_2</tt></b>
+     (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
+   </span>
+   <dd>
+
+    <span class="simpara">
+     метод сжатия reduced with factor 2
+    </span>
+   </dd>
+
+  </dt>
+
+  <dt>
+
+   <span class="term">
+    <b><tt>ZIPARCHIVE::CM_REDUCE_3</tt></b>
+     (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
+   </span>
+   <dd>
+
+    <span class="simpara">
+     метод сжатия reduced with factor 3
+    </span>
+   </dd>
+
+  </dt>
+
+  <dt>
+
+   <span class="term">
+    <b><tt>ZIPARCHIVE::CM_REDUCE_4</tt></b>
+     (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
+   </span>
+   <dd>
+
+    <span class="simpara">
+     метод сжатия reduced with factor 4
+    </span>
+   </dd>
+
+  </dt>
+
+  <dt>
+
+   <span class="term">
+    <b><tt>ZIPARCHIVE::CM_IMPLODE</tt></b>
+     (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
+   </span>
+   <dd>
+
+    <span class="simpara">
+     метод сжатия imploded
+    </span>
+   </dd>
+
+  </dt>
+
+  <dt>
+
+   <span class="term">
+    <b><tt>ZIPARCHIVE::CM_DEFLATE</tt></b>
+     (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
+   </span>
+   <dd>
+
+    <span class="simpara">
+     метод сжатия deflated
+    </span>
+   </dd>
+
+  </dt>
+
+  <dt>
+
+   <span class="term">
+    <b><tt>ZIPARCHIVE::CM_DEFLATE64</tt></b>
+     (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
+   </span>
+   <dd>
+
+    <span class="simpara">
+     метод сжатия deflate64
+    </span>
+   </dd>
+
+  </dt>
+
+  <dt>
+
+   <span class="term">
+    <b><tt>ZIPARCHIVE::CM_PKWARE_IMPLODE</tt></b>
+     (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
+   </span>
+   <dd>
+
+    <span class="simpara">
+     метод сжатия PKWARE imploding
+    </span>
+   </dd>
+
+  </dt>
+
+  <dt>
+
+   <span class="term">
+    <b><tt>ZIPARCHIVE::CM_BZIP2</tt></b>
+     (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
+   </span>
+   <dd>
+
+    <span class="simpara">
+     метод сжатия алгоритмом BZIP2
+    </span>
+   </dd>
+
+  </dt>
+
+
+  <dt>
+
+   <span class="term">
+    <b><tt>ZIPARCHIVE::ER_OK</tt></b>
+     (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
+   </span>
+   <dd>
+
+    <span class="simpara">
+     Нет ошибок.
+    </span>
+   </dd>
+
+  </dt>
+
+  <dt>
+
+   <span class="term">
+    <b><tt>ZIPARCHIVE::ER_MULTIDISK</tt></b>
+     (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
+   </span>
+   <dd>
+
+    <span class="simpara">
+     Многотомный ZIP архив не поддерживается.
+    </span>
+   </dd>
+
+  </dt>
+
+  <dt>
+
+   <span class="term">
+    <b><tt>ZIPARCHIVE::ER_RENAME</tt></b>
+     (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
+   </span>
+   <dd>
+
+    <span class="simpara">
+     Переименование временного файла не удалось.
+    </span>
+   </dd>
+
+  </dt>
+
+  <dt>
+
+   <span class="term">
+    <b><tt>ZIPARCHIVE::ER_CLOSE</tt></b>
+     (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
+   </span>
+   <dd>
+
+    <span class="simpara">
+     Закрытие ZIP архива не удалось.
+    </span>
+   </dd>
+
+  </dt>
+
+  <dt>
+
+   <span class="term">
+    <b><tt>ZIPARCHIVE::ER_SEEK</tt></b>
+     (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
+   </span>
+   <dd>
+
+    <span class="simpara">
+     Ошибка поиска.
+    </span>
+   </dd>
+
+  </dt>
+
+  <dt>
+
+   <span class="term">
+    <b><tt>ZIPARCHIVE::ER_READ</tt></b>
+     (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
+   </span>
+   <dd>
+
+    <span class="simpara">
+     Ошибка чтения.
+    </span>
+   </dd>
+
+  </dt>
+
+
+  <dt>
+
+   <span class="term">
+    <b><tt>ZIPARCHIVE::ER_WRITE</tt></b>
+     (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
+   </span>
+   <dd>
+
+    <span class="simpara">
+     Ошибка записи.
+    </span>
+   </dd>
+
+  </dt>
+
+  <dt>
+
+   <span class="term">
+    <b><tt>ZIPARCHIVE::ER_CRC</tt></b>
+     (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
+   </span>
+   <dd>
+
+    <span class="simpara">
+     Ошибка контрольной суммы.
+    </span>
+   </dd>
+
+  </dt>
+
+  <dt>
+
+   <span class="term">
+    <b><tt>ZIPARCHIVE::ER_ZIPCLOSED</tt></b>
+     (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
+   </span>
+   <dd>
+
+    <span class="simpara">
+     Открытый ZIP архив был закрыт.
+    </span>
+   </dd>
+
+  </dt>
+
+  <dt>
+
+   <span class="term">
+    <b><tt>ZIPARCHIVE::ER_NOENT</tt></b>
+     (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
+   </span>
+   <dd>
+
+    <span class="simpara">
+     Нет такого файла.
+    </span>
+   </dd>
+
+  </dt>
+
+  <dt>
+
+   <span class="term">
+    <b><tt>ZIPARCHIVE::ER_EXISTS</tt></b>
+     (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
+   </span>
+   <dd>
+
+    <span class="simpara">
+     Файл уже существует.
+    </span>
+   </dd>
+
+  </dt>
+
+  <dt>
+
+   <span class="term">
+    <b><tt>ZIPARCHIVE::ER_OPEN</tt></b>
+     (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
+   </span>
+   <dd>
+
+    <span class="simpara">
+     Невозможно открыть файл.
+    </span>
+   </dd>
+
+  </dt>
+
+  <dt>
+
+   <span class="term">
+    <b><tt>ZIPARCHIVE::ER_TMPOPEN</tt></b>
+     (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
+   </span>
+   <dd>
+
+    <span class="simpara">
+     Не удалось создать временный файл.
+    </span>
+   </dd>
+
+  </dt>
+
+  <dt>
+
+   <span class="term">
+    <b><tt>ZIPARCHIVE::ER_ZLIB</tt></b>
+     (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
+   </span>
+   <dd>
+
+    <span class="simpara">
+     Ошибка Zlib.
+    </span>
+   </dd>
+
+  </dt>
+
+
+  <dt>
+
+   <span class="term">
+    <b><tt>ZIPARCHIVE::ER_MEMORY</tt></b>
+     (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
+   </span>
+   <dd>
+
+    <span class="simpara">
+     Ошибка выделения памяти.
+    </span>
+   </dd>
+
+  </dt>
+
+
+  <dt>
+
+   <span class="term">
+    <b><tt>ZIPARCHIVE::ER_CHANGED</tt></b>
+     (<span class="type"><a href="language.types.string.html" class="type string">string</a></span>)
+   </span>
+   <dd>
+
+    <span class="simpara">
+     Запись была изменена.
+    </span>
+   </dd>
+
+  </dt>
+
+
+  <dt>
+
+   <span class="term">
+    <b><tt>ZIPARCHIVE::ER_COMPNOTSUPP</tt></b>
+     (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
+   </span>
+   <dd>
+
+    <span class="simpara">
+     Метод сжатия не поддерживается.
+    </span>
+   </dd>
+
+  </dt>
+
+  <dt>
+
+   <span class="term">
+    <b><tt>ZIPARCHIVE::ER_EOF</tt></b>
+     (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
+   </span>
+   <dd>
+
+    <span class="simpara">
+     Преждевременный конец файла.
+    </span>
+   </dd>
+
+  </dt>
+
+  <dt>
+
+   <span class="term">
+    <b><tt>ZIPARCHIVE::ER_INVAL</tt></b>
+     (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
+   </span>
+   <dd>
+
+    <span class="simpara">
+     Недопустимый аргумент
+    </span>
+   </dd>
+
+  </dt>
+
+  <dt>
+
+   <span class="term">
+    <b><tt>ZIPARCHIVE::ER_NOZIP</tt></b>
+     (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
+   </span>
+   <dd>
+
+    <span class="simpara">
+     Не ZIP архив.
+    </span>
+   </dd>
+
+  </dt>
+
+  <dt>
+
+   <span class="term">
+    <b><tt>ZIPARCHIVE::ER_INTERNAL</tt></b>
+     (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
+   </span>
+   <dd>
+
+    <span class="simpara">
+     Внутренняя ошибка.
+    </span>
+   </dd>
+
+  </dt>
+
+  <dt>
+
+   <span class="term">
+    <b><tt>ZIPARCHIVE::ER_INCONS</tt></b>
+     (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
+   </span>
+   <dd>
+
+    <span class="simpara">
+     ZIP архив несовместим.
+    </span>
+   </dd>
+
+  </dt>
+
+  <dt>
+
+   <span class="term">
+    <b><tt>ZIPARCHIVE::ER_REMOVE</tt></b>
+     (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
+   </span>
+   <dd>
+
+    <span class="simpara">
+     Невозможно удалить файл.
+    </span>
+   </dd>
+
+  </dt>
+
+  <dt>
+
+   <span class="term">
+    <b><tt>ZIPARCHIVE::ER_DELETED</tt></b>
+     (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
+   </span>
+   <dd>
+
+    <span class="simpara">
+     Запись была удалена.
+    </span>
+   </dd>
+
+  </dt>
+
+ </dl>
+
+</div>
+<hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="zip.resources.html">Типы ресурсов</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="zip.examples.html">Примеры</a></div>
+ <div class="up"><a href="book.zip.html">Zip</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

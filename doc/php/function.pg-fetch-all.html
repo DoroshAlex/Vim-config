@@ -1,0 +1,128 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Выбирает все данные из результата запроса и помещает их в массив</title>
+
+ </head>
+ <body><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.pg-fetch-all-columns.html">pg_fetch_all_columns</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.pg-fetch-array.html">pg_fetch_array</a></div>
+ <div class="up"><a href="ref.pgsql.html">PostgreSQL</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.pg-fetch-all" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">pg_fetch_all</h1>
+  <p class="verinfo">(PHP 4 &gt;= 4.3.0, PHP 5)</p><p class="refpurpose"><span class="refname">pg_fetch_all</span> &mdash; <span class="dc-title">Выбирает все данные из результата запроса и помещает их в массив</span></p>
+
+ </div>
+
+ <div class="refsect1 description" id="refsect1-function.pg-fetch-all-description">
+  <h3 class="title">Описание</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">array</span> <span class="methodname"><b>pg_fetch_all</b></span>
+    ( <span class="methodparam"><span class="type">resource</span> <tt class="parameter">$result</tt></span>
+   )</div>
+
+  <p class="para rdfs-comment">
+   <span class="function"><b>pg_fetch_all()</b></span> возвращает массив содержащий 
+   все записи из результата запроса.
+  </p>
+  <blockquote class="note"><p><b class="note">Замечание</b>: <span class="simpara">Эта функция устанавливает NULL-поля
+в значение <b><tt>NULL</tt></b> PHP.</span></p></blockquote>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-function.pg-fetch-all-parameters">
+  <h3 class="title">Список параметров</h3>
+  <p class="para">
+   <dl>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">result</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Ресурс результата запроса PostgreSQL, возвращаемый функциями 
+       <span class="function"><a href="function.pg-query.html" class="function">pg_query()</a></span>, <span class="function"><a href="function.pg-query-params.html" class="function">pg_query_params()</a></span> 
+       или <span class="function"><a href="function.pg-execute.html" class="function">pg_execute()</a></span> (в числе прочих).
+      </p>
+     </dd>
+
+    </dt>
+
+   </dl>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-function.pg-fetch-all-returnvalues">
+  <h3 class="title">Возвращаемые значения</h3>
+  <p class="para">
+   Многомерный массив данных результата запроса. Каждая строка результата 
+   представляется массивом значений полей, индексированным именами этих полей.
+  </p>
+  <p class="para">
+   <b><tt>FALSE</tt></b>, когда в результате больше нет строк и при прочих ошибках.
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 examples" id="refsect1-function.pg-fetch-all-examples">
+  <h3 class="title">Примеры</h3>
+  <p class="para">
+   <div class="example" id="example-1900">
+    <p><b>Пример #1 Пример использования</b></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php&nbsp;<br />$conn&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">pg_pconnect</span><span style="color: #007700">(</span><span style="color: #DD0000">"dbname=publisher"</span><span style="color: #007700">);<br />if&nbsp;(!</span><span style="color: #0000BB">$conn</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"Произошла&nbsp;ошибка.\n"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;exit;<br />}<br /><br /></span><span style="color: #0000BB">$result&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">pg_query</span><span style="color: #007700">(</span><span style="color: #0000BB">$conn</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"SELECT&nbsp;*&nbsp;FROM&nbsp;authors"</span><span style="color: #007700">);<br />if&nbsp;(!</span><span style="color: #0000BB">$result</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"Произошла&nbsp;ошибка.\n"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;exit;<br />}<br /><br /></span><span style="color: #0000BB">$arr&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">pg_fetch_all</span><span style="color: #007700">(</span><span style="color: #0000BB">$result</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">print_r</span><span style="color: #007700">(</span><span style="color: #0000BB">$arr</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+    <div class="example-contents"><p>Результатом выполнения данного примера
+будет что-то подобное:</p></div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+Array
+(
+    [0] =&gt; Array
+        (
+            [id] =&gt; 1
+            [name] =&gt; Fred
+        )
+
+    [1] =&gt; Array
+        (
+            [id] =&gt; 2
+            [name] =&gt; Bob
+        )
+
+)
+</pre></div>
+    </div>
+   </div>
+  </p>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-function.pg-fetch-all-seealso">
+  <h3 class="title">Смотрите также</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><span class="function"><a href="function.pg-fetch-row.html" class="function" rel="rdfs-seeAlso">pg_fetch_row()</a> - Выбирает строку результата запроса и помещает данные в массив</span></li>
+    <li class="member"><span class="function"><a href="function.pg-fetch-array.html" class="function" rel="rdfs-seeAlso">pg_fetch_array()</a> - Возвращает строку результата в виде массива</span></li>
+    <li class="member"><span class="function"><a href="function.pg-fetch-object.html" class="function" rel="rdfs-seeAlso">pg_fetch_object()</a> - Выбирает строку результата запроса и возвращает данные в виде объекта</span></li>
+    <li class="member"><span class="function"><a href="function.pg-fetch-result.html" class="function" rel="rdfs-seeAlso">pg_fetch_result()</a> - Возвращает запись из результата запроса</span></li>
+   </ul>
+  </p>
+ </div>
+
+</div><hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.pg-fetch-all-columns.html">pg_fetch_all_columns</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.pg-fetch-array.html">pg_fetch_array</a></div>
+ <div class="up"><a href="ref.pgsql.html">PostgreSQL</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

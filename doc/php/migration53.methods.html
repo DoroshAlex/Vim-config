@@ -1,0 +1,162 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Новые методы</title>
+
+ </head>
+ <body><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="migration53.class-constants.html">Новые константы классов</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="migration53.new-extensions.html">Новые расширения</a></div>
+ <div class="up"><a href="migration53.html">Переход c PHP 5.2.x на PHP 5.3.x</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="migration53.methods" class="section">
+  <h2 class="title">Новые методы</h2>
+  <p class="simpara">
+   Несколько новых методов были введены в версии 5.3.0:
+  </p>
+
+  <p class="simpara"><a href="book.datetime.html" class="link">Date/Time</a>:</p>
+  <ul class="itemizedlist">
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="datetime.add.html" class="function">DateTime::add()</a></span>
+     - Добавляет заданное количество дней, месяцев, лет, часов, минут и секунд к объекту
+     <a href="class.datetime.html" class="classname">DateTime</a>.
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="datetime.createfromformat.html" class="function">DateTime::createFromFormat()</a></span>
+     - Возвращает объект <a href="class.datetime.html" class="classname">DateTime</a>, приведенный в соответствие с
+     заданным форматом.
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="datetime.diff.html" class="function">DateTime::diff()</a></span>
+     - Возвращает разницу между двумя объектами <a href="class.datetime.html" class="classname">DateTime</a>.
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="datetime.getlasterrors.html" class="function">DateTime::getLastErrors()</a></span>
+     - Возвращает предупреждения и ошибки, которые произошли при последней операции с датой или с временем.
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="datetime.sub.html" class="function">DateTime::sub()</a></span>
+     - Вычитает заданное количество дней, месяцев, лет, минут и секунд от объекта.
+     <a href="class.datetime.html" class="classname">DateTime</a>.
+    </span>
+   </li>
+  </ul>
+
+  <p class="simpara">Класс <a href="class.exception.html" class="classname">Exception</a>:</p>
+  <ul class="itemizedlist">
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="exception.getprevious.html" class="function">Exception::getPrevious()</a></span>
+     - Возвращает предыдущее исключение.
+    </span>
+   </li>
+  </ul>
+
+  <p class="simpara"><a href="book.dom.html" class="link">DOM</a>:</p>
+  <ul class="itemizedlist">
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="domnode.getlineno.html" class="function">DOMNode::getLineNo()</a></span>
+     - Возвращает номер строки узла.
+    </span>
+   </li>
+  </ul>
+
+  <p class="simpara"><a href="ref.pdo-firebird.html" class="link">PDO_FIREBIRD</a>:</p>
+  <ul class="itemizedlist">
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="pdo.setattribute.html" class="function">PDO::setAttribute()</a></span>
+     - Устанавливает атрибут.
+    </span>
+   </li>
+  </ul>
+
+  <p class="simpara"><a href="book.reflection.html" class="link">Reflection</a>:</p>
+  <ul class="itemizedlist">
+   <li class="listitem">
+    <span class="simpara">
+      <span class="methodname"><a href="reflectionclass.getnamespacename.html" class="methodname">ReflectionClass::getNamespaceName()</a></span>
+     - Возвращает пространство имен, в котором определен данный класс.
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+      <span class="methodname"><a href="reflectionclass.getshortname.html" class="methodname">ReflectionClass::getShortName()</a></span>
+     - Возвращает короткое имя данного класса (без части, в которой находится пространство имен).
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+      <span class="methodname"><a href="reflectionclass.innamespace.html" class="methodname">ReflectionClass::inNamespace()</a></span>
+     - Проверяет, объявлен ли класс в пространстве имен.
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+      <span class="methodname"><b>ReflectionFunction::getNamespaceName()</b></span>
+     - Возвращает название пространства имен, в котором определена данная функция.
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+      <span class="methodname"><b>ReflectionFunction::getShortName()</b></span>
+     - Возвращает короткое имя функции (без пространства имен).
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+      <span class="methodname"><b>ReflectionFunction::inNamespace()</b></span>
+     - Проверяет, определена ли функция в пространстве имен.
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+      <span class="methodname"><a href="reflectionproperty.setaccessible.html" class="methodname">ReflectionProperty::setAccessible()</a></span>
+     - Устанавливает могут ли непубличные свойства быть запрошены.
+    </span>
+   </li>
+  </ul>
+
+  <p class="simpara"><a href="book.spl.html" class="link">SPL</a>:</p>
+  <ul class="itemizedlist">
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="splobjectstorage.addall.html" class="function">SplObjectStorage::addAll()</a></span>
+     - Добавляет все элементы к другому объекту SplObjectStorage.
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="splobjectstorage.removeall.html" class="function">SplObjectStorage::removeAll()</a></span>
+     - Убирает все элементы из другого объекта SplObjectStorage.
+    </span>
+   </li>
+  </ul>
+
+  <p class="simpara"><a href="book.xsl.html" class="link">XSL</a>:</p>
+  <ul class="itemizedlist">
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="xsltprocessor.setprofiling.html" class="function">XSLTProcessor::setProfiling()</a></span>
+     - Устанавливает файл для вывода профиля.
+    </span>
+   </li>
+  </ul>
+ </div><hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="migration53.class-constants.html">Новые константы классов</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="migration53.new-extensions.html">Новые расширения</a></div>
+ <div class="up"><a href="migration53.html">Переход c PHP 5.2.x на PHP 5.3.x</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

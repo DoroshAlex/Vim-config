@@ -1,0 +1,138 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Конструкторы и деструкторы</title>
+
+ </head>
+ <body><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="language.oop5.autoload.html">Автоматическая загрузка классов</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="language.oop5.visibility.html">Область видимости</a></div>
+ <div class="up"><a href="language.oop5.html">Классы и объекты</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="language.oop5.decon" class="sect1">
+  <h2 class="title">Конструкторы и деструкторы</h2>
+
+  <div class="sect2" id="language.oop5.decon.constructor">
+   <h3 class="title">Конструктор</h3>
+   <div class="methodsynopsis dc-description">
+    <span class="type"><span class="type void">void</span></span> <span class="methodname"><b>__construct</b></span>
+     ([ <span class="methodparam"><span class="type"><a href="language.pseudo-types.html#language.types.mixed" class="type mixed">mixed</a></span> <tt class="parameter">$args</tt></span>
+    [, <span class="methodparam"> <tt class="parameter">$...</tt></span>
+   ]] )</div>
+
+   <p class="para">
+    PHP 5 позволяет объявлять методы-конструкторы. Классы, в которых
+    объявлен метод-констуктор, будут вызывать этот метод при каждом
+    создании нового объекта, так что это может оказаться полезным,
+    например, для инициализации какого-либо состояния объекта
+    перед его использованием.
+   </p>
+   <blockquote class="note"><p><b class="note">Замечание</b>: 
+    <span class="simpara">
+     Конструкторы в классах-родителях не вызываются автоматически,
+     если класс-потомок определяет собственный конструктор.
+     Чтобы вызвать конструктор, объявленный в родительском классе,
+     следует обратиться к методу <span class="function"><b>parent::__construct()</b></span>
+     внутри конструктора класса-потомка.
+    </span>
+   </p></blockquote>
+   <div class="example" id="example-169">
+    <p><b>Пример #1 Использование унифицированных конструкторов</b></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">class&nbsp;</span><span style="color: #0000BB">BaseClass&nbsp;</span><span style="color: #007700">{<br />&nbsp;&nbsp;&nbsp;function&nbsp;</span><span style="color: #0000BB">__construct</span><span style="color: #007700">()&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print&nbsp;</span><span style="color: #DD0000">"Конструктор&nbsp;класса&nbsp;BaseClass\n"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;}<br />}<br /><br />class&nbsp;</span><span style="color: #0000BB">SubClass&nbsp;</span><span style="color: #007700">extends&nbsp;</span><span style="color: #0000BB">BaseClass&nbsp;</span><span style="color: #007700">{<br />&nbsp;&nbsp;&nbsp;function&nbsp;</span><span style="color: #0000BB">__construct</span><span style="color: #007700">()&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">parent</span><span style="color: #007700">::</span><span style="color: #0000BB">__construct</span><span style="color: #007700">();<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print&nbsp;</span><span style="color: #DD0000">"Конструктор&nbsp;класса&nbsp;SubClass\n"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;}<br />}<br /><br /></span><span style="color: #0000BB">$obj&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">BaseClass</span><span style="color: #007700">();<br /></span><span style="color: #0000BB">$obj&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">SubClass</span><span style="color: #007700">();<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+   <p class="para">
+    В целях обратной совместимости, если PHP 5 не может обнаружить объявленный метод <span class="function"><b>__construct()</b></span>,
+    вызов конструктора произойдет по прежней схеме, через обращение к методу,
+    имя которого соответствует имени класса. Может возникнуть только
+    одна проблема совместимости старого кода, если в нём присутствуют
+    классы с методами <span class="function"><b>__construct()</b></span>, использующиеся для
+    других целей.
+   </p>
+   <p class="para">
+    В отличие от других методов, PHP не будет генерировать ошибку
+    уровня <b><tt>E_STRICT</tt></b>, если <span class="function"><b>__construct()</b></span>
+    будет перекрыт методом с другими параметрами, отличными от тех,
+    которые находятся в родительском <span class="function"><b>__construct()</b></span>.
+   </p>
+   <p class="para">
+    Начиная с версии PHP 5.3.3, методы с именами, совпадающими с 
+    последним элемeнтом имени класса, находящимся в пространстве имен,
+    больше не будут считаться конструкторами. Это изменение не влияет
+    на классы, не находящиеся в пространстве имен.
+   </p>
+   <div class="example" id="example-170">
+    <p><b>Пример #2 Конструкторы в классах, находящихся в пространстве имен</b></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">namespace&nbsp;</span><span style="color: #0000BB">Foo</span><span style="color: #007700">;<br />class&nbsp;</span><span style="color: #0000BB">Bar&nbsp;</span><span style="color: #007700">{<br />&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;function&nbsp;</span><span style="color: #0000BB">Bar</span><span style="color: #007700">()&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;конструктор&nbsp;в&nbsp;версиях&nbsp;PHP&nbsp;5.3.0-5.3.2<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;обычный&nbsp;метод,&nbsp;начиная&nbsp;с&nbsp;версии&nbsp;PHP&nbsp;5.3.3<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">}<br />}<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+  </div>
+
+  <div class="sect2" id="language.oop5.decon.destructor">
+   <h3 class="title">Деструкторы</h3>
+   <div class="methodsynopsis dc-description">
+    <span class="type"><span class="type void">void</span></span> <span class="methodname"><b>__destruct</b></span>
+     ( <span class="methodparam">void</span>
+    )</div>
+
+   <p class="para">
+    PHP 5 предоставляет концепцию деструкторов, сходную с теми,
+    что применяются в других ОО языках, таких, как C++.
+    Деструктор будет вызван при освобождении всех ссылок
+    на определенный объект или при завершении
+    скрипта (порядок выполнения деструкторов не гарантируется).
+   </p>
+   <div class="example" id="example-171">
+    <p><b>Пример #3 Пример использования деструктора</b></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">class&nbsp;</span><span style="color: #0000BB">MyDestructableClass&nbsp;</span><span style="color: #007700">{<br />&nbsp;&nbsp;&nbsp;function&nbsp;</span><span style="color: #0000BB">__construct</span><span style="color: #007700">()&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print&nbsp;</span><span style="color: #DD0000">"Конструктор\n"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">name&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">"MyDestructableClass"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;}<br /><br />&nbsp;&nbsp;&nbsp;function&nbsp;</span><span style="color: #0000BB">__destruct</span><span style="color: #007700">()&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print&nbsp;</span><span style="color: #DD0000">"Уничтожается&nbsp;"&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">name&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;}<br />}<br /><br /></span><span style="color: #0000BB">$obj&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">MyDestructableClass</span><span style="color: #007700">();<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+   <p class="para">
+    Как и в случае с конструкторами, деструкторы, объявленные
+    в родительском классе, не будут вызваны автоматически.
+    Для вызова деструктора, объявленном в классе-родителе,
+    следует обратиться к методу <span class="function"><b>parent::__destruct()</b></span> в
+    теле деструктора-потомка.
+   </p>
+   <p class="para">
+    Деструктор будет вызван даже в том случае, если скрипт был остановлен с
+    помощью функции <span class="function"><a href="function.exit.html" class="function">exit()</a></span>. Вызов <span class="function"><a href="function.exit.html" class="function">exit()</a></span>
+    в деструкторе предотвратит запуск всех последующих функций завершения.
+   </p>
+   <blockquote class="note"><p><b class="note">Замечание</b>: 
+    <p class="para">
+     Деструкторы, вызываемые при завершении скрипта, вызываются после отправки
+     HTTP-заголовков. Рабочая директория во время фазы завершения скрипта
+     может отличаться в некоторых SAPI (например, в Apache).
+    </p>
+   </p></blockquote>
+   <blockquote class="note"><p><b class="note">Замечание</b>: 
+    <p class="para">
+     Попытка бросить исключение в деструкторе (вызванного во время
+     завершения скрипта) влечет за собой фатальную ошибку.
+    </p>
+   </p></blockquote>
+  </div>
+
+ </div><hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="language.oop5.autoload.html">Автоматическая загрузка классов</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="language.oop5.visibility.html">Область видимости</a></div>
+ <div class="up"><a href="language.oop5.html">Классы и объекты</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

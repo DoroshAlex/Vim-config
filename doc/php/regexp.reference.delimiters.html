@@ -1,0 +1,86 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Разделители</title>
+
+ </head>
+ <body><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="regexp.introduction.html">Вступление</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="regexp.reference.meta.html">Метасимволы</a></div>
+ <div class="up"><a href="reference.pcre.pattern.syntax.html">Описание синтаксиса Perl-совместимых регулярных выражений</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="regexp.reference.delimiters" class="section">
+  <h2 class="title">Разделители</h2>
+  <p class="para">
+   При использовании любой PCRE функции необходимо заключать
+   шаблон в <em class="emphasis">разделители</em>.
+   Разделителем может быть любой символ не являющийся буквой, цифрой,
+   обратной косой чертой или каким-либо пробельным символом.
+  </p>
+  <p class="para">
+   Часто используемыми разделителями являются косые черты (<i>/</i>),
+   знаки решетки (<i>#</i>) и тильды (<i>~</i>). Ниже
+   представлены примеры шаблонов с корректными разделителями.
+   <div class="informalexample">
+    <div class="example-contents">
+<div class="cdata"><pre>
+/foo bar/
+#^[^0-9]$#
++php+
+%[a-zA-Z0-9_-]%
+</pre></div>
+    </div>
+
+   </div>
+  </p>
+  <p class="para">
+   Если необходимо использовать разделитель внутри шаблона,
+   его нужно проэкранировать с помощью обратной косой черты.
+   Если разделитель часто используется в шаблоне, в целях удобочитаемости,
+   лучше выбрать другой разделитель для этого шаблона.
+   <div class="informalexample">
+    <div class="example-contents">
+<div class="cdata"><pre>
+/http:\/\//
+#http://#
+</pre></div>
+    </div>
+
+   </div>
+   Функция <span class="function"><a href="function.preg-quote.html" class="function">preg_quote()</a></span> может быть использована для
+   экранирования строки, используемой в шаблоне, а ее необязательный второй параметр
+   позволяет указать используемый разделитель.
+  </p>
+  <p class="para">
+   В дополнение к вышеупомянутым разделителям, также возможно использовать
+   скобки, где открывающая и закрывающая скобки, соответственно, являются
+   открывающим и закрывающим разделителем.
+   <div class="informalexample">
+    <div class="example-contents">
+<div class="cdata"><pre>
+{this is a pattern}
+</pre></div>
+    </div>
+
+   </div>
+  </p>
+  <p class="para">
+   После закрывающего разделителями можно использовать
+   <a href="reference.pcre.pattern.modifiers.html" class="link">модификаторы
+   шаблонов</a>. Ниже следуюет пример регистро-независимого поиска:
+   <div class="informalexample">
+    <div class="example-contents">
+<div class="cdata"><pre>
+#[a-z]#i
+</pre></div>
+    </div>
+
+   </div>
+  </p>
+ </div><hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="regexp.introduction.html">Вступление</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="regexp.reference.meta.html">Метасимволы</a></div>
+ <div class="up"><a href="reference.pcre.pattern.syntax.html">Описание синтаксиса Perl-совместимых регулярных выражений</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

@@ -1,0 +1,229 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Конструктор SoapClient</title>
+
+ </head>
+ <body><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="soapclient.soapcall.html">SoapClient::__soapCall</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="class.soapserver.html">SoapServer</a></div>
+ <div class="up"><a href="class.soapclient.html">SoapClient</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="soapclient.soapclient" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">SoapClient::SoapClient</h1>
+  <p class="verinfo">(PHP 5 &gt;= 5.0.1)</p><p class="refpurpose"><span class="refname">SoapClient::SoapClient</span> &mdash; <span class="dc-title">Конструктор SoapClient</span></p>
+
+ </div>
+
+ <div class="refsect1 description" id="refsect1-soapclient.soapclient-description">
+  <h3 class="title">Описание</h3>
+  <div class="methodsynopsis dc-description">
+    <span class="methodname"><b>SoapClient::SoapClient</b></span>
+    ( <span class="methodparam"><span class="type"><a href="language.pseudo-types.html#language.types.mixed" class="type mixed">mixed</a></span> <tt class="parameter">$wsdl</tt></span>
+   [, <span class="methodparam"><span class="type">array</span> <tt class="parameter">$options</tt></span>
+  ] )</div>
+
+  <p class="para rdfs-comment">
+   Конструктор создает объект <a href="class.soapclient.html" class="classname">SoapClient</a>
+   в <i>WSDL</i> или <i>не-WSDL</i> режиме.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-soapclient.soapclient-parameters">
+  <h3 class="title">Список параметров</h3>
+  <p class="para">
+   <dl>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">wsdl</tt></i></span>
+     <dd>
+
+      <p class="para">
+       URI файла <i>WSDL</i> или <b><tt>NULL</tt></b>, если 
+       работа происходит в режиме <i>не-WSDL</i>.
+      </p>
+      <blockquote class="note"><p><b class="note">Замечание</b>: 
+       <p class="para">
+        Во время разработки кэширование WSDL можно отключить, 
+        используя настройку <i>soap.wsdl_cache_ttl</i> в <var class="filename">php.ini</var>,
+        иначе изменения, сделанные в WSDL файле, не будут иметь эффекта
+        до тех пор, пока не истечет время, указанное в <i>soap.wsdl_cache_ttl</i>.
+       </p>
+      </p></blockquote>
+     </dd>
+
+    </dt>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">options</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Массив настроек. Если работа происходит в режиме WSDL, то этот параметр необязательный.
+       Если в не-WSDL режиме, то должны быть установлены опции
+       <i>location</i> и <i>uri</i>,
+       где <i>location</i> - URL сервера SOAP, к которому отправляется запрос, и 
+       <i>uri</i> - целевое пространство имен SOAP-сервиса.
+      </p>
+      <p class="para">
+       Опции <i>style</i> и <i>use</i>
+       используются только в не-WSDL режиме. В WSDL режиме они берутся из WSDL файла.
+      </p>
+      <p class="para">
+       Опция <i>soap_version</i> определяет,
+       будет ли использоваться SOAP-клиент версии 1.1 (по умолчанию) или 1.2.
+      </p>
+      <p class="para">
+       Для HTTP аутентификации могут быть использованы опции
+       <i>login</i> и <i>password</i> для получения полномочий.
+       Для реализации HTTP соединения через proxy-сервер используются настройки
+       <i>proxy_host</i>, <i>proxy_port</i>, 
+       <i>proxy_login</i> и <i>proxy_password</i>.
+       Для HTTPS сертификата аутентификации клиента используются 
+       опции <i>local_cert</i> и <i>passphrase</i>.
+       Аутентификация может быть передана через <i>authentication</i>.
+       Метод аутентификации может быть 
+       <b><tt>SOAP_AUTHENTICATION_BASIC</tt></b> (по умолчанию) или
+       <b><tt>SOAP_AUTHENTICATION_DIGEST</tt></b>.
+      </p>
+      <p class="para">
+       Опция <i>compression</i> позволяет 
+       сжимать запросы и ответы HTTP SOAP.
+      </p>
+      <p class="para">
+       Опция <i>encoding</i> определяет внутреннюю кодировку.
+       Опция не меняет кодировку SOAP-запросов (она всегда utf-8), 
+       но преобразует строки в нее.
+      </p>
+      <p class="para">
+       Опция <i>trace</i> включает отслеживание запроса и в случае ошибки
+       можно получить обратную трассировку. По умолчанию имеет значение <b><tt>FALSE</tt></b>.       
+      </p>
+      <p class="para">
+       Опция <i>classmap</i> может использоваться для перевода 
+       некоторых WSDL-типов в PHP классы. Опция должна представлять собой массив,
+       в качестве ключей которого указаны WSDL-типы, а в качестве значений - имена PHP классов.       
+      </p>
+      <p class="para">
+       Установленная булевая опция <i>trace</i> 
+       позволяет использовать следующие методы: 
+       <a href="soapclient.getlastrequest.html" class="link">
+       SoapClient-&gt;__getLastRequest</a>, 
+       <a href="soapclient.getlastrequestheaders.html" class="link">
+       SoapClient-&gt;__getLastRequestHeaders</a>,
+       <a href="soapclient.getlastresponse.html" class="link">
+       SoapClient-&gt;__getLastResponse</a> и
+       <a href="soapclient.getlastresponseheaders.html" class="link">
+       SoapClient-&gt;__getLastResponseHeaders</a>.
+      </p>
+      <p class="para">
+       Опция <i>exceptions</i> принимает булевые значения и 
+       определяет будут ли SOAP-ошибки бросать исключения типа <a href="soapfault.soapfault.html" class="link">
+       SoapFault</a>.
+      </p>
+      <p class="para">
+       Опция <i>connection_timeout</i> определяет тайм-аут в секундах
+       для соединения с SOAP-сервисом. Опция не устанавливает тайм-аут для сервисов с 
+       медленными ответами. Для ограничения времени ожидания вызовов используется 
+       <a href="filesystem.configuration.html#ini.default-socket-timeout" class="link">default_socket_timeout</a>.       
+      </p>
+      <p class="para">
+       Опция <i>typemap</i> является массивом сопоставления типов.
+       Массив сопоставления типов - это массив с ключами <i>type_name</i>,
+       <i>type_ns</i> (URI пространства имен), <i>from_xml</i>
+       (функция обратного вызова принимает один строковый параметр) и
+       <i>to_xml</i> (функция обратного вызова принимает объект в качестве параметра).
+      </p>
+      <p class="para">
+       Опция <i>cache_wsdl</i> принимает одно из значений: 
+       <b><tt>WSDL_CACHE_NONE</tt></b>,
+       <b><tt>WSDL_CACHE_DISK</tt></b>,
+       <b><tt>WSDL_CACHE_MEMORY</tt></b> или
+       <b><tt>WSDL_CACHE_BOTH</tt></b>.
+      </p>
+      <p class="para">
+       Опция <i>user_agent</i> определяет строку для использования
+       в <i>User-Agent</i> заголовке.
+      </p>
+      <p class="para">
+       Опция <i>stream_context</i> - это <span class="type"><a href="language.types.resource.html" class="type resource">resource</a></span> для 
+       <a href="context.html" class="link">context</a>.
+      </p>
+      <p class="para">
+       Опция <i>features</i> является битовой маской
+       <b><tt>SOAP_SINGLE_ELEMENT_ARRAYS</tt></b>,
+       <b><tt>SOAP_USE_XSI_ARRAY_TYPE</tt></b>,
+       <b><tt>SOAP_WAIT_ONE_WAY_CALLS</tt></b>.
+      </p>
+      <p class="para">
+       Опция <i>keep_alive</i> принимает булево значение, определяющее
+       какой заголовок отправлять: <i>Connection: Keep-Alive</i> или
+       <i>Connection: close</i>.
+      </p>
+     </dd>
+
+    </dt>
+
+   </dl>
+
+  </p>
+ </div>
+
+
+<div class="refsect1 changelog" id="refsect1-soapclient.soapclient-changelog">
+  <h3 class="title">Список изменений</h3>
+  <p class="para">
+   <table class="doctable informaltable">
+    
+     <thead valign="middle">
+      <tr valign="middle">
+       <th>Версия</th>
+       <th>Описание</th>
+      </tr>
+
+     </thead>
+
+     <tbody valign="middle" class="tbody">
+      <tr valign="middle">
+       <td align="left">5.4.0</td>
+       <td align="left">
+        Новая опция <i>keep_alive</i>.
+       </td>
+      </tr>
+
+     </tbody>
+    
+   </table>
+
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 examples" id="refsect1-soapclient.soapclient-examples">
+  <h3 class="title">Примеры</h3>
+  <p class="para">
+   <div class="example" id="example-4802">
+    <p><b>Пример #1 Пример использования <span class="function"><b>SoapClient::SoapClient()</b></span></b></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /><br />$client&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">SoapClient</span><span style="color: #007700">(</span><span style="color: #DD0000">"some.wsdl"</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">$client&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">SoapClient</span><span style="color: #007700">(</span><span style="color: #DD0000">"some.wsdl"</span><span style="color: #007700">,&nbsp;array(</span><span style="color: #DD0000">'soap_version'&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">SOAP_1_2</span><span style="color: #007700">));<br /><br /></span><span style="color: #0000BB">$client&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">SoapClient</span><span style="color: #007700">(</span><span style="color: #DD0000">"some.wsdl"</span><span style="color: #007700">,&nbsp;array(</span><span style="color: #DD0000">'login'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">"some_name"</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'password'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">"some_password"</span><span style="color: #007700">));<br /><br /></span><span style="color: #0000BB">$client&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">SoapClient</span><span style="color: #007700">(</span><span style="color: #DD0000">"some.wsdl"</span><span style="color: #007700">,&nbsp;array(</span><span style="color: #DD0000">'proxy_host'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">"localhost"</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'proxy_port'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">8080</span><span style="color: #007700">));<br /><br /></span><span style="color: #0000BB">$client&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">SoapClient</span><span style="color: #007700">(</span><span style="color: #DD0000">"some.wsdl"</span><span style="color: #007700">,&nbsp;array(</span><span style="color: #DD0000">'proxy_host'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">"localhost"</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'proxy_port'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">8080</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'proxy_login'&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">"some_name"</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'proxy_password'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">"some_password"</span><span style="color: #007700">));<br /><br /></span><span style="color: #0000BB">$client&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">SoapClient</span><span style="color: #007700">(</span><span style="color: #DD0000">"some.wsdl"</span><span style="color: #007700">,&nbsp;array(</span><span style="color: #DD0000">'local_cert'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">"cert_key.pem"</span><span style="color: #007700">));<br /><br /></span><span style="color: #0000BB">$client&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">SoapClient</span><span style="color: #007700">(</span><span style="color: #0000BB">null</span><span style="color: #007700">,&nbsp;array(</span><span style="color: #DD0000">'location'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">"http://localhost/soap.php"</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'uri'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">"http://test-uri/"</span><span style="color: #007700">));<br /><br /></span><span style="color: #0000BB">$client&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">SoapClient</span><span style="color: #007700">(</span><span style="color: #0000BB">null</span><span style="color: #007700">,&nbsp;array(</span><span style="color: #DD0000">'location'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">"http://localhost/soap.php"</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'uri'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">"http://test-uri/"</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'style'&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">SOAP_DOCUMENT</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'use'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">SOAP_LITERAL</span><span style="color: #007700">));<br /><br /></span><span style="color: #0000BB">$client&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">SoapClient</span><span style="color: #007700">(</span><span style="color: #DD0000">"some.wsdl"</span><span style="color: #007700">,&nbsp;<br />&nbsp;&nbsp;array(</span><span style="color: #DD0000">'compression'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">SOAP_COMPRESSION_ACCEPT&nbsp;</span><span style="color: #007700">|&nbsp;</span><span style="color: #0000BB">SOAP_COMPRESSION_GZIP</span><span style="color: #007700">));<br /><br /></span><span style="color: #0000BB">$server&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">SoapClient</span><span style="color: #007700">(</span><span style="color: #DD0000">"some.wsdl"</span><span style="color: #007700">,&nbsp;array(</span><span style="color: #DD0000">'encoding'</span><span style="color: #007700">=&gt;</span><span style="color: #DD0000">'ISO-8859-1'</span><span style="color: #007700">));<br /><br />class&nbsp;</span><span style="color: #0000BB">MyBook&nbsp;</span><span style="color: #007700">{<br />&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;</span><span style="color: #0000BB">$title</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;</span><span style="color: #0000BB">$author</span><span style="color: #007700">;<br />}<br /><br /></span><span style="color: #0000BB">$server&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">SoapClient</span><span style="color: #007700">(</span><span style="color: #DD0000">"books.wsdl"</span><span style="color: #007700">,&nbsp;array(</span><span style="color: #DD0000">'classmap'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;array(</span><span style="color: #DD0000">'book'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">"MyBook"</span><span style="color: #007700">)));<br /><br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+  </p>
+ </div>
+
+
+</div><hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="soapclient.soapcall.html">SoapClient::__soapCall</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="class.soapserver.html">SoapServer</a></div>
+ <div class="up"><a href="class.soapclient.html">SoapClient</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

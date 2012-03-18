@@ -1,0 +1,41 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Unix-сокеты: UNIX и UDG</title>
+
+ </head>
+ <body><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="transports.inet.html">Интернет-сокеты: TCP, UDP, SSL, and TLS</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="types.comparisons.html">Таблица сравнения типов в PHP</a></div>
+ <div class="up"><a href="transports.html">Список поддерживаемых транспортных протоколов</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="transports.unix" class="section">
+  <h2 class="title">Unix-сокеты: UNIX и UDG</h2>
+  <p class="simpara">
+   <i>unix://</i> и
+   <i>udg://</i> (udg:// начиная с PHP 5)
+  </p>
+
+  <ul class="itemizedlist">
+   <li class="listitem"><span class="simpara"><i>unix:///tmp/mysock</i></span></li>
+   <li class="listitem"><span class="simpara"><i>udg:///tmp/mysock</i></span></li>
+  </ul>
+
+  <p class="simpara">
+   <i>unix://</i> даёт возможность использовать unix-сокеты, а 
+   <i>udg://</i> предоставляет альтернативный способ передачи
+   данных в них, с использованием пользовательского протокола датаграмм.
+  </p>
+
+  <p class="simpara">
+   Unix-сокеты, в отличие от Интернет-сокетов не требуют указания порта.
+   В случае <span class="function"><a href="function.fsockopen.html" class="function">fsockopen()</a></span> параметр
+   <i><tt class="parameter">portno</tt></i> должен быть равен 0.
+  </p>
+ </div><hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="transports.inet.html">Интернет-сокеты: TCP, UDP, SSL, and TLS</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="types.comparisons.html">Таблица сравнения типов в PHP</a></div>
+ <div class="up"><a href="transports.html">Список поддерживаемых транспортных протоколов</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

@@ -1,0 +1,316 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Вопросы по Базам данных</title>
+
+ </head>
+ <body><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="faq.obtaining.html">Получение PHP</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="faq.installation.html">Установка</a></div>
+ <div class="up"><a href="faq.html">ЧАВО</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="faq.databases" class="chapter">
+  <h1>Вопросы по Базам данных</h1>
+
+  
+
+  <p class="para">
+   Этот раздел содержит общие вопросы о связи между PHP и базами данных.
+   Да, сегодня практически любая база данных может быть доступна из PHP.
+  </p>
+
+  <div class="qandaset"><ol class="qandaset_questions"><li><a href="#faq.databases.mssql">
+     
+      Я слышал, что можно получить доступ к Microsoft SQL серверу из PHP. Как?
+     
+    </a></li><li><a href="#faq.databases.access">
+     Могу ли я получить доступ к базам данных Microsoft Access?
+    </a></li><li><a href="#faq.databases.mysql.php5">
+     
+      Клиентские библиотеки MySQL больше не включены в PHP 5,
+      как это отразится на мне? Могу ли я всё так же использовать MySQL c PHP?
+      Я пытаюсь работать с MySQL и получаю ошибки &quot;function undefined&quot; (функция
+      неопределена), что выдаёт их? 
+     
+    </a></li><li><a href="#faq.databases.shared-mysql">
+     
+      После установки поддержки разделения в MySQL, Apache выдаёт дампы сразу
+      после загрузки libphp4.so. Можно ли это исправить?
+     
+    </a></li><li><a href="#faq.databases.mysqlresource">
+     
+      Почему я получаю ошибки типа 
+      &quot;Warning: 0 is not a MySQL result index in &lt;file&gt;
+      on line &lt;x&gt;&quot; или &quot;Warning: Supplied argument is not
+      a valid MySQL result resource in &lt;file&gt; on line &lt;x&gt;?
+     
+    </a></li></ol></div>
+   <dl class="qandaentry" id="faq.databases.mssql">
+    <dt><strong>
+     
+      Я слышал, что можно получить доступ к Microsoft SQL серверу из PHP. Как?
+     
+    </strong></dt>
+    <dd class="answer">
+     <p class="para">
+      На Windows машинах, вы просто используете поддержку ODBC и
+      соответсвующий ODBC драйвер.
+     </p>
+     <p class="para">
+      На Unix машинах для доступа к Microsoft SQL серверам вы можете
+      использовать Sybase-CT драйвер, так как они (по крайней мере в
+      основном) совместимы по протоколу. У Sybase есть  
+      <a href="http://www.php.net/extra/ctlib-linux-elf.tar.gz" class="link external">&raquo;&nbsp;бесплатная версия необходимых библиотек
+      для Linux</a>. Для других Unix систем вам необходимо обратиться 
+      в Sybase за соответствующими библиотеками.
+      Также смотрите ответ на следующий вопрос.
+     </p>
+    </dd>
+   </dl>
+
+   <dl class="qandaentry" id="faq.databases.access">
+    <dt><strong>
+     Могу ли я получить доступ к базам данных Microsoft Access?
+    </strong></dt>
+    <dd class="answer">
+     <p class="para">
+      Да. Если всё полностью выполняется под Windows 9x/Me или NT/2000,
+      то у вас уже есть все необходимые средства, так как для баз данных 
+      Microsoft Access вы можете использовать ODBC и драйверы ODBC от Microsoft.
+     </p>
+     <p class="para">
+      Если вы хотите связать PHP, выполняющийся на Unix, и MS Access на
+      Windows, то вам будут нужны драйверы ODBC для Unix.
+      Такие ODBC драйверы для Unix есть у <a href="http://www.openlinksw.com/" class="link external">&raquo;&nbsp;OpenLink
+      Software</a>.
+     </p>
+     <p class="para">
+      Другая возможность - хранить данные на SQL сервере, который имеет 
+      ODBC драйверы для Windows, и затем обращаться к этой базе данных из
+      Microsoft Access (используя ODBC) и из PHP (используя встроенные драйверы)
+      или использовать промежуточный формат понятный и для Access, и для PHP,
+      например, простые файлы или базы данных dBase.
+      По этому поводу Тим Хэйз (Tim Hayes) из OpenLink software пишет:
+      <blockquote class="blockquote">
+       <p class="para">
+        Использование промежуточной базы данных - не очень хорошая идея, когда
+        есть возможность работать с базой данных на прямую из PHP через ODBC,
+        например с драйверами от OpenLink. Если вам всё-таки надо использовать
+        промежуточный формат, OpenLink выпустил Virtuoso (механизм виртуальной
+        базы данных) для NT, Linux и других платформ Unix.
+        Пожалуйста, посетите наш <a href="http://www.openlinksw.com/" class="link external">&raquo;&nbsp;вебсайт</a>
+        для бесплатной загрузки.
+       </p>
+      </blockquote>
+     </p>
+     <p class="para">
+      Другой проверенный вариант - использовать MySQL с её MyODBC драйверами на
+      Windows и делать синхронизацию баз данных. Стив Лоренс (Steve Lawrence)
+      пишет:
+     </p>
+     <p class="para">
+      <ul class="itemizedlist">
+       <li class="listitem">
+        <span class="simpara">
+         Установите MySQL согласно поставляемым с ней инструкциям.
+         Последняя версия доступна с <a href="http://www.mysql.com/" class="link external">&raquo;&nbsp;http://www.mysql.com/</a>.
+         Особой конфигурации не требуется,
+         за исключением того, что при настройке баз данных и создании пользователя, 
+         в поле хоста вы должны поместить % или имя Windows машины, на которую
+         вы хотите получить доступ из MySQL. Запишите имя вашего сервера,
+         имя пользователя и пароль.
+        </span>
+       </li>
+       <li class="listitem">
+        <span class="simpara">
+         Скачайте MyODBC драйвер для Windows с сайта MySQL.
+         Установите его на вашей Windows машине. Вы можете проверить его 
+         работоспособность с помощью поставляемых с ним утилит.
+        </span>
+       </li>
+       <li class="listitem">
+        <span class="simpara">
+         Создайте пользователя или системный dsn в вашем администраторе ODBC,
+         расположенном в контрольной панели. Создайте dsn имя, введите имя хоста,
+         имя пользователя, пароль и т.д. для вашей базы данных MySQL,
+         сконфигурированной на 1-ом шаге.
+        </span>
+       </li>
+       <li class="listitem">
+        <span class="simpara">
+         Установите полную версию Access, это даст вам уверенность, что вы
+         получите все нужные расширения (add-ins). По крайней мере вам будут
+         необходимы поддержка ODBC и администратор связанных таблиц.
+        </span>
+       </li>
+       <li class="listitem">
+        <span class="simpara">
+         И теперь самое интересное! Создайте новую базу данных Access.
+         В окне таблицы щёлкните правой кнопкой мышки и выберите Link Tables
+         (Связать Таблицы), либо из файлового меню выберите Get External Data
+         (Получить Внешние Данные) и затем Link Tables. В появившемся окне
+         просмотра файлов выберите файлы типа ODBC.
+         Выберите системный dsn и имя вашего dsn, созданного на 3-ем шаге.
+         Выберите таблицу для связи, нажмите OK и вуаля! Теперь вы можете
+         открыть таблицу и добавить/удалить/отредактировать данные на вашем
+         MySQL сервере! Вы также можете строить запросы, импортировать/экспортировать
+         таблицы в MySQL, создавать формы и отчёты, и т.д.
+        </span>
+       </li>
+      </ul>
+     </p>
+     <p class="para">
+      Полезные Советы и Трюки:
+      <ul class="itemizedlist">
+       <li class="listitem">
+        <span class="simpara">
+         Вы можете создавать ваши таблицы в Access, экспортировать их в MySQL
+         и затем привязать их назад. Это убыстряет создание таблиц.
+        </span>
+       </li>
+       <li class="listitem">
+        <span class="simpara">
+         При создании таблиц в Access, вы должны определить первичный ключ, 
+         чтобы иметь доступ к таблице по записи. Убедитесь что вы создали
+         первичный ключ в MySQL перед тем как привязать таблицу к Access.
+        </span>
+       </li>
+       <li class="listitem">
+        <span class="simpara">
+         Если вы изменяете таблицу в MySQL, то вы должны связать её с Access
+         по-новой. Идите в tools&gt;add-ins&gt;linked table manager,
+         следуйте к вашему ODBC DSN, и выберите оттуда таблицу для пересвязки.
+         Там же вы можете изменить источник вашего dsn, для этого, перед тем как
+         нажать OK, просто пометьте &quot;always prompt for new location&quot;
+         (всегда запрашивать новое местонахождение).
+        </span>
+       </li>
+      </ul>
+     </p>
+    </dd>
+   </dl>
+
+   <dl class="qandaentry" id="faq.databases.mysql.php5">
+    <dt><strong>
+     
+      Клиентские библиотеки MySQL больше не включены в PHP 5,
+      как это отразится на мне? Могу ли я всё так же использовать MySQL c PHP?
+      Я пытаюсь работать с MySQL и получаю ошибки &quot;function undefined&quot; (функция
+      неопределена), что выдаёт их? 
+     
+    </strong></dt>
+    <dd class="answer">
+     <p class="para">
+      Да. PHP всегда будет поддерживать MySQL в том или ином виде.
+      Единственное что изменилось в PHP 5 - это то, что мы больше
+      не поставляем саму клиентскую библиотеку. Вот некоторые причины для этого:
+     </p>
+     <ul class="itemizedlist">
+      <li class="listitem">
+       <p class="para">
+        Сегодня клиентские библиотеки уже установлены на большинстве систем.
+       </p>
+      </li>
+      <li class="listitem">
+       <p class="para">
+        Учитывая предыдущий пункт, имея несколько версий, проще запутаться.
+        Например, если вы компонуете mod_auth_mysql с одной версией,
+        а PHP с другой, и затем разрешаете оба в Apache, то вы получите хороший
+        жирный крах. Также, поставляемые библиотеки не всегда дружат с 
+        установленной серверной версией. Наиболее очевидный симптом этого -
+        разногласие по тому где искать файл mysql.socket (файл Unix сокета).
+       </p>
+      </li>
+      <li class="listitem">
+       <p class="para">
+        Также поддержка была вялой и отставала от релизов всё больше и больше.
+       </p>
+      </li>
+      <li class="listitem">
+       <p class="para">
+        Последующие версии библиотеки будут под GPL и мы не можем поставлять
+        библиотеку под GPL с проектом лицензируемым по типу BSD/Apache.
+        Поэтому полный разрыв в PHP 5 видится как самый лучший вариант.
+       </p>
+      </li>
+     </ul>
+     <p class="para">
+      На самом деле это заденет не так уж много людей. Пользователи Unix, 
+      по крайней мере те, кто знает что они делают, всегда были склонны
+      собирать PHP с уже установленной на их системе библиотекой libmesqlclient,
+      просто задав опцию <strong class="option configure">--with-mysql=/usr</strong>
+
+      при сборке. Пользователи Windows могут включить расширение 
+      <var class="filename">php_mysql.dll</var> внутри <var class="filename">php.ini</var>.
+      Более подробную информацию по установке смотрите в <a href="ref.mysql.html" class="link">документации MySQL</a>.
+      Также убедитесь,
+      что <var class="filename">libmysql.dll</var> доступен в системном PATH.
+      О том как - читайте FAQ: <a href="faq.installation.html#faq.installation.addtopath" class="link">
+      установка системного PATH в Windows</a>. Так как 
+      <var class="filename">libmysql.dll</var> (и многие другие PHP файлы) находится
+      в папке PHP, вам лучше добавить PHP папку в ваш системный PATH.
+     </p>
+    </dd>
+   </dl>
+
+   <dl class="qandaentry" id="faq.databases.shared-mysql">
+    <dt><strong>
+     
+      После установки поддержки разделения в MySQL, Apache выдаёт дампы сразу
+      после загрузки libphp4.so. Можно ли это исправить?
+     
+    </strong></dt>
+    <dd class="answer">
+     <p class="para">
+      Это происходит если вы скомпоновали ваши библиотеки MySQL с pthreads.
+      Проверьте используя ldd. Если это так, скомпилируйте MySQL из исходников
+      или перекомпилируйте исходный rpm, отключив поточный код клиента в 
+      файле спецификации. Любой из этих вариантов исправит проблему. 
+      Затем перекомпилируйте PHP с новыми библиотеками MySQL.
+     </p>
+    </dd>
+   </dl>
+
+   <dl class="qandaentry" id="faq.databases.mysqlresource">
+    <dt><strong>
+     
+      Почему я получаю ошибки типа 
+      &quot;Warning: 0 is not a MySQL result index in &lt;file&gt;
+      on line &lt;x&gt;&quot; или &quot;Warning: Supplied argument is not
+      a valid MySQL result resource in &lt;file&gt; on line &lt;x&gt;?
+     
+    </strong></dt>
+    <dd class="answer">
+     <p class="para">
+      Вы пытаетесь использовать идентификатор результата, который равен 0.
+      0 означает, что ваш запрос неудался по какой-либо причине. Вам необходимо
+      сделать проверку на ошибки, после того как вы послали ваш запрос, и перед
+      тем, как вы пытаетесь использовать возвращённый идентификатор результата.
+      Правильный способ этой реализации выглядит примерно так:
+      <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /><br />$result&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">mysql_query</span><span style="color: #007700">(</span><span style="color: #DD0000">"SELECT&nbsp;*&nbsp;FROM&nbsp;tables_priv"</span><span style="color: #007700">);<br />if&nbsp;(!</span><span style="color: #0000BB">$result</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #0000BB">mysql_error</span><span style="color: #007700">();<br />&nbsp;&nbsp;&nbsp;&nbsp;exit;<br />}<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+      </div>
+
+      или
+      <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /><br />$result&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">mysql_query</span><span style="color: #007700">(</span><span style="color: #DD0000">"SELECT&nbsp;*&nbsp;FROM&nbsp;tables_priv"</span><span style="color: #007700">)<br />&nbsp;&nbsp;&nbsp;&nbsp;or&nbsp;die(</span><span style="color: #DD0000">"Bad&nbsp;query:&nbsp;"&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">mysql_error</span><span style="color: #007700">());<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+      </div>
+
+     </p>
+    </dd>
+   </dl>
+  
+ </div>
+<hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="faq.obtaining.html">Получение PHP</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="faq.installation.html">Установка</a></div>
+ <div class="up"><a href="faq.html">ЧАВО</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

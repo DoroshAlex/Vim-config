@@ -1,0 +1,139 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Сравнение строк с учетом текущей локали</title>
+
+ </head>
+ <body><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.strcmp.html">strcmp</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.strcspn.html">strcspn</a></div>
+ <div class="up"><a href="ref.strings.html">Обработка строк</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.strcoll" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">strcoll</h1>
+  <p class="verinfo">(PHP 4 &gt;= 4.0.5, PHP 5)</p><p class="refpurpose"><span class="refname">strcoll</span> &mdash; <span class="dc-title">Сравнение строк с учетом текущей локали</span></p>
+
+ </div>
+
+ <div class="refsect1 description" id="refsect1-function.strcoll-description">
+  <h3 class="title">Описание</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">int</span> <span class="methodname"><b>strcoll</b></span>
+    ( <span class="methodparam"><span class="type">string</span> <tt class="parameter">$str1</tt></span>
+   , <span class="methodparam"><span class="type">string</span> <tt class="parameter">$str2</tt></span>
+   )</div>
+
+  <p class="para rdfs-comment">
+   Обратите внимание, что эта функция учитывает регистр символов, и, в
+   отличие от <span class="function"><a href="function.strcmp.html" class="function">strcmp()</a></span> не безопасна для обработки
+   данных в двоичной форме.
+  </p>
+  <p class="para">
+   <span class="function"><b>strcoll()</b></span> при сравнении использует установки
+   текущей локали. Если установлена локаль C или POSIX, эта функция
+   аналогична <span class="function"><a href="function.strcmp.html" class="function">strcmp()</a></span>.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-function.strcoll-parameters">
+  <h3 class="title">Список параметров</h3>
+  <p class="para">
+   <dl>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">str1</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Первая строка.
+      </p>
+     </dd>
+
+    </dt>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">str2</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Вторая строка.
+      </p>
+     </dd>
+
+    </dt>
+
+   </dl>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-function.strcoll-returnvalues">
+  <h3 class="title">Возвращаемые значения</h3>
+  <p class="para">
+   Возвращает отрицательное число, если <i><tt class="parameter">str1</tt></i> меньше, чем
+   <i><tt class="parameter">str2</tt></i>, положительное число, если
+   <i><tt class="parameter">str1</tt></i> больше, чем
+   <i><tt class="parameter">str2</tt></i>, и 0, если они равны.
+  </p>
+ </div>
+
+
+ <div class="refsect1 changelog" id="refsect1-function.strcoll-changelog">
+  <h3 class="title">Список изменений</h3>
+  <p class="para">
+   <table class="doctable informaltable">
+    
+     <thead valign="middle">
+      <tr valign="middle">
+       <th>Версия</th>
+       <th>Описание</th>
+      </tr>
+
+     </thead>
+
+     <tbody valign="middle" class="tbody">
+      <tr valign="middle">
+       <td align="left">4.2.3</td>
+       <td align="left">
+        Теперь эта функция работает и на win32.
+       </td>
+      </tr>
+
+     </tbody>
+    
+   </table>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-function.strcoll-seealso">
+  <h3 class="title">Смотрите также</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><span class="function"><a href="function.preg-match.html" class="function" rel="rdfs-seeAlso">preg_match()</a> - Выполняет проверку на соответствие регулярному выражению</span></li>
+    <li class="member"><span class="function"><a href="function.strcmp.html" class="function" rel="rdfs-seeAlso">strcmp()</a> - Бинарно-безопасное сравнение строк</span></li>
+    <li class="member"><span class="function"><a href="function.strcasecmp.html" class="function" rel="rdfs-seeAlso">strcasecmp()</a> - Бинарно-безопасное сравнение строк без учета регистра</span></li>
+    <li class="member"><span class="function"><a href="function.substr.html" class="function" rel="rdfs-seeAlso">substr()</a> - Возвращает подстроку</span></li>
+    <li class="member"><span class="function"><a href="function.stristr.html" class="function" rel="rdfs-seeAlso">stristr()</a> - Регистро-независимый вариант функции strstr</span></li>
+    <li class="member"><span class="function"><a href="function.strncasecmp.html" class="function" rel="rdfs-seeAlso">strncasecmp()</a> - Бинарно-безопасное сравнение первых n символов строк без учета регистра</span></li>
+    <li class="member"><span class="function"><a href="function.strncmp.html" class="function" rel="rdfs-seeAlso">strncmp()</a> - Бинарно-безопасное сравнение первых n символов строк без учета регистра</span></li>
+    <li class="member"><span class="function"><a href="function.strstr.html" class="function" rel="rdfs-seeAlso">strstr()</a> - Находит первое вхождение подстроки</span></li>
+    <li class="member"><span class="function"><a href="function.setlocale.html" class="function" rel="rdfs-seeAlso">setlocale()</a> - Устанавливает настройки локали</span></li>
+   </ul>
+  </p>
+ </div>
+
+
+</div><hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.strcmp.html">strcmp</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.strcspn.html">strcspn</a></div>
+ <div class="up"><a href="ref.strings.html">Обработка строк</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

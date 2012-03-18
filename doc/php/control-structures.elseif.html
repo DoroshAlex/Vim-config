@@ -1,0 +1,83 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>elseif/else if</title>
+
+ </head>
+ <body><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="control-structures.else.html">else</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="control-structures.alternative-syntax.html">Альтернативный синтаксис управляющих структур</a></div>
+ <div class="up"><a href="language.control-structures.html">Управляющие конструкции</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="control-structures.elseif" class="sect1">
+ <h2 class="title"><i>elseif</i>/<i>else if</i></h2>
+ <p class="verinfo">(PHP 4, PHP5)</p>
+ <p class="para">
+  Конструкция <i>elseif</i>, как ее имя и говорит есть сочетание
+  <i>if</i> и <i>else</i>.  Аналогично
+  <i>else</i>, она расширяет оператор <i>if</i>
+  для выполнения различных выражений в случае, когда условие начального оператора  
+  <i>if</i> эквивалентно
+  <b><tt>FALSE</tt></b>.  Однако, в отличии от 
+  <i>else</i>, выполнение альтернотивного 
+  выражения произойдет только тогда, когда условие оператора <i>elseif</i>
+  будет являться равным <b><tt>TRUE</tt></b>. К примеру, 
+  следующий код может выводить <span class="computeroutput">a больше, чем
+  b</span>, <span class="computeroutput">a равно b</span>
+  or <span class="computeroutput">a меньше, чем b</span>:
+  <div class="informalexample">
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">if&nbsp;(</span><span style="color: #0000BB">$a&nbsp;</span><span style="color: #007700">&gt;&nbsp;</span><span style="color: #0000BB">$b</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"a&nbsp;больше,&nbsp;чем&nbsp;b"</span><span style="color: #007700">;<br />}&nbsp;elseif&nbsp;(</span><span style="color: #0000BB">$a&nbsp;</span><span style="color: #007700">==&nbsp;</span><span style="color: #0000BB">$b</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"a&nbsp;равен&nbsp;b"</span><span style="color: #007700">;<br />}&nbsp;else&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"a&nbsp;меньше,&nbsp;чем&nbsp;b"</span><span style="color: #007700">;<br />}<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+   </div>
+
+  </div>
+ </p>
+ <p class="simpara">
+  Может быть несколько <i>elseif</i> в одном
+  <i>if</i> выражении.  Первое же выражение
+  <i>elseif</i> (если будет хоть одно) равное 
+  <b><tt>TRUE</tt></b> будет выполнено. В PHP вы также можете 
+  написать &#039;else if&#039; (в два слова), и тогда поведение будет идентичным
+  &#039;elseif&#039; (в одно слово).  Синтаксически значение 
+  немного отличается (если Вы знакомы с языком С, это тоже самое
+  поведение), но в конечном итоге оба выражения приведут к одному и 
+  тому же результату.
+ </p>
+ <p class="simpara">
+  Выражение <i>elseif</i> выполнится, если
+  предшествующее выражение <i>if</i> и предшествующие
+  выражения <i>elseif</i> эквивалентны
+  <b><tt>FALSE</tt></b>, а текущий 
+  <i>elseif</i> равен
+  <b><tt>TRUE</tt></b>.
+ </p>
+ <blockquote class="note"><p><b class="note">Замечание</b>: 
+  <span class="simpara">
+   Заметьте, что <i>elseif</i> и <i>else if</i>
+   будут равнозначны только при использовании фигурных скобок, 
+   как в примерах выше.  Если используются двоеточие для определения условий 
+   <i>if</i>/<i>elseif</i>, Вы не должны 
+   разделять <i>else if</i> в два слова, иначе это вызовет фатальную ошибку в PHP.
+  </span>
+ </p></blockquote>
+ <p class="para">
+  <div class="informalexample">
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /><br /></span><span style="color: #FF8000">/*&nbsp;Некорректный&nbsp;способ:&nbsp;*/<br /></span><span style="color: #007700">if(</span><span style="color: #0000BB">$a&nbsp;</span><span style="color: #007700">&gt;&nbsp;</span><span style="color: #0000BB">$b</span><span style="color: #007700">):<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #0000BB">$a</span><span style="color: #007700">.</span><span style="color: #DD0000">"&nbsp;больше,&nbsp;чем&nbsp;"</span><span style="color: #007700">.</span><span style="color: #0000BB">$b</span><span style="color: #007700">;<br />else&nbsp;if(</span><span style="color: #0000BB">$a&nbsp;</span><span style="color: #007700">==&nbsp;</span><span style="color: #0000BB">$b</span><span style="color: #007700">):&nbsp;</span><span style="color: #FF8000">//&nbsp;Не&nbsp;скомпилируется.<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">echo&nbsp;</span><span style="color: #DD0000">"Строка&nbsp;выше&nbsp;вызывает&nbsp;фатальную&nbsp;ошибку."</span><span style="color: #007700">;<br />endif;<br /><br /><br /></span><span style="color: #FF8000">/*&nbsp;Корректный&nbsp;способ:&nbsp;*/<br /></span><span style="color: #007700">if(</span><span style="color: #0000BB">$a&nbsp;</span><span style="color: #007700">&gt;&nbsp;</span><span style="color: #0000BB">$b</span><span style="color: #007700">):<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #0000BB">$a</span><span style="color: #007700">.</span><span style="color: #DD0000">"&nbsp;больше,&nbsp;чем&nbsp;"</span><span style="color: #007700">.</span><span style="color: #0000BB">$b</span><span style="color: #007700">;<br />elseif(</span><span style="color: #0000BB">$a&nbsp;</span><span style="color: #007700">==&nbsp;</span><span style="color: #0000BB">$b</span><span style="color: #007700">):&nbsp;</span><span style="color: #FF8000">//&nbsp;Заметьте,&nbsp;тут&nbsp;одно&nbsp;слово.<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">$a</span><span style="color: #007700">.</span><span style="color: #DD0000">"&nbsp;равно&nbsp;"</span><span style="color: #007700">.</span><span style="color: #0000BB">$b</span><span style="color: #007700">;<br />else:<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #0000BB">$a</span><span style="color: #007700">.</span><span style="color: #DD0000">"&nbsp;не&nbsp;больше&nbsp;и&nbsp;не&nbsp;равно&nbsp;"</span><span style="color: #007700">.</span><span style="color: #0000BB">$b</span><span style="color: #007700">;<br />endif;<br /><br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+   </div>
+
+  </div>
+ </p>
+</div><hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="control-structures.else.html">else</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="control-structures.alternative-syntax.html">Альтернативный синтаксис управляющих структур</a></div>
+ <div class="up"><a href="language.control-structures.html">Управляющие конструкции</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

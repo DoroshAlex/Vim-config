@@ -1,0 +1,171 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Получение количества дней между 21 марта и Пасхой в заданном году</title>
+
+ </head>
+ <body><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.easter-date.html">easter_date</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.frenchtojd.html">FrenchToJD</a></div>
+ <div class="up"><a href="ref.calendar.html">Календарь</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.easter-days" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">easter_days</h1>
+  <p class="verinfo">(PHP 4, PHP 5)</p><p class="refpurpose"><span class="refname">easter_days</span> &mdash; <span class="dc-title">
+   Получение количества дней между 21 марта и Пасхой в заданном году
+  </span></p>
+
+ </div>
+
+ <div class="refsect1 description" id="refsect1-function.easter-days-description">
+  <h3 class="title">Описание</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">int</span> <span class="methodname"><b>easter_days</b></span>
+    ([ <span class="methodparam"><span class="type">int</span> <tt class="parameter">$year</tt></span>
+   [, <span class="methodparam"><span class="type">int</span> <tt class="parameter">$method</tt><span class="initializer"> = CAL_EASTER_DEFAULT</span></span>
+  ]] )</div>
+
+  <p class="para rdfs-comment">
+   Возвращает количество дней между 21 марта и Пасхой в заданном году.
+   Если год не указан, расчет будет произведен для текущего года.
+  </p>
+  <p class="para">
+   Эту функцию можно использовать вместо <span class="function"><a href="function.easter-date.html" class="function">easter_date()</a></span> 
+   для расчета даты Пасхи для дат, выходящих за рамки диапазона меток 
+   времени Unix (с 1970 по 2037 годы).
+  </p>
+  <p class="para">
+   Дата Пасхального дня была введена Консулом Никеи в 325 году до н.э.
+   Это первое воскресенье, следующее за первым полнолунием после 
+   весеннего равноденствия. Днем весеннего равноденствия принято считать 
+   21 марта, так что расчет дня Пасхи сводится к определению даты 
+   полнолуния и следующего за ней воскресенья. Используемый здесь 
+   алгоритм введен Дионисием Малым в 532 году. В Юлианском летоисчислении 
+   (до 1753 года) для отслеживания фаз луны использовался простой 
+   19-летний цикл. В Грегорианском календаре (годы после 1753 - 
+   разработан Христофором Клавиусом и Алоизием Лилиусом и введен 
+   Папой Григорием XIII в октябре 1582г., а в Великобритании и ее 
+   колониях в сентябре 1752г.) было добавлено 2 поправочных 
+   коэффициента увеличивающих точность расчета дат.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-function.easter-days-parameters">
+  <h3 class="title">Список параметров</h3>
+  <p class="para">
+   <dl>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">year</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Год, положительное число
+      </p>
+     </dd>
+
+    </dt>
+  
+    <dt>
+
+     <span class="term"><i><tt class="parameter">method</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Позволяет расчитать Пасхальные даты основанные на Григорианском 
+       календаре для 1582 - 1752 годов, если установить 
+       <b><tt>CAL_EASTER_ROMAN</tt></b>. См. <a href="calendar.constants.html" class="link">список констант календаря</a>,
+       чтобы узнать о всех допустимых константах.
+       </p>
+     </dd>
+
+    </dt>
+  
+   </dl>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-function.easter-days-returnvalues">
+  <h3 class="title">Возвращаемые значения</h3>
+  <p class="para">
+   Количество дней между 21 марта и Пасхальным воскресеньем в заданном 
+   году <i><tt class="parameter">year</tt></i>.
+  </p>
+ </div>
+
+
+ <div class="refsect1 changelog" id="refsect1-function.easter-days-changelog">
+  <h3 class="title">Список изменений</h3>
+  <p class="para">
+   <table class="doctable informaltable">
+    
+     <thead valign="middle">
+      <tr valign="middle">
+       <th>Версия</th>
+       <th>Описание</th>
+      </tr>
+
+     </thead>
+
+     <tbody valign="middle" class="tbody">
+      <tr valign="middle">
+       <td align="left">Начиная с 4.3.0</td>
+       <td align="left">
+        Аргумент <i><tt class="parameter">year</tt></i> необязателен, по умолчанию 
+        принимается текущий год в соответствии с локальным временем.
+       </td>
+      </tr>
+
+      <tr valign="middle">
+       <td align="left">Начиная с 4.3.0</td>
+       <td align="left">
+        Введен аргумент <i><tt class="parameter">method</tt></i>.
+       </td>
+      </tr>
+
+     </tbody>
+    
+   </table>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-function.easter-days-examples">
+  <h3 class="title">Примеры</h3>
+  <p class="para">
+   <div class="example" id="example-595">
+    <p><b>Пример #1 Пример использования <span class="function"><b>easter_days()</b></span></b></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /><br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">easter_days</span><span style="color: #007700">(</span><span style="color: #0000BB">1999</span><span style="color: #007700">);&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;14,&nbsp;т.e.&nbsp;April&nbsp;4<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">easter_days</span><span style="color: #007700">(</span><span style="color: #0000BB">1492</span><span style="color: #007700">);&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;32,&nbsp;т.e.&nbsp;April&nbsp;22<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">easter_days</span><span style="color: #007700">(</span><span style="color: #0000BB">1913</span><span style="color: #007700">);&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;&nbsp;2,&nbsp;т.e.&nbsp;March&nbsp;23<br /><br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+  </p>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-function.easter-days-seealso">
+  <h3 class="title">Смотрите также</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><span class="function"><a href="function.easter-date.html" class="function" rel="rdfs-seeAlso">easter_date()</a> - Метка времени Unix соответствующая полуночи на Пасху в заданном году</span></li>
+   </ul>
+  </p>
+ </div>
+
+</div><hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.easter-date.html">easter_date</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.frenchtojd.html">FrenchToJD</a></div>
+ <div class="up"><a href="ref.calendar.html">Календарь</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

@@ -1,0 +1,135 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Уничтожает процесс, открытый при помощи функции proc_open</title>
+
+ </head>
+ <body><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.proc-open.html">proc_open</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.shell-exec.html">shell_exec</a></div>
+ <div class="up"><a href="ref.exec.html">Функции запуска программ</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.proc-terminate" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">proc_terminate</h1>
+  <p class="verinfo">(PHP 5)</p><p class="refpurpose"><span class="refname">proc_terminate</span> &mdash; <span class="dc-title">Уничтожает процесс, открытый при помощи функции proc_open</span></p>
+
+ </div>
+
+ <div class="refsect1 description" id="refsect1-function.proc-terminate-description">
+  <h3 class="title">Описание</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">bool</span> <span class="methodname"><b>proc_terminate</b></span>
+    ( <span class="methodparam"><span class="type">resource</span> <tt class="parameter">$process</tt></span>
+   [, <span class="methodparam"><span class="type">int</span> <tt class="parameter">$signal</tt><span class="initializer"> = 15</span></span>
+  ] )</div>
+
+  <p class="para rdfs-comment">
+   Отправляет процессу <i><tt class="parameter">process</tt></i> (созданному при помощи функции
+   <span class="function"><a href="function.proc-open.html" class="function">proc_open()</a></span>) сигнал, говорящий о том, что он должен завершиться.
+   Функция <span class="function"><b>proc_terminate()</b></span> возвращается немедленно и не ожидает
+   завершения процесса.
+  </p>
+  <p class="para">
+   Функция <span class="function"><b>proc_terminate()</b></span> позволяет программе завершить процесс и 
+   продолжать выполнять другие задачи. Вы можете опрашивать процесс (для того, чтобы проверить, 
+   был ли он завершён) при помощи функции <span class="function"><a href="function.proc-get-status.html" class="function">proc_get_status()</a></span>.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-function.proc-terminate-parameters">
+  <h3 class="title">Список параметров</h3>
+  <p class="para">
+   <dl>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">process</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Открытый при помощи функции <span class="function"><a href="function.proc-open.html" class="function">proc_open()</a></span> дескриптор типа <span class="type"><a href="language.types.resource.html" class="type resource">resource</a></span>,
+       который будет закрыт.
+      </p>
+     </dd>
+
+    </dt>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">signal</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Этот необязательный параметр полезен только на операционных системах, 
+       поддерживающих стандарт <acronym title="Portable Operating System Interface">POSIX</acronym>. Вы можете указать сигнал, который будет отправлен
+       процессу, используя системный вызов <i>kill(2)</i>. По умолчанию используется сигнал
+       <i>SIGTERM</i>.
+      </p>
+     </dd>
+
+    </dt>
+
+   </dl>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-function.proc-terminate-returnvalues">
+  <h3 class="title">Возвращаемые значения</h3>
+  <p class="para">
+   Возвращает статус прекращения процесса, который был запущен.
+  </p>
+ </div>
+
+
+ <div class="refsect1 changelog" id="refsect1-function.proc-terminate-changelog">
+  <h3 class="title">Список изменений</h3>
+  <p class="para">
+   <table class="doctable informaltable">
+    
+     <thead valign="middle">
+      <tr valign="middle">
+       <th>Версия</th>
+       <th>Описание</th>
+      </tr>
+
+     </thead>
+
+     <tbody valign="middle" class="tbody">
+      <tr valign="middle">
+       <td align="left">5.2.2</td>
+       <td align="left">
+        Предыдущие версии использовали для уничтожения указанного процесса ресурс
+        <i><tt class="parameter">resource</tt></i>.
+       </td>
+      </tr>
+
+     </tbody>
+    
+   </table>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-function.proc-terminate-seealso">
+  <h3 class="title">Смотрите также</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><span class="function"><a href="function.proc-open.html" class="function" rel="rdfs-seeAlso">proc_open()</a> - Выполняет команду и открывает указатель на файл для ввода/вывода</span></li>
+    <li class="member"><span class="function"><a href="function.proc-close.html" class="function" rel="rdfs-seeAlso">proc_close()</a> - Завершает процесс, открытый при помощи функции proc_open и возвращает код завершения этого процесса</span></li>
+    <li class="member"><span class="function"><a href="function.proc-get-status.html" class="function" rel="rdfs-seeAlso">proc_get_status()</a> - Получает информацию о процессе, открытом при помощи функции proc_open</span></li>
+   </ul>
+  </p>
+ </div>
+
+</div><hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.proc-open.html">proc_open</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.shell-exec.html">shell_exec</a></div>
+ <div class="up"><a href="ref.exec.html">Функции запуска программ</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

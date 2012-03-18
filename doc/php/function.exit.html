@@ -1,0 +1,165 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Выводит сообщение и прекращает выполнение текущего скрипта</title>
+
+ </head>
+ <body><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.eval.html">eval</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.get-browser.html">get_browser</a></div>
+ <div class="up"><a href="ref.misc.html">Разные Функции</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.exit" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">exit</h1>
+  <p class="verinfo">(PHP 4, PHP 5)</p><p class="refpurpose"><span class="refname">exit</span> &mdash; <span class="dc-title">Выводит сообщение и прекращает выполнение текущего скрипта</span></p>
+
+ </div>
+ 
+ <div class="refsect1 description" id="refsect1-function.exit-description">
+  <h3 class="title">Описание</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type"><span class="type void">void</span></span> <span class="methodname"><b>exit</b></span>
+    ([ <span class="methodparam"><span class="type">string</span> <tt class="parameter">$status</tt></span>
+  ] )</div>
+
+  <div class="methodsynopsis dc-description">
+   <span class="type"><span class="type void">void</span></span> <span class="methodname"><b>exit</b></span>
+    ( <span class="methodparam"><span class="type">int</span> <tt class="parameter">$status</tt></span>
+   )</div>
+
+  <p class="para rdfs-comment">
+   Прекращает выполнение скрипта.
+   <a href="function.register-shutdown-function.html" class="link">Функции отключения</a>
+   и <a href="language.oop5.decon.html#language.oop5.decon.destructor" class="link">деструкторы объекта</a>
+   будут запущены даже если была вызвана функция <span class="function"><b>exit()</b></span>.
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 parameters" id="refsect1-function.exit-parameters">
+  <h3 class="title">Список параметров</h3>
+  <p class="para">
+   <dl>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">status</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Если параметр <i><tt class="parameter">status</tt></i> задан в виде строки, то эта
+       функция выведет содержимое <i><tt class="parameter">status</tt></i> перед выходом.
+      </p>
+      <p class="para">
+       Если параметр <i><tt class="parameter">status</tt></i> задан в виде целого числа (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>),
+       то это значение будет использовано как статус выхода и не будет выведено.
+       Статусы выхода должны быть в диапазоне от 0 до 254, статус выхода 255 зарезервирован
+       PHP и не должен использоваться. Статус выхода 0 используется для успешного
+       завершения программы.
+      </p>
+      <blockquote class="note"><p><b class="note">Замечание</b>: 
+       <span class="simpara">
+        PHP &gt;= 4.2.0 НЕ выведет параметр <i><tt class="parameter">status</tt></i>
+        если он задан как целое число (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>).
+       </span>
+      </p></blockquote>
+     </dd>
+
+    </dt>
+
+   </dl>
+
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 returnvalues" id="refsect1-function.exit-returnvalues">
+  <h3 class="title">Возвращаемые значения</h3>
+  <p class="para">
+   Эта функция не возвращает значения после выполнения.
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 examples" id="refsect1-function.exit-examples">
+  <h3 class="title">Примеры</h3>
+  <p class="para">
+   <div class="example" id="example-3375">
+    <p><b>Пример #1 Пример использования <span class="function"><b>exit()</b></span></b></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /><br />$filename&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'/path/to/data-file'</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$file&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">fopen</span><span style="color: #007700">(</span><span style="color: #0000BB">$filename</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'r'</span><span style="color: #007700">)<br />&nbsp;&nbsp;&nbsp;&nbsp;or&nbsp;exit(</span><span style="color: #DD0000">"Невозможно&nbsp;открыть&nbsp;файл&nbsp;(</span><span style="color: #0000BB">$filename</span><span style="color: #DD0000">)"</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+  </p>
+  <p class="para">
+   <div class="example" id="example-3376">
+    <p><b>Пример #2 Пример использования <span class="function"><b>exit()</b></span> со статусом выхода</b></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /><br /></span><span style="color: #FF8000">//нормальный&nbsp;выход&nbsp;из&nbsp;программы<br /></span><span style="color: #007700">exit;<br />exit();<br />exit(</span><span style="color: #0000BB">0</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//выход&nbsp;с&nbsp;кодом&nbsp;ошибки<br /></span><span style="color: #007700">exit(</span><span style="color: #0000BB">1</span><span style="color: #007700">);<br />exit(</span><span style="color: #0000BB">0376</span><span style="color: #007700">);&nbsp;</span><span style="color: #FF8000">//восьмеричный<br /><br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+  </p>
+  <p class="para">
+   <div class="example" id="example-3377">
+    <p><b>Пример #3 Функции выключения и деструкторы выполняются независимо</b></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">class&nbsp;</span><span style="color: #0000BB">Foo<br /></span><span style="color: #007700">{<br />&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;function&nbsp;</span><span style="color: #0000BB">__destruct</span><span style="color: #007700">()<br />&nbsp;&nbsp;&nbsp;&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">'Деинициализировать:&nbsp;'&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">__METHOD__&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #DD0000">'()'&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">PHP_EOL</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />}<br /><br />function&nbsp;</span><span style="color: #0000BB">shutdown</span><span style="color: #007700">()<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">'Завершить:&nbsp;'&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">__FUNCTION__&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #DD0000">'()'&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">PHP_EOL</span><span style="color: #007700">;<br />}<br /><br /></span><span style="color: #0000BB">$foo&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">Foo</span><span style="color: #007700">();<br /></span><span style="color: #0000BB">register_shutdown_function</span><span style="color: #007700">(</span><span style="color: #DD0000">'shutdown'</span><span style="color: #007700">);<br /><br />exit();<br />echo&nbsp;</span><span style="color: #DD0000">'Эта&nbsp;строка&nbsp;не&nbsp;будет&nbsp;выведена.'</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+    <div class="example-contents"><p>Результат выполнения данного примера:</p></div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+ Завершить: shutdown()
+ Деинициализировать: Foo::__destruct()
+ </pre></div>
+    </div>
+   </div>
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 notes" id="refsect1-function.exit-notes">
+  <h3 class="title">Примечания</h3>
+  
+  <blockquote class="note"><p><b class="note">Замечание</b>: <span class="simpara">Поскольку это языковая
+конструкция, а не функция, она не может вызываться при помощи
+<a href="functions.variable-functions.html" class="link">переменных функций</a></span>
+</p></blockquote>
+  
+  <blockquote class="note"><p><b class="note">Замечание</b>: 
+   <p class="para">
+    Эта языковая конструкция эквивалентна функции <span class="function"><a href="function.die.html" class="function">die()</a></span>.
+   </p>
+  </p></blockquote>
+ </div>
+
+ 
+ <div class="refsect1 seealso" id="refsect1-function.exit-seealso">
+  <h3 class="title">Смотрите также</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><span class="function"><a href="function.register-shutdown-function.html" class="function" rel="rdfs-seeAlso">register_shutdown_function()</a> - Регистрирует функцию, которая выполнится по завершении работы скрипта</span></li>
+   </ul>
+  </p>
+ </div>
+
+ 
+</div><hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.eval.html">eval</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.get-browser.html">get_browser</a></div>
+ <div class="up"><a href="ref.misc.html">Разные Функции</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

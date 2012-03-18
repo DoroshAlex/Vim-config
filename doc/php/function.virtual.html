@@ -1,0 +1,162 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Выполняет подзапрос Apache</title>
+
+ </head>
+ <body><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.getallheaders.html">getallheaders</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="book.iisfunc.html">IIS</a></div>
+ <div class="up"><a href="ref.apache.html">Apache</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.virtual" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">virtual</h1>
+  <p class="verinfo">(PHP 4, PHP 5)</p><p class="refpurpose"><span class="refname">virtual</span> &mdash; <span class="dc-title">Выполняет подзапрос Apache</span></p>
+
+ </div>
+
+ <div class="refsect1 description" id="refsect1-function.virtual-description">
+  <h3 class="title">Описание</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">bool</span> <span class="methodname"><b>virtual</b></span>
+    ( <span class="methodparam"><span class="type">string</span> <tt class="parameter">$filename</tt></span>
+   )</div>
+
+  <p class="para rdfs-comment">
+   Функция <span class="function"><b>virtual()</b></span> специфична для сервера Apache
+   и является эквивалентом конструкции <i>&lt;!--#include virtual...--&gt;</i>,
+   используемой в <i>mod_include</i>.
+   Данная функция выполняет подзапрос Apache. Это бывает полезным
+   в тех случаях, когда необходимо включить в свой скрипт результат
+   выполнения других CGI-скриптов или файлов <var class="filename">.shtml</var>, а также добавления всего,
+   что должно быть обработано Apache.
+   Обратите внимание, что CGI-скрипты должны отдавать корректные CGI-заголовки.
+   Как минимум, CGI-скрипт должен создавать заголовок <i>Content-Type</i>.
+  </p>
+  <p class="para">
+   Перед тем, как осуществится выполнение подзапроса, все буферы
+   сбрасываются и выдаются в браузер, при этом отсылаются заголовки,
+   помещенные в буфер.
+  </p>
+  <p class="simpara">Эта функция поддерживается только если PHP
+установлен в качестве модуля Apache.</p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-function.virtual-parameters">
+  <h3 class="title">Список параметров</h3>
+  <p class="para">
+   <dl>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">filename</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Имя файла, для которого будет выполнен подзапрос.
+      </p>
+     </dd>
+
+    </dt>
+
+   </dl>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-function.virtual-returnvalues">
+  <h3 class="title">Возвращаемые значения</h3>
+  <p class="para">
+   Результат выполнения подзапроса в случае успеха или <b><tt>FALSE</tt></b> в случае ошибки.
+  </p>
+ </div>
+
+
+ <div class="refsect1 changelog" id="refsect1-function.virtual-changelog">
+  <h3 class="title">Список изменений</h3>
+  <p class="para">
+   <table class="doctable informaltable">
+    
+     <thead valign="middle">
+      <tr valign="middle">
+       <th>Версия</th>
+       <th>Описание</th>
+      </tr>
+
+     </thead>
+
+     <tbody valign="middle" class="tbody">
+      <tr valign="middle">
+       <td align="left">4.3.3</td>
+       <td align="left">
+        <p class="para">Начиная с PHP 4.3.3 вы также
+можете использовать эти функции с <a href="ref.nsapi.html" class="link">модулем NSAPI</a>
+в серверах Netscape/iPlanet/SunONE.</p>
+       </td>
+      </tr>
+
+      <tr valign="middle">
+       <td align="left">4.0.6</td>
+       <td align="left">
+        Данную функцию стало возможно использовать для файлов PHP.
+        Тем не менее, для файлов PHP лучше использовать функции <span class="function"><b>include()</b></span> или
+        <span class="function"><b>require()</b></span>.
+       </td>
+      </tr>
+
+     </tbody>
+    
+   </table>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-function.virtual-examples">
+  <h3 class="title">Примеры</h3>
+  <p class="para">
+   Пример использования смотрите в функции <span class="function"><a href="function.apache-note.html" class="function">apache_note()</a></span>.
+  </p>
+ </div>
+
+
+ <div class="refsect1 notes" id="refsect1-function.virtual-notes">
+  <h3 class="title">Примечания</h3>
+  <div class="warning"><b class="warning">Внимание</b>
+   <p class="para">
+    Строка запроса может быть передана вызываемому файлу, однако значение переменной
+    <var class="varname"><var class="varname"><a href="reserved.variables.get.html" class="classname">$_GET</a></var></var> будет скопировано из родительского скрипта, лишь
+    <var class="varname"><var class="varname"><a href="reserved.variables.server.html" class="classname">$_SERVER['QUERY_STRING']</a></var></var> будет содержать переданную
+    строку запроса. Строка запроса может быть передана только при использовании Apache 2.
+    Запрошенный файл не будет отражен в журнале доступа (access log) Apache.
+   </p>
+  </div>
+  <blockquote class="note"><p><b class="note">Замечание</b>: 
+   <p class="para">
+    Переменные окружения, установленные в запрошенном файле, не видимы из
+    вызвавшего его скрипта.
+   </p>
+  </p></blockquote>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-function.virtual-seealso">
+  <h3 class="title">Смотрите также</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><span class="function"><a href="function.apache-note.html" class="function" rel="rdfs-seeAlso">apache_note()</a> - Возвращает и установливает уведомления к запросу Apache</span></li>
+   </ul>
+  </p>
+ </div>
+
+
+</div><hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.getallheaders.html">getallheaders</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="book.iisfunc.html">IIS</a></div>
+ <div class="up"><a href="ref.apache.html">Apache</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

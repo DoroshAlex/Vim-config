@@ -1,0 +1,179 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Обрабатывает ряд результата запроса, возвращая ассоциативный массив, численный массив или оба</title>
+
+ </head>
+ <body><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.mysql-escape-string.html">mysql_escape_string</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.mysql-fetch-assoc.html">mysql_fetch_assoc</a></div>
+ <div class="up"><a href="ref.mysql.html">MySQL</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.mysql-fetch-array" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">mysql_fetch_array</h1>
+  <p class="verinfo">(PHP 4, PHP 5)</p><p class="refpurpose"><span class="refname">mysql_fetch_array</span> &mdash; <span class="dc-title">Обрабатывает ряд результата запроса, возвращая ассоциативный массив, численный массив или оба</span></p>
+
+ </div>
+
+ <div class="refsect1 description" id="refsect1-function.mysql-fetch-array-description">
+  <h3 class="title">Описание</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">array</span> <span class="methodname"><b>mysql_fetch_array</b></span>
+    ( <span class="methodparam"><span class="type">resource</span> <tt class="parameter">$result</tt></span>
+   [, <span class="methodparam"><span class="type">int</span> <tt class="parameter">$result_type</tt><span class="initializer"> = MYSQL_BOTH</span></span>
+  ] )</div>
+
+  <p class="para rdfs-comment">
+   Возвращает массив, соответствующий обработанному ряду результата
+   запроса и сдвигает внутренний указатель данных вперед.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-function.mysql-fetch-array-parameters">
+  <h3 class="title">Список параметров</h3>
+  <p class="para">
+   <dl>
+
+    <dt>
+<span class="term"><i><tt class="parameter">
+result</tt></i></span><dd>
+<p class="para">Обрабатываемый <a href="language.types.resource.html" class="link">результат запроса</a>.
+Этот результат может быть получен с помощью функции <span class="function"><a href="function.mysql-query.html" class="function">mysql_query()</a></span>.</p></dd>
+</dt>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">result_type</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Тип возвращаемого массива. Является константой и может принимать
+       следующие значения: <b><tt>MYSQL_ASSOC</tt></b>,
+       <b><tt>MYSQL_NUM</tt></b> и
+       <b><tt>MYSQL_BOTH</tt></b>.
+      </p>
+     </dd>
+
+    </dt>
+
+   </dl>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-function.mysql-fetch-array-returnvalues">
+  <h3 class="title">Возвращаемые значения</h3>
+  <p class="para">
+   Возвращает массив строк, соответствующих обработанному ряду результата
+   запроса, или <b><tt>FALSE</tt></b>, если рядов больше нет. Тип возвращаемого
+   массива зависит от значения параметра <i><tt class="parameter">result_type</tt></i>.
+   При использовании <b><tt>MYSQL_BOTH</tt></b> (по умолчанию),
+   вы получите массив, состоящий как из ассоциативных индексов,
+   так и из численных. <b><tt>MYSQL_ASSOC</tt></b> вернёт
+   только ассоциативные индексы (аналогично функции
+   <span class="function"><a href="function.mysql-fetch-assoc.html" class="function">mysql_fetch_assoc()</a></span>), а
+   <b><tt>MYSQL_NUM</tt></b> - только численные (аналогично
+   функции <span class="function"><a href="function.mysql-fetch-row.html" class="function">mysql_fetch_row()</a></span>).
+  </p>
+  <p class="para">
+   Если несколько колонок в результате будут иметь одинаковые
+   названия, то будет возвращена последняя колонка. Чтобы получить
+   доступ к другим колонкам с тем же именем, используйте численные
+   индексы массива или псевдонимы в запросе. В случае псевдонимов
+   используйте именно их - вы не сможете использовать настоящие
+   имена колонок.
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-function.mysql-fetch-array-examples">
+  <h3 class="title">Примеры</h3>
+  <p class="para">
+   <div class="example" id="example-1510">
+    <p><b>Пример #1 Запрос с применением псевдонимов для дублирующихся имен колонок</b></p>
+    <div class="example-contents">
+<div class="sqlcode"><pre class="sqlcode">SELECT table1.field AS foo, table2.field AS bar FROM table1, table2</pre>
+</div>
+    </div>
+
+   </div>
+  </p>
+  <p class="para">
+   <div class="example" id="example-1511">
+    <p><b>Пример #2 <span class="function"><b>mysql_fetch_array()</b></span> с <b><tt>MYSQL_NUM</tt></b></b></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />mysql_connect</span><span style="color: #007700">(</span><span style="color: #DD0000">"localhost"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"mysql_user"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"mysql_password"</span><span style="color: #007700">)&nbsp;or<br />&nbsp;&nbsp;&nbsp;&nbsp;die(</span><span style="color: #DD0000">"Ошибка&nbsp;соединения:&nbsp;"&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">mysql_error</span><span style="color: #007700">());<br /></span><span style="color: #0000BB">mysql_select_db</span><span style="color: #007700">(</span><span style="color: #DD0000">"mydb"</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">$result&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">mysql_query</span><span style="color: #007700">(</span><span style="color: #DD0000">"SELECT&nbsp;id,&nbsp;name&nbsp;FROM&nbsp;mytable"</span><span style="color: #007700">);<br /><br />while&nbsp;(</span><span style="color: #0000BB">$row&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">mysql_fetch_array</span><span style="color: #007700">(</span><span style="color: #0000BB">$result</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">MYSQL_NUM</span><span style="color: #007700">))&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">printf</span><span style="color: #007700">(</span><span style="color: #DD0000">"ID:&nbsp;%s&nbsp;&nbsp;Имя:&nbsp;%s"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$row</span><span style="color: #007700">[</span><span style="color: #0000BB">0</span><span style="color: #007700">],&nbsp;</span><span style="color: #0000BB">$row</span><span style="color: #007700">[</span><span style="color: #0000BB">1</span><span style="color: #007700">]);<br />}<br /><br /></span><span style="color: #0000BB">mysql_free_result</span><span style="color: #007700">(</span><span style="color: #0000BB">$result</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+  </p>
+  <p class="para">
+   <div class="example" id="example-1512">
+    <p><b>Пример #3 <span class="function"><b>mysql_fetch_array()</b></span> с <b><tt>MYSQL_ASSOC</tt></b></b></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />mysql_connect</span><span style="color: #007700">(</span><span style="color: #DD0000">"localhost"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"mysql_user"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"mysql_password"</span><span style="color: #007700">)&nbsp;or<br />&nbsp;&nbsp;&nbsp;&nbsp;die(</span><span style="color: #DD0000">"Ошибка&nbsp;соединения:&nbsp;"&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">mysql_error</span><span style="color: #007700">());<br /></span><span style="color: #0000BB">mysql_select_db</span><span style="color: #007700">(</span><span style="color: #DD0000">"mydb"</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">$result&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">mysql_query</span><span style="color: #007700">(</span><span style="color: #DD0000">"SELECT&nbsp;id,&nbsp;name&nbsp;FROM&nbsp;mytable"</span><span style="color: #007700">);<br /><br />while&nbsp;(</span><span style="color: #0000BB">$row&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">mysql_fetch_array</span><span style="color: #007700">(</span><span style="color: #0000BB">$result</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">MYSQL_ASSOC</span><span style="color: #007700">))&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">printf</span><span style="color: #007700">(</span><span style="color: #DD0000">"ID:&nbsp;%s&nbsp;&nbsp;Имя:&nbsp;%s"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$row</span><span style="color: #007700">[</span><span style="color: #DD0000">"id"</span><span style="color: #007700">],&nbsp;</span><span style="color: #0000BB">$row</span><span style="color: #007700">[</span><span style="color: #DD0000">"name"</span><span style="color: #007700">]);<br />}<br /><br /></span><span style="color: #0000BB">mysql_free_result</span><span style="color: #007700">(</span><span style="color: #0000BB">$result</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+  </p>
+  <p class="para">
+   <div class="example" id="example-1513">
+    <p><b>Пример #4 <span class="function"><b>mysql_fetch_array()</b></span> с <b><tt>MYSQL_BOTH</tt></b></b></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />mysql_connect</span><span style="color: #007700">(</span><span style="color: #DD0000">"localhost"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"mysql_user"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"mysql_password"</span><span style="color: #007700">)&nbsp;or<br />&nbsp;&nbsp;&nbsp;&nbsp;die(</span><span style="color: #DD0000">"Ошибка&nbsp;соединения:&nbsp;"&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">mysql_error</span><span style="color: #007700">());<br /></span><span style="color: #0000BB">mysql_select_db</span><span style="color: #007700">(</span><span style="color: #DD0000">"mydb"</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">$result&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">mysql_query</span><span style="color: #007700">(</span><span style="color: #DD0000">"SELECT&nbsp;id,&nbsp;name&nbsp;FROM&nbsp;mytable"</span><span style="color: #007700">);<br /><br />while&nbsp;(</span><span style="color: #0000BB">$row&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">mysql_fetch_array</span><span style="color: #007700">(</span><span style="color: #0000BB">$result</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">MYSQL_BOTH</span><span style="color: #007700">))&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">printf&nbsp;</span><span style="color: #007700">(</span><span style="color: #DD0000">"ID:&nbsp;%s&nbsp;&nbsp;Имя:&nbsp;%s"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$row</span><span style="color: #007700">[</span><span style="color: #0000BB">0</span><span style="color: #007700">],&nbsp;</span><span style="color: #0000BB">$row</span><span style="color: #007700">[</span><span style="color: #DD0000">"name"</span><span style="color: #007700">]);<br />}<br /><br /></span><span style="color: #0000BB">mysql_free_result</span><span style="color: #007700">(</span><span style="color: #0000BB">$result</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+  </p>
+ </div>
+
+
+ <div class="refsect1 notes" id="refsect1-function.mysql-fetch-array-notes">
+  <h3 class="title">Примечания</h3>
+  <blockquote class="note"><p><b class="note">Замечание</b>: 
+   <b>Производительность</b><br />
+   <p class="para">
+    Важно заметить, что <span class="function"><b>mysql_fetch_array()</b></span>
+    работает <em class="emphasis">незначительно</em> медленнее,
+    чем <span class="function"><a href="function.mysql-fetch-row.html" class="function">mysql_fetch_row()</a></span>, в то же время
+    предоставляя намного более удобный доступ к данным.
+   </p>
+  </p></blockquote>
+  <blockquote class="note"><p><b class="note">Замечание</b>: <span class="simpara">Имена полей, возвращаемые этой
+функцией являются <em class="emphasis">регистро-зависимыми</em>.</span></p></blockquote>
+  <blockquote class="note"><p><b class="note">Замечание</b>: <span class="simpara">Эта функция устанавливает NULL-поля
+в значение <b><tt>NULL</tt></b> PHP.</span></p></blockquote>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-function.mysql-fetch-array-seealso">
+  <h3 class="title">Смотрите также</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><span class="function"><a href="function.mysql-fetch-row.html" class="function" rel="rdfs-seeAlso">mysql_fetch_row()</a> - Обрабатывает ряд результата запроса и возвращает массив с числовыми индексами</span></li>
+    <li class="member"><span class="function"><a href="function.mysql-fetch-assoc.html" class="function" rel="rdfs-seeAlso">mysql_fetch_assoc()</a> - Возвращает ряд результата запроса в качестве ассоциативного массива</span></li>
+    <li class="member"><span class="function"><a href="function.mysql-data-seek.html" class="function" rel="rdfs-seeAlso">mysql_data_seek()</a> - Перемещает внутренний указатель в результате запроса</span></li>
+    <li class="member"><span class="function"><a href="function.mysql-query.html" class="function" rel="rdfs-seeAlso">mysql_query()</a> - Посылает запрос MySQL</span></li>
+   </ul>
+  </p>
+ </div>
+
+</div><hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.mysql-escape-string.html">mysql_escape_string</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.mysql-fetch-assoc.html">mysql_fetch_assoc</a></div>
+ <div class="up"><a href="ref.mysql.html">MySQL</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

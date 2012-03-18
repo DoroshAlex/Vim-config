@@ -1,0 +1,71 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Встроенные функции</title>
+
+ </head>
+ <body><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="functions.variable-functions.html">Обращение к функциям через переменные</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="functions.anonymous.html">Анонимные функции</a></div>
+ <div class="up"><a href="language.functions.html">Функции</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="functions.internal" class="sect1">
+   <h2 class="title">Встроенные функции</h2>
+   
+   <p class="para">
+    В самом PHP содержится достаточно большое количество встроенных функций
+    и языковых конструкций. Также есть функции, которые требуют, чтобы PHP был
+    собран со специфическими расширениями, в противном случае вы получите
+    сообщение о фатальной ошибке, вызванной использованием неизвестной функции.
+    Например, для того чтобы использовать <a href="ref.image.html" class="link">функции для работы с изображениями</a>,
+    например, <span class="function"><a href="function.imagecreatetruecolor.html" class="function">imagecreatetruecolor()</a></span>, вам необходимо собрать PHP с 
+    поддержкой <span class="productname">GD</span>.  Или же для того, чтобы воспользоваться 
+    функцией <span class="function"><a href="function.mysql-connect.html" class="function">mysql_connect()</a></span>, вам необходима  поддержка модуля 
+    <a href="ref.mysql.html" class="link">MySQL</a>. Тем не менее, есть много встроенных
+    функций, которые доступны всегда: например <a href="ref.strings.html" class="link">функции обработки строк</a> и
+    <a href="ref.var.html" class="link">функции для работы с переменными</a>.
+    Вызвав <span class="function"><a href="function.phpinfo.html" class="function">phpinfo()</a></span> или <span class="function"><a href="function.get-loaded-extensions.html" class="function">get_loaded_extensions()</a></span>,
+    вы можете узнать, поддержка каких модулей есть в используемом вами PHP.
+    Также следует учесть, что поддержка некоторых дополнительных расширений 
+    включена по умолчанию, и что сама документация к PHP разбита по расширениям.
+    Ознакомьтесь с разделами <a href="configuration.html" class="link">Конфигурация</a>,
+    <a href="install.html" class="link">Установка</a>, а также с документацией
+    непосредственно к дополнительным расширениям для получения более детальной
+    информации о том, как настроить ваш PHP.
+   </p>
+   <p class="para">
+    Более подробную информацию о том, как следует читать и интерпретировать
+    прототипы функций, вы можете найти в разделе <a href="about.prototypes.html" class="link">Как правильно 
+    читать описания функций</a>. Очень важно понимать, что возвращает функция,
+    или как именно она модифицирует передаваемые аргументы. Например,
+    функция <span class="function"><a href="function.str-replace.html" class="function">str_replace()</a></span> возвращает модифицированную строку,
+    в то время как функция <span class="function"><a href="function.usort.html" class="function">usort()</a></span> работает с фактически 
+    переданной переменной. Каждая страница документации также содержит
+    информацию, которая специфична для данной функции, например, информацию о 
+    передаваемых параметрах, изменениях в поведении, возвращаемых
+    значениях в случае как удачного, так и неудачного выполнения, доступности
+    функции в различных версиях. Знание и применение этих (порой даже незаметных)
+    нюансов очень важно для написания корректного PHP-кода.
+   </p>
+   <blockquote class="note"><p><b class="note">Замечание</b>: 
+    <span class="simpara">
+     Если в функцию передаются не те аргументы, которые она ожидает,
+     например, массив (<span class="type"><a href="language.types.array.html" class="type array">array</a></span>) вместо строки (<span class="type"><a href="language.types.string.html" class="type string">string</a></span>), 
+     возвращаемое значение функции не определено. Скорее всего
+     в этом случае будет возвращен <b><tt>NULL</tt></b>, но это просто соглашение,
+     на него нельзя полагаться.
+    </span>
+   </p></blockquote>
+   <p class="para">
+    Ознакомьтесь также с описанием функции <span class="function"><a href="function.function-exists.html" class="function">function_exists()</a></span>,  
+    <a href="funcref.html" class="link">справочником функций</a> и функциями
+    <span class="function"><a href="function.get-extension-funcs.html" class="function">get_extension_funcs()</a></span> и 
+    <span class="function"><a href="function.dl.html" class="function">dl()</a></span>.
+   </p>
+  </div><hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="functions.variable-functions.html">Обращение к функциям через переменные</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="functions.anonymous.html">Анонимные функции</a></div>
+ <div class="up"><a href="language.functions.html">Функции</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

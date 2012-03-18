@@ -1,0 +1,2055 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Описание встроенных директив php.ini</title>
+
+ </head>
+ <body><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="ini.sections.html">Список разделов php.ini</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="extensions.html">Список/классификация расширений</a></div>
+ <div class="up"><a href="ini.html">Директивы php.ini</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="ini.core" class="section">
+  <h2 class="title">Описание встроенных директив <var class="filename">php.ini</var></h2>
+  <p class="para">
+   Этот список включает встроенные директивы <var class="filename">php.ini</var>, которые вы можете
+   использовать для настройки PHP. Директивы, которые обрабатываются модулями,
+   перечислены и подробно описаны на страницах документаций соответствующих
+   модулей.
+   К примеру, информация о директивах сессий может быть найдена на
+   <a href="session.configuration.html" class="link">странице документации сессий</a>.
+  </p>
+  
+  <div class="section" id="ini.sect.httpd-options">
+   <h2 class="title">Опции Httpd</h2>
+   <p class="para">
+    <table class="doctable table">
+     <caption><b>Опции Httpd</b></caption>
+     
+      <thead valign="middle">
+       <tr valign="middle">
+        <th>Имя</th>
+        <th>По умолчанию</th>
+        <th>Место изменения</th>
+        <th>Список изменений</th>
+       </tr>
+
+      </thead>
+
+      <tbody valign="middle" class="tbody">
+       <tr valign="middle">
+        <td align="left">async_send</td>
+        <td align="left">&quot;0&quot;</td>
+        <td align="left">PHP_INI_ALL</td>
+        <td class="empty">&nbsp;</td>
+       </tr>
+
+      </tbody>
+     
+    </table>
+
+   </p>
+   <p class="para">
+   </p>
+  </div>
+  
+  <div class="section" id="ini.sect.language-options">
+   <h2 class="title">Языковые опции</h2>
+   <p class="para">
+    <table class="doctable table">
+     <caption><b>Опции языка и прочих настроек</b></caption>
+     
+      <thead valign="middle">
+       <tr valign="middle">
+        <th>Имя</th>
+        <th>По умолчанию</th>
+        <th>Место изменения</th>
+        <th>Список изменений</th>
+       </tr>
+
+      </thead>
+
+      <tbody valign="middle" class="tbody">
+       <tr valign="middle">
+        <td align="left">short_open_tag</td>
+        <td align="left">&quot;1&quot;</td>
+        <td align="left">PHP_INI_ALL</td>
+        <td align="left">PHP_INI_ALL в PHP &lt;= 4.0.0. PHP_INI_PERDIR в PHP &lt; 5.3.0</td>
+       </tr>
+
+       <tr valign="middle">
+        <td align="left">asp_tags</td>
+        <td align="left">&quot;0&quot;</td>
+        <td align="left">PHP_INI_PERDIR</td>
+        <td align="left">PHP_INI_ALL в PHP &lt;= 4.0.0.</td>
+       </tr>
+
+       <tr valign="middle">
+        <td align="left">precision</td>
+        <td align="left">&quot;14&quot;</td>
+        <td align="left">PHP_INI_ALL</td>
+        <td class="empty">&nbsp;</td>
+       </tr>
+
+       <tr valign="middle">
+        <td align="left">serialize_precision</td>
+        <td align="left">&quot;17&quot;</td>
+        <td align="left">PHP_INI_ALL</td>
+        <td align="left">Доступна с версии PHP 4.3.2. До версии PHP 5.3.5 значение по умолчанию было равно 100.</td>
+       </tr>
+
+       <tr valign="middle">
+        <td align="left">y2k_compliance</td>
+        <td align="left">&quot;1&quot;</td>
+        <td align="left">PHP_INI_ALL</td>
+        <td class="empty">&nbsp;</td>
+       </tr>
+
+       <tr valign="middle">
+        <td align="left">allow_call_time_pass_reference</td>
+        <td align="left">&quot;1&quot;</td>
+        <td align="left">PHP_INI_PERDIR</td>
+        <td align="left">PHP_INI_ALL в PHP 4.0.0.</td>
+       </tr>
+
+       <tr valign="middle">
+        <td align="left">disable_functions</td>
+        <td align="left">&quot;&quot;</td>
+        <td align="left"><var class="filename">php.ini</var> only</td>
+        <td align="left">Доступна с версии PHP 4.0.1.</td>
+       </tr>
+
+       <tr valign="middle">
+        <td align="left">disable_classes</td>
+        <td align="left">&quot;&quot;</td>
+        <td align="left"><var class="filename">php.ini</var> only</td>
+        <td align="left">Доступна с версии PHP 4.3.2.</td>
+       </tr>
+
+       <tr valign="middle">
+        <td align="left">expose_php</td>
+        <td align="left">&quot;1&quot;</td>
+        <td align="left">Только <var class="filename">php.ini</var></td>
+        <td class="empty">&nbsp;</td>
+       </tr>
+
+       <tr valign="middle">
+        <td align="left">zend.ze1_compatibility_mode</td>
+        <td align="left">&quot;0&quot;</td>
+        <td align="left">PHP_INI_ALL</td>
+        <td align="left">Доступна с версии PHP 5.0.0. Удалена в PHP 5.3.0</td>
+       </tr>
+
+       <tr valign="middle">
+        <td align="left">zend.multibyte</td>
+        <td align="left">&quot;0&quot;</td>
+        <td align="left">PHP_INI_ALL</td>
+        <td align="left">Доступна с версии PHP 5.4.0</td>
+       </tr>
+
+       <tr valign="middle">
+        <td align="left">detect_unicode</td>
+        <td align="left">&quot;1&quot;</td>
+        <td align="left">PHP_INI_ALL</td>
+        <td align="left">Доступна с версии PHP 5.1.0. Эта возможность устарела и <em class="emphasis">будет</em>
+обязательно <em class="emphasis">удалена</em> в будущем.</td>
+       </tr>
+
+      </tbody>
+     
+    </table>
+
+   </p>
+   
+   <p class="para">Краткое разъяснение конфигурационных
+директив.</p>
+   
+   <p class="para">
+    <dl>
+
+     <dt id="ini.short-open-tag">
+      <span class="term">
+       <i><tt class="parameter">short_open_tag</tt></i>
+       <span class="type"><a href="language.types.boolean.html" class="type boolean">boolean</a></span>
+      </span>
+      <dd>
+
+       <p class="para">
+        Определяет, разрешается ли короткая форма записи
+        (<strong class="userinput"><code>&lt;? ?&gt;</code></strong>) тегов PHP.
+        Если вы хотите использовать PHP совместно с XML, вы можете
+        отключить эту опцию, чтобы беспрепятственно использовать
+        <strong class="userinput"><code>&lt;?xml ?&gt;</code></strong>. В противном случае, вы можете
+        отобразить это при помощи PHP, например:
+        <strong class="userinput"><code>&lt;?php echo &#039;&lt;?xml version=&quot;1.0&quot;?&gt;&#039;; ?&gt;</code></strong>.
+        Если же эта опция отключена, вы должны использовать длинную форму
+        открывающего тега PHP (<strong class="userinput"><code>&lt;?php ?&gt;</code></strong>).
+       </p>
+       <blockquote class="note"><p><b class="note">Замечание</b>: 
+        <p class="para">
+         Эта директива также влияла на сокращение
+         <strong class="userinput"><code>&lt;?=</code></strong> до версии PHP 5.4.0,
+         которое идентично записи <strong class="userinput"><code>&lt;? echo</code></strong>.
+         Для использования этого сокращения должна была быть включена
+         директива
+         <code class="systemitem systemitem">short_open_tag</code>.
+         Начиная с версии PHP 5.4.0 запись <strong class="userinput"><code>&lt;?=</code></strong>
+         стала доступна всегда.
+        </p>
+       </p></blockquote>
+      </dd>
+
+     </dt>
+
+     
+     <dt id="ini.asp-tags">
+      <span class="term">
+       <i><tt class="parameter">asp_tags</tt></i>
+       <span class="type"><a href="language.types.boolean.html" class="type boolean">boolean</a></span>
+      </span>
+      <dd>
+
+       <span class="simpara">
+        Включает использование тегов в стиле ASP в дополнение к обычным
+        тегам &lt;?php ?&gt;. Это касается и сокращения для отображения
+        значения переменных &lt;%= $value %&gt;. Для получения дополнительной
+        информации, обратитесь к разделу <a href="language.basic-syntax.phpmode.html" class="link">Экранирование HTML</a>.
+       </span>
+      </dd>
+
+     </dt>
+
+     
+     <dt id="ini.precision">
+      <span class="term">
+       <i><tt class="parameter">precision</tt></i>
+       <span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>
+      </span>
+      <dd>
+
+       <span class="simpara">
+        Количество значащих цифр, отображаемых для чисел с плавающей точкой.
+       </span>
+      </dd>
+
+     </dt>
+
+     
+     <dt id="ini.serialize-precision">
+      <span class="term">
+       <i><tt class="parameter">serialize_precision</tt></i>
+       <span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>
+      </span>
+      <dd>
+
+       <span class="simpara">
+        Количество сохраняемых значащих цифр при сериализации
+        чисел с плавающей точкой.
+       </span>
+      </dd>
+
+     </dt>
+
+     
+     <dt id="ini.y2k-compliance">
+      <span class="term">
+       <i><tt class="parameter">y2k_compliance</tt></i>
+       <span class="type"><a href="language.types.boolean.html" class="type boolean">boolean</a></span>
+      </span>
+      <dd>
+
+       <span class="simpara">
+        Включение совместимости с 2000 годом (создаст проблемы с
+        несовместимыми браузерами)
+       </span>
+      </dd>
+
+     </dt>
+
+     
+     
+     <dt id="ini.allow-call-time-pass-reference">
+      <span class="term">
+       <i><tt class="parameter">allow_call_time_pass_reference</tt></i>
+       <span class="type"><a href="language.types.boolean.html" class="type boolean">boolean</a></span>
+      </span>
+      <dd>
+
+       <p class="para">
+        Нужно ли выводить предупреждение, если аргументы
+        передаются по ссылке при вызове функции. Рекомендуется
+        указывать в объявлении функции передаваемые по ссылке
+        аргументы. Попробуйте выключить эту опцию и убедиться,
+        что ваши скрипты правильно работают без нее и что они будут
+        работать с будущими версиями языка (вы будете получать
+        предупреждение каждый раз, когда вы будете пользоваться этой
+        возможностью).
+       </p>
+       <p class="para">
+        Передача аргументов по ссылке во время вызова функции была объявлена
+        устаревшей из соображений чистоты кода. Функция может менять свои
+        аргументы недокументированным способом, если бы аргумент не объявлялся
+        передаваемым по ссылке. Чтобы избежать побочных
+        эффектов, лучше явно указывать, какие аргументы передаются по
+        ссылке только при объявлении функции.
+       </p>
+       <p class="para">
+        В PHP 5, <i>allow_call_time_pass_reference</i>
+        была помечена устаревшей, в версиях до PHP 5.3.0
+        использование этой возможности вызовет ошибку уровня
+        <b><tt>E_COMPILE_WARNING</tt></b>, а в версиях
+        PHP 5.3.0+ - уровня  <b><tt>E_DEPRECATED</tt></b>.
+        
+       </p>
+       <p class="para">
+        См. также <a href="language.references.html" class="link">Подробное описание ссылок</a>.
+       </p>
+      </dd>
+
+     </dt>
+
+     
+     <dt id="ini.expose-php">
+      <span class="term">
+       <i><tt class="parameter">expose_php</tt></i>
+       <span class="type"><a href="language.types.boolean.html" class="type boolean">boolean</a></span>
+      </span>
+      <dd>
+
+       <p class="para">
+        Выдает факт присутствия PHP на сервере, включая передачу
+        версии PHP в HTTP-заголовке (например, X-Powered-By: PHP/5.3.7).
+        Идентификаторы логотипов также показываются, таким образом, при
+        добавлении их к ссылке на сайте с PHP будет показан соответствующий
+        логотип (например, <a href="http://www.php.net/?=PHPE9568F34-D428-11d2-A769-00AA001ACF42" class="link external">&raquo;&nbsp;http://www.php.net/?=PHPE9568F34-D428-11d2-A769-00AA001ACF42</a>).
+        Отключение данной опции также влияет на вывод функции
+        <span class="function"><a href="function.phpinfo.html" class="function">phpinfo()</a></span>, в этом случае
+        логотип PHP и информация о разработчиках, принимавших участие
+        в разработке PHP, отображаться не будет.
+       </p>
+       <p class="para">
+        Смотрите также <span class="function"><a href="function.php-logo-guid.html" class="function">php_logo_guid()</a></span> и <span class="function"><a href="function.phpcredits.html" class="function">phpcredits()</a></span>.
+       </p>
+      </dd>
+
+     </dt>
+
+     
+     <dt id="ini.disable-functions">
+      <span class="term">
+       <i><tt class="parameter">disable_functions</tt></i>
+       <span class="type"><a href="language.types.string.html" class="type string">string</a></span>
+      </span>
+      <dd>
+
+       <p class="para">
+        Эта директива позволяет отключить некоторые функции по
+        причинам <a href="security.html" class="link">безопасности</a>. Она принимает
+        список имен функций, разделенный запятыми. disable_functions
+        не подвержена влиянию <a href="ini.sect.safe-mode.html#ini.safe-mode" class="link">безопасного режима</a>.
+       </p>
+       <p class="para">
+        Только <a href="functions.internal.html" class="link">внутренние функции</a>
+        могут быть отключены с помощью этой директивы.
+        <a href="functions.user-defined.html" class="link">Пользовательские функции</a>
+        ей не подвержены.
+       </p>
+       <p class="para">
+        Эта директива должна быть установлена в <var class="filename">php.ini</var>. Например,
+        ее нельзя использовать в <var class="filename">httpd.conf</var>.
+       </p>
+      </dd>
+
+     </dt>
+
+     
+     <dt id="ini.disable-classes">
+      <span class="term">
+       <i><tt class="parameter">disable_classes</tt></i>
+       <span class="type"><a href="language.types.string.html" class="type string">string</a></span>
+      </span>
+      <dd>
+
+       <span class="simpara">
+        Эта директива позволяет отключить некоторые классы по
+        причинам <a href="security.html" class="link">безопасности</a>. Она принимает
+        список имен классов, разделенных запятыми. disable_classes
+        не подвержена влиянию <a href="ini.sect.safe-mode.html#ini.safe-mode" class="link">безопасного режима</a>.
+       </span>
+       <span class="simpara">
+        Эта директива должна быть установлена в <var class="filename">php.ini</var>. Например,
+        ее нельзя использовать в <var class="filename">httpd.conf</var>.
+       </span>
+       <blockquote class="note"><p><b class="note">Замечание</b>: 
+        <b>Замечание о доступности</b><br />
+        <span class="simpara">
+         Эта директива стала доступной в PHP 4.3.2
+        </span>
+       </p></blockquote>
+      </dd>
+
+     </dt>
+
+     
+     <dt id="ini.zend.ze1-compatibility-mode">
+      <span class="term">
+       <i><tt class="parameter">zend.ze1_compatibility_mode</tt></i>
+       <span class="type"><a href="language.types.boolean.html" class="type boolean">boolean</a></span>
+      </span>
+      <dd>
+
+       <p class="para">
+        Включает режим совместимости с Zend Engine 1 (PHP 4). Это влияет на
+        клонирование, приведение типов (объекты без свойств приводятся к <b><tt>FALSE</tt></b>
+        или 0) и <a href="language.oop5.object-comparison.html" class="link">сравнение объектов</a>.
+        В этом режиме объекты по умолчанию передаются по значению вместо ссылки.
+       </p>
+       <p class="para">
+        См. также раздел
+        <a href="migration5.html" class="link">Переход с PHP 4 на PHP 5</a>.
+       </p>
+       <div class="warning"><b class="warning">Внимание</b>
+        <p class="simpara">Эта возможность была помечена <em class="emphasis">УСТАРЕВШЕЙ</em> и <em class="emphasis">БЫЛА УДАЛЕНА</em>
+         в версии PHP 5.3.0.
+        </p>
+       </div>
+       
+      </dd>
+
+     </dt>
+
+     
+     <dt id="ini.zend.multibyte">
+      <span class="term">
+       <i><tt class="parameter">zend.multibyte</tt></i>
+       <span class="type"><a href="language.types.boolean.html" class="type boolean">boolean</a></span>
+      </span>
+      <dd>
+
+       <p class="para">
+        Разрешает парсинг исходных файлов в многобайтных
+        кодировках.
+       </p>
+      </dd>
+
+     </dt>
+
+     
+     <dt id="ini.detect-unicode">
+      <span class="term">
+       <i><tt class="parameter">detect_unicode</tt></i>
+       <span class="type"><a href="language.types.boolean.html" class="type boolean">boolean</a></span>
+      </span>
+      <dd>
+
+       <p class="para">
+        Определяет, нужно ли проверять BOM (Byte Order Mark, метка порядка байт)
+        и корректность многобайтных символов в файле.
+        Эта проверка производится до вызова <span class="function"><a href="function.halt-compiler.html" class="function">__halt_compiler()</a></span>.
+        Доступна только в режиме Zend Multibyte.
+       </p>
+      </dd>
+
+     </dt>
+
+     
+    </dl>
+
+   </p>
+  </div>
+  
+  <div class="section" id="ini.sect.resource-limits">
+   <h2 class="title">Ограничения ресурсов</h2>
+   <p class="para">
+    <table class="doctable table">
+     <caption><b>Ограничения ресурсов</b></caption>
+     
+      <thead valign="middle">
+       <tr valign="middle">
+        <th>Имя</th>
+        <th>По умолчанию</th>
+        <th>Место изменения</th>
+        <th>Список изменений</th>
+       </tr>
+
+      </thead>
+
+      <tbody valign="middle" class="tbody">
+       <tr valign="middle">
+        <td align="left">memory_limit</td>
+        <td align="left">&quot;128M&quot;</td>
+        <td align="left">PHP_INI_ALL</td>
+        <td align="left">&quot;8M&quot; до PHP 5.2.0, &quot;16M&quot; в PHP 5.2.0</td>
+       </tr>
+
+      </tbody>
+     
+    </table>
+
+   </p>
+   
+   <p class="para">Краткое разъяснение конфигурационных
+директив.</p>
+   
+   <p class="para">
+    <dl>
+
+     <dt id="ini.memory-limit">
+      <span class="term">
+       <i><tt class="parameter">memory_limit</tt></i>
+       <span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>
+      </span>
+      <dd>
+
+       <p class="para">
+        Эта директива задает максимальный объем памяти в байтах, который
+        разрешается использовать скрипту. Это помогает предотвратить
+        ситуацию, при которой плохо написанный скрипт съедает всю доступную
+        память сервера. Для того, чтобы убрать ограничения, установите значение
+        этой директивы в <i>-1</i>.
+       </p>
+       <p class="para">
+        В версиях до PHP 5.2.1 для использования этой директивы, она должна была
+        быть указана на этапе компиляции. Так, ваша строка конфигурации должна
+        была включать:
+        <strong class="option configure">--enable-memory-limit</strong>
+. Эта опция компиляции
+        была также необходима для использования функций <span class="function"><a href="function.memory-get-usage.html" class="function">memory_get_usage()</a></span> и
+        <span class="function"><a href="function.memory-get-peak-usage.html" class="function">memory_get_peak_usage()</a></span> до версии 5.2.1.
+       </p>
+       
+       <span class="simpara">Если используется <span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>,
+значение измеряется байтами. Вы также можете использовать сокращенную запись,
+которая описана в <a href="faq.using.html#faq.using.shorthandbytes" class="link">этом разделе FAQ</a>.</span>
+       
+      </dd>
+
+     </dt>
+
+    </dl>
+
+   </p>
+   <p class="para">
+    См. также: <a href="info.configuration.html#ini.max-execution-time" class="link">max_execution_time</a>.
+   </p>
+  </div>
+  
+  <div class="section" id="ini.sect.performance">
+   <h2 class="title">Настройка производительности</h2>
+   <p class="para">
+    <table class="doctable table">
+     <caption><b>Настройка производительности</b></caption>
+     
+      <thead valign="middle">
+       <tr valign="middle">
+        <th>Название</th>
+        <th>Значение по умолчанию</th>
+        <th>Место изменения</th>
+        <th>История изменений</th>
+       </tr>
+
+      </thead>
+
+      <tbody valign="middle" class="tbody">
+       <tr valign="middle">
+        <td align="left">realpath_cache_size</td>
+        <td align="left">&quot;16K&quot;</td>
+        <td align="left">PHP_INI_SYSTEM</td>
+        <td align="left">Доступна с версии PHP 5.1.0.</td>
+       </tr>
+
+       <tr valign="middle">
+        <td align="left">realpath_cache_ttl</td>
+        <td align="left">&quot;120&quot;</td>
+        <td align="left">PHP_INI_SYSTEM</td>
+        <td align="left">Доступна с версии PHP 5.1.0.</td>
+       </tr>
+
+      </tbody>
+     
+    </table>
+
+   </p>
+   <p class="para">Краткое разъяснение конфигурационных
+директив.</p>
+   <p class="para">
+    <dl>
+
+     <dt id="ini.realpath-cache-size">
+      <span class="term">
+       <i><tt class="parameter">realpath_cache_size</tt></i>
+       <span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>
+      </span>
+      <dd>
+
+       <p class="para">
+        Определяет размера кэша realpath, используемого в PHP. Это значение
+        должно быть увеличено на системах, в которых PHP открывает большое
+        количество файлов соответственно количеству выполняемых файловых операций.
+       </p>
+      </dd>
+
+     </dt>
+
+     <dt id="ini.realpath-cache-ttl">
+      <span class="term">
+       <i><tt class="parameter">realpath_cache_ttl</tt></i>
+       <span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>
+      </span>
+      <dd>
+
+       <p class="para">
+        Время (в секундах) в течение которого будет использован кэш realpath
+        для указанного файла или директории. Для систем с редко меняющимися файлайми
+        это значение можно увеличить.
+       </p>
+      </dd>
+
+     </dt>
+
+    </dl>
+
+   </p>
+  </div>
+  
+  <div class="section" id="ini.sect.data-handling">
+   <h2 class="title">Обработка данных</h2>
+   <p class="para">
+    <table class="doctable table">
+     <caption><b>Конфигурационные опции обработки данных</b></caption>
+     
+      <thead valign="middle">
+       <tr valign="middle">
+        <th>Имя</th>
+        <th>По умолчанию</th>
+        <th>Место изменения</th>
+        <th>Список изменений</th>
+       </tr>
+
+      </thead>
+
+      <tbody valign="middle" class="tbody">
+       <tr valign="middle">
+        <td align="left">track_vars</td>
+        <td align="left">&quot;On&quot;</td>
+        <td align="left">PHP_INI_??</td>
+        <td class="empty">&nbsp;</td>
+       </tr>
+
+       <tr valign="middle">
+        <td align="left">arg_separator.output</td>
+        <td align="left">&quot;&amp;&quot;</td>
+        <td align="left">PHP_INI_ALL</td>
+        <td align="left">Доступна с версии PHP 4.0.5.</td>
+       </tr>
+
+       <tr valign="middle">
+        <td align="left">arg_separator.input</td>
+        <td align="left">&quot;&amp;&quot;</td>
+        <td align="left">PHP_INI_PERDIR</td>
+        <td align="left">Доступна с версии PHP 4.0.5.</td>
+       </tr>
+
+       <tr valign="middle">
+        <td align="left">variables_order</td>
+        <td align="left">&quot;EGPCS&quot;</td>
+        <td align="left">PHP_INI_PERDIR</td>
+        <td align="left">PHP_INI_ALL в PHP &lt;= 5.0.5.</td>
+       </tr>
+
+       <tr valign="middle">
+        <td align="left">request_order</td>
+        <td align="left">&quot;&quot;</td>
+        <td align="left">PHP_INI_SYSTEM|PHP_INI_PERDIR</td>
+        <td align="left">Доступна с версии PHP 5.3.0</td>
+       </tr>
+
+       <tr valign="middle">
+        <td align="left">auto_globals_jit</td>
+        <td align="left">&quot;1&quot;</td>
+        <td align="left">PHP_INI_PERDIR</td>
+        <td align="left">Доступна с версии PHP 5.0.0.</td>
+       </tr>
+
+       <tr valign="middle">
+        <td align="left">register_globals</td>
+        <td align="left">&quot;0&quot;</td>
+        <td align="left">PHP_INI_PERDIR</td>
+        <td align="left">PHP_INI_ALL в PHP &lt;= 4.2.3.</td>
+       </tr>
+
+       <tr valign="middle">
+        <td align="left">register_argc_argv</td>
+        <td align="left">&quot;1&quot;</td>
+        <td align="left">PHP_INI_PERDIR</td>
+        <td align="left">PHP_INI_ALL в PHP &lt;= 4.2.3.</td>
+       </tr>
+
+       <tr valign="middle">
+        <td align="left">register_long_arrays</td>
+        <td align="left">&quot;1&quot;</td>
+        <td align="left">PHP_INI_PERDIR</td>
+        <td align="left">Доступна с версии PHP 5.0.0. Помечена устаревшей в PHP 5.3.0. Удалена в PHP 5.4.0.</td>
+       </tr>
+
+       <tr valign="middle">
+        <td align="left">post_max_size</td>
+        <td align="left">&quot;8M&quot;</td>
+        <td align="left">PHP_INI_PERDIR</td>
+        <td align="left">PHP_INI_SYSTEM в PHP &lt;= 4.2.3. Доступна с версии PHP 4.0.3.</td>
+       </tr>
+
+       <tr valign="middle">
+        <td align="left">gpc_order</td>
+        <td align="left">&quot;GPC&quot;</td>
+        <td align="left">PHP_INI_ALL</td>
+        <td class="empty">&nbsp;</td>
+       </tr>
+
+       <tr valign="middle">
+        <td align="left">auto_prepend_file</td>
+        <td align="left">NULL</td>
+        <td align="left">PHP_INI_PERDIR</td>
+        <td align="left">PHP_INI_ALL в PHP &lt;= 4.2.3.</td>
+       </tr>
+
+       <tr valign="middle">
+        <td align="left">auto_append_file</td>
+        <td align="left">NULL</td>
+        <td align="left">PHP_INI_PERDIR</td>
+        <td align="left">PHP_INI_ALL в PHP &lt;= 4.2.3.</td>
+       </tr>
+
+       <tr valign="middle">
+        <td align="left">default_mimetype</td>
+        <td align="left">&quot;text/html&quot;</td>
+        <td align="left">PHP_INI_ALL</td>
+        <td class="empty">&nbsp;</td>
+       </tr>
+
+       <tr valign="middle">
+        <td align="left">default_charset</td>
+        <td align="left">&quot;&quot;</td>
+        <td align="left">PHP_INI_ALL</td>
+        <td class="empty">&nbsp;</td>
+       </tr>
+
+       <tr valign="middle">
+        <td align="left">always_populate_raw_post_data</td>
+        <td align="left">&quot;0&quot;</td>
+        <td align="left">PHP_INI_PERDIR</td>
+        <td align="left">PHP_INI_ALL в PHP &lt;= 4.2.3. Доступна с версии PHP 4.1.0.</td>
+       </tr>
+
+       <tr valign="middle">
+        <td align="left">allow_webdav_methods</td>
+        <td align="left">&quot;0&quot;</td>
+        <td align="left">PHP_INI_PERDIR</td>
+        <td class="empty">&nbsp;</td>
+       </tr>
+
+      </tbody>
+     
+    </table>
+
+   </p>
+   
+   <p class="para">Краткое разъяснение конфигурационных
+директив.</p>
+   
+   <p class="para">
+    <dl>
+
+     <dt id="ini.track-vars">
+      <span class="term">
+       <i><tt class="parameter">track_vars</tt></i>
+       <span class="type"><a href="language.types.boolean.html" class="type boolean">boolean</a></span>
+      </span>
+      <dd>
+
+       <p class="para">
+        Если включено, переменные окружения, GET, POST, Cookie и серверные
+        переменные могут быть получены через глобальные ассоциативные
+        массивы
+        <var class="varname"><var class="varname"><a href="reserved.variables.environment.html" class="classname">$_ENV</a></var></var>,
+        <var class="varname"><var class="varname"><a href="reserved.variables.get.html" class="classname">$_GET</a></var></var>,
+        <var class="varname"><var class="varname"><a href="reserved.variables.post.html" class="classname">$_POST</a></var></var>,
+        <var class="varname"><var class="varname"><a href="reserved.variables.cookies.html" class="classname">$_COOKIE</a></var></var> и
+        <var class="varname"><var class="varname"><a href="reserved.variables.server.html" class="classname">$_SERVER</a></var></var>.
+       </p>
+       <p class="para">
+        Обратите внимание, что начиная с версии PHP 4.0.3, <code class="systemitem systemitem">track_vars</code> всегда включена.
+       </p>
+      </dd>
+
+     </dt>
+
+     
+     <dt id="ini.arg-separator.output">
+      <span class="term">
+       <i><tt class="parameter">arg_separator.output</tt></i>
+       <span class="type"><a href="language.types.string.html" class="type string">string</a></span>
+      </span>
+      <dd>
+
+       <p class="para">
+        Этот разделитель используется в генерируемых PHP URL в качестве
+        разделителя аргументов.
+       </p>
+      </dd>
+
+     </dt>
+
+     
+     <dt id="ini.arg-separator.input">
+      <span class="term">
+       <i><tt class="parameter">arg_separator.input</tt></i>
+       <span class="type"><a href="language.types.string.html" class="type string">string</a></span>
+      </span>
+      <dd>
+
+       <p class="para">
+        Список разделителей, используемых PHP для получения переменных из
+        URL.
+       </p>
+       <blockquote class="note"><p><b class="note">Замечание</b>: 
+        <p class="para">
+         Каждый символ в этой директиве считается разделителем!
+        </p>
+       </p></blockquote>
+      </dd>
+
+     </dt>
+
+     
+     <dt id="ini.variables-order">
+      <span class="term">
+       <i><tt class="parameter">variables_order</tt></i>
+       <span class="type"><a href="language.types.string.html" class="type string">string</a></span>
+      </span>
+      <dd>
+
+       <p class="para">
+        Устанавливает порядок обработки переменных EGPCS
+        (<i>E</i>nvironment,
+        <i>G</i>et, <i>P</i>ost,
+        <i>C</i>ookie, и <i>S</i>erver).
+        Например, если variables_order установлена в <i>&quot;SP&quot;</i>,
+        то PHP создаст <a href="language.variables.predefined.html" class="link">superglobals</a> <var class="varname"><var class="varname"><a href="reserved.variables.server.html" class="classname">$_SERVER</a></var></var> и
+        <var class="varname"><var class="varname"><a href="reserved.variables.post.html" class="classname">$_POST</a></var></var>, но не будет создавать
+        <var class="varname"><var class="varname"><a href="reserved.variables.environment.html" class="classname">$_ENV</a></var></var>, <var class="varname"><var class="varname"><a href="reserved.variables.get.html" class="classname">$_GET</a></var></var> и
+        <var class="varname"><var class="varname"><a href="reserved.variables.cookies.html" class="classname">$_COOKIE</a></var></var>. Установка в &quot;&quot; означает, что ни
+        одна <a href="language.variables.predefined.html" class="link">superglobals</a> не будет установлена.
+       </p>
+       <p class="para">
+        Если включена устаревшая директива
+        <a href="ini.core.html#ini.register-globals" class="link">register_globals</a>,
+        то variables_order также устанавливает порядок экспорта переменных
+        <i>ENV</i>, <i>GET</i>, <i>POST</i>,
+        <i>COOKIE</i> и <i>SERVER</i> в глобальное
+        пространство. Например, если порядок переменных установлен как
+        <i>&quot;EGPCS&quot;</i>, register_globals включена,
+        и существуют обе <var class="varname"><var class="varname"><a href="reserved.variables.get.html" class="classname">$_GET['action']</a></var></var> и
+        <var class="varname"><var class="varname"><a href="reserved.variables.post.html" class="classname">$_POST['action']</a></var></var>, то переменная
+        <var class="varname"><var class="varname">$action</var></var> будет содержать значение
+        <var class="varname"><var class="varname"><a href="reserved.variables.post.html" class="classname">$_POST['action']</a></var></var>, так как <i>P</i>
+        в нашем примере идет после <i>G</i>.
+       </p>
+       <div class="warning"><b class="warning">Внимание</b>
+        <p class="para">
+         В CGI и FastCGI SAPI,
+         в <var class="varname"><var class="varname"><a href="reserved.variables.server.html" class="classname">$_SERVER</a></var></var> также добавляются значения
+         переменных окружения; <i>S</i>
+         всегда эквивалентна <i>ES</i> вне зависимости от
+         самого положения <i>E</i> в этой директиве.
+        </p>
+       </div>
+       <blockquote class="note"><p><b class="note">Замечание</b>: 
+        <p class="para">
+         Эта директива также влияет на содержимое и порядок переменной
+         <var class="varname"><var class="varname"><a href="reserved.variables.request.html" class="classname">$_REQUEST</a></var></var>.
+        </p>
+       </p></blockquote>
+      </dd>
+
+     </dt>
+
+     
+     <dt id="ini.request-order">
+      <span class="term">
+       <i><tt class="parameter">request_order</tt></i>
+       <span class="type"><a href="language.types.string.html" class="type string">string</a></span>
+      </span>
+      <dd>
+
+       <p class="para">
+        Эта директива регулирует порядок, в котором PHP добавляет переменные GET, POST
+        и Cookie в массив _REQUEST. Добавление производится слева направо,
+        новые значения перезаписывают старые.
+       </p>
+       <p class="para">
+        Если значение этой директивы не установлено, для содержимого
+        переменной <var class="varname"><var class="varname"><a href="reserved.variables.request.html" class="classname">$_REQUEST</a></var></var> используется значение
+        директивы <a href="ini.core.html#ini.variables-order" class="link">variables_order</a>.
+       </p>
+       <p class="para">
+        Учтите, что файлы <var class="filename">php.ini</var>, поставляемые с дистрибутивом,
+        по соображениям безопасности не содержат значение <i>&#039;C&#039;</i> (cookies).
+       </p>
+      </dd>
+
+     </dt>
+
+     
+     <dt id="ini.auto-globals-jit">
+      <span class="term">
+       <i><tt class="parameter">auto_globals_jit</tt></i>
+       <span class="type"><a href="language.types.boolean.html" class="type boolean">boolean</a></span>
+      </span>
+      <dd>
+
+       <p class="para">
+        Когда включено, переменные SERVER и ENV создаются в тот момент,
+        когда они впервые используются (Just In Time), а не в начале
+        выполнения скрипта. Если эти переменные в скрипте не используются,
+        включение этой директивы приведет к росту производительности.
+       </p>
+       <p class="para">
+        Директивы PHP
+        <a href="ini.core.html#ini.register-globals" class="link">register_globals</a>,
+        <a href="ini.core.html#ini.register-long-arrays" class="link">register_long_arrays</a> и
+        <a href="ini.core.html#ini.register-argc-argv" class="link">register_argc_argv</a>
+        должны быть выключены для правильной работы этой директивы. Начиная с
+        версии PHP 5.1.3 стало необязательно выключать <a href="ini.core.html#ini.register-argc-argv" class="link">register_argc_argv</a>.
+       </p>
+       <div class="warning"><b class="warning">Внимание</b>
+        <p class="para">
+         Использование переменных SERVER и ENV проверяется на стадии компиляции,
+         поэтому их использование с помощью, например, <a href="language.variables.variable.html" class="link">переменных переменных</a> не
+         запустит их инициализацию.
+        </p>
+       </div>
+      </dd>
+
+     </dt>
+
+     
+     <dt id="ini.register-globals">
+      <span class="term">
+       <i><tt class="parameter">register_globals</tt></i>
+       <span class="type"><a href="language.types.boolean.html" class="type boolean">boolean</a></span>
+      </span>
+      <dd>
+
+       <p class="para">
+        Регистрировать или нет переменные EGPCS (Environment, GET, POST,
+        Cookie, Server) в качестве глобальных переменных.
+       </p>
+       <p class="para">
+        Начиная с версии
+        <a href="http://www.php.net/releases/4_2_0.php" class="link external">&raquo;&nbsp;PHP 4.2.0</a>,
+        значением по умолчанию для этой директивы является
+        <em class="emphasis">off</em>.
+       </p>
+       <p class="para">
+        Пожалуйста, ознакомтесь с главой о безопасности
+        <a href="security.globals.html" class="link">Использование глобальных
+         переменных</a> для получения дополнительной информации.
+       </p>
+       <p class="para">
+        Обратите внимание, что
+        <code class="systemitem systemitem">register_globals</code> не может
+        быть установлена во время выполнения скрипта
+        (<span class="function"><a href="function.ini-set.html" class="function">ini_set()</a></span>). Тем не менее, вы можете использовать
+        <var class="filename">.htaccess</var>, если ваш сервер позволяет это, как описано выше.
+        Пример директивы в <var class="filename">.htaccess</var>:
+        <strong class="userinput"><code>php_flag register_globals off</code></strong>.
+       </p>
+       <blockquote class="note"><p><b class="note">Замечание</b>: 
+        <p class="para">
+         На поведение <code class="systemitem systemitem">register_globals</code> влияет
+         директива <a href="ini.core.html#ini.variables-order" class="link">variables_order</a>.
+        </p>
+       </p></blockquote>
+       <div class="warning"><b class="warning">Внимание</b><p class="simpara">С версии PHP 5.3.0 эта возможность считается
+<em class="emphasis">УСТАРЕВШЕЙ</em>. Крайне не рекомендуется полагаться на эту возможность.</p></div>
+      </dd>
+
+     </dt>
+
+     
+     <dt id="ini.register-argc-argv">
+      <span class="term">
+       <i><tt class="parameter">register_argc_argv</tt></i>
+       <span class="type"><a href="language.types.boolean.html" class="type boolean">boolean</a></span>
+      </span>
+      <dd>
+
+       <span class="simpara">
+        Сообщает PHP, следует ли объявлять переменные argv и argc
+        (которые будут содержать GET-информацию).
+       </span>
+       <span class="simpara">
+        См. также <a href="features.commandline.html" class="link">Использование PHP в
+        командной строке</a>.
+        Эта директива стала доступна с версии PHP 4.0.0 и до этого
+        была всегда включена.
+       </span>
+      </dd>
+
+     </dt>
+
+     
+     <dt id="ini.register-long-arrays">
+      <span class="term">
+       <i><tt class="parameter">register_long_arrays</tt></i>
+       <span class="type"><a href="language.types.boolean.html" class="type boolean">boolean</a></span>
+      </span>
+      <dd>
+
+       <span class="simpara">
+        Сообщает PHP, следует ли регистрировать устаревшие длинные
+        <a href="language.variables.predefined.html" class="link">предопределенные
+         переменные</a> типа <var class="varname"><var class="varname">$HTTP_*_VARS</var></var>.
+        Если включена (по умолчанию), то длинные предопределенные переменные
+        PHP, например <var class="varname"><var class="varname">$HTTP_GET_VARS</var></var>, будут объявлены.
+        Если вы их не используете, рекомендуем отключить их из соображений
+        производительности. Вместо них следует использовать суперглобальные
+        массивы, например <var class="varname"><var class="varname"><a href="reserved.variables.get.html" class="classname">$_GET</a></var></var>.
+       </span>
+       <span class="simpara">
+        Эта директива стала доступна с версии PHP 5.0.0.
+       </span>
+       <div class="warning"><b class="warning">Внимание</b><p class="simpara">С версии PHP 5.3.0 эта возможность считается
+<em class="emphasis">УСТАРЕВШЕЙ</em>. Крайне не рекомендуется полагаться на эту возможность.</p></div>
+      </dd>
+
+     </dt>
+
+     
+     <dt id="ini.enable-post-data-reading">
+      <span class="term">
+       <i><tt class="parameter">enable_post_data_reading</tt></i>
+       <span class="type"><a href="language.types.boolean.html" class="type boolean">boolean</a></span>
+      </span>
+      <dd>
+
+       <span class="simpara">
+        При отключении этой опции влечет суперглобальные переменные
+        <var class="varname"><var class="varname"><a href="reserved.variables.post.html" class="classname">$_POST</a></var></var> и <var class="varname"><var class="varname"><a href="reserved.variables.files.html" class="classname">$_FILES</a></var></var>
+        <em class="emphasis">не будут</em> заполняться.
+        Единственным способом прочесть POST-данные будет
+        чтение обертки потока
+        <a href="wrappers.php.html" class="link">php://input</a>.
+        Это может оказаться полезным при проксировании запросов или
+        обработки POST-данных способом, более эффективно использующим
+        память.
+       </span>
+      </dd>
+
+     </dt>
+
+
+     <dt id="ini.post-max-size">
+      <span class="term">
+       <i><tt class="parameter">post_max_size</tt></i>
+       <span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>
+      </span>
+      <dd>
+
+       <span class="simpara">
+        Устанавливает максимально допустимый размер данных, отправляемых методом
+        POST. Это значение также влияет на загрузку файлов.
+        Для загрузки больших файлов это значение должно быть больше значения
+        директивы
+        <a href="ini.core.html#ini.upload-max-filesize" class="link">upload_max_filesize</a>.
+       </span>
+       <span class="simpara">
+        Если дополнительно используется ограничение памяти, <a href="ini.core.html#ini.memory-limit" class="link">memory_limit</a> также влияет на
+        загрузку файлов. В сущности,
+        <a href="ini.core.html#ini.memory-limit" class="link">memory_limit</a> должна быть
+        больше чем <i><tt class="parameter">post_max_size</tt></i>.
+       </span>
+       
+       <span class="simpara">Если используется <span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>,
+значение измеряется байтами. Вы также можете использовать сокращенную запись,
+которая описана в <a href="faq.using.html#faq.using.shorthandbytes" class="link">этом разделе FAQ</a>.</span>
+       
+       <span class="simpara">
+        Если размер POST-данных больше чем post_max_size,
+        <a href="language.variables.superglobals.html" class="link">суперглобальные переменные</a>
+        <var class="varname"><var class="varname"><a href="reserved.variables.post.html" class="classname">$_POST</a></var></var> и <var class="varname"><var class="varname"><a href="reserved.variables.files.html" class="classname">$_FILES</a></var></var>
+        будут пустыми. Это можно отследить различными способами, например
+        передав <var class="varname"><var class="varname"><a href="reserved.variables.get.html" class="classname">$_GET</a></var></var> переменную в скрипт, обрабатывающий
+        данные, т.е. <i>&lt;form action=&quot;edit.php?processed=1&quot;&gt;</i>,
+        а затем проверить, установлена ли переменная <var class="varname"><var class="varname"><a href="reserved.variables.get.html" class="classname">$_GET['processed']</a></var></var>.
+       </span>
+       <p class="para">
+        <blockquote class="note"><p><b class="note">Замечание</b>: 
+         <p class="para">
+          PHP разрешает сокращения значений бит, включая K (кило), M (мега)
+          и G (гига). PHP автоматически преобразует все эти сокращения.
+          Будьте осторожны с превышением диапазона 32-битных целых значений
+          (если вы используете 32-битную версию), так как это приведет к ошибке
+          вашего скрипта.
+         </p>
+        </p></blockquote>
+       </p>
+       
+      </dd>
+
+     </dt>
+
+     
+     <dt id="ini.gpc-order">
+      <span class="term">
+       <i><tt class="parameter">gpc_order</tt></i>
+       <span class="type"><a href="language.types.string.html" class="type string">string</a></span>
+      </span>
+      <dd>
+
+       <p class="para">
+        Устанавливает порядок обработки переменных GET/POST/COOKIE.
+        Значением по умолчанию для этой директивы является &quot;GPC&quot;. Установка
+        ее в &quot;GP&quot;, к примеру, приведет к тому, что PHP будет полностью
+        игнорировать cookies и перезапишет любую GET-переменную
+        POST-переменной с таким же именем.
+       </p>
+       <blockquote class="note"><p><b class="note">Замечание</b>: 
+        <p class="para">
+         Эта опция недоступна в PHP 4.
+         Вместо нее используйте
+         <a href="ini.core.html#ini.variables-order" class="link">variables_order</a>.
+        </p>
+       </p></blockquote>
+      </dd>
+
+     </dt>
+
+     
+     <dt id="ini.auto-prepend-file">
+      <span class="term">
+       <i><tt class="parameter">auto_prepend_file</tt></i>
+       <span class="type"><a href="language.types.string.html" class="type string">string</a></span>
+      </span>
+      <dd>
+
+       <p class="para">
+        Определяет имя файла, который будет автоматически обрабатываться
+        перед основным файлом. Файл вызывается так, будто он был подключен
+        при помощи функции <span class="function"><b>require()</b></span>, так что
+        <a href="ini.core.html#ini.include-path" class="link">include_path</a> также используется.
+       </p>
+       <p class="para">
+        Специальное значение <i>none</i>
+        отключает эту директиву.
+       </p>
+      </dd>
+
+     </dt>
+
+     
+     <dt id="ini.auto-append-file">
+      <span class="term">
+       <i><tt class="parameter">auto_append_file</tt></i>
+       <span class="type"><a href="language.types.string.html" class="type string">string</a></span>
+      </span>
+      <dd>
+
+       <p class="para">
+        Определяет имя файла, который будет автоматически обрабатываться
+        после основного файла. Файл вызывается так, будто он был подключен
+        при помощи функции <span class="function"><b>require()</b></span>, так что
+        <a href="ini.core.html#ini.include-path" class="link">include_path</a> тоже используется.
+       </p>
+       <p class="para">
+        Специальное значение <i>none</i>
+        отключает эту директиву.
+        <blockquote class="note"><p><b class="note">Замечание</b>: 
+         <span class="simpara">
+          Если скрипт завершает работу при помощи <span class="function"><a href="function.exit.html" class="function">exit()</a></span>,
+          auto_append_file <em class="emphasis">НЕ</em> выполняется.
+         </span>
+        </p></blockquote>
+       </p>
+      </dd>
+
+     </dt>
+
+     
+     <dt id="ini.default-mimetype">
+      <span class="term">
+       <i><tt class="parameter">default_mimetype</tt></i>
+       <span class="type"><a href="language.types.string.html" class="type string">string</a></span>
+      </span>
+      <dd>
+
+       <p class="para">
+       </p>
+      </dd>
+
+     </dt>
+
+     
+     <dt id="ini.default-charset">
+      <span class="term">
+       <i><tt class="parameter">default_charset</tt></i>
+       <span class="type"><a href="language.types.string.html" class="type string">string</a></span>
+      </span>
+      <dd>
+
+       <p class="para">
+        PHP всегда отправляет кодировку по умолчанию
+        в заголовке Content-Type. Чтобы отключить отправку кодировки, просто
+        установите ее пустой строкой.
+       </p>
+      </dd>
+
+     </dt>
+
+     
+     <dt id="ini.always-populate-raw-post-data">
+      <span class="term">
+       <i><tt class="parameter">always_populate_raw_post_data</tt></i>
+       <span class="type"><a href="language.types.boolean.html" class="type boolean">boolean</a></span>
+      </span>
+      <dd>
+
+       <p class="para">
+        Всегда заполнять переменную <var class="varname"><var class="varname"><a href="reserved.variables.httprawpostdata.html" class="classname">$HTTP_RAW_POST_DATA</a></var></var>, содержащую
+        &quot;сырые&quot; POST-данные. В противном случае, переменная будет заполнена
+        только при неопознанном MIME типе данных. Однако, предпочтительным
+        способом доступа к &quot;сырым&quot; POST-данным является <a href="wrappers.php.html" class="link">php://input</a>.
+        <var class="varname"><var class="varname"><a href="reserved.variables.httprawpostdata.html" class="classname">$HTTP_RAW_POST_DATA</a></var></var> недоступна при
+        <i>enctype=&quot;multipart/form-data&quot;</i>.
+       </p>
+      </dd>
+
+     </dt>
+
+     
+     <dt id="ini.allow-webdav-methods">
+      <span class="term">
+       <i><tt class="parameter">allow_webdav_methods</tt></i>
+       <span class="type"><a href="language.types.boolean.html" class="type boolean">boolean</a></span>
+      </span>
+      <dd>
+
+       <p class="para">
+        Разрешает обработку HTTP-запросов WebDAV при помощи PHP-скриптов
+        (например PROPFIND, PROPPATCH, MOVE, COPY и т.д.).
+        Эта директива не существует начиная с версии PHP 4.3.2.
+        Если вы хотите получить POST-данные этих запросов, вы должны также
+        включить <a href="ini.core.html#ini.always-populate-raw-post-data" class="link">
+        always_populate_raw_post_data</a>.
+       </p>
+      </dd>
+
+     </dt>
+
+    </dl>
+
+   </p>
+   <p class="para">
+    См. также: <a href="info.configuration.html#ini.magic-quotes-gpc" class="link">magic_quotes_gpc</a>,
+    <a href="info.configuration.html#ini.magic-quotes-runtime" class="link">magic_quotes_runtime</a> и
+    <a href="sybase.configuration.html#ini.magic-quotes-sybase" class="link">magic_quotes_sybase</a>.
+   </p>
+  </div>
+  
+  <div class="section" id="ini.sect.path-directory">
+   <h2 class="title">Пути и Директории</h2>
+   <p class="para">
+    <table class="doctable table">
+     <caption><b>Конфигурационные Опции Путей и Директорий</b></caption>
+     
+      <thead valign="middle">
+       <tr valign="middle">
+        <th>Имя</th>
+        <th>По умолчанию</th>
+        <th>Место изменения</th>
+        <th>Список изменений</th>
+       </tr>
+
+      </thead>
+
+      <tbody valign="middle" class="tbody">
+       <tr valign="middle">
+        <td align="left">include_path</td>
+        <td align="left">&quot;.;/path/to/php/pear&quot;</td>
+        <td align="left">PHP_INI_ALL</td>
+        <td class="empty">&nbsp;</td>
+       </tr>
+
+       <tr valign="middle">
+        <td align="left">open_basedir</td>
+        <td align="left">NULL</td>
+        <td align="left">PHP_INI_ALL</td>
+        <td align="left">PHP_INI_SYSTEM в PHP &lt; 5.3.0</td>
+       </tr>
+
+       <tr valign="middle">
+        <td align="left">doc_root</td>
+        <td align="left">NULL</td>
+        <td align="left">PHP_INI_SYSTEM</td>
+        <td class="empty">&nbsp;</td>
+       </tr>
+
+       <tr valign="middle">
+        <td align="left">user_dir</td>
+        <td align="left">NULL</td>
+        <td align="left">PHP_INI_SYSTEM</td>
+        <td class="empty">&nbsp;</td>
+       </tr>
+
+       <tr valign="middle">
+        <td align="left">extension_dir</td>
+        <td align="left">&quot;/path/to/php&quot;</td>
+        <td align="left">PHP_INI_SYSTEM</td>
+        <td class="empty">&nbsp;</td>
+       </tr>
+
+       <tr valign="middle">
+        <td align="left">extension</td>
+        <td align="left">NULL</td>
+        <td align="left">Только <var class="filename">php.ini</var></td>
+        <td class="empty">&nbsp;</td>
+       </tr>
+
+       <tr valign="middle">
+        <td align="left">zend_extension</td>
+        <td align="left">NULL</td>
+        <td align="left">Только <var class="filename">php.ini</var></td>
+        <td class="empty">&nbsp;</td>
+       </tr>
+
+       <tr valign="middle">
+        <td align="left">zend_extension_debug</td>
+        <td align="left">NULL</td>
+        <td align="left">Только <var class="filename">php.ini</var></td>
+        <td class="empty">&nbsp;</td>
+       </tr>
+
+       <tr valign="middle">
+        <td align="left">zend_extension_debug_ts</td>
+        <td align="left">NULL</td>
+        <td align="left">Только <var class="filename">php.ini</var></td>
+        <td class="empty">&nbsp;</td>
+       </tr>
+
+       <tr valign="middle">
+        <td align="left">zend_extension_ts</td>
+        <td align="left">NULL</td>
+        <td align="left">Только <var class="filename">php.ini</var></td>
+        <td class="empty">&nbsp;</td>
+       </tr>
+
+       <tr valign="middle">
+        <td align="left">cgi.check_shebang_line</td>
+        <td align="left">&quot;1&quot;</td>
+        <td align="left">PHP_INI_SYSTEM</td>
+        <td align="left">Доступна с версии PHP 5.2.0.</td>
+       </tr>
+
+       <tr valign="middle">
+        <td align="left">cgi.fix_pathinfo</td>
+        <td align="left">&quot;1&quot;</td>
+        <td align="left">PHP_INI_SYSTEM</td>
+        <td align="left">Доступна с версии PHP 4.3.0. PHP_INI_ALL до версии PHP 5.2.1.</td>
+       </tr>
+
+       <tr valign="middle">
+        <td align="left">cgi.force_redirect</td>
+        <td align="left">&quot;1&quot;</td>
+        <td align="left">PHP_INI_SYSTEM</td>
+        <td align="left">Доступна с версии PHP 4.2.0. PHP_INI_ALL до версии PHP 5.2.1.</td>
+       </tr>
+
+       <tr valign="middle">
+        <td align="left">cgi.redirect_status_env</td>
+        <td align="left">NULL</td>
+        <td align="left">PHP_INI_SYSTEM</td>
+        <td align="left">Доступна с версии PHP 4.2.0. PHP_INI_ALL до версии PHP 5.2.1.</td>
+       </tr>
+
+       <tr valign="middle">
+        <td align="left">fastcgi.impersonate</td>
+        <td align="left">&quot;0&quot;</td>
+        <td align="left">PHP_INI_SYSTEM</td>
+        <td align="left">Доступна с версии PHP 4.3.0. PHP_INI_ALL до версии PHP 5.2.1.</td>
+       </tr>
+
+       <tr valign="middle">
+        <td align="left">fastcgi.logging</td>
+        <td align="left">&quot;1&quot;</td>
+        <td align="left">PHP_INI_SYSTEM</td>
+        <td align="left">Доступна с версии PHP 4.3.0. PHP_INI_ALL до версии PHP 5.2.1.</td>
+       </tr>
+
+       <tr valign="middle">
+        <td align="left">cgi.rfc2616_headers</td>
+        <td align="left">&quot;0&quot;</td>
+        <td align="left">PHP_INI_ALL</td>
+        <td align="left">Доступна с версии PHP 4.3.0.</td>
+       </tr>
+
+      </tbody>
+     
+    </table>
+
+   </p>
+   
+   <p class="para">Краткое разъяснение конфигурационных
+директив.</p>
+   
+   <p class="para">
+    <dl>
+
+     <dt id="ini.include-path">
+      <span class="term">
+       <i><tt class="parameter">include_path</tt></i>
+       <span class="type"><a href="language.types.string.html" class="type string">string</a></span>
+      </span>
+      <dd>
+
+       <p class="para">
+        Указывает список директорий, в которых функции
+        <span class="function"><b>require()</b></span>, <span class="function"><b>include()</b></span>,
+        <span class="function"><a href="function.fopen.html" class="function">fopen()</a></span>, <span class="function"><a href="function.file.html" class="function">file()</a></span>,
+        <span class="function"><a href="function.readfile.html" class="function">readfile()</a></span> и <span class="function"><a href="function.file-get-contents.html" class="function">file_get_contents()</a></span>
+        ищут файлы. Формат соответствует формату системной переменной окружения
+        <span class="envar">PATH</span>: список директорий,
+        разделенных двоеточием в Unix или точкой с запятой в Windows.
+       </p>
+       <p class="para">
+        При поиске подключаемых файлов PHP отдельно рассматривает каждое
+        значение в include_path.
+        Он проверяет первый путь, если файл в нем не найден, то он переходит
+        к следующему, и так до тех пор, пока не найдет подключаемый файл, либо
+        вернет
+        <a href="errorfunc.constants.html#errorfunc.constants.errorlevels.e-warning" class="link">предупреждение</a>
+        или <a href="errorfunc.constants.html#errorfunc.constants.errorlevels.e-error" class="link">ошибку</a>.
+        Вы можете изменить ваш include_path во время выполнения скрипта с
+        помощью функции
+        <span class="function"><a href="function.set-include-path.html" class="function">set_include_path()</a></span>.
+       </p>
+       <p class="para">
+        <div class="example" id="example-5117">
+         <p><b>Пример #1 include_path в Unix</b></p>
+         <div class="example-contents">
+<div class="php.inicode"><pre class="php.inicode">include_path=&quot;.:/php/includes&quot;</pre>
+</div>
+         </div>
+
+        </div>
+       </p>
+       <p class="para">
+        <div class="example" id="example-5118">
+         <p><b>Пример #2 include_path в Windows</b></p>
+         <div class="example-contents">
+<div class="php.inicode"><pre class="php.inicode">include_path=&quot;.;c:\php\includes&quot;</pre>
+</div>
+         </div>
+
+        </div>
+       </p>
+       <p class="para">
+        Использование <i>.</i> в include_path позволяет
+        задавать относительные пути для подключения файлов, так как
+        точка означает текущую директорию. Однако, более эффективно
+        использовать <i>include &#039;./file&#039;</i>, чем заставлять
+        PHP каждый раз проверять текущую директорию при подключении каждого
+        файла.
+       </p>
+      </dd>
+
+     </dt>
+
+
+     
+     <dt id="ini.open-basedir">
+      <span class="term">
+       <i><tt class="parameter">open_basedir</tt></i>
+       <span class="type"><a href="language.types.string.html" class="type string">string</a></span>
+      </span>
+      <dd>
+
+       <p class="para">
+        Ограничивает указанным деревом каталогов файлы, которые могут быть открыты с
+        помощью PHP, включая сам файл.
+        Эта директива <em class="emphasis">НЕ</em> подвержена влиянию
+        безопасного режима.
+       </p>
+       <p class="para">
+        Когда скрипт пытается открыть файл, например, с помощью функции
+        <span class="function"><a href="function.fopen.html" class="function">fopen()</a></span> или <span class="function"><a href="function.gzopen.html" class="function">gzopen()</a></span>,
+        проверяется местонахождение файла. Если файл находится вне указанного
+        дерева каталогов, PHP откажется его открывать. Все символические
+        ссылки будут раскрыты, так что с их помощью не удастся обойти это
+        ограничение. Если файл не существует, то символическая ссылка не сможет
+        быть прочитана и имя файла (прочитанное) будет рассматриваться
+        <strong class="option unknown">open_basedir</strong>
+.
+       </p>
+       <p class="para">
+        Специальное значение <code class="systemitem systemitem">.</code>
+        обозначает, что рабочая директория скрипта будет использована в качестве
+        базовой директории. Однако, это немного опасно, так как текущая директория
+        скрипта может быть легко изменена с помощью <span class="function"><a href="function.chdir.html" class="function">chdir()</a></span>.
+       </p>
+       <p class="para">
+        В <var class="filename">httpd.conf</var>, <strong class="option unknown">open_basedir</strong>
+ может быть
+        выключена (например, для некоторых виртуальных хостов)
+        <a href="configuration.changes.html#configuration.changes.apache" class="link">тем же способом</a>, что и
+        любая другая конфигурационная директива: &quot;<i>php_admin_value open_basedir
+        none</i>&quot;.
+       </p>
+       <p class="para">
+        В Windows разделяйте директории точкой с запятой. На всех остальных
+        системах, разделяйте директории двоеточием. При работе в качестве модуля Apache,
+        пути <strong class="option unknown">open_basedir</strong>
+ автоматически наследуются от родительских
+        директорий.
+       </p>
+       <p class="para">
+        Ограничение, определяемое <strong class="option unknown">open_basedir</strong>
+ является
+        именем директории начиная с версии PHP 5.2.16 и 5.3.4. Предыдущие
+        версии использовали это значение в качестве префикса. Это означает,
+        что &quot;<i>open_basedir = /dir/incl</i>&quot; также разрешит доступ
+        к &quot;<i>/dir/include</i>&quot; и &quot;<i>/dir/incls</i>&quot;,
+        если они существуют. Если вы захотите ограничить доступ только указанной
+        директорией, поставьте в конце слэш. Например:
+        <i>open_basedir = /dir/incl/</i>
+       </p>
+       <p class="para">
+        По умолчанию все файлы могут быть открыты.
+       </p>
+       <blockquote class="note"><p><b class="note">Замечание</b>: 
+        <p class="para">
+         Начиная с версии PHP 5.3.0 значение open_basedir можно сделать
+         более строгим во время выполнения скрипта. Это означает, что если
+         open_basedir была установлена в <i>/www/</i> в <var class="filename">php.ini</var>,
+         то скрипт может ужать конфигурацию до
+         <i>/www/tmp/</i> во время выполнения с помощью
+         <span class="function"><a href="function.ini-set.html" class="function">ini_set()</a></span>. При указании нескольких директорий
+         можно использовать константу <b><tt>PATH_SEPARATOR</tt></b>
+         в качестве разделителя путей, не зависящего от операционной
+         системы.
+        </p>
+       </p></blockquote>
+      </dd>
+
+     </dt>
+
+     
+     <dt id="ini.doc-root">
+      <span class="term">
+       <i><tt class="parameter">doc_root</tt></i>
+       <span class="type"><a href="language.types.string.html" class="type string">string</a></span>
+      </span>
+      <dd>
+
+       <p class="para">
+        &quot;Корневая директория&quot; PHP на этом сервере. Используется только в
+        случае, если не пустая. Если PHP сконфигурирован с <a href="ini.sect.safe-mode.html#ini.safe-mode" class="link">безопасный режим</a>,
+        файлы вне этой директории не обрабатываются.
+        Если PHP не был скомпилирован с FORCE_REDIRECT, вам <em class="emphasis">следует
+        </em> установить doc_root, если вы используете PHP в качестве
+        CGI под любым веб-сервером (кроме IIS). Альтернативой является
+        использование конфигурационной директивы
+        <a href="ini.core.html#ini.cgi.force-redirect" class="link">cgi.force_redirect</a>,
+        речь о которой идет ниже.
+       </p>
+      </dd>
+
+     </dt>
+
+     
+     <dt id="ini.user-dir">
+      <span class="term">
+       <i><tt class="parameter">user_dir</tt></i>
+       <span class="type"><a href="language.types.string.html" class="type string">string</a></span>
+      </span>
+      <dd>
+
+       <p class="para">
+        Базовое имя директории, используемой в домашнем каталоге пользователя
+        для PHP файлов, например,
+        <var class="filename">public_html</var>.
+       </p>
+      </dd>
+
+     </dt>
+
+     
+     <dt id="ini.extension-dir">
+      <span class="term">
+       <i><tt class="parameter">extension_dir</tt></i>
+       <span class="type"><a href="language.types.string.html" class="type string">string</a></span>
+      </span>
+      <dd>
+
+       <p class="para">
+        В какой директории PHP должен искать динамически загружаемые
+        расширения. См. также: <a href="info.configuration.html#ini.enable-dl" class="link">enable_dl</a>
+        и <span class="function"><a href="function.dl.html" class="function">dl()</a></span>.
+       </p>
+      </dd>
+
+     </dt>
+
+     
+     <dt id="ini.extension">
+      <span class="term">
+       <i><tt class="parameter">extension</tt></i>
+       <span class="type"><a href="language.types.string.html" class="type string">string</a></span>
+      </span>
+      <dd>
+
+       <p class="para">
+        Какие динамически загружаемые расширения должны быть загружены при
+        старте PHP.
+       </p>
+      </dd>
+
+     </dt>
+
+     
+     <dt id="ini.zend-extension">
+      <span class="term">
+       <i><tt class="parameter">zend_extension</tt></i>
+       <span class="type"><a href="language.types.string.html" class="type string">string</a></span>
+      </span>
+      <dd>
+
+       <p class="para">
+        Абсолютный путь до динамически загружаемого расширения Zend (например,
+        <a href="book.apd.html" class="link">APD</a>), которое должно быть загружено
+        при старте PHP.
+       </p>
+      </dd>
+
+     </dt>
+
+     
+     <dt id="ini.zend-extension-debug">
+      <span class="term">
+       <i><tt class="parameter">zend_extension_debug</tt></i>
+       <span class="type"><a href="language.types.string.html" class="type string">string</a></span>
+      </span>
+      <dd>
+
+       <p class="para">
+        Вариант <a href="ini.core.html#ini.zend-extension" class="link">zend_extension</a>
+        для расширений, скомпилированных с отладочной информацией.
+       </p>
+      </dd>
+
+     </dt>
+
+     
+     <dt id="ini.zend-extension-debug-ts">
+      <span class="term">
+       <i><tt class="parameter">zend_extension_debug_ts</tt></i>
+       <span class="type"><a href="language.types.string.html" class="type string">string</a></span>
+      </span>
+      <dd>
+
+       <p class="para">
+        Вариант <a href="ini.core.html#ini.zend-extension" class="link">zend_extension</a>
+        для потокобезопасных расширений, скомпилированных с отладочной информацией.
+       </p>
+      </dd>
+
+     </dt>
+
+     
+     <dt id="ini.zend-extension-ts">
+      <span class="term">
+       <i><tt class="parameter">zend_extension_ts</tt></i>
+       <span class="type"><a href="language.types.string.html" class="type string">string</a></span>
+      </span>
+      <dd>
+
+       <p class="para">
+        Вариант <a href="ini.core.html#ini.zend-extension" class="link">zend_extension</a>
+        для потокобезопасных расширений.
+       </p>
+      </dd>
+
+     </dt>
+
+     
+     <dt id="ini.cgi.check-shebang-line">
+      <span class="term">
+       <i><tt class="parameter">cgi.check_shebang_line</tt></i>
+       <span class="type"><a href="language.types.boolean.html" class="type boolean">boolean</a></span>
+      </span>
+      <dd>
+
+       <p class="para">
+        Контролирует, нужно ли проверять первую строку
+        <acronym title="Common Gateway Interface">CGI</acronym> PHP-скрипта на содержание
+        <i>#!</i> (shebang).
+        Эта строка может быть необходима, если скрипт
+        должен поддерживать как отдельный запуск, так и с помощью
+        PHP <acronym title="Common Gateway Interface">CGI</acronym>. PHP в режиме
+        <acronym title="Common Gateway Interface">CGI</acronym> пропускает эту строку и игнорирует ее
+        содержимое, если данная директива включена.
+       </p>
+      </dd>
+
+     </dt>
+
+     
+     <dt id="ini.cgi.fix-pathinfo">
+      <span class="term">
+       <i><tt class="parameter">cgi.fix_pathinfo</tt></i>
+       <span class="type"><a href="language.types.boolean.html" class="type boolean">boolean</a></span>
+      </span>
+      <dd>
+
+       <p class="para">
+        Обеспечивает поддержку <em class="emphasis">правильных</em>
+        <i>PATH_INFO</i>/<i>PATH_TRANSLATED</i>
+        в <acronym title="Common Gateway Interface">CGI</acronym>. Раньше PHP просто устанавливал
+        <i>PATH_TRANSLATED</i> в <i>SCRIPT_FILENAME</i>
+        и не обращал внимания на <i>PATH_INFO</i>.
+        Для получения дополнительной информации о <i>PATH_INFO</i>,
+        обратитесь к спецификации <acronym title="Common Gateway Interface">CGI</acronym>. Установка этого
+        значения в <i>1</i> заставит PHP <acronym title="Common Gateway Interface">CGI</acronym>
+        исправлять свой путь в соответствии со спецификацией. Значение 0
+        соответствует предыдущему поведению. По умолчанию опция включена.
+        Вы должны исправить свои скрипты так, чтобы они использовали
+        <i>SCRIPT_FILENAME</i> вместо <i>PATH_TRANSLATED</i>.
+       </p>
+      </dd>
+
+     </dt>
+
+     
+     <dt id="ini.cgi.force-redirect">
+      <span class="term">
+       <i><tt class="parameter">cgi.force_redirect</tt></i>
+       <span class="type"><a href="language.types.boolean.html" class="type boolean">boolean</a></span>
+      </span>
+      <dd>
+
+       <p class="para">
+        Директива cgi.force_redirect необходима для обеспечения безопасности
+        во время работы PHP в качестве <acronym title="Common Gateway Interface">CGI</acronym> под большинством веб-серверов.
+        Если оставить ее неопределенной, по умолчанию PHP включает эту
+        директиву. Вы можете выключить ее <em class="emphasis">на свой страх и
+        риск</em>.
+       </p>
+       <blockquote class="note"><p><b class="note">Замечание</b>: 
+        <p class="para">
+         Пользователям Windows: При использовании IIS эта опция 
+         <em class="emphasis">должна</em> быть отключена. Тоже самое необходимо
+         для OmniHTTPD и Xitami.
+        </p>
+       </p></blockquote>
+      </dd>
+
+     </dt>
+
+     
+     <dt id="ini.cgi.redirect-status-env">
+      <span class="term">
+       <i><tt class="parameter">cgi.redirect_status_env</tt></i>
+       <span class="type"><a href="language.types.string.html" class="type string">string</a></span>
+      </span>
+      <dd>
+
+       <p class="para">
+        Если cgi.force_redirect включена и вы работаете не под веб-сервером
+        Apache или Netscape (iPlanet), вам <em class="emphasis">может</em>
+        понадобится установить переменную окружения, которую будет искать
+        PHP чтобы убедиться, что он может продолжать выполнение.
+       </p>
+       <blockquote class="note"><p><b class="note">Замечание</b>: 
+        <p class="para">
+         Установка этой переменной <em class="emphasis">может</em> повлечь за
+         собой проблемы с безопасностью, так что
+         <em class="emphasis">вы должны знать, что вы делаете</em>.
+        </p>
+       </p></blockquote>
+      </dd>
+
+     </dt>
+
+     
+     <dt id="ini.fastcgi.impersonate">
+      <span class="term">
+       <i><tt class="parameter">fastcgi.impersonate</tt></i>
+       <span class="type"><a href="language.types.string.html" class="type string">string</a></span>
+      </span>
+      <dd>
+
+       <p class="para">
+        FastCGI под IIS (в ОС на базе WINNT) поддерживает возможность
+        имперсонации прав безопасности вызывающего клиента. Это позволяет
+        IIS определить контекст безопасности, в котором выполняется запрос.
+        mod_fastcgi под Apache на текущий момент не поддерживает эту
+        возможность (03/17/2002).
+        Установите в 1 при работе под IIS. Значение по умолчанию - ноль.
+       </p>
+      </dd>
+
+     </dt>
+
+     
+     <dt id="ini.fastcgi.logging">
+      <span class="term">
+       <i><tt class="parameter">fastcgi.logging</tt></i>
+       <span class="type"><a href="language.types.boolean.html" class="type boolean">boolean</a></span>
+      </span>
+      <dd>
+
+       <p class="para">
+        Включает логирование SAPI при использовании FastCGI. Логирование
+        включено по умолчанию.
+       </p>
+      </dd>
+
+     </dt>
+
+     
+     <dt id="ini.cgi.rfc2616-headers">
+      <span class="term">
+       <i><tt class="parameter">cgi.rfc2616_headers</tt></i>
+       <span class="type"><a href="language.types.integer.html" class="type int">int</a></span>
+      </span>
+      <dd>
+
+       <p class="para">
+        Сообщает PHP, какой тип заголовков использовать при отправке
+        кода ответа HTTP. Если установлено в 0, PHP отправляет заголовок
+        &quot;Status:&quot;, который поддерживается Apache и другими веб-серверами.
+        Если установлено в 1, PHP отправляет заголовок, соответствующий
+        <a href="http://www.faqs.org/rfcs/rfc2616" class="link external">&raquo;&nbsp;RFC 2616</a>. Оставьте в значении
+        0, если вы не уверены в том, что это значит.
+       </p>
+      </dd>
+
+     </dt>
+
+    </dl>
+
+   </p>
+  </div>
+  
+  <div class="section" id="ini.sect.file-uploads">
+   <h2 class="title">Закачивание Файлов</h2>
+   <p class="para">
+    <table class="doctable table">
+     <caption><b>Конфигурационные Опции Закачивания Файлов</b></caption>
+     
+      <thead valign="middle">
+       <tr valign="middle">
+        <th>Имя</th>
+        <th>По умолчанию</th>
+        <th>Место изменения</th>
+        <th>Список изменений</th>
+       </tr>
+
+      </thead>
+
+      <tbody valign="middle" class="tbody">
+       <tr valign="middle">
+        <td align="left">file_uploads</td>
+        <td align="left">&quot;1&quot;</td>
+        <td align="left">PHP_INI_SYSTEM</td>
+        <td align="left">PHP_INI_ALL в PHP &lt;= 4.2.3. Доступна с версии PHP 4.0.3.</td>
+       </tr>
+
+       <tr valign="middle">
+        <td align="left">upload_tmp_dir</td>
+        <td align="left">NULL</td>
+        <td align="left">PHP_INI_SYSTEM</td>
+        <td class="empty">&nbsp;</td>
+       </tr>
+
+       <tr valign="middle">
+        <td align="left">upload_max_filesize</td>
+        <td align="left">&quot;2M&quot;</td>
+        <td align="left">PHP_INI_PERDIR</td>
+        <td align="left">PHP_INI_ALL в PHP &lt;= 4.2.3.</td>
+       </tr>
+
+       <tr valign="middle">
+        <td align="left">max_file_uploads</td>
+        <td align="left">20</td>
+        <td align="left">PHP_INI_SYSTEM</td>
+        <td align="left">Доступна с версии PHP 5.2.12.</td>
+       </tr>
+
+      </tbody>
+     
+    </table>
+
+   </p>
+   
+   <p class="para">Краткое разъяснение конфигурационных
+директив.</p>
+   
+   <p class="para">
+    <dl>
+
+     <dt id="ini.file-uploads">
+      <span class="term">
+       <i><tt class="parameter">file_uploads</tt></i>
+       <span class="type"><a href="language.types.boolean.html" class="type boolean">boolean</a></span>
+       или <span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>
+      </span>
+      <dd>
+
+       <p class="para">
+        Разрешать или не разрешать
+        <a href="features.file-upload.html" class="link">закачивание файлов</a>. См. также директивы
+        <a href="ini.core.html#ini.upload-max-filesize" class="link">upload_max_filesize</a>,
+        <a href="ini.core.html#ini.upload-tmp-dir" class="link">upload_tmp_dir</a> и
+        <a href="ini.core.html#ini.post-max-size" class="link">post_max_size</a>.
+       </p>
+       
+       <span class="simpara">Если используется <span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>,
+значение измеряется байтами. Вы также можете использовать сокращенную запись,
+которая описана в <a href="faq.using.html#faq.using.shorthandbytes" class="link">этом разделе FAQ</a>.</span>
+       
+      </dd>
+
+     </dt>
+
+     
+     <dt id="ini.upload-tmp-dir">
+      <span class="term">
+       <i><tt class="parameter">upload_tmp_dir</tt></i>
+       <span class="type"><a href="language.types.string.html" class="type string">string</a></span>
+      </span>
+      <dd>
+
+       <p class="para">
+        Временная директория, используемая для хранения файлов во время
+        закачивания. Должна быть доступна для записи пользователю,
+        от имени которого запущен PHP. Если не указана, используется
+        директория по умолчанию для вашей системы.
+       </p>
+       <p class="para">
+        Если к указанной директории нет прав на запись, PHP откатится обратно
+        к системной временной директории, используемой по умолчанию. Если
+        включена директива <a href="ini.core.html#ini.open-basedir" class="link">open_basedir</a>,
+        то для успешной загрузки файлов
+        системная директория по умолчанию должна быть разрешена.
+       </p>
+      </dd>
+
+     </dt>
+
+     
+     <dt id="ini.upload-max-filesize">
+      <span class="term">
+       <i><tt class="parameter">upload_max_filesize</tt></i>
+       <span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>
+      </span>
+      <dd>
+
+       <p class="para">
+        Максимальный размер закачиваемого файла.
+       </p>
+       
+       <span class="simpara">Если используется <span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>,
+значение измеряется байтами. Вы также можете использовать сокращенную запись,
+которая описана в <a href="faq.using.html#faq.using.shorthandbytes" class="link">этом разделе FAQ</a>.</span>
+       
+      </dd>
+
+     </dt>
+
+     
+     <dt id="ini.max-file-uploads">
+      <span class="term">
+       <i><tt class="parameter">max_file_uploads</tt></i>
+       <span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>
+      </span>
+      <dd>
+
+       <p class="para">
+        Максимально разрешенное количество одновременно закачиваемых файлов.
+        Начиная с PHP 5.3.4, пустые поля загрузки не рассматриваются этим
+        ограничением.
+       </p>
+      </dd>
+
+     </dt>
+
+    </dl>
+
+   </p>
+  </div>
+  
+  <div class="section" id="ini.sect.sql-general">
+   <h2 class="title">Общий SQL</h2>
+   <p class="para">
+    <table class="doctable table">
+     <caption><b>Конфигурационные Опции Общего SQL</b></caption>
+     
+      <thead valign="middle">
+       <tr valign="middle">
+        <th>Имя</th>
+        <th>По умолчанию</th>
+        <th>Место изменения</th>
+        <th>Список изменений</th>
+       </tr>
+
+      </thead>
+
+      <tbody valign="middle" class="tbody">
+       <tr valign="middle">
+        <td align="left">sql.safe_mode</td>
+        <td align="left">&quot;0&quot;</td>
+        <td align="left">PHP_INI_SYSTEM</td>
+        <td class="empty">&nbsp;</td>
+       </tr>
+
+      </tbody>
+     
+    </table>
+
+   </p>
+   
+   <p class="para">Краткое разъяснение конфигурационных
+директив.</p>
+   
+   <p class="para">
+    <dl>
+
+     <dt id="ini.sql.safe-mode">
+      <span class="term">
+       <i><tt class="parameter">sql.safe_mode</tt></i>
+       <span class="type"><a href="language.types.boolean.html" class="type boolean">boolean</a></span>
+      </span>
+      <dd>
+
+       <p class="para">
+        Если включена, функции соединения с базой данных, использующие
+        значения по умолчанию, будут использовать эти значения вместо
+        передаваемых аргументов. Для значений по умолчанию смотрите
+        документацию по функциям подключения соответствующей базы данных.
+       </p>
+      </dd>
+
+     </dt>
+
+    </dl>
+
+   </p>
+  </div>
+ </div><hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="ini.sections.html">Список разделов php.ini</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="extensions.html">Список/классификация расширений</a></div>
+ <div class="up"><a href="ini.html">Директивы php.ini</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

@@ -1,0 +1,475 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Класс ZipArchive</title>
+
+ </head>
+ <body><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="zip.examples.html">Примеры</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.ziparchive-addemptydir.html">ZipArchive::addEmptyDir</a></div>
+ <div class="up"><a href="book.zip.html">Zip</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="class.ziparchive" class="reference">
+ <h1 class="title">Класс <a href="class.ziparchive.html" class="classname">ZipArchive</a></h1>
+ 
+ 
+ <div class="partintro"><p class="verinfo">(Информация о версии неизвестна, возможно, только в SVN)</p>
+ 
+
+  <div class="section" id="ziparchive.intro">
+   <h2 class="title">Введение</h2>
+   <p class="para">
+    Файловый архив, сжатый Zip.
+   </p>
+  </div>
+
+ 
+  <div class="section" id="ziparchive.synopsis">
+   <h2 class="title">Обзор классов</h2>
+
+
+   <div class="classsynopsis">
+    <div class="ooclass"></div>
+
+
+    <div class="classsynopsisinfo">
+     <span class="ooclass">
+      <b class="classname">ZipArchive</b>
+     </span>
+     {</div>
+
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Свойства */</div>
+
+    
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Методы */</div>
+    <div class="methodsynopsis dc-description">
+   <span class="type">bool</span> <span class="methodname"><a href="function.ziparchive-addemptydir.html" class="methodname">addEmptyDir</a></span>
+    ( <span class="methodparam"><span class="type">string</span> <tt class="parameter">$dirname</tt></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="type">bool</span> <span class="methodname"><a href="function.ziparchive-addfile.html" class="methodname">addFile</a></span>
+    ( <span class="methodparam"><span class="type">string</span> <tt class="parameter">$filename</tt></span>
+   [, <span class="methodparam"><span class="type">string</span> <tt class="parameter">$localname</tt><span class="initializer"> = <b><tt>NULL</tt></b></span></span>
+   [, <span class="methodparam"><span class="type">int</span> <tt class="parameter">$start</tt><span class="initializer"> = 0</span></span>
+   [, <span class="methodparam"><span class="type">int</span> <tt class="parameter">$length</tt><span class="initializer"> = 0</span></span>
+  ]]] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="type">bool</span> <span class="methodname"><a href="function.ziparchive-addfromstring.html" class="methodname">addFromString</a></span>
+    ( <span class="methodparam"><span class="type">string</span> <tt class="parameter">$localname</tt></span>
+   , <span class="methodparam"><span class="type">string</span> <tt class="parameter">$contents</tt></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="type">bool</span> <span class="methodname"><a href="function.ziparchive-close.html" class="methodname">close</a></span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="type">bool</span> <span class="methodname"><a href="function.ziparchive-deleteindex.html" class="methodname">deleteIndex</a></span>
+    ( <span class="methodparam"><span class="type">int</span> <tt class="parameter">$index</tt></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="type">bool</span> <span class="methodname"><a href="function.ziparchive-deletename.html" class="methodname">deleteName</a></span>
+    ( <span class="methodparam"><span class="type">string</span> <tt class="parameter">$name</tt></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="type">bool</span> <span class="methodname"><a href="function.ziparchive-extractto.html" class="methodname">extractTo</a></span>
+    ( <span class="methodparam"><span class="type">string</span> <tt class="parameter">$destination</tt></span>
+   [, <span class="methodparam"><span class="type"><a href="language.pseudo-types.html#language.types.mixed" class="type mixed">mixed</a></span> <tt class="parameter">$entries</tt></span>
+  ] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="type">string</span> <span class="methodname"><a href="function.ziparchive-getarchivecomment.html" class="methodname">getArchiveComment</a></span>
+    ([ <span class="methodparam"><span class="type">int</span> <tt class="parameter">$flags</tt></span>
+  ] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="type">string</span> <span class="methodname"><a href="function.ziparchive-getcommentindex.html" class="methodname">getCommentIndex</a></span>
+    ( <span class="methodparam"><span class="type">int</span> <tt class="parameter">$index</tt></span>
+   [, <span class="methodparam"><span class="type">int</span> <tt class="parameter">$flags</tt></span>
+  ] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="type">string</span> <span class="methodname"><a href="function.ziparchive-getcommentname.html" class="methodname">getCommentName</a></span>
+    ( <span class="methodparam"><span class="type">string</span> <tt class="parameter">$name</tt></span>
+   [, <span class="methodparam"><span class="type">int</span> <tt class="parameter">$flags</tt></span>
+  ] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="type">mixed</span> <span class="methodname"><a href="function.ziparchive-getfromindex.html" class="methodname">getFromIndex</a></span>
+    ( <span class="methodparam"><span class="type">int</span> <tt class="parameter">$index</tt></span>
+   [, <span class="methodparam"><span class="type">int</span> <tt class="parameter">$length</tt><span class="initializer"> = 0</span></span>
+   [, <span class="methodparam"><span class="type">int</span> <tt class="parameter">$flags</tt></span>
+  ]] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="type">mixed</span> <span class="methodname"><a href="function.ziparchive-getfromname.html" class="methodname">getFromName</a></span>
+    ( <span class="methodparam"><span class="type">string</span> <tt class="parameter">$name</tt></span>
+   [, <span class="methodparam"><span class="type">int</span> <tt class="parameter">$length</tt><span class="initializer"> = 0</span></span>
+   [, <span class="methodparam"><span class="type">int</span> <tt class="parameter">$flags</tt></span>
+  ]] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="type">string</span> <span class="methodname"><a href="function.ziparchive-getnameindex.html" class="methodname">getNameIndex</a></span>
+    ( <span class="methodparam"><span class="type">int</span> <tt class="parameter">$index</tt></span>
+   [, <span class="methodparam"><span class="type">int</span> <tt class="parameter">$flags</tt></span>
+  ] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="type">string</span> <span class="methodname"><a href="function.ziparchive-getstatusstring.html" class="methodname">getStatusString</a></span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="type">resource</span> <span class="methodname"><a href="function.ziparchive-getstream.html" class="methodname">getStream</a></span>
+    ( <span class="methodparam"><span class="type">string</span> <tt class="parameter">$name</tt></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="type">mixed</span> <span class="methodname"><a href="function.ziparchive-locatename.html" class="methodname">locateName</a></span>
+    ( <span class="methodparam"><span class="type">string</span> <tt class="parameter">$name</tt></span>
+   [, <span class="methodparam"><span class="type">int</span> <tt class="parameter">$flags</tt></span>
+  ] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="type">mixed</span> <span class="methodname"><a href="function.ziparchive-open.html" class="methodname">open</a></span>
+    ( <span class="methodparam"><span class="type">string</span> <tt class="parameter">$filename</tt></span>
+   [, <span class="methodparam"><span class="type">int</span> <tt class="parameter">$flags</tt></span>
+  ] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="type">bool</span> <span class="methodname"><a href="function.ziparchive-renameindex.html" class="methodname">renameIndex</a></span>
+    ( <span class="methodparam"><span class="type">int</span> <tt class="parameter">$index</tt></span>
+   , <span class="methodparam"><span class="type">string</span> <tt class="parameter">$newname</tt></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="type">bool</span> <span class="methodname"><a href="function.ziparchive-renamename.html" class="methodname">renameName</a></span>
+    ( <span class="methodparam"><span class="type">string</span> <tt class="parameter">$name</tt></span>
+   , <span class="methodparam"><span class="type">string</span> <tt class="parameter">$newname</tt></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="type">mixed</span> <span class="methodname"><a href="function.ziparchive-setarchivecomment.html" class="methodname">setArchiveComment</a></span>
+    ( <span class="methodparam"><span class="type">string</span> <tt class="parameter">$comment</tt></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="type">mixed</span> <span class="methodname"><a href="function.ziparchive-setcommentindex.html" class="methodname">setCommentIndex</a></span>
+    ( <span class="methodparam"><span class="type">int</span> <tt class="parameter">$index</tt></span>
+   , <span class="methodparam"><span class="type">string</span> <tt class="parameter">$comment</tt></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="type">mixed</span> <span class="methodname"><a href="function.ziparchive-setCommentName.html" class="methodname">setCommentName</a></span>
+    ( <span class="methodparam"><span class="type">string</span> <tt class="parameter">$name</tt></span>
+   , <span class="methodparam"><span class="type">string</span> <tt class="parameter">$comment</tt></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="type">mixed</span> <span class="methodname"><a href="function.ziparchive-statindex.html" class="methodname">statIndex</a></span>
+    ( <span class="methodparam"><span class="type">int</span> <tt class="parameter">$index</tt></span>
+   [, <span class="methodparam"><span class="type">int</span> <tt class="parameter">$flags</tt></span>
+  ] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="type">mixed</span> <span class="methodname"><a href="function.ziparchive-statname.html" class="methodname">statName</a></span>
+    ( <span class="methodparam"><span class="type"><span class="type name">name</span></span> <tt class="parameter">$name</tt></span>
+   [, <span class="methodparam"><span class="type">int</span> <tt class="parameter">$flags</tt></span>
+  ] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="type">mixed</span> <span class="methodname"><a href="function.ziparchive-unchangeall.html" class="methodname">unchangeAll</a></span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="type">mixed</span> <span class="methodname"><a href="function.ziparchive-unchangearchive.html" class="methodname">unchangeArchive</a></span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="type">mixed</span> <span class="methodname"><a href="function.ziparchive-unchangeindex.html" class="methodname">unchangeIndex</a></span>
+    ( <span class="methodparam"><span class="type">int</span> <tt class="parameter">$index</tt></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="type">mixed</span> <span class="methodname"><a href="function.ziparchive-unchangename.html" class="methodname">unchangeName</a></span>
+    ( <span class="methodparam"><span class="type">string</span> <tt class="parameter">$name</tt></span>
+   )</div>
+
+    
+   }</div>
+
+
+  </div>
+
+
+  <div class="section" id="ziparchive.props">
+   <h2 class="title">Свойства</h2>
+   <dl>
+
+    <dt id="ziparchive.props.status">
+     <span class="term"><var class="varname"><var class="varname">status</var></var></span>
+     <dd>
+
+      <p class="para">Статус Zip-архива</p>
+     </dd>
+
+    </dt>
+
+    <dt id="ziparchive.props.statussys">
+     <span class="term"><var class="varname"><var class="varname">statusSys</var></var></span>
+     <dd>
+
+      <p class="para">Системный статус Zip-архива</p>
+     </dd>
+
+    </dt>
+
+    <dt id="ziparchive.props.numfiles">
+     <span class="term"><var class="varname"><var class="varname">numFiles</var></var></span>
+     <dd>
+
+      <p class="para">Количество файлов в архиве</p>
+     </dd>
+
+    </dt>
+
+    <dt id="ziparchive.props.filename">
+     <span class="term"><var class="varname"><var class="varname">filename</var></var></span>
+     <dd>
+
+      <p class="para">Имя файла в файловой системе</p>
+     </dd>
+
+    </dt>
+
+    <dt id="ziparchive.props.comment">
+     <span class="term"><var class="varname"><var class="varname">comment</var></var></span>
+     <dd>
+
+      <p class="para">Комментарий к архиву</p>
+     </dd>
+
+    </dt>
+
+   </dl>
+
+  </div>
+
+ </div>
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h2>Содержание</h2><ul class="chunklist chunklist_reference"><li><a href="function.ziparchive-addemptydir.html">ZipArchive::addEmptyDir</a> — Добавляет новую директорию</li><li><a href="function.ziparchive-addfile.html">ZipArchive::addFile</a> — Добавляет в ZIP-архив файл по указанному пути</li><li><a href="function.ziparchive-addfromstring.html">ZipArchive::addFromString</a> — Добавяет файл в ZIP-архив, используя его содержимое</li><li><a href="function.ziparchive-close.html">ZipArchive::close</a> — Закрывает активный архив (открытый или вновь созданный)</li><li><a href="function.ziparchive-deleteindex.html">ZipArchive::deleteIndex</a> — Удаляет элемент в архиве, используя его индекс</li><li><a href="function.ziparchive-deletename.html">ZipArchive::deleteName</a> — Удаляет элемент в архиве, используя его имя</li><li><a href="function.ziparchive-extractto.html">ZipArchive::extractTo</a> — Извлекает содержимое архива</li><li><a href="function.ziparchive-getarchivecomment.html">ZipArchive::getArchiveComment</a> — Возвращает комментарий ZIP-архива</li><li><a href="function.ziparchive-getcommentindex.html">ZipArchive::getCommentIndex</a> — Возвращает комментарий элемента, используя его индекс</li><li><a href="function.ziparchive-getcommentname.html">ZipArchive::getCommentName</a> — Возвращает комментарий элемента, используя его имя</li><li><a href="function.ziparchive-getfromindex.html">ZipArchive::getFromIndex</a> — Возвращает содержимое элемента по его индексу</li><li><a href="function.ziparchive-getfromname.html">ZipArchive::getFromName</a> — Возвращает содержимое элемента по его имени</li><li><a href="function.ziparchive-getnameindex.html">ZipArchive::getNameIndex</a> — Возвращает имя элемента по его индексу</li><li><a href="function.ziparchive-getstatusstring.html">ZipArchive::getStatusString</a> — Возвращают статус сообщения об ошибке, системный и/или zip-статус</li><li><a href="function.ziparchive-getstream.html">ZipArchive::getStream</a> — Получить дескриптор файла элемента, определенный по имени элемента (только для чтения)</li><li><a href="function.ziparchive-locatename.html">ZipArchive::locateName</a> — Возвращает индекс элемента в архиве</li><li><a href="function.ziparchive-open.html">ZipArchive::open</a> — Открывает ZIP-архив</li><li><a href="function.ziparchive-renameindex.html">ZipArchive::renameIndex</a> — Переименовывает элемент по его индексу</li><li><a href="function.ziparchive-renamename.html">ZipArchive::renameName</a> — Переименовывает элемент по его имени</li><li><a href="function.ziparchive-setarchivecomment.html">ZipArchive::setArchiveComment</a> — Устанавливает комментарий к ZIP-архиву</li><li><a href="function.ziparchive-setcommentindex.html">ZipArchive::setCommentIndex</a> — Устанавливает комментарий к элементу по его индексу</li><li><a href="function.ziparchive-setCommentName.html">ZipArchive::setCommentName</a> — Устанавливает комментарий к элементу, заданному по имени</li><li><a href="function.ziparchive-statindex.html">ZipArchive::statIndex</a> — Получение детальной информации по элементу по его индексу</li><li><a href="function.ziparchive-statname.html">ZipArchive::statName</a> — Получение детальной информации по элементу по его имени</li><li><a href="function.ziparchive-unchangeall.html">ZipArchive::unchangeAll</a> — Отменяет все изменения, сделанные в архиве</li><li><a href="function.ziparchive-unchangearchive.html">ZipArchive::unchangeArchive</a> — Возвращает все глобальные изменения, сделанные в архиве</li><li><a href="function.ziparchive-unchangeindex.html">ZipArchive::unchangeIndex</a> — Отменяет все измения у позиции с заданным индексом</li><li><a href="function.ziparchive-unchangename.html">ZipArchive::unchangeName</a> — Отменяет все измения у позиции с заданным именем</li></ul>
+</div>
+<hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="zip.examples.html">Примеры</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.ziparchive-addemptydir.html">ZipArchive::addEmptyDir</a></div>
+ <div class="up"><a href="book.zip.html">Zip</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

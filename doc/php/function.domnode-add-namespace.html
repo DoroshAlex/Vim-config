@@ -1,0 +1,115 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Добавляет узлу объявление пространства имен</title>
+
+ </head>
+ <body><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.domelement-tagname.html">DomElement-&gt;tagname</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.domnode-append-child.html">DomNode-&gt;append_child</a></div>
+ <div class="up"><a href="ref.domxml.html">DOM XML (PHP 4) Функции</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.domnode-add-namespace" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">DomNode->add_namespace</h1>
+  <p class="verinfo">(PHP 4 &gt;= 4.3.0)</p><p class="refpurpose"><span class="refname">DomNode-&gt;add_namespace</span> &mdash; <span class="dc-title">
+   Добавляет узлу объявление пространства имен
+  </span></p>
+
+ </div>
+ <div class="refsect1 description" id="refsect1-function.domnode-add-namespace-description">
+  <h3 class="title">Описание</h3>
+  <div class="classsynopsis">
+   <div class="ooclass"></div>
+   <div class="methodsynopsis dc-description">
+    <span class="type">bool</span> <span class="methodname"><b>DOMNode::add_namespace</b></span>
+     ( <span class="methodparam"><span class="type">string</span> <tt class="parameter">$uri</tt></span>
+    , <span class="methodparam"><span class="type">string</span> <tt class="parameter">$prefix</tt></span>
+    )</div>
+
+  </div>
+  <p class="para">
+   Этот метод добавляет узлу объявление пространства имен.
+  </p>
+  <blockquote class="note"><p><b class="note">Замечание</b>: 
+   <p class="para">
+    Этот метод не входит в спецификацию DOM.
+   </p>
+  </p></blockquote>
+ </div>
+
+ <div class="refsect1 parameters" id="refsect1-function.domnode-add-namespace-parameters">
+  <h3 class="title">Список параметров</h3>
+  <p class="para">
+   <dl>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">uri</tt></i></span>
+     <dd>
+
+      <p class="para">
+       URI пространства имен узла.
+      </p>
+     </dd>
+
+    </dt>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">prefix</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Префикс пространства имен узла.
+      </p>
+     </dd>
+
+    </dt>
+
+   </dl>
+
+  </p>
+ </div>
+
+ <div class="refsect1 returnvalues" id="refsect1-function.domnode-add-namespace-returnvalues">
+  <h3 class="title">Возвращаемые значения</h3>
+  <p class="para">
+   Возвращает <b><tt>TRUE</tt></b> в случае успешного завершения  или <b><tt>FALSE</tt></b> в случае возникновения ошибки.
+  </p>
+ </div>
+
+ <div class="refsect1 migration" id="refsect1-function.domnode-add-namespace-migration">
+  <h3 class="title">Переход на PHP 5</h3>
+  <p class="para">
+   Вы можете задать UTI и префикс пространства имен объектов
+   <a href="class.domelement.html" class="classname">DOMElement</a> и <a href="class.domattr.html" class="classname">DOMAttr</a> 
+   во время их создания, используя 
+   <a href="domdocument.createelementns.html" class="xref">DOMDocument::createElementNS</a> или 
+   <a href="domdocument.createattributens.html" class="xref">DOMDocument::createAttributeNS</a>.
+  </p>
+  <blockquote class="note"><p><b class="note">Замечание</b>: 
+   <p class="para">
+    Помните, что атрибут не наследует пространство имен от элемента, к которому
+    он относится.
+   </p>
+  </p></blockquote>
+ </div>
+
+ <div class="refsect1 seealso" id="refsect1-function.domnode-add-namespace-seealso">
+  <h3 class="title">Смотрите также</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><a href="function.domdocument-create-element-ns.html" class="xref">DomDocument-&gt;create_element_ns</a></li>
+    <li class="member"><a href="function.domnode-set-namespace.html" class="xref">DomNode-&gt;set_namespace</a></li>
+   </ul>
+  </p>
+ </div>
+
+</div><hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.domelement-tagname.html">DomElement-&gt;tagname</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.domnode-append-child.html">DomNode-&gt;append_child</a></div>
+ <div class="up"><a href="ref.domxml.html">DOM XML (PHP 4) Функции</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

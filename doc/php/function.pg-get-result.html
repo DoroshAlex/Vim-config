@@ -1,0 +1,114 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Получение результата асинхронного запроса</title>
+
+ </head>
+ <body><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.pg-get-pid.html">pg_get_pid</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.pg-host.html">pg_host</a></div>
+ <div class="up"><a href="ref.pgsql.html">PostgreSQL</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.pg-get-result" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">pg_get_result</h1>
+  <p class="verinfo">(PHP 4 &gt;= 4.2.0, PHP 5)</p><p class="refpurpose"><span class="refname">pg_get_result</span> &mdash; <span class="dc-title">
+   Получение результата асинхронного запроса
+  </span></p>
+
+ </div>
+
+ <div class="refsect1 description" id="refsect1-function.pg-get-result-description">
+  <h3 class="title">Описание</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">resource</span> <span class="methodname"><b>pg_get_result</b></span>
+    ([ <span class="methodparam"><span class="type">resource</span> <tt class="parameter">$connection</tt></span>
+  ] )</div>
+
+  <p class="para rdfs-comment">
+   <span class="function"><b>pg_get_result()</b></span> получает ресурс результата асинхронного
+   запроса, запущенного функциями <span class="function"><a href="function.pg-send-query.html" class="function">pg_send_query()</a></span>, 
+   <span class="function"><a href="function.pg-send-query-params.html" class="function">pg_send_query_params()</a></span> или <span class="function"><a href="function.pg-send-execute.html" class="function">pg_send_execute()</a></span>. 
+  </p>
+  <p class="para"><span class="function"><a href="function.pg-send-query.html" class="function">pg_send_query()</a></span> и другие функции, посылающие 
+   асинхронные запросы, может посылать сразу несколько запросов на сервер. 
+   Функция <span class="function"><b>pg_get_result()</b></span> получит результаты всех 
+   запросов по очереди.
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 parameters" id="refsect1-function.pg-get-result-parameters">
+  <h3 class="title">Список параметров</h3>
+  <p class="para">
+   <dl>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">connection</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Ресурс соединения с базой данных PostgreSQL.
+      </p>
+     </dd>
+
+    </dt>
+
+   </dl>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-function.pg-get-result-returnvalues">
+  <h3 class="title">Возвращаемые значения</h3>
+  <p class="para">
+   Ресурс результата запроса, либо  <b><tt>FALSE</tt></b>, когда доступных результатов больше нет.
+  </p>
+ </div>
+ 
+
+ <div class="refsect1 examples" id="refsect1-function.pg-get-result-examples">
+  <h3 class="title">Примеры</h3>
+  <p class="para">
+   <div class="example" id="example-1917">
+    <p><b>Пример #1 Пример использования <span class="function"><b>pg_get_result()</b></span></b></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />&nbsp;&nbsp;$dbconn&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">pg_connect</span><span style="color: #007700">(</span><span style="color: #DD0000">"dbname=publisher"</span><span style="color: #007700">)&nbsp;or&nbsp;die(</span><span style="color: #DD0000">"Невозможно&nbsp;соединиться&nbsp;с&nbsp;сервером"</span><span style="color: #007700">);<br /><br />&nbsp;&nbsp;if&nbsp;(!</span><span style="color: #0000BB">pg_connection_busy</span><span style="color: #007700">(</span><span style="color: #0000BB">$dbconn</span><span style="color: #007700">))&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">pg_send_query</span><span style="color: #007700">(</span><span style="color: #0000BB">$dbconn</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"select&nbsp;*&nbsp;from&nbsp;authors;&nbsp;select&nbsp;count(*)&nbsp;from&nbsp;authors;"</span><span style="color: #007700">);<br />&nbsp;&nbsp;}<br />&nbsp;&nbsp;<br />&nbsp;&nbsp;</span><span style="color: #0000BB">$res1&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">pg_get_result</span><span style="color: #007700">(</span><span style="color: #0000BB">$dbconn</span><span style="color: #007700">);<br />&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"Первый&nbsp;вызов&nbsp;pg_get_result():&nbsp;</span><span style="color: #0000BB">$res1</span><span style="color: #DD0000">\n"</span><span style="color: #007700">;<br />&nbsp;&nbsp;</span><span style="color: #0000BB">$rows1&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">pg_num_rows</span><span style="color: #007700">(</span><span style="color: #0000BB">$res1</span><span style="color: #007700">);<br />&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"</span><span style="color: #0000BB">$res1</span><span style="color: #DD0000">&nbsp;имеет&nbsp;</span><span style="color: #0000BB">$rows1</span><span style="color: #DD0000">&nbsp;записей\n\n"</span><span style="color: #007700">;<br />&nbsp;&nbsp;<br />&nbsp;&nbsp;</span><span style="color: #0000BB">$res2&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">pg_get_result</span><span style="color: #007700">(</span><span style="color: #0000BB">$dbconn</span><span style="color: #007700">);<br />&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"Второй&nbsp;вызов&nbsp;pg_get_result():&nbsp;</span><span style="color: #0000BB">$res2</span><span style="color: #DD0000">\n"</span><span style="color: #007700">;<br />&nbsp;&nbsp;</span><span style="color: #0000BB">$rows2&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">pg_num_rows</span><span style="color: #007700">(</span><span style="color: #0000BB">$res2</span><span style="color: #007700">);<br />&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"</span><span style="color: #0000BB">$res2</span><span style="color: #DD0000">&nbsp;имеет&nbsp;</span><span style="color: #0000BB">$rows2</span><span style="color: #DD0000">&nbsp;записей\n"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+    <div class="example-contents"><p>Результат выполнения данного примера:</p></div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+Первый вызов pg_get_result(): Resource id #3
+Resource id #3 имеет 3 записей
+
+Второй вызов pg_get_result(): Resource id #4
+Resource id #4 имеет 1 записей
+</pre></div>
+    </div>
+   </div> 
+  </p>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-function.pg-get-result-seealso">
+  <h3 class="title">Смотрите также</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><span class="function"><a href="function.pg-send-query.html" class="function" rel="rdfs-seeAlso">pg_send_query()</a> - Отправляет асинхронный запрос</span></li>
+   </ul>
+  </p>
+ </div>
+
+</div><hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.pg-get-pid.html">pg_get_pid</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.pg-host.html">pg_host</a></div>
+ <div class="up"><a href="ref.pgsql.html">PostgreSQL</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

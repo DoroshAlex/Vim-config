@@ -1,0 +1,270 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Возвращает комментарии к правкам в репозитории</title>
+
+ </head>
+ <body><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.svn-import.html">svn_import</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.svn-ls.html">svn_ls</a></div>
+ <div class="up"><a href="ref.svn.html">SVN</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.svn-log" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">svn_log</h1>
+  <p class="verinfo">(PECL svn &gt;= 0.1.0)</p><p class="refpurpose"><span class="refname">svn_log</span> &mdash; <span class="dc-title">Возвращает комментарии к правкам в репозитории</span></p>
+
+ </div>
+
+ <div class="refsect1 description" id="refsect1-function.svn-log-description">
+  <h3 class="title">Описание</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">array</span> <span class="methodname"><b>svn_log</b></span>
+    ( <span class="methodparam"><span class="type">string</span> <tt class="parameter">$repos_url</tt></span>
+   [, <span class="methodparam"><span class="type">int</span> <tt class="parameter">$start_revision</tt></span>
+   [, <span class="methodparam"><span class="type">int</span> <tt class="parameter">$end_revision</tt></span>
+   [, <span class="methodparam"><span class="type">int</span> <tt class="parameter">$limit</tt><span class="initializer"> = 0</span></span>
+   [, <span class="methodparam"><span class="type">int</span> <tt class="parameter">$flags</tt><span class="initializer"> = SVN_DISCOVER_CHANGED_PATHS | SVN_STOP_ON_COPY</span></span>
+  ]]]] )</div>
+
+  <p class="para rdfs-comment">
+   <span class="function"><b>svn_log()</b></span> возвращает полную историю изменений конкретного
+    элемента репозитория, расположенного по URL <i><tt class="parameter">repos_url</tt></i>, 
+    или историю правок в конкретном диапазоне, если указан параметр
+   <i><tt class="parameter">start_revision</tt></i>. Данная функция эквивалентна команде SVN
+    <strong class="userinput"><code>svn log --verbose -r $start_revision $repos_url</code></strong>.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-function.svn-log-parameters">
+  <h3 class="title">Список параметров</h3>
+  <p class="para">
+   <dl>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">repos_url</tt></i></span>
+     <dd>
+
+      <p class="para">
+       URL адрес репозитория для получения истории правок элемента.
+      </p>
+     </dd>
+
+    </dt>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">start_revision</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Начальный номер ревизии для получения. Используйте константу
+       <b><tt>SVN_REVISION_HEAD</tt></b> для получения самой
+        последней ревизии.
+      </p>
+     </dd>
+
+    </dt>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">end_revision</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Конечный номер ревизии для получения. По умолчанию при использовании
+       параметра <i><tt class="parameter">start_revision</tt></i> идентичен ему, в противном случае
+       равен <b><tt>SVN_REVISION_INITIAL</tt></b>.
+      </p>
+     </dd>
+
+    </dt>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">limit</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Количество записей для получения.
+      </p>
+     </dd>
+
+    </dt>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">flags</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Любая комбинация <b><tt>SVN_OMIT_MESSAGES</tt></b>,
+       <b><tt>SVN_DISCOVER_CHANGED_PATHS</tt></b> и
+       <b><tt>SVN_STOP_ON_COPY</tt></b>.
+      </p>
+     </dd>
+
+    </dt>
+
+   </dl>
+
+  </p>
+
+ </div>
+
+ <div class="refsect1 returnvalues" id="refsect1-function.svn-log-returnvalues">
+  <h3 class="title">Возвращаемые значения</h3>
+  <p class="para">
+   В случае успеха, функция возвращает массив формата:
+   <div class="example-contents screen">
+<div class="returnvaluescode"><pre class="returnvaluescode">[0] =&gt; Array, ordered most recent (highest) revision first
+(
+    [rev] =&gt; Номер ревизии (целое число)
+    [author] =&gt; Автор правки (строка)
+    [msg] =&gt; Комментарий к изменениям (строка)
+    [date] =&gt; Дата правки в формате ISO 8601, т.е. date(&#039;c&#039;)
+    [paths] =&gt; Массив с путями к измененным файлам
+        (
+            [0] =&gt; Array
+                (
+                    [action] =&gt; Обозначение характера изменений
+                    [path] =&gt;  Абсолютный путь репозитория к измененному файлу
+                )
+            [1] =&gt; ...
+        )
+)
+[1] =&gt; ...</pre>
+</div>
+    </div>
+  </p>
+  <blockquote class="note"><p><b class="note">Замечание</b>: 
+   <p class="para">
+    Вывод всегда представлен как пронумерованный массив, содержащий массивы,
+    кроме случаев отсутствия или только единственного экземпляра ревизий.
+   </p>
+  </p></blockquote>
+  <p class="para">
+   Значение <var class="varname"><var class="varname">action</var></var> является подмножеством
+   <a href="http://svnbook.red-bean.com/en/1.2/svn.ref.svn.c.status.html" class="link external">&raquo;&nbsp;первых букв состояний
+   SVN</a>, где возможные значения - это:
+  </p>
+  <table class="doctable table">
+   <caption><b>Действия</b></caption>
+   
+     <thead valign="middle">
+      <tr valign="middle">
+       <th>Буква</th>
+       <th>Описание</th>
+      </tr>
+
+     </thead>
+
+     <tbody valign="middle" class="tbody">
+      <tr valign="middle">
+       <td align="left">M</td>
+       <td align="left">Элемент был изменен</td>
+      </tr>
+
+      <tr valign="middle">
+       <td align="left">A</td>
+       <td align="left">Элемент был добавлен</td>
+      </tr>
+
+      <tr valign="middle">
+       <td align="left">D</td>
+       <td align="left">Элемент был удален</td>
+      </tr>
+
+      <tr valign="middle">
+       <td align="left">R</td>
+       <td align="left">Элемент был заменен</td>
+      </tr>
+
+     </tbody>
+    
+  </table>
+
+  <p class="para">
+   Если изменений элемента нет, возвращается пустой массив.
+  </p>
+ </div>
+
+
+ <div class="refsect1 notes" id="refsect1-function.svn-log-notes">
+  <h3 class="title">Примечания</h3>
+  <div class="warning"><b class="warning">Внимание</b><p class="simpara">
+Эта функция является <em class="emphasis">ЭКСПЕРИМЕНТАЛЬНОЙ</em>.
+Поведение этой функции, ее имя и относящаяся к ней документация
+могут измениться в последующих версиях PHP без уведомления.
+Используйте эту функцию на свой страх и риск.</p></div>
+ </div>
+
+
+ 
+
+ 
+
+ <div class="refsect1 examples" id="refsect1-function.svn-log-examples">
+  <h3 class="title">Примеры</h3>
+  <p class="para">
+   <div class="example" id="example-4188">
+    <p><b>Пример #1 Пример использования <span class="function"><b>svn_log()</b></span></b></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />print_r</span><span style="color: #007700">(&nbsp;</span><span style="color: #0000BB">svn_log</span><span style="color: #007700">(</span><span style="color: #DD0000">'http://www.example.com/'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">23</span><span style="color: #007700">)&nbsp;);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+    <div class="example-contents"><p>Результатом выполнения данного примера
+будет что-то подобное:</p></div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+Array
+(
+    [0] =&gt; Array
+    (
+        [rev] =&gt; 23
+        [author] =&gt; &#039;joe&#039;
+        [msg] =&gt; &#039;К нашему бутерброду добавлены сыр и колбаса.&#039;
+        [date] =&gt; &#039;2007-04-06T16:00:27-04:00&#039;
+        [paths] =&gt; Array
+            (
+                [0] =&gt; Array
+                    (
+                        [action] =&gt; &#039;M&#039;
+                        [path] =&gt;  &#039;/sandwich.txt&#039;
+                    )
+            )
+    )
+)
+</pre></div>
+    </div>
+   </div>
+  </p>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-function.svn-log-seealso">
+  <h3 class="title">Смотрите также</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member">
+     <a href="http://svnbook.red-bean.com/en/1.2/svn.ref.svn.c.log.html" class="link external">&raquo;&nbsp;
+      SVN документация к команде svn log
+     </a>
+    </li>
+   </ul>
+  </p>
+ </div>
+
+
+</div><hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.svn-import.html">svn_import</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.svn-ls.html">svn_ls</a></div>
+ <div class="up"><a href="ref.svn.html">SVN</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

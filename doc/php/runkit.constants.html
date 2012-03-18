@@ -1,0 +1,271 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Предопределенные константы</title>
+
+ </head>
+ <body><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="intro.runkit.html">Введение</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="runkit.setup.html">Установка и настройка</a></div>
+ <div class="up"><a href="book.runkit.html">runkit</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="runkit.constants" class="appendix">
+ <h1>Предопределенные константы</h1>
+
+ <p class="simpara">
+Перечисленные ниже константы определены данным расширением и могут быть
+доступны только в том случае, если PHP был собран с
+поддержкой этого расширения или же в том случае, если
+данное расширение было подгружено во время выполнения.
+</p>
+ <dl>
+
+  <dt>
+
+   <span class="term">
+    <b><tt>RUNKIT_IMPORT_FUNCTIONS</tt></b>
+     (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
+   </span>
+   <dd>
+
+    <span class="simpara">
+     Флаг <span class="function"><a href="function.runkit-import.html" class="function">runkit_import()</a></span>, указывающий
+     что необходимо импортировать функции из указанного файла
+    </span>
+   </dd>
+
+  </dt>
+
+  <dt>
+
+   <span class="term">
+    <b><tt>RUNKIT_IMPORT_CLASS_METHODS</tt></b>
+     (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
+   </span>
+   <dd>
+
+    <span class="simpara">
+     Флаг <span class="function"><a href="function.runkit-import.html" class="function">runkit_import()</a></span>, указывающий
+     что необходимо импортировать методы классов из указанного файла
+    </span>
+   </dd>
+
+  </dt>
+
+  <dt>
+
+   <span class="term">
+    <b><tt>RUNKIT_IMPORT_CLASS_CONSTS</tt></b>
+     (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
+   </span>
+   <dd>
+
+    <span class="simpara">
+     Флаг <span class="function"><a href="function.runkit-import.html" class="function">runkit_import()</a></span>, указывающий
+     что необходимо импортировать локальные константы классов из указанного файла.
+     Эта возможность доступна начиная с версии PHP 5.1.0
+    </span>
+   </dd>
+
+  </dt>
+
+  <dt>
+
+   <span class="term">
+    <b><tt>RUNKIT_IMPORT_CLASS_PROPS</tt></b>
+     (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
+   </span>
+   <dd>
+
+    <span class="simpara">
+     Флаг <span class="function"><a href="function.runkit-import.html" class="function">runkit_import()</a></span>, указывающий
+     что необходимо импортировать свойства классов из указанного файла.
+    </span>
+   </dd>
+
+  </dt>
+
+  <dt>
+
+   <span class="term">
+    <b><tt>RUNKIT_IMPORT_CLASSES</tt></b>
+     (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
+   </span>
+   <dd>
+
+    <span class="simpara">
+     Флаг <span class="function"><a href="function.runkit-import.html" class="function">runkit_import()</a></span>, представляющий
+     побитовое ИЛИ для констант <b><tt>RUNKIT_IMPORT_CLASS_*</tt></b>.
+    </span>
+   </dd>
+
+  </dt>
+
+  <dt>
+
+   <span class="term">
+    <b><tt>RUNKIT_IMPORT_OVERRIDE</tt></b>
+     (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
+   </span>
+   <dd>
+
+    <span class="simpara">
+     Флаг <span class="function"><a href="function.runkit-import.html" class="function">runkit_import()</a></span>, указывающий
+     что необходимо перезаписывать существующие функции, методы, константы и
+     свойства классов. Если этот флаг не задан, перезапись
+     существующих определений производиться не будет.
+    </span>
+   </dd>
+
+  </dt>
+
+  <dt>
+
+   <span class="term">
+    <b><tt>RUNKIT_ACC_PUBLIC</tt></b>
+     (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
+   </span>
+   <dd>
+
+    <span class="simpara">
+     Флаг <span class="function"><a href="function.runkit-method-add.html" class="function">runkit_method_add()</a></span>, специфичный для PHP 5
+    </span>
+   </dd>
+
+  </dt>
+
+  <dt>
+
+   <span class="term">
+    <b><tt>RUNKIT_ACC_PROTECTED</tt></b>
+     (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
+   </span>
+   <dd>
+
+    <span class="simpara">
+     Флаг <span class="function"><a href="function.runkit-method-add.html" class="function">runkit_method_add()</a></span>, специфичный для PHP 5
+    </span>
+   </dd>
+
+  </dt>
+
+  <dt>
+
+   <span class="term">
+    <b><tt>RUNKIT_ACC_PRIVATE</tt></b>
+     (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
+   </span>
+   <dd>
+
+    <span class="simpara">
+     Флаг <span class="function"><a href="function.runkit-method-add.html" class="function">runkit_method_add()</a></span>, специфичный для PHP 5
+    </span>
+   </dd>
+
+  </dt>
+
+  <dt>
+
+   <span class="term">
+    <b><tt>CLASSKIT_ACC_PUBLIC</tt></b>
+     (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
+   </span>
+   <dd>
+
+    <span class="simpara">
+     Флаг <span class="function"><a href="function.runkit-method-add.html" class="function">runkit_method_add()</a></span>, специфичный для PHP 5.
+     Определен только при включенной совместимости с classkit.
+    </span>
+   </dd>
+
+  </dt>
+
+  <dt>
+
+   <span class="term">
+    <b><tt>CLASSKIT_ACC_PROTECTED</tt></b>
+     (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
+   </span>
+   <dd>
+
+    <span class="simpara">
+     Флаг <span class="function"><a href="function.runkit-method-add.html" class="function">runkit_method_add()</a></span>, специфичный для PHP 5.
+     Определен только при включенной совместимости с classkit.
+    </span>
+   </dd>
+
+  </dt>
+
+  <dt>
+
+   <span class="term">
+    <b><tt>CLASSKIT_ACC_PRIVATE</tt></b>
+     (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
+   </span>
+   <dd>
+
+    <span class="simpara">
+     Флаг <span class="function"><a href="function.runkit-method-add.html" class="function">runkit_method_add()</a></span>, специфичный для PHP 5.
+     Определен только при включенной совместимости с classkit.
+    </span>
+   </dd>
+
+  </dt>
+
+  <dt>
+
+   <span class="term">
+    <b><tt>CLASSKIT_AGGREGATE_OVERRIDE</tt></b>
+     (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
+   </span>
+   <dd>
+
+    <span class="simpara">
+     Флаг <span class="function"><a href="function.classkit-import.html" class="function">classkit_import()</a></span>, специфичный для PHP 5.
+     Определен только при включенной совместимости с classkit.
+    </span>
+   </dd>
+
+  </dt>
+
+  <dt>
+
+   <span class="term">
+    <b><tt>RUNKIT_VERSION</tt></b>
+     (<span class="type"><a href="language.types.string.html" class="type string">string</a></span>)
+   </span>
+   <dd>
+
+    <span class="simpara">
+     Представляет текущую версию runkit.
+    </span>
+   </dd>
+
+  </dt>
+
+  <dt>
+
+   <span class="term">
+    <b><tt>CLASSKIT_VERSION</tt></b>
+     (<span class="type"><a href="language.types.string.html" class="type string">string</a></span>)
+   </span>
+   <dd>
+
+    <span class="simpara">
+     Представляет текущую версию runkit.
+     Определен только при включенной совместимости с classkit.
+    </span>
+   </dd>
+
+  </dt>
+
+ </dl>
+
+</div>
+<hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="intro.runkit.html">Введение</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="runkit.setup.html">Установка и настройка</a></div>
+ <div class="up"><a href="book.runkit.html">runkit</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

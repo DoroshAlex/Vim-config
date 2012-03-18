@@ -1,0 +1,281 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Перегрузка</title>
+
+ </head>
+ <body><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="language.oop5.traits.html">Трейты</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="language.oop5.iterations.html">Итераторы объектов</a></div>
+ <div class="up"><a href="language.oop5.html">Классы и объекты</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="language.oop5.overloading" class="sect1">
+  <h2 class="title">Перегрузка</h2>
+  
+  <p class="para">
+   Перегрузка в PHP означает возможность динамически "<span class="quote">создавать</span>"
+   свойства и методы. Эти динамические сущности обрабатываются с
+   помощью &quot;волшебных&quot; методов, которые можно создать в классе для
+   различных видов действий.
+  </p>
+ 
+  <p class="para">
+   Методы перегрузки вызываются при взаимодействии с теми свойствами
+   или методами, которые не были объявлены или не <a href="language.oop5.visibility.html" class="link">видны</a> в текущей области
+   видимости. Далее в этом разделе мы будем использовать термины
+   "<span class="quote">недоступные свойства</span>" или "<span class="quote">недоступные методы</span>" 
+   для отражения этой комбинации объявления и области видимости.
+  </p>
+
+  <p class="para">
+   Все методы перегрузки должны быть объявлены как <i>public</i>.
+  </p>
+
+  <blockquote class="note"><p><b class="note">Замечание</b>: 
+   <p class="para">
+    Ни один аргумент не может быть передан
+    <a href="functions.arguments.html#functions.arguments.by-reference" class="link">по ссылке
+    </a> в эти &quot;волшебные&quot; методы.
+   </p>
+  </p></blockquote>
+
+  <blockquote class="note"><p><b class="note">Замечание</b>: 
+   <p class="para">
+    Интерпретация "<span class="quote">перегрузки</span>" в PHP отличается
+    от остальных объектно-ориентированных языков. Традиционно
+    перегрузка означает возможность иметь множество одноименных методов
+    с разным количеством или различными типами аргументов.
+   </p>
+  </p></blockquote>
+
+
+  <div class="sect2" id="language.oop5.overloading.changelog">
+   <h3 class="title">Список изменений</h3>
+   <p class="para">
+    <table class="doctable informaltable">
+     
+      <thead valign="middle">
+       <tr valign="middle">
+        <th>Версия</th>
+        <th>Описание</th>
+       </tr>
+
+      </thead>
+
+      <tbody valign="middle" class="tbody">
+       <tr valign="middle">
+        <td align="left">5.3.0</td>
+        <td align="left">
+         Добавлен метод <span class="function"><b>__callStatic()</b></span>.
+         Добавлено предупреждение об усилении публичной видимости и не-статичном объявлении.
+        </td>
+       </tr>
+
+       <tr valign="middle">
+        <td align="left">5.1.0</td>
+        <td align="left">
+         Добавлены методы <span class="function"><b>__isset()</b></span> и <span class="function"><b>__unset()</b></span>.
+        </td>
+       </tr>
+
+      </tbody>
+     
+    </table>
+
+   </p>
+  </div>
+
+
+  <div class="sect2" id="language.oop5.overloading.members">
+   <h3 class="title">Перегрузка свойств</h3>
+
+   <div class="methodsynopsis dc-description">
+    <span class="type"><span class="type void">void</span></span> <span class="methodname"><b>__set</b></span>
+     ( <span class="methodparam"><span class="type">string</span> <tt class="parameter">$name</tt></span>
+    , <span class="methodparam"><span class="type"><a href="language.pseudo-types.html#language.types.mixed" class="type mixed">mixed</a></span> <tt class="parameter">$value</tt></span>
+    )</div>
+
+   <div class="methodsynopsis dc-description">
+    <span class="type"><a href="language.pseudo-types.html#language.types.mixed" class="type mixed">mixed</a></span> <span class="methodname"><b>__get</b></span>
+     ( <span class="methodparam"><span class="type">string</span> <tt class="parameter">$name</tt></span>
+    )</div>
+
+   <div class="methodsynopsis dc-description">
+    <span class="type">bool</span> <span class="methodname"><b>__isset</b></span>
+     ( <span class="methodparam"><span class="type">string</span> <tt class="parameter">$name</tt></span>
+    )</div>
+
+   <div class="methodsynopsis dc-description">
+    <span class="type"><span class="type void">void</span></span> <span class="methodname"><b>__unset</b></span>
+     ( <span class="methodparam"><span class="type">string</span> <tt class="parameter">$name</tt></span>
+    )</div>
+
+
+   <p class="para">
+    Метод <span class="function"><b>__set()</b></span> будет выполнен при записи
+    данных в недоступные свойства.
+   </p>
+
+   <p class="para">
+    Метод <span class="function"><b>__get()</b></span> будет выполнен при чтении
+    данных из недоступных свойств.
+   </p>
+
+   <p class="para">
+    Метод <span class="function"><b>__isset()</b></span> будет выполнен при
+    использовании <span class="function"><a href="function.isset.html" class="function">isset()</a></span> или <span class="function"><a href="function.empty.html" class="function">empty()</a></span>
+    на недоступных свойствах.
+   </p>
+
+   <p class="para">
+    Метод <span class="function"><b>__unset()</b></span> будет выполнен при вызове
+    <span class="function"><a href="function.unset.html" class="function">unset()</a></span> на недоступном свойстве.
+   </p>
+
+   <p class="para">
+    Аргумент <var class="varname"><var class="varname">$name</var></var> представляет собой имя
+    вызываемого свойства. Метод <span class="function"><b>__set()</b></span>
+    содержит аргумент <var class="varname"><var class="varname">$value</var></var>, представляющий
+    собой значение, которое будет записано в свойство с именем
+    <var class="varname"><var class="varname">$name</var></var>.
+   </p>
+
+   <p class="para">
+    Перегрузка свойств работает только в контексте объекта.
+    Данные магические методы не будут вызваны в статическом контексте.
+    Поэтому данные методы не должны объявляться
+    <a href="language.oop5.static.html" class="link">статичными</a>. 
+    Начиная с версии PHP 5.3.0, при объявлении &quot;волшебного&quot; метода в 
+    качестве <i>static</i> будет показано предупреждение.
+   </p>
+
+   <blockquote class="note"><p><b class="note">Замечание</b>: 
+    <p class="para">
+     Возвращаемое значение метода <span class="function"><b>__set()</b></span> будет
+     проигнорировано из-за способа обработки в PHP оператора присваивания.
+     Аналогично, <span class="function"><b>__get()</b></span> никогда не вызовется при
+     цепных присваиваниях, например, таких:
+     <i><div class="cdata"><pre> $a = $obj-&gt;b = 8; </pre></div></i>
+    </p>
+   </p></blockquote>
+
+   <blockquote class="note"><p><b class="note">Замечание</b>: 
+    <p class="para">
+     Невозможно использовать перегруженные свойства в других
+     языковых конструкциях, кроме <span class="function"><a href="function.isset.html" class="function">isset()</a></span>. 
+     Это означает, что если на перегруженном свойстве будет вызвана
+     конструкция <span class="function"><a href="function.empty.html" class="function">empty()</a></span>, то перегруженный метод не будет
+     вызван.
+    </p>
+    <p class="para">
+     Для обхода этого ограничения можно скопировать перегруженное
+     свойство в локальную переменную и затем применить к ней 
+     <span class="function"><a href="function.empty.html" class="function">empty()</a></span>.
+    </p>
+   </p></blockquote>
+
+   <div class="example" id="example-198">
+    <p><b>Пример #1 
+     Перегрузка свойств с помощью методов <span class="function"><b>__get()</b></span>,
+     <span class="function"><b>__set()</b></span>, <span class="function"><b>__isset()</b></span>
+     и <span class="function"><b>__unset()</b></span>
+    </b></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">class&nbsp;</span><span style="color: #0000BB">PropertyTest&nbsp;<br /></span><span style="color: #007700">{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">/**&nbsp;&nbsp;Место&nbsp;хранения&nbsp;перегружаемых&nbsp;данных.&nbsp;&nbsp;*/<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">private&nbsp;</span><span style="color: #0000BB">$data&nbsp;</span><span style="color: #007700">=&nbsp;array();<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">/**&nbsp;&nbsp;Перегрузка&nbsp;не&nbsp;применяется&nbsp;к&nbsp;объявленным&nbsp;свойствам.&nbsp;&nbsp;*/<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">public&nbsp;</span><span style="color: #0000BB">$declared&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">1</span><span style="color: #007700">;<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">/**&nbsp;&nbsp;Здесь&nbsp;перегрузка&nbsp;будет&nbsp;использована&nbsp;только&nbsp;при&nbsp;доступе&nbsp;вне&nbsp;класса.&nbsp;&nbsp;*/<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">private&nbsp;</span><span style="color: #0000BB">$hidden&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">2</span><span style="color: #007700">;<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;function&nbsp;</span><span style="color: #0000BB">__set</span><span style="color: #007700">(</span><span style="color: #0000BB">$name</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$value</span><span style="color: #007700">)&nbsp;<br />&nbsp;&nbsp;&nbsp;&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"Установка&nbsp;'</span><span style="color: #0000BB">$name</span><span style="color: #DD0000">'&nbsp;в&nbsp;'</span><span style="color: #0000BB">$value</span><span style="color: #DD0000">'\n"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">data</span><span style="color: #007700">[</span><span style="color: #0000BB">$name</span><span style="color: #007700">]&nbsp;=&nbsp;</span><span style="color: #0000BB">$value</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;function&nbsp;</span><span style="color: #0000BB">__get</span><span style="color: #007700">(</span><span style="color: #0000BB">$name</span><span style="color: #007700">)&nbsp;<br />&nbsp;&nbsp;&nbsp;&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"Получение&nbsp;'</span><span style="color: #0000BB">$name</span><span style="color: #DD0000">'\n"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(</span><span style="color: #0000BB">array_key_exists</span><span style="color: #007700">(</span><span style="color: #0000BB">$name</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">data</span><span style="color: #007700">))&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">data</span><span style="color: #007700">[</span><span style="color: #0000BB">$name</span><span style="color: #007700">];<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$trace&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">debug_backtrace</span><span style="color: #007700">();<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">trigger_error</span><span style="color: #007700">(<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'Неопределенное&nbsp;свойство&nbsp;в&nbsp;__get():&nbsp;'&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">$name&nbsp;</span><span style="color: #007700">.<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'&nbsp;в&nbsp;файле&nbsp;'&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">$trace</span><span style="color: #007700">[</span><span style="color: #0000BB">0</span><span style="color: #007700">][</span><span style="color: #DD0000">'file'</span><span style="color: #007700">]&nbsp;.<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'&nbsp;на&nbsp;строке&nbsp;'&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">$trace</span><span style="color: #007700">[</span><span style="color: #0000BB">0</span><span style="color: #007700">][</span><span style="color: #DD0000">'line'</span><span style="color: #007700">],<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">E_USER_NOTICE</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">null</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">/**&nbsp;&nbsp;Начиная&nbsp;с&nbsp;версии&nbsp;PHP&nbsp;5.1.0&nbsp;&nbsp;*/<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">public&nbsp;function&nbsp;</span><span style="color: #0000BB">__isset</span><span style="color: #007700">(</span><span style="color: #0000BB">$name</span><span style="color: #007700">)&nbsp;<br />&nbsp;&nbsp;&nbsp;&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"Установлено&nbsp;ли&nbsp;'</span><span style="color: #0000BB">$name</span><span style="color: #DD0000">'?\n"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;isset(</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">data</span><span style="color: #007700">[</span><span style="color: #0000BB">$name</span><span style="color: #007700">]);<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">/**&nbsp;&nbsp;Начиная&nbsp;с&nbsp;версии&nbsp;PHP&nbsp;5.1.0&nbsp;&nbsp;*/<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">public&nbsp;function&nbsp;</span><span style="color: #0000BB">__unset</span><span style="color: #007700">(</span><span style="color: #0000BB">$name</span><span style="color: #007700">)&nbsp;<br />&nbsp;&nbsp;&nbsp;&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"Уничтожение&nbsp;'</span><span style="color: #0000BB">$name</span><span style="color: #DD0000">'\n"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;unset(</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">data</span><span style="color: #007700">[</span><span style="color: #0000BB">$name</span><span style="color: #007700">]);<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">/**&nbsp;&nbsp;Не&nbsp;"волшебный"&nbsp;метод,&nbsp;просто&nbsp;для&nbsp;примера.&nbsp;*/<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">public&nbsp;function&nbsp;</span><span style="color: #0000BB">getHidden</span><span style="color: #007700">()&nbsp;<br />&nbsp;&nbsp;&nbsp;&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">hidden</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />}<br /><br /><br />echo&nbsp;</span><span style="color: #DD0000">"&lt;pre&gt;\n"</span><span style="color: #007700">;<br /><br /></span><span style="color: #0000BB">$obj&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">PropertyTest</span><span style="color: #007700">;<br /><br /></span><span style="color: #0000BB">$obj</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">a&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">1</span><span style="color: #007700">;<br />echo&nbsp;</span><span style="color: #0000BB">$obj</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">a&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #DD0000">"\n\n"</span><span style="color: #007700">;<br /><br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(isset(</span><span style="color: #0000BB">$obj</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">a</span><span style="color: #007700">));<br />unset(</span><span style="color: #0000BB">$obj</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">a</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(isset(</span><span style="color: #0000BB">$obj</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">a</span><span style="color: #007700">));<br />echo&nbsp;</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br /><br />echo&nbsp;</span><span style="color: #0000BB">$obj</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">declared&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #DD0000">"\n\n"</span><span style="color: #007700">;<br /><br />echo&nbsp;</span><span style="color: #DD0000">"Давайте&nbsp;поэкспериментируем&nbsp;с&nbsp;private&nbsp;свойством&nbsp;'hidden':\n"</span><span style="color: #007700">;<br />echo&nbsp;</span><span style="color: #DD0000">"Private&nbsp;свойства&nbsp;видны&nbsp;внутри&nbsp;класса,&nbsp;поэтому&nbsp;__get()&nbsp;не&nbsp;используется...\n"</span><span style="color: #007700">;<br />echo&nbsp;</span><span style="color: #0000BB">$obj</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getHidden</span><span style="color: #007700">()&nbsp;.&nbsp;</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br />echo&nbsp;</span><span style="color: #DD0000">"Private&nbsp;свойства&nbsp;не&nbsp;видны&nbsp;вне&nbsp;класса,&nbsp;поэтому&nbsp;__get()&nbsp;используется...\n"</span><span style="color: #007700">;<br />echo&nbsp;</span><span style="color: #0000BB">$obj</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">hidden&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+    <div class="example-contents"><p>Результат выполнения данного примера:</p></div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+Установка &#039;a&#039; в &#039;1&#039;
+Получение &#039;a&#039;
+1
+
+Установлено ли &#039;a&#039;?
+bool(true)
+Уничтожение &#039;a&#039;
+Установлено ли &#039;a&#039;?
+bool(false)
+
+1
+
+Давайте поэкспериментируем с private свойством &#039;hidden&#039;:
+Private свойства видны внутри класса, поэтому __get() не используется...
+2
+Private свойства не видны вне класса, поэтому __get() используется...
+Получение &#039;hidden&#039;
+
+
+Notice:  Неопределенное свойство в __get(): hidden в файле &lt;file&gt; на строке 70 в &lt;file&gt; на строке 29
+</pre></div>
+    </div>
+
+   </div>
+  </div>
+
+  <div class="sect2" id="language.oop5.overloading.methods">
+   <h3 class="title">Перегрузка методов</h3>
+
+   <div class="methodsynopsis dc-description">
+    <span class="type"><a href="language.pseudo-types.html#language.types.mixed" class="type mixed">mixed</a></span> <span class="methodname"><b>__call</b></span>
+     ( <span class="methodparam"><span class="type">string</span> <tt class="parameter">$name</tt></span>
+    , <span class="methodparam"><span class="type">array</span> <tt class="parameter">$arguments</tt></span>
+    )</div>
+
+   <div class="methodsynopsis dc-description">
+    <span class="type"><a href="language.pseudo-types.html#language.types.mixed" class="type mixed">mixed</a></span> <span class="methodname"><b>__callStatic</b></span>
+     ( <span class="methodparam"><span class="type">string</span> <tt class="parameter">$name</tt></span>
+    , <span class="methodparam"><span class="type">array</span> <tt class="parameter">$arguments</tt></span>
+    )</div>
+
+
+   <p class="para">
+    В контексте объекта при вызове недоступных методов
+    вызывается метод <span class="function"><b>__call()</b></span>.
+   </p>
+
+   <p class="para">
+    В статическом контексте при вызове недоступных методов
+    вызывается метод <span class="function"><b>__callStatic()</b></span>.
+   </p>
+
+   <p class="para">
+    Аргумент <var class="varname"><var class="varname">$name</var></var> представляет собой имя 
+    вызываемого метода. Аргумент <var class="varname"><var class="varname">$arguments</var></var>
+    представляет собой числовой массив, содержащий параметры,
+    переданные в вызываемый метод <var class="varname"><var class="varname">$name</var></var>.
+   </p>
+
+   <div class="example" id="example-199">
+    <p><b>Пример #2 
+     Перегрузка методов с помощью методов <span class="function"><b>__call()</b></span>
+     и <span class="function"><b>__callStatic()</b></span>
+    </b></p>
+    <div class="example-contents">
+  <div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">class&nbsp;</span><span style="color: #0000BB">MethodTest&nbsp;</span><span style="color: #007700">{<br />&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;function&nbsp;</span><span style="color: #0000BB">__call</span><span style="color: #007700">(</span><span style="color: #0000BB">$name</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$arguments</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;Замечание:&nbsp;значение&nbsp;$name&nbsp;регистрозависимо.<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">echo&nbsp;</span><span style="color: #DD0000">"Вызов&nbsp;метода&nbsp;'</span><span style="color: #0000BB">$name</span><span style="color: #DD0000">'&nbsp;"<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">implode</span><span style="color: #007700">(</span><span style="color: #DD0000">',&nbsp;'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$arguments</span><span style="color: #007700">).&nbsp;</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">/**&nbsp;&nbsp;Начиная&nbsp;с&nbsp;версии&nbsp;PHP&nbsp;5.3.0&nbsp;&nbsp;*/<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">public&nbsp;static&nbsp;function&nbsp;</span><span style="color: #0000BB">__callStatic</span><span style="color: #007700">(</span><span style="color: #0000BB">$name</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$arguments</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;Замечание:&nbsp;значение&nbsp;$name&nbsp;регистрозависимо.<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">echo&nbsp;</span><span style="color: #DD0000">"Вызов&nbsp;статического&nbsp;метода&nbsp;'</span><span style="color: #0000BB">$name</span><span style="color: #DD0000">'&nbsp;"<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">implode</span><span style="color: #007700">(</span><span style="color: #DD0000">',&nbsp;'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$arguments</span><span style="color: #007700">).&nbsp;</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />}<br /><br /></span><span style="color: #0000BB">$obj&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">MethodTest</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$obj</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">runTest</span><span style="color: #007700">(</span><span style="color: #DD0000">'в&nbsp;контексте&nbsp;объекта'</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">MethodTest</span><span style="color: #007700">::</span><span style="color: #0000BB">runTest</span><span style="color: #007700">(</span><span style="color: #DD0000">'в&nbsp;статическом&nbsp;контексте'</span><span style="color: #007700">);&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;Начиная&nbsp;с&nbsp;версии&nbsp;PHP&nbsp;5.3.0<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+    <div class="example-contents"><p>Результат выполнения данного примера:</p></div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+Вызов метода &#039;runTest&#039; в контексте объекта
+Вызов статического метода &#039;runTest&#039; в статическом контексте
+</pre></div>
+    </div>
+   </div>
+
+  </div>
+
+ </div><hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="language.oop5.traits.html">Трейты</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="language.oop5.iterations.html">Итераторы объектов</a></div>
+ <div class="up"><a href="language.oop5.html">Классы и объекты</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

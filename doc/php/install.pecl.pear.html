@@ -1,0 +1,61 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Компиляция разделяемых расширений с помощью команды pecl</title>
+
+ </head>
+ <body><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="install.pecl.windows.html">Установка PHP-расширения в Windows</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="install.pecl.phpize.html">Компиляция разделяемых расширений с помощью phpize</a></div>
+ <div class="up"><a href="install.pecl.html">Установка расширений PECL</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="install.pecl.pear" class="sect1">
+  <h2 class="title">Компиляция разделяемых расширений с помощью команды pecl</h2>
+  <p class="simpara">
+   PECL позволяет легко создавать разделяемые расширения PHP. Используя
+   <a href="http://pear.php.net/manual/en/guide.users.commandline.cli.php" class="link external">&raquo;&nbsp;команду pecl</a>, выполните
+   следующее:
+  </p>
+  <p class="para">
+   <div class="example-contents screen"><br />
+$ pecl install extname<br />
+   </div>
+  </p>
+  <p class="simpara">
+   Эта команда загрузит исходный код для расширения <em class="emphasis">extname</em>,
+   скомпилирует и установит <var class="filename">extname.so</var> в вашу директорию
+   <a href="ini.core.html#ini.extension-dir" class="link">extension_dir</a>. Файл 
+   <var class="filename">extname.so</var> может быть затем загружен в <var class="filename">php.ini</var>
+  </p>
+  <p class="simpara">
+   По умолчанию, команда <i>pecl</i> не будет устанавливать пакеты, 
+   отмеченные состоянием <i>alpha</i> или <i>beta</i>.
+   Если нет доступных стабильных (<i>stable</i>) версий пакетов, вы можете
+   установить <i>beta</i>-версию пакета, используя следующую команду:
+  </p>
+  <p class="para">
+   <div class="example-contents screen"><br />
+$ pecl install extname-beta<br />
+   </div>
+  </p>
+  <p class="para">
+   Также, вы можете установить определенную версию используя такой вариант:
+  </p>
+  <p class="para">
+   <div class="example-contents screen"><br />
+$ pecl install extname-0.1<br />
+   </div>
+  </p>
+  <blockquote class="note"><p><b class="note">Замечание</b>: 
+   <p class="para">
+    После подключения расширения в <var class="filename">php.ini</var> необходимо перезапустить веб-сервер
+    для того, чтобы изменения вступили в силу.
+   </p>
+  </p></blockquote>
+ </div><hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="install.pecl.windows.html">Установка PHP-расширения в Windows</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="install.pecl.phpize.html">Компиляция разделяемых расширений с помощью phpize</a></div>
+ <div class="up"><a href="install.pecl.html">Установка расширений PECL</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

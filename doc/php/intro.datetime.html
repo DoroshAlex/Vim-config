@@ -1,0 +1,44 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Введение</title>
+
+ </head>
+ <body><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="book.datetime.html">Дата/Время</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="datetime.setup.html">Установка и настройка</a></div>
+ <div class="up"><a href="book.datetime.html">Дата/Время</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="intro.datetime" class="preface">
+  <h1 class="title">Введение</h1>
+  <p class="para">
+   Эти функции позволяют получить дату и время с сервера, на котором запущен PHP сценарий.
+   Их можно использовать для форматирования даты и времени различными способами.
+  </p>
+  <p class="para">
+   Информация о дате и времени хранится в памяти ввиде 64-разрядных чисел.
+   Таким образом, поддерживаются все представления даты (включая отрицательные года).
+   Диапазон составляет примерно 292 миллиарда лет в прошлое и будущее.
+  </p>
+  <blockquote class="note"><p><b class="note">Замечание</b>: 
+   <span class="simpara">
+    Убедительная просьба принимать во внимание, что эти функции зависят от региональных настроек сервера.
+    При работе с этими функциями следует обращать внимание на високосные года и переход на летнее время
+    (Например, следует использовать
+    <i>$date = strtotime(&#039;+7 days&#039;, $date)</i>, но не 
+    <i>$date += 7*24*60*60</i>).
+   </span>
+  </p></blockquote>
+  <blockquote class="note"><p><b class="note">Замечание</b>: 
+   <span class="simpara">
+    Временные зоны, описанные в данном разделе, можно найти по ссылке 
+    <a href="timezones.html" class="xref">Список поддерживаемых временных зон</a>.
+   </span>
+  </p></blockquote>
+ </div><hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="book.datetime.html">Дата/Время</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="datetime.setup.html">Установка и настройка</a></div>
+ <div class="up"><a href="book.datetime.html">Дата/Время</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

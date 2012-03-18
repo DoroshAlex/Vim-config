@@ -1,0 +1,183 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Резервирование или использование блока разделяемой памяти</title>
+
+ </head>
+ <body><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.shmop-delete.html">shmop_delete</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.shmop-read.html">shmop_read</a></div>
+ <div class="up"><a href="ref.shmop.html">Разделяемая (shared) память</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.shmop-open" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">shmop_open</h1>
+  <p class="verinfo">(PHP 4 &gt;= 4.0.4, PHP 5)</p><p class="refpurpose"><span class="refname">shmop_open</span> &mdash; <span class="dc-title">Резервирование или использование блока разделяемой памяти</span></p>
+
+ </div>
+ <div class="refsect1 description" id="refsect1-function.shmop-open-description">
+  <h3 class="title">Описание</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">int</span> <span class="methodname"><b>shmop_open</b></span>
+    ( <span class="methodparam"><span class="type">int</span> <tt class="parameter">$key</tt></span>
+   , <span class="methodparam"><span class="type">string</span> <tt class="parameter">$flags</tt></span>
+   , <span class="methodparam"><span class="type">int</span> <tt class="parameter">$mode</tt></span>
+   , <span class="methodparam"><span class="type">int</span> <tt class="parameter">$size</tt></span>
+   )</div>
+
+  <p class="para rdfs-comment">
+   <span class="function"><b>shmop_open()</b></span> резервирует или использует существующий
+   блок разделяемой памяти.
+  </p>
+ </div>
+
+ <div class="refsect1 parameters" id="refsect1-function.shmop-open-parameters">
+  <h3 class="title">Список параметров</h3>
+  <p class="para">
+   <dl>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">key</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Системный идентификатор блока разделяемой памяти.
+       Может быть задан в десятичной или шестнадцатеричной кодировке.
+      </p>
+     </dd>
+
+    </dt>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">flags</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Доступные для использования флаги:
+       <ul class="itemizedlist">
+        <li class="listitem">
+         <span class="simpara">
+          &quot;a&quot; для доступа (устанавливает флаг SHM_RDONLY)
+          Следует применять этот флаг, когда необходимо использовать
+          ранее зарезервированный участок разделяемой памяти, уже содержащий
+          какие-либо данные. В этом случае доступ возможен только для операций
+          чтения.
+         </span>
+        </li>
+        <li class="listitem">
+         <span class="simpara">
+          &quot;c&quot; для резервирования (устанавливает флаг IPC_CREATE)
+          Следует применять этот флаг для создания нового зарезервированного
+          участка разделяемой памяти. Если участок памяти с таким 
+          идентификатором уже существует, выполняется попытка доступа к нему
+          для последующих операций чтения и записи.
+         </span>
+        </li>
+        <li class="listitem">
+         <span class="simpara">
+          &quot;w&quot; для выполнения операций чтения и записи
+          Следует применять этот флаг для чтения и записи данных, хранимых
+          в разделяемой памяти. Данный флаг используется в большинстве
+          случаев.
+         </span>
+        </li>
+        <li class="listitem">
+         <span class="simpara">
+          &quot;n&quot; для создания в памяти нового сегмента 
+          (устанавливает флаг IPC_CREATE|IPC_EXCL)
+          Следует применять этот флаг для создания нового сегмента в 
+          разделяемой памяти, но если сегмент уже существует с тем же флагом,
+          происходит отказ. Это полезно в целях безопасности, т.к. позволяет
+          избежать ошибок синхронизации (Race condition exploits).
+         </span>
+        </li>
+       </ul>
+      </p>
+     </dd>
+
+    </dt>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">mode</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Права доступа к участку памяти такие же, как к обычному файлу.
+       Их можно указывать в восьмеричноv виде, например <i>0644</i>.
+      </p>
+     </dd>
+
+    </dt>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">size</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Размер резервируемого блока в разделяемой памяти в байтах
+      </p>
+     </dd>
+
+    </dt>
+
+   </dl>
+
+   <blockquote class="note"><p><b class="note">Замечание</b>: 
+    <p class="para">
+     Обратите внимание: Третий и четвертый параметры должны быть указаны как 0,
+     если необходимо получить доступ к существующему участку памяти.
+    </p>
+   </p></blockquote>
+  </p>
+ </div>
+
+ <div class="refsect1 returnvalues" id="refsect1-function.shmop-open-returnvalues">
+  <h3 class="title">Возвращаемые значения</h3>
+  <p class="para">
+   При успешном выполнении <span class="function"><b>shmop_open()</b></span> возвращается
+   идентификатор, который может быть в дальнейшем использован для доступа
+   к зарезервированному участку памяти.
+  </p>
+ </div>
+
+ <div class="refsect1 examples" id="refsect1-function.shmop-open-examples">
+  <h3 class="title">Примеры</h3>
+  <p class="para">
+   <div class="example" id="example-3332">
+    <p><b>Пример #1 Резервирование участка разделяемой памяти</b></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$shm_key&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">ftok</span><span style="color: #007700">(</span><span style="color: #0000BB">__FILE__</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'t'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$shm_id&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">shmop_open</span><span style="color: #007700">(</span><span style="color: #0000BB">$shm_key</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"c"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">0644</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">100</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+  </p>
+  <p class="para">
+   В приведенном примере выполняется доступ к блоку с идентификатором,
+   возвращаемым функцией <span class="function"><a href="function.ftok.html" class="function">ftok()</a></span>.
+  </p>
+ </div>
+
+ <div class="refsect1 seealso" id="refsect1-function.shmop-open-seealso">
+  <h3 class="title">Смотрите также</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><span class="function"><a href="function.shmop-close.html" class="function" rel="rdfs-seeAlso">shmop_close()</a> - Закрытие блока разделяемой памяти</span></li>
+    <li class="member"><span class="function"><a href="function.shmop-delete.html" class="function" rel="rdfs-seeAlso">shmop_delete()</a> - Удаление блока разделяемой памяти</span></li>
+   </ul>
+  </p>
+ </div>
+
+</div><hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.shmop-delete.html">shmop_delete</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.shmop-read.html">shmop_read</a></div>
+ <div class="up"><a href="ref.shmop.html">Разделяемая (shared) память</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

@@ -1,0 +1,82 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Новые конфигурационные параметры INI</title>
+
+ </head>
+ <body><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="migration52.class-constants.html">Новые константы классов</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="migration52.errorrep.html">Сообщения об ошибках</a></div>
+ <div class="up"><a href="migration52.html">Переход с PHP 5.1.x на PHP 5.2.x</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="migration52.newconf" class="section">
+  <h2 class="title">Новые конфигурационные параметры INI</h2>
+  <p class="para">
+   Новые директивы <var class="filename">php.ini</var>, добавленные в PHP 5.2.0:
+  </p>
+  <ul class="itemizedlist">
+   <li class="listitem">
+    <span class="simpara">
+     <a href="filesystem.configuration.html#ini.allow-url-include" class="link">allow_url_include</a>
+    </span>
+    <span class="simpara">
+     Эта опция даёт возможность различать стандартные файловые операции 
+     с удалёнными файлами и подключение удалённых файлов. Хотя
+     обычно требуется первое, второе может привести к проблемам с
+     безопасностью. Начиная с PHP 5.2.0, вы можете разрешить операции
+     с удалёнными файлами и при этом запретить их подключение к локальным 
+     скриптам. Это конфигурация по умолчанию.
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <a href="pcre.configuration.html#ini.pcre.backtrack-limit" class="link">pcre.backtrack_limit</a>
+    </span>
+    <span class="simpara">
+     Лимит обратных ссылок PCRE.
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <a href="pcre.configuration.html#ini.pcre.recursion-limit" class="link">pcre.recursion_limit</a>
+    </span>
+    <span class="simpara">
+     Лимит рекурсии PCRE. Пожалуйста, имейте в виду, что при установке
+     достаточно большого значения в этом параметре, весь доступный
+     стек процесса может быть занят и PHP остановится из-за превышения размера стека, установленного
+     операционной системой.
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <a href="session.configuration.html#ini.session.cookie-httponly" class="link">session.cookie_httponly</a>
+    </span>
+    <span class="simpara">
+     Устанавливает доступ в отсылаемых cookies только через протокол HTTP.
+     Это означает, что cookies не будут доступны скриптовым языкам,
+     например, таким как JavaScript. Эта установка может помочь в борьбе с XSS-атаками,
+     хотя она и поддерживается не всеми браузерами.
+    </span>
+   </li>
+  </ul>
+  <p class="para">
+   Новые директивы в PHP 5.2.2:
+  </p>
+  <ul class="itemizedlist">
+   <li class="listitem">
+    <span class="simpara">
+     <a href="info.configuration.html#ini.max-input-nesting-level" class="link">max_input_nesting_level</a>
+    </span>
+    <span class="simpara">
+     Ограничивает вложенность <a href="language.variables.external.html" class="link">входных
+     переменных</a>, по умолчанию 64.
+    </span>
+   </li>
+  </ul>
+ </div><hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="migration52.class-constants.html">Новые константы классов</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="migration52.errorrep.html">Сообщения об ошибках</a></div>
+ <div class="up"><a href="migration52.html">Переход с PHP 5.1.x на PHP 5.2.x</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

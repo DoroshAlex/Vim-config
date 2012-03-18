@@ -1,0 +1,391 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Microsoft IIS 7.0 и выше</title>
+
+ </head>
+ <body><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="install.windows.iis6.html">Microsoft IIS 5.1 and IIS 6.0</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="install.windows.apache1.html">Apache 1.3.x в Microsoft Windows</a></div>
+ <div class="up"><a href="install.windows.html">Установка в системах Windows</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="install.windows.iis7" class="sect1">
+ <h2 class="title">Microsoft IIS 7.0 и выше</h2>
+ <p class="para">
+  Этот раздел содержит инструкции по настройке Internet Information 
+  Services (IIS) 7.0 и более поздних версий для работы с PHP на Microsoft Windows Vista SP1, 
+  Windows 7, Windows Server 2008 и Windows Server 2008 R2. Для получения инструкций по настройке
+  IIS 5.1 и IIS 6.0 на Windows XP и Windows Server 2003 перейдите на страницу  
+  <a href="install.windows.iis6.html" class="link">Microsoft IIS 5.1 и IIS 6.0</a>.
+ </p>
+ <div class="sect2" id="install.windows.iis7.fastcgi.enable">
+  <h3 class="title">Включение поддержки FastCGI в IIS</h3>
+  <p class="para">
+   Модуль FastCGI при установке IIS по умолчанию отключён. Способы включения его различаются 
+   в зависимости от версии используемой Windows.
+  </p>
+  <p class="para">
+   Для включения поддержки FastCGI на Windows Vista SP1 и Windows 7:
+   <div class="procedure">
+    <ol type="1"><li>
+     <p class="simpara">
+      В меню &quot;Пуск&quot; выберите пункт &quot;Выполнить&quot;, в появившемся 
+      окне введите с клавиатуры &quot;optionalfeatures.exe&quot; и 
+      нажмите &quot;Ok&quot;;
+     </p>
+    </li>
+    <li>
+     <p class="simpara">
+      В открывшемся окне &quot;Компоненты Windows&quot; раскройте папку &quot;Службы IIS&quot;, 
+      &quot;Службы интернета&quot;, &quot;Компоненты разработки приложений&quot; 
+      и установите галочку напротив &quot;CGI&quot;;
+     </p>
+    </li>
+    <li>
+     <p class="simpara">
+      Нажмите OK и ждите окончания процесса установки.
+     </p>
+    </li>
+   </ol></div>
+   <div class="mediaobject">
+    
+    <div class="imageobject">
+     <img src="images/b4cf2bb34e3c20eebcf8f9e8e7949efd-iis7vistacgi.png" alt="Включение поддержки FastCGI для IIS7 на Windows Vista SP1 и Windows 7" width="429" height="375" />
+    </div>
+   </div>
+  </p>
+  <p class="para">
+   Чтобы включить поддержку FastCGI на Windows Server 2008 и Windows Server 2008 R2:
+   <div class="procedure">
+    <ol type="1"><li>
+     <p class="simpara">
+      В Windows откройте меню Пуск выберите пункт &quot;Выполнить:&quot;, наберите с клавиатуры 
+      &quot;CompMgmtLauncher&quot; 
+      и нажмите &quot;Ok&quot;;
+     </p>
+    </li>
+    <li>
+     <p class="simpara">
+      Если роль &quot;Веб-сервер (IIS)&quot; не представлена во вкладке &quot;Роли&quot;,
+      добавьте её, выбрав &quot;Добавить роли&quot;;
+     </p>
+    </li>
+    <li>
+     <p class="simpara">
+      Если роль &quot;Веб-сервер (IIS)&quot; присутствует, выберите &quot;Выбор службы ролей&quot; 
+      и установите галочку напротив &quot;CGI&quot; в группе &quot;Компоненты разработки приложений&quot;;
+     </p>
+    </li>
+    <li>
+     <p class="simpara">
+      Нажмите &quot;Далее&quot; затем &quot;Установить&quot; и ждите окончания процесса установки.
+     </p>
+    </li>
+   </ol></div>
+   <div class="mediaobject">
+    
+    <div class="imageobject">
+     <img src="images/b4cf2bb34e3c20eebcf8f9e8e7949efd-iis7w2k8cgi.png" alt="Включение поддержки FastCGI на Windows Server 2008 и Windows Server 2008 R2" width="546" height="411" />
+    </div>
+   </div>
+  </p>
+ </div>
+ <div class="sect2" id="install.windows.iis7.fastcgi.conf">
+  <h3 class="title">Настройка IIS для обработки PHP запросов</h3>
+  <p class="para">
+   Скачайте и установите PHP в соответствии с инструкциями, приведёнными в 
+   <a href="install.windows.manual.html" class="link">описании установки</a>
+   <blockquote class="note"><p><b class="note">Замечание</b>: 
+    <p class="para">
+     При использовании IIS рекомендуется использовать потоко-небезопасную (Non-thread-safe) сборку PHP, 
+     которая доступна по ссылке <a href="http://windows.php.net/download/" class="link external">&raquo;&nbsp;PHP для Windows: 
+     Установочные файлы и исходный код.</a>
+    </p>
+   </p></blockquote>
+  </p>
+  <p class="para">
+   Измените CGI и FastCGI настройки в файле <var class="filename">php.ini</var> как показано ниже:
+   <div class="example" id="example-42">
+    <p><b>Пример #1 CGI и FastCGI настройки в <var class="filename">php.ini</var></b></p>
+    <div class="example-contents">
+<div class="inicode"><pre class="inicode">fastcgi.impersonate = 1
+fastcgi.logging = 0
+cgi.fix_pathinfo=1
+cgi.force_redirect = 0</pre>
+</div>
+    </div>
+
+   </div>
+  </p>
+  <p class="para">
+   Настройте IIS обработчик для PHP, используя Интерфейс управления IIS 
+   или через командную строку.
+  </p>
+  <div class="sect3" id="install.windows.iis7.fastcgi.conf.ui">
+   <h4 class="title">Использование Интерфейса управления IIS для создания обработчика PHP</h4>
+   <p class="para">
+    Следующие шаги позволят вам создать IIS обработчик для PHP в Интерфейсе управления IIS:
+    <div class="procedure">
+     <ol type="1"><li>
+      <p class="simpara">В Windows меню Пуск выберите команду &quot;Выполнить:&quot;, 
+       введите в клавиатуры команду &quot;inetmgr&quot; 
+       и нажмите &quot;Ok&quot;;</p>
+     </li>
+     <li>
+      <p class="simpara">В Интерфейсе управления IIS выберите сервер в дереве &quot;Подключения&quot;;</p>
+     </li>
+     <li>
+      <p class="para">
+       На &quot;Начальной странице&quot; откройте &quot;Сопоставления обработчиков&quot;;
+       <div class="mediaobject">
+        
+        <div class="imageobject">
+         <img src="images/b4cf2bb34e3c20eebcf8f9e8e7949efd-iis7handlericon.png" alt="Создание IIS обработчика для PHP : нахождение сопоставителя обработчиков" width="708" height="515" />
+        </div>
+       </div>
+      </p>
+     </li>
+     <li>
+      <p class="simpara">На вкладке &quot;Действия&quot; выберите &quot;Добавить сопоставление модуля...&quot;;</p>
+     </li>
+     <li>
+      <p class="para">
+       В окне &quot;Добавление сопоставления модуля&quot; введите следующее:
+       <ul class="itemizedlist">
+        <li class="listitem">
+         <span class="simpara">Путь запроса: *.php</span>
+        </li>
+        <li class="listitem">
+         <span class="simpara">Модуль: FastCgiModule</span>
+        </li>
+        <li class="listitem">
+         <span class="simpara">Исполняемый файл: C:\[Path to PHP installation]\php-cgi.exe</span>
+        </li>
+        <li class="listitem">
+         <span class="simpara">Имя: PHP_via_FastCGI</span>
+        </li>
+       </ul>
+      </p>
+     </li>
+     <li>
+      <p class="simpara">
+       Нажмите кнопку &quot;Огараничения запроса&quot; и сконфигурируйте сопоставление вызывать обработчик 
+       только при сопоставлении с файлом или каталогом;
+      </p>
+     </li>
+     <li>
+      <p class="simpara">Нажмите OK во всех диалогах для сохранения конфигурации.</p>
+     </li>
+    </ol></div>
+    <div class="mediaobject">
+     
+     <div class="imageobject">
+      <img src="images/b4cf2bb34e3c20eebcf8f9e8e7949efd-iis7handlermap.png" alt="Создание IIS сопоставления обработчика для PHP : Добавление сопоставления обработчика" width="705" height="512" />
+     </div>
+    </div>
+   </p>
+  </div>
+  <div class="sect3" id="install.windows.iis7.fastcgi.conf.cmd">
+   <h4 class="title">Использование командной строки для создания сопоставления обработчика PHP</h4>
+   <p class="para">
+    Используйте команды приведённые ниже для создания пула процессов IIS FastCGI который будет использовать <var class="filename">php-cgi.exe</var> 
+    выполняемый для PHP запросов. Замените значение параметра <var class="varname"><var class="varname">fullPath</var></var> на абсолютный путь к файлу <var class="filename">php-cgi.exe</var>.
+    <div class="example" id="example-43">
+     <p><b>Пример #2 Создание IIS FastCGI пула процессов</b></p>
+     <div class="example-contents">
+<div class="cdata"><pre>
+%windir%\system32\inetsrv\appcmd set config /section:system.webServer/fastCGI ^
+/+[fullPath=&#039;c:\PHP\php-cgi.exe&#039;]
+</pre></div>
+     </div>
+
+    </div>
+   </p>
+   <p class="para">
+    Настройка IIS для обработки специфических запросов PHP из командной строки показана ниже. Замените значение 
+    параметра <var class="varname"><var class="varname">scriptProcessor</var></var> на абсолютный путь к файлу <var class="filename">php-cgi.exe</var>.
+    <div class="example" id="example-44">
+     <p><b>Пример #3 Создание сопоставления обработчика запросов PHP</b></p>
+     <div class="example-contents">
+<div class="cdata"><pre>
+%windir%\system32\inetsrv\appcmd set config /section:system.webServer/handlers ^
+/+[name=&#039;PHP_via_FastCGI&#039;, path=&#039;*.php&#039;,verb=&#039;*&#039;,modules=&#039;FastCgiModule&#039;,^
+scriptProcessor=&#039;c:\PHP\php-cgi.exe&#039;,resourceType=&#039;Either&#039;]
+</pre></div>
+     </div>
+
+    </div>
+   </p>
+   <p class="para">
+    Эта команда создает для IIS сопоставление обработчика для файлов с расширением *.php, который получается 
+    в результате и обрабатывается модулем FastCGI.
+    <blockquote class="note"><p><b class="note">Замечание</b>: 
+     <p class="para">
+      На этом шаге установка и настройка завершены.
+      Следующие инструкции необязательны, но очень рекомендуются для достижения оптимальной функциональности 
+      и производительности PHP на IIS.
+     </p>
+    </p></blockquote>
+   </p>
+  </div>
+ </div>
+ <div class="sect2" id="install.windows.iis7.impersonation">
+  <h3 class="title">Представление и доступ к файловой системе</h3>
+  <p class="para">
+   При использовании IIS рекомендуется включить  представление FastCGI в PHP. Это контролируется директивой
+   <var class="varname"><var class="varname">fastcgi.impersonate</var></var> в <var class="filename">php.ini</var> файле.
+   Когда имперсонация включена, PHP будет выполнять все операции с файловой системой под аккаунтом, 
+   который был определён при аутентификации IIS. Это гарантирует, что при общем PHP процессе для всех 
+   сайтов IIS, PHP скрипты этих сайтов не будут иметь доступ к файлам друг друга до тех пор, пока IIS использует
+   различные учетные записи для каждого из сайтов.
+  </p>
+  <p class="para">
+   Для примера, в настройках по умолчанию IIS 7, включена анонимная аутентификация под стандартным пользователем
+   IUSR. Это значит, что давая разрешение IIS выполнить PHP скрипт, так же необходимо дать права на чтение 
+   этого скрипта аккаунту IUSR. 
+   Если PHP приложению необходимо выполнить запись в некоторые файлы или папки, тогда аккаунту IUSR следует дать 
+   права на запись в них.
+  </p>
+  <p class="para">
+   Чтобы решить какой пользователь используется для идентификации в IIS 7, можно использовать следующие команды. 
+   Замените &quot;Default Web Site&quot; на имя IIS сайта, с которым вы работаете. На выходе, в 
+   XML конфигурации смотрите атрибут <var class="varname"><var class="varname">userName</var></var>.
+   <div class="example" id="example-45">
+    <p><b>Пример #4 определение аккаунта, используемого IIS при анонимной идентификации</b></p>
+    <div class="example-contents">
+<div class="cdata"><pre>
+%windir%\system32\inetsrv\appcmd.exe list config &quot;Default Web Site&quot; ^
+/section:anonymousAuthentication
+
+&lt;system.webServer&gt;
+  &lt;security&gt;
+    &lt;authentication&gt;
+      &lt;anonymousAuthentication enabled=&quot;true&quot; userName=&quot;IUSR&quot; /&gt;
+    &lt;/authentication&gt;
+   &lt;/security&gt;
+&lt;/system.webServer&gt;
+</pre></div>
+    </div>
+
+   </div>
+   <blockquote class="note"><p><b class="note">Замечание</b>: 
+    <p class="para">
+     Если атрибут <var class="varname"><var class="varname">userName</var></var> отсутствует в элементе <var class="varname"><var class="varname">anonymousAuthentication</var></var>, 
+     или установлен как пустая строка, это значит, что удостоверение пула приложений используется как анонимное
+     для этого веб-сайта.
+    </p>
+   </p></blockquote>
+  </p>
+  <p class="para">
+   Для изменения настроек доступа для файлов или папок, используйте интерфейс пользователя в профоднике Windows
+   или команду <var class="varname"><var class="varname">icacls</var></var>.
+   <div class="example" id="example-46">
+    <p><b>Пример #5 Настройка разрешения доступа к файлам</b></p>
+    <div class="example-contents">
+<div class="cdata"><pre>
+icacls C:\inetpub\wwwroot\upload /grant IUSR:(OI)(CI)(M)
+</pre></div>
+    </div>
+
+   </div>
+  </p>
+ </div>
+ <div class="sect2" id="install.windows.iis7.defaultdoc">
+  <h3 class="title">Установка <var class="filename">index.php</var> как документ по умолчанию в IIS</h3>
+  <p class="para">
+   По умолчанию в IIS не установлено имя документа для обработки HTTP запросов по умолчанию. 
+   В PHP приложениях, обычно используется по умолчанию документ <var class="filename">index.php</var>.
+   Чтобы добавить <var class="filename">index.php</var> в лист документов по умолчанию IIS, 
+   используйте такую команду:
+   <div class="example" id="example-47">
+    <p><b>Пример #6 Установка <var class="filename">index.php</var> как документ по умолчанию в IIS</b></p>
+    <div class="example-contents">
+<div class="cdata"><pre>
+%windir%\system32\inetsrv\appcmd.exe set config ^
+-section:system.webServer/defaultDocument /+&quot;files.[value=&#039;index.php&#039;]&quot; ^
+/commit:apphost
+</pre></div>
+    </div>
+
+   </div>   
+  </p>
+ </div>
+ <div class="sect2" id="install.windows.iis7.recycling">
+  <h3 class="title">FastCGI и PHP удаление конфигурации</h3>
+  <p class="para">
+   Настройка IIS FastCGI установок для утилизации PHP процессов с помощью команд приведена ниже.
+   Оция FastCGI <var class="varname"><var class="varname">instanceMaxRequests</var></var> устанавливает максимальное количество запросов, 
+   которое может обрабатываться одним <var class="filename">php-cgi.exe</var> процессом пока IIS не начнет их отключать. 
+   PHP переменная окружения <var class="varname"><var class="varname">PHP_FCGI_MAX_REQUESTS</var></var> устанавливает как много запросов
+   будет обрабатывать один <var class="filename">php-cgi.exe</var> процесс пока сам не начнет удалять их.
+   Конечно, значение установленное для FastCGI <var class="varname"><var class="varname">InstanceMaxRequests</var></var> 
+   меньше или равно <var class="varname"><var class="varname">PHP_FCGI_MAX_REQUESTS</var></var>.
+   <div class="example" id="example-48">
+    <p><b>Пример #7 Настройка FastCGI и PHP утилизации</b></p>
+    <div class="example-contents">
+<div class="cdata"><pre>
+%windir%\system32\inetsrv\appcmd.exe set config -section:system.webServer/fastCgi ^
+/[fullPath=&#039;c:\php\php-cgi.exe&#039;].instanceMaxRequests:10000
+
+%windir%\system32\inetsrv\appcmd.exe set config -section:system.webServer/fastCgi ^
+/+&quot;[fullPath=&#039;C:\{php_folder}\php-cgi.exe&#039;].environmentVariables.^
+[name=&#039;PHP_FCGI_MAX_REQUESTS&#039;,value=&#039;10000&#039;]&quot;
+</pre></div>
+    </div>
+
+   </div>
+  </p>
+ </div>
+ <div class="sect2" id="install.windows.iis7.timeouts">
+  <h3 class="title">Установка таймаута FastCGI</h3>
+  <p class="para">
+   Увеличение параметра таймаута для FastCGI делается, если имеется долго выполняемый PHP скрипт.
+   Два параметра контролируют таймаут, это: <var class="varname"><var class="varname">activityTimeout</var></var> и  
+   <var class="varname"><var class="varname">requestTimeout</var></var>. Используйте команды приведённые ниже для изменения настроек таймаута. 
+   Конечно, надо заменить значение параметра <var class="varname"><var class="varname">fullPath</var></var> на полный путь к файлу
+   <var class="filename">php-cgi.exe</var>.
+   <div class="example" id="example-49">
+    <p><b>Пример #8 Конфигурация установок таймаута FastCGI</b></p>
+    <div class="example-contents">
+<div class="cdata"><pre>
+%windir%\system32\inetsrv\appcmd.exe set config -section:system.webServer/fastCgi ^
+/[fullPath=&#039;C:\php\php-cgi.exe&#039;,arguments=&#039;&#039;].activityTimeout:&quot;90&quot;  /commit:apphost
+
+%windir%\system32\inetsrv\appcmd.exe set config -section:system.webServer/fastCgi ^
+/[fullPath=&#039;C:\php\php-cgi.exe&#039;,arguments=&#039;&#039;].requestTimeout:&quot;90&quot;  /commit:apphost
+</pre></div>
+    </div>
+
+   </div>   
+  </p>
+ </div>
+ <div class="sect2" id="install.windows.iis7.phpinilocation">
+  <h3 class="title">Изменение положения файла <var class="filename">php.ini</var></h3>
+  <p class="para">
+   PHP ищет файл <var class="filename">php.ini</var>  
+   <a href="configuration.file.html" class="link">некоторых метах</a> и это даёт нам возможность изменить
+   местоположения по умолчанию файла <var class="filename">php.ini</var>, используя переменную окружения
+   <var class="varname"><var class="varname">PHPRC</var></var>. Чтобы указать PHP загружать конфигурационный файл из определённого места 
+   используйте команды, приведённые ниже.
+   Абсолютный путь до дирректории где лежит файл <var class="filename">php.ini</var> определяется как значение 
+   переменной окружения <var class="varname"><var class="varname">PHPRC</var></var>.
+   <div class="example" id="example-50">
+    <p><b>Пример #9 Изменение положения файла <var class="filename">php.ini</var></b></p>
+    <div class="example-contents">
+<div class="cdata"><pre>
+appcmd.exe set config  -section:system.webServer/fastCgi ^
+/+&quot;[fullPath=&#039;C:\php\php.exe&#039;,arguments=&#039;&#039;].environmentVariables.^
+[name=&#039;PHPRC&#039;,value=&#039;C:\Some\Directory\&#039;]&quot; /commit:apphost
+</pre></div>         
+    </div>
+
+   </div>   
+  </p>
+ </div>
+</div><hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="install.windows.iis6.html">Microsoft IIS 5.1 and IIS 6.0</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="install.windows.apache1.html">Apache 1.3.x в Microsoft Windows</a></div>
+ <div class="up"><a href="install.windows.html">Установка в системах Windows</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

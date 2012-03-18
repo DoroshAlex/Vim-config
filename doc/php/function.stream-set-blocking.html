@@ -1,0 +1,141 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Устанавливает блокирующий/неблокирующий режим на потоке</title>
+
+ </head>
+ <body><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.stream-select.html">stream_select</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.stream-set-read-buffer.html">stream_set_read_buffer</a></div>
+ <div class="up"><a href="ref.stream.html">Stream Функции</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.stream-set-blocking" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">stream_set_blocking</h1>
+  <p class="verinfo">(PHP 4 &gt;= 4.3.0, PHP 5)</p><p class="refpurpose"><span class="refname">stream_set_blocking</span> &mdash; <span class="dc-title">Устанавливает блокирующий/неблокирующий режим на потоке</span></p>
+
+ </div>
+ <div class="refsect1 description" id="refsect1-function.stream-set-blocking-description">
+  <h3 class="title">Описание</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">bool</span> <span class="methodname"><b>stream_set_blocking</b></span>
+    ( <span class="methodparam"><span class="type">resource</span> <tt class="parameter">$stream</tt></span>
+   , <span class="methodparam"><span class="type">int</span> <tt class="parameter">$mode</tt></span>
+   )</div>
+
+  <p class="para rdfs-comment">
+   Устанавливает блокирующий или неблокирующий режим на потоке <i><tt class="parameter">stream</tt></i>.
+  </p>
+  <p class="para">
+   Эта функция работает на любом потоке, который поддерживает неблокирующий режим
+   (в настоящее время это обычные файлы и сокетные потоки).
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-function.stream-set-blocking-parameters">
+  <h3 class="title">Список параметров</h3>
+  <p class="para">
+   <dl>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">stream</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Поток.
+      </p>
+     </dd>
+
+    </dt>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">mode</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Если параметр <i><tt class="parameter">mode</tt></i> равен  0, указанный поток
+       будет переключен в неблокирующий режим, а если он равен 1, поток
+       будет переключен в блокирующий режим. Это влияет на такие вызовы, как
+       <span class="function"><a href="function.fgets.html" class="function">fgets()</a></span> и <span class="function"><a href="function.fread.html" class="function">fread()</a></span>,
+       которые читают из потока. В неблокирующем режиме вызов функции
+       <span class="function"><a href="function.fgets.html" class="function">fgets()</a></span> будет всегда возвращаться сразу,
+       тогда как в блокирующем режиме он будет ожидать, пока данные станут доступны
+       на потоке.
+      </p>
+     </dd>
+
+    </dt>
+
+   </dl>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-function.stream-set-blocking-returnvalues">
+  <h3 class="title">Возвращаемые значения</h3>
+  <p class="para">
+   Возвращает <b><tt>TRUE</tt></b> в случае успешного завершения  или <b><tt>FALSE</tt></b> в случае возникновения ошибки.
+  </p>
+ </div>
+
+
+ <div class="refsect1 changelog" id="refsect1-function.stream-set-blocking-changelog">
+  <h3 class="title">Список изменений</h3>
+  <p class="para">
+   <table class="doctable informaltable">
+    
+     <thead valign="middle">
+      <tr valign="middle">
+       <th>Версия</th>
+       <th>Описание</th>
+      </tr>
+
+     </thead>
+
+     <tbody valign="middle" class="tbody">
+      <tr valign="middle">
+       <td align="left">4.3.0</td>
+       <td align="left">
+        До версии PHP 4.3.0 эта функция работала только на потоках, основанных на сокетах.
+       </td>
+      </tr>
+
+     </tbody>
+    
+   </table>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 notes" id="refsect1-function.stream-set-blocking-notes">
+  <h3 class="title">Примечания</h3>
+  <blockquote class="note"><p><b class="note">Замечание</b>: 
+   <p class="para">
+    Эта функция раньше вызывалась через
+    <span class="function"><a href="function.set-socket-blocking.html" class="function">set_socket_blocking()</a></span> и позднее
+    <span class="function"><a href="function.socket-set-blocking.html" class="function">socket_set_blocking()</a></span>, но это использование устарело.
+   </p>
+  </p></blockquote>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-function.stream-set-blocking-seealso">
+  <h3 class="title">Смотрите также</h3>
+  <ul class="simplelist">
+   <li class="member"><span class="function"><a href="function.stream-select.html" class="function" rel="rdfs-seeAlso">stream_select()</a> - Запускает эквивалент системного вызова select() на заданных массивах
+   потоков с таймаутом, указанным параметрами tv_sec и tv_usec</span></li>
+  </ul>
+ </div>
+
+</div><hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.stream-select.html">stream_select</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.stream-set-read-buffer.html">stream_set_read_buffer</a></div>
+ <div class="up"><a href="ref.stream.html">Stream Функции</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

@@ -1,0 +1,51 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Установка</title>
+
+ </head>
+ <body><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="imap.requirements.html">Требования</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="imap.configuration.html">Настройка во время выполнения</a></div>
+ <div class="up"><a href="imap.setup.html">Установка и настройка</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="imap.installation" class="section">
+ <h2 class="title">Установка</h2>
+ <p class="para">
+  Чтобы включить поддержку IMAP в сборку PHP, добавьте в конфигурацию ключ
+  <strong class="option configure">--with-imap[=DIR]</strong>
+, где DIR это
+  папка установки c-client. Для нашего вышеуказанного примера вы должны использвать
+  <strong class="option configure">--with-imap=/usr/local/imap-2000b</strong>
+.
+  Этот путь зависит от того, где вы создали эту директорию в соответствии с
+  описанием выше. <span class="productname">Windows</span> пользователи могут подключить
+  <var class="filename">php_imap.dll</var> DLL в <var class="filename">php.ini</var>.
+ </p>
+ <p class="para">
+  IMAP не поддерживается в системах ранее Windows 2000. Потому что
+  используется функции шифрования, чтобы позволить SSL соединения к mail
+  серверу.
+ </p>
+ <blockquote class="note"><p><b class="note">Замечание</b>: 
+  <span class="simpara">
+   В зависимости от того как настроен ваш c-client, вам может понадобиться
+   добавить <strong class="option configure">--with-imap-ssl=/path/to/openssl/</strong>
+ и/или
+   <strong class="option configure">--with-kerberos=/path/to/kerberos</strong>
+
+   ключ при конфигурировании PHP.
+  </span>
+ </p></blockquote>
+ 
+ <div class="warning"><b class="warning">Внимание</b><p class="simpara">Расширение <a href="ref.imap.html" class="link">IMAP</a> не может использоваться вместе с расширениями
+<a href="ref.recode.html" class="link">перекодировки</a>, <a href="ref.yaz.html" class="link">YAZ</a> или <a href="ref.cyrus.html" class="link">Cyrus</a>. Это связано с тем фактом, что они оба
+используют одни и те же внутренние символы. Замечание: Версии Yaz 2.0 и выше избавлены от этого недостатка.</p></div>
+ 
+</div><hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="imap.requirements.html">Требования</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="imap.configuration.html">Настройка во время выполнения</a></div>
+ <div class="up"><a href="imap.setup.html">Установка и настройка</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

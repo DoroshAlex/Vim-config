@@ -1,0 +1,60 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Компиляция разделяемых расширений с помощью phpize</title>
+
+ </head>
+ <body><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="install.pecl.pear.html">Компиляция разделяемых расширений с помощью команды pecl</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="install.pecl.php-config.html">php-config</a></div>
+ <div class="up"><a href="install.pecl.html">Установка расширений PECL</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="install.pecl.phpize" class="sect1">
+  <h2 class="title">Компиляция разделяемых расширений с помощью phpize</h2>
+  <p class="simpara">
+   Иногда использование инсталятора <i>pecl</i> не подходит. Это
+   может быть связано с тем, что вы находитесь за файерволом или из-за того,
+   что расширение, которое вы хотите установить, недоступно в PECL-совместимом
+   пакете (к примеру, расширения из SVN, у которых еще нет релизов). Если вам необходимо
+   собрать такое расширение, вы можете использовать низкоуровневые утилиты для
+   выполнения сборки вручную.
+  </p>
+  <p class="simpara">
+   Команда <i>phpize</i> используется для подготовки окружения
+   PHP-расширения. В следующем примере директория, где находятся исходные коды
+   расширения, называется <var class="filename">extname</var>:
+  </p>
+  <p class="para">
+   <div class="example-contents screen">
+<div class="cdata"><pre>
+$ cd extname
+$ phpize
+$ ./configure
+$ make
+# make install
+</pre></div>
+   </div>
+  </p>
+  <p class="simpara">
+   В случае успешной установки будет создан файл <var class="filename">extname.so</var> и
+   помещен в PHP <a href="ini.core.html#ini.extension-dir" class="link">директорию расширений</a>.
+   Вам будет необходимо добавить строку <i>extension=extname.so</i> в
+   <var class="filename">php.ini</var> перед использованием этого расширения.
+  </p>
+  <p class="simpara">
+   Если в системе нет <i>phpize</i>, но существует возможность
+   установки заранее скомпилированных пакетов (типа RPM), убедитесь, что установлена
+   соответствующая версия пакета PHP для разработчиков, так как они часто
+   содержат команду <i>phpize</i> с подходящими файлами заголовков для
+   сборки PHP и его расширений.
+  </p>
+  <p class="simpara">
+   Для дополнительной информации используйте команду <strong class="command">phpize --help</strong>.
+  </p>
+ </div><hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="install.pecl.pear.html">Компиляция разделяемых расширений с помощью команды pecl</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="install.pecl.php-config.html">php-config</a></div>
+ <div class="up"><a href="install.pecl.html">Установка расширений PECL</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

@@ -1,0 +1,216 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Возвращает последнюю ошибку</title>
+
+ </head>
+ <body><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.oci-define-by-name.html">oci_define_by_name</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.oci-execute.html">oci_execute</a></div>
+ <div class="up"><a href="ref.oci8.html">OCI8 (Oracle)</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.oci-error" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">oci_error</h1>
+  <p class="verinfo">(PHP 5, PECL OCI8 &gt;= 1.1.0)</p><p class="refpurpose"><span class="refname">oci_error</span> &mdash; <span class="dc-title">Возвращает последнюю ошибку</span></p>
+
+ </div>
+ 
+ <div class="refsect1 description" id="refsect1-function.oci-error-description">
+  <h3 class="title">Описание</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">array</span> <span class="methodname"><b>oci_error</b></span>
+    ([ <span class="methodparam"><span class="type">resource</span> <tt class="parameter">$resource</tt></span>
+  ] )</div>
+
+  <p class="para rdfs-comment">
+   Возвращает последнюю найденную ошибку.
+  </p>
+  <p class="para">
+   Функция должны вызваться сразу же после появления ошибки.
+   Ошибки очищаются при произведении правильного запроса.
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 parameters" id="refsect1-function.oci-error-parameters">
+  <h3 class="title">Список параметров</h3>
+  <p class="para">
+   <dl>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">resource</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Для большинства ошибок параметром <i><tt class="parameter">resource</tt></i> является
+       соответствующий идентификатор соединения или выражения. Для ошибок во время 
+       выполнения функций <span class="function"><a href="function.oci-connect.html" class="function">oci_connect()</a></span>, 
+       <span class="function"><a href="function.oci-new-connect.html" class="function">oci_new_connect()</a></span> и <span class="function"><a href="function.oci-pconnect.html" class="function">oci_pconnect()</a></span> 
+       параметр <i><tt class="parameter">resource</tt></i> указывать не следует.
+      </p>
+     </dd>
+
+    </dt>
+
+   </dl>
+
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 returnvalues" id="refsect1-function.oci-error-returnvalues">
+  <h3 class="title">Возвращаемые значения</h3>
+  <p class="para">
+   Если ошибок не найдено, то <span class="function"><b>oci_error()</b></span> возвращает
+   <b><tt>FALSE</tt></b>. В другом случае, <span class="function"><b>oci_error()</b></span> возвращает
+   информацию об ошибке в виде ассоциативного массива.
+  </p>
+  <p class="para">
+   <table class="doctable table">
+    <caption><b>Описание массива вывода <span class="function"><b>oci_error()</b></span></b></caption>
+    
+    
+     <thead valign="middle">
+      <tr valign="middle">
+       <th>Ключ массива</th>
+       <th>Тип</th>
+       <th>Описание</th>
+      </tr>
+
+     </thead>
+
+     <tbody valign="middle" class="tbody">
+      <tr valign="middle">
+       <td align="left"><i>code</i></td>
+       <td align="left"><span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span></td>
+       <td align="left">
+        Номер ошибки Oracle.
+       </td>
+      </tr>
+
+      <tr valign="middle">
+       <td align="left"><i>message</i></td>
+       <td align="left"><span class="type"><a href="language.types.string.html" class="type string">string</a></span></td>
+       <td align="left">
+        Текст ошибки Oracle.
+       </td>
+      </tr>
+
+      <tr valign="middle">
+       <td align="left"><i>offset</i></td>
+       <td align="left"><span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span></td>
+       <td align="left">
+        Позиция ошибки в запросе SQL. Если нет запроса, то равна
+        <i>0</i>
+       </td>
+      </tr>
+
+      <tr valign="middle">
+       <td align="left"><i>sqltext</i></td>
+       <td align="left"><span class="type"><a href="language.types.string.html" class="type string">string</a></span></td>
+       <td align="left">
+        Текст запроса SQL. Если нет запроса, то строка пуста.
+       </td>
+      </tr>
+
+     </tbody>
+    
+   </table>
+
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 changelog" id="refsect1-function.oci-error-changelog">
+  <h3 class="title">Список изменений</h3>
+  <p class="para">
+   <table class="doctable informaltable">
+    
+     <thead valign="middle">
+      <tr valign="middle">
+       <th>Версия</th>
+       <th>Описание</th>
+      </tr>
+
+     </thead>
+
+     <tbody valign="middle" class="tbody">
+      <tr valign="middle">
+       <td align="left">4.3.0</td>
+       <td align="left">
+        Добавлены позиции <i>offset</i> и
+        <i>sqltext</i>.
+       </td>
+      </tr>
+
+     </tbody>
+    
+   </table>
+
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 examples" id="refsect1-function.oci-error-examples">
+  <h3 class="title">Примеры</h3>
+  <p class="para">
+   <div class="example" id="example-1816">
+    <p><b>Пример #1 Вывод сообщения об ошибке Oracle после ошибки соединения</b></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$conn&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">oci_connect</span><span style="color: #007700">(</span><span style="color: #DD0000">"hr"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"welcome"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"localhost/XE"</span><span style="color: #007700">);<br />if&nbsp;(!</span><span style="color: #0000BB">$conn</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$e&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">oci_error</span><span style="color: #007700">();&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;Для&nbsp;обработки&nbsp;ошибок&nbsp;oci_connect<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">trigger_error</span><span style="color: #007700">(</span><span style="color: #0000BB">htmlentities</span><span style="color: #007700">(</span><span style="color: #0000BB">$e</span><span style="color: #007700">[</span><span style="color: #DD0000">'message'</span><span style="color: #007700">]),&nbsp;</span><span style="color: #0000BB">E_USER_ERROR</span><span style="color: #007700">);<br />}<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+  </p>
+  <p class="para">
+   <div class="example" id="example-1817">
+    <p><b>Пример #2 Вывод сообщения об ошибке Oracle после ошибки разбора</b></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$stid&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">oci_parse</span><span style="color: #007700">(</span><span style="color: #0000BB">$conn</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"select&nbsp;'&nbsp;from&nbsp;dual"</span><span style="color: #007700">);&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;пропущенные&nbsp;кавычки<br /></span><span style="color: #007700">if&nbsp;(!</span><span style="color: #0000BB">$stid</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$e&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">oci_error</span><span style="color: #007700">(</span><span style="color: #0000BB">$conn</span><span style="color: #007700">);&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;Для&nbsp;обработки&nbsp;ошибок&nbsp;oci_parse<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">trigger_error</span><span style="color: #007700">(</span><span style="color: #0000BB">htmlentities</span><span style="color: #007700">(</span><span style="color: #0000BB">$e</span><span style="color: #007700">[</span><span style="color: #DD0000">'message'</span><span style="color: #007700">]),&nbsp;</span><span style="color: #0000BB">E_USER_ERROR</span><span style="color: #007700">);<br />}<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+  </p>
+  <p class="para">
+   <div class="example" id="example-1818">
+    <p><b>Пример #3 Вывод сообщения об ошибке Oracle, ошибочного запроса и
+     позиции ошибки запуска запроса</b></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$stid&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">oci_parse</span><span style="color: #007700">(</span><span style="color: #0000BB">$conn</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"select&nbsp;does_not_exist&nbsp;from&nbsp;dual"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$r&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">oci_execute</span><span style="color: #007700">(</span><span style="color: #0000BB">$stid</span><span style="color: #007700">);<br />if&nbsp;(!</span><span style="color: #0000BB">$r</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$e&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">oci_error</span><span style="color: #007700">(</span><span style="color: #0000BB">$stid</span><span style="color: #007700">);&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;Для&nbsp;обработки&nbsp;ошибок&nbsp;oci_execute<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">print&nbsp;</span><span style="color: #0000BB">htmlentities</span><span style="color: #007700">(</span><span style="color: #0000BB">$e</span><span style="color: #007700">[</span><span style="color: #DD0000">'message'</span><span style="color: #007700">]);<br />&nbsp;&nbsp;&nbsp;&nbsp;print&nbsp;</span><span style="color: #DD0000">"\n&lt;pre&gt;\n"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;print&nbsp;</span><span style="color: #0000BB">htmlentities</span><span style="color: #007700">(</span><span style="color: #0000BB">$e</span><span style="color: #007700">[</span><span style="color: #DD0000">'sqltext'</span><span style="color: #007700">]);<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">printf</span><span style="color: #007700">(</span><span style="color: #DD0000">"\n%"</span><span style="color: #007700">.(</span><span style="color: #0000BB">$e</span><span style="color: #007700">[</span><span style="color: #DD0000">'offset'</span><span style="color: #007700">]+</span><span style="color: #0000BB">1</span><span style="color: #007700">).</span><span style="color: #DD0000">"s"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"^"</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;print&nbsp;&nbsp;</span><span style="color: #DD0000">"\n&lt;/pre&gt;\n"</span><span style="color: #007700">;<br />}<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 notes" id="refsect1-function.oci-error-notes">
+  <h3 class="title">Примечания</h3>
+  <blockquote class="note"><p><b class="note">Замечание</b>: 
+   <p class="para">
+    В версиях PHP до 5.0.0 необходимо взамен использовать функцию
+    <span class="function"><a href="function.ocierror.html" class="function">ocierror()</a></span>. Старое имя функции также может быть использовано в текущих версиях, хотя оно уже устарело
+и не рекомендуется.
+   </p>
+  </p></blockquote>
+ </div>
+
+ 
+</div><hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.oci-define-by-name.html">oci_define_by_name</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.oci-execute.html">oci_execute</a></div>
+ <div class="up"><a href="ref.oci8.html">OCI8 (Oracle)</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

@@ -1,0 +1,143 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Возвращает временную зону и код региона для некоторых стран</title>
+
+ </head>
+ <body><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.geoip-region-name-by-code.html">geoip_region_name_by_code</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="book.json.html">JSON</a></div>
+ <div class="up"><a href="ref.geoip.html">GeoIP Функции</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.geoip-time-zone-by-country-and-region" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">geoip_time_zone_by_country_and_region</h1>
+  <p class="verinfo">(PECL geoip &gt;= 1.0.4)</p><p class="refpurpose"><span class="refname">geoip_time_zone_by_country_and_region</span> &mdash; <span class="dc-title">Возвращает временную зону и код региона для некоторых стран</span></p>
+
+ </div>
+ <div class="refsect1 description" id="refsect1-function.geoip-time-zone-by-country-and-region-description">
+  <h3 class="title">Описание</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">string</span> <span class="methodname"><b>geoip_time_zone_by_country_and_region</b></span>
+    ( <span class="methodparam"><span class="type">string</span> <tt class="parameter">$country_code</tt></span>
+   [, <span class="methodparam"><span class="type">string</span> <tt class="parameter">$region_code</tt></span>
+  ] )</div>
+
+
+  <p class="para rdfs-comment">
+   Функция <span class="function"><b>geoip_time_zone_by_country_and_region()</b></span> вернет
+   временную зону и код региона соответствующей страны.
+  </p>
+  <p class="para">
+   В Соединенных Штатах код региона соответствует двухбуквенному сокращению каждого штата.
+   В Канаде код региона соответствует двухбуквенному сокращению провинции или
+   территориальный код соответствующий канадской почте.
+  </p>
+  <p class="para">
+   Для остальной части мира, для представления регионов GeoIP использует коды FIPS 10-4.
+   Вы можете просмотреть <a href="http://www.maxmind.com/app/fips10_4" class="link external">&raquo;&nbsp;http://www.maxmind.com/app/fips10_4</a>
+   для получения полного списка FIPS 10-4 кодов.
+  </p>
+  <p class="para">
+   Эта функция всегда доступна при использовании библиотеки GeoIP версии 1.4.1 или выше.
+   Данные берутся непосредственно из библиотеки GeoIP, а не из какой-либо базы данных.
+  </p>
+ </div>
+
+ <div class="refsect1 parameters" id="refsect1-function.geoip-time-zone-by-country-and-region-parameters">
+  <h3 class="title">Список параметров</h3>
+  <p class="para">
+   <dl>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">country_code</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Двухбуквенный код страны (смотрите
+       <span class="function"><a href="function.geoip-country-code-by-name.html" class="function">geoip_country_code_by_name()</a></span>)
+      </p>
+     </dd>
+
+    </dt>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">region_code</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Двухбуквенный (или цифровой) код региона (смотрите
+       <span class="function"><a href="function.geoip-region-by-name.html" class="function">geoip_region_by_name()</a></span>)
+      </p>
+     </dd>
+
+    </dt>
+
+   </dl>
+
+  </p>
+ </div>
+
+ <div class="refsect1 returnvalues" id="refsect1-function.geoip-time-zone-by-country-and-region-returnvalues">
+  <h3 class="title">Возвращаемые значения</h3>
+  <p class="para">
+   Возвращает временную зону в случае успеха или <b><tt>FALSE</tt></b>, если страна и
+   одновременно код региона не могут быть найдены.
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-function.geoip-time-zone-by-country-and-region-examples">
+  <h3 class="title">Примеры</h3>
+  <p class="para">
+   <div class="example" id="example-3352">
+    <p><b>Пример #1 Пример использования <span class="function"><b>geoip_time_zone_by_country_and_region()</b></span> для кода региона US/Canada</b></p>
+    <div class="example-contents"><p>
+     Напечает временную зону для страны CA (Канада), региона QC (Квебек).
+    </p></div>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$timezone&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">geoip_time_zone_by_country_and_region</span><span style="color: #007700">(</span><span style="color: #DD0000">'CA'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'QC'</span><span style="color: #007700">);<br />if&nbsp;(</span><span style="color: #0000BB">$timezone</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">'Временная&nbsp;зона&nbsp;для&nbsp;CA/QC:&nbsp;'&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">$timezone</span><span style="color: #007700">;<br />}<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+    <div class="example-contents"><p>Результат выполнения данного примера:</p></div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+Временная зона для CA/QC: America/Montreal
+</pre></div>
+    </div>
+   </div>
+   <div class="example" id="example-3353">
+    <p><b>Пример #2 Использование <span class="function"><b>geoip_time_zone_by_country_and_region()</b></span> используя коды FIPS</b></p>
+    <div class="example-contents"><p>
+     Напечатает временную зону для страны JP (Япония), регион 01 (Aichi).
+    </p></div>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$timezone&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">geoip_time_zone_by_country_and_region</span><span style="color: #007700">(</span><span style="color: #DD0000">'JP'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'01'</span><span style="color: #007700">);<br />if&nbsp;(</span><span style="color: #0000BB">$timezone</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">'Временная&nbsp;зона&nbsp;для&nbsp;JP/01:&nbsp;'&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">$timezone</span><span style="color: #007700">;<br />}<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+    <div class="example-contents"><p>Результат выполнения данного примера:</p></div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+Временная зона для JP/01: Asia/Tokyo
+</pre></div>
+    </div>
+   </div>
+  </p>
+ </div>
+
+
+</div><hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.geoip-region-name-by-code.html">geoip_region_name_by_code</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="book.json.html">JSON</a></div>
+ <div class="up"><a href="ref.geoip.html">GeoIP Функции</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

@@ -1,0 +1,227 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Выполняет запрос к базе данных и возвращает идентификатор результата</title>
+
+ </head>
+ <body><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.sqlite-prev.html">sqlite_prev</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.sqlite-rewind.html">sqlite_rewind</a></div>
+ <div class="up"><a href="ref.sqlite.html">SQLite</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.sqlite-query" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">sqlite_query</h1>
+  <h1 class="refname">SQLiteDatabase->query</h1>
+  <p class="verinfo">(PHP 5, PECL sqlite &gt;= 1.0.0)</p><p class="refpurpose"><span class="refname">sqlite_query</span> -- <span class="refname">SQLiteDatabase-&gt;query</span> &mdash; <span class="dc-title">Выполняет запрос к базе данных и возвращает идентификатор результата</span></p>
+
+ </div>
+
+ <div class="refsect1 description" id="refsect1-function.sqlite-query-description">
+  <h3 class="title">Описание</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">resource</span> <span class="methodname"><b>sqlite_query</b></span>
+    ( <span class="methodparam"><span class="type">resource</span> <tt class="parameter">$dbhandle</tt></span>
+   , <span class="methodparam"><span class="type">string</span> <tt class="parameter">$query</tt></span>
+   [, <span class="methodparam"><span class="type">int</span> <tt class="parameter">$result_type</tt><span class="initializer"> = SQLITE_BOTH</span></span>
+   [, <span class="methodparam"><span class="type">string</span> <tt class="parameter reference">&$error_msg</tt></span>
+  ]] )</div>
+
+  <div class="methodsynopsis dc-description">
+   <span class="type">resource</span> <span class="methodname"><b>sqlite_query</b></span>
+    ( <span class="methodparam"><span class="type">string</span> <tt class="parameter">$query</tt></span>
+   , <span class="methodparam"><span class="type">resource</span> <tt class="parameter">$dbhandle</tt></span>
+   [, <span class="methodparam"><span class="type">int</span> <tt class="parameter">$result_type</tt><span class="initializer"> = SQLITE_BOTH</span></span>
+   [, <span class="methodparam"><span class="type">string</span> <tt class="parameter reference">&$error_msg</tt></span>
+  ]] )</div>
+
+  <p class="para rdfs-comment">Объектно-ориентированный стиль (метод):</p>
+  <div class="classsynopsis">
+   <div class="ooclass"></div>
+   <div class="methodsynopsis dc-description">
+    <span class="type">SQLiteResult</span> <span class="methodname"><b>SQLiteDatabase::query</b></span>
+     ( <span class="methodparam"><span class="type">string</span> <tt class="parameter">$query</tt></span>
+    [, <span class="methodparam"><span class="type">int</span> <tt class="parameter">$result_type</tt><span class="initializer"> = SQLITE_BOTH</span></span>
+    [, <span class="methodparam"><span class="type">string</span> <tt class="parameter reference">&$error_msg</tt></span>
+   ]] )</div>
+
+  </div>
+  <p class="para">
+   Выполняет SQL-запрос <i><tt class="parameter">query</tt></i> к указанному
+   дескриптору базы данных.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-function.sqlite-query-parameters">
+  <h3 class="title">Список параметров</h3>
+  <p class="para">
+   <dl>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">dbhandle</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Ресурс базы данных SQLite, полученный из функции <span class="function"><a href="function.sqlite-open.html" class="function">sqlite_open()</a></span>
+       в случае использования процедурного подхода. Этот параметр не
+       требуется при использовании объектно-ориентированного подхода.
+      </p>
+     </dd>
+
+    </dt>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">query</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Выполняемый запрос.
+      </p>
+      <p class="para">
+       Данные в запросе должны быть <a href="function.sqlite-escape-string.html" class="link">корректно экранированы</a>.
+      </p>
+     </dd>
+
+    </dt>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">result_type</tt></i></span>
+     <dd>
+
+      <p class="para">Необязательный параметр
+<i><tt class="parameter">result_type</tt></i> принимает константу, определяющую, как будет
+индексирован возвращаемый массив.
+При использовании <b><tt>SQLITE_ASSOC</tt></b> будет возвращен
+ассоциативный массив, а при использовании <b><tt>SQLITE_NUM</tt></b>
+- числовой. <b><tt>SQLITE_BOTH</tt></b> вернет массив как с
+ассоциативными, так и с числовыми индексами.
+Значением по умолчанию для этой функции является
+<b><tt>SQLITE_BOTH</tt></b>.</p>
+     </dd>
+
+    </dt>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">error_msg</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Указанная переменная будет заполнена в случае возникновения
+       ошибки. Это особенно важно, так как ошибки синтаксиса SQL
+       не возращаются функцией <span class="function"><a href="function.sqlite-last-error.html" class="function">sqlite_last_error()</a></span>.
+      </p>
+     </dd>
+
+    </dt>
+
+
+   </dl>
+
+  </p>
+  <blockquote class="note"><p><b class="note">Замечание</b>: <span class="simpara">Поддерживаются два альтернативных
+синтаксиса для совместимости с другими расширениями баз данных (например, MySQL).
+Предпочитаемая форма - первая, в которой параметр <i><tt class="parameter">dbhandle</tt></i>
+является первым параметром функции.</span></p></blockquote>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-function.sqlite-query-returnvalues">
+  <h3 class="title">Возвращаемые значения</h3>
+  <p class="para">
+   Эта функция возвращает идентификатор результата запроса или <b><tt>FALSE</tt></b> в случае возникновения ошибки.
+   Для запросов, возвращающих данные, этот идентификатор может
+   использоваться в качестве аргумента таких функций как
+   <span class="function"><a href="function.sqlite-fetch-array.html" class="function">sqlite_fetch_array()</a></span> и
+   <span class="function"><a href="function.sqlite-seek.html" class="function">sqlite_seek()</a></span>.
+  </p>
+  <p class="para">
+   Независимо от типа запроса, в случае возникновения ошибки эта функция
+   возвращает <b><tt>FALSE</tt></b>.
+  </p>
+  <p class="para">
+   <span class="function"><b>sqlite_query()</b></span> возвращает буферизованный
+   результирующий набор, по котому также можно перемещаться в различных
+   направлениях. Её следует использовать для запросов, возвращающих
+   относительно небольшое количество записей, если вам необходим
+   случайный доступ к записям. Дескриптор буферизованного результата
+   выделит память для всего возвращаемого результата и не возвратит
+   ее, пока весь результат не будет полностью получен. Если вам
+   необходим только последовательный доступ к записям, рекомендуется
+   использовать намного более производительную функцию
+   <span class="function"><a href="function.sqlite-unbuffered-query.html" class="function">sqlite_unbuffered_query()</a></span>.
+  </p>
+ </div>
+
+
+<div class="refsect1 changelog" id="refsect1-function.sqlite-query-changelog">
+  <h3 class="title">Список изменений</h3>
+  <p class="para">
+   <table class="doctable informaltable">
+    
+     <thead valign="middle">
+      <tr valign="middle">
+       <th>Версия</th>
+       <th>Описание</th>
+      </tr>
+
+     </thead>
+
+     <tbody valign="middle" class="tbody">
+      <tr valign="middle">
+       <td align="left">5.1.0</td>
+       <td align="left">
+        Добавлен параметр <i><tt class="parameter">error_msg</tt></i>
+       </td>
+      </tr>
+
+     </tbody>
+    
+   </table>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 notes" id="refsect1-function.sqlite-query-notes">
+  <h3 class="title">Примечания</h3>
+  <div class="warning"><b class="warning">Внимание</b>
+   <p class="simpara">
+    SQLite <em class="emphasis">выполнит</em> несколько запросов, разделенных
+    точкой с запятой, что можно использовать, например, для выполнения
+    запросов, прочитанных из файла. Однако, это работает только в случае,
+    если результат функции не используется - если он используется,
+    то будет выполнен только первый запрос.
+    Функция <span class="function"><a href="function.sqlite-exec.html" class="function">sqlite_exec()</a></span> всегда выполняет все
+    запросы.
+   </p>
+   <p class="simpara">
+    При выполнении нескольких запросов, эта функция возвращает <b><tt>FALSE</tt></b> в
+    случае ошибки, иначе возвращаемое значение будет неопределенным
+    (оно может быть как <b><tt>TRUE</tt></b>, так и идентификатором результата запроса).
+   </p>
+  </div>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-function.sqlite-query-seealso">
+  <h3 class="title">Смотрите также</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><span class="function"><a href="function.sqlite-unbuffered-query.html" class="function" rel="rdfs-seeAlso">sqlite_unbuffered_query()</a> - Выполняет запрос без буферизации результатов</span></li>
+    <li class="member"><span class="function"><a href="function.sqlite-array-query.html" class="function" rel="rdfs-seeAlso">sqlite_array_query()</a> - Выполняет запрос к базе данных и возвращает результат в виде массива</span></li>
+   </ul>
+  </p>
+ </div>
+
+</div><hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.sqlite-prev.html">sqlite_prev</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.sqlite-rewind.html">sqlite_rewind</a></div>
+ <div class="up"><a href="ref.sqlite.html">SQLite</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

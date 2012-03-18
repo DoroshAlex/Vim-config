@@ -1,0 +1,153 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Обновляет рабочую копию</title>
+
+ </head>
+ <body><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.svn-status.html">svn_status</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="book.tcpwrap.html">TCP</a></div>
+ <div class="up"><a href="ref.svn.html">SVN</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.svn-update" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">svn_update</h1>
+  <p class="verinfo">(PECL svn &gt;= 0.1.0)</p><p class="refpurpose"><span class="refname">svn_update</span> &mdash; <span class="dc-title">Обновляет рабочую копию</span></p>
+
+ </div>
+
+ <div class="refsect1 description" id="refsect1-function.svn-update-description">
+  <h3 class="title">Описание</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">int</span> <span class="methodname"><b>svn_update</b></span>
+    ( <span class="methodparam"><span class="type">string</span> <tt class="parameter">$path</tt></span>
+   [, <span class="methodparam"><span class="type">int</span> <tt class="parameter">$revno</tt><span class="initializer"> = SVN_REVISION_HEAD</span></span>
+   [, <span class="methodparam"><span class="type">bool</span> <tt class="parameter">$recurse</tt><span class="initializer"> = true</span></span>
+  ]] )</div>
+
+  <p class="para rdfs-comment">
+   Обновляет рабочую копию, расположенную в <i><tt class="parameter">path</tt></i> до ревизии
+   <i><tt class="parameter">revno</tt></i>. Если параметр <i><tt class="parameter">recurse</tt></i> установлен в <b><tt>TRUE</tt></b>,
+   директории будут обновлены рекурсивно.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-function.svn-update-parameters">
+  <h3 class="title">Список параметров</h3>
+  <p class="para">
+   <dl>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">path</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Путь к локальной рабочей копии.
+      </p>
+      <blockquote class="note"><p><b class="note">Замечание</b>: <span class="simpara">Относительные пути будут вычислены,
+как если бы текущая рабочая директория являлась домашней папкой самого PHP. Чтобы использовать рабочую директорию
+вызывающего скрипта, используйте <span class="function"><a href="function.realpath.html" class="function">realpath()</a></span> или dirname(__FILE__).</span></p></blockquote>
+     </dd>
+
+    </dt>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">revno</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Номер ревизии для обновления, по умолчанию <b><tt>SVN_REVISION_HEAD</tt></b>.
+      </p>
+     </dd>
+
+    </dt>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">recurse</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Слудет ли рекурсивно обновлять директории.
+      </p>
+     </dd>
+
+    </dt>
+
+   </dl>
+
+  </p>
+
+ </div>
+
+ <div class="refsect1 returnvalues" id="refsect1-function.svn-update-returnvalues">
+  <h3 class="title">Возвращаемые значения</h3>
+  <p class="para">
+   В случае успеха возвращает новый номер ревизии, или <b><tt>FALSE</tt></b> в случае ошибки.
+  </p>
+ </div>
+
+
+ <div class="refsect1 notes" id="refsect1-function.svn-update-notes">
+  <h3 class="title">Примечания</h3>
+  <div class="warning"><b class="warning">Внимание</b><p class="simpara">
+Эта функция является <em class="emphasis">ЭКСПЕРИМЕНТАЛЬНОЙ</em>.
+Поведение этой функции, ее имя и относящаяся к ней документация
+могут измениться в последующих версиях PHP без уведомления.
+Используйте эту функцию на свой страх и риск.</p></div>
+ </div>
+
+
+ 
+
+ 
+
+ <div class="refsect1 examples" id="refsect1-function.svn-update-examples">
+  <h3 class="title">Примеры</h3>
+  <p class="para">
+   <div class="example" id="example-4191">
+    <p><b>Пример #1 Базовый пример</b></p>
+    <div class="example-contents"><p>
+     Нижеприведенный пример иллюстрирует базовое применение данной функции:
+    </p></div>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">svn_update</span><span style="color: #007700">(</span><span style="color: #0000BB">realpath</span><span style="color: #007700">(</span><span style="color: #DD0000">'working-copy'</span><span style="color: #007700">));<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+    <div class="example-contents"><p>Результатом выполнения данного примера
+будет что-то подобное:</p></div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+234
+</pre></div>
+    </div>
+   </div>
+  </p>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-function.svn-update-seealso">
+  <h3 class="title">Смотрите также</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><span class="function"><a href="function.svn-checkout.html" class="function" rel="rdfs-seeAlso">svn_checkout()</a> - Получает рабочую копию из репозитория</span></li>
+    <li class="member"><span class="function"><a href="function.svn-commit.html" class="function" rel="rdfs-seeAlso">svn_commit()</a> - Отправляет изменения из рабочей директории в репозиторий</span></li>
+    <li class="member"><a href="http://svnbook.red-bean.com/en/1.2/svn.ref.svn.c.update.html" class="link external">&raquo;&nbsp;SVN документация к команде svn update</a></li>
+   </ul>
+  </p>
+ </div>
+
+
+</div><hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.svn-status.html">svn_status</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="book.tcpwrap.html">TCP</a></div>
+ <div class="up"><a href="ref.svn.html">SVN</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

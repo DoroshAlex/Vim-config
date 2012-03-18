@@ -1,0 +1,78 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Tidy</title>
+
+ </head>
+ <body><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.stream-wrapper-unregister.html">stream_wrapper_unregister</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="intro.tidy.html">Введение</a></div>
+ <div class="up"><a href="refs.basic.other.html">Другие базовые расширения</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="book.tidy" class="book">
+ <h1 class="title">Tidy</h1>
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+ 
+
+
+
+
+ 
+
+
+
+ 
+
+
+
+
+ 
+
+
+
+ 
+
+
+
+
+
+ 
+
+
+
+<ul class="chunklist chunklist_book"><li><a href="intro.tidy.html">Введение</a></li><li><a href="tidy.setup.html">Установка и настройка</a><ul class="chunklist chunklist_book chunklist_children"><li><a href="tidy.requirements.html">Требования</a></li><li><a href="tidy.installation.html">Установка</a></li><li><a href="tidy.configuration.html">Настройка во время выполнения</a></li><li><a href="tidy.resources.html">Типы ресурсов</a></li></ul></li><li><a href="tidy.constants.html">Предопределенные константы</a></li><li><a href="tidy.examples.html">Примеры</a><ul class="chunklist chunklist_book chunklist_children"><li><a href="tidy.examples.basic.html">Пример использования Tidy</a></li></ul></li><li><a href="class.tidy.html">Tidy</a> — Класс Tidy<ul class="chunklist chunklist_book chunklist_children"><li><a href="tidy.body.html">tidy::body</a> — Возвращает объект tidyNode, начиная с тега &lt;body&gt; разобранного tidy-дерева</li><li><a href="tidy.cleanrepair.html">tidy::cleanRepair</a> — Выполнить настроенную очистку и восстановление разобранной разметки</li><li><a href="tidy.construct.html">tidy::__construct</a> — Создает новый tidy-объект</li><li><a href="function.tidy-diagnose.html">tidy::diagnose</a> — Запуск настроенной диагностики для разобранной и восстановленной разметки</li><li><a href="tidy.getconfig.html">tidy::getConfig</a> — Получает текущую конфигурацию Tidy</li><li><a href="tidy.gethtmlver.html">tidy::htmlver</a> — Получает обнаруженную HTML версию для указанного документа</li><li><a href="tidy.getopt.html">tidy::getOpt</a> — Возвращает значение указанного параметра конфигурации для документа tidy</li><li><a href="tidy.getoptdoc.html">tidy::getoptdoc</a> — Возвращает описание для опции с указанным названием</li><li><a href="tidy.getrelease.html">tidy::getRelease</a> — Получить дату релиза (версию) для библиотеки Tidy</li><li><a href="tidy.getstatus.html">tidy::getStatus</a> — Получает статус указанного документа</li><li><a href="tidy.head.html">tidy::head</a> — Возвращает объект tidyNode, начиная с тега &lt;head&gt; разобранного tidy-дерева</li><li><a href="tidy.html.html">tidy::html</a> — Возвращает объект tidyNode, начиная с тега &lt;html&gt; разобранного tidy-дерева</li><li><a href="tidy.isxhtml.html">tidy::isXhtml</a> — Определяет, является ли документ XHTML-документом</li><li><a href="tidy.isxml.html">tidy::isXml</a> — Определяет, является ли документ общим XML-документом (не HTML/XHTML)</li><li><a href="tidy.parsefile.html">tidy::parseFile</a> — Разбор разметки в файле или URI</li><li><a href="tidy.parsestring.html">tidy::parseString</a> — Разбор документа, хранимого в строке</li><li><a href="tidy.repairfile.html">tidy::repairFile</a> — Воcстанавливает разметку файла и возвращает его в виде строки</li><li><a href="tidy.repairstring.html">tidy::repairString</a> — Восстанавливает строку, используя по возможности конфигурационный файл</li><li><a href="tidy.root.html">tidy::root</a> — Возвращает объект tidyNode, представляющий вершину разобранного tidy-дерева</li></ul></li><li><a href="class.tidynode.html">TidyNode</a> — Класс TidyNode<ul class="chunklist chunklist_book chunklist_children"><li><a href="tidynode.getparent.html">tidyNode::getParent</a> — Возвращает родительский узел текущего узла</li><li><a href="tidynode.haschildren.html">tidyNode::hasChildren</a> — Проверяет существование потомков у узла</li><li><a href="tidynode.hassiblings.html">tidyNode::hasSiblings</a> — Проверяет существование соседних узлов</li><li><a href="tidynode.isasp.html">tidyNode::isAsp</a> — Проверяет текущий узел на соответствие ASP</li><li><a href="tidynode.iscomment.html">tidyNode::isComment</a> — Проверяет, является ли узел комментарием</li><li><a href="tidynode.ishtml.html">tidyNode::isHtml</a> — Проверяет, является ли текущий узел частью HTML-документа</li><li><a href="tidynode.isjste.html">tidyNode::isJste</a> — Проверяет текущий узел на соответствие JSTE</li><li><a href="tidynode.isphp.html">tidyNode::isPhp</a> — Проверяет, является ли текущий узел PHP-кодом</li><li><a href="tidynode.istext.html">tidyNode::isText</a> — Проверяет, является ли текущий узел обычным текстом (не разметкой)</li></ul></li><li><a href="ref.tidy.html">Tidy</a><ul class="chunklist chunklist_book chunklist_children"><li><a href="function.ob-tidyhandler.html">ob_tidyhandler</a> — Функция обратного вызова ob_start для восстановление буфера</li><li><a href="function.tidy-access-count.html">tidy_access_count</a> — Возвращает число доступных предупреждений Tidy, встретившихся в рассмотренном документе</li><li><a href="function.tidy-config-count.html">tidy_config_count</a> — Возвращает число ошибок конфигурации Tidy, встретившихся при рассмотрении документа</li><li><a href="function.tidy-error-count.html">tidy_error_count</a> — Возвращает число ошибок Tidy, встретившихся при рассмотрении документа</li><li><a href="function.tidy-get-error-buffer.html">tidy_get_error_buffer</a> — Возвращает предупреждения и ошибки, возникшие при разборе указанного документа</li><li><a href="function.tidy-get-output.html">tidy_get_output</a> — Возвращает строку, представляющую разобранную tidy-разметку</li><li><a href="function.tidy-load-config.html">tidy_load_config</a> — Загрузить конфигурационный файл ASCII Tidy с указанной кодировкой</li><li><a href="function.tidy-reset-config.html">tidy_reset_config</a> — Сбрасывает конфигурацию Tidy в стандартные значения</li><li><a href="function.tidy-save-config.html">tidy_save_config</a> — Сохранить текущие настройки в файл</li><li><a href="function.tidy-set-encoding.html">tidy_set_encoding</a> — Устанавливает входную/выходную кодировку символов для указанной разметки</li><li><a href="function.tidy-setopt.html">tidy_setopt</a> — Обновляет конфигурационные настройки для указанного документа tidy</li><li><a href="function.tidy-warning-count.html">tidy_warning_count</a> — Возвращает число Tidy-предупреждений, встреченных в указанном документе</li></ul></li></ul></div><hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.stream-wrapper-unregister.html">stream_wrapper_unregister</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="intro.tidy.html">Введение</a></div>
+ <div class="up"><a href="refs.basic.other.html">Другие базовые расширения</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

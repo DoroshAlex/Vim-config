@@ -1,0 +1,318 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Настройка во время выполнения</title>
+
+ </head>
+ <body><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="mysqli.installation.html">Установка</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="mysqli.resources.html">Типы ресурсов</a></div>
+ <div class="up"><a href="mysqli.setup.html">Установка и настройка</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="mysqli.configuration" class="section">
+ <h2 class="title">Настройка во время выполнения</h2>
+ <p class="simpara">
+Поведение этих функций зависит от установок в <var class="filename">php.ini</var>.
+</p>
+ <p class="para">
+  <table class="doctable table">
+   <caption><b>Параметры конфигурации MySQLi</b></caption>
+   
+    <thead valign="middle">
+     <tr valign="middle">
+      <th>Имя</th>
+      <th>Значение по умолчанию</th>
+      <th>Область изменения</th>
+      <th>История изменений</th>
+     </tr>
+
+    </thead>
+
+    <tbody valign="middle" class="tbody">
+     <tr valign="middle">
+      <td align="left"><a href="mysqli.configuration.html#ini.mysqli.allow-local-infile" class="link">mysqli.allow_local_infile</a></td>
+      <td align="left">&quot;1&quot;</td>
+      <td align="left">PHP_INI_SYSTEM</td>
+      <td align="left">Доступна начиная с версии PHP 5.2.4.</td>
+     </tr>
+
+     <tr valign="middle">
+      <td align="left"><a href="mysqli.configuration.html#ini.mysqli.allow-persistent" class="link">mysqli.allow_persistent</a></td>
+      <td align="left">&quot;1&quot;</td>
+      <td align="left">PHP_INI_SYSTEM</td>
+      <td align="left">Доступна начиная с версии PHP 5.3.0.</td>
+     </tr>
+
+     <tr valign="middle">
+      <td align="left"><a href="mysqli.configuration.html#ini.mysqli.max-persistent" class="link">mysqli.max_persistent</a></td>
+      <td align="left">&quot;-1&quot;</td>
+      <td align="left">PHP_INI_SYSTEM</td>
+      <td align="left">Доступна начиная с версии PHP 5.3.0.</td>
+     </tr>
+
+     <tr valign="middle">
+      <td align="left"><a href="mysqli.configuration.html#ini.mysqli.max-links" class="link">mysqli.max_links</a></td>
+      <td align="left">&quot;-1&quot;</td>
+      <td align="left">PHP_INI_SYSTEM</td>
+      <td align="left">Доступна начиная с версии PHP 5.0.0.</td>
+     </tr>
+
+     <tr valign="middle">
+      <td align="left"><a href="mysqli.configuration.html#ini.mysqli.default-port" class="link">mysqli.default_port</a></td>
+      <td align="left">&quot;3306&quot;</td>
+      <td align="left">PHP_INI_ALL</td>
+      <td align="left">Доступна начиная с версии PHP 5.0.0.</td>
+     </tr>
+
+     <tr valign="middle">
+      <td align="left"><a href="mysqli.configuration.html#ini.mysqli.default-socket" class="link">mysqli.default_socket</a></td>
+      <td align="left">NULL</td>
+      <td align="left">PHP_INI_ALL</td>
+      <td align="left">Доступна начиная с версии 5.0.0.</td>
+     </tr>
+
+     <tr valign="middle">
+      <td align="left"><a href="mysqli.configuration.html#ini.mysqli.default-host" class="link">mysqli.default_host</a></td>
+      <td align="left">NULL</td>
+      <td align="left">PHP_INI_ALL</td>
+      <td align="left">Доступна начиная с версии PHP 5.0.0.</td>
+     </tr>
+
+     <tr valign="middle">
+      <td align="left"><a href="mysqli.configuration.html#ini.mysqli.default-user" class="link">mysqli.default_user</a></td>
+      <td align="left">NULL</td>
+      <td align="left">PHP_INI_ALL</td>
+      <td align="left">Доступна начиная с версии PHP 5.0.0.</td>
+     </tr>
+
+     <tr valign="middle">
+      <td align="left"><a href="mysqli.configuration.html#ini.mysqli.default-pw" class="link">mysqli.default_pw</a></td>
+      <td align="left">NULL</td>
+      <td align="left">PHP_INI_ALL</td>
+      <td align="left">Доступна начиная с версии PHP 5.0.0.</td>
+     </tr>
+
+     <tr valign="middle">
+      <td align="left"><a href="mysqli.configuration.html#ini.mysqli.reconnect" class="link">mysqli.reconnect</a></td>
+      <td align="left">&quot;0&quot;</td>
+      <td align="left">PHP_INI_SYSTEM</td>
+      <td align="left">Доступна начиная с версии PHP 4.3.5.</td>
+     </tr>
+
+     <tr valign="middle">
+      <td align="left"><a href="mysqli.configuration.html#ini.mysqli.cache-size" class="link">mysqli.cache_size</a></td>
+      <td align="left">&quot;2000&quot;</td>
+      <td align="left">PHP_INI_SYSTEM</td>
+      <td align="left">Доступна начиная с версии PHP 5.3.0.</td>
+     </tr>
+
+    </tbody>
+   
+  </table>
+
+ </p>
+ <p class="para">
+  Прочие детали и определения PHP_INI_* констант смотрите в разделе
+  <a href="configuration.changes.html" class="link">конфигурационные изменения</a>.
+ </p>
+
+ <p class="para">Краткое разъяснение конфигурационных
+директив.</p>
+
+ <p class="para">
+ <dl>
+
+  
+  <dt id="ini.mysqli.allow-local-infile">
+   <span class="term">
+    <i><tt class="parameter">mysqli.allow_local_infile</tt></i>
+    <span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>
+   </span>
+   <dd>
+
+    <p class="para">
+     Разрешает доступ к локальным файлам, с точки зрения PHP,
+     с помощью инструкций LOAD DATA
+    </p>
+   </dd>
+
+  </dt>
+
+
+  <dt id="ini.mysqli.allow-persistent">
+   <span class="term">
+    <i><tt class="parameter">mysqli.allow_persistent</tt></i>
+    <span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>
+   </span>
+   <dd>
+
+    <p class="para">
+     Включает возможность создавать постоянные соединения
+     с помощью <span class="function"><a href="function.mysqli-connect.html" class="function">mysqli_connect()</a></span>.
+    </p>
+   </dd>
+
+  </dt>
+
+  <dt id="ini.mysqli.max-persistent">
+   <span class="term">
+    <i><tt class="parameter">mysqli.max_persistent</tt></i>
+    <span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>
+   </span>
+   <dd>
+
+    <p class="para">
+     Максимально возможное количество постоянных соединений.
+     Для неограниченного количества установите в 0.
+    </p>
+   </dd>
+
+  </dt>
+
+  <dt id="ini.mysqli.max-links">
+   <span class="term">
+    <i><tt class="parameter">mysqli.max_links</tt></i>
+    <span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>
+   </span>
+   <dd>
+
+    <p class="para">
+     Максимальное количество соединений MySQL на процесс.
+    </p>
+   </dd>
+
+  </dt>
+
+   <dt id="ini.mysqli.default-port">
+   <span class="term">
+    <i><tt class="parameter">mysqli.default_port</tt></i>
+    <span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>
+   </span>
+   <dd>
+
+    <p class="para">
+     TCP порт, используемый по умолчанию для соединения с сервером баз данных,
+     если другое значение явно не указано. Если значение по умолчанию не
+     указано, оно будет получено из переменной среды окружения
+     <i>MYSQL_TCP_PORT</i>, директивы <i>mysql-tcp</i> 
+     в файле <var class="filename">/etc/services</var> или константы
+     <i>MYSQL_PORT</i>, которая задаётся во время компиляции, в
+     указанном порядке. Win32 использует только константу
+     <i>MYSQL_PORT</i>.
+    </p>
+   </dd>
+
+  </dt>
+
+  
+  <dt id="ini.mysqli.default-socket">
+   <span class="term">
+    <i><tt class="parameter">mysqli.default_socket</tt></i>
+    <span class="type"><a href="language.types.string.html" class="type string">string</a></span>
+   </span>
+   <dd>
+
+    <p class="para">
+     Имя сокета по умолчанию, которое используется для соединения с локальной
+     базой данных, если имя сокета не было указано явно.
+    </p>
+   </dd>
+
+  </dt>
+
+   <dt id="ini.mysqli.default-host">
+   <span class="term">
+    <i><tt class="parameter">mysqli.default_host</tt></i>
+    <span class="type"><a href="language.types.string.html" class="type string">string</a></span>
+   </span>
+   <dd>
+
+    <p class="para">
+     Имя сервера, которое используется, если имя не было указано явно.
+     Это имя не используется в <a href="ini.sect.safe-mode.html#ini.safe-mode" class="link">безопасном режиме</a>.
+    </p>
+   </dd>
+
+  </dt>
+
+  
+  <dt id="ini.mysqli.default-user">
+   <span class="term">
+    <i><tt class="parameter">mysqli.default_user</tt></i>
+    <span class="type"><a href="language.types.string.html" class="type string">string</a></span>
+   </span>
+   <dd>
+
+    <p class="para">
+     Имя пользователя, используемое по умолчанию, если имя не было указано
+     явно. Игнорируется в <a href="ini.sect.safe-mode.html#ini.safe-mode" class="link">безопасном режиме</a>.
+    </p>
+   </dd>
+
+  </dt>
+
+  
+  <dt id="ini.mysqli.default-pw">
+   <span class="term">
+    <i><tt class="parameter">mysqli.default_pw</tt></i>
+    <span class="type"><a href="language.types.string.html" class="type string">string</a></span>
+   </span>
+   <dd>
+
+    <p class="para">
+     Пароль, используемый по умолчанию для подключения к БД, 
+     если пароль не был явно указан.
+     Игнорируется в <a href="ini.sect.safe-mode.html#ini.safe-mode" class="link">безопасном режиме</a>.
+    </p>
+   </dd>
+
+  </dt>
+
+  
+  <dt id="ini.mysqli.reconnect">
+   <span class="term">
+    <i><tt class="parameter">mysqli.reconnect</tt></i>
+    <span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>
+   </span>
+   <dd>
+
+    <p class="para">
+     Автоматически восстанавливать соединение при его потере.
+    </p>
+   </dd>
+
+  </dt>
+
+  
+  <dt id="ini.mysqli.cache-size">
+   <span class="term">
+    <i><tt class="parameter">mysqli.cache_size</tt></i>
+    <span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>
+   </span>
+   <dd>
+
+    <p class="para">
+     Доступно только с расширением <a href="book.mysqlnd.html" class="link">mysqlnd</a>.
+    </p>
+   </dd>
+
+  </dt>
+
+  
+ </dl>
+
+ </p>
+ <p class="para">
+   Пользователи не могут устанавливать <i>MYSQL_OPT_READ_TIMEOUT</i>
+   с помощью API-вызовов или установки конфигурационных значений во время
+   работы скрипта. Учтите, что если бы это было возможно, то
+   <i>libmysql</i> и потоки по-разному обрабатывали бы значение
+   <i>MYSQL_OPT_READ_TIMEOUT</i>.
+ </p>
+</div><hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="mysqli.installation.html">Установка</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="mysqli.resources.html">Типы ресурсов</a></div>
+ <div class="up"><a href="mysqli.setup.html">Установка и настройка</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

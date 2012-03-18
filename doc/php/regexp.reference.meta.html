@@ -1,0 +1,193 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Метасимволы</title>
+
+ </head>
+ <body><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="regexp.reference.delimiters.html">Разделители</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="regexp.reference.escape.html">Экранирующие последовательности</a></div>
+ <div class="up"><a href="reference.pcre.pattern.syntax.html">Описание синтаксиса Perl-совместимых регулярных выражений</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="regexp.reference.meta" class="section">
+  <h2 class="title">Метасимволы</h2>
+  <p class="para">
+   Сила регулярных выражений исходит из возможности использовать условия и
+   повторения в шаблоне. Они записываются при помощи <em class="emphasis">метасимволов</em>,
+   которые специальным образом интерпретируются.
+  </p>
+  <p class="para">
+   Существуют два различных набора метасимволов: те, которые используются
+   внутри квадратных скобок, и те, которые используются вне квадратных скобок.
+   Вне квадратных скобок используются следующие метасимволы:
+   <dl>
+
+    <dt>
+
+     <span class="term"><em class="emphasis">\</em></span>
+     <dd>
+<span class="simpara">общий экранирующий символ, допускающий несколько вариантов применения</span></dd>
+
+    </dt>
+
+    <dt>
+
+     <span class="term"><em class="emphasis">^</em></span>
+     <dd>
+<span class="simpara">декларирует начало данных (или строки, в многострочном режиме)</span></dd>
+
+    </dt>
+
+    <dt>
+
+     <span class="term"><em class="emphasis">$</em></span>
+     <dd>
+<span class="simpara">декларирует конец данных (или строки, в многострочном режиме)</span></dd>
+
+    </dt>
+
+    <dt>
+
+     <span class="term"><em class="emphasis">.</em></span>
+     <dd>
+<span class="simpara">соответствует любому символу, кроме перевода строки (по умолчанию)</span></dd>
+
+    </dt>
+
+    <dt>
+
+     <span class="term"><em class="emphasis">[</em></span>
+     <dd>
+<span class="simpara">начало описания символьного класса</span></dd>
+
+    </dt>
+
+    <dt>
+
+     <span class="term"><em class="emphasis">]</em></span>
+     <dd>
+<span class="simpara">конец описания символьного класса</span></dd>
+
+    </dt>
+
+    <dt>
+
+     <span class="term"><em class="emphasis">|</em></span>
+     <dd>
+<span class="simpara">начало ветки условного выбора</span></dd>
+
+    </dt>
+
+    <dt>
+
+     <span class="term"><em class="emphasis">(</em></span>
+     <dd>
+<span class="simpara">начало подмаски</span></dd>
+
+    </dt>
+
+    <dt>
+
+     <span class="term"><em class="emphasis">)</em></span>
+     <dd>
+<span class="simpara">конец подмаски</span></dd>
+
+    </dt>
+
+    <dt>
+
+     <span class="term"><em class="emphasis">?</em></span>
+     <dd>
+
+      <span class="simpara">
+       расширяет смысл метасимвола (, является также квантификатором, означающим отсутствие либо ровно 1 вхождение,
+       также преобразует жадные квантификаторы в ленивые (смотрите <a href="regexp.reference.repetition.html" class="link">повторение</a>)
+      </span>
+     </dd>
+
+    </dt>
+
+    <dt>
+
+     <span class="term"><em class="emphasis">*</em></span>
+     <dd>
+<span class="simpara">квантификатор, означающий 0 или более вхождений</span></dd>
+
+    </dt>
+
+    <dt>
+
+     <span class="term"><em class="emphasis">+</em></span>
+     <dd>
+<span class="simpara">квантификатор, означающий 1 или более вхождений</span></dd>
+
+    </dt>
+
+    <dt>
+
+     <span class="term"><em class="emphasis">{</em></span>
+     <dd>
+<span class="simpara">начало количественного квантификатора</span></dd>
+
+    </dt>
+
+    <dt>
+
+     <span class="term"><em class="emphasis">}</em></span>
+     <dd>
+<span class="simpara">конец количественного квантификатора</span></dd>
+
+    </dt>
+
+   </dl>
+
+
+    Часть шаблона, заключенная в квадратные скобки, называется &quot;символьным классом&quot;.
+    Внутри символьных классов используются следующие метасимволы:
+
+   <dl>
+
+    <dt>
+
+     <span class="term"><em class="emphasis">\</em></span>
+     <dd>
+<span class="simpara">общий экранирующий символ</span></dd>
+
+    </dt>
+
+    <dt>
+
+     <span class="term"><em class="emphasis">^</em></span>
+     <dd>
+<span class="simpara">означает отрицание класса, допустим только в начале класса</span></dd>
+
+    </dt>
+
+    <dt>
+
+     <span class="term"><em class="emphasis">-</em></span>
+     <dd>
+<span class="simpara">означает символьный интервал</span></dd>
+
+    </dt>
+
+    <dt>
+
+     <span class="term"><em class="emphasis">]</em></span>
+     <dd>
+<span class="simpara">завершает символьный класс</span></dd>
+
+    </dt>
+
+   </dl>
+
+
+    Следующие разделы детально описывают каждый из перечисленных метасимволов.
+  </p>
+ </div><hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="regexp.reference.delimiters.html">Разделители</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="regexp.reference.escape.html">Экранирующие последовательности</a></div>
+ <div class="up"><a href="reference.pcre.pattern.syntax.html">Описание синтаксиса Perl-совместимых регулярных выражений</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

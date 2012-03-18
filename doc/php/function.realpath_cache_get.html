@@ -1,0 +1,96 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Получает записи из кэша реального пути</title>
+
+ </head>
+ <body><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.readlink.html">readlink</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.realpath_cache_size.html">realpath_cache_size</a></div>
+ <div class="up"><a href="ref.filesystem.html">Файловая система</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.realpath_cache_get" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">realpath_cache_get</h1>
+  <p class="verinfo">(PHP 5 &gt;= 5.3.2)</p><p class="refpurpose"><span class="refname">realpath_cache_get</span> &mdash; <span class="dc-title">Получает записи из кэша реального пути</span></p>
+
+ </div>
+ 
+ <div class="refsect1 description" id="refsect1-function.realpath_cache_get-description">
+  <h3 class="title">Описание</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">array</span> <span class="methodname"><b>realpath_cache_get</b></span>
+    ( <span class="methodparam">void</span>
+   )</div>
+
+  <p class="para rdfs-comment">
+   Получает содержимое кэша реального пути.
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-function.realpath_cache_get-returnvalues">
+  <h3 class="title">Возвращаемые значения</h3>
+  <p class="para">
+   Возвращает массив записей из кэша реального пути. Ключи являются
+   записями реального пути, а значения являются массивами данных,
+   содержащих вычисленный путь, время жизни кэша и других данных,
+   хранящихся в кэше.
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-function.realpath_cache_get-examples">
+  <h3 class="title">Примеры</h3>
+  <p class="para">
+   <div class="example" id="example-2172">
+    <p><b>Пример #1 Пример использования <span class="function"><b>realpath_cache_get()</b></span></b></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">realpath_cache_get</span><span style="color: #007700">());<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+    <div class="example-contents"><p>Результатом выполнения данного примера
+будет что-то подобное:</p></div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+array(2) {
+  [&quot;/test&quot;] =&gt; array(4) {
+    [&quot;key&quot;] =&gt; int(123456789)
+    [&quot;is_dir&quot;] =&gt; bool(true)
+    [&quot;realpath&quot;] =&gt; string(5) &quot;/test&quot;
+    [&quot;expires&quot;] =&gt; int(1260318939)
+  }
+  [&quot;/test/test.php&quot;] =&gt; array(4) {
+    [&quot;key&quot;] =&gt; int(987654321)
+    [&quot;is_dir&quot;] =&gt; bool(false)
+    [&quot;realpath&quot;] =&gt; string(12) &quot;/root/test.php&quot;
+    [&quot;expires&quot;] =&gt; int(1260318939)
+  }
+}
+</pre></div>
+    </div>
+   </div>
+  </p>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-function.realpath_cache_get-seealso">
+  <h3 class="title">Смотрите также</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><span class="function"><a href="function.realpath_cache_size.html" class="function" rel="rdfs-seeAlso">realpath_cache_size()</a> - Получает размер кэша реального пути</span></li>
+   </ul>
+  </p>
+ </div>
+
+
+</div><hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.readlink.html">readlink</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.realpath_cache_size.html">realpath_cache_size</a></div>
+ <div class="up"><a href="ref.filesystem.html">Файловая система</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

@@ -1,0 +1,155 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Псевдо-типы и переменные, используемые в этой документации</title>
+
+ </head>
+ <body><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="language.types.null.html">NULL</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="language.types.type-juggling.html">Манипуляции с типами</a></div>
+ <div class="up"><a href="language.types.html">Типы</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="language.pseudo-types" class="sect1">
+ <h2 class="title">Псевдо-типы и переменные, используемые в этой документации</h2>
+
+ <div class="sect2" id="language.types.mixed">
+  <h3 class="title">mixed</h3>
+
+  <p class="para">
+   <i>mixed</i> говорит о том, что параметр может принимать много
+   (но необязательно все) типов.
+  </p>
+
+  <p class="para">
+   <span class="function"><a href="function.gettype.html" class="function">gettype()</a></span> например, принимает все типы PHP, тогда как
+   <span class="function"><a href="function.str-replace.html" class="function">str_replace()</a></span> принимает только <span class="type"><a href="language.types.string.html" class="type string">string</a></span> и
+   <span class="type"><a href="language.types.array.html" class="type array">array</a></span>.
+  </p>
+
+ </div>
+
+ <div class="sect2" id="language.types.number">
+  <h3 class="title">number</h3>
+
+  <p class="para">
+   <i>number</i> говорит о том, что параметр может быть либо
+   <span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>, либо <span class="type"><a href="language.types.float.html" class="type float">float</a></span>.
+  </p>
+
+ </div>
+
+ <div class="sect2" id="language.types.callback">
+  <h3 class="title">callback</h3>
+
+  <p class="para">
+   Некоторые функции, такие как <span class="function"><a href="function.call-user-func.html" class="function">call_user_func()</a></span> или
+   <span class="function"><a href="function.usort.html" class="function">usort()</a></span> принимают в качестве параметра определенные пользователем
+   callback-функции. Callback-функции могут быть не только простыми функциями, но также и
+   методами объектов, включая статические методы классов.
+  </p>
+
+  <p class="para">
+   PHP-функция передается просто как строка ее имени. Можно использовать любую
+   встроенную или пользовательскую функцию, кроме языковых конструкций, таких как:
+   <span class="function"><a href="function.array.html" class="function">array()</a></span>, <span class="function"><a href="function.echo.html" class="function">echo()</a></span>,
+   <span class="function"><a href="function.empty.html" class="function">empty()</a></span>, <span class="function"><a href="function.eval.html" class="function">eval()</a></span>, 
+   <span class="function"><a href="function.exit.html" class="function">exit()</a></span>, <span class="function"><a href="function.isset.html" class="function">isset()</a></span>, 
+   <span class="function"><a href="function.list.html" class="function">list()</a></span>, <span class="function"><a href="function.print.html" class="function">print()</a></span> и
+   <span class="function"><a href="function.unset.html" class="function">unset()</a></span>.
+  </p>
+
+  <p class="para">
+   Метод созданного объекта передается как массив, содержащий сам объект в элементе
+   с индексом 0 и имя метода в элементе с индексом 1.
+  </p>
+
+  <p class="para">
+   Статические методы классов также могут быть переданы без создания экземпляра объекта
+   данного класса путем передачи имени класса вместо имени объекта в элементе с индексом 0.
+  </p>
+
+  <p class="para">
+   Кроме общих пользовательских функций, <span class="function"><a href="function.create-function.html" class="function">create_function()</a></span>
+   также может быть использована для создания анонимной callback-функции.
+   Начиная с версии PHP 5.3.0 стала возможным также передача
+   <a href="functions.anonymous.html" class="link">замыканий</a> в callback-параметр.
+  </p>
+
+  <p class="para">
+   <div class="example" id="example-86">
+    <p><b>Пример #1 
+      Примеры callback-функций
+    </b></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php&nbsp;<br /><br /></span><span style="color: #FF8000">//&nbsp;пример&nbsp;callback-функции<br /></span><span style="color: #007700">function&nbsp;</span><span style="color: #0000BB">my_callback_function</span><span style="color: #007700">()&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">'hello&nbsp;world!'</span><span style="color: #007700">;<br />}<br /><br /></span><span style="color: #FF8000">//&nbsp;пример&nbsp;callback-метода<br /></span><span style="color: #007700">class&nbsp;</span><span style="color: #0000BB">MyClass&nbsp;</span><span style="color: #007700">{<br />&nbsp;&nbsp;&nbsp;&nbsp;static&nbsp;function&nbsp;</span><span style="color: #0000BB">myCallbackMethod</span><span style="color: #007700">()&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">'Hello&nbsp;World!'</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />}<br /><br /></span><span style="color: #FF8000">//&nbsp;Вариант&nbsp;1:&nbsp;простой&nbsp;вызов&nbsp;callback<br /></span><span style="color: #0000BB">call_user_func</span><span style="color: #007700">(</span><span style="color: #DD0000">'my_callback_function'</span><span style="color: #007700">);&nbsp;<br /><br /></span><span style="color: #FF8000">//&nbsp;Вариант&nbsp;2:&nbsp;вызов&nbsp;статического&nbsp;метода&nbsp;класса<br /></span><span style="color: #0000BB">call_user_func</span><span style="color: #007700">(array(</span><span style="color: #DD0000">'MyClass'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'myCallbackMethod'</span><span style="color: #007700">));&nbsp;<br /><br /></span><span style="color: #FF8000">//&nbsp;Вариант&nbsp;3:&nbsp;вызов&nbsp;метода&nbsp;объекта<br /></span><span style="color: #0000BB">$obj&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">MyClass</span><span style="color: #007700">();<br /></span><span style="color: #0000BB">call_user_func</span><span style="color: #007700">(array(</span><span style="color: #0000BB">$obj</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'myCallbackMethod'</span><span style="color: #007700">));<br /><br /></span><span style="color: #FF8000">//&nbsp;Вариант&nbsp;4:&nbsp;вызов&nbsp;статического&nbsp;метода&nbsp;класса&nbsp;(с&nbsp;версии&nbsp;PHP&nbsp;5.2.3)<br /></span><span style="color: #0000BB">call_user_func</span><span style="color: #007700">(</span><span style="color: #DD0000">'MyClass::myCallbackMethod'</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;Вариант&nbsp;5:&nbsp;вызов&nbsp;относительного&nbsp;статического&nbsp;метода&nbsp;класса&nbsp;(с&nbsp;версии&nbsp;PHP&nbsp;5.3.0)<br /></span><span style="color: #007700">class&nbsp;</span><span style="color: #0000BB">A&nbsp;</span><span style="color: #007700">{<br />&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;static&nbsp;function&nbsp;</span><span style="color: #0000BB">who</span><span style="color: #007700">()&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"A\n"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />}<br /><br />class&nbsp;</span><span style="color: #0000BB">B&nbsp;</span><span style="color: #007700">extends&nbsp;</span><span style="color: #0000BB">A&nbsp;</span><span style="color: #007700">{<br />&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;static&nbsp;function&nbsp;</span><span style="color: #0000BB">who</span><span style="color: #007700">()&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"B\n"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />}<br /><br /></span><span style="color: #0000BB">call_user_func</span><span style="color: #007700">(array(</span><span style="color: #DD0000">'B'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'parent::who'</span><span style="color: #007700">));&nbsp;</span><span style="color: #FF8000">//&nbsp;A<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+  </p>
+  <p class="para">
+   <div class="example" id="example-87">
+    <p><b>Пример #2 
+     Пример callback-вызова с использованием замыканий
+    </b></p>
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">//&nbsp;наше&nbsp;замыкание<br /></span><span style="color: #0000BB">$double&nbsp;</span><span style="color: #007700">=&nbsp;function(</span><span style="color: #0000BB">$a</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">$a&nbsp;</span><span style="color: #007700">*&nbsp;</span><span style="color: #0000BB">2</span><span style="color: #007700">;<br />};<br /><br /></span><span style="color: #FF8000">//&nbsp;это&nbsp;наш&nbsp;диапазон&nbsp;чисел<br /></span><span style="color: #0000BB">$numbers&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">range</span><span style="color: #007700">(</span><span style="color: #0000BB">1</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">5</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;Используем&nbsp;здесь&nbsp;замыкание&nbsp;в&nbsp;качестве&nbsp;callback-функции<br />//&nbsp;для&nbsp;удвоения&nbsp;размера&nbsp;каждого&nbsp;элемента&nbsp;в&nbsp;диапазоне<br /></span><span style="color: #0000BB">$new_numbers&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">array_map</span><span style="color: #007700">(</span><span style="color: #0000BB">$double</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$numbers</span><span style="color: #007700">);<br /><br />print&nbsp;</span><span style="color: #0000BB">implode</span><span style="color: #007700">(</span><span style="color: #DD0000">'&nbsp;'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$new_numbers</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+    <div class="example-contents"><p>Результат выполнения данного примера:</p></div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+2 4 6 8 10
+</pre></div>
+    </div>
+   </div>
+  </p>
+
+  <blockquote class="note"><p><b class="note">Замечание</b>: 
+   <span class="simpara">
+    В PHP 4 было необходимо использовать ссылку при создании callback-функции для того,
+    чтобы она указывала на реальный объект, а не на его копию.
+    За подробностями обращайтесь к разделу
+    <a href="language.references.html" class="link">Объяснение ссылок</a>.
+   </span>
+  </p></blockquote>
+
+  <blockquote class="note"><p><b class="note">Замечание</b>: <p class="para">Callback-функции,
+зарегистрированные такими функциями как <span class="function"><a href="function.call-user-func.html" class="function">call_user_func()</a></span> и <span class="function"><a href="function.call-user-func-array.html" class="function">call_user_func_array()</a></span>,
+не будут вызваны при наличии не пойманного исключения, брошенного в предыдущей callback-функции.</p></p></blockquote>
+
+ </div>
+ 
+ <div class="sect2" id="language.types.void">
+  <h3 class="title">void</h3>
+
+  <p class="para">
+   <i>void</i> в качестве типа результата означает, что возвращенное
+   значение бесполезно. <i>void</i> в списке параметров означает, что
+   функция не принимает параметров.
+  </p>
+
+ </div>
+
+ <div class="sect2" id="language.types.dotdotdot">
+  <h3 class="title">...</h3>
+
+  <p class="para">
+   <i><tt class="parameter">$...</tt></i> в прототипах функции означает
+   <i>and so on</i> (и так далее). Это имя переменной используется когда
+   функция может принимать бесконечное количество параметров.
+  </p>
+
+ </div>
+</div><hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="language.types.null.html">NULL</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="language.types.type-juggling.html">Манипуляции с типами</a></div>
+ <div class="up"><a href="language.types.html">Типы</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

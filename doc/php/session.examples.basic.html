@@ -1,0 +1,144 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Basic usage</title>
+
+ </head>
+ <body><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="session.examples.html">Примеры</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="session.idpassing.html">Передача идентификатора сессии</a></div>
+ <div class="up"><a href="session.examples.html">Примеры</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="session.examples.basic" class="section">
+  <h2 class="title">Basic usage</h2>
+  <blockquote class="note"><p><b class="note">Замечание</b>: 
+   <p class="para">
+    По состоянию на PHP 4.1.0, <var class="varname"><var class="varname"><a href="reserved.variables.session.html" class="classname">$_SESSION</a></var></var> доступна в качестве 
+    глобальной переменной так же, как доступны <var class="varname"><var class="varname"><a href="reserved.variables.post.html" class="classname">$_POST</a></var></var>,
+    <var class="varname"><var class="varname"><a href="reserved.variables.get.html" class="classname">$_GET</a></var></var>, <var class="varname"><var class="varname"><a href="reserved.variables.request.html" class="classname">$_REQUEST</a></var></var> и прочие.
+    В отличие от <var class="varname"><var class="varname">$HTTP_SESSION_VARS</var></var> переменная
+    <var class="varname"><var class="varname"><a href="reserved.variables.session.html" class="classname">$_SESSION</a></var></var> всегда глобальна. Таким образом, нет 
+    необходимости в использовании ключевого слова <a href="language.variables.scope.html" class="link"><strong class="command">global</strong></a>
+    для <var class="varname"><var class="varname"><a href="reserved.variables.session.html" class="classname">$_SESSION</a></var></var>. Обратите внимание, данная документация
+    была изменена для повсеместного использования <var class="varname"><var class="varname"><a href="reserved.variables.session.html" class="classname">$_SESSION</a></var></var>.
+    Если вы предпочитаете старый стиль, можете использовать также
+    <var class="varname"><var class="varname">$HTTP_SESSION_VARS</var></var> вместо <var class="varname"><var class="varname"><a href="reserved.variables.session.html" class="classname">$_SESSION</a></var></var>. Следует также отметить, что для
+    доступа к <var class="varname"><var class="varname"><a href="reserved.variables.session.html" class="classname">$_SESSION</a></var></var> необходимо предварительно выполнить
+    <span class="function"><a href="function.session-start.html" class="function">session_start()</a></span>.
+   </p>
+   <p class="para">
+    Имена ключей ассоциативного массива <var class="varname"><var class="varname"><a href="reserved.variables.session.html" class="classname">$_SESSION</a></var></var>
+    подчиняются тем же ограничениям, что и обычные имена переменных PHP.
+    Например, они не могут начинаться с цифры и должны начинаться с буквы 
+    или знака нижнего подчеркивания.
+    Для дополнительных деталей смотрите раздел о
+    <a href="language.variables.html" class="link">переменных</a> данного руководства.
+   </p>
+  </p></blockquote>
+
+  <p class="para">
+   Если <a href="ini.core.html#ini.register-globals" class="link">register_globals</a>
+   выключена, только члены глобального ассоциативного массива
+   <var class="varname"><var class="varname"><a href="reserved.variables.session.html" class="classname">$_SESSION</a></var></var> могут быть зарегистрированы в качестве 
+   сессионной переменной. Переменные восстановленной сессии могут быть доступны
+   только в массиве <var class="varname"><var class="varname"><a href="reserved.variables.session.html" class="classname">$_SESSION</a></var></var>.
+  </p>
+  <p class="para">
+   Использование <var class="varname"><var class="varname"><a href="reserved.variables.session.html" class="classname">$_SESSION</a></var></var> (или
+   <var class="varname"><var class="varname">$HTTP_SESSION_VARS</var></var> в PHP 4.0.6 и младше) рекомендуется 
+   для увеличения безопасности и повышения читаемости кода.
+   При использовании <var class="varname"><var class="varname"><a href="reserved.variables.session.html" class="classname">$_SESSION</a></var></var> нет необходимости в 
+   использовании функций <span class="function"><a href="function.session-register.html" class="function">session_register()</a></span>,
+   <span class="function"><a href="function.session-unregister.html" class="function">session_unregister()</a></span> и
+   <span class="function"><a href="function.session-is-registered.html" class="function">session_is_registered()</a></span>. Сессионные переменные 
+   доступны как и все прочие переменные.
+   <div class="example" id="example-4271">
+    <p><b>Пример #1 
+     Регистрация переменную с помощью <var class="varname"><var class="varname"><a href="reserved.variables.session.html" class="classname">$_SESSION</a></var></var>.
+    </b></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />session_start</span><span style="color: #007700">();<br /></span><span style="color: #FF8000">//&nbsp;Используем&nbsp;$HTTP_SESSION_VARS&nbsp;в&nbsp;PHP&nbsp;4.0.6&nbsp;или&nbsp;более&nbsp;ранних<br /></span><span style="color: #007700">if&nbsp;(!isset(</span><span style="color: #0000BB">$_SESSION</span><span style="color: #007700">[</span><span style="color: #DD0000">'count'</span><span style="color: #007700">]))&nbsp;{<br />&nbsp;&nbsp;</span><span style="color: #0000BB">$_SESSION</span><span style="color: #007700">[</span><span style="color: #DD0000">'count'</span><span style="color: #007700">]&nbsp;=&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">;<br />}&nbsp;else&nbsp;{<br />&nbsp;&nbsp;</span><span style="color: #0000BB">$_SESSION</span><span style="color: #007700">[</span><span style="color: #DD0000">'count'</span><span style="color: #007700">]++;<br />}<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+   <div class="example" id="example-4272">
+    <p><b>Пример #2 
+     Дерегистрация переменной с помощью <var class="varname"><var class="varname"><a href="reserved.variables.session.html" class="classname">$_SESSION</a></var></var> 
+     при выключенной
+     <a href="ini.core.html#ini.register-globals" class="link">register_globals</a>.
+    </b></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />session_start</span><span style="color: #007700">();<br /></span><span style="color: #FF8000">//&nbsp;Используем&nbsp;$HTTP_SESSION_VARS&nbsp;в&nbsp;PHP&nbsp;4.0.6&nbsp;или&nbsp;более&nbsp;ранних<br /></span><span style="color: #007700">unset(</span><span style="color: #0000BB">$_SESSION</span><span style="color: #007700">[</span><span style="color: #DD0000">'count'</span><span style="color: #007700">]);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+  </p>
+  <p class="para">
+   <div class="caution"><b class="caution">Предостережение</b>
+    <p class="para">
+     НЕ ОЧИЩАЙТЕ <var class="varname"><var class="varname"><a href="reserved.variables.session.html" class="classname">$_SESSION</a></var></var> целиком, испольуя      
+     <i>unset($_SESSION)</i>, так как это отключит возможность 
+     регистрации сессионных переменных через суперглобальную переменную
+     <var class="varname"><var class="varname"><a href="reserved.variables.session.html" class="classname">$_SESSION</a></var></var>.
+    </p>
+   </div>
+  </p>
+  <div class="warning"><b class="warning">Внимание</b>
+   <p class="para">
+    Вы не можете использовать ссылки в сессионных переменных, так как не 
+    существует реального способа восстановления ссылки к другой переменной.
+   </p>
+  </div>
+  <p class="para">
+   Если <a href="ini.core.html#ini.register-globals" class="link">register_globals</a>
+   включена, то любая глобальная переменная может быть зарегистрирована в 
+   качестве сессионной. При перезапуске сессии эти переменные будут 
+   восстановлены в соответствующие им глобальные переменные.
+   Ввиду того, что PHP должен знать, какие именно глобальные переменные 
+   зарегистрированы в качестве сессионных,
+   пользователям следует регистрировать переменные с использованием функции
+   <span class="function"><a href="function.session-register.html" class="function">session_register()</a></span>. Этого можно избежать при использовании
+   только  <var class="varname"><var class="varname"><a href="reserved.variables.session.html" class="classname">$_SESSION</a></var></var>.
+   <div class="caution"><b class="caution">Предостережение</b>
+    <p class="para">
+     В версии PHP 4.3.0 и более ранних при использовании <var class="varname"><var class="varname"><a href="reserved.variables.session.html" class="classname">$_SESSION</a></var></var> 
+     и выключенной
+     <a href="ini.core.html#ini.register-globals" class="link">register_globals</a>,
+     не пользуйтесь <span class="function"><a href="function.session-register.html" class="function">session_register()</a></span>,
+     <span class="function"><a href="function.session-is-registered.html" class="function">session_is_registered()</a></span> или
+     <span class="function"><a href="function.session-unregister.html" class="function">session_unregister()</a></span>.
+      Рекомендуется выключить <a href="ini.core.html#ini.register-globals" class="link">register_globals</a>
+      с точки зрения безопасности и производительности.
+    </p>
+   </div>
+  </p>
+  <p class="para">
+   Если <a href="ini.core.html#ini.register-globals" class="link">register_globals</a>
+   включена, то глобальные переменные и записи в
+   <var class="varname"><var class="varname"><a href="reserved.variables.session.html" class="classname">$_SESSION</a></var></var> будут автоматически ссылаться на одни и те же значения,
+   которые были зарегистрированы в предыдущем экземпляре сессии.
+   Тем не менее, если переменная зарегистрирована в <var class="varname"><var class="varname"><a href="reserved.variables.session.html" class="classname">$_SESSION</a></var></var>, то 
+   глобальная переменная будет доступна начиная со следующего запроса.
+  </p>
+  <p class="para">
+   В версии PHP 4.2.3 и более ранних присутствует дефект. Если зарегистрировать новую
+   сессионную переменную, используя <span class="function"><a href="function.session-register.html" class="function">session_register()</a></span>, то 
+   переменная в глобальной области и запись в <var class="varname"><var class="varname"><a href="reserved.variables.session.html" class="classname">$_SESSION</a></var></var> 
+   не будут ссылаться на одно и то же значение до тех пор, пока не будет 
+   выполнен следующий <span class="function"><a href="function.session-start.html" class="function">session_start()</a></span>. Это значит, что 
+   изменение вновь зарегистрированной глобальной переменной не будет отражено
+   в <var class="varname"><var class="varname"><a href="reserved.variables.session.html" class="classname">$_SESSION</a></var></var>. Это поведение было исправлено в PHP 4.3.0.
+  </p>
+ </div><hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="session.examples.html">Примеры</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="session.idpassing.html">Передача идентификатора сессии</a></div>
+ <div class="up"><a href="session.examples.html">Примеры</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

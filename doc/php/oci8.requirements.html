@@ -1,0 +1,63 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Требования</title>
+
+ </head>
+ <body><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="oci8.setup.html">Установка и настройка</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="oci8.installation.html">Установка</a></div>
+ <div class="up"><a href="oci8.setup.html">Установка и настройка</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="oci8.requirements" class="section">
+  <h2 class="title">Требования</h2>
+  <p class="para">
+   Расширению OCI8 требуются клиентские библиотеки
+   Oracle 9iR2, 10g или 11g. Если база данных Oracle установлена на одной
+   машине с PHP, то база данных уже содержит все необходимые библиотеки
+   для установки. Если PHP находится на другой машине, используйте
+   библиотеки 
+   <a href="http://www.oracle.com/technetwork/database/features/instant-client/index-100365.html" class="link external">&raquo;&nbsp;Oracle Instant Client</a>.
+  </p>
+  <p class="para">
+   Для использования Oracle Instant Client, установите 
+   <i>basic</i> или <i>basiclite</i> zip-архив
+   Oracle Instant Client или RPM-пакет. При сборке PHP из исходного кода,
+   также установите zip-архив <i>sdk</i> или
+   <i>devel</i> RPM-пакет.
+  </p>
+  <p class="para">
+   В Windows, DLL-библиотеке php_oci8 необходимы библиотеки из версии
+   10gR2 или выше. В версиях PHP от 5.3 и до 5.3.5 включительно,
+   DLL-библиотеке необходимы клиентские библиотеки версии
+   Oracle 11gR1 и выше. Начиная с версии PHP 5.3.6 DLL-библиотеке
+   php_oci8_11g требуются клиентские библиотеки версии Oracle 11gR2 и
+   выше. В некоторых версиях Instant Client вам также могут дополнительно
+   потребоваться библиотеки <var class="filename">mfc71.dll</var> и
+   <var class="filename">msvcr71.dll</var>.
+  </p>
+  <p class="para">
+   Необходимо использовать PHP с теми же или более свежими версиями
+   библиотек Oracle, чем те, с которыми было собрано расширение OCI8.
+  </p>
+  <blockquote class="note"><p><b class="note">Замечание</b>: 
+   <p class="para">
+    Если OCI8 использует клиентские библиотеки 9iR2 или 10g, то PHP сможет
+    соединиться с базой данных Oracle 8i, 9iR2, 10g или 11g. Если OCI8
+    использует клиентские библиотеки 11g, то база данных может иметь версии
+    9iR2, 10g и 11g.
+   </p>
+  </p></blockquote>
+  <blockquote class="note"><p><b class="note">Замечание</b>: 
+   <p class="para">
+    Полный набор возможностей OCI8 возможен только при использовании
+    новейших версий клиентских библиотек и базы данных.
+   </p>
+  </p></blockquote>
+ </div><hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="oci8.setup.html">Установка и настройка</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="oci8.installation.html">Установка</a></div>
+ <div class="up"><a href="oci8.setup.html">Установка и настройка</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

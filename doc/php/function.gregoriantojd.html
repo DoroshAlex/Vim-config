@@ -1,0 +1,140 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Преобразует дату по Григорианскому календарю в количество дней в 
+   Юлианском летоисчислении</title>
+
+ </head>
+ <body><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.frenchtojd.html">FrenchToJD</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.jddayofweek.html">JDDayOfWeek</a></div>
+ <div class="up"><a href="ref.calendar.html">Календарь</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.gregoriantojd" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">GregorianToJD</h1> 
+  <p class="verinfo">(PHP 4, PHP 5)</p><p class="refpurpose"><span class="refname">GregorianToJD</span> &mdash; <span class="dc-title">
+   Преобразует дату по Григорианскому календарю в количество дней в 
+   Юлианском летоисчислении
+  </span></p>
+
+ </div>
+
+ <div class="refsect1 description" id="refsect1-function.gregoriantojd-description">
+  <h3 class="title">Описание</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">int</span> <span class="methodname"><b>gregoriantojd</b></span>
+    ( <span class="methodparam"><span class="type">int</span> <tt class="parameter">$month</tt></span>
+   , <span class="methodparam"><span class="type">int</span> <tt class="parameter">$day</tt></span>
+   , <span class="methodparam"><span class="type">int</span> <tt class="parameter">$year</tt></span>
+   )</div>
+
+  <p class="para rdfs-comment">
+   Разрешенный диапазон дат для Григорианского календаря с 4714 года до 
+   н.э. по 9999 год н.э.
+  </p>
+  <p class="para">
+   Несмотря на возможность обработки дат вплоть до 4714 года до н.э., 
+   такое использование имеет мало смысла. Григорианский календарь не 
+   существовал до 15 октября 1582 года (или 5 октября 1582 в Юлианском 
+   календаре). Некоторые страны не переходили на этот календарь очень 
+   долгое время. Например, Великобритания совершила переход в 1752 году, 
+   СССР в 1918г., Греция в 1923г. Большинство стран Европы предпочитали  
+   Юлианский календарь Григорианскому.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-function.gregoriantojd-parameters">
+  <h3 class="title">Список параметров</h3>
+  <p class="para">
+   <dl>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">month</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Месяц в виде числа от 1 (январь) до 12 (декабрь)
+      </p>
+     </dd>
+
+    </dt>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">day</tt></i></span>
+     <dd>
+
+      <p class="para">
+       День в виде числа от 1 до 31
+      </p>
+     </dd>
+
+    </dt>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">year</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Года в виде числа от -4714 до 9999
+      </p>
+     </dd>
+
+    </dt>
+  
+   </dl>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-function.gregoriantojd-returnvalues">
+  <h3 class="title">Возвращаемые значения</h3>
+  <p class="para">
+   Число дней (integer) в Юлианском летоисчислении для даты по Григорианскому 
+   календарю.
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-function.gregoriantojd-examples">
+  <h3 class="title">Примеры</h3>
+  <p class="para">
+   <div class="example" id="example-596">
+    <p><b>Пример #1 
+     Календарные функции
+    </b></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$jd&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">GregorianToJD</span><span style="color: #007700">(</span><span style="color: #0000BB">10</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">11</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">1970</span><span style="color: #007700">);<br />echo&nbsp;</span><span style="color: #DD0000">"</span><span style="color: #0000BB">$jd</span><span style="color: #DD0000">\n"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$gregorian&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">JDToGregorian</span><span style="color: #007700">(</span><span style="color: #0000BB">$jd</span><span style="color: #007700">);<br />echo&nbsp;</span><span style="color: #DD0000">"</span><span style="color: #0000BB">$gregorian</span><span style="color: #DD0000">\n"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+  </p>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-function.gregoriantojd-seealso">
+  <h3 class="title">Смотрите также</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><span class="function"><a href="function.jdtogregorian.html" class="function" rel="rdfs-seeAlso">jdtogregorian()</a> - Переводит число дней в Юлианском летоисчислении в дату по 
+   Григорианскому календарю</span></li> 
+    <li class="member"><span class="function"><a href="function.cal-to-jd.html" class="function" rel="rdfs-seeAlso">cal_to_jd()</a> - Преобразует заданную дату в Юлианское исчисление</span></li>
+   </ul>
+  </p>
+ </div>
+
+</div><hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.frenchtojd.html">FrenchToJD</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.jddayofweek.html">JDDayOfWeek</a></div>
+ <div class="up"><a href="ref.calendar.html">Календарь</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

@@ -1,0 +1,92 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Привязать к LDAP директории, используя SASL</title>
+
+ </head>
+ <body><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.ldap-rename.html">ldap_rename</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.ldap-search.html">ldap_search</a></div>
+ <div class="up"><a href="ref.ldap.html">LDAP</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.ldap-sasl-bind" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">ldap_sasl_bind</h1>
+  <p class="verinfo">(PHP 5)</p><p class="refpurpose"><span class="refname">ldap_sasl_bind</span> &mdash; <span class="dc-title">Привязать к LDAP директории, используя SASL</span></p>
+
+ </div>
+ 
+ <div class="refsect1 description" id="refsect1-function.ldap-sasl-bind-description">
+  <h3 class="title">Описание</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">bool</span> <span class="methodname"><b>ldap_sasl_bind</b></span>
+    ( <span class="methodparam"><span class="type">resource</span> <tt class="parameter">$link</tt></span>
+   [, <span class="methodparam"><span class="type">string</span> <tt class="parameter">$binddn</tt><span class="initializer"> = <b><tt>NULL</tt></b></span></span>
+   [, <span class="methodparam"><span class="type">string</span> <tt class="parameter">$password</tt><span class="initializer"> = <b><tt>NULL</tt></b></span></span>
+   [, <span class="methodparam"><span class="type">string</span> <tt class="parameter">$sasl_mech</tt><span class="initializer"> = <b><tt>NULL</tt></b></span></span>
+   [, <span class="methodparam"><span class="type">string</span> <tt class="parameter">$sasl_realm</tt><span class="initializer"> = <b><tt>NULL</tt></b></span></span>
+   [, <span class="methodparam"><span class="type">string</span> <tt class="parameter">$sasl_authc_id</tt><span class="initializer"> = <b><tt>NULL</tt></b></span></span>
+   [, <span class="methodparam"><span class="type">string</span> <tt class="parameter">$sasl_authz_id</tt><span class="initializer"> = <b><tt>NULL</tt></b></span></span>
+   [, <span class="methodparam"><span class="type">string</span> <tt class="parameter">$props</tt><span class="initializer"> = <b><tt>NULL</tt></b></span></span>
+  ]]]]]]] )</div>
+
+  <div class="warning"><b class="warning">Внимание</b><p class="simpara">К настоящему
+времени эта функция еще не была документирована; для ознакомления доступен только список аргументов.</p></div>
+ </div>
+
+ 
+ <div class="refsect1 returnvalues" id="refsect1-function.ldap-sasl-bind-returnvalues">
+  <h3 class="title">Возвращаемые значения</h3>
+  <p class="para">
+   Возвращает <b><tt>TRUE</tt></b> в случае успешного завершения  или <b><tt>FALSE</tt></b> в случае возникновения ошибки.
+  </p>
+ </div>
+
+
+ <div class="refsect1 notes" id="refsect1-function.ldap-sasl-bind-notes">
+  <h3 class="title">Примечания</h3>
+  <blockquote class="note"><p><b class="note">Замечание</b>: 
+   <b>Требование</b><br />
+   <span class="simpara">
+    <span class="function"><b>ldap_sasl_bind()</b></span> требует <acronym title="Simple Authentication and Security Layer">SASL</acronym> поддержки (<var class="filename">sasl.h</var>). 
+    Проверьте, что вы использовали <i>--with-ldap-sasl</i> при конфигурировании PHP,
+    в противном случае эта функция будет неопределена.
+   </span>
+  </p></blockquote>
+ </div>
+
+<div class="refsect1 changelog" id="refsect1-function.ldap-sasl-bind-changelog">
+  <h3 class="title">Список изменений</h3>
+  <p class="para">
+   <table class="doctable informaltable">
+    
+     <thead valign="middle">
+      <tr valign="middle">
+       <th>Версия</th>
+       <th>Описание</th>
+      </tr>
+
+     </thead>
+
+     <tbody valign="middle" class="tbody">
+      <tr valign="middle">
+       <td align="left">5.3.3</td>
+       <td align="left">
+        Добавлена поддержка в Windows.
+       </td>
+      </tr>
+
+     </tbody>
+    
+   </table>
+
+  </p>
+ </div>
+
+</div><hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.ldap-rename.html">ldap_rename</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.ldap-search.html">ldap_search</a></div>
+ <div class="up"><a href="ref.ldap.html">LDAP</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

@@ -1,0 +1,163 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Исполняет внешнюю программу</title>
+
+ </head>
+ <body><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.escapeshellcmd.html">escapeshellcmd</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.passthru.html">passthru</a></div>
+ <div class="up"><a href="ref.exec.html">Функции запуска программ</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.exec" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">exec</h1>
+  <p class="verinfo">(PHP 4, PHP 5)</p><p class="refpurpose"><span class="refname">exec</span> &mdash; <span class="dc-title">Исполняет внешнюю программу</span></p>
+
+ </div>
+
+ <div class="refsect1 description" id="refsect1-function.exec-description">
+  <h3 class="title">Описание</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">string</span> <span class="methodname"><b>exec</b></span>
+    ( <span class="methodparam"><span class="type">string</span> <tt class="parameter">$command</tt></span>
+   [, <span class="methodparam"><span class="type">array</span> <tt class="parameter reference">&$output</tt></span>
+   [, <span class="methodparam"><span class="type">int</span> <tt class="parameter reference">&$return_var</tt></span>
+  ]] )</div>
+
+  <p class="para rdfs-comment">
+   <span class="function"><b>exec()</b></span> исполняет команду
+   <i><tt class="parameter">command</tt></i>.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-function.exec-parameters">
+  <h3 class="title">Список параметров</h3>
+  <p class="para">
+   <dl>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">command</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Команда (имя программы с аргументами - прим.пер.), которая будет исполнена.
+      </p>
+     </dd>
+
+    </dt>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">output</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Если параметр <i><tt class="parameter">output</tt></i> указан, то 
+       массив будет заполнен строками вывода программы.
+       Завершающие пробелы, такие как <i>\n</i> (перевод строки - прим.пер.),
+       включены в массив не будут. Обратите внимание, что если массив уже содержит
+       какие-либо элементы перед вызовом функции <span class="function"><b>exec()</b></span>, то
+       вывод команды будет дописан в конец массива. Если
+       же вы не хотите дополнять предыдущее содержимое массива, следует вызвать
+       функцию <span class="function"><a href="function.unset.html" class="function">unset()</a></span> с именем массива в качестве аргумента 
+       перед его передачей в качестве аргумента функции <span class="function"><b>exec()</b></span>.
+      </p>
+     </dd>
+
+    </dt>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">return_var</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Если заданы оба параметра <i><tt class="parameter">return_var</tt></i> и
+       <i><tt class="parameter">output</tt></i>, то при выходе эта
+       переменная будет содержать статус завершения внешней программы.
+      </p>
+     </dd>
+
+    </dt>
+
+   </dl>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-function.exec-returnvalues">
+  <h3 class="title">Возвращаемые значения</h3>
+  <p class="para">
+   Последняя строка вывода при исполнении заданной команды. Если требуется
+   исполнить команду и получить все данные программы обратно без какой-либо
+   обработки, следует использовать функцию <span class="function"><a href="function.passthru.html" class="function">passthru()</a></span>.
+  </p>
+  <p class="para">
+   Для получения вывода исполняемой программы, убедитесть, что параметр
+   <i><tt class="parameter">output</tt></i> инициализирован и используется.
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-function.exec-examples">
+  <h3 class="title">Примеры</h3>
+  <p class="para">
+   <div class="example" id="example-3324">
+    <p><b>Пример #1 Пример функции <span class="function"><b>exec()</b></span></b></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">//&nbsp;выводит&nbsp;имя&nbsp;пользователя,&nbsp;от&nbsp;имени&nbsp;которого&nbsp;запущен&nbsp;процесс&nbsp;php/httpd<br />//&nbsp;(применимо&nbsp;к&nbsp;системам&nbsp;с&nbsp;командой&nbsp;"whoami"&nbsp;в&nbsp;системном&nbsp;пути)<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">exec</span><span style="color: #007700">(</span><span style="color: #DD0000">'whoami'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+  </p>
+ </div>
+
+
+ <div class="refsect1 notes" id="refsect1-function.exec-notes">
+  <h3 class="title">Примечания</h3>
+  <div class="warning"><b class="warning">Внимание</b><p class="para">Если вы собираетесь передавать функции
+пользовательские данные, используйте функции
+<span class="function"><a href="function.escapeshellarg.html" class="function">escapeshellarg()</a></span> или <span class="function"><a href="function.escapeshellcmd.html" class="function">escapeshellcmd()</a></span>
+для того, чтобы пользователи не смогли обмануть систему, запустив произвольную команду.</p></div>
+  <blockquote class="note"><p><b class="note">Замечание</b>: <p class="para">Если вы собираетесь использовать эту функцию
+в программе, работающей в качестве демона, убедитесь, что стандартный вывод
+функции направлен в файл или другой поток, в противном случае PHP зависнет вплоть
+до конца выполнения программы.</p></p></blockquote>
+  <blockquote class="note"><p><b class="note">Замечание</b>: <span class="simpara">В случае работы в
+<a href="features.safe-mode.html" class="link">безопасном режиме</a>, вы можете запускать что-либо только в пределах
+<a href="ini.sect.safe-mode.html#ini.safe-mode-exec-dir" class="link">safe_mode_exec_dir</a>.
+В настоящее время по практическим причинам запрещено использование <i>..</i> в качестве компонента пути
+к исполняемому файлу.</span></p></blockquote>
+  <div class="warning"><b class="warning">Внимание</b><p class="simpara">В случае работы в
+<a href="features.safe-mode.html" class="link">безопасном режиме</a>, строка с командой экранируется с помощью <span class="function"><a href="function.escapeshellcmd.html" class="function">escapeshellcmd()</a></span>.
+Таким образом <i>echo y | echo x</i> становится <i>echo y \| echo x</i>.</p></div>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-function.exec-seealso">
+  <h3 class="title">Смотрите также</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><span class="function"><a href="function.system.html" class="function" rel="rdfs-seeAlso">system()</a> - Выполняет внешнюю программу и отображает её вывод</span></li>
+    <li class="member"><span class="function"><a href="function.passthru.html" class="function" rel="rdfs-seeAlso">passthru()</a> - Выполняет внешнюю программу и отображает необработанный вывод</span></li>
+    <li class="member"><span class="function"><a href="function.escapeshellcmd.html" class="function" rel="rdfs-seeAlso">escapeshellcmd()</a> - Экранирует метасимволы командной строки</span></li>
+    <li class="member"><span class="function"><a href="function.pcntl-exec.html" class="function" rel="rdfs-seeAlso">pcntl_exec()</a> - Executes specified program in current process space</span></li>
+    <li class="member"><a href="language.operators.execution.html" class="link">backtick operator</a></li>
+   </ul>
+  </p>
+ </div>
+
+</div><hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.escapeshellcmd.html">escapeshellcmd</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.passthru.html">passthru</a></div>
+ <div class="up"><a href="ref.exec.html">Функции запуска программ</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

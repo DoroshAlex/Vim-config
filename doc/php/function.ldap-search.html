@@ -1,0 +1,292 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Поиск по LDAP дереву</title>
+
+ </head>
+ <body><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.ldap-sasl-bind.html">ldap_sasl_bind</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.ldap-set-option.html">ldap_set_option</a></div>
+ <div class="up"><a href="ref.ldap.html">LDAP</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.ldap-search" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">ldap_search</h1>
+  <p class="verinfo">(PHP 4, PHP 5)</p><p class="refpurpose"><span class="refname">ldap_search</span> &mdash; <span class="dc-title">Поиск по LDAP дереву</span></p>
+
+ </div>
+ 
+ <div class="refsect1 description" id="refsect1-function.ldap-search-description">
+  <h3 class="title">Описание</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">resource</span> <span class="methodname"><b>ldap_search</b></span>
+    ( <span class="methodparam"><span class="type">resource</span> <tt class="parameter">$link_identifier</tt></span>
+   , <span class="methodparam"><span class="type">string</span> <tt class="parameter">$base_dn</tt></span>
+   , <span class="methodparam"><span class="type">string</span> <tt class="parameter">$filter</tt></span>
+   [, <span class="methodparam"><span class="type">array</span> <tt class="parameter">$attributes</tt></span>
+   [, <span class="methodparam"><span class="type">int</span> <tt class="parameter">$attrsonly</tt></span>
+   [, <span class="methodparam"><span class="type">int</span> <tt class="parameter">$sizelimit</tt></span>
+   [, <span class="methodparam"><span class="type">int</span> <tt class="parameter">$timelimit</tt></span>
+   [, <span class="methodparam"><span class="type">int</span> <tt class="parameter">$deref</tt></span>
+  ]]]]] )</div>
+
+  <p class="para rdfs-comment">
+   Выполняет поиск для указанного фильтра в директории с границами
+   <b><tt>LDAP_SCOPE_SUBTREE</tt></b>. Эквивалентно поиску по всему каталогу.
+  </p>
+  <p class="para">
+   Начиная с 4.0.5 также возможно производить параллельный поиск. Чтобы это сделать
+   , необходимо использовать в качестве первого параметра массив идентификаторов
+   ссылок, а не единственный идентификатор. Если необходимости использовать то же
+   самое основное DN и тот же самый фильтр для всех поисков нет, то можно
+   использовать массив базовых DN и/или массив фильтров. Эти массивы должны иметь
+   такой же размер, как и массив идентификаторов ссылок, так как первые записи
+   массивов используются для одного поиска, вторые записи используются для
+   другого и так далее. При выполнении параллельного поиска возвращается массив
+   идентификаторов результатов поиска, кроме ошибочных случаев, тогда запись,
+   соответствующая поиску, будет равна <b><tt>FALSE</tt></b>. Это похоже на обычный поиск,
+   когда возвращается значение, за исключением того, что идентификатор
+   результата всегда возвращается после проведения поиска. Есть некоторые редкие
+   случаи, куда обычный поиск возвращает <b><tt>FALSE</tt></b>, в то время как параллельный
+   поиск возвращает идентификатор.
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 parameters" id="refsect1-function.ldap-search-parameters">
+  <h3 class="title">Список параметров</h3>
+  <p class="para">
+   <dl>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">link_identifier</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Идентификатор ссылки LDAP, возвращенный <span class="function"><a href="function.ldap-connect.html" class="function">ldap_connect()</a></span>.
+      </p>
+     </dd>
+
+    </dt>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">base_dn</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Базовое DN для каталога.
+      </p>
+     </dd>
+
+    </dt>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">filter</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Поисковый фильтр может быть простым или расширенным, используя булевы
+       операторы в формате, описанном в документации LDAP 
+       (см. <a href="http://www.mozilla.org/directory/csdk-docs/filter.htm" class="link external">&raquo;&nbsp;Netscape Directory SDK</a>
+       для полной информации о фильтрах).
+      </p>
+     </dd>
+
+    </dt>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">attributes</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Массив необходимых атрибутов, например, <i>array(&quot;mail&quot;, &quot;sn&quot;, &quot;cn&quot;)</i>.
+       Обратите внимание, что &quot;dn&quot; всегда возвращается, независимо от того, 
+       какие типы атрибутов требуются.       
+      </p>
+      <p class="para">
+       Использование этого параметра намного более эффективно, чем действие по умолчанию 
+       (которое должно возвратить все атрибуты и присвоенные им значения).
+       Поэтому использование этого параметра нужно считать хорошей практикой.       
+      </p>
+     </dd>
+
+    </dt>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">attrsonly</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Должен быть равен 1, если требуются типы атрибута. 
+       Если равен 0, то, по умолчанию, выбираются и типы атрибутов и значения.
+      </p>
+     </dd>
+
+    </dt>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">sizelimit</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Позволяет ограничить количество выбранных записей. Установка этого параметра
+       равным 0 означает, что ограничение отсутствует.
+      </p>
+      <blockquote class="note"><p><b class="note">Замечание</b>: 
+       <p class="para">
+        Этот параметр НЕ может переопределять предустановку sizelimit на стороне
+        сервера. Хотя его можно установить ниже.               
+       </p>
+       <p class="para">
+        Некоторые хосты серверов каталогов будут сконфигурированы так, чтобы
+        возвратить не больше, чем предварительно установленное число записей.
+        Если это произойдет, то сервер укажет, что только возвратил частичный набор
+        результатов. Это также происходит, если Вы используете этот параметр, чтобы
+        ограничить количество выбранных записей.        
+       </p>
+      </p></blockquote>
+     </dd>
+
+    </dt>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">timelimit</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Устанавливает число секунд, ограничивающее процесс поиска. Установка этого
+       параметра равным 0 означает, что ограничение отсутствует.
+      </p>
+      <blockquote class="note"><p><b class="note">Замечание</b>: 
+       <p class="para">
+        Этот параметр НЕ может переопределять предустановку timelimit на стороне
+        сервера. Хотя его можно установить ниже.       
+       </p>
+      </p></blockquote>
+     </dd>
+
+    </dt>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">deref</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Определяет как псевдонимы должны быть обработаны во время поиска. Может быть
+       одним из следующих:
+       <ul class="itemizedlist">
+        <li class="listitem">
+         <span class="simpara">
+          <b><tt>LDAP_DEREF_NEVER</tt></b> - (по умолчанию) псевдонимы никогда не разыменовываются.
+         </span>
+        </li>
+        <li class="listitem">
+         <span class="simpara">
+          <b><tt>LDAP_DEREF_SEARCHING</tt></b> - псевдонимы должны быть разыменованы во время поиска, 
+          но не при определении местоположения базового объекта поиска.
+         </span>
+        </li>
+        <li class="listitem">
+         <span class="simpara">
+          <b><tt>LDAP_DEREF_FINDING</tt></b> - псевдонимы должны быть разыменованы
+          при определении местоположения базового объекта, но не во время поиска.
+         </span>
+        </li>
+        <li class="listitem">
+         <span class="simpara">
+          <b><tt>LDAP_DEREF_ALWAYS</tt></b> - псевдонимы должны всегда разыменовываться.
+         </span>
+        </li>
+       </ul>
+      </p>
+     </dd>
+
+    </dt>
+
+   </dl>
+
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 returnvalues" id="refsect1-function.ldap-search-returnvalues">
+  <h3 class="title">Возвращаемые значения</h3>
+  <p class="para">
+   Возвращает идентификатор результата поиска или <b><tt>FALSE</tt></b> в случае ошибки.
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 changelog" id="refsect1-function.ldap-search-changelog">
+  <h3 class="title">Список изменений</h3>
+  <p class="para">
+   <table class="doctable informaltable">
+    
+     <thead valign="middle">
+      <tr valign="middle">
+       <th>Версия</th>
+       <th>Описание</th>
+      </tr>
+
+     </thead>
+
+     <tbody valign="middle" class="tbody">
+      <tr valign="middle">
+       <td align="left">4.0.5</td>
+       <td align="left">
+        Была добавлена поддержка параллельного поиска.
+       </td>
+      </tr>
+
+      <tr valign="middle">
+       <td align="left">4.0.2</td>
+       <td align="left">
+        Были добавлены <i><tt class="parameter">attrsonly</tt></i>, <i><tt class="parameter">sizelimit</tt></i>,
+        <i><tt class="parameter">timelimit</tt></i> и <i><tt class="parameter">deref</tt></i>.
+       </td>
+      </tr>
+
+     </tbody>
+    
+   </table>
+
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 examples" id="refsect1-function.ldap-search-examples">
+  <h3 class="title">Примеры</h3>
+  <p class="para">
+   Пример ниже получает организационную единицу, фамилию, имя и адрес 
+   электронной почты для всех людей в &quot;My Company&quot;, где фамилия или имя содержат
+   подстроку <var class="varname"><var class="varname">$person</var></var>. Этот пример использует логический фильтр,
+   чтобы сказать серверу, что нужно искать информацию больше, чем в одном атрибуте.   
+   <div class="example" id="example-3926">
+    <p><b>Пример #1 LDAP поиск</b></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">//&nbsp;$ds&nbsp;верный&nbsp;идентификатор&nbsp;ссылки&nbsp;на&nbsp;сервер&nbsp;директории<br /><br />//&nbsp;$person&nbsp;всё&nbsp;или&nbsp;часть&nbsp;имени&nbsp;человека,&nbsp;н-р&nbsp;"Jo"<br /><br /></span><span style="color: #0000BB">$dn&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">"o=My&nbsp;Company,&nbsp;c=US"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$filter</span><span style="color: #007700">=</span><span style="color: #DD0000">"(|(sn=</span><span style="color: #0000BB">$person</span><span style="color: #DD0000">*)(givenname=</span><span style="color: #0000BB">$person</span><span style="color: #DD0000">*))"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$justthese&nbsp;</span><span style="color: #007700">=&nbsp;array(</span><span style="color: #DD0000">"ou"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"sn"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"givenname"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"mail"</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">$sr</span><span style="color: #007700">=</span><span style="color: #0000BB">ldap_search</span><span style="color: #007700">(</span><span style="color: #0000BB">$ds</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$dn</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$filter</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$justthese</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">$info&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">ldap_get_entries</span><span style="color: #007700">(</span><span style="color: #0000BB">$ds</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$sr</span><span style="color: #007700">);<br /><br />echo&nbsp;</span><span style="color: #0000BB">$info</span><span style="color: #007700">[</span><span style="color: #DD0000">"count"</span><span style="color: #007700">].</span><span style="color: #DD0000">"&nbsp;записей&nbsp;возвращено\n"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+  </p>
+ </div>
+
+ 
+</div><hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.ldap-sasl-bind.html">ldap_sasl_bind</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.ldap-set-option.html">ldap_set_option</a></div>
+ <div class="up"><a href="ref.ldap.html">LDAP</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

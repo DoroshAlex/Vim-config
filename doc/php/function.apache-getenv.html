@@ -1,0 +1,126 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Получить переменную окружения подпроцесса сервера Apache</title>
+
+ </head>
+ <body><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.apache-get-version.html">apache_get_version</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.apache-lookup-uri.html">apache_lookup_uri</a></div>
+ <div class="up"><a href="ref.apache.html">Apache</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.apache-getenv" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">apache_getenv</h1>
+  <p class="verinfo">(PHP 4 &gt;= 4.3.0, PHP 5)</p><p class="refpurpose"><span class="refname">apache_getenv</span> &mdash; <span class="dc-title">Получить переменную окружения подпроцесса сервера Apache</span></p>
+
+ </div>
+
+ <div class="refsect1 description" id="refsect1-function.apache-getenv-description">
+  <h3 class="title">Описание</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">string</span> <span class="methodname"><b>apache_getenv</b></span>
+    ( <span class="methodparam"><span class="type">string</span> <tt class="parameter">$variable</tt></span>
+   [, <span class="methodparam"><span class="type">bool</span> <tt class="parameter">$walk_to_top</tt></span>
+  ] )</div>
+
+  <p class="para rdfs-comment">
+   Получить переменную окружения сервера Apache, указанную параметром
+   <i><tt class="parameter">variable</tt></i>.
+  </p>
+  <p class="para">
+   Эта функция требует Apache 2, в противном случае она не определена.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-function.apache-getenv-parameters">
+  <h3 class="title">Список параметров</h3>
+  <p class="para">
+   <dl>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">variable</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Переменная окружения сервера Apache
+      </p>
+     </dd>
+
+    </dt>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">walk_to_top</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Получить переменную верхнего уровня, доступную для всех уровней сервера Apache или нет.
+      </p>
+     </dd>
+
+    </dt>
+
+   </dl>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-function.apache-getenv-returnvalues">
+  <h3 class="title">Возвращаемые значения</h3>
+  <p class="para">
+   Значение переменной окружения сервера Apache в случае успеха или <b><tt>FALSE</tt></b>
+   в случае ошибки.
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-function.apache-getenv-examples">
+  <h3 class="title">Примеры</h3>
+  <p class="para">
+   <div class="example" id="example-4262">
+    <p><b>Пример #1 Пример использования <span class="function"><b>apache_getenv()</b></span></b></p>
+    <div class="example-contents"><p>
+     Приведенный ниже пример показывает, как можно получить значение
+     переменной окружения сервера Apache <var class="varname"><var class="varname">SERVER_ADDR</var></var>.
+    </p></div>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$ret&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">apache_getenv</span><span style="color: #007700">(</span><span style="color: #DD0000">"SERVER_ADDR"</span><span style="color: #007700">);<br />echo&nbsp;</span><span style="color: #0000BB">$ret</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+    <div class="example-contents"><p>Результатом выполнения данного примера
+будет что-то подобное:</p></div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+42.24.42.240
+</pre></div>
+    </div>
+   </div>
+  </p>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-function.apache-getenv-seealso">
+  <h3 class="title">Смотрите также</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><span class="function"><a href="function.apache-setenv.html" class="function" rel="rdfs-seeAlso">apache_setenv()</a> - Устанавливает переменную subprocess_env Apache</span></li>
+    <li class="member"><span class="function"><a href="function.getenv.html" class="function" rel="rdfs-seeAlso">getenv()</a> - Gets the value of an environment variable</span></li>
+    <li class="member">&quot;<a href="language.variables.superglobals.html" class="link">Суперглобальные переменные</a>&quot;</li>
+   </ul>
+  </p>
+ </div>
+
+</div><hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.apache-get-version.html">apache_get_version</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.apache-lookup-uri.html">apache_lookup_uri</a></div>
+ <div class="up"><a href="ref.apache.html">Apache</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

@@ -1,0 +1,100 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Настройка во время выполнения</title>
+
+ </head>
+ <body><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="imagick.installation.html">Установка</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="imagick.resources.html">Типы ресурсов</a></div>
+ <div class="up"><a href="imagick.setup.html">Установка и настройка</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="imagick.configuration" class="section">
+ <h2 class="title">Настройка во время выполнения</h2>
+ <p class="simpara">
+Поведение этих функций зависит от установок в <var class="filename">php.ini</var>.
+</p>
+ <p class="para">
+  <table class="doctable table">
+   <caption><b>Конфигурационные опции Imagick</b></caption>
+   
+    <thead valign="middle">
+     <tr valign="middle">
+      <th>Имя</th>
+      <th>По умолчанию</th>
+      <th>Область применения</th>
+      <th>История изменений</th>
+     </tr>
+
+    </thead>
+
+    <tbody valign="middle" class="tbody">
+     <tr valign="middle">
+      <td align="left">imagick.locale_fix</td>
+      <td align="left"><b><tt>FALSE</tt></b></td>
+      <td align="left">PHP_INI_ALL</td>
+      <td align="left">Доступно начиная с Imagick 2.1.0</td>
+     </tr>
+
+     <tr valign="middle">
+      <td align="left">imagick.progress_monitor</td>
+      <td align="left"><b><tt>FALSE</tt></b></td>
+      <td align="left">PHP_INI_SYSTEM</td>
+      <td align="left">Доступно начиная с Imagick 2.2.2</td>
+     </tr>
+
+    </tbody>
+   
+  </table>
+
+  Для подробного описания констант
+PHP_INI_*, обратитесь к разделу <a href="configuration.changes.modes.html" class="xref">Где могут быть установлены параметры конфигурации</a>.
+ </p>
+ 
+ <p class="para">Краткое разъяснение конфигурационных
+директив.</p>
+ 
+ <p class="para">
+  <dl>
+
+   <dt id="ini.imagick.locale-fix">
+    <span class="term">
+     <i><tt class="parameter">imagick.locale_fix</tt></i>
+     <span class="type"><a href="language.types.boolean.html" class="type boolean">boolean</a></span>
+    </span>
+    <dd>
+
+     <p class="para">
+      Исправление ошибки рисования с локалью, используя &#039;<i>,</i>&#039;
+      в качестве разделителя.
+     </p>
+    </dd>
+
+   </dt>
+
+
+   <dt id="ini.imagick.progress-monitor">
+    <span class="term">
+     <i><tt class="parameter">imagick.progress_monitor</tt></i>
+     <span class="type"><a href="language.types.boolean.html" class="type boolean">boolean</a></span>
+    </span>
+    <dd>
+
+     <p class="para">
+      Используется для включения мониторинга прогресса.
+      
+     </p>
+    </dd>
+
+   </dt>
+
+  </dl>
+
+ </p>
+</div><hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="imagick.installation.html">Установка</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="imagick.resources.html">Типы ресурсов</a></div>
+ <div class="up"><a href="imagick.setup.html">Установка и настройка</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

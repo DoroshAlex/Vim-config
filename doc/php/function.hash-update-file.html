@@ -1,0 +1,106 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Добавляет данные из файла в активный контекст хеширования</title>
+
+ </head>
+ <body><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.hash-init.html">hash_init</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.hash-update-stream.html">hash_update_stream</a></div>
+ <div class="up"><a href="ref.hash.html">Hash</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.hash-update-file" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">hash_update_file</h1>
+  <p class="verinfo">(PHP 5 &gt;= 5.1.2, PECL hash &gt;= 1.1)</p><p class="refpurpose"><span class="refname">hash_update_file</span> &mdash; <span class="dc-title">Добавляет данные из файла в активный контекст хеширования</span></p>
+
+ </div>
+ <div class="refsect1 description" id="refsect1-function.hash-update-file-description">
+  <h3 class="title">Описание</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">bool</span> <span class="methodname"><b>hash_update_file</b></span>
+    ( <span class="methodparam"><span class="type">resource</span> <tt class="parameter">$context</tt></span>
+   , <span class="methodparam"><span class="type">string</span> <tt class="parameter">$filename</tt></span>
+   [, <span class="methodparam"><span class="type">resource</span> <tt class="parameter">$context</tt><span class="initializer"> = <b><tt>NULL</tt></b></span></span>
+  ] )</div>
+
+
+ </div>
+
+ <div class="refsect1 parameters" id="refsect1-function.hash-update-file-parameters">
+  <h3 class="title">Список параметров</h3>
+  <p class="para">
+   <dl>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">context</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Контекст хеширования, возвращенный <span class="function"><a href="function.hash-init.html" class="function">hash_init()</a></span>.
+      </p>
+     </dd>
+
+    </dt>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">filename</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Имя или URL файла для хеширования; Поддерживаются обработчики fopen.
+      </p>
+     </dd>
+
+    </dt>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">context</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Контекст потока, возвращенный <span class="function"><a href="function.stream-context-create.html" class="function">stream_context_create()</a></span>.
+      </p>
+     </dd>
+
+    </dt>
+
+   </dl>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-function.hash-update-file-returnvalues">
+  <h3 class="title">Возвращаемые значения</h3>
+  <p class="para">
+   Возвращает <b><tt>TRUE</tt></b> в случае успешного завершения  или <b><tt>FALSE</tt></b> в случае возникновения ошибки.
+  </p>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-function.hash-update-file-seealso">
+  <h3 class="title">Смотрите также</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><span class="function"><a href="function.hash-init.html" class="function" rel="rdfs-seeAlso">hash_init()</a> - Инициализация инкриментального контекста хеширования</span></li>
+    <li class="member"><span class="function"><a href="function.hash-update.html" class="function" rel="rdfs-seeAlso">hash_update()</a> - Добавляет данные в активный контекст хеширования</span></li>
+    <li class="member"><span class="function"><a href="function.hash-update-stream.html" class="function" rel="rdfs-seeAlso">hash_update_stream()</a> - Добавляет данные из открытого потока в активный контекст хеширования</span></li>
+    <li class="member"><span class="function"><a href="function.hash-final.html" class="function" rel="rdfs-seeAlso">hash_final()</a> - Завершает инкриментальное хеширование и возвращает результат в виде хеш-кода</span></li>
+    <li class="member"><span class="function"><a href="function.hash.html" class="function" rel="rdfs-seeAlso">hash()</a> - Генерирует хеш-код (дайджест сообщения)</span></li>
+    <li class="member"><span class="function"><a href="function.hash-file.html" class="function" rel="rdfs-seeAlso">hash_file()</a> - Генерация хеш-значения, используя содержимое заданного файла</span></li>
+   </ul>
+  </p>
+ </div>
+
+
+</div><hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.hash-init.html">hash_init</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.hash-update-stream.html">hash_update_stream</a></div>
+ <div class="up"><a href="ref.hash.html">Hash</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

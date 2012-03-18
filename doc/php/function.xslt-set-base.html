@@ -1,0 +1,129 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Установка базового URI для всех XSLT преобразований</title>
+
+ </head>
+ <body><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.xslt-process.html">xslt_process</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.xslt-set-encoding.html">xslt_set_encoding</a></div>
+ <div class="up"><a href="ref.xslt.html">XSLT (PHP 4) Функции</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.xslt-set-base" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">xslt_set_base</h1>
+  <p class="verinfo">(PHP 4 &gt;= 4.0.5)</p><p class="refpurpose"><span class="refname">xslt_set_base</span> &mdash; <span class="dc-title">
+   Установка базового URI для всех <acronym title="eXtensible Stylesheet Language Transformations">XSLT</acronym> преобразований
+  </span></p>
+
+ </div>
+ 
+ <div class="refsect1 description" id="refsect1-function.xslt-set-base-description">
+  <h3 class="title">Описание</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type"><span class="type void">void</span></span> <span class="methodname"><b>xslt_set_base</b></span>
+    ( <span class="methodparam"><span class="type">resource</span> <tt class="parameter">$xh</tt></span>
+   , <span class="methodparam"><span class="type">string</span> <tt class="parameter">$uri</tt></span>
+   )</div>
+
+  <p class="para rdfs-comment">
+   Задает значение базового URI для всех <acronym title="eXtensible Stylesheet Language Transformations">XSLT</acronym>
+   преобразований. Этот URI используется в Xpath инструкциях для разбора
+   document() и других команд, имеющих доступ к внешним источникам. Также он
+   используется для разрешения URI элементов
+   <i>&lt;xsl:include&gt;</i> и
+   <i>&lt;xsl:import&gt;</i>.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-function.xslt-set-base-parameters">
+  <h3 class="title">Список параметров</h3>
+  <p class="para">
+   <dl>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">xh</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Идентификатор ссылки на <acronym title="eXtensible Stylesheet Language Transformations">XSLT</acronym>-процессор, созданный
+       функцией <span class="function"><a href="function.xslt-create.html" class="function">xslt_create()</a></span>.
+      </p>
+     </dd>
+
+    </dt>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">uri</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Значение базового URI.
+      </p>
+     </dd>
+
+    </dt>
+
+   </dl>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-function.xslt-set-base-returnvalues">
+  <h3 class="title">Возвращаемые значения</h3>
+  <p class="para">
+   Эта функция не возвращает значения после выполнения.
+  </p>
+ </div>
+
+
+ <div class="refsect1 changelog" id="refsect1-function.xslt-set-base-changelog">
+  <h3 class="title">Список изменений</h3>
+  <p class="para">
+   <table class="doctable informaltable">
+    
+     <thead valign="middle">
+      <tr valign="middle">
+       <th>Версия</th>
+       <th>Описание</th>
+      </tr>
+
+     </thead>
+
+     <tbody valign="middle" class="tbody">
+      <tr valign="middle">
+       <td align="left">4.3.0</td>
+       <td align="left">
+        В версии PHP 4.3.0 значением базового URI по умолчанию является
+        директория выполняющегося скрипта. Фактически, это директория, заданная
+        в константе <b><tt>__FILE__</tt></b>. Умолчания для базового URI
+        в более ранних версиях PHP менее предсказуемы.
+       </td>
+      </tr>
+
+     </tbody>
+    
+   </table>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 notes" id="refsect1-function.xslt-set-base-notes">
+  <h3 class="title">Примечания</h3>
+  <blockquote class="note"><p><b class="note">Замечание</b>: <p class="para">Учтите, что в случае использования Windows,
+вам нужно указать <i>file://</i> в начале пути.</p></p></blockquote>
+ </div>
+
+
+</div><hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.xslt-process.html">xslt_process</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.xslt-set-encoding.html">xslt_set_encoding</a></div>
+ <div class="up"><a href="ref.xslt.html">XSLT (PHP 4) Функции</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

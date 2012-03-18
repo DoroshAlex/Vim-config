@@ -1,0 +1,112 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Получает записи из базы данных, как из индексированного массива</title>
+
+ </head>
+ <body><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.dbase-get-record-with-names.html">dbase_get_record_with_names</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.dbase-numfields.html">dbase_numfields</a></div>
+ <div class="up"><a href="ref.dbase.html">dBase</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.dbase-get-record" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">dbase_get_record</h1>
+  <p class="verinfo">(PHP 4, PHP 5)</p><p class="refpurpose"><span class="refname">dbase_get_record</span> &mdash; <span class="dc-title">
+   Получает записи из базы данных, как из индексированного массива
+  </span></p>
+
+ </div>
+ <div class="refsect1 description" id="refsect1-function.dbase-get-record-description">
+  <h3 class="title">Описание</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">array</span> <span class="methodname"><b>dbase_get_record</b></span>
+    ( <span class="methodparam"><span class="type">int</span> <tt class="parameter">$dbase_identifier</tt></span>
+   , <span class="methodparam"><span class="type">int</span> <tt class="parameter">$record_number</tt></span>
+   )</div>
+
+  <p class="para rdfs-comment">
+   Получает записи из базы данных, как из индексированного массива.
+  </p>
+ </div>
+
+ <div class="refsect1 parameters" id="refsect1-function.dbase-get-record-parameters">
+  <h3 class="title">Список параметров</h3>
+  <p class="para">
+   <dl>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">dbase_identifier</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Идентификатор базы данных, возвращаемый функцией <span class="function"><a href="function.dbase-open.html" class="function">dbase_open()</a></span>
+       или <span class="function"><a href="function.dbase-create.html" class="function">dbase_create()</a></span>.
+      </p>
+     </dd>
+
+    </dt>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">record_number</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Индекс записи.  
+       (Здесь может отличаться от физического номера записи. - прим. пер.)
+      </p>
+     </dd>
+
+    </dt>
+
+   </dl>
+
+  </p>
+ </div>
+
+ <div class="refsect1 returnvalues" id="refsect1-function.dbase-get-record-returnvalues">
+  <h3 class="title">Возвращаемые значения</h3>
+  <p class="para"> 
+   Возвращает запись в виде массива. Массив будет включать в себя ключ 
+   <i>deleted</i> который равен 1, если запись помечена 
+   на удаление (см. <span class="function"><a href="function.dbase-delete-record.html" class="function">dbase_delete_record()</a></span>).
+  </p>
+  <p class="para">
+   Каждое поле конвертируется в соответствующий тип PHP, за исключением:
+   <ul class="itemizedlist">
+    <li class="listitem">
+     <span class="simpara">
+      Даты остаются в виде строк.
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      Целые числа, которые могли бы привести к переполнению (&gt; 32 бита)
+      возвращаются в виде строк.
+     </span>
+    </li>
+   </ul>
+  </p>
+  <p class="para">
+   В случае ошибки, <span class="function"><b>dbase_get_record()</b></span> возвращает <b><tt>FALSE</tt></b>.
+  </p>
+ </div>
+
+ <div class="refsect1 seealso" id="refsect1-function.dbase-get-record-seealso">
+  <h3 class="title">Смотрите также</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><span class="function"><a href="function.dbase-get-record-with-names.html" class="function" rel="rdfs-seeAlso">dbase_get_record_with_names()</a> - Получает запись из базы данных в виде ассоциативного массива</span></li>
+   </ul>
+  </p>
+ </div>
+
+</div><hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.dbase-get-record-with-names.html">dbase_get_record_with_names</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.dbase-numfields.html">dbase_numfields</a></div>
+ <div class="up"><a href="ref.dbase.html">dBase</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

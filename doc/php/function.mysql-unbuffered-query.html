@@ -1,0 +1,124 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Посылает запрос MySQL без авто-обработки результата и его буферизации</title>
+
+ </head>
+ <body><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.mysql-thread-id.html">mysql_thread_id</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="book.mysqli.html">mysqli</a></div>
+ <div class="up"><a href="ref.mysql.html">MySQL</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.mysql-unbuffered-query" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">mysql_unbuffered_query</h1>
+  <p class="verinfo">(PHP 4 &gt;= 4.0.6, PHP 5)</p><p class="refpurpose"><span class="refname">mysql_unbuffered_query</span> &mdash; <span class="dc-title">Посылает запрос MySQL без авто-обработки результата и его буферизации</span></p>
+
+ </div>
+
+ <div class="refsect1 description" id="refsect1-function.mysql-unbuffered-query-description">
+  <h3 class="title">Описание</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">resource</span> <span class="methodname"><b>mysql_unbuffered_query</b></span>
+    ( <span class="methodparam"><span class="type">string</span> <tt class="parameter">$query</tt></span>
+   [, <span class="methodparam"><span class="type">resource</span> <tt class="parameter">$link_identifier</tt></span>
+  ] )</div>
+
+  <p class="para rdfs-comment">
+   <span class="function"><b>mysql_unbuffered_query()</b></span> посылает запрос MySQL
+   <i><tt class="parameter">query</tt></i> без автоматической обработки и буферизации
+   её результата, в отличие от функции <span class="function"><a href="function.mysql-query.html" class="function">mysql_query()</a></span>.
+   Это позволяет сохранить достаточно большое количество памяти для
+   SQL-запросов, возвращающих большое количество данных. Кроме того, вы
+   можете начать работу с полученными данными сразу после того, как первый
+   ряд был получен: вам не приходится ждать до конца SQL-запроса. При
+   использовании <span class="function"><b>mysql_unbuffered_query()</b></span> с несколькими
+   соединениями MySQL, вы должны указать необязательный параметр
+   <i><tt class="parameter">link_identifier</tt></i>.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-function.mysql-unbuffered-query-parameters">
+  <h3 class="title">Список параметров</h3>
+  <p class="para">
+   <dl>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">query</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Запускаемый SQL-запрос.
+      </p>
+      <p class="para">
+       Данные в запросе должны быть <a href="function.mysql-real-escape-string.html" class="link">корректно проэкранированы</a>.
+      </p>
+     </dd>
+
+    </dt>
+
+    <dt>
+<span class="term"><i><tt class="parameter">
+link_identifier</tt></i></span><dd>
+<p class="para">Соединение MySQL. Если идентификатор соединения не был указан,
+используется последнее соединение, открытое <span class="function"><a href="function.mysql-connect.html" class="function">mysql_connect()</a></span>. Если такое соединение не было найдено,
+функция попытается создать таковое, как если бы <span class="function"><a href="function.mysql-connect.html" class="function">mysql_connect()</a></span> была вызвана без параметров.
+Если соединение не было найдено и не смогло быть создано, генерируется ошибка уровня <b><tt>E_WARNING</tt></b>.</p></dd>
+
+</dt>
+
+   </dl>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-function.mysql-unbuffered-query-returnvalues">
+  <h3 class="title">Возвращаемые значения</h3>
+  <p class="para">
+   Для SELECT, SHOW, DESCRIBE и EXPLAIN запросов
+   <span class="function"><b>mysql_unbuffered_query()</b></span>
+   возвращает <span class="type"><a href="language.types.resource.html" class="type resource">resource</a></span> в случае успеха, или <b><tt>FALSE</tt></b>
+   в случае ошибки.
+  </p>
+  <p class="para">
+   Для остальных типов SQL-запросов, UPDATE, DELETE, DROP и т.д.,
+   <span class="function"><b>mysql_unbuffered_query()</b></span> возвращает <b><tt>TRUE</tt></b> в случае
+   успеха и <b><tt>FALSE</tt></b> в случае ошибки.
+  </p>
+ </div>
+
+
+ <div class="refsect1 notes" id="refsect1-function.mysql-unbuffered-query-notes">
+  <h3 class="title">Примечания</h3>
+  <blockquote class="note"><p><b class="note">Замечание</b>: 
+   <p class="para">
+    Однако, плюсы использования <span class="function"><b>mysql_unbuffered_query()</b></span> имеют
+    свою цену: вы не можете использовать функции <span class="function"><a href="function.mysql-num-rows.html" class="function">mysql_num_rows()</a></span> и
+    <span class="function"><a href="function.mysql-data-seek.html" class="function">mysql_data_seek()</a></span> с результатом запроса, возвращённым
+    этой функцией, пока не будут получены все ряды. 
+    Кроме того, вы должны будете обработать все ряды запроса
+    до отправки нового запроса, используя тот же <i><tt class="parameter">link_identifier</tt></i>.
+   </p>
+  </p></blockquote>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-function.mysql-unbuffered-query-seealso">
+  <h3 class="title">Смотрите также</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><span class="function"><a href="function.mysql-query.html" class="function" rel="rdfs-seeAlso">mysql_query()</a> - Посылает запрос MySQL</span></li>
+   </ul>
+  </p>
+ </div>
+
+</div><hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.mysql-thread-id.html">mysql_thread_id</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="book.mysqli.html">mysqli</a></div>
+ <div class="up"><a href="ref.mysql.html">MySQL</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

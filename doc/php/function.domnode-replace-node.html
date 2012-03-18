@@ -1,0 +1,53 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Заменяет узел</title>
+
+ </head>
+ <body><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.domnode-replace-child.html">DomNode-&gt;replace_child</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.domnode-set-content.html">DomNode-&gt;set_content</a></div>
+ <div class="up"><a href="ref.domxml.html">DOM XML (PHP 4) Функции</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.domnode-replace-node" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">DomNode->replace_node</h1>
+  <p class="verinfo">(PHP 4 &gt;= 4.2.0)</p><p class="refpurpose"><span class="refname">DomNode-&gt;replace_node</span> &mdash; <span class="dc-title">
+   Заменяет узел
+  </span></p>
+
+ </div>
+ <div class="refsect1 unknown" id="refsect1-function.domnode-replace-node-unknown">
+  <h3 class="title">Описание</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type"><a href="class.domelement.html" class="type domelement">domelement</a></span> <span class="methodname"><b>DomNode-&gt;replace_node</b></span>
+    ( <span class="methodparam"><span class="type"><a href="class.domelement.html" class="type domelement">domelement</a></span> <tt class="parameter">$newnode</tt></span>
+   )</div>
+
+  <p class="para rdfs-comment">
+   (PHP 4.2) Эта функция заменяет существующий узел на новый переданный в
+   качестве аргумента. Перед заменой <i><tt class="parameter">newnode</tt></i> копируется,
+   если у него есть родитель, чтобы быть уверенными, что уже существующий узел
+   не будет вставлен повторно. Такое поведение функции вынуждает делать все 
+   изменения в узле до замены, либо выбирать уже добавленный узел после замены
+   такими функциями, как <span class="function"><a href="function.domnode-first-child.html" class="function">domnode_first_child()</a></span>,
+   <span class="function"><a href="function.domnode-child-nodes.html" class="function">domnode_child_nodes()</a></span> и т.п.
+  </p>
+  <p class="para">
+   (PHP 4.3) Эта функция заменяет существующий узел на новый переданный в
+   качестве аргумента. Если <i><tt class="parameter">newnode</tt></i> уже был добавлен в
+   документ, он будет отсоединен от своего прежнего контекста. В случае успешной
+   замены функция вернет старый узел.
+  </p>
+  <p class="para">
+   См. также <span class="function"><a href="function.domnode-append-child.html" class="function">domnode_append_child()</a></span>
+  </p>
+ </div>
+
+</div><hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.domnode-replace-child.html">DomNode-&gt;replace_child</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.domnode-set-content.html">DomNode-&gt;set_content</a></div>
+ <div class="up"><a href="ref.domxml.html">DOM XML (PHP 4) Функции</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

@@ -1,0 +1,215 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Возвращает информацию о дате/времени</title>
+
+ </head>
+ <body><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.date.html">date</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.gettimeofday.html">gettimeofday</a></div>
+ <div class="up"><a href="ref.datetime.html">Функции даты и времени</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.getdate" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">getdate</h1>
+  <p class="verinfo">(PHP 4, PHP 5)</p><p class="refpurpose"><span class="refname">getdate</span> &mdash; <span class="dc-title">Возвращает информацию о дате/времени</span></p>
+
+ </div>
+
+ <div class="refsect1 description" id="refsect1-function.getdate-description">
+  <h3 class="title">Описание</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">array</span> <span class="methodname"><b>getdate</b></span>
+    ([ <span class="methodparam"><span class="type">int</span> <tt class="parameter">$timestamp</tt><span class="initializer"> = time()</span></span>
+  ] )</div>
+
+  <p class="para rdfs-comment">
+   Возвращает ассоциативный массив (<span class="type"><a href="language.types.array.html" class="type array">array</a></span>), содержащий
+   информацию о дате, представленной меткой времени
+   <i><tt class="parameter">timestamp</tt></i> или текущим системным временем,
+   если <i><tt class="parameter">timestamp</tt></i> не был передан.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-function.getdate-parameters">
+  <h3 class="title">Список параметров</h3>
+  <p class="para">
+   <dl>
+
+
+    
+<dt>
+<span class="term"><i><tt class="parameter">timestamp</tt></i></span><dd>
+<p class="para">
+ Необязательный параметр <i><tt class="parameter">timestamp</tt></i> представляет собой
+ <span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span> метку времени, по умолчанию равную текущему локальному времени, если <i><tt class="parameter">timestamp</tt></i>
+ не указан. Другими словами, значение по умолчанию равно результату функции <span class="function"><a href="function.time.html" class="function">time()</a></span>.
+ </p></dd>
+</dt>
+
+
+   </dl>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-function.getdate-returnvalues">
+  <h3 class="title">Возвращаемые значения</h3>
+  <p class="para">
+   Возвращает ассоциативный массив (<span class="type"><a href="language.types.array.html" class="type array">array</a></span>) с информацией
+   о параметре <i><tt class="parameter">timestamp</tt></i>, который содержит
+   следующие элементы:
+  </p>
+  <p class="para">
+   <table class="doctable table">
+    <caption><b>Индексы возвращаемого ассоциативного массива</b></caption>
+    
+     <thead valign="middle">
+      <tr valign="middle">
+       <th>Индекс</th>
+       <th>Описание</th>
+       <th>Пример значения</th>
+      </tr>
+
+     </thead>
+
+     <tbody valign="middle" class="tbody">
+      <tr valign="middle">
+       <td align="left"><i>&quot;seconds&quot;</i></td>
+       <td align="left">Числовое представление секунд</td>
+       <td align="left">от <i>0</i> до <i>59</i></td>
+      </tr>
+
+      <tr valign="middle">
+       <td align="left"><i>&quot;minutes&quot;</i></td>
+       <td align="left">Числовое представление минут</td>
+       <td align="left">от <i>0</i> до <i>59</i></td>
+      </tr>
+
+      <tr valign="middle">
+       <td align="left"><i>&quot;hours&quot;</i></td>
+       <td align="left">Числовое представление часов</td>
+       <td align="left">от <i>0</i> до <i>23</i></td>
+      </tr>
+
+      <tr valign="middle">
+       <td align="left"><i>&quot;mday&quot;</i></td>
+       <td align="left">Порядковый номер дня месяца</td>
+       <td align="left">от <i>1</i> до <i>31</i></td>
+      </tr>
+
+      <tr valign="middle">
+       <td align="left"><i>&quot;wday&quot;</i></td>
+       <td align="left">Порядковый номер дня недели</td>
+       <td align="left">от <i>0</i> (воскресенье) до <i>6</i> (суббота)</td>
+      </tr>
+
+      <tr valign="middle">
+       <td align="left"><i>&quot;mon&quot;</i></td>
+       <td align="left">Порядковый номер месяца</td>
+       <td align="left">от <i>1</i> до <i>12</i></td>
+      </tr>
+
+      <tr valign="middle">
+       <td align="left"><i>&quot;year&quot;</i></td>
+       <td align="left">Номер года, 4 цифры</td>
+       <td align="left">Примеры: <i>1999</i>, <i>2003</i></td>
+      </tr>
+
+      <tr valign="middle">
+       <td align="left"><i>&quot;yday&quot;</i></td>
+       <td align="left">Порядковый номер дня в году</td>
+       <td align="left">от <i>0</i> до <i>365</i></td>
+      </tr>
+
+      <tr valign="middle">
+       <td align="left"><i>&quot;weekday&quot;</i></td>
+       <td align="left">Полное наименование дня недели</td>
+       <td align="left">от <i>Sunday</i> до <i>Saturday</i></td>
+      </tr>
+
+      <tr valign="middle">
+       <td align="left"><i>&quot;month&quot;</i></td>
+       <td align="left">Полное наименование месяца, например, January или March</td>
+       <td align="left">от <i>January</i> до <i>December</i></td>
+      </tr>
+
+      <tr valign="middle">
+       <td align="left"><i>0</i></td>
+       <td align="left">
+        Количество секунд, прошедших с начала Эпохи Unix (The Unix
+        Epoch), подобно значению, возвращаемому функцией <span class="function"><a href="function.time.html" class="function">time()</a></span>
+        и используемому функцией <span class="function"><a href="function.date.html" class="function">date()</a></span>.
+       </td>
+       <td align="left">Зависит от платформы, в большинстве случаев от
+        <i>-2147483648</i> до <i>2147483647</i>.
+       </td>
+      </tr>
+
+     </tbody>
+    
+   </table>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-function.getdate-examples">
+  <h3 class="title">Примеры</h3>
+  <p class="para">
+   <div class="example" id="example-650">
+    <p><b>Пример #1 Пример использования функции <span class="function"><b>getdate()</b></span></b></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$today&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">getdate</span><span style="color: #007700">();<br /></span><span style="color: #0000BB">print_r</span><span style="color: #007700">(</span><span style="color: #0000BB">$today</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+    <div class="example-contents"><p>Результатом выполнения данного примера
+будет что-то подобное:</p></div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+Array
+(
+    [seconds] =&gt; 40
+    [minutes] =&gt; 58
+    [hours]   =&gt; 21
+    [mday]    =&gt; 17
+    [wday]    =&gt; 2
+    [mon]     =&gt; 6
+    [year]    =&gt; 2003
+    [yday]    =&gt; 167
+    [weekday] =&gt; Tuesday
+    [month]   =&gt; June
+    [0]       =&gt; 1055901520
+)
+</pre></div>
+    </div>
+   </div>
+  </p>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-function.getdate-seealso">
+  <h3 class="title">Смотрите также</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><span class="function"><a href="function.date.html" class="function" rel="rdfs-seeAlso">date()</a> - Форматирует вывод системной даты/времени</span></li>
+    <li class="member"><span class="function"><a href="function.idate.html" class="function" rel="rdfs-seeAlso">idate()</a> - Преобразует локальное время/дату в целое число</span></li>
+    <li class="member"><span class="function"><a href="function.localtime.html" class="function" rel="rdfs-seeAlso">localtime()</a> - Возвращает локальное время</span></li>
+    <li class="member"><span class="function"><a href="function.time.html" class="function" rel="rdfs-seeAlso">time()</a> - Возвращает текущую метку времени Unix</span></li>
+    <li class="member"><span class="function"><a href="function.setlocale.html" class="function" rel="rdfs-seeAlso">setlocale()</a> - Устанавливает настройки локали</span></li>
+   </ul>
+  </p>
+ </div>
+
+</div><hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.date.html">date</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.gettimeofday.html">gettimeofday</a></div>
+ <div class="up"><a href="ref.datetime.html">Функции даты и времени</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

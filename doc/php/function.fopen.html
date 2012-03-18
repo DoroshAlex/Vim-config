@@ -1,0 +1,443 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Открывает файл или URL</title>
+
+ </head>
+ <body><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.fnmatch.html">fnmatch</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.fpassthru.html">fpassthru</a></div>
+ <div class="up"><a href="ref.filesystem.html">Файловая система</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.fopen" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">fopen</h1>
+  <p class="verinfo">(PHP 4, PHP 5)</p><p class="refpurpose"><span class="refname">fopen</span> &mdash; <span class="dc-title">Открывает файл или URL</span></p>
+
+ </div>
+
+ <div class="refsect1 description" id="refsect1-function.fopen-description">
+  <h3 class="title">Описание</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">resource</span> <span class="methodname"><b>fopen</b></span>
+    ( <span class="methodparam"><span class="type">string</span> <tt class="parameter">$filename</tt></span>
+   , <span class="methodparam"><span class="type">string</span> <tt class="parameter">$mode</tt></span>
+   [, <span class="methodparam"><span class="type">bool</span> <tt class="parameter">$use_include_path</tt><span class="initializer"> = false</span></span>
+   [, <span class="methodparam"><span class="type">resource</span> <tt class="parameter">$context</tt></span>
+  ]] )</div>
+
+  <p class="para rdfs-comment">
+   <span class="function"><b>fopen()</b></span> закрепляет именованный ресурс, указанный
+   в аргументе <i><tt class="parameter">filename</tt></i>, за потоком.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-function.fopen-parameters">
+  <h3 class="title">Список параметров</h3>
+  <p class="para">
+   <dl>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">filename</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Если <i><tt class="parameter">filename</tt></i> передан в форме &quot;scheme://...&quot;,
+       он считается URL&#039;ом и PHP проведёт поиск обработчика протокола
+       (также известного как &quot;обертка&quot;) для этой схемы. Если ни одна
+       обёртка не закреплена за протоколом, PHP выдаст замечание,
+       чтобы помочь вам отследить потенциальную проблему в вашем
+       скрипте и затем продолжит выполнение, как если бы <i><tt class="parameter">filename</tt></i>
+       указывал на обыкновенный файл.
+      </p>
+      <p class="para">
+       Если PHP установлено, что <i><tt class="parameter">filename</tt></i> указывает на
+       локальный файл, тогда выполняется попытка открыть поток к этому файлу.
+       Файл должен быть доступен PHP, так что вам следует убедиться,
+       что права доступа на файл это разрешают.
+       Если вы включили <a href="ini.sect.safe-mode.html#ini.safe-mode" class="link">безопасный режим</a>
+       или <a href="ini.core.html#ini.open-basedir" class="link">open_basedir</a>, то накладываются
+       дальнейшие ограничения.
+      </p>
+      <p class="para">
+       Если PHP установлено, что <i><tt class="parameter">filename</tt></i> указывает на
+       зарегистрированный протокол и этот протокол зарегистрирован как
+       сетевой URL, PHP выполняет проверку состояния директивы
+       <a href="filesystem.configuration.html#ini.allow-url-fopen" class="link">allow_url_fopen</a>.
+       Если она выключена, PHP выдаст предупреждение и вызов fopen закончится
+       неудачей.
+      </p>
+      <blockquote class="note"><p><b class="note">Замечание</b>: 
+       <p class="para">
+        Список поддерживаемых протоколов доступен в разделе <a href="wrappers.html" class="xref">Поддерживаемые протоколы и обработчики (wrappers)</a>.
+        Некоторые протоколы (<i>обертки</i>) поддерживают
+        <i>контекст</i> и/или опции <var class="filename">php.ini</var>.
+        Обратитесь к соответствующей странице с описанием используемого протокола
+        для получения списка опций, которые могут быть установлены.
+        (например, значение <var class="filename">php.ini</var> <i>user_agent</i> используется
+        оберткой <i>http</i>).
+       </p>
+      </p></blockquote>
+      <p class="para">
+       На платформе Windows, необходимо экранировать все
+       обратные слеши в пути к файлу или использовать прямые слеши.
+       <div class="informalexample">
+        <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$handle&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">fopen</span><span style="color: #007700">(</span><span style="color: #DD0000">"c:\\folder\\resource.txt"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"r"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+        </div>
+
+       </div>
+      </p>
+     </dd>
+
+    </dt>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">mode</tt></i></span>
+     <dd>
+
+    <p class="para">
+     Параметр <i><tt class="parameter">mode</tt></i> указывает тип доступа, который вы
+     запрашиваете у потока. Он может быть одним из следующих вариантов:
+     <table class="doctable table">
+      <caption><b>
+       Список возможных режимов для <span class="function"><b>fopen()</b></span>
+       используя <i><tt class="parameter">mode</tt></i>
+      </b></caption>
+      
+       <thead valign="middle">
+        <tr valign="middle">
+         <th><i><tt class="parameter">mode</tt></i></th>
+         <th>Описание</th>
+        </tr>
+
+       </thead>
+
+       <tbody valign="middle" class="tbody">
+        <tr valign="middle">
+         <td align="left"><i>&#039;r&#039;</i></td>
+         <td align="left">
+          Открывает файл только для чтения; помещает указатель
+          в начало файла.
+         </td>
+        </tr>
+
+        <tr valign="middle">
+         <td align="left"><i>&#039;r+&#039;</i></td>
+         <td align="left">
+          Открывает файл для чтения и записи; помещает указатель
+          в начало файла.
+         </td>
+        </tr>
+
+        <tr valign="middle">
+         <td align="left"><i>&#039;w&#039;</i></td>
+         <td align="left">
+          Открывает файл только для записи; помещает указатель
+          в начало файла и обрезает файл до нулевой длины.
+          Если файл не существует - пробует его создать.
+         </td>
+        </tr>
+
+        <tr valign="middle">
+         <td align="left"><i>&#039;w+&#039;</i></td>
+         <td align="left">
+          Открывает файл для чтения и записи; помещает указатель
+          в начало файла и обрезает файл до нулевой длины.
+          Если файл не существует - пытается его создать.
+         </td>
+        </tr>
+
+        <tr valign="middle">
+         <td align="left"><i>&#039;a&#039;</i></td>
+         <td align="left">
+          Открывает файл только для записи; помещает указатель в конец
+          файла. Если файл не существует - пытается его создать.
+         </td>
+        </tr>
+
+        <tr valign="middle">
+         <td align="left"><i>&#039;a+&#039;</i></td>
+         <td align="left">
+          Открывает файл для чтения и записи; помещает указатель в конец
+          файла. Если файл не существует - пытается его создать.
+         </td>
+        </tr>
+
+        <tr valign="middle">
+         <td align="left"><i>&#039;x&#039;</i></td>
+         <td align="left">
+          Создаёт и открывает только для записи; помещает указатель в
+          начало файла. Если файл уже существует, вызов
+          <span class="function"><b>fopen()</b></span> закончится неудачей, вернёт <b><tt>FALSE</tt></b> и
+          выдаст ошибку уровня <b><tt>E_WARNING</tt></b>.
+          Если файл не существует, попытается его создать. Это эквивалентно
+          указанию флагов <i>O_EXCL|O_CREAT</i> для внутреннего
+          системного вызова <i>open(2)</i>.
+         </td>
+        </tr>
+
+        <tr valign="middle">
+         <td align="left"><i>&#039;x+&#039;</i></td>
+         <td align="left">
+          Создаёт и открывает для чтения и записи; иначе имеет то же поведение что и<i>&#039;x&#039;</i>.
+         </td>
+        </tr>
+
+          <tr valign="middle">
+           <td align="left"><i>&#039;c&#039;</i></td>
+           <td align="left">
+            Открывает файл только для записи. Если файл не существует, то он создается.
+            Если же файл существует, то он не обрезается (в отличии от
+            <i>&#039;w&#039;</i>), и вызов к этой функции не вызывает ошибку (также как
+            и в случае с <i>&#039;x&#039;</i>). Указатель на файл будет установлен
+            на начало файла. Это может быть полезно при желании заблокировать
+            файл (смотри <span class="function"><a href="function.flock.html" class="function">flock()</a></span>) перед изменением, так как использование
+            <i>&#039;w&#039;</i> может обрезать файл еще до того как была получена блокировка
+            (если вы желаете обрезать файл, можно использовать функцию
+            <span class="function"><a href="function.ftruncate.html" class="function">ftruncate()</a></span> после запроса на блокировку).
+           </td>
+          </tr>
+
+          <tr valign="middle">
+           <td align="left"><i>&#039;c+&#039;</i></td>
+           <td align="left">
+            Открывает файл для чтения и записи; иначе имеет то же поведение, что и <i>&#039;c&#039;</i>.
+           </td>
+          </tr>
+
+         </tbody>
+        
+       </table>
+
+      </p>
+      <blockquote class="note"><p><b class="note">Замечание</b>: 
+       <p class="para">
+      Разные семейства операционных систем имеют разные соглашения
+      относительно окончания строк. Когда вы пишете текст и хотите вставить
+      разрыв строки, вы должны использовать правильные символы (или символ) для
+      вашей операционной системы. Системы семейства Unix используют
+      <i>\n</i> в качестве символа конца строки, системы
+      семейства Windows используют <i>\r\n</i> в качестве
+      символов окончания строки и системы семейства Macintosh используют
+      <i>\r</i> в качестве символа конца строки.
+     </p>
+     <p class="para">
+      Если вы используете неверный символ конца строки при редактировании
+      файлов, вы можете обнаружить, что при открытии эти файлы &quot;странно
+      выглядят&quot;.
+     </p>
+     <p class="para">
+      Windows предлагает флаг режима текстовой трансляции
+      (<i>&#039;t&#039;</i>), который автоматически переведёт
+      <i>\n</i> в <i>\r\n</i> во время работы с файлом.
+      И наоборот - вы также можете использовать <i>&#039;b&#039;</i>, чтобы
+      принудительно включить бинарный режим, в котором ваши данные
+      не будут преобразовываться. Чтобы использовать эти режимы, укажите
+      <i>&#039;b&#039;</i> или <i>&#039;t&#039;</i> последней
+      буквой параметра <i><tt class="parameter">mode</tt></i>.
+     </p>
+     <p class="para">
+      Так как установка флага трансляции по умолчанию зависит от SAPI и используемой версии
+      PHP, рекомендуем явно задавать указанный флаг
+      из соображений портируемости. Вы должны использовать режим
+      <i>&#039;t&#039;</i>, если вы работаете с текстовым файлом и
+      использовать <i>\n</i> для обозначения
+      конца строки в вашем скрипте, при этом не беспокоясь за читаемость
+      ваших файлов в других приложениях типа &quot;Блокнота&quot;. Во всех остальных случаях
+      используйте флаг <i>&#039;b&#039;</i>.
+     </p>
+     <p class="para">
+      Если вы явно не укажете флаг &#039;b&#039; во время работы с бинарными файлами,
+      вы можете столкнуться со странной порчей ваших данных, включая
+      испорченные файлы изображений и странные проблемы с символами <i>\r\n</i>.
+     </p>
+    </p></blockquote>
+    <blockquote class="note"><p><b class="note">Замечание</b>: 
+     <p class="para">
+      Из соображений портируемости, настоятельно рекомендуется всегда
+      использовать флаг &#039;b&#039; при открытии файлов с помощью <span class="function"><b>fopen()</b></span>.
+     </p>
+    </p></blockquote>
+    <blockquote class="note"><p><b class="note">Замечание</b>: 
+     <p class="para">
+      Кроме того, из соображений портируемости, также настойчиво
+      рекомендуется переписать старый код, который полагается на режим
+      <i>&#039;t&#039;</i>, чтобы вместо этого он использовал правильные
+      концы строк и режим <i>&#039;b&#039;</i>.
+     </p>
+    </p></blockquote>
+     </dd>
+
+    </dt>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">use_include_path</tt></i></span>
+     <dd>
+
+    <p class="para">
+     Необязательный третий параметр <i><tt class="parameter">use_include_path</tt></i>
+     может быть установлен в &#039;1&#039; или <b><tt>TRUE</tt></b>, если вы также хотите провести
+     поиск файла в <a href="ini.core.html#ini.include-path" class="link">include_path</a>.
+    </p>
+   </dd>
+
+    </dt>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">context</tt></i></span>
+     <dd>
+
+      <blockquote class="note"><p><b class="note">Замечание</b>: <span class="simpara">Поддержка контекста была добавлена
+в PHP 5.0.0. Для описания <i>контекстов</i> смотрите раздел
+<a href="ref.stream.html" class="xref">Stream Функции</a>.</span></p></blockquote>
+     </dd>
+
+    </dt>
+
+   </dl>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-function.fopen-returnvalues">
+  <h3 class="title">Возвращаемые значения</h3>
+  <p class="para">
+   Возвращает указатель на файл в случае успешной работы, или <b><tt>FALSE</tt></b> в случае ошибки.
+  </p>
+ </div>
+
+
+ <div class="refsect1 errors" id="refsect1-function.fopen-errors">
+  <h3 class="title">Ошибки</h3>
+  <p class="para">
+   Если открыть файл не удалось, будет сгенерирована ошибка уровня
+   <b><tt>E_WARNING</tt></b>. Вы можете использовать оператор <a href="language.operators.errorcontrol.html" class="link">@</a> для подавления этой ошибки.
+  </p>
+ </div>
+
+
+ <div class="refsect1 changelog" id="refsect1-function.fopen-changelog">
+  <h3 class="title">Список изменений</h3>
+  <p class="para">
+   <table class="doctable informaltable">
+    
+     <thead valign="middle">
+      <tr valign="middle">
+       <th>Версия</th>
+       <th>Описание</th>
+      </tr>
+
+     </thead>
+
+     <tbody valign="middle" class="tbody">
+      <tr valign="middle">
+       <td align="left">4.3.2</td>
+       <td align="left">
+        С версии PHP 4.3.2, по умолчанию устанавливается бинарный режим для всех платформ, различающих
+        бинарный и текстовый режимы. Если у вас появились проблемы после обновления,
+        попытайтесь использовать в качестве обхода проблемы флаг <i>&#039;t&#039;</i>, пока
+        вы не сделаете ваш скрипт более портируемым, как это было указано выше.
+       </td>
+      </tr>
+
+      <tr valign="middle">
+       <td align="left">4.3.2</td>
+       <td align="left">
+        Добавлены опции <i>&#039;x&#039;</i> и <i>&#039;x+&#039;</i>
+       </td>
+      </tr>
+
+      <tr valign="middle">
+       <td align="left">5.2.6</td>
+       <td align="left">
+        Добавлены опции <i>&#039;c&#039;</i> и <i>&#039;c+&#039;</i>
+       </td>
+      </tr>
+
+     </tbody>
+    
+   </table>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-function.fopen-examples">
+  <h3 class="title">Примеры</h3>
+  <p class="para">
+   <div class="example" id="example-2133">
+    <p><b>Пример #1 Примеры использования <span class="function"><b>fopen()</b></span></b></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$handle&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">fopen</span><span style="color: #007700">(</span><span style="color: #DD0000">"/home/rasmus/file.txt"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"r"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$handle&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">fopen</span><span style="color: #007700">(</span><span style="color: #DD0000">"/home/rasmus/file.gif"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"wb"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$handle&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">fopen</span><span style="color: #007700">(</span><span style="color: #DD0000">"http://www.example.com/"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"r"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$handle&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">fopen</span><span style="color: #007700">(</span><span style="color: #DD0000">"ftp://user:password@example.com/somefile.txt"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"w"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+  </p>
+ </div>
+
+
+ <div class="refsect1 notes" id="refsect1-function.fopen-notes">
+  <h3 class="title">Примечания</h3>
+  <div class="warning"><b class="warning">Внимание</b><p class="para">При использовании SSL,
+Microsoft IIS нарушает протокол, закрывая соединение без отправки
+индикатора <i>close_notify</i>. PHP сообщит об этом как &quot;SSL: Fatal Protocol Error&quot;
+в тот момент, когда вы достигнете конца данных. Чтобы обойти это, вы должны
+установить <a href="errorfunc.configuration.html#ini.error-reporting" class="link">error_reporting</a> на
+уровень, исключающий E_WARNING.
+PHP версий 4.3.7 и старше умеет определять, что на стороне сервера находится
+проблемный IIS при открытии потока с помощью обертки <i>https://</i> и не выводит предупреждение.
+Если вы используете <span class="function"><a href="function.fsockopen.html" class="function">fsockopen()</a></span> для создания <i>ssl://</i> сокета,
+вы сами отвечаете за определение и подавление этого предупреждения.</p></div>
+  <blockquote class="note"><p><b class="note">Замечание</b>: <span class="simpara">Когда опция <a href="features.safe-mode.html" class="link">safe mode</a> включена, PHP проверяет,
+имеет ли каталог, с которым вы собираетесь работать, такой же UID (владельца),
+как и выполняемый скрипт.</span></p></blockquote>
+  <p class="para">
+   Если вы сталкиваетесь с проблемами во время чтения или записи
+   файлов, и вы используете PHP в виде серверного модуля, убедитесь
+   в том, что процесс сервера имеет доступ к используемым вами файлам и директориям.
+  </p>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-function.fopen-seealso">
+  <h3 class="title">Смотрите также</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><a href="wrappers.html" class="xref">Поддерживаемые протоколы и обработчики (wrappers)</a></li>
+    <li class="member"><span class="function"><a href="function.fclose.html" class="function" rel="rdfs-seeAlso">fclose()</a> - Закрывает открытый дескриптор файла</span></li>
+    <li class="member"><span class="function"><a href="function.fgets.html" class="function" rel="rdfs-seeAlso">fgets()</a> - Читает строку из файла</span></li>
+    <li class="member"><span class="function"><a href="function.fread.html" class="function" rel="rdfs-seeAlso">fread()</a> - Бинарно-безопасное чтение файла</span></li>
+    <li class="member"><span class="function"><a href="function.fwrite.html" class="function" rel="rdfs-seeAlso">fwrite()</a> - Бинарно-безопасная запись в файл</span></li>
+    <li class="member"><span class="function"><a href="function.fsockopen.html" class="function" rel="rdfs-seeAlso">fsockopen()</a> - Open Internet or Unix domain socket connection</span></li>
+    <li class="member"><span class="function"><a href="function.file.html" class="function" rel="rdfs-seeAlso">file()</a> - Читает содержимое файла и помещает его в массив</span></li>
+    <li class="member"><span class="function"><a href="function.file-exists.html" class="function" rel="rdfs-seeAlso">file_exists()</a> - Проверяет наличие указанного файла или каталога</span></li>
+    <li class="member"><span class="function"><a href="function.is-readable.html" class="function" rel="rdfs-seeAlso">is_readable()</a> - Определяет существование файла и доступен ли он для чтения</span></li>
+    <li class="member"><span class="function"><a href="function.stream-set-timeout.html" class="function" rel="rdfs-seeAlso">stream_set_timeout()</a> - Устанавливает значение тайм-аута на потоке</span></li>
+    <li class="member"><span class="function"><a href="function.popen.html" class="function" rel="rdfs-seeAlso">popen()</a> - Открывает файловый указатель процесса</span></li>
+    <li class="member"><span class="function"><a href="function.stream-context-create.html" class="function" rel="rdfs-seeAlso">stream_context_create()</a> - Создаёт контекст потока</span></li>
+    <li class="member"><span class="function"><a href="function.umask.html" class="function" rel="rdfs-seeAlso">umask()</a> - Изменяет текущую umask</span></li>
+   </ul>
+  </p>
+ </div>
+
+
+</div><hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.fnmatch.html">fnmatch</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.fpassthru.html">fpassthru</a></div>
+ <div class="up"><a href="ref.filesystem.html">Файловая система</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

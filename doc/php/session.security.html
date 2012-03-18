@@ -1,0 +1,51 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Безопасность сессий</title>
+
+ </head>
+ <body><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="session.upload-progress.html">Отслеживание прогресса загрузки файлов с помощью сессий</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="ref.session.html">Session Функции</a></div>
+ <div class="up"><a href="book.session.html">Сессии</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="session.security" class="chapter">
+ <h1>Безопасность сессий</h1>
+
+ <p class="para">
+  Внешние ссылки: <a href="http://www.acros.si/papers/session_fixation.pdf" class="link external">&raquo;&nbsp;Атака &quot;Фиксация сессии&quot;</a>
+ </p>
+ <p class="para">
+  Модуль сессии не позволяет гарантировать, что хранимая информация доступна
+  только пользователю, который создал сессию. Необходимо принять дополнительные
+  меры по защите целостности сессии основываясь на ассоциированных с ней данных.
+ </p>
+ <p class="para">
+  Оценка важности данных, передаваемых в рамках сессии, важна для выбора мер по
+  защите этой информации -- обычно это приводит к ухудшению удобства для
+  конечного пользователя. Например, если необходимо защитить пользователя от
+  простейших методов социальной инженерии, следует включить
+  <i>session.use_only_cookies</i>. В данном случае со стороны
+  пользовательского ПО обязательна поддержка кук, иначе механизм сессий не
+  будет работать.
+ </p>
+ <p class="para">
+  Существует несколько способов утечки существующего идентификатора сессии
+  третьим лицам. Такая утечка позволяет злоумышленнику получить доступ ко всем
+  данным, ассоциированным с конкретным идентификатором сессии. Во-первых,
+  передача идентификатора сессии в URL. При переходе на внешний сайт
+  идентификатор сессии пользователя и адрес ресурса могут попасть в статистику
+  переходов данного сайта. Во-вторых, при более активной атаке возможно
+  прослушивание сетевого трафика злоумышленником. Если канал передачи данных не
+  зашифрован, идентификаторы сессии будут переданы в виде простого текста. В
+  таком случае решением является обязательное использование SSL пользователями
+  при доступе к сайту.
+ </p>
+</div>
+<hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="session.upload-progress.html">Отслеживание прогресса загрузки файлов с помощью сессий</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="ref.session.html">Session Функции</a></div>
+ <div class="up"><a href="book.session.html">Сессии</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

@@ -1,0 +1,161 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Установка обработчика выхода за пределы пространства имен</title>
+
+ </head>
+ <body><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.xml-set-element-handler.html">xml_set_element_handler</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.xml-set-external-entity-ref-handler.html">xml_set_external_entity_ref_handler</a></div>
+ <div class="up"><a href="ref.xml.html">Функции парсера XML</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.xml-set-end-namespace-decl-handler" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">xml_set_end_namespace_decl_handler</h1>
+  <p class="verinfo">(PHP 4 &gt;= 4.0.5, PHP 5)</p><p class="refpurpose"><span class="refname">xml_set_end_namespace_decl_handler</span> &mdash; <span class="dc-title">
+   Установка обработчика выхода за пределы пространства имен
+  </span></p>
+
+ </div>
+
+ <div class="refsect1 description" id="refsect1-function.xml-set-end-namespace-decl-handler-description">
+  <h3 class="title">Описание</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">bool</span> <span class="methodname"><b>xml_set_end_namespace_decl_handler</b></span>
+    ( <span class="methodparam"><span class="type">resource</span> <tt class="parameter">$parser</tt></span>
+   , <span class="methodparam"><span class="type"><a href="language.pseudo-types.html#language.types.callback" class="type callback">callback</a></span> <tt class="parameter">$handler</tt></span>
+   )</div>
+
+  <p class="para rdfs-comment">
+   Задает обработчик, который вызывается при выходе за пределы объявления
+   пространства имен. Этот обработчик будет вызываться для каждого 
+   объявления пространства имен после того как отработает обработчик
+   окончания элемента, в котором это пространство имен было объявлено.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-function.xml-set-end-namespace-decl-handler-parameters">
+  <h3 class="title">Список параметров</h3>
+  <p class="para">
+   <dl>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">parser</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Ссылка на XML анализатор.
+      </p>
+     </dd>
+
+    </dt>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">handler</tt></i></span>
+     <dd>
+
+      <p class="para">
+       <i><tt class="parameter">handler</tt></i> - строка содержащая имя функции, которая 
+       должна быть определена на момент вызова функции
+       <span class="function"><a href="function.xml-parse.html" class="function">xml_parse()</a></span> из анализатора 
+       <i><tt class="parameter">parser</tt></i>.
+      </p>
+      <p class="para">
+       Функция с именем <i><tt class="parameter">handler</tt></i> должна принимать
+       два аргумента и возвращать целочисленный результат. Если обработчик 
+       вернет <b><tt>FALSE</tt></b> (равно как и ничего не вернет), XML анализатор прекратит
+       работу, а функция <span class="function"><a href="function.xml-get-error-code.html" class="function">xml_get_error_code()</a></span> будет 
+       возвращать константу
+       <b><tt>XML_ERROR_EXTERNAL_ENTITY_HANDLING</tt></b>.
+       <div class="methodsynopsis dc-description">
+         <span class="methodname"><span class="replaceable">handler</span></span>
+         ( <span class="methodparam"><span class="type">resource</span> <tt class="parameter">$parser</tt></span>
+        , <span class="methodparam"><span class="type">string</span> <tt class="parameter">$prefix</tt></span>
+        )</div>
+
+       <dl>
+
+        <dt>
+
+         <span class="term"><i><tt class="parameter">parser</tt></i></span>
+         <dd>
+
+          <span class="simpara">
+           Первый аргумент <span class="replaceable">parser</span> является ссылкой
+           на XML анализатор вызывающий обработчик.
+          </span>
+         </dd>
+
+        </dt>
+
+        <dt>
+
+         <span class="term"><i><tt class="parameter">prefix</tt></i></span>
+         <dd>
+
+          <span class="simpara">
+           Префикс - строка, используемая как ссылка на пространство имен в пределах
+           XML объекта.
+          </span>
+         </dd>
+
+        </dt>
+
+       </dl>
+
+      </p>
+      <p class="para">
+       Если в качестве обработчика передана пустая строка или <b><tt>FALSE</tt></b>, этот
+       обработчик отключается.
+      </p>
+      <blockquote class="note"><p><b class="note">Замечание</b>: <span class="simpara">В качестве аргумента вместо имени
+функции может быть передан массив, содержащий ссылку на объект
+и имя метода.</span></p></blockquote>
+     </dd>
+
+    </dt>
+
+   </dl>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-function.xml-set-end-namespace-decl-handler-returnvalues">
+  <h3 class="title">Возвращаемые значения</h3>
+  <p class="para">
+   Возвращает <b><tt>TRUE</tt></b> в случае успешного завершения  или <b><tt>FALSE</tt></b> в случае возникновения ошибки.
+  </p>
+ </div>
+
+
+ <div class="refsect1 notes" id="refsect1-function.xml-set-end-namespace-decl-handler-notes">
+  <h3 class="title">Примечания</h3>
+  <blockquote class="note"><p><b class="note">Замечание</b>: 
+   <p class="para">
+    Это событие не поддерживается LibXML.
+   </p>
+  </p></blockquote>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-function.xml-set-end-namespace-decl-handler-seealso">
+  <h3 class="title">Смотрите также</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><span class="function"><a href="function.xml-set-start-namespace-decl-handler.html" class="function" rel="rdfs-seeAlso">xml_set_start_namespace_decl_handler()</a> - Установка обработчика входа в пределы пространства имен</span></li>
+   </ul>
+  </p>
+ </div>
+
+
+</div><hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.xml-set-element-handler.html">xml_set_element_handler</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.xml-set-external-entity-ref-handler.html">xml_set_external_entity_ref_handler</a></div>
+ <div class="up"><a href="ref.xml.html">Функции парсера XML</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

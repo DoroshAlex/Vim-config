@@ -1,0 +1,163 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Удаляет дочерний узел из списка потомков</title>
+
+ </head>
+ <body><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="domnode.normalize.html">DOMNode::normalize</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="domnode.replacechild.html">DOMNode::replaceChild</a></div>
+ <div class="up"><a href="class.domnode.html">DOMNode</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="domnode.removechild" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">DOMNode::removeChild</h1>
+  <p class="verinfo">(PHP 5)</p><p class="refpurpose"><span class="refname">DOMNode::removeChild</span> &mdash; <span class="dc-title">
+   Удаляет дочерний узел из списка потомков
+  </span></p>
+
+ </div>
+ <div class="refsect1 description" id="refsect1-domnode.removechild-description">
+  <h3 class="title">Описание</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type"><a href="class.domnode.html" class="type DOMNode">DOMNode</a></span> <span class="methodname"><b>DOMNode::removeChild</b></span>
+    ( <span class="methodparam"><span class="type"><a href="class.domnode.html" class="type DOMNode">DOMNode</a></span> <tt class="parameter">$oldnode</tt></span>
+   )</div>
+
+  <p class="para rdfs-comment">
+   Эта функция удаляет дочерний узел из списка потомков.
+  </p>
+ </div>
+
+ <div class="refsect1 parameters" id="refsect1-domnode.removechild-parameters">
+  <h3 class="title">Список параметров</h3>
+  <p class="para">
+   <dl>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">oldnode</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Удаляемый дочерний узел.
+      </p>
+     </dd>
+
+    </dt>
+
+   </dl>
+
+  </p>
+ </div>
+
+ <div class="refsect1 returnvalues" id="refsect1-domnode.removechild-returnvalues">
+  <h3 class="title">Возвращаемые значения</h3>
+  <p class="para">
+   Функция возращает удаляемый дочерний узел, если он может быть удален.
+  </p>
+ </div>
+
+ <div class="refsect1 errors" id="refsect1-domnode.removechild-errors">
+  <h3 class="title">Ошибки</h3>
+  <p class="para">
+   <dl>
+
+    <dt>
+
+     <span class="term"><b><tt>DOM_NO_MODIFICATION_ALLOWED_ERR</tt></b></span>
+     <dd>
+
+      <p class="para">
+       Возникает, если узел доступен только для чтения.
+      </p>
+     </dd>
+
+    </dt>
+
+    <dt>
+
+     <span class="term"><b><tt>DOM_NOT_FOUND</tt></b></span>
+     <dd>
+
+      <p class="para">
+       Возникает, если <i><tt class="parameter">oldnode</tt></i>
+       не является дочерним узлом данного узла.
+      </p>
+     </dd>
+
+    </dt>
+
+   </dl>
+
+  </p>
+ </div>
+
+ <div class="refsect1 examples" id="refsect1-domnode.removechild-examples">
+  <h3 class="title">Примеры</h3>
+  <p class="para">
+   Следующий пример удаляет элемент chapter (глава) из XML-документа.
+   <div class="example" id="example-4892">
+    <p><b>Пример #1 Удаление дочернего узла</b></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /><br />$doc&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">DOMDocument</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$doc</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">load</span><span style="color: #007700">(</span><span style="color: #DD0000">'book.xml'</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">$book&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$doc</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">documentElement</span><span style="color: #007700">;<br /><br /></span><span style="color: #FF8000">//&nbsp;находим&nbsp;главу&nbsp;(chapter)&nbsp;и&nbsp;удалям&nbsp;из&nbsp;книги&nbsp;(book)<br /></span><span style="color: #0000BB">$chapter&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$book</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getElementsByTagName</span><span style="color: #007700">(</span><span style="color: #DD0000">'chapter'</span><span style="color: #007700">)-&gt;</span><span style="color: #0000BB">item</span><span style="color: #007700">(</span><span style="color: #0000BB">0</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$oldchapter&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$book</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">removeChild</span><span style="color: #007700">(</span><span style="color: #0000BB">$chapter</span><span style="color: #007700">);<br /><br />echo&nbsp;</span><span style="color: #0000BB">$doc</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">saveXML</span><span style="color: #007700">();<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+    <div class="example-contents"><p>Результат выполнения данного примера:</p></div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+&lt;!DOCTYPE book PUBLIC &quot;-//OASIS//DTD DocBook XML V4.1.2//EN&quot;
+          &quot;http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd&quot;&gt;
+&lt;book id=&quot;listing&quot;&gt;
+ &lt;title&gt;My lists&lt;/title&gt;
+ 
+&lt;/book&gt;
+</pre></div>
+    </div>
+   </div>
+  </p>
+  <p class="para">
+   <div class="example" id="example-4893">
+    <p><b>Пример #2 Сохраняем URI пространства имен родительского узла</b></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /><br />$doc&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">DOMDocument</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$doc</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">load</span><span style="color: #007700">(</span><span style="color: #DD0000">'book.xml'</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">$book&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$doc</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">documentElement</span><span style="color: #007700">;<br /><br /></span><span style="color: #FF8000">//&nbsp;находим&nbsp;главу&nbsp;(chapter)&nbsp;и&nbsp;удалям&nbsp;из&nbsp;книги&nbsp;(book)<br /></span><span style="color: #0000BB">$chapter&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$book</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getElementsByTagName</span><span style="color: #007700">(</span><span style="color: #DD0000">'chapter'</span><span style="color: #007700">)-&gt;</span><span style="color: #0000BB">item</span><span style="color: #007700">(</span><span style="color: #0000BB">0</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;копируем&nbsp;URI&nbsp;пространства&nbsp;имен<br /></span><span style="color: #0000BB">$nsuri&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$book</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">namespaceURI</span><span style="color: #007700">;<br /><br /></span><span style="color: #FF8000">//&nbsp;удаляем&nbsp;дочерний&nbsp;узел<br /></span><span style="color: #0000BB">$book</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">removeChild</span><span style="color: #007700">(</span><span style="color: #0000BB">$chapter</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;вставляем&nbsp;URI&nbsp;пространства&nbsp;имен&nbsp;обратно&nbsp;в&nbsp;родительский&nbsp;узел<br /></span><span style="color: #0000BB">$book</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">namespaceURI&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$nsuri</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+  </p>
+ </div>
+
+ <div class="refsect1 notes" id="refsect1-domnode.removechild-notes">
+  <h3 class="title">Примечания</h3>
+  <blockquote class="note"><p><b class="note">Замечание</b>: 
+   <p class="para">
+    После вызова этого метода свойство <i>DOMNode::$namespaceURI</i>
+    родительского узла сбрасывается в <b><tt>NULL</tt></b>. В примере выше показано, как это обойти.
+   </p>
+  </p></blockquote>
+ </div>
+
+ <div class="refsect1 seealso" id="refsect1-domnode.removechild-seealso">
+  <h3 class="title">Смотрите также</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"> <span class="methodname"><a href="domnode.appendchild.html" class="methodname" rel="rdfs-seeAlso">DOMNode::appendChild()</a> - Добавляет новый дочерний узел в конец списка потомков</span></li>
+    <li class="member"> <span class="methodname"><a href="domnode.replacechild.html" class="methodname" rel="rdfs-seeAlso">DOMNode::replaceChild()</a> - Заменяет дочерний узел</span></li>
+   </ul>
+  </p>
+ </div>
+
+</div><hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="domnode.normalize.html">DOMNode::normalize</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="domnode.replacechild.html">DOMNode::replaceChild</a></div>
+ <div class="up"><a href="class.domnode.html">DOMNode</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

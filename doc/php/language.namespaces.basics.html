@@ -1,0 +1,124 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Использование пространства имен: основы</title>
+
+ </head>
+ <body><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="language.namespaces.definitionmultiple.html">Описание нескольких пространств имен в одном файле</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="language.namespaces.dynamic.html">Пространства имен и динамические особенности языка</a></div>
+ <div class="up"><a href="language.namespaces.html">Пространства имен</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="language.namespaces.basics" class="sect1">
+  <h2 class="title">Использование пространства имен: основы</h2>
+  <p class="verinfo">(PHP 5 &gt;= 5.3.0)</p>
+  <p class="para">
+   До обсуждения использования пространств имен важно понять как PHP узнает
+   какие элементы из пространства имен запрашиваются в вашем коде. Можно провести аналогию 
+   между пространствами имен PHP и файловой системой. Есть три способа обратиться к файлу 
+   в файловой системе:
+   <ol type="1">
+    <li class="listitem">
+     <span class="simpara">
+      Относительное имя файла, такое как <i>foo.txt</i>, преобразуемое в 
+      <i>currentdirectory/foo.txt</i>, где currentdirectory текущая
+      директория, в которой мы находимся. Тогда, если текущая директория
+      <i>/home/foo</i>, то имя преобразуется в <i>/home/foo/foo.txt</i>.
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      Относительное имя пути, такое как <i>subdirectory/foo.txt</i>, преобразуется
+      в <i>currentdirectory/subdirectory/foo.txt</i>.
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      Абсолютное имя пути, такое как <i>/main/foo.txt</i>, которое остается
+      таким же: <i>/main/foo.txt</i>.
+     </span>
+    </li>
+   </ol>
+   Тот же принцип применим и к элементам из пространств имен PHP. Для примера,
+   имя класса может быть указано тремя способами:
+   <ol type="1">
+    <li class="listitem">
+     <span class="simpara">
+      Неполные имена (имена классов без префикса), такие как
+      <i>$a = new foo();</i> или
+      <i>foo::staticmethod();</i>. Если текущее пространство имен
+      <i>currentnamespace</i>, то эти имена преобразуются в
+      <i>currentnamespace\foo</i>. Если код находится в глобальном
+   пространстве имен, то имена остаются такими же: <i>foo</i>.
+     </span>
+     <span class="simpara">
+      Предупреждение: неполные имена для функций и констант будут определяться
+      в глобальном пространстве имен, если они не определены в текущем пространстве имен.  
+      Подробнее в <a href="language.namespaces.fallback.html" class="link">Использование пространств имен:
+      доступ к глобальным функциям и классам</a>.
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      Полные имена (имена классов с префиксами), такие как
+      <i>$a = new subnamespace\foo();</i> или
+      <i>subnamespace\foo::staticmethod();</i>. Если текущее пространство имен
+      <i>currentnamespace</i>, то эти имена преобразуются в
+      <i>currentnamespace\subnamespace\foo</i>. Если
+      код находится в глобальном пространстве имен, то имена преобразуются в <i>subnamespace\foo</i>.
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      Абсолютные имена или имена с предшествующим префиксом, обозначающим глобальное пространство.
+      <i>$a = new \currentnamespace\foo();</i> или
+      <i>\currentnamespace\foo::staticmethod();</i>. Имена всегда
+      определяются также как и записаны: <i>currentnamespace\foo</i>.
+     </span>
+    </li>
+   </ol>
+  </p>
+  <p class="para">
+   Ниже приведен пример трех вариантов синтаксиса в реальном коде:
+   <div class="informalexample">
+    <p class="simpara">file1.php</p>
+    <div class="example-contents">
+     <div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">namespace&nbsp;</span><span style="color: #0000BB">Foo</span><span style="color: #007700">\</span><span style="color: #0000BB">Bar</span><span style="color: #007700">\</span><span style="color: #0000BB">subnamespace</span><span style="color: #007700">;<br /><br />const&nbsp;</span><span style="color: #0000BB">FOO&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">1</span><span style="color: #007700">;<br />function&nbsp;</span><span style="color: #0000BB">foo</span><span style="color: #007700">()&nbsp;{}<br />class&nbsp;</span><span style="color: #0000BB">foo<br /></span><span style="color: #007700">{<br />&nbsp;&nbsp;&nbsp;&nbsp;static&nbsp;function&nbsp;</span><span style="color: #0000BB">staticmethod</span><span style="color: #007700">()&nbsp;{}<br />}<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+    <p class="simpara">file2.php</p>
+    <div class="example-contents">
+     <div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">namespace&nbsp;</span><span style="color: #0000BB">Foo</span><span style="color: #007700">\</span><span style="color: #0000BB">Bar</span><span style="color: #007700">;<br />include&nbsp;</span><span style="color: #DD0000">'file1.php'</span><span style="color: #007700">;<br /><br />const&nbsp;</span><span style="color: #0000BB">FOO&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">2</span><span style="color: #007700">;<br />function&nbsp;</span><span style="color: #0000BB">foo</span><span style="color: #007700">()&nbsp;{}<br />class&nbsp;</span><span style="color: #0000BB">foo<br /></span><span style="color: #007700">{<br />&nbsp;&nbsp;&nbsp;&nbsp;static&nbsp;function&nbsp;</span><span style="color: #0000BB">staticmethod</span><span style="color: #007700">()&nbsp;{}<br />}<br /><br /></span><span style="color: #FF8000">/*&nbsp;Неполные&nbsp;имена&nbsp;*/<br /></span><span style="color: #0000BB">foo</span><span style="color: #007700">();&nbsp;</span><span style="color: #FF8000">//&nbsp;определяется&nbsp;как&nbsp;функция&nbsp;Foo\Bar\foo<br /></span><span style="color: #0000BB">foo</span><span style="color: #007700">::</span><span style="color: #0000BB">staticmethod</span><span style="color: #007700">();&nbsp;</span><span style="color: #FF8000">//&nbsp;определяется&nbsp;как&nbsp;класс&nbsp;Foo\Bar\foo&nbsp;с&nbsp;методом&nbsp;staticmethod<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">FOO</span><span style="color: #007700">;&nbsp;</span><span style="color: #FF8000">//&nbsp;определяется&nbsp;как&nbsp;константа&nbsp;Foo\Bar\FOO<br /><br />/*&nbsp;Полные&nbsp;имена&nbsp;*/<br /></span><span style="color: #0000BB">subnamespace</span><span style="color: #007700">\</span><span style="color: #0000BB">foo</span><span style="color: #007700">();&nbsp;</span><span style="color: #FF8000">//&nbsp;определяется&nbsp;как&nbsp;функция&nbsp;Foo\Bar\subnamespace\foo<br /></span><span style="color: #0000BB">subnamespace</span><span style="color: #007700">\</span><span style="color: #0000BB">foo</span><span style="color: #007700">::</span><span style="color: #0000BB">staticmethod</span><span style="color: #007700">();&nbsp;</span><span style="color: #FF8000">//&nbsp;определяется&nbsp;как&nbsp;класс&nbsp;Foo\Bar\subnamespace\foo<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;c&nbsp;методом&nbsp;staticmethod<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">subnamespace</span><span style="color: #007700">\</span><span style="color: #0000BB">FOO</span><span style="color: #007700">;&nbsp;</span><span style="color: #FF8000">//&nbsp;определяется&nbsp;как&nbsp;константа&nbsp;Foo\Bar\subnamespace\FOO<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />/*&nbsp;Абсолютные&nbsp;имена&nbsp;*/<br /></span><span style="color: #007700">\</span><span style="color: #0000BB">Foo</span><span style="color: #007700">\</span><span style="color: #0000BB">Bar</span><span style="color: #007700">\</span><span style="color: #0000BB">foo</span><span style="color: #007700">();&nbsp;</span><span style="color: #FF8000">//&nbsp;определяется&nbsp;как&nbsp;функция&nbsp;Foo\Bar\foo<br /></span><span style="color: #007700">\</span><span style="color: #0000BB">Foo</span><span style="color: #007700">\</span><span style="color: #0000BB">Bar</span><span style="color: #007700">\</span><span style="color: #0000BB">foo</span><span style="color: #007700">::</span><span style="color: #0000BB">staticmethod</span><span style="color: #007700">();&nbsp;</span><span style="color: #FF8000">//&nbsp;определяется&nbsp;как&nbsp;класс&nbsp;Foo\Bar\foo&nbsp;с&nbsp;методом&nbsp;staticmethod<br /></span><span style="color: #007700">echo&nbsp;\</span><span style="color: #0000BB">Foo</span><span style="color: #007700">\</span><span style="color: #0000BB">Bar</span><span style="color: #007700">\</span><span style="color: #0000BB">FOO</span><span style="color: #007700">;&nbsp;</span><span style="color: #FF8000">//&nbsp;определяется&nbsp;как&nbsp;константа&nbsp;Foo\Bar\FOO<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+  </p>
+  <p class="para">
+   Обратите внимание, что для доступа к любым глобальным
+   классам, функциям или константам, может использоваться абсолютное имя, такое как
+   <span class="function"><b>\strlen()</b></span>, или <b class="classname">\Exception</b>, или
+   <i>\INI_ALL</i>.
+   <div class="example" id="example-227">
+    <p><b>Пример #1 Доступ к глобальным классам, функциям и константам из пространства имен</b></p>
+    <div class="example-contents">
+     <div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">namespace&nbsp;</span><span style="color: #0000BB">Foo</span><span style="color: #007700">;<br /><br />function&nbsp;</span><span style="color: #0000BB">strlen</span><span style="color: #007700">()&nbsp;{}<br />const&nbsp;</span><span style="color: #0000BB">INI_ALL&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">3</span><span style="color: #007700">;<br />class&nbsp;</span><span style="color: #0000BB">Exception&nbsp;</span><span style="color: #007700">{}<br /><br /></span><span style="color: #0000BB">$a&nbsp;</span><span style="color: #007700">=&nbsp;\</span><span style="color: #0000BB">strlen</span><span style="color: #007700">(</span><span style="color: #DD0000">'hi'</span><span style="color: #007700">);&nbsp;</span><span style="color: #FF8000">//&nbsp;вызывает&nbsp;глобальную&nbsp;функцию&nbsp;strlen<br /></span><span style="color: #0000BB">$b&nbsp;</span><span style="color: #007700">=&nbsp;\</span><span style="color: #0000BB">INI_ALL</span><span style="color: #007700">;&nbsp;</span><span style="color: #FF8000">//&nbsp;получает&nbsp;доступ&nbsp;к&nbsp;глобальной&nbsp;константе&nbsp;INI_ALL<br /></span><span style="color: #0000BB">$c&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;\</span><span style="color: #0000BB">Exception</span><span style="color: #007700">(</span><span style="color: #DD0000">'error'</span><span style="color: #007700">);&nbsp;</span><span style="color: #FF8000">//&nbsp;Создает&nbsp;экземпляр&nbsp;глобального&nbsp;класса&nbsp;Exception<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+  </p>
+ </div><hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="language.namespaces.definitionmultiple.html">Описание нескольких пространств имен в одном файле</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="language.namespaces.dynamic.html">Пространства имен и динамические особенности языка</a></div>
+ <div class="up"><a href="language.namespaces.html">Пространства имен</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

@@ -1,0 +1,212 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Сортирует массив по значениям используя пользовательскую функцию для сравнения элементов</title>
+
+ </head>
+ <body><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.uksort.html">uksort</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="book.classobj.html">Классы/Объекты</a></div>
+ <div class="up"><a href="ref.array.html">Функции для работы с массивами</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.usort" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">usort</h1>
+  <p class="verinfo">(PHP 4, PHP 5)</p><p class="refpurpose"><span class="refname">usort</span> &mdash; <span class="dc-title">Сортирует массив по значениям используя пользовательскую функцию для сравнения элементов</span></p>
+
+ </div>
+ <div class="refsect1 description" id="refsect1-function.usort-description">
+  <h3 class="title">Описание</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">bool</span> <span class="methodname"><b>usort</b></span>
+    ( <span class="methodparam"><span class="type">array</span> <tt class="parameter reference">&$array</tt></span>
+   , <span class="methodparam"><span class="type"><a href="language.pseudo-types.html#language.types.callback" class="type callback">callback</a></span> <tt class="parameter">$cmp_function</tt></span>
+   )</div>
+
+  <p class="para rdfs-comment">
+   Эта функция сортирует элементы массива, используя для сравнения
+   значений callback-функцию, предоставленную пользователем.
+   Используйте эту функцию, если вам нужно отсортировать массив по
+   какому-нибудь необычному признаку.
+  </p>
+  <blockquote class="note"><p><b class="note">Замечание</b>: 
+   <p class="para">
+    Если два элемента исходного массива равны, их порядок в
+    отсортированном массиве неопределён.
+   </p>
+  </p></blockquote>
+  <blockquote class="note"><p><b class="note">Замечание</b>: <span class="simpara">Эта функция присваивает
+новые ключи элементам <i><tt class="parameter">массива</tt></i>.
+Она удалит все существующие ключи, а не просто переупорядочит их.</span></p></blockquote>
+ </div>
+
+ <div class="refsect1 parameters" id="refsect1-function.usort-parameters">
+  <h3 class="title">Список параметров</h3>
+  <p class="para">
+   <dl>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">array</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Входной массив.
+      </p>
+     </dd>
+
+    </dt>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">cmp_function</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Функция, используемая для сравнения, должна возвращать
+       целое число, меньшее, равное или большее нуля, если первый
+       аргумент соответственно меньше, равен или больше второго.
+      </p>
+     </dd>
+
+    </dt>
+
+   </dl>
+
+  </p>
+ </div>
+
+ <div class="refsect1 returnvalues" id="refsect1-function.usort-returnvalues">
+  <h3 class="title">Возвращаемые значения</h3>
+  <p class="para">
+   Возвращает <b><tt>TRUE</tt></b> в случае успешного завершения  или <b><tt>FALSE</tt></b> в случае возникновения ошибки.
+  </p>
+ </div>
+
+ <div class="refsect1 changelog" id="refsect1-function.usort-changelog">
+  <h3 class="title">Список изменений</h3>
+  <p class="para">
+   <table class="doctable informaltable">
+    
+     <thead valign="middle">
+      <tr valign="middle">
+       <th>Версия</th>
+       <th>Описание</th>
+      </tr>
+
+     </thead>
+
+     <tbody valign="middle" class="tbody">
+      <tr valign="middle">
+       <td align="left">4.1.0</td>
+       <td align="left">
+        Представлен новый алгоритм сортировки. Функция
+        <i><tt class="parameter">cmp_function</tt></i> не сохраняет исходный
+        порядок одинаковых элементов.
+       </td>
+      </tr>
+
+     </tbody>
+    
+   </table>
+
+  </p>
+ </div>
+
+ <div class="refsect1 examples" id="refsect1-function.usort-examples">
+  <h3 class="title">Примеры</h3>
+  <p class="para">
+   <div class="example" id="example-4538">
+    <p><b>Пример #1 Пример использования <span class="function"><b>usort()</b></span></b></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">function&nbsp;</span><span style="color: #0000BB">cmp</span><span style="color: #007700">(</span><span style="color: #0000BB">$a</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$b</span><span style="color: #007700">)<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(</span><span style="color: #0000BB">$a&nbsp;</span><span style="color: #007700">==&nbsp;</span><span style="color: #0000BB">$b</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;(</span><span style="color: #0000BB">$a&nbsp;</span><span style="color: #007700">&lt;&nbsp;</span><span style="color: #0000BB">$b</span><span style="color: #007700">)&nbsp;?&nbsp;-</span><span style="color: #0000BB">1&nbsp;</span><span style="color: #007700">:&nbsp;</span><span style="color: #0000BB">1</span><span style="color: #007700">;<br />}<br /><br /></span><span style="color: #0000BB">$a&nbsp;</span><span style="color: #007700">=&nbsp;array(</span><span style="color: #0000BB">3</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">2</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">5</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">6</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">1</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">usort</span><span style="color: #007700">(</span><span style="color: #0000BB">$a</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"cmp"</span><span style="color: #007700">);<br /><br />foreach&nbsp;(</span><span style="color: #0000BB">$a&nbsp;</span><span style="color: #007700">as&nbsp;</span><span style="color: #0000BB">$key&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">$value</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"</span><span style="color: #0000BB">$key</span><span style="color: #DD0000">:&nbsp;</span><span style="color: #0000BB">$value</span><span style="color: #DD0000">\n"</span><span style="color: #007700">;<br />}<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+    <div class="example-contents"><p>Результат выполнения данного примера:</p></div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+0: 1
+1: 2
+2: 3
+3: 5
+4: 6
+</pre></div>
+    </div>
+   </div>
+  </p>
+  <blockquote class="note"><p><b class="note">Замечание</b>: 
+   <p class="para">
+    Очевидно, что для этого тривиального случая более подходит функция
+    <span class="function"><a href="function.sort.html" class="function">sort()</a></span>.
+   </p>
+  </p></blockquote>
+  <p class="para">
+   <div class="example" id="example-4539">
+    <p><b>Пример #2 
+     Пример использования функции <span class="function"><b>usort()</b></span> с многомерными массивами
+    </b></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">function&nbsp;</span><span style="color: #0000BB">cmp</span><span style="color: #007700">(</span><span style="color: #0000BB">$a</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$b</span><span style="color: #007700">)<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">strcmp</span><span style="color: #007700">(</span><span style="color: #0000BB">$a</span><span style="color: #007700">[</span><span style="color: #DD0000">"fruit"</span><span style="color: #007700">],&nbsp;</span><span style="color: #0000BB">$b</span><span style="color: #007700">[</span><span style="color: #DD0000">"fruit"</span><span style="color: #007700">]);<br />}<br /><br /></span><span style="color: #0000BB">$fruits</span><span style="color: #007700">[</span><span style="color: #0000BB">0</span><span style="color: #007700">][</span><span style="color: #DD0000">"fruit"</span><span style="color: #007700">]&nbsp;=&nbsp;</span><span style="color: #DD0000">"lemons"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$fruits</span><span style="color: #007700">[</span><span style="color: #0000BB">1</span><span style="color: #007700">][</span><span style="color: #DD0000">"fruit"</span><span style="color: #007700">]&nbsp;=&nbsp;</span><span style="color: #DD0000">"apples"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$fruits</span><span style="color: #007700">[</span><span style="color: #0000BB">2</span><span style="color: #007700">][</span><span style="color: #DD0000">"fruit"</span><span style="color: #007700">]&nbsp;=&nbsp;</span><span style="color: #DD0000">"grapes"</span><span style="color: #007700">;<br /><br /></span><span style="color: #0000BB">usort</span><span style="color: #007700">(</span><span style="color: #0000BB">$fruits</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"cmp"</span><span style="color: #007700">);<br /><br />while&nbsp;(list(</span><span style="color: #0000BB">$key</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$value</span><span style="color: #007700">)&nbsp;=&nbsp;</span><span style="color: #0000BB">each</span><span style="color: #007700">(</span><span style="color: #0000BB">$fruits</span><span style="color: #007700">))&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"\$fruits[</span><span style="color: #0000BB">$key</span><span style="color: #DD0000">]:&nbsp;"&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">$value</span><span style="color: #007700">[</span><span style="color: #DD0000">"fruit"</span><span style="color: #007700">]&nbsp;.&nbsp;</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br />}<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+    <div class="example-contents"><p>
+     При сортировке многомерного массива переменные <var class="varname"><var class="varname">$a</var></var> и
+     <var class="varname"><var class="varname">$b</var></var> содержат ссылки на первые два индекса массива.
+    </p></div>
+    <div class="example-contents"><p>Результат выполнения данного примера:</p></div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+$fruits[0]: apples
+$fruits[1]: grapes
+$fruits[2]: lemons
+</pre></div>
+    </div>
+   </div>
+  </p>
+  <p class="para">
+   <div class="example" id="example-4540">
+    <p><b>Пример #3 
+     Пример использования <span class="function"><b>usort()</b></span> с методом класса
+    </b></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">class&nbsp;</span><span style="color: #0000BB">TestObj&nbsp;</span><span style="color: #007700">{<br />&nbsp;&nbsp;&nbsp;&nbsp;var&nbsp;</span><span style="color: #0000BB">$name</span><span style="color: #007700">;<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;function&nbsp;</span><span style="color: #0000BB">TestObj</span><span style="color: #007700">(</span><span style="color: #0000BB">$name</span><span style="color: #007700">)<br />&nbsp;&nbsp;&nbsp;&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">name&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$name</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">/*&nbsp;Это&nbsp;статическая&nbsp;функция&nbsp;сравнения:&nbsp;*/<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">static&nbsp;function&nbsp;</span><span style="color: #0000BB">cmp_obj</span><span style="color: #007700">(</span><span style="color: #0000BB">$a</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$b</span><span style="color: #007700">)<br />&nbsp;&nbsp;&nbsp;&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$al&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">strtolower</span><span style="color: #007700">(</span><span style="color: #0000BB">$a</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">name</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$bl&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">strtolower</span><span style="color: #007700">(</span><span style="color: #0000BB">$b</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">name</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(</span><span style="color: #0000BB">$al&nbsp;</span><span style="color: #007700">==&nbsp;</span><span style="color: #0000BB">$bl</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;(</span><span style="color: #0000BB">$al&nbsp;</span><span style="color: #007700">&gt;&nbsp;</span><span style="color: #0000BB">$bl</span><span style="color: #007700">)&nbsp;?&nbsp;+</span><span style="color: #0000BB">1&nbsp;</span><span style="color: #007700">:&nbsp;-</span><span style="color: #0000BB">1</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />}<br /><br /></span><span style="color: #0000BB">$a</span><span style="color: #007700">[]&nbsp;=&nbsp;new&nbsp;</span><span style="color: #0000BB">TestObj</span><span style="color: #007700">(</span><span style="color: #DD0000">"c"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$a</span><span style="color: #007700">[]&nbsp;=&nbsp;new&nbsp;</span><span style="color: #0000BB">TestObj</span><span style="color: #007700">(</span><span style="color: #DD0000">"b"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$a</span><span style="color: #007700">[]&nbsp;=&nbsp;new&nbsp;</span><span style="color: #0000BB">TestObj</span><span style="color: #007700">(</span><span style="color: #DD0000">"d"</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">usort</span><span style="color: #007700">(</span><span style="color: #0000BB">$a</span><span style="color: #007700">,&nbsp;array(</span><span style="color: #DD0000">"TestObj"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"cmp_obj"</span><span style="color: #007700">));<br /><br />foreach&nbsp;(</span><span style="color: #0000BB">$a&nbsp;</span><span style="color: #007700">as&nbsp;</span><span style="color: #0000BB">$item</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #0000BB">$item</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">name&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br />}<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+    <div class="example-contents"><p>Результат выполнения данного примера:</p></div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+b
+c
+d
+</pre></div>
+    </div>
+   </div>
+  </p>
+ </div>
+
+ <div class="refsect1 seealso" id="refsect1-function.usort-seealso">
+  <h3 class="title">Смотрите также</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><span class="function"><a href="function.uasort.html" class="function" rel="rdfs-seeAlso">uasort()</a> - Сортирует массив, используя пользовательскую функцию для сравнения элементов с сохранением ключей</span></li>
+    <li class="member"><a href="array.sorting.html" class="link">Сравнение функций сортировки массивов</a></li>
+   </ul>
+  </p>
+ </div>
+
+</div><hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.uksort.html">uksort</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="book.classobj.html">Классы/Объекты</a></div>
+ <div class="up"><a href="ref.array.html">Функции для работы с массивами</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

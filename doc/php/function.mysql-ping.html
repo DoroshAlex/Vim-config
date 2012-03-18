@@ -1,0 +1,104 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Проверяет соединение с сервером и пересоединяется при необходимости</title>
+
+ </head>
+ <body><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.mysql-pconnect.html">mysql_pconnect</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.mysql-query.html">mysql_query</a></div>
+ <div class="up"><a href="ref.mysql.html">MySQL</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.mysql-ping" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">mysql_ping</h1>
+  <p class="verinfo">(PHP 4 &gt;= 4.3.0, PHP 5)</p><p class="refpurpose"><span class="refname">mysql_ping</span> &mdash; <span class="dc-title">Проверяет соединение с сервером и пересоединяется при необходимости</span></p>
+
+ </div>
+
+ <div class="refsect1 description" id="refsect1-function.mysql-ping-description">
+  <h3 class="title">Описание</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">bool</span> <span class="methodname"><b>mysql_ping</b></span>
+    ([ <span class="methodparam"><span class="type">resource</span> <tt class="parameter">$link_identifier</tt></span>
+  ] )</div>
+
+  <p class="para rdfs-comment">
+   Проверяет работает ли соединение с сервером. Если оно
+   утеряно, автоматически предпринимается попытка пересоединения. Эта
+   функция может быть использована в скриптах, работающих на протяжении
+   долгого времени.
+  </p>
+  <blockquote class="note"><p><b class="note">Замечание</b>: 
+   <p class="para">
+    Начиная с версии MySQL 5.0.13, возможность автовосстановления
+    соединения была отключена.
+   </p>
+  </p></blockquote>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-function.mysql-ping-parameters">
+  <h3 class="title">Список параметров</h3>
+  <p class="para">
+   <dl>
+
+    <dt>
+<span class="term"><i><tt class="parameter">
+link_identifier</tt></i></span><dd>
+<p class="para">Соединение MySQL. Если идентификатор соединения не был указан,
+используется последнее соединение, открытое <span class="function"><a href="function.mysql-connect.html" class="function">mysql_connect()</a></span>. Если такое соединение не было найдено,
+функция попытается создать таковое, как если бы <span class="function"><a href="function.mysql-connect.html" class="function">mysql_connect()</a></span> была вызвана без параметров.
+Если соединение не было найдено и не смогло быть создано, генерируется ошибка уровня <b><tt>E_WARNING</tt></b>.</p></dd>
+
+</dt>
+
+   </dl>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-function.mysql-ping-returnvalues">
+  <h3 class="title">Возвращаемые значения</h3>
+  <p class="para">
+   Возвращает <b><tt>TRUE</tt></b>, если соединение в рабочем состоянии
+   и <b><tt>FALSE</tt></b> в противном случае.
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-function.mysql-ping-examples">
+  <h3 class="title">Примеры</h3>
+  <p class="para">
+   <div class="example" id="example-1538">
+    <p><b>Пример #1 Пример использования <span class="function"><b>mysql_ping()</b></span></b></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />set_time_limit</span><span style="color: #007700">(</span><span style="color: #0000BB">0</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">$conn&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">mysql_connect</span><span style="color: #007700">(</span><span style="color: #DD0000">'localhost'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'mysqluser'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'mypass'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$db&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">mysql_select_db</span><span style="color: #007700">(</span><span style="color: #DD0000">'mydb'</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">/*&nbsp;Подразумевается&nbsp;что&nbsp;этот&nbsp;запрос&nbsp;будет&nbsp;выполняться&nbsp;достаточно&nbsp;долго&nbsp;*/<br /></span><span style="color: #0000BB">$result&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">mysql_query</span><span style="color: #007700">(</span><span style="color: #0000BB">$sql</span><span style="color: #007700">);<br />if&nbsp;(!</span><span style="color: #0000BB">$result</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">'Запрос&nbsp;#1&nbsp;не&nbsp;удался,&nbsp;выходим.'</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;exit;<br />}<br /><br /></span><span style="color: #FF8000">/*&nbsp;Проверяем&nbsp;что&nbsp;соединение&nbsp;еще&nbsp;работает,&nbsp;если&nbsp;нет,&nbsp;соединяемся&nbsp;заново&nbsp;*/<br /></span><span style="color: #007700">if&nbsp;(!</span><span style="color: #0000BB">mysql_ping</span><span style="color: #007700">(</span><span style="color: #0000BB">$conn</span><span style="color: #007700">))&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">'Соединение&nbsp;потеряно,&nbsp;выходим&nbsp;после&nbsp;запроса&nbsp;#1'</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;exit;<br />}<br /></span><span style="color: #0000BB">mysql_free_result</span><span style="color: #007700">(</span><span style="color: #0000BB">$result</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">/*&nbsp;Соединение&nbsp;еще&nbsp;работает,&nbsp;выполняем&nbsp;еще&nbsp;один&nbsp;запрос&nbsp;*/<br /></span><span style="color: #0000BB">$result2&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">mysql_query</span><span style="color: #007700">(</span><span style="color: #0000BB">$sql2</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+  </p>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-function.mysql-ping-seealso">
+  <h3 class="title">Смотрите также</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><span class="function"><a href="function.mysql-thread-id.html" class="function" rel="rdfs-seeAlso">mysql_thread_id()</a> - Возвращает идентификатор текущего потока</span></li>
+    <li class="member"><span class="function"><a href="function.mysql-list-processes.html" class="function" rel="rdfs-seeAlso">mysql_list_processes()</a> - Возвращает список процессов MySQL</span></li>
+   </ul>
+  </p>
+ </div>
+
+</div><hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.mysql-pconnect.html">mysql_pconnect</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.mysql-query.html">mysql_query</a></div>
+ <div class="up"><a href="ref.mysql.html">MySQL</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

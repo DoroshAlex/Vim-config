@@ -1,0 +1,133 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Файл конфигурации</title>
+
+ </head>
+ <body><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="configuration.html">Конфигурация запуска</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="configuration.file.per-user.html">.user.ini files</a></div>
+ <div class="up"><a href="configuration.html">Конфигурация запуска</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="configuration.file" class="sect1">
+  <h2 class="title">Файл конфигурации</h2>
+
+  <p class="simpara">
+   Файл конфигурации (<var class="filename">php.ini</var>)
+   считывается при запуске PHP. Для версий серверных модулей PHP
+   это происходит только один раз при запуске веб сервера. Для
+   <acronym title="Common Gateway Interface">CGI</acronym> и <acronym title="Command Line Interpreter/Interface">CLI</acronym> версиий это происходит при
+   каждом вызове.
+  </p>
+  <p class="para">
+   Поиск <var class="filename">php.ini</var> производится в следующих местах (по порядку поиска):
+   <ul class="itemizedlist">
+    <li class="listitem">
+     <span class="simpara">
+      По месту расположения модуля SAPI (<i>PHPIniDir</i> директива
+      Apache 2, <i>-c</i> параметр командной строки CGI и CLI,
+      <i>php_ini</i> параметр в NSAPI,
+      <i>PHP_INI_PATH</i> переменная среды в THTTPD)
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      Переменная среды <var class="varname"><var class="varname">PHPRC</var></var>. До PHP 5.2.0
+      поиск по переменной производился после поиска в реестре, указанном ниже.
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      Как и в PHP 5.2.0, местоположение файла <i>php.ini</i>
+      может быть указано для различных версий PHP. Следующие ключи реестра
+      исследуются при поиске:
+      <i>[HKEY_LOCAL_MACHINE\SOFTWARE\PHP\x.y.z]</i>,
+      <i>[HKEY_LOCAL_MACHINE\SOFTWARE\PHP\x.y]</i> и
+      <i>[HKEY_LOCAL_MACHINE\SOFTWARE\PHP\x]</i>, где
+      x, y и z подразумевают  major, minor и release версии PHP. Если также имеется
+      значение <i>IniFilePath</i> в любом из этих ключей, то местонахождение <i>php.ini</i>
+      будет определено первым ключом по порядку.
+      (только для Windows).
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <i>[HKEY_LOCAL_MACHINE\SOFTWARE\PHP]</i>, значение
+      <i>IniFilePath</i> (только для Windows).
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      Текущая директория (исключая CLI).
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      Директория веб сервера (для SAPI модулей), или директория PHP
+      (иначе в директории Windows).
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      В директории Windows (<var class="filename">C:\windows</var>
+      или <var class="filename">C:\winnt</var>) (для Windows), или
+      <i>--with-config-file-path</i> с выбором при компиляции.
+     </span>
+    </li>
+   </ul>
+  </p>
+  <p class="para">
+   Если файл <var class="filename">php-SAPI.ini</var> существует (где SAPI - это тип интерфейса, который используется,
+   например, <var class="filename">php-cli.ini</var> или
+   <var class="filename">php-apache.ini</var>), то он используется вместо <var class="filename">php.ini</var>.
+   Тип интерфейса между веб-сервером и PHP может быть определен с помощью функции <span class="function"><a href="function.php-sapi-name.html" class="function">php_sapi_name()</a></span>.
+  </p>
+  <blockquote class="note"><p><b class="note">Замечание</b>: 
+   <p class="para">
+    Веб сервер Apache изменяет текущую директорию на корневую при запуске, в
+    результате чего PHP считывает <var class="filename">php.ini</var> из корневой файловой системы, если файл существует.
+   </p>
+  </p></blockquote>
+  <p class="para">
+   Директивы <var class="filename">php.ini</var> обрабатываемые расширениями документированы
+   на соответствующих страницах расширений.  <a href="ini.html" class="link">Список директив ядра</a>
+   имеется в приложении. Не все директивы PHP документированы в этом руководстве: для ознакомления с полным списком
+   директив доступных в вашей версии PHP, пожалуйста, прочитайте комментарии вашего <var class="filename">php.ini</var> файла.
+   Кроме того, вы можете найти полезной
+   <a href="http://svn.php.net/viewvc/php/php-src/trunk/php.ini-production?view=co" class="link external">&raquo;&nbsp;последнюю версию <var class="filename">php.ini</var></a> из SVN.
+  </p>
+  <p class="para">
+   <div class="example" id="example-62">
+    <p><b>Пример #1 Пример <var class="filename">php.ini</var></b></p>
+    <div class="example-contents">
+<div class="inicode"><pre class="inicode">; любой текст в строке после точки с запятой (;) без кавычек игнорируется
+[php] ; маркеры разделов (текст в квадратных скобках) также игнорируется
+; Могут быть установлены следующие логические значения:
+;    true, on, yes
+; или false, off, no, none
+register_globals = off
+track_errors = yes
+
+; вы можете заключать строки в двойные кавычки
+include_path = &quot;.:/usr/local/lib/php&quot;
+
+; обратный слэш обрабатывается так же, как любые другие символы
+include_path = &quot;.;c:\php\lib&quot;</pre>
+</div>
+</div>
+
+
+    </div>
+   </p>
+   <p class="para">
+   С версии PHP 5.1.0 стало возможным обращаться к существующим ini-переменным из
+   ini-файлов. Пример: <i>open_basedir = ${open_basedir}
+    &quot;:/new/dir&quot;</i>.
+   </p>
+  </div><hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="configuration.html">Конфигурация запуска</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="configuration.file.per-user.html">.user.ini files</a></div>
+ <div class="up"><a href="configuration.html">Конфигурация запуска</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

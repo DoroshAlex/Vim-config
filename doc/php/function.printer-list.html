@@ -1,0 +1,163 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Возвращает массив принтеров, подсоединенных к серверу</title>
+
+ </head>
+ <body><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.printer-get-option.html">printer_get_option</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.printer-logical-fontheight.html">printer_logical_fontheight</a></div>
+ <div class="up"><a href="ref.printer.html">Принтер</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.printer-list" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">printer_list</h1>
+  <p class="verinfo">(PECL printer SVN)</p><p class="refpurpose"><span class="refname">printer_list</span> &mdash; <span class="dc-title">Возвращает массив принтеров, подсоединенных к серверу</span></p>
+
+ </div>
+ 
+ <div class="refsect1 description" id="refsect1-function.printer-list-description">
+  <h3 class="title">Описание</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">array</span> <span class="methodname"><b>printer_list</b></span>
+    ( <span class="methodparam"><span class="type">int</span> <tt class="parameter">$enumtype</tt></span>
+   [, <span class="methodparam"><span class="type">string</span> <tt class="parameter">$name</tt></span>
+   [, <span class="methodparam"><span class="type">int</span> <tt class="parameter">$level</tt></span>
+  ]] )</div>
+
+  <p class="para rdfs-comment">
+   Функция перечисляет доступные принтеры и их возможности.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-function.printer-list-parameters">
+  <h3 class="title">Список параметров</h3>
+  <p class="para">
+   <dl>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">enumtype</tt></i></span>
+     <dd>
+
+      <p class="para">
+       <i><tt class="parameter">enumtype</tt></i> должен равнятся одной из нижеперечисленных констант:
+       <ul class="itemizedlist">
+        <li class="listitem">
+         <span class="simpara">
+          <b><tt>PRINTER_ENUM_LOCAL</tt></b>:
+          указывает локально установленные принтеры.
+         </span>
+        </li>
+        <li class="listitem">
+         <span class="simpara">
+          <b><tt>PRINTER_ENUM_NAME</tt></b>:
+          указывает принтеры, принадлежащие <i><tt class="parameter">name</tt></i>, который может быть сервером,
+          доментом или провайдером печати.
+         </span>
+        </li>
+        <li class="listitem">
+         <span class="simpara">
+          <b><tt>PRINTER_ENUM_SHARED</tt></b>:
+          этот параметр не может быть использован индивидуально, он должен быть присоединен к
+          другим параметрам битовой операцией ИЛИ (|),
+          к примеру к <b><tt>PRINTER_ENUM_LOCAL</tt></b>, чтобы определить локальные расшаренные принтеры.
+         </span>
+        </li>
+        <li class="listitem">
+         <span class="simpara">
+          <b><tt>PRINTER_ENUM_DEFAULT</tt></b>:
+          (Только для Win9.x) указывает принтер по-умолчанию.
+         </span>
+        </li>
+        <li class="listitem">
+         <span class="simpara">
+          <b><tt>PRINTER_ENUM_CONNECTIONS</tt></b>:
+          (Только для WinNT/2000) указывает принтеры, с которыми пользователь установил
+          соединение.
+         </span>
+        </li>
+        <li class="listitem">
+         <span class="simpara">
+          <b><tt>PRINTER_ENUM_NETWORK</tt></b>:
+          (Только для WinNT/2000) указывает сетевые принтеры в домене
+          компьютера. Работает только если параметр <i><tt class="parameter">level</tt></i> равен 1.
+         </span>
+        </li>
+        <li class="listitem">
+         <span class="simpara">
+          <b><tt>PRINTER_ENUM_REMOTE</tt></b>:
+          (Только для WinNT/2000) указывает сетевые принтеры и сервера печати
+          домене компьютера. Работает только если параметр <i><tt class="parameter">level</tt></i> равен 1.
+         </span>
+        </li>
+       </ul>
+      </p>
+     </dd>
+
+    </dt>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">name</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Используется с <b><tt>PRINTER_ENUM_NAME</tt></b>.
+      </p>
+     </dd>
+
+    </dt>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">level</tt></i></span>
+     <dd>
+
+      <p class="para">
+       <i><tt class="parameter">level</tt></i> указывает уровень запроса информации.
+       Может быть 1,2,4 или 5.
+      </p>
+     </dd>
+
+    </dt>
+
+   </dl>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-function.printer-list-returnvalues">
+  <h3 class="title">Возвращаемые значения</h3>
+  <p class="para">
+   Возвращает массив принтеров.
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-function.printer-list-examples">
+  <h3 class="title">Примеры</h3>
+  <p class="para">
+   <div class="example" id="example-4840">
+    <p><b>Пример #1 Пример <span class="function"><b>printer_list()</b></span></b></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">/*&nbsp;обнаружает&nbsp;локальные&nbsp;расшаренные&nbsp;принтеры&nbsp;*/<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">printer_list</span><span style="color: #007700">(</span><span style="color: #0000BB">PRINTER_ENUM_LOCAL&nbsp;</span><span style="color: #007700">|&nbsp;</span><span style="color: #0000BB">PRINTER_ENUM_SHARED</span><span style="color: #007700">));<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+  </p>
+ </div>
+
+ 
+</div><hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.printer-get-option.html">printer_get_option</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.printer-logical-fontheight.html">printer_logical_fontheight</a></div>
+ <div class="up"><a href="ref.printer.html">Принтер</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

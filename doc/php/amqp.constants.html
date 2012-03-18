@@ -1,0 +1,283 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Предопределенные константы</title>
+
+ </head>
+ <body><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="amqp.resources.html">Типы ресурсов</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="amqp.examples.html">Примеры</a></div>
+ <div class="up"><a href="book.amqp.html">AMQP</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="amqp.constants" class="appendix">
+  <h1>Предопределенные константы</h1>
+
+  <p class="simpara">
+Перечисленные ниже константы определены данным расширением и могут быть
+доступны только в том случае, если PHP был собран с
+поддержкой этого расширения или же в том случае, если
+данное расширение было подгружено во время выполнения.
+</p>
+  <p class="para">
+    <dl>
+
+      <dt>
+
+        <span class="term">
+          <b><tt>AMQP_DURABLE</tt></b>
+          (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
+        </span>
+        <dd>
+
+          <span class="simpara">
+            Длительные обменники и очереди переживут перезапуск брокера полностью со всеми их данными.
+          </span>
+        </dd>
+
+      </dt>
+
+      <dt>
+
+        <span class="term">
+          <b><tt>AMQP_PASSIVE</tt></b>
+          (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
+        </span>
+        <dd>
+
+          <span class="simpara">
+            Пассивные обменники и очереди не будут повторно объявлены, но брокер выдаст ошибку, если обменник или очередь не существует.
+          </span>
+        </dd>
+
+      </dt>
+
+      <dt>
+
+        <span class="term">
+          <b><tt>AMQP_EXCLUSIVE</tt></b>
+          (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
+        </span>
+        <dd>
+
+          <span class="simpara">
+            Этот флаг указывает, что только один клиент может слушать и использоваться для этой очереди. Допустим только для очередей.
+          </span>
+        </dd>
+
+      </dt>
+
+      <dt>
+
+        <span class="term">
+          <b><tt>AMQP_AUTODELETE</tt></b>
+          (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
+        </span>
+        <dd>
+
+          <span class="simpara">
+            Для обменников флаг автоматического удаления указывает, что обменник будет удален, как только не будет связанных с ним очередей.
+            Если нет очередей, которые когда-либо были связаны с обменником, он никогда не будет удален.
+          </span>
+          <span class="simpara">
+            Для очередей флаг автоматического удаления указывает, что очереди будут удалены, как только нет более слушателей подписанных на них.
+            Если нет подписки, которая когда-либо была активной, очередь никогда не будет удалена.           
+          </span>
+          <span class="simpara">
+            Примечание: Эксклюзивные очереди всегда будут автоматически удалены при разъединении клиентов.
+          </span>
+        </dd>
+
+      </dt>
+
+      <dt>
+
+        <span class="term">
+          <b><tt>AMQP_INTERNAL</tt></b>
+          (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
+        </span>
+        <dd>
+
+          <span class="simpara">
+            Клиентам не разрешено делать конкретную привязку очередей к определенным обменникам с помощью этого флага.
+          </span>
+        </dd>
+
+      </dt>
+
+      <dt>
+
+        <span class="term">
+          <b><tt>AMQP_NOLOCAL</tt></b>
+          (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
+        </span>
+        <dd>
+
+          <span class="simpara">
+            Когда передано использующему методу для кластеризируемой среды, не используйте от локального узла.
+          </span>
+        </dd>
+
+      </dt>
+
+      <dt>
+
+        <span class="term">
+          <b><tt>AMQP_NOACK</tt></b>
+          (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
+        </span>
+        <dd>
+
+          <span class="simpara">
+            Когда передается потребительскому методу, сообщения не будут помечены как доставленные.
+          </span>
+        </dd>
+
+      </dt>
+
+      <dt>
+
+        <span class="term">
+          <b><tt>AMQP_IFEMPTY</tt></b>
+          (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
+        </span>
+        <dd>
+
+          <span class="simpara">
+            Этот флаг указывает, что очередь должна быть удалена, если становится пустой. Передаётся при создании очереди.
+          </span>
+        </dd>
+
+      </dt>
+
+      <dt>
+
+        <span class="term">
+          <b><tt>AMQP_IFUNUSED</tt></b>
+          (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
+        </span>
+        <dd>
+
+          <span class="simpara">
+            Этот флаг указывает, что очередь или обменник должны быть удалены, когда ни один клиент не связан
+   с данной очередью или обменником. Передаётся при создании очереди или обменника.
+          </span>
+        </dd>
+
+      </dt>
+
+      <dt>
+
+        <span class="term">
+          <b><tt>AMQP_MANDATORY</tt></b>
+          (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
+        </span>
+        <dd>
+
+          <span class="simpara">
+            При публикации сообщения оно должно быть направлено в действительную очередь. Если это не так, будет возвращена ошибка.
+          </span>
+        </dd>
+
+      </dt>
+
+      <dt>
+
+        <span class="term">
+          <b><tt>AMQP_IMMEDIATE</tt></b>
+          (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
+        </span>
+        <dd>
+
+          <span class="simpara">
+            Отметить сообщение для немедленной обработки брокером при публикации. (Высокий приоритет сообщения)
+          </span>
+        </dd>
+
+      </dt>
+
+      <dt>
+
+        <span class="term">
+          <b><tt>AMQP_MULTIPLE</tt></b>
+          (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
+        </span>
+        <dd>
+
+          <span class="simpara">
+            
+          </span>
+        </dd>
+
+      </dt>
+
+      <dt>
+
+        <span class="term">
+          <b><tt>AMQP_EX_TYPE_DIRECT</tt></b>
+          (<span class="type"><a href="language.types.string.html" class="type string">string</a></span>)
+        </span>
+        <dd>
+
+          <span class="simpara">
+            Прямой тип обменника.
+          </span>
+        </dd>
+
+      </dt>
+
+      <dt>
+
+        <span class="term">
+          <b><tt>AMQP_EX_TYPE_FANOUT</tt></b>
+          (<span class="type"><a href="language.types.string.html" class="type string">string</a></span>)
+        </span>
+        <dd>
+
+          <span class="simpara">
+           Тип разветвления обменника.
+          </span>
+        </dd>
+
+      </dt>
+
+      <dt>
+
+        <span class="term">
+          <b><tt>AMQP_EX_TYPE_TOPIC</tt></b>
+          (<span class="type"><a href="language.types.string.html" class="type string">string</a></span>)
+        </span>
+        <dd>
+
+          <span class="simpara">
+            Тип топика обменника.
+          </span>
+        </dd>
+
+      </dt>
+
+      <dt>
+
+        <span class="term">
+          <b><tt>AMQP_EX_TYPE_HEADER</tt></b>
+          (<span class="type"><a href="language.types.string.html" class="type string">string</a></span>)
+        </span>
+        <dd>
+
+          <span class="simpara">
+           Заголовок типа обменника.
+          </span>
+        </dd>
+
+      </dt>
+
+    </dl>
+
+  </p>
+</div>
+<hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="amqp.resources.html">Типы ресурсов</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="amqp.examples.html">Примеры</a></div>
+ <div class="up"><a href="book.amqp.html">AMQP</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

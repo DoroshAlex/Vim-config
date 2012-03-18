@@ -1,0 +1,299 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Выполнение PHP-файлов</title>
+
+ </head>
+ <body><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="features.commandline.options.html">Опции</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="features.commandline.io-streams.html">Потоки ввода/вывода</a></div>
+ <div class="up"><a href="features.commandline.html">Использование PHP в командной строке</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="features.commandline.usage" class="section">
+  <h2 class="title">Выполнение PHP-файлов</h2>
+  
+
+  <p class="para">
+   В <acronym title="Command Line Interpreter/Interface">CLI</acronym> <acronym title="Server Application Programming Interface">SAPI</acronym> есть три различных способа  запуска PHP-кода:
+   <ol type="1">
+    <li class="listitem">
+     <p class="para">
+      Указывание конкретного файла для запуска.
+     </p>
+     <div class="informalexample">
+      <div class="example-contents screen">
+<div class="cdata"><pre>
+$ php my_script.php
+
+$ php -f my_script.php
+</pre></div>
+      </div>
+     </div>
+     <p class="para">
+      Оба способа (с указыванием опции <strong class="option unknown">-f</strong>
+ или без) запустят
+      файл <var class="filename">my_script.php</var>. Нет ограничений, какой
+      файл запускать, и PHP-скрипты не обязаны иметь
+      расширение <i>.php</i>.
+     </p>
+     <blockquote class="note"><p><b class="note">Замечание</b>: 
+      <p class="para">
+       Если необходимо передать аргументы в скрипт,
+       то при использовании опции <strong class="option unknown">-f</strong>
+
+       первым аргументом должен быть <i>--</i> .
+      </p>
+     </p></blockquote>
+    </li>
+    <li class="listitem">
+     <p class="para">
+      Передать PHP-код напрямую в командной строке.
+     </p>
+     <div class="informalexample">
+      <div class="example-contents screen">
+<div class="cdata"><pre>
+$ php -r &#039;print_r(get_defined_constants());&#039;
+</pre></div>
+      </div>
+     </div>
+     <p class="para">
+      Необходимо быть особо осторожным при использовании этого способа,
+      так как может произойти подстановка переменных оболочки при использовании
+      двойных кавычек.
+     </p>
+     <blockquote class="note"><p><b class="note">Замечание</b>: 
+      <p class="para">
+       Внимательно прочтите пример: в нем нет открывающих и закрывающих тегов!
+       Опция <strong class="option unknown">-r</strong>
+ просто в них не нуждается. Их использование
+       приведет к ошибке парсера.
+      </p>
+     </p></blockquote>
+    </li>
+    <li class="listitem">
+     <p class="para">
+      Передать запускаемый PHP-код через стандартный поток ввода
+      (<i>stdin</i>).
+     </p>
+     <p class="para">
+      Это дает мощную возможность создавать PHP-код и
+      скармливать его запускаемому файлу, как показано в этом
+      (вымышленном) примере:
+     </p>
+     <div class="informalexample">
+      <div class="example-contents screen">
+<div class="cdata"><pre>
+$ some_application | some_filter | php | sort -u &gt; final_output.txt
+</pre></div>
+      </div>
+     </div>
+    </li>
+   </ol>
+   Вы не можете комбинировать любой из этих трех способов запуска кода.
+  </p>
+
+  <p class="para">
+   Как и любое другое консольное приложение, бинарный файл PHP
+   принимает аргументы, но PHP-скрипт также может получать
+   аргументы. PHP не ограничивает количество аргументов,
+   передаваемых в скрипт (оболочка консоли устанавливает
+   некоторый порог количества символов, которые могут быть переданы;
+   обычно этого лимита хватает). Переданные аргументы доступны
+   в глобальном массиве <var class="varname"><var class="varname"><a href="reserved.variables.argv.html" class="classname">$argv</a></var></var>. Первый индекс
+   (ноль) всегда содержит имя вызываемого скрипта из командной
+   строки. Учтите, что если код вызывается на лету из командной
+   строки с помощью опции <strong class="option unknown">-r</strong>
+, значением
+   <var class="varname"><var class="varname"><a href="reserved.variables.argv.html" class="classname">$argv[0]</a></var></var> будет просто дефис
+   (<i>-</i>). То же самое верно и для кода,
+   переданного через конвеер из <i>STDIN</i>.
+  </p>
+
+  <p class="para">
+   Вторая зарегистрированная глобальная переменная - это
+   <var class="varname"><var class="varname"><a href="reserved.variables.argc.html" class="classname">$argc</a></var></var>, содержащая количество элементов
+   в массиве <var class="varname"><var class="varname"><a href="reserved.variables.argv.html" class="classname">$argv</a></var></var> (
+   (а <em class="emphasis">не</em> количество аргументов,
+   переданных скрипту).
+  </p>
+
+  <p class="para">
+   Если передаваемые аргументы не начинаются с символа
+   <i>-</i>, то особых проблем быть не должно.
+   Передаваемый в скрипт аргумент, который начинается с <i>-</i>
+   создаст проблемы, так как PHP решит, что он сам должен его
+   обработать. Для предотвращения подобного поведения
+   используйте разделитель списка аргументов <i>--</i>.
+   После того как этот разделитель будет прочитан PHP, все последующие
+   аргументы будут переданы в скрипт нетронутыми.
+  </p>
+
+  <div class="informalexample">
+   <div class="example-contents screen">
+<div class="cdata"><pre>
+# Эта команда не запустит данный код, но покажет информацию об использовании PHP
+$ php -r &#039;var_dump($argv);&#039; -h
+Usage: php [options] [-f] &lt;file&gt; [args...]
+[...]
+
+# Эта команда передаст аргумент &#039;-h&#039; в скрипт, предотвратив показ справки PHP
+$ php -r &#039;var_dump($argv);&#039; -- -h
+array(2) {
+  [0]=&gt;
+  string(1) &quot;-&quot;
+  [1]=&gt;
+  string(2) &quot;-h&quot;
+}
+</pre></div>
+   </div>
+  </div>
+
+  <p class="para">
+   Однако, в Unix-системах есть еще один способ использования
+   PHP для консольных скриптов. Можно написать скрипт,
+   первая строка которого будет начинаться с
+   <i>#!/usr/bin/php</i> (или же другой
+   корректный путь к бинарному файлу PHP <acronym title="Command Line Interpreter/Interface">CLI</acronym>).
+   После этой строки можно поместить обычный PHP-код, заключенный
+   в открывающие и закрывающие теги PHP. Как только будут установлены
+   корректные атрибуты запуска на файл (например,
+   <strong class="command">chmod +x test</strong>), скрипт может быть
+   запущен как обычный консольный или perl-скрипт:
+  </p>
+
+  <div class="example" id="example-353">
+   <p><b>Пример #1 Запуск PHP-скрипта как консольного</b></p>
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+#!/usr/bin/php<br /><span style="color: #0000BB">&lt;?php<br />var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$argv</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+   </div>
+
+   <div class="example-contents"><p>
+     Подразумевая что этот файл называется <var class="filename">test</var>
+     и находится в текущей директории, можно сделать следующее:
+   </p></div>
+   <div class="example-contents screen">
+<div class="cdata"><pre>
+$ chmod +x test
+$ ./test -h -- foo
+array(4) {
+  [0]=&gt;
+  string(6) &quot;./test&quot;
+  [1]=&gt;
+  string(2) &quot;-h&quot;
+  [2]=&gt;
+  string(2) &quot;--&quot;
+  [3]=&gt;
+  string(3) &quot;foo&quot;
+}
+</pre></div>
+   </div>
+  </div>
+
+  <p class="para">
+   Как можно увидеть, в этом случае не нужно заботиться о
+   передаче параметров, которые начинаются с <i>-</i>.
+  </p>
+
+  <p class="para">
+   Исполняемый PHP-файл может использоваться для запуска PHP-скриптов
+   независимо от веб-сервера. В случае, работы в Unix-подобной системе,
+   необходимо добавить ко всем скриптам особую строку
+   <i>#!</i> (называемую также &quot;shebang&quot;) в начало файла
+   и сделать их исполняемыми, чтобы указать, какая из программ должна
+   обрабатывать эти скрипты. На Windows-платформах можно
+   назначить обработчик <var class="filename">php.exe</var> для файлов
+   с расширениями <i>.php</i> либо создать пакетный
+   (.bat) файл для запуска скриптов посредством PHP.
+   Строка, добавляемая в начале скрипта для Unix-систем,
+   не влияет на их работу в ОС Windows, таким образом можно
+   создавать кроссплатформенные скрипты. Ниже приведен простой
+   пример скрипта, выполняемого из командной строки:
+  </p>
+
+  <p class="para">
+   <div class="example" id="example-354">
+    <p><b>Пример #2 Скрипт, предназначенный для запуска из командной строки (script.php)</b></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+#!/usr/bin/php<br /><span style="color: #0000BB">&lt;?php<br /><br /></span><span style="color: #007700">if&nbsp;(</span><span style="color: #0000BB">$argc&nbsp;</span><span style="color: #007700">!=&nbsp;</span><span style="color: #0000BB">2&nbsp;</span><span style="color: #007700">||&nbsp;</span><span style="color: #0000BB">in_array</span><span style="color: #007700">(</span><span style="color: #0000BB">$argv</span><span style="color: #007700">[</span><span style="color: #0000BB">1</span><span style="color: #007700">],&nbsp;array(</span><span style="color: #DD0000">'--help'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'-help'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'-h'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'-?'</span><span style="color: #007700">)))&nbsp;{<br /></span><span style="color: #0000BB">?&gt;<br /></span><br />Это&nbsp;консольный&nbsp;PHP-скрипт,&nbsp;принимающий&nbsp;один&nbsp;аргумент.<br /><br />&nbsp;&nbsp;Использование:<br />&nbsp;&nbsp;<span style="color: #0000BB">&lt;?php&nbsp;</span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">$argv</span><span style="color: #007700">[</span><span style="color: #0000BB">0</span><span style="color: #007700">];&nbsp;</span><span style="color: #0000BB">?&gt;</span>&nbsp;&lt;option&gt;<br /><br />&nbsp;&nbsp;&lt;option&gt;&nbsp;Любое&nbsp;слово,&nbsp;которое&nbsp;вы&nbsp;хотели&nbsp;бы<br />&nbsp;&nbsp;напечатать.&nbsp;Опции&nbsp;&nbsp;--help,&nbsp;-help,&nbsp;-h,<br />&nbsp;&nbsp;или&nbsp;-?&nbsp;покажут&nbsp;текущую&nbsp;справочную&nbsp;информацию.<br /><br /><span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">}&nbsp;else&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #0000BB">$argv</span><span style="color: #007700">[</span><span style="color: #0000BB">1</span><span style="color: #007700">];<br />}<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+  </p>
+
+  <p class="para">
+   Скрипт приведенный выше включается в себя специальную Unix строку,
+   указывающую на его запуск с помощью PHP. Работа ведется с <acronym title="Command Line Interpreter/Interface">CLI</acronym>-версией,
+   поэтому не будет выведено ни одного <acronym title="Hypertext Transfer Protocol">HTTP</acronym>-заголовка.
+  </p>
+
+  <p class="para">
+   Также приведенный пример проверяет количество переданных аргументов.
+   В случае, если их больше или меньше одного, а также в случае, если переданный
+   аргумент был <strong class="option unknown">--help</strong>
+, <strong class="option unknown">-help</strong>
+,
+   <strong class="option unknown">-h</strong>
+ или <strong class="option unknown">-?</strong>
+, выводится
+   справочное сообщение с использованием <var class="varname"><var class="varname"><a href="reserved.variables.argv.html" class="classname">$argv[0]</a></var></var>, которое содержит 
+   имя выполняемого скрипта. В противном случае просто выводится полученный аргумент.
+  </p>
+
+  <p class="para">
+   Для запуска приведенного примера в Unix-системе, необходимо сделать 
+   его исполняемым и просто выполнить в консоли
+   <strong class="command">script.php echothis</strong> или
+   <strong class="command">script.php -h</strong>. В Windows-системе можно
+   создать пакетный файл:
+  </p>
+
+  <p class="para">
+   <div class="example" id="example-355">
+    <p><b>Пример #3 Пакетный файл для запуска PHP-скрипта из командной строки (script.bat)</b></p>
+    <div class="example-contents">
+<div class="shellcode"><pre class="shellcode">@echo OFF
+&quot;C:\php\php.exe&quot; script.php %*</pre>
+</div>
+    </div>
+
+   </div>
+  </p>
+
+  <p class="para">
+   Предполагая, что скрипт называется
+   <var class="filename">script.php</var> и полный путь к <acronym title="Command Line Interpreter/Interface">CLI</acronym>
+   <var class="filename">php.exe</var> совпадает с
+   <var class="filename">C:\php\php.exe</var>, приведенный пакетный файл
+   запустит скрипт с переданными параметрами:
+   <strong class="command">script.bat echothis</strong> либо
+   <strong class="command">script.bat -h</strong>.
+  </p>
+
+  <p class="para">
+   Также можно ознакомиться с расширением
+   <a href="ref.readline.html" class="link">Readline</a>,
+   которое можно использовать для усовершенствования
+   консольного PHP-скрипта.
+  </p>
+
+  <p class="para">
+   В Windows запуск PHP можно настроить без
+   необходимости указывать <var class="filename">C:\php\php.exe</var> и
+   расширение <i>.php</i>.
+   Подробнее эта тема описана в разделе
+   <a href="install.windows.commandline.html" class="link">Запуск PHP из
+   командной строки в Microsoft Windows</a>.
+  </p>
+ </div><hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="features.commandline.options.html">Опции</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="features.commandline.io-streams.html">Потоки ввода/вывода</a></div>
+ <div class="up"><a href="features.commandline.html">Использование PHP в командной строке</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

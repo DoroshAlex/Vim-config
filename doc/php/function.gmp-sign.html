@@ -1,0 +1,107 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Знак числа</title>
+
+ </head>
+ <body><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.gmp-setbit.html">gmp_setbit</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.gmp-sqrt.html">gmp_sqrt</a></div>
+ <div class="up"><a href="ref.gmp.html">GMP Функции</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.gmp-sign" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">gmp_sign</h1>
+  <p class="verinfo">(PHP 4 &gt;= 4.0.4, PHP 5)</p><p class="refpurpose"><span class="refname">gmp_sign</span> &mdash; <span class="dc-title">Знак числа</span></p>
+
+ </div>
+ 
+ <div class="refsect1 description" id="refsect1-function.gmp-sign-description">
+  <h3 class="title">Описание</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">int</span> <span class="methodname"><b>gmp_sign</b></span>
+   ( <span class="methodparam"><span class="type">resource</span> <tt class="parameter">$a</tt></span>
+   )</div>
+
+  <p class="para rdfs-comment">
+   Проверяет знак числа.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-function.gmp-sign-parameters">
+  <h3 class="title">Список параметров</h3>
+  <p class="para">
+   <dl>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">a</tt></i></span>
+     <dd>
+
+      <p class="para">Может быть как
+<a href="language.types.resource.html" class="link">числом GMP</a>, так и строкой,
+при условии, что ее значение можно конвертировать в число.</p> 
+     </dd>
+
+    </dt>
+
+   </dl>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-function.gmp-sign-returnvalues">
+  <h3 class="title">Возвращаемые значения</h3>
+  <p class="para">
+   Возвращает 1, если <i><tt class="parameter">a</tt></i> положительное;
+   -1, если <i><tt class="parameter">a</tt></i> отрицательное;
+   и 0, если <i><tt class="parameter">a</tt></i> равно нулю.
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-function.gmp-sign-examples">
+  <h3 class="title">Примеры</h3>
+  <p class="para">
+   <div class="example" id="example-3117">
+    <p><b>Пример #1 Пример использования <span class="function"><b>gmp_sign()</b></span></b></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">//&nbsp;положительное<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">gmp_sign</span><span style="color: #007700">(</span><span style="color: #DD0000">"500"</span><span style="color: #007700">)&nbsp;.&nbsp;</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br /><br /></span><span style="color: #FF8000">//&nbsp;отрицательное<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">gmp_sign</span><span style="color: #007700">(</span><span style="color: #DD0000">"-500"</span><span style="color: #007700">)&nbsp;.&nbsp;</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br /><br /></span><span style="color: #FF8000">//&nbsp;ноль<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">gmp_sign</span><span style="color: #007700">(</span><span style="color: #DD0000">"0"</span><span style="color: #007700">)&nbsp;.&nbsp;</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+    <div class="example-contents"><p>Результат выполнения данного примера:</p></div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+1
+-1
+0
+</pre></div>
+    </div>
+   </div>
+  </p>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-function.gmp-sign-seealso">
+  <h3 class="title">Смотрите также</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><span class="function"><a href="function.gmp-abs.html" class="function" rel="rdfs-seeAlso">gmp_abs()</a> - Абсолютная величина</span></li>
+    <li class="member"><span class="function"><a href="function.abs.html" class="function" rel="rdfs-seeAlso">abs()</a> - Модуль числа</span></li>
+   </ul>
+  </p>
+ </div>
+
+
+</div><hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.gmp-setbit.html">gmp_setbit</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.gmp-sqrt.html">gmp_sqrt</a></div>
+ <div class="up"><a href="ref.gmp.html">GMP Функции</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

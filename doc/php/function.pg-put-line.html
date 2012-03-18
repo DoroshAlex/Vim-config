@@ -1,0 +1,141 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Передает на PostgreSQL сервер строку с завершающим нулем</title>
+
+ </head>
+ <body><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.pg-prepare.html">pg_prepare</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.pg-query-params.html">pg_query_params</a></div>
+ <div class="up"><a href="ref.pgsql.html">PostgreSQL</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.pg-put-line" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">pg_put_line</h1>
+  <p class="verinfo">(PHP 4 &gt;= 4.0.3, PHP 5)</p><p class="refpurpose"><span class="refname">pg_put_line</span> &mdash; <span class="dc-title">Передает на PostgreSQL сервер строку с завершающим нулем</span></p>
+
+ </div>
+
+ <div class="refsect1 description" id="refsect1-function.pg-put-line-description">
+  <h3 class="title">Описание</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">bool</span> <span class="methodname"><b>pg_put_line</b></span>
+    ([ <span class="methodparam"><span class="type">resource</span> <tt class="parameter">$connection</tt></span>
+   ], <span class="methodparam"><span class="type">string</span> <tt class="parameter">$data</tt></span>
+   )</div>
+
+  <p class="para rdfs-comment">
+   <span class="function"><b>pg_put_line()</b></span> передает на PostgreSQL сервер 
+   строку с завершающим нулем. Завершение строки значением NULL 
+   необходимо при ее объединении с командой PostgreSQL 
+   <i>COPY FROM</i>.
+  </p>
+  <p class="para">
+   <i>COPY</i> является высокоскоростным интерфейсом 
+   передачи данных, поддерживаемым PostgreSQL. Данные передаются 
+   одной транзакцией и не разбираются парсером.
+  </p>
+  <p class="para">
+   В качестве альтернативы можно использовать функцию 
+   <span class="function"><a href="function.pg-copy-from.html" class="function">pg_copy_from()</a></span>. Она значительно 
+   проще в использовании.
+  </p>
+  <blockquote class="note"><p><b class="note">Замечание</b>: 
+   <p class="para"> 
+    Перед запуском функции <span class="function"><a href="function.pg-end-copy.html" class="function">pg_end_copy()</a></span> 
+    приложение должно сообщить о серверу о завершении передачи 
+    данных, добавив в конец последней строки символы &quot;\.&quot;.
+   </p>
+  </p></blockquote>
+  <div class="warning"><b class="warning">Внимание</b>
+   <p class="para">
+    Использование <span class="function"><b>pg_put_line()</b></span> может привести к 
+    отказу операций с большими объектами, включающих функции 
+    <span class="function"><a href="function.pg-lo-read.html" class="function">pg_lo_read()</a></span> и <span class="function"><a href="function.pg-lo-tell.html" class="function">pg_lo_tell()</a></span>. 
+    Для этих целей используйте функции <span class="function"><a href="function.pg-copy-from.html" class="function">pg_copy_from()</a></span> 
+    и <span class="function"><a href="function.pg-copy-to.html" class="function">pg_copy_to()</a></span>. 
+   </p>
+  </div>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-function.pg-put-line-parameters">
+  <h3 class="title">Список параметров</h3>
+  <p class="para">
+   <dl>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">connection</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Ресурс подключения к базе данных PostgreSQL. Если параметр
+       <i><tt class="parameter">connection</tt></i> не задан, будет использовано
+       подключение по умолчанию - последнее соединение, открытое функцией  
+       <span class="function"><a href="function.pg-connect.html" class="function">pg_connect()</a></span> или <span class="function"><a href="function.pg-pconnect.html" class="function">pg_pconnect()</a></span>.   
+      </p>
+     </dd>
+
+    </dt>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">data</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Текстовая строка для прямой пересылки на сервер. Завершающий 
+       <i>NULL</i> добавляется автоматически. 
+      </p>
+     </dd>
+
+    </dt>
+
+   </dl>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-function.pg-put-line-returnvalues">
+  <h3 class="title">Возвращаемые значения</h3>
+  <p class="para">
+   Возвращает <b><tt>TRUE</tt></b> в случае успешного завершения  или <b><tt>FALSE</tt></b> в случае возникновения ошибки.
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 examples" id="refsect1-function.pg-put-line-examples">
+  <h3 class="title">Примеры</h3>
+  <p class="para">
+   <div class="example" id="example-1943">
+    <p><b>Пример #1 Пример использования <span class="function"><b>pg_put_line()</b></span></b></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php&nbsp;<br />&nbsp;&nbsp;$conn&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">pg_pconnect</span><span style="color: #007700">(</span><span style="color: #DD0000">"dbname=foo"</span><span style="color: #007700">);<br />&nbsp;&nbsp;</span><span style="color: #0000BB">pg_query</span><span style="color: #007700">(</span><span style="color: #0000BB">$conn</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"create&nbsp;table&nbsp;bar&nbsp;(a&nbsp;int4,&nbsp;b&nbsp;char(16),&nbsp;d&nbsp;float8)"</span><span style="color: #007700">);<br />&nbsp;&nbsp;</span><span style="color: #0000BB">pg_query</span><span style="color: #007700">(</span><span style="color: #0000BB">$conn</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"copy&nbsp;bar&nbsp;from&nbsp;stdin"</span><span style="color: #007700">);<br />&nbsp;&nbsp;</span><span style="color: #0000BB">pg_put_line</span><span style="color: #007700">(</span><span style="color: #0000BB">$conn</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"3\thello&nbsp;world\t4.5\n"</span><span style="color: #007700">);<br />&nbsp;&nbsp;</span><span style="color: #0000BB">pg_put_line</span><span style="color: #007700">(</span><span style="color: #0000BB">$conn</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"4\tgoodbye&nbsp;world\t7.11\n"</span><span style="color: #007700">);<br />&nbsp;&nbsp;</span><span style="color: #0000BB">pg_put_line</span><span style="color: #007700">(</span><span style="color: #0000BB">$conn</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"\\.\n"</span><span style="color: #007700">);<br />&nbsp;&nbsp;</span><span style="color: #0000BB">pg_end_copy</span><span style="color: #007700">(</span><span style="color: #0000BB">$conn</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+  </p>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-function.pg-put-line-seealso">
+  <h3 class="title">Смотрите также</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><span class="function"><a href="function.pg-end-copy.html" class="function" rel="rdfs-seeAlso">pg_end_copy()</a> - Синхронизирует с бэкендом PostgreSQL</span></li>
+   </ul>
+  </p>
+ </div>
+
+</div><hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.pg-prepare.html">pg_prepare</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.pg-query-params.html">pg_query_params</a></div>
+ <div class="up"><a href="ref.pgsql.html">PostgreSQL</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

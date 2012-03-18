@@ -1,0 +1,62 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>include_once</title>
+
+ </head>
+ <body><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.require-once.html">require_once</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="control-structures.goto.html">goto</a></div>
+ <div class="up"><a href="language.control-structures.html">Управляющие конструкции</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.include-once" class="sect1">
+ <h2 class="title"><span class="function"><b>include_once()</b></span></h2>
+ <p class="verinfo">(PHP 4, PHP5)</p>
+ <p class="para">
+  Выражение <span class="function"><b>include_once()</b></span> включает и выполняет
+  указанный файл во время выполнения скрипта.
+  Ее подведение идентично выражению <span class="function"><b>include()</b></span>,
+  с той лишь разницей, что если код из файла уже один раз 
+  был включен, он не будет включен и выполнен повторно.  Как видно из имени,
+  он включит файл только один раз (include once).
+ </p>
+ <p class="para">
+  <span class="function"><b>include_once()</b></span> может использоваться в тех случаях, когла
+  один и тот же файл может быть включен и выполнен более одного раза во время
+  выполнения скрипта, в данном случае это поможет избежать 
+   проблем с переопределением функций, переменных и т.д.
+ </p>
+ <p class="para">
+  Смотри документацию по <span class="function"><b>include()</b></span> для информации 
+  как эта функция работает.
+ </p>
+ <p class="para">
+  <blockquote class="note"><p><b class="note">Замечание</b>: 
+  <p class="para">
+   В PHP 4, функциональность <i>_once</i> отличалась в регистро-независимых
+   операционных системах (таких как Windows), к примеру:
+   <div class="example" id="example-132">
+    <p><b>Пример #1 Пример <span class="function"><b>include_once()</b></span> в  регистро-независимых ОС для PHP 4</b></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">include_once&nbsp;</span><span style="color: #DD0000">"a.php"</span><span style="color: #007700">;&nbsp;</span><span style="color: #FF8000">//&nbsp;это&nbsp;подключит&nbsp;a.php<br /></span><span style="color: #007700">include_once&nbsp;</span><span style="color: #DD0000">"A.php"</span><span style="color: #007700">;&nbsp;</span><span style="color: #FF8000">//&nbsp;это&nbsp;подключит&nbsp;a.php&nbsp;снова!&nbsp;(только&nbsp;в&nbsp;PHP&nbsp;4)<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+     </div>
+
+    </div>
+   </p>
+   <p class="para">
+    Это поведение изменилось в PHP 5. К примеру, пути в Windows в начале нормализуются так, чтобы 
+    <var class="filename">C:\PROGRA~1\A.php</var> обозначало тоже самое, что и 
+    <var class="filename">C:\Program Files\a.php</var>, и файл подключался лишь один раз.
+   </p>
+  </p></blockquote>
+ </p>
+</div><hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.require-once.html">require_once</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="control-structures.goto.html">goto</a></div>
+ <div class="up"><a href="language.control-structures.html">Управляющие конструкции</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

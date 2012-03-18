@@ -1,0 +1,287 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Трейты</title>
+
+ </head>
+ <body><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="language.oop5.interfaces.html">Интерфейсы объектов</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="language.oop5.overloading.html">Перегрузка</a></div>
+ <div class="up"><a href="language.oop5.html">Классы и объекты</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="language.oop5.traits" class="sect1">
+  <h2 class="title">Трейты</h2>
+  <p class="para">
+   Начиная с версии 5.4.0 PHP вводит инструментарий для повторного использования кода, называемый трейтом.
+  </p>
+  <p class="para">
+   Трейт (англ. trait) - это механизм обеспечения повторного использования кода в языках с поддержкой
+   единого наследования, таких как PHP. Трейт предназначен для уменьшения некоторых
+   ограничений единого наследования, позволяя разработчику повторно использовать наборы
+   методов свободно, в нескольких независимых классах и реализованных с использованием
+   разных архитектур построения классов. Семантика комбинации трейтов и классов определена
+   таким образом, чтобы снизить уровень сложности, а также избежать типичных проблем, связанных
+   с множественным наследованием и c т.н. mixins.
+  </p>
+  <p class="para">
+   Трейт очень похож на класс, но предназначен для групирования функционала хорошо
+   структурированым и последовательным образом. Невозможно создать самостоятельный
+   экземпляр трейта. Это дополнение к обычному наследованию и позволяет сделать
+   горизонтальную композицию поведения, то есть применение членов класса без
+   необходимости наследования.
+  </p>
+  
+  <div class="example" id="language.oop5.traits.basicexample">
+    <p><b>Пример #1 Пример использования трейта</b></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />trait&nbsp;ezcReflectionReturnInfo&nbsp;</span><span style="color: #007700">{<br />&nbsp;&nbsp;&nbsp;&nbsp;function&nbsp;</span><span style="color: #0000BB">getReturnType</span><span style="color: #007700">()&nbsp;{&nbsp;</span><span style="color: #FF8000">/*1*/&nbsp;</span><span style="color: #007700">}<br />&nbsp;&nbsp;&nbsp;&nbsp;function&nbsp;</span><span style="color: #0000BB">getReturnDescription</span><span style="color: #007700">()&nbsp;{&nbsp;</span><span style="color: #FF8000">/*2*/&nbsp;</span><span style="color: #007700">}<br />}<br /><br />class&nbsp;</span><span style="color: #0000BB">ezcReflectionMethod&nbsp;</span><span style="color: #007700">extends&nbsp;</span><span style="color: #0000BB">ReflectionMethod&nbsp;</span><span style="color: #007700">{<br />&nbsp;&nbsp;&nbsp;&nbsp;use&nbsp;</span><span style="color: #0000BB">ezcReflectionReturnInfo</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">/*&nbsp;...&nbsp;*/<br /></span><span style="color: #007700">}<br /><br />class&nbsp;</span><span style="color: #0000BB">ezcReflectionFunction&nbsp;</span><span style="color: #007700">extends&nbsp;</span><span style="color: #0000BB">ReflectionFunction&nbsp;</span><span style="color: #007700">{<br />&nbsp;&nbsp;&nbsp;&nbsp;use&nbsp;</span><span style="color: #0000BB">ezcReflectionReturnInfo</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">/*&nbsp;...&nbsp;*/<br /></span><span style="color: #007700">}<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+  
+  <div class="sect2" id="language.oop5.traits.precedence">
+   <h3 class="title">Приоритет</h3>
+   <p class="para">
+    
+ Наследуемый член из базового класса переопределяется членом, находящимся
+ в трейте. Порядок приоритета следующий: члены из текущего класса
+ переопределяют методы в трейте, которые в свою очередь переопределяют
+ унаследованные методы.
+   </p>
+   <div class="example" id="language.oop5.traits.precedence.examples.ex1">
+    <p><b>Пример #2 Пример приоритета старшинства</b></p>
+    <div class="example-contents"><p>
+  Наследуемый метод от базового класса переопределяется
+  методом, вставленным в MyHelloWorld из трейта Trait. Поведение
+  такое же как и для методов, определенных в классе MyHelloWorld. Порядок
+  приоритета такой: методы из текущего класса переопределяют методы трейта, которые
+  в свою очередь переопределяют методы из базового класса.
+    </p></div>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">class&nbsp;</span><span style="color: #0000BB">Base&nbsp;</span><span style="color: #007700">{<br />&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;function&nbsp;</span><span style="color: #0000BB">sayHello</span><span style="color: #007700">()&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">'Hello&nbsp;'</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />}<br /><br /></span><span style="color: #0000BB">trait&nbsp;SayWorld&nbsp;</span><span style="color: #007700">{<br />&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;function&nbsp;</span><span style="color: #0000BB">sayHello</span><span style="color: #007700">()&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">parent</span><span style="color: #007700">::</span><span style="color: #0000BB">sayHello</span><span style="color: #007700">();<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">'World!'</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />}<br /><br />class&nbsp;</span><span style="color: #0000BB">MyHelloWorld&nbsp;</span><span style="color: #007700">extends&nbsp;</span><span style="color: #0000BB">Base&nbsp;</span><span style="color: #007700">{<br />&nbsp;&nbsp;&nbsp;&nbsp;use&nbsp;</span><span style="color: #0000BB">SayWorld</span><span style="color: #007700">;<br />}<br /><br /></span><span style="color: #0000BB">$o&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">MyHelloWorld</span><span style="color: #007700">();<br /></span><span style="color: #0000BB">$o</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">sayHello</span><span style="color: #007700">();<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+    <div class="example-contents"><p>Результат выполнения данного примера:</p></div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+Hello World!
+</pre></div>
+    </div>
+   </div>
+   <div class="example" id="language.oop5.traits.precedence.examples.ex2">
+    <p><b>Пример #3 Пример альтернативного порядка приоритета</b></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />trait&nbsp;HelloWorld&nbsp;</span><span style="color: #007700">{<br />&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;function&nbsp;</span><span style="color: #0000BB">sayHello</span><span style="color: #007700">()&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">'Hello&nbsp;World!'</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />}<br /><br />class&nbsp;</span><span style="color: #0000BB">TheWorldIsNotEnough&nbsp;</span><span style="color: #007700">{<br />&nbsp;&nbsp;&nbsp;&nbsp;use&nbsp;</span><span style="color: #0000BB">HelloWorld</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;function&nbsp;</span><span style="color: #0000BB">sayHello</span><span style="color: #007700">()&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">'Hello&nbsp;Universe!'</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />}<br /><br /></span><span style="color: #0000BB">$o&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">TheWorldIsNotEnough</span><span style="color: #007700">();<br /></span><span style="color: #0000BB">$o</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">sayHello</span><span style="color: #007700">();<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+    <div class="example-contents"><p>Результат выполнения данного примера:</p></div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+Hello Universe!
+</pre></div>
+    </div>
+   </div>
+  </div>
+  
+  <div class="sect2" id="language.oop5.traits.multiple">
+   <h3 class="title">Несколько трейтов</h3>
+   <p class="para">
+    Несколько трейтов могут быть вставлены в класс путем их перечисления в
+ директиве use, разделяя запятыми.
+   </p>
+   <div class="example" id="language.oop5.traits.multiple.ex1">
+    <p><b>Пример #4 Пример использования нескольких трейтов</b></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />trait&nbsp;Hello&nbsp;</span><span style="color: #007700">{<br />&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;function&nbsp;</span><span style="color: #0000BB">sayHello</span><span style="color: #007700">()&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">'Hello&nbsp;'</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />}<br /><br /></span><span style="color: #0000BB">trait&nbsp;World&nbsp;</span><span style="color: #007700">{<br />&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;function&nbsp;</span><span style="color: #0000BB">sayWorld</span><span style="color: #007700">()&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">'&nbsp;World'</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />}<br /><br />class&nbsp;</span><span style="color: #0000BB">MyHelloWorld&nbsp;</span><span style="color: #007700">{<br />&nbsp;&nbsp;&nbsp;&nbsp;use&nbsp;</span><span style="color: #0000BB">Hello</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">World</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;function&nbsp;</span><span style="color: #0000BB">sayExclamationMark</span><span style="color: #007700">()&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">'!'</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />}<br /><br /></span><span style="color: #0000BB">$o&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">MyHelloWorld</span><span style="color: #007700">();<br /></span><span style="color: #0000BB">$o</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">sayHello</span><span style="color: #007700">();<br /></span><span style="color: #0000BB">$o</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">sayWorld</span><span style="color: #007700">();<br /></span><span style="color: #0000BB">$o</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">sayExclamationMark</span><span style="color: #007700">();&gt;<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+    <div class="example-contents"><p>Результат выполнения данного примера:</p></div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+Hello World!
+</pre></div>
+    </div>
+   </div>
+  </div>
+  
+  <div class="sect2" id="language.oop5.traits.conflict">
+   <h3 class="title">Разрешение конфликтов</h3>
+   <p class="para">
+    Если два трейта вставляют метод с одним и тем же именем, это приводит к фатальной ошибке
+ в случае, если конфликт явно не разрешен.
+   </p>
+   <p class="para">
+    Для разрешения конфликтов именования между трейтами, используемыми в одном и том же классе,
+ необходимо использовать оператор <i>insteadof</i> для того,
+ чтобы точно выбрать один из конфликтных методов.
+   </p>
+   <p class="para">
+    Так как предыдущий оператор позволяет только исключать методы, оператор <i>as</i>
+ может быть использован для включения одного из конфликтующих методов
+ под другим именем.
+   </p>
+   <div class="example" id="language.oop5.traits.conflict.ex1">
+    <p><b>Пример #5 Пример разрешения конфликтов</b></p>
+    <div class="example-contents"><p>
+   В этом примере Talker использует трейты A и B.
+   Так как в A и B есть конфликтные методы, он определяет использовать
+   вариант smallTalk из трейта B, и вариант bigTalk из
+   трейта A.
+    </p></div>
+    <div class="example-contents"><p>
+   Класс Aliased_Talker применяет оператор <i>as</i>
+   чтобы получить возможность использовать имплементацию bigTalk из B
+   под дополнительным псевдонимом <i>talk</i>.
+    </p></div> 
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />trait&nbsp;A&nbsp;</span><span style="color: #007700">{<br />&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;function&nbsp;</span><span style="color: #0000BB">smallTalk</span><span style="color: #007700">()&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">'a'</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;function&nbsp;</span><span style="color: #0000BB">bigTalk</span><span style="color: #007700">()&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">'A'</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />}<br /><br /></span><span style="color: #0000BB">trait&nbsp;B&nbsp;</span><span style="color: #007700">{<br />&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;function&nbsp;</span><span style="color: #0000BB">smallTalk</span><span style="color: #007700">()&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">'b'</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;function&nbsp;</span><span style="color: #0000BB">bigTalk</span><span style="color: #007700">()&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">'B'</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />}<br /><br />class&nbsp;</span><span style="color: #0000BB">Talker&nbsp;</span><span style="color: #007700">{<br />&nbsp;&nbsp;&nbsp;&nbsp;use&nbsp;</span><span style="color: #0000BB">A</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">B&nbsp;</span><span style="color: #007700">{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">B</span><span style="color: #007700">::</span><span style="color: #0000BB">smallTalk&nbsp;insteadof&nbsp;A</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">A</span><span style="color: #007700">::</span><span style="color: #0000BB">bigTalk&nbsp;insteadof&nbsp;B</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />}<br /><br />class&nbsp;</span><span style="color: #0000BB">Aliased_Talker&nbsp;</span><span style="color: #007700">{<br />&nbsp;&nbsp;&nbsp;&nbsp;use&nbsp;</span><span style="color: #0000BB">A</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">B&nbsp;</span><span style="color: #007700">{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">B</span><span style="color: #007700">::</span><span style="color: #0000BB">smallTalk&nbsp;insteadof&nbsp;A</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">A</span><span style="color: #007700">::</span><span style="color: #0000BB">bigTalk&nbsp;insteadof&nbsp;B</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">B</span><span style="color: #007700">::</span><span style="color: #0000BB">bigTalk&nbsp;</span><span style="color: #007700">as&nbsp;</span><span style="color: #0000BB">talk</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />}<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+  </div>
+  
+  <div class="sect2" id="language.oop5.traits.visibility">
+   <h3 class="title">Изменение видимости метода</h3>
+   <p class="para">
+    Используя синтаксис оператора <i>as</i> можно также настроить
+ видимость метода в выставке класса.
+   </p>
+   <div class="example" id="language.oop5.traits.visibility.ex1">
+    <p><b>Пример #6 Пример изменения видимости метода</b></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />trait&nbsp;HelloWorld&nbsp;</span><span style="color: #007700">{<br />&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;function&nbsp;</span><span style="color: #0000BB">sayHello</span><span style="color: #007700">()&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">'Hello&nbsp;World!'</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />}<br /><br /></span><span style="color: #FF8000">//&nbsp;Изменение&nbsp;видимости&nbsp;класса&nbsp;sayHello<br /></span><span style="color: #007700">class&nbsp;</span><span style="color: #0000BB">MyClass1&nbsp;</span><span style="color: #007700">{<br />&nbsp;&nbsp;&nbsp;&nbsp;use&nbsp;</span><span style="color: #0000BB">HelloWorld&nbsp;</span><span style="color: #007700">{&nbsp;</span><span style="color: #0000BB">sayHello&nbsp;</span><span style="color: #007700">as&nbsp;protected;&nbsp;}<br />}<br /><br /></span><span style="color: #FF8000">//&nbsp;Создание&nbsp;псевдонима&nbsp;метода&nbsp;с&nbsp;измененной&nbsp;видимостью<br />//&nbsp;видимость&nbsp;sayHello&nbsp;не&nbsp;изменилась<br /></span><span style="color: #007700">class&nbsp;</span><span style="color: #0000BB">MyClass2&nbsp;</span><span style="color: #007700">{<br />&nbsp;&nbsp;&nbsp;&nbsp;use&nbsp;</span><span style="color: #0000BB">HelloWorld&nbsp;</span><span style="color: #007700">{&nbsp;</span><span style="color: #0000BB">sayHello&nbsp;</span><span style="color: #007700">as&nbsp;private&nbsp;</span><span style="color: #0000BB">myPrivateHello</span><span style="color: #007700">;&nbsp;}<br />}<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+  </div>
+  
+  <div class="sect2" id="language.oop5.traits.composition">
+   <h3 class="title">Трейты, скомпонованные из трейтов</h3>
+   <p class="para">
+    Аналогично тому, как классы могут использовать трейты, также могут и трейты использовать
+ другие трейты. Используя один или более трейтов в определении другого трейта, он может
+ частично или полностью состоять из членов, описанных в этих трейтах.
+   </p>
+   <div class="example" id="language.oop5.traits.composition.ex1">
+    <p><b>Пример #7 Пример трейтов, скомпонованных из трейтов</b></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />trait&nbsp;Hello&nbsp;</span><span style="color: #007700">{<br />&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;function&nbsp;</span><span style="color: #0000BB">sayHello</span><span style="color: #007700">()&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">'Hello&nbsp;'</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />}<br /><br /></span><span style="color: #0000BB">trait&nbsp;World&nbsp;</span><span style="color: #007700">{<br />&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;function&nbsp;</span><span style="color: #0000BB">sayWorld</span><span style="color: #007700">()&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">'World!'</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />}<br /><br /></span><span style="color: #0000BB">trait&nbsp;HelloWorld&nbsp;</span><span style="color: #007700">{<br />&nbsp;&nbsp;&nbsp;&nbsp;use&nbsp;</span><span style="color: #0000BB">Hello</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">World</span><span style="color: #007700">;<br />}<br /><br />class&nbsp;</span><span style="color: #0000BB">MyHelloWorld&nbsp;</span><span style="color: #007700">{<br />&nbsp;&nbsp;&nbsp;&nbsp;use&nbsp;</span><span style="color: #0000BB">HelloWorld</span><span style="color: #007700">;<br />}<br /><br /></span><span style="color: #0000BB">$o&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">MyHelloWorld</span><span style="color: #007700">();<br /></span><span style="color: #0000BB">$o</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">sayHello</span><span style="color: #007700">();<br /></span><span style="color: #0000BB">$o</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">sayWorld</span><span style="color: #007700">();<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+    <div class="example-contents"><p>Результат выполнения данного примера:</p></div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+Hello World!
+</pre></div>
+    </div>
+   </div>
+  </div>
+  
+  <div class="sect2" id="language.oop5.traits.abstract">
+   <h3 class="title">Абстрактные члены трейтов</h3>
+   <p class="para">
+    Трейты поддерживают использование абстрактных методов для того, чтобы устанавливать требования
+ при выставке класса.
+   </p>
+   <div class="example" id="language.oop5.traits.abstract.ex1">
+    <p><b>Пример #8 Экпресс требования с абстрактными методами</b></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />trait&nbsp;Hello&nbsp;</span><span style="color: #007700">{<br />&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;function&nbsp;</span><span style="color: #0000BB">sayHelloWorld</span><span style="color: #007700">()&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">'Hello'</span><span style="color: #007700">.</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getWorld</span><span style="color: #007700">();<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />&nbsp;&nbsp;&nbsp;&nbsp;abstract&nbsp;public&nbsp;function&nbsp;</span><span style="color: #0000BB">getWorld</span><span style="color: #007700">();<br />}<br /><br />class&nbsp;</span><span style="color: #0000BB">MyHelloWorld&nbsp;</span><span style="color: #007700">{<br />&nbsp;&nbsp;&nbsp;&nbsp;private&nbsp;</span><span style="color: #0000BB">$world</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;use&nbsp;</span><span style="color: #0000BB">Hello</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;function&nbsp;</span><span style="color: #0000BB">getWorld</span><span style="color: #007700">()&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">world</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;function&nbsp;</span><span style="color: #0000BB">setWorld</span><span style="color: #007700">(</span><span style="color: #0000BB">$val</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">world&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$val</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />}<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+  </div>
+  
+  <div class="sect2" id="language.oop5.traits.static">
+   <h3 class="title">Статические члены трейта</h3>
+   <p class="para">
+    На статические переменные можно ссылаться в методах трейта, но нельзя определить
+    статические переменные в трейте. Тем не менее, трейт может описать статические методы
+ для выставления класса.
+   </p>
+   <div class="example" id="language.oop5.traits.static.ex1">
+    <p><b>Пример #9 Статические переменные</b></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />trait&nbsp;Counter&nbsp;</span><span style="color: #007700">{<br />&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;function&nbsp;</span><span style="color: #0000BB">inc</span><span style="color: #007700">()&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;static&nbsp;</span><span style="color: #0000BB">$c&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$c&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$c&nbsp;</span><span style="color: #007700">+&nbsp;</span><span style="color: #0000BB">1</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"</span><span style="color: #0000BB">$c</span><span style="color: #DD0000">\n"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />}<br /><br />class&nbsp;</span><span style="color: #0000BB">C1&nbsp;</span><span style="color: #007700">{<br />&nbsp;&nbsp;&nbsp;&nbsp;use&nbsp;</span><span style="color: #0000BB">Counter</span><span style="color: #007700">;<br />}<br /><br />class&nbsp;</span><span style="color: #0000BB">C2&nbsp;</span><span style="color: #007700">{<br />&nbsp;&nbsp;&nbsp;&nbsp;use&nbsp;</span><span style="color: #0000BB">Counter</span><span style="color: #007700">;<br />}<br /><br /></span><span style="color: #0000BB">$o&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">C1</span><span style="color: #007700">();&nbsp;</span><span style="color: #0000BB">$o</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">inc</span><span style="color: #007700">();&nbsp;</span><span style="color: #FF8000">//&nbsp;echo&nbsp;1<br /></span><span style="color: #0000BB">$p&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">C2</span><span style="color: #007700">();&nbsp;</span><span style="color: #0000BB">$p</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">inc</span><span style="color: #007700">();&nbsp;</span><span style="color: #FF8000">//&nbsp;echo&nbsp;1<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+   <div class="example" id="language.oop5.traits.static.ex2">
+    <p><b>Пример #10 Статические методы</b></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />trait&nbsp;StaticExample&nbsp;</span><span style="color: #007700">{<br />&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;static&nbsp;function&nbsp;</span><span style="color: #0000BB">doSomething</span><span style="color: #007700">()&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #DD0000">'Что-либо&nbsp;делаем'</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />}<br /><br />class&nbsp;</span><span style="color: #0000BB">Example&nbsp;</span><span style="color: #007700">{<br />&nbsp;&nbsp;&nbsp;&nbsp;use&nbsp;</span><span style="color: #0000BB">StaticExample</span><span style="color: #007700">;<br />}<br /><br /></span><span style="color: #0000BB">Example</span><span style="color: #007700">::</span><span style="color: #0000BB">doSomething</span><span style="color: #007700">();<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+  </div>
+  
+  <div class="sect2" id="language.oop5.traits.properties">
+   <h3 class="title">Свойства</h3>
+   <p class="para">
+    Трейты могут также определять свойства.
+   </p>
+   <div class="example" id="language.oop5.traits.properties.example">
+    <p><b>Пример #11 Определение свойств</b></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />trait&nbsp;PropertiesTrait&nbsp;</span><span style="color: #007700">{<br />&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;</span><span style="color: #0000BB">$x&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">1</span><span style="color: #007700">;<br />}<br /><br />class&nbsp;</span><span style="color: #0000BB">PropertiesExample&nbsp;</span><span style="color: #007700">{<br />&nbsp;&nbsp;&nbsp;&nbsp;use&nbsp;</span><span style="color: #0000BB">PropertiesTrait</span><span style="color: #007700">;<br />}<br /><br /></span><span style="color: #0000BB">$example&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">PropertiesExample</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$example</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">x</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+   <p class="para">
+    Если трейт определяет свойство, то класс не может определить свойство с
+ таким же именем, иначе будет сгенерирована ошибка. Это будет
+ ошибка <b><tt>E_STRICT</tt></b>, если определение класса совместимо (такая же
+ область видимости и начальные значения) или фатальная ошибка в ином случае.
+   </p>
+   <div class="example" id="language.oop5.traits.properties.conflicts">
+    <p><b>Пример #12 Разрешение конфликтов</b></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />trait&nbsp;PropertiesTrait&nbsp;</span><span style="color: #007700">{<br />&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;</span><span style="color: #0000BB">$same&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">true</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;</span><span style="color: #0000BB">$different&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">false</span><span style="color: #007700">;<br />}<br /><br />class&nbsp;</span><span style="color: #0000BB">PropertiesExample&nbsp;</span><span style="color: #007700">{<br />&nbsp;&nbsp;&nbsp;&nbsp;use&nbsp;</span><span style="color: #0000BB">PropertiesTrait</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;</span><span style="color: #0000BB">$same&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">true</span><span style="color: #007700">;&nbsp;</span><span style="color: #FF8000">//&nbsp;Строгое&nbsp;следование&nbsp;стандартам<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">public&nbsp;</span><span style="color: #0000BB">$different&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">true</span><span style="color: #007700">;&nbsp;</span><span style="color: #FF8000">//&nbsp;Фатальная&nbsp;ошибка<br /></span><span style="color: #007700">}<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+  </div>
+
+ </div><hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="language.oop5.interfaces.html">Интерфейсы объектов</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="language.oop5.overloading.html">Перегрузка</a></div>
+ <div class="up"><a href="language.oop5.html">Классы и объекты</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

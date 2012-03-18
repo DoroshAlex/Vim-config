@@ -1,0 +1,384 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Отправляет электронную почту</title>
+
+ </head>
+ <body><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.ezmlm-hash.html">ezmlm_hash</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="book.mailparse.html">Mailparse</a></div>
+ <div class="up"><a href="ref.mail.html">Почта</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.mail" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">mail</h1>
+  <p class="verinfo">(PHP 4, PHP 5)</p><p class="refpurpose"><span class="refname">mail</span> &mdash; <span class="dc-title">Отправляет электронную почту</span></p>
+
+ </div>
+
+ <div class="refsect1 description" id="refsect1-function.mail-description">
+  <h3 class="title">Описание</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">bool</span> <span class="methodname"><b>mail</b></span>
+    ( <span class="methodparam"><span class="type">string</span> <tt class="parameter">$to</tt></span>
+   , <span class="methodparam"><span class="type">string</span> <tt class="parameter">$subject</tt></span>
+   , <span class="methodparam"><span class="type">string</span> <tt class="parameter">$message</tt></span>
+   [, <span class="methodparam"><span class="type">string</span> <tt class="parameter">$additional_headers</tt></span>
+   [, <span class="methodparam"><span class="type">string</span> <tt class="parameter">$additional_parameters</tt></span>
+  ]] )</div>
+
+  <p class="para rdfs-comment">
+   Отправляет электронную почту.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-function.mail-parameters">
+  <h3 class="title">Список параметров</h3>
+  <p class="para">
+   <dl>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">to</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Получатель, или получатели письма.
+      </p>
+      <p class="para">
+       Формат этого параметра должен соответствовать
+       <a href="http://www.faqs.org/rfcs/rfc2822" class="link external">&raquo;&nbsp;RFC 2822</a>. Несколько примеров:
+       <ul class="simplelist">
+        <li class="member">user@example.com</li>
+        <li class="member">user@example.com, anotheruser@example.com</li>
+        <li class="member">User &lt;user@example.com&gt;</li>
+        <li class="member">User &lt;user@example.com&gt;, Another User &lt;anotheruser@example.com&gt;</li>
+       </ul>
+      </p>
+     </dd>
+
+    </dt>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">subject</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Тема отправляемого письма.
+      </p>
+      <div class="caution"><b class="caution">Предостережение</b>
+       <p class="para">
+        Тема должна соответствовать <a href="http://www.faqs.org/rfcs/rfc2047" class="link external">&raquo;&nbsp;RFC 2047</a>.
+       </p>
+      </div>
+     </dd>
+
+    </dt>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">message</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Отправляемое сообщение.
+      </p>
+      <p class="para">
+       Каждая строка должна быть отделена сиволом LF (\n).
+       Строки не должны быть длиннее 70 символов.
+      </p>
+      <div class="caution"><b class="caution">Предостережение</b>
+       <p class="para">
+        (Только для Windows) Если PHP передаёт данные напрямую SMTP-серверу и
+        в начале строки стоит точка, то она будет удалена. Чтобы избежать этого замените
+        все такие точки на две.
+        <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$text&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">str_replace</span><span style="color: #007700">(</span><span style="color: #DD0000">"\n."</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"\n.."</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$text</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+        </div>
+
+       </p>
+      </div>
+     </dd>
+
+    </dt>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">additional_headers</tt></i> (необязательный)</span>
+     <dd>
+
+      <p class="para">
+       Строка, которая будет дополнительно вставлена в конец отправляемых заголовков письма.
+      </p>
+      <p class="para">
+       Обычно используется для добавления дополнительных заголовков (From, Cc, and Bcc).
+       Несколько дополнительных заголовков должны быть разделены CRLF (\r\n).
+      </p>
+      <blockquote class="note"><p><b class="note">Замечание</b>: 
+       <p class="para">
+        При отправке письмо <em class="emphasis">должно</em>  содержать
+        заголовок <i>From</i>. Он может быть установлен с помощью
+        параметра <i><tt class="parameter">additional_headers</tt></i>, или значение
+        по умолчанию может быть установлено в <var class="filename">php.ini</var>.
+       </p>
+       <p class="para">
+        Если заголовок отсутствует, будет сгенерировано сообщение об ошибке
+        вида <i>Warning: mail(): &quot;sendmail_from&quot; not
+        set in php.ini or custom &quot;From:&quot; header missing</i>.
+        Заголовок <i>From</i> также определяет заголовок
+        <i>Return-Path</i> в Windows.
+       </p>
+      </p></blockquote>
+      <blockquote class="note"><p><b class="note">Замечание</b>: 
+       <p class="para">
+        Если сообщения не отправляются, попробуйте использовать только LF (\n).
+        Некоторые некачественные агенты пересылки сообщений Unix заменяют LF на CRLF
+        автоматически (что приводит к двойному CR, если использовалось CRLF).
+        Используйте эту меру в крайнем случае, так как это нарушает
+        <a href="http://www.faqs.org/rfcs/rfc2822" class="link external">&raquo;&nbsp;RFC 2822</a>.
+       </p>
+      </p></blockquote>
+     </dd>
+
+    </dt>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">additional_parameters</tt></i> (необязательный)</span>
+     <dd>
+
+      <p class="para">
+       Параметр <i><tt class="parameter">additional_parameters</tt></i>  может быть
+       использован для передачи дополнительных флагов в виде аргументов
+       командной строки для программы сконфигурированной для отправки писем,
+       указанной директивой <i>sendmail_path</i>. Например, можно
+       установить отправителя письма при использовании sendmail с помощью опции
+       <i>-f</i>.
+      </p>
+      <p class="para">
+       Пользователь, под которым работает веб-сервер должен быть добавлен в список
+       доверенных в конфигурации sendmail для того чтобы избежать добавления заголовка
+       &#039;X-Warning&#039; при указании отправителя с помощью опции (-f).
+       Для пользователей sendmail - это файл <var class="filename">/etc/mail/trusted-users</var>.
+      </p>
+     </dd>
+
+    </dt>
+
+   </dl>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-function.mail-returnvalues">
+  <h3 class="title">Возвращаемые значения</h3>
+  <p class="para">
+   Возвращает <b><tt>TRUE</tt></b>, если письмо было принято для передачи, иначе <b><tt>FALSE</tt></b>.
+  </p>
+  <p class="para">
+   Важно заметить, что то что письмо было принято для передачи вовсе НЕ означает
+   что оно достигло получателя.
+  </p>
+ </div>
+
+
+ <div class="refsect1 changelog" id="refsect1-function.mail-changelog">
+  <h3 class="title">Список изменений</h3>
+  <p class="para">
+   <table class="doctable informaltable">
+    
+     <thead valign="middle">
+      <tr valign="middle">
+       <th>Версия</th>
+       <th>Описание</th>
+      </tr>
+
+     </thead>
+
+     <tbody valign="middle" class="tbody">
+      <tr valign="middle">
+       <td align="left">4.3.0 (только для Windows)</td>
+       <td align="left">
+        Теперь поддерживаются все дополнительные заголовки (такие как From, Cc, Bcc и Date), и
+        являются регистро-независимыми.
+        (Так как дополнительные заголовки интерпретируются не почтовым агентом,
+        а PHP, PHP &lt; 4.3 поддерживал только заголовок Cc
+        и был регистро-зависимый).
+       </td>
+      </tr>
+
+      <tr valign="middle">
+       <td align="left">4.2.3</td>
+       <td align="left">
+        Параметр <i><tt class="parameter">additional_parameters</tt></i> отключен в
+        режиме <a href="ini.sect.safe-mode.html#ini.safe-mode" class="link">safe_mode</a> и при
+        его использовании функция <span class="function"><b>mail()</b></span> вызовет
+        предупреждение и вернет <b><tt>FALSE</tt></b>.
+       </td>
+      </tr>
+
+      <tr valign="middle">
+       <td align="left">4.0.5</td>
+       <td align="left">
+        Был добавлен параметр <i><tt class="parameter">additional_parameters</tt></i>.
+       </td>
+      </tr>
+
+     </tbody>
+    
+   </table>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-function.mail-examples">
+  <h3 class="title">Примеры</h3>
+  <p class="para">
+   <div class="example" id="example-3065">
+    <p><b>Пример #1 Отправка письма.</b></p>
+    <div class="example-contents"><p>
+     Использование функции <span class="function"><b>mail()</b></span> для отправки простого письма:
+    </p></div>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">//&nbsp;Сообщение<br /></span><span style="color: #0000BB">$message&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">"Line&nbsp;1\nLine&nbsp;2\nLine&nbsp;3"</span><span style="color: #007700">;<br /><br /></span><span style="color: #FF8000">//&nbsp;На&nbsp;случай&nbsp;если&nbsp;какая-то&nbsp;строка&nbsp;письма&nbsp;длиннее&nbsp;70&nbsp;символов&nbsp;мы&nbsp;используем&nbsp;wordwrap()<br /></span><span style="color: #0000BB">$message&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">wordwrap</span><span style="color: #007700">(</span><span style="color: #0000BB">$message</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">70</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;Отправляем<br /></span><span style="color: #0000BB">mail</span><span style="color: #007700">(</span><span style="color: #DD0000">'caffeinated@example.com'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'My&nbsp;Subject'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$message</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+   <div class="example" id="example-3066">
+    <p><b>Пример #2 Отправка письма с дополнительными заголовками.</b></p>
+    <div class="example-contents"><p>
+     Добавление простых заголовков, сообщающих почтовому агенту
+     адреса From и Reply-To:
+    </p></div>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$to&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'nobody@example.com'</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$subject&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'the&nbsp;subject'</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$message&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'hello'</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$headers&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'From:&nbsp;webmaster@example.com'&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #DD0000">"\r\n"&nbsp;</span><span style="color: #007700">.<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'Reply-To:&nbsp;webmaster@example.com'&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #DD0000">"\r\n"&nbsp;</span><span style="color: #007700">.<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'X-Mailer:&nbsp;PHP/'&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">phpversion</span><span style="color: #007700">();<br /><br /></span><span style="color: #0000BB">mail</span><span style="color: #007700">(</span><span style="color: #0000BB">$to</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$subject</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$message</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$headers</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+   <div class="example" id="example-3067">
+    <p><b>Пример #3 Отправка письма с дополнительными аргументами командной строки.</b></p>
+    <div class="example-contents"><p>
+     Параметр <i><tt class="parameter">additional_parameters</tt></i> может быть использован
+     для передачи дополнительных параметров программе, используемой для отправки
+     писем с помощью директивы <i>sendmail_path</i>.
+    </p></div>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />mail</span><span style="color: #007700">(</span><span style="color: #DD0000">'nobody@example.com'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'the&nbsp;subject'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'the&nbsp;message'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">null</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'-fwebmaster@example.com'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+   <div class="example" id="example-3068">
+    <p><b>Пример #4 Отправка HTML-сообщения</b></p>
+    <div class="example-contents"><p>
+     С помощью функции <span class="function"><b>mail()</b></span> также можно отправить и HTML-письмо.
+    </p></div>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">//&nbsp;несколько&nbsp;получателей<br /></span><span style="color: #0000BB">$to&nbsp;&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'aidan@example.com'&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #DD0000">',&nbsp;'</span><span style="color: #007700">;&nbsp;</span><span style="color: #FF8000">//&nbsp;обратите&nbsp;внимание&nbsp;на&nbsp;запятую<br /></span><span style="color: #0000BB">$to&nbsp;</span><span style="color: #007700">.=&nbsp;</span><span style="color: #DD0000">'wez@example.com'</span><span style="color: #007700">;<br /><br /></span><span style="color: #FF8000">//&nbsp;тема&nbsp;письма<br /></span><span style="color: #0000BB">$subject&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'Birthday&nbsp;Reminders&nbsp;for&nbsp;August'</span><span style="color: #007700">;<br /><br /></span><span style="color: #FF8000">//&nbsp;текст&nbsp;письма<br /></span><span style="color: #0000BB">$message&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'<br />&lt;html&gt;<br />&lt;head&gt;<br />&nbsp;&nbsp;&lt;title&gt;Birthday&nbsp;Reminders&nbsp;for&nbsp;August&lt;/title&gt;<br />&lt;/head&gt;<br />&lt;body&gt;<br />&nbsp;&nbsp;&lt;p&gt;Here&nbsp;are&nbsp;the&nbsp;birthdays&nbsp;upcoming&nbsp;in&nbsp;August!&lt;/p&gt;<br />&nbsp;&nbsp;&lt;table&gt;<br />&nbsp;&nbsp;&nbsp;&nbsp;&lt;tr&gt;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;th&gt;Person&lt;/th&gt;&lt;th&gt;Day&lt;/th&gt;&lt;th&gt;Month&lt;/th&gt;&lt;th&gt;Year&lt;/th&gt;<br />&nbsp;&nbsp;&nbsp;&nbsp;&lt;/tr&gt;<br />&nbsp;&nbsp;&nbsp;&nbsp;&lt;tr&gt;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;Joe&lt;/td&gt;&lt;td&gt;3rd&lt;/td&gt;&lt;td&gt;August&lt;/td&gt;&lt;td&gt;1970&lt;/td&gt;<br />&nbsp;&nbsp;&nbsp;&nbsp;&lt;/tr&gt;<br />&nbsp;&nbsp;&nbsp;&nbsp;&lt;tr&gt;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;Sally&lt;/td&gt;&lt;td&gt;17th&lt;/td&gt;&lt;td&gt;August&lt;/td&gt;&lt;td&gt;1973&lt;/td&gt;<br />&nbsp;&nbsp;&nbsp;&nbsp;&lt;/tr&gt;<br />&nbsp;&nbsp;&lt;/table&gt;<br />&lt;/body&gt;<br />&lt;/html&gt;<br />'</span><span style="color: #007700">;<br /><br /></span><span style="color: #FF8000">//&nbsp;Для&nbsp;отправки&nbsp;HTML-письма&nbsp;должен&nbsp;быть&nbsp;установлен&nbsp;заголовок&nbsp;Content-type<br /></span><span style="color: #0000BB">$headers&nbsp;&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'MIME-Version:&nbsp;1.0'&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #DD0000">"\r\n"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$headers&nbsp;</span><span style="color: #007700">.=&nbsp;</span><span style="color: #DD0000">'Content-type:&nbsp;text/html;&nbsp;charset=iso-8859-1'&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #DD0000">"\r\n"</span><span style="color: #007700">;<br /><br /></span><span style="color: #FF8000">//&nbsp;Дополнительные&nbsp;заголовки<br /></span><span style="color: #0000BB">$headers&nbsp;</span><span style="color: #007700">.=&nbsp;</span><span style="color: #DD0000">'To:&nbsp;Mary&nbsp;&lt;mary@example.com&gt;,&nbsp;Kelly&nbsp;&lt;kelly@example.com&gt;'&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #DD0000">"\r\n"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$headers&nbsp;</span><span style="color: #007700">.=&nbsp;</span><span style="color: #DD0000">'From:&nbsp;Birthday&nbsp;Reminder&nbsp;&lt;birthday@example.com&gt;'&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #DD0000">"\r\n"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$headers&nbsp;</span><span style="color: #007700">.=&nbsp;</span><span style="color: #DD0000">'Cc:&nbsp;birthdayarchive@example.com'&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #DD0000">"\r\n"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$headers&nbsp;</span><span style="color: #007700">.=&nbsp;</span><span style="color: #DD0000">'Bcc:&nbsp;birthdaycheck@example.com'&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #DD0000">"\r\n"</span><span style="color: #007700">;<br /><br /></span><span style="color: #FF8000">//&nbsp;Отправляем<br /></span><span style="color: #0000BB">mail</span><span style="color: #007700">(</span><span style="color: #0000BB">$to</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$subject</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$message</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$headers</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+  </p>
+  <p class="para">
+   <blockquote class="note"><p><b class="note">Замечание</b>: 
+    <p class="para">
+     Для отправки HTML или других комплексных сообщений рекомендуется использовать
+     PEAR-пакет <a href="http://pear.php.net/package/Mail_Mime" class="link external">&raquo;&nbsp;PEAR::Mail_Mime</a>.
+    </p>
+   </p></blockquote>
+  </p>
+ </div>
+
+
+ <div class="refsect1 notes" id="refsect1-function.mail-notes">    
+  <h3 class="title">Примечания</h3>
+  <blockquote class="note"><p><b class="note">Замечание</b>: 
+   <p class="para">
+    Реализация функции <span class="function"><b>mail()</b></span> в Windows во многом отличается от 
+    реализации в Unix. Во-первых, она не использует локальную программу для
+    составления писем, а работает непосредственно с сокетами, что означает что
+    необходим почтовый агент (<i>MTA</i>), ожидающий
+    соединенй на сокете (может быть как на локальном так и на
+    удаленном сервере).
+   </p>
+   <p class="para">
+    Во-вторых, дополнительные заголовки вроде:
+    <i>From:</i>,
+    <i>Cc:</i>,
+    <i>Bcc:</i> и
+    <i>Date:</i>
+    интерпретируются в первую очередь <em class="emphasis">не</em>,
+    <i>MTA</i>, а PHP.
+   </p>
+   <p class="para">
+    Поэтому параметр <i><tt class="parameter">to</tt></i> не должен быть адресом вида
+    &quot;Something &lt;someone@example.com&gt;&quot;. Команда
+    mail может неправильно интерпретировать этот адрес во время передачи
+    данных MTA.
+   </p>
+  </p></blockquote>
+  
+  <blockquote class="note"><p><b class="note">Замечание</b>: 
+   <p class="para">
+    Не следует использовать функцию <span class="function"><b>mail()</b></span> для отправки
+    большого количества писем в цикле. Функция открывает и закрывает
+    соединение с SMTP-сервером для каждого письма, что не очень эффективно.
+   </p>
+   <p class="para">
+    Для отправки большого количества сообщений обратите внимание на пакеты
+    <a href="http://pear.php.net/package/Mail" class="link external">&raquo;&nbsp;PEAR::Mail</a> и
+    <a href="http://pear.php.net/package/Mail_Queue" class="link external">&raquo;&nbsp;PEAR::Mail_Queue</a>.
+   </p>
+  </p></blockquote>
+
+  <blockquote class="note"><p><b class="note">Замечание</b>: 
+   <p class="para">
+    Полезные RFC:
+    <a href="http://www.faqs.org/rfcs/rfc1896" class="link external">&raquo;&nbsp;RFC 1896</a>,
+    <a href="http://www.faqs.org/rfcs/rfc2045" class="link external">&raquo;&nbsp;RFC 2045</a>,
+    <a href="http://www.faqs.org/rfcs/rfc2046" class="link external">&raquo;&nbsp;RFC 2046</a>,
+    <a href="http://www.faqs.org/rfcs/rfc2047" class="link external">&raquo;&nbsp;RFC 2047</a>,
+    <a href="http://www.faqs.org/rfcs/rfc2048" class="link external">&raquo;&nbsp;RFC 2048</a>,
+    <a href="http://www.faqs.org/rfcs/rfc2049" class="link external">&raquo;&nbsp;RFC 2049</a> и
+    <a href="http://www.faqs.org/rfcs/rfc2822" class="link external">&raquo;&nbsp;RFC 2822</a>.
+   </p>
+  </p></blockquote>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-function.mail-seealso">
+  <h3 class="title">Смотрите также</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><span class="function"><a href="function.imap-mail.html" class="function" rel="rdfs-seeAlso">imap_mail()</a> - Send an email message</span></li>
+    <li class="member"><a href="http://pear.php.net/package/Mail" class="link external">&raquo;&nbsp;PEAR::Mail</a></li>
+    <li class="member"><a href="http://pear.php.net/package/Mail_Mime" class="link external">&raquo;&nbsp;PEAR::Mail_Mime</a></li>
+   </ul>
+  </p>
+ </div>
+
+</div><hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.ezmlm-hash.html">ezmlm_hash</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="book.mailparse.html">Mailparse</a></div>
+ <div class="up"><a href="ref.mail.html">Почта</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

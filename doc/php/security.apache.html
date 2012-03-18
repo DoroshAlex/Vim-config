@@ -1,0 +1,68 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Если PHP установлен как модуль Apache</title>
+
+ </head>
+ <body><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="security.cgi-bin.shell.html">Вариант 4: PHP вне дерева веб-документов</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="security.filesystem.html">Безопасность файловой системы</a></div>
+ <div class="up"><a href="security.html">Безопасность</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="security.apache" class="chapter">
+   <h1>Если PHP установлен как модуль Apache</h1>
+
+   <p class="simpara">
+    Если <acronym title="PHP: Hypertext Preprocessor">PHP</acronym> используется как модуль Apache, он
+    наследует права пользователя, с которыми был запущен веб-сервер
+    (обычно это пользователь &quot;nobody&quot;). Это влияет на обеспечение
+    безопасности и реализацию авторизации. Например, если вы
+    используете <acronym title="PHP: Hypertext Preprocessor">PHP</acronym> для доступа к базе данных,
+    которая не имеет встроенного механизма разграничения доступа,
+    вам придется обеспечить доступ к БД для пользователя &#039;nobody&#039;.
+    В таком случае вредоносный скрипт может получить доступ к базе
+    данных и модифицировать ее, даже не зная  логина и пароля.
+    Вполне возможна ситуация, при которой веб-паук неверными запросами
+    на страницу администратора базы данных может уничтожить все ваши
+    базы данных. Вы можете избежать такой ситуации при помощи авторизации Apache
+    или разработав собственную модель доступа, используя LDAP, файлы <var class="filename">.htaccess</var>  или
+    любые другие технологии, внедряя соответствующий код в ваши
+    <acronym title="PHP: Hypertext Preprocessor">PHP</acronym>-скрипты.
+   </p>
+   <p class="simpara">
+    Достаточно часто используются такие настройки безопасности, при которых
+    <acronym title="PHP: Hypertext Preprocessor">PHP</acronym> (имеется ввиду пользователь, с правами
+    которого выполняется Apache) имеет минимальные привилегии,
+    например, отсутствует возможность записи в пользовательские директории
+    с помощью <acronym title="PHP: Hypertext Preprocessor">PHP</acronym>. Или, например, отсутствует
+    возможность работать с базой данных. При этом система
+    безопасности не позволяет записывать как &quot;хорошие&quot;, так и
+    &quot;плохие&quot; файлы, или провести &quot;хорошие&quot; или &quot;плохие&quot; транзакции.
+   </p>
+   <p class="simpara">
+    Распространенной ошибкой является запуск Apache с правами
+    суперпользователя или любое другое расширение полномочий веб-сервера.
+   </p>
+   <p class="simpara">
+    Расширение привилегий веб-сервера до полномочий суперпользователя
+    угрожает работоспособности всей системы, поэтому такие команды,
+    как sudo, chroot и другие способы запуска с правами
+    суперпользователя должны выполняться исключительно теми, кто
+    профессионально разбирается в вопросах безопасности.
+   </p>
+   <p class="simpara">
+    Существует несколько простых решений. Используя 
+    <a href="ini.core.html#ini.open-basedir" class="link">open_basedir</a>,
+    вы можете ограничить дерево доступных директорий для
+    <acronym title="PHP: Hypertext Preprocessor">PHP</acronym>. Вы так же можете определить область
+    доступа Apache, ограничив все действия, совершаемые из веба
+    не-пользовательскими или не-системными файлами.
+   </p>
+  </div>
+<hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="security.cgi-bin.shell.html">Вариант 4: PHP вне дерева веб-документов</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="security.filesystem.html">Безопасность файловой системы</a></div>
+ <div class="up"><a href="security.html">Безопасность</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

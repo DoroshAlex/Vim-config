@@ -1,0 +1,117 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Запускает разбор XML документа</title>
+
+ </head>
+ <body><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.xml-parse-into-struct.html">xml_parse_into_struct</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.xml-parser-create-ns.html">xml_parser_create_ns</a></div>
+ <div class="up"><a href="ref.xml.html">Функции парсера XML</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.xml-parse" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">xml_parse</h1>
+  <p class="verinfo">(PHP 4, PHP 5)</p><p class="refpurpose"><span class="refname">xml_parse</span> &mdash; <span class="dc-title">
+   Запускает разбор XML документа
+  </span></p>
+
+ </div>
+
+ <div class="refsect1 description" id="refsect1-function.xml-parse-description">
+  <h3 class="title">Описание</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">int</span> <span class="methodname"><b>xml_parse</b></span>
+    ( <span class="methodparam"><span class="type">resource</span> <tt class="parameter">$parser</tt></span>
+   , <span class="methodparam"><span class="type">string</span> <tt class="parameter">$data</tt></span>
+   [, <span class="methodparam"><span class="type">bool</span> <tt class="parameter">$is_final</tt><span class="initializer"> = false</span></span>
+  ] )</div>
+
+  <p class="para rdfs-comment">
+   <span class="function"><b>xml_parse()</b></span> разбирает XML документ. Обработчики
+   запрограммированных событий вызываются столько раз, сколько необходимо.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-function.xml-parse-parameters">
+  <h3 class="title">Список параметров</h3>
+  <p class="para">
+   <dl>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">parser</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Ссылка на используемый XML анализатор.
+      </p>
+     </dd>
+
+    </dt>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">data</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Часть данных для разбора. Документ можно разбирать по частям, вызывая
+       функцию <span class="function"><b>xml_parse()</b></span> несколько раз с новыми данными,
+       пока аргумент <i><tt class="parameter">is_final</tt></i> не будет установлен в
+       <b><tt>TRUE</tt></b>, это сообщит анализатору, что разбирается последняя часть
+       документа.
+      </p>
+     </dd>
+
+    </dt>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">is_final</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Если задан и установлен в <b><tt>TRUE</tt></b>, <i><tt class="parameter">data</tt></i>
+       считается последней частью в этом разборе.
+      </p>
+     </dd>
+
+    </dt>
+
+   </dl>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-function.xml-parse-returnvalues">
+  <h3 class="title">Возвращаемые значения</h3>
+  <p class="para">
+   Возвращает 1 при успешном завершении, 0 в противном случае.
+  </p>
+  <p class="para">
+   В случае неудачного разбора информацию об ошибках можно получить с помощью
+   функций <span class="function"><a href="function.xml-get-error-code.html" class="function">xml_get_error_code()</a></span>,
+   <span class="function"><a href="function.xml-error-string.html" class="function">xml_error_string()</a></span>,
+   <span class="function"><a href="function.xml-get-current-line-number.html" class="function">xml_get_current_line_number()</a></span>,
+   <span class="function"><a href="function.xml-get-current-column-number.html" class="function">xml_get_current_column_number()</a></span> и
+   <span class="function"><a href="function.xml-get-current-byte-index.html" class="function">xml_get_current_byte_index()</a></span>.
+  </p>
+  <blockquote class="note"><p><b class="note">Замечание</b>: 
+   <p class="para">
+    Ошибки при разборе сущностей выдаются в конце разбора, их можно
+    получить только когда <i><tt class="parameter">is_final</tt></i> установлен в <b><tt>TRUE</tt></b>.
+   </p>
+  </p></blockquote>
+ </div>
+
+
+</div><hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.xml-parse-into-struct.html">xml_parse_into_struct</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.xml-parser-create-ns.html">xml_parser_create_ns</a></div>
+ <div class="up"><a href="ref.xml.html">Функции парсера XML</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

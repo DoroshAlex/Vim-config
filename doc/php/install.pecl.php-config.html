@@ -1,0 +1,128 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>php-config</title>
+
+ </head>
+ <body><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="install.pecl.phpize.html">Компиляция разделяемых расширений с помощью phpize</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="install.pecl.static.html">Компиляция расширений PECL статически в PHP</a></div>
+ <div class="up"><a href="install.pecl.html">Установка расширений PECL</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="install.pecl.php-config" class="sect1">
+  <h2 class="title">php-config</h2>
+  
+  <p class="para">
+   php-config - это простой шелл-скрипт для получения информации о конфигурации
+   установленного PHP.
+  </p>
+  
+  <p class="para">
+   При компиляции расширений, если у вас установлено сразу несколько версий PHP, 
+   вы должны уточнить нужную версию с помощью опции <i>--with-php-config</i> 
+   во время конфигурирования сборки, указав путь до соответствующего php-config скрипта.
+  </p>
+  
+  <p class="para">
+   Список параметров командной строки доступных для php-config скрипта всегда можно
+   получить запустив php-config с параметром <strong class="option unknown">-h</strong>
+:
+   <div class="example-contents screen">
+<div class="cdata"><pre>
+Usage: /usr/local/bin/php-config [OPTION]
+Options:
+  --prefix            [...]
+  --includes          [...]
+  --ldflags           [...]
+  --libs              [...]
+  --extension-dir     [...]
+  --include-dir       [...]
+  --php-binary        [...]
+  --php-sapis         [...]
+  --configure-options [...]
+  --version           [...]
+  --vernum            [...]
+</pre></div>
+   </div>
+  </p>
+  
+  <p class="para">
+   <table class="doctable table">
+    <caption><b>Опции скрипта</b></caption>
+    
+     <thead valign="middle">
+      <tr valign="middle">
+       <th>Опция</th>
+       <th>Описание</th>
+      </tr>
+
+     </thead>
+
+     <tbody valign="middle" class="tbody">
+      <tr valign="middle">
+       <td align="left">--prefix</td>
+       <td align="left">Директория, в которой установлен PHP, например /usr/local</td>
+      </tr>
+
+      <tr valign="middle">
+       <td align="left">--includes</td>
+       <td align="left">Список -I опций со всеми подключаемыми файлами</td>
+      </tr>
+
+      <tr valign="middle">
+       <td align="left">--ldflags</td>
+       <td align="left">LD-флаги, с которыми был скомпилирован PHP</td>
+      </tr>
+
+      <tr valign="middle">
+       <td align="left">--libs</td>
+       <td align="left">Внешние библиотеки, с которыми был скомпилирован PHP</td>
+      </tr>
+
+      <tr valign="middle">
+       <td align="left">--extension-dir</td>
+       <td align="left">Директория, в которой по умолчанию ищутся расширения</td>
+      </tr>
+
+      <tr valign="middle">
+       <td align="left">--include-dir</td>
+       <td align="left">Директория, куда по умолчанию устанавливаются заголовочные файлы</td>
+      </tr>
+
+      <tr valign="middle">
+       <td align="left">--php-binary</td>
+       <td align="left">Полный путь до исполняемых файлов php CLI или CGI</td>
+      </tr>
+
+      <tr valign="middle">
+       <td align="left">--php-sapis</td>
+       <td align="left">Показывает все доступные модули SAPI</td>
+      </tr>
+
+      <tr valign="middle">
+       <td align="left">--configure-options</td>
+       <td align="left">Конфигурационные опции для воссоздания настроек текущей установки PHP.</td>
+      </tr>
+
+      <tr valign="middle">
+       <td align="left">--version</td>
+       <td align="left">Версия PHP</td>
+      </tr>
+
+      <tr valign="middle">
+       <td align="left">--vernum</td>
+       <td align="left">Версия PHP в виде целого числа</td>
+      </tr>
+
+     </tbody>
+    
+   </table>
+
+  </p>
+ </div><hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="install.pecl.phpize.html">Компиляция разделяемых расширений с помощью phpize</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="install.pecl.static.html">Компиляция расширений PECL статически в PHP</a></div>
+ <div class="up"><a href="install.pecl.html">Установка расширений PECL</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

@@ -1,0 +1,165 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Позднее статическое связывание</title>
+
+ </head>
+ <body><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="language.oop5.typehinting.html">Контроль типа</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="language.oop5.references.html">Объекты и ссылки</a></div>
+ <div class="up"><a href="language.oop5.html">Классы и объекты</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="language.oop5.late-static-bindings" class="sect1">
+  <h2 class="title">Позднее статическое связывание</h2>
+  <p class="para">
+   Начиная с версии PHP 5.3.0 появилась особенность, называемая позднее статическое 
+   связывание, которая может быть использована для того чтобы получить ссылку на
+   вызываемый класс в контексте статического наследования.
+  </p>
+
+  <p class="para">
+   Если говорить более точно, позднее статическое связывание сохраняет имя класса
+   указанного в последнем &quot;не перенаправленном вызове&quot;. В случае статических 
+   вызовов это явно указанный класс (обычно слева от оператора 
+   <a href="language.oop5.paamayim-nekudotayim.html" class="link"><i>::</i></a>);
+   в случае не статических вызовов это класс объекта. &quot;Перенаправленный вызов&quot; - это
+   статический вызов, начинающийся с <i>self::</i>, <i>parent::</i>, 
+   <i>static::</i>, или, если двигаться вверх по иерархии классов,
+   <span class="function"><a href="function.forward-static-call.html" class="function">forward_static_call()</a></span>.
+   
+   
+   Функция <span class="function"><a href="function.get-called-class.html" class="function">get_called_class()</a></span> может быть использована чтобы
+   получить строку с именем вызванного класса, и <i>static::</i>
+   представляет ее область действия.
+  </p>
+  
+  <p class="para">
+   Само название &quot;позднее статическое связывание&quot; отражает в себе внутреннюю
+   реализацию этой особенности. &quot;Позднее связывание&quot; отражает тот факт, что
+   обращения через <i>static::</i> не будут вычисляться по отношению
+   к классу, в котором вызываемый метод определен, а будут вычисляться на основе
+   информации в ходе исполнения.
+   
+   Также эта особенность была названа &quot;статическое связывание&quot; потому, что она
+   может быть использована (но не обязательно) в статических методах.
+  </p>
+
+  <div class="sect2" id="language.oop5.late-static-bindings.self">
+   <h3 class="title">Ограничения <i>self::</i></h3>
+   <p class="para">
+    Статические ссылки на текущий класс, наподобие <i>self::</i>
+    или <i>__CLASS__</i>, вычисляются используя класс, к которому
+    они принадлежат, как к тому, в котором они были определены.  
+   </p>
+   <div class="example" id="example-214">
+    <p><b>Пример #1 Использование <i>self::</i></b></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">class&nbsp;</span><span style="color: #0000BB">A&nbsp;</span><span style="color: #007700">{<br />&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;static&nbsp;function&nbsp;</span><span style="color: #0000BB">who</span><span style="color: #007700">()&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #0000BB">__CLASS__</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;static&nbsp;function&nbsp;</span><span style="color: #0000BB">test</span><span style="color: #007700">()&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">self</span><span style="color: #007700">::</span><span style="color: #0000BB">who</span><span style="color: #007700">();<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />}<br /><br />class&nbsp;</span><span style="color: #0000BB">B&nbsp;</span><span style="color: #007700">extends&nbsp;</span><span style="color: #0000BB">A&nbsp;</span><span style="color: #007700">{<br />&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;static&nbsp;function&nbsp;</span><span style="color: #0000BB">who</span><span style="color: #007700">()&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #0000BB">__CLASS__</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />}<br /><br /></span><span style="color: #0000BB">B</span><span style="color: #007700">::</span><span style="color: #0000BB">test</span><span style="color: #007700">();<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+    <div class="example-contents"><p>Результат выполнения данного примера:</p></div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+A
+</pre></div>
+    </div>
+   </div>
+
+  </div>
+
+  <div class="sect2" id="language.oop5.late-static-bindings.usage">
+   <h3 class="title">Использование позднего статического связывания</h3>
+
+   <p class="para">
+    Позднее статическое связывание пытается устранить это ограничение предоставляя
+    ключевое слово, которое ссылается на класс, вызванный непосредственно в
+    ходе выполнения. Попросту говоря, ключевое слово, которое позволит вам
+    ссылаться на <i>B</i> из <i>test()</i> в
+    предыдущем примере. Было решено не вводить новое ключевое слово, а
+    использовать <i>static</i>, которое уже зарезервировано.
+   </p>
+
+   <div class="example" id="example-215">
+    <p><b>Пример #2 Простое использование<i>static::</i></b></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">class&nbsp;</span><span style="color: #0000BB">A&nbsp;</span><span style="color: #007700">{<br />&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;static&nbsp;function&nbsp;</span><span style="color: #0000BB">who</span><span style="color: #007700">()&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #0000BB">__CLASS__</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;static&nbsp;function&nbsp;</span><span style="color: #0000BB">test</span><span style="color: #007700">()&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;static::</span><span style="color: #0000BB">who</span><span style="color: #007700">();&nbsp;</span><span style="color: #FF8000">//&nbsp;Здесь&nbsp;действует&nbsp;позднее&nbsp;статическое&nbsp;связывание<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">}<br />}<br /><br />class&nbsp;</span><span style="color: #0000BB">B&nbsp;</span><span style="color: #007700">extends&nbsp;</span><span style="color: #0000BB">A&nbsp;</span><span style="color: #007700">{<br />&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;static&nbsp;function&nbsp;</span><span style="color: #0000BB">who</span><span style="color: #007700">()&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #0000BB">__CLASS__</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />}<br /><br /></span><span style="color: #0000BB">B</span><span style="color: #007700">::</span><span style="color: #0000BB">test</span><span style="color: #007700">();<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+    <div class="example-contents"><p>Результат выполнения данного примера:</p></div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+B
+</pre></div>
+    </div>
+   </div>
+   <blockquote class="note"><p><b class="note">Замечание</b>: 
+    <p class="para">
+     В нестатическом контексте вызванным классом будет тот, к которому
+     относится экземпляр объекта. Поскольку <i>$this-&gt;</i> 
+     будет пытаться вызывать закрытые методы из той же области действия,
+     использование <i>static::</i> может дать разные результаты.
+     Другое отличие в том, что <i>static::</i> может ссылаться
+     только на статические поля класса.
+    </p>
+   </p></blockquote>
+   <div class="example" id="example-216">
+    <p><b>Пример #3 Использование <i>static::</i> в нестатическом контексте</b></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">class&nbsp;</span><span style="color: #0000BB">A&nbsp;</span><span style="color: #007700">{<br />&nbsp;&nbsp;&nbsp;&nbsp;private&nbsp;function&nbsp;</span><span style="color: #0000BB">foo</span><span style="color: #007700">()&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"success!\n"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;function&nbsp;</span><span style="color: #0000BB">test</span><span style="color: #007700">()&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">foo</span><span style="color: #007700">();<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;static::</span><span style="color: #0000BB">foo</span><span style="color: #007700">();<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />}<br /><br />class&nbsp;</span><span style="color: #0000BB">B&nbsp;</span><span style="color: #007700">extends&nbsp;</span><span style="color: #0000BB">A&nbsp;</span><span style="color: #007700">{<br />&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">/*&nbsp;foo()&nbsp;будет&nbsp;скопирован&nbsp;в&nbsp;В,&nbsp;следовательно&nbsp;его&nbsp;область&nbsp;действия&nbsp;по&nbsp;прежнему&nbsp;А,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;и&nbsp;вызов&nbsp;будет&nbsp;успешен*/<br /></span><span style="color: #007700">}<br /><br />class&nbsp;</span><span style="color: #0000BB">C&nbsp;</span><span style="color: #007700">extends&nbsp;</span><span style="color: #0000BB">A&nbsp;</span><span style="color: #007700">{<br />&nbsp;&nbsp;&nbsp;&nbsp;private&nbsp;function&nbsp;</span><span style="color: #0000BB">foo</span><span style="color: #007700">()&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">/*&nbsp;исходный&nbsp;метод&nbsp;заменен;&nbsp;область&nbsp;действия&nbsp;нового&nbsp;метода&nbsp;С&nbsp;*/<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">}<br />}<br /><br /></span><span style="color: #0000BB">$b&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">B</span><span style="color: #007700">();<br /></span><span style="color: #0000BB">$b</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">test</span><span style="color: #007700">();<br /></span><span style="color: #0000BB">$c&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">C</span><span style="color: #007700">();<br /></span><span style="color: #0000BB">$c</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">test</span><span style="color: #007700">();&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//не&nbsp;верно<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+    <div class="example-contents"><p>Результат выполнения данного примера:</p></div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+success!
+success!
+success!
+
+
+Fatal error:  Call to private method C::foo() from context &#039;A&#039; in /tmp/test.php on line 9
+</pre></div>
+    </div>
+   </div>
+   <blockquote class="note"><p><b class="note">Замечание</b>: 
+    <p class="para">
+     Разрешающая область позднего статического связывания будет
+     фиксирована вычисляющем ее статическим вызовом. С другой стороны, 
+     статические вызовы с использованием таких директив как <i>parent::</i> 
+     или <i>self::</i> перенаправляют информацию вызова.
+    </p>
+    <div class="example" id="example-217">
+     <p><b>Пример #4 Перенаправленные и не перенаправленные вызовы</b></p>
+     <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">class&nbsp;</span><span style="color: #0000BB">A&nbsp;</span><span style="color: #007700">{<br />&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;static&nbsp;function&nbsp;</span><span style="color: #0000BB">foo</span><span style="color: #007700">()&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;static::</span><span style="color: #0000BB">who</span><span style="color: #007700">();<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;static&nbsp;function&nbsp;</span><span style="color: #0000BB">who</span><span style="color: #007700">()&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #0000BB">__CLASS__</span><span style="color: #007700">.</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />}<br /><br />class&nbsp;</span><span style="color: #0000BB">B&nbsp;</span><span style="color: #007700">extends&nbsp;</span><span style="color: #0000BB">A&nbsp;</span><span style="color: #007700">{<br />&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;static&nbsp;function&nbsp;</span><span style="color: #0000BB">test</span><span style="color: #007700">()&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">A</span><span style="color: #007700">::</span><span style="color: #0000BB">foo</span><span style="color: #007700">();<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">parent</span><span style="color: #007700">::</span><span style="color: #0000BB">foo</span><span style="color: #007700">();<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">self</span><span style="color: #007700">::</span><span style="color: #0000BB">foo</span><span style="color: #007700">();<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;static&nbsp;function&nbsp;</span><span style="color: #0000BB">who</span><span style="color: #007700">()&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #0000BB">__CLASS__</span><span style="color: #007700">.</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />}<br />class&nbsp;</span><span style="color: #0000BB">C&nbsp;</span><span style="color: #007700">extends&nbsp;</span><span style="color: #0000BB">B&nbsp;</span><span style="color: #007700">{<br />&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;static&nbsp;function&nbsp;</span><span style="color: #0000BB">who</span><span style="color: #007700">()&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #0000BB">__CLASS__</span><span style="color: #007700">.</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />}<br /><br /></span><span style="color: #0000BB">C</span><span style="color: #007700">::</span><span style="color: #0000BB">test</span><span style="color: #007700">();<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+     </div>
+
+     <div class="example-contents"><p>Результат выполнения данного примера:</p></div>
+     <div class="example-contents screen">
+<div class="cdata"><pre>
+A
+C
+C
+</pre></div>
+     </div>
+    </div>
+   </p></blockquote>
+  </div>
+ </div><hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="language.oop5.typehinting.html">Контроль типа</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="language.oop5.references.html">Объекты и ссылки</a></div>
+ <div class="up"><a href="language.oop5.html">Классы и объекты</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

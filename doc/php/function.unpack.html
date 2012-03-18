@@ -1,0 +1,177 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Распаковывает данные из бинарной строки</title>
+
+ </head>
+ <body><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.uniqid.html">uniqid</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.usleep.html">usleep</a></div>
+ <div class="up"><a href="ref.misc.html">Разные Функции</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.unpack" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">unpack</h1>
+  <p class="verinfo">(PHP 4, PHP 5)</p><p class="refpurpose"><span class="refname">unpack</span> &mdash; <span class="dc-title">Распаковывает данные из бинарной строки</span></p>
+
+ </div>
+ 
+ <div class="refsect1 description" id="refsect1-function.unpack-description">
+  <h3 class="title">Описание</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">array</span> <span class="methodname"><b>unpack</b></span>
+    ( <span class="methodparam"><span class="type">string</span> <tt class="parameter">$format</tt></span>
+   , <span class="methodparam"><span class="type">string</span> <tt class="parameter">$data</tt></span>
+   )</div>
+
+  <p class="para rdfs-comment">
+   Распаковывает данные из бинарной строки в массив согласно заданному в
+   <i><tt class="parameter">format</tt></i> формату. 
+  </p>
+  <p class="para">
+   Распакованные данные хранятся в ассоциативном массиве. Для осуществления
+   этого необходимо обозначить различные коды форматов и разделить их с 
+   помощью слэш /. Можно также передать замещающий аргумент, с помощью
+   которого каждый ключ массива будет иметь порядковый номер после
+   обозначенного имени ключа.
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 parameters" id="refsect1-function.unpack-parameters">
+  <h3 class="title">Список параметров</h3>
+  <p class="para">
+   <dl>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">format</tt></i></span>
+     <dd>
+
+      <p class="para">
+       См. функцию <span class="function"><a href="function.pack.html" class="function">pack()</a></span> для разъяснения кодов форматов.
+      </p>
+     </dd>
+
+    </dt>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">data</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Упакованные данные.
+      </p>
+     </dd>
+
+    </dt>
+
+   </dl>
+
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 returnvalues" id="refsect1-function.unpack-returnvalues">
+  <h3 class="title">Возвращаемые значения</h3>
+  <p class="para">
+   Возвращает ассоциативный массив, содержащий распакованные элементы
+   бинарной строки.
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 examples" id="refsect1-function.unpack-examples">
+  <h3 class="title">Примеры</h3>
+  <p class="para">
+   <div class="example" id="example-3389">
+    <p><b>Пример #1 Пример использования <span class="function"><b>unpack()</b></span></b></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$binarydata&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">"\x04\x00\xa0\x00"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$array&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">unpack</span><span style="color: #007700">(</span><span style="color: #DD0000">"cchars/nint"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$binarydata</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+    <div class="example-contents"><p>
+     Результирующий массив будет содержать записи &quot;chars&quot; со значением
+     <i>4</i> и &quot;int&quot; с <i>160</i>.
+    </p></div>
+   </div>
+  </p>
+  
+  <p class="para">
+   <div class="example" id="example-3390">
+    <p><b>Пример #2 Пример использования <span class="function"><b>unpack()</b></span> с замещающим аргументом</b></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$binarydata&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">"\x04\x00\xa0\x00"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$array&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">unpack</span><span style="color: #007700">(</span><span style="color: #DD0000">"c2chars/nint"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$binarydata</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+    <div class="example-contents"><p>
+     Результирующий массив будет содержать записи &quot;chars1&quot;,
+     &quot;chars2&quot; и &quot;int&quot;.
+    </p></div>
+   </div>
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 notes" id="refsect1-function.unpack-notes">
+  <h3 class="title">Примечания</h3>
+  <div class="caution"><b class="caution">Предостережение</b>
+   <p class="para">
+    Необходимо отметить, что PHP хранит значения как signed. Если 
+    распаковать large unsigned long и оно будет иметь тот же размер,
+    что и хранимое PHP значение, то результатом будет отрицательное число,
+    даже если было указано распаковывать как unsigned.
+   </p>
+  </div>
+  <div class="caution"><b class="caution">Предостережение</b>
+   <p class="para">
+    Если не обозначить элемент, то используется пустая строка.
+    Если не обозначить более чем один элемент, то это значит, что некоторые
+    данные будут перезаписаны, как например в:
+   </p>
+   <p class="para">
+    <div class="example" id="example-3391">
+     <p><b>Пример #3 Пример использования <span class="function"><b>unpack()</b></span> с безымянными ключами</b></p>
+     <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$binarydata&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">"\x32\x42\x00\xa0"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$array&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">unpack</span><span style="color: #007700">(</span><span style="color: #DD0000">"c2/n"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$binarydata</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$array</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+     </div>
+
+     <div class="example-contents"><p>
+      Результирующий массив будет содержать записи &quot;1&quot; со значением
+      <i>160</i> и &quot;2&quot; с <i>66</i>. Первое
+      значение из спецификатора <i>c</i> будет перезаписано 
+      первым значением из спецификатора <i>n</i>.
+     </p></div>
+    </div>
+   </p>
+  </div>
+ </div>
+
+ 
+ <div class="refsect1 seealso" id="refsect1-function.unpack-seealso">
+  <h3 class="title">Смотрите также</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><span class="function"><a href="function.pack.html" class="function" rel="rdfs-seeAlso">pack()</a> - Упаковывает данные в бинарную строку</span></li>
+   </ul>
+  </p>
+ </div>
+
+ 
+</div><hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.uniqid.html">uniqid</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.usleep.html">usleep</a></div>
+ <div class="up"><a href="ref.misc.html">Разные Функции</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

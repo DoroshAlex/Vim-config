@@ -1,0 +1,131 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Устанавливает параметры для потока/обертки/контекста</title>
+
+ </head>
+ <body><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.stream-context-set-option.html">stream_context_set_option</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.stream-copy-to-stream.html">stream_copy_to_stream</a></div>
+ <div class="up"><a href="ref.stream.html">Stream Функции</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.stream-context-set-params" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">stream_context_set_params</h1>
+  <p class="verinfo">(PHP 4 &gt;= 4.3.0, PHP 5)</p><p class="refpurpose"><span class="refname">stream_context_set_params</span> &mdash; <span class="dc-title">Устанавливает параметры для потока/обертки/контекста</span></p>
+
+ </div>
+ 
+ <div class="refsect1 description" id="refsect1-function.stream-context-set-params-description">
+  <h3 class="title">Описание</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">bool</span> <span class="methodname"><b>stream_context_set_params</b></span>
+    ( <span class="methodparam"><span class="type">resource</span> <tt class="parameter">$stream_or_context</tt></span>
+   , <span class="methodparam"><span class="type">array</span> <tt class="parameter">$params</tt></span>
+   )</div>
+
+  <p class="para rdfs-comment">
+   Устанавливает параметры для указанного контекста.
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 parameters" id="refsect1-function.stream-context-set-params-parameters">
+  <h3 class="title">Список параметров</h3>
+  <p class="para">
+   <dl>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">stream_or_context</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Поток или контекст, к которому будут применены параметры.
+      </p>
+     </dd>
+
+    </dt>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">params</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Массив параметров, которые будут установлены.
+      </p>
+      <blockquote class="note"><p><b class="note">Замечание</b>: 
+       <p class="para">
+        Массив <i><tt class="parameter">params</tt></i> должен быть ассоциативным массивом со следующей структурой:
+        <i>$params[&#039;paramname&#039;] = &quot;paramvalue&quot;;</i>.
+       </p>
+      </p></blockquote>
+     </dd>
+
+    </dt>
+
+   </dl>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 options" id="refsect1-function.stream-context-set-params-options">
+  <h3 class="title">Поддерживаемые параметры</h3>
+  <table class="doctable informaltable">
+   
+    <thead valign="middle">
+     <tr valign="middle">
+      <th>Параметры</th>
+      <th>Назначение</th>
+     </tr>
+
+    </thead>
+
+    <tbody valign="middle" class="tbody">
+     <tr valign="middle">
+      <td align="left"><i>notification</i></td>
+      <td align="left">
+       Название определённой пользователем callback-функции, которая будет вызвана, когда потоком посылается уведомление.
+      </td>
+     </tr>
+
+     <tr valign="middle">
+      <td align="left"><i>options</i></td>
+      <td align="left">
+       Массив <a href="context.html" class="link">опций и параметров
+    контекста</a>.
+      </td>
+     </tr>
+
+    </tbody>
+   
+  </table>
+
+ </div>
+
+ 
+ <div class="refsect1 returnvalues" id="refsect1-function.stream-context-set-params-returnvalues">
+  <h3 class="title">Возвращаемые значения</h3>
+  <p class="para">
+   Возвращает <b><tt>TRUE</tt></b> в случае успешного завершения  или <b><tt>FALSE</tt></b> в случае возникновения ошибки.
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 seealso" id="refsect1-function.stream-context-set-params-seealso">
+  <h3 class="title">Смотрите также</h3>
+  <ul class="simplelist">
+   <li class="member"><span class="function"><a href="function.stream-notification-callback.html" class="function" rel="rdfs-seeAlso">stream_notification_callback()</a> - Callback-функция для параметра контекста notification</span></li>
+  </ul>
+ </div>
+
+
+</div><hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.stream-context-set-option.html">stream_context_set_option</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.stream-copy-to-stream.html">stream_copy_to_stream</a></div>
+ <div class="up"><a href="ref.stream.html">Stream Функции</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

@@ -1,0 +1,164 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>callback-функция, используемая для gzip-сжатия буфера вывода при вызове ob_start</title>
+
+ </head>
+ <body><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.ob-get-status.html">ob_get_status</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.ob-implicit-flush.html">ob_implicit_flush</a></div>
+ <div class="up"><a href="ref.outcontrol.html">Функции контроля вывода</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.ob-gzhandler" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">ob_gzhandler</h1>
+  <p class="verinfo">(PHP 4 &gt;= 4.0.4, PHP 5)</p><p class="refpurpose"><span class="refname">ob_gzhandler</span> &mdash; <span class="dc-title">callback-функция, используемая для gzip-сжатия буфера вывода при вызове ob_start</span></p>
+
+ </div>
+ 
+ <div class="refsect1 description" id="refsect1-function.ob-gzhandler-description">
+  <h3 class="title">Описание</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">string</span> <span class="methodname"><b>ob_gzhandler</b></span>
+    ( <span class="methodparam"><span class="type">string</span> <tt class="parameter">$buffer</tt></span>
+   , <span class="methodparam"><span class="type">int</span> <tt class="parameter">$mode</tt></span>
+   )</div>
+
+  <p class="para rdfs-comment">
+   Функиця <span class="function"><b>ob_gzhandler()</b></span> предназначена для использования в
+   качестве callback-функции для <span class="function"><a href="function.ob-start.html" class="function">ob_start()</a></span>, чтобы
+   облегчить отправку gz-кодированных данных web-браузерам, поддерживающим
+   сжатие web-страниц. Прежде чем <span class="function"><b>ob_gzhandler()</b></span>
+   отправит сжатые данные, она определяет, какой тип кодирования
+   содержимого сможет принять браузер (&quot;gzip&quot;, &quot;deflate&quot; или вообще никакой)
+   и вернет его содержимое соответствующим образом. Поддерживаются все
+   браузеры, отправляющие корректные заголовки о том, что они принимают
+   сжатые web-страницы. Если браузер не поддерживает сжатие страниц функция
+   вернет <b><tt>FALSE</tt></b>.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-function.ob-gzhandler-parameters">
+  <h3 class="title">Список параметров</h3>
+  <p class="para">
+   <dl>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">buffer</tt></i></span>
+     <dd>
+
+      <p class="para">
+      </p>
+     </dd>
+
+    </dt>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">mode</tt></i></span>
+     <dd>
+
+      <p class="para">
+      </p>
+     </dd>
+
+    </dt>
+
+   </dl>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-function.ob-gzhandler-returnvalues">
+  <h3 class="title">Возвращаемые значения</h3>
+  <p class="para">
+   
+  </p>
+ </div>
+
+
+ <div class="refsect1 changelog" id="refsect1-function.ob-gzhandler-changelog">
+  <h3 class="title">Список изменений</h3>
+  <p class="para">
+   <table class="doctable informaltable">
+    
+     <thead valign="middle">
+      <tr valign="middle">
+       <th>Версия</th>
+       <th>Описание</th>
+      </tr>
+
+     </thead>
+
+     <tbody valign="middle" class="tbody">
+      <tr valign="middle">
+       <td align="left">4.0.5</td>
+       <td align="left">
+        Добавлен параметр <i><tt class="parameter">mode</tt></i>.
+       </td>
+      </tr>
+
+     </tbody>
+    
+   </table>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-function.ob-gzhandler-examples">
+  <h3 class="title">Примеры</h3>
+  <p class="para">
+   <div class="example" id="example-442">
+    <p><b>Пример #1 Пример использования функции <span class="function"><b>ob_gzhandler()</b></span></b></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /><br />ob_start</span><span style="color: #007700">(</span><span style="color: #DD0000">"ob_gzhandler"</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">?&gt;<br /></span>&lt;html&gt;<br />&lt;body&gt;<br />&lt;p&gt;Это&nbsp;должно&nbsp;быть&nbsp;сжатой&nbsp;страницей.&lt;/p&gt;<br />&lt;/body&gt;<br />&lt;/html&gt;</span>
+</code></div>
+    </div>
+
+   </div>
+  </p>
+ </div>
+
+
+ <div class="refsect1 notes" id="refsect1-function.ob-gzhandler-notes">
+  <h3 class="title">Примечания</h3>
+  <blockquote class="note"><p><b class="note">Замечание</b>: 
+   <p class="para">
+    <span class="function"><b>ob_gzhandler()</b></span> требует наличие расширения <a href="ref.zlib.html" class="link">zlib</a>.
+   </p>
+  </p></blockquote>
+  <blockquote class="note"><p><b class="note">Замечание</b>: 
+   <p class="para">
+    Вы не можете использовать одновременно <span class="function"><b>ob_gzhandler()</b></span>
+ и <a href="zlib.configuration.html#ini.zlib.output-compression" class="link">zlib.output_compression</a>.
+ Также обратите внимание, что использование <a href="zlib.configuration.html#ini.zlib.output-compression" class="link">
+ zlib.output_compression</a> предпочтительнее,
+ чем <span class="function"><b>ob_gzhandler()</b></span>.
+   </p>
+  </p></blockquote>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-function.ob-gzhandler-seealso">
+  <h3 class="title">Смотрите также</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><span class="function"><a href="function.ob-start.html" class="function" rel="rdfs-seeAlso">ob_start()</a> - Включение буферизации вывода</span></li>
+    <li class="member"><span class="function"><a href="function.ob-end-flush.html" class="function" rel="rdfs-seeAlso">ob_end_flush()</a> - Сброс (отправка) буфера вывода и отключение буферизации вывода</span></li>
+   </ul>
+  </p>
+ </div>
+
+
+</div><hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.ob-get-status.html">ob_get_status</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.ob-implicit-flush.html">ob_implicit_flush</a></div>
+ <div class="up"><a href="ref.outcontrol.html">Функции контроля вывода</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

@@ -1,0 +1,240 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Выполняет поиск по регулярному выражению и замену с использованием callback-функции</title>
+
+ </head>
+ <body><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.preg-quote.html">preg_quote</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.preg-replace.html">preg_replace</a></div>
+ <div class="up"><a href="ref.pcre.html">PCRE</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.preg-replace-callback" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">preg_replace_callback</h1>
+  <p class="verinfo">(PHP 4 &gt;= 4.0.5, PHP 5)</p><p class="refpurpose"><span class="refname">preg_replace_callback</span> &mdash; <span class="dc-title">Выполняет поиск по регулярному выражению и замену с использованием callback-функции</span></p>
+
+ </div>
+
+ <div class="refsect1 description" id="refsect1-function.preg-replace-callback-description">
+  <h3 class="title">Описание</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type"><a href="language.pseudo-types.html#language.types.mixed" class="type mixed">mixed</a></span> <span class="methodname"><b>preg_replace_callback</b></span>
+    ( <span class="methodparam"><span class="type"><a href="language.pseudo-types.html#language.types.mixed" class="type mixed">mixed</a></span> <tt class="parameter">$pattern</tt></span>
+   , <span class="methodparam"><span class="type"><a href="language.pseudo-types.html#language.types.callback" class="type callback">callback</a></span> <tt class="parameter">$callback</tt></span>
+   , <span class="methodparam"><span class="type"><a href="language.pseudo-types.html#language.types.mixed" class="type mixed">mixed</a></span> <tt class="parameter">$subject</tt></span>
+   [, <span class="methodparam"><span class="type">int</span> <tt class="parameter">$limit</tt><span class="initializer"> = -1</span></span>
+   [, <span class="methodparam"><span class="type">int</span> <tt class="parameter reference">&$count</tt></span>
+  ]] )</div>
+
+  <p class="para rdfs-comment">
+   Поведение этой функции во многом напоминает
+   <span class="function"><a href="function.preg-replace.html" class="function">preg_replace()</a></span>, за исключением того, что вместо
+   параметра <i><tt class="parameter">replacement</tt></i> необходимо указывать
+   <i><tt class="parameter">callback</tt></i>-функцию.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-function.preg-replace-callback-parameters">
+  <h3 class="title">Список параметров</h3>
+  <p class="para">
+   <dl>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">pattern</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Искомый шаблон. Может быть как строкой, так и массивом строк.
+      </p>
+     </dd>
+
+    </dt>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">callback</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Вызываемая callback-функция, которой будет передан массив
+       совпавших элементов из строки <i><tt class="parameter">subject</tt></i>.
+       Callback-функция должна вернуть строку с заменой.
+      </p>
+      <p class="para">
+       Достаточно часто <i><tt class="parameter">callback</tt></i> функция,
+       кроме как в вызове <span class="function"><b>preg_replace_callback()</b></span>,
+       ни в чем больше не участвует. Исходя из этих соображений, можно
+       использовать <a href="functions.anonymous.html" class="link">анонимные функции</a>
+       (начиная с версии PHP 5.3.0) или <span class="function"><a href="function.create-function.html" class="function">create_function()</a></span> для
+       создания безымянной callback-функции непосредственно
+       в вызове <span class="function"><b>preg_replace_callback()</b></span>.
+       Если вы используете такой подход, вся информация, связанная с
+       заменой по регулярному выражению, будет собрана в одном
+       месте, и пространство имен функций не будет загромождаться
+       неиспользуемыми записями.
+      </p>
+      <p class="para">
+       <div class="example" id="example-4301">
+        <p><b>Пример #1 <span class="function"><b>preg_replace_callback()</b></span> и <span class="function"><a href="function.create-function.html" class="function">create_function()</a></span></b></p>
+        <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">/*&nbsp;фильтр,&nbsp;подобный&nbsp;тому,&nbsp;что&nbsp;используется&nbsp;в&nbsp;системах&nbsp;Unix<br />&nbsp;*&nbsp;для&nbsp;преобразования&nbsp;заглавных&nbsp;букв&nbsp;в&nbsp;началье&nbsp;параграфа&nbsp;в&nbsp;строчные&nbsp;*/<br /></span><span style="color: #0000BB">$fp&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">fopen</span><span style="color: #007700">(</span><span style="color: #DD0000">"php://stdin"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"r"</span><span style="color: #007700">)&nbsp;or&nbsp;die(</span><span style="color: #DD0000">"не&nbsp;удалось&nbsp;прочесть&nbsp;stdin"</span><span style="color: #007700">);<br />while&nbsp;(!</span><span style="color: #0000BB">feof</span><span style="color: #007700">(</span><span style="color: #0000BB">$fp</span><span style="color: #007700">))&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$line&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">fgets</span><span style="color: #007700">(</span><span style="color: #0000BB">$fp</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$line&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">preg_replace_callback</span><span style="color: #007700">(<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'|&lt;p&gt;\s*\w|'</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">create_function</span><span style="color: #007700">(<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;Использование&nbsp;одиночных&nbsp;кавычек&nbsp;в&nbsp;данном&nbsp;случае&nbsp;принципиально,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;альтернатива&nbsp;-&nbsp;экранировать&nbsp;все&nbsp;символы&nbsp;'$'<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'$matches'</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'return&nbsp;strtolower($matches[0]);'<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">),<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$line<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #0000BB">$line</span><span style="color: #007700">;<br />}<br /></span><span style="color: #0000BB">fclose</span><span style="color: #007700">(</span><span style="color: #0000BB">$fp</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+        </div>
+
+       </div>
+      </p>
+     </dd>
+
+    </dt>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">subject</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Строка или массив строк для поиска и замены.
+      </p>
+     </dd>
+
+    </dt>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">limit</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Максимально возможное количество замен для каждого шаблона в
+       каждой строке <i><tt class="parameter">subject</tt></i>. По умолчанию
+       равно <i>-1</i> (без ограничений).
+      </p>
+     </dd>
+
+    </dt>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">count</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Если указана, то эта переменная будет заполнена количеством
+       произведенных замен.
+      </p>
+     </dd>
+
+    </dt>
+
+   </dl>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-function.preg-replace-callback-returnvalues">
+  <h3 class="title">Возвращаемые значения</h3>
+  <p class="para">
+   <span class="function"><b>preg_replace_callback()</b></span> возвращает массив,
+   если параметр <i><tt class="parameter">subject</tt></i> является массивом,
+   иначе возвращается строка. В случае ошибок возвращается <b><tt>NULL</tt></b>
+  </p>
+  <p class="para">
+   Если найдены совпадения, будет возвращена результирующая строка,
+   иначе <i><tt class="parameter">subject</tt></i> вернется неизмененным.
+  </p>
+ </div>
+
+
+ <div class="refsect1 changelog" id="refsect1-function.preg-replace-callback-changelog">
+  <h3 class="title">Список изменений</h3>
+  <p class="para">
+   <table class="doctable informaltable">
+    
+     <thead valign="middle">
+      <tr valign="middle">
+       <th>Версия</th>
+       <th>Описание</th>
+      </tr>
+
+     </thead>
+
+     <tbody valign="middle" class="tbody">
+      <tr valign="middle">
+       <td align="left">5.1.0</td>
+       <td align="left">
+        Добавлен параметр <i><tt class="parameter">count</tt></i>
+       </td>
+      </tr>
+
+     </tbody>
+    
+   </table>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-function.preg-replace-callback-examples">
+  <h3 class="title">Примеры</h3>
+  <p class="para">
+   <div class="example" id="example-4302">
+    <p><b>Пример #2 Пример использования <span class="function"><b>preg_replace_callback()</b></span></b></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">//&nbsp;Этот&nbsp;текст&nbsp;был&nbsp;использован&nbsp;в&nbsp;2002&nbsp;году<br />//&nbsp;мы&nbsp;хотим&nbsp;обновить&nbsp;даты&nbsp;к&nbsp;2003&nbsp;году<br /></span><span style="color: #0000BB">$text&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">"День&nbsp;дураков:&nbsp;01/04/2002\n"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$text</span><span style="color: #007700">.=&nbsp;</span><span style="color: #DD0000">"Последнее&nbsp;Рождество&nbsp;было:&nbsp;24/12/2001\n"</span><span style="color: #007700">;<br /></span><span style="color: #FF8000">//&nbsp;callback-функция<br /></span><span style="color: #007700">function&nbsp;</span><span style="color: #0000BB">next_year</span><span style="color: #007700">(</span><span style="color: #0000BB">$matches</span><span style="color: #007700">)<br />{<br />&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;как&nbsp;обычно:&nbsp;$matches[0]&nbsp;-&nbsp;&nbsp;полное&nbsp;вхождение&nbsp;шаблона<br />&nbsp;&nbsp;//&nbsp;$matches[1]&nbsp;-&nbsp;вхождение&nbsp;первой&nbsp;подмаски,<br />&nbsp;&nbsp;//&nbsp;заключенной&nbsp;в&nbsp;круглые&nbsp;скобки,&nbsp;и&nbsp;так&nbsp;далее...<br />&nbsp;&nbsp;</span><span style="color: #007700">return&nbsp;</span><span style="color: #0000BB">$matches</span><span style="color: #007700">[</span><span style="color: #0000BB">1</span><span style="color: #007700">].(</span><span style="color: #0000BB">$matches</span><span style="color: #007700">[</span><span style="color: #0000BB">2</span><span style="color: #007700">]+</span><span style="color: #0000BB">1</span><span style="color: #007700">);<br />}<br />echo&nbsp;</span><span style="color: #0000BB">preg_replace_callback</span><span style="color: #007700">(<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">"|(\d{2}/\d{2}/)(\d{4})|"</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">"next_year"</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$text</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+    <div class="example-contents"><p>Результат выполнения данного примера:</p></div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+День дураков: 01/04/2003
+Последнее Рождество было: 24/12/2002
+</pre></div>
+    </div>
+   </div>
+  </p>
+  <p class="para">
+   <div class="example" id="example-4303">
+    <p><b>Пример #3 Рекурсивная обработка BB-кодов с помощью <span class="function"><b>preg_replace_callback()</b></span></b></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$input&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">"верх&nbsp;[indent]&nbsp;глубже&nbsp;[indent]&nbsp;еще&nbsp;глубже&nbsp;[/indent]&nbsp;глубже&nbsp;[/indent]&nbsp;верх"</span><span style="color: #007700">;<br /><br />function&nbsp;</span><span style="color: #0000BB">parseTagsRecursive</span><span style="color: #007700">(</span><span style="color: #0000BB">$input</span><span style="color: #007700">)<br />{<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$regex&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'#\[indent]((?:[^[]|\[(?!/?indent])|(?R))+)\[/indent]#'</span><span style="color: #007700">;<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(</span><span style="color: #0000BB">is_array</span><span style="color: #007700">(</span><span style="color: #0000BB">$input</span><span style="color: #007700">))&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$input&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'&lt;div&nbsp;style="margin-left:&nbsp;10px"&gt;'</span><span style="color: #007700">.</span><span style="color: #0000BB">$input</span><span style="color: #007700">[</span><span style="color: #0000BB">1</span><span style="color: #007700">].</span><span style="color: #DD0000">'&lt;/div&gt;'</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">preg_replace_callback</span><span style="color: #007700">(</span><span style="color: #0000BB">$regex</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'parseTagsRecursive'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$input</span><span style="color: #007700">);<br />}<br /><br /></span><span style="color: #0000BB">$output&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">parseTagsRecursive</span><span style="color: #007700">(</span><span style="color: #0000BB">$input</span><span style="color: #007700">);<br /><br />echo&nbsp;</span><span style="color: #0000BB">$output</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+  </p>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-function.preg-replace-callback-seealso">
+  <h3 class="title">Смотрите также</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member">&quot;<a href="pcre.pattern.html" class="link">Регулярные выражения PCRE</a>&quot;</li>
+    <li class="member"><span class="function"><a href="function.preg-replace.html" class="function" rel="rdfs-seeAlso">preg_replace()</a> - Выполняет поиск и замену по регулярному выражению</span></li>
+    <li class="member"><span class="function"><a href="function.preg-last-error.html" class="function" rel="rdfs-seeAlso">preg_last_error()</a> - Возвращает код ошибки выполнения последнего регулярного выражения PCRE</span></li>
+    <li class="member"><span class="function"><a href="function.create-function.html" class="function" rel="rdfs-seeAlso">create_function()</a> - Создаёт анонимную (лямбда) функцию</span></li>
+    <li class="member">&quot;<a href="functions.anonymous.html" class="link">Анонимные функции</a>&quot;</li>
+    <li class="member">информация о типе <a href="language.pseudo-types.html#language.types.callback" class="link">callback</a></li>
+   </ul>
+  </p>
+ </div>
+
+
+</div><hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.preg-quote.html">preg_quote</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.preg-replace.html">preg_replace</a></div>
+ <div class="up"><a href="ref.pcre.html">PCRE</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

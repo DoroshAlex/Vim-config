@@ -1,0 +1,54 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Требования</title>
+
+ </head>
+ <body><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="imap.setup.html">Установка и настройка</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="imap.installation.html">Установка</a></div>
+ <div class="up"><a href="imap.setup.html">Установка и настройка</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="imap.requirements" class="section">
+  <h2 class="title">Требования</h2>
+  <p class="para">
+   Это расширение требует установленной библиотеки c-client.
+   Возьмите последнюю версию с <a href="ftp://ftp.cac.washington.edu/imap/" class="link external">&raquo;&nbsp;ftp://ftp.cac.washington.edu/imap/</a>
+   и скомпилируйте её.
+  </p>
+  <p class="para">
+   Важно, чтобы вы не копировали исходные файлы IMAP непосредственно в
+   системные include директории, это может вызвать конфликт. Вместо этого создайте
+   новую директорию внутри системной include директории, например
+   <var class="filename">/usr/local/imap-2000b/</var> (месторасположение и имя
+   зависит от вашей установленной версии IMAP), и внутри них
+   создайте новые директории с именами <var class="filename">lib/</var> 
+   и <var class="filename">include/</var>.  Для <var class="filename">c-client</var> 
+   директории из вашей исходной директории IMAP скопируйте все <var class="filename">*.h</var> 
+   файлы в <var class="filename">include/</var> и все
+   <var class="filename">*.c</var> файлы в <var class="filename">lib/</var>.
+   После того, как вы скомпилируете IMAP, будет создан файл с именем
+   <var class="filename">c-client.a</var>. Затем переименуйте этот файл в
+   <var class="filename">libc-client.a</var> и скопируйте его в <var class="filename">lib/</var>.
+  </p>
+  <blockquote class="note"><p><b class="note">Замечание</b>: 
+   <p class="para">
+    Для сборки библиотеки c-client с поддержкой SSL и/или Kerberos прочитайте
+    документацию, поставляемую с пакетом.
+   </p>
+  </p></blockquote>
+  <blockquote class="note"><p><b class="note">Замечание</b>: 
+   <span class="simpara">
+    В Mandrake Linux, библиотека IMAP (<var class="filename">libc-client.a</var>)
+    компилируется без поддержки Kerberos. Версия с поддержкой SSL
+    (<var class="filename">client-PHP4.a</var>) устанавливается отдельно.
+    Чтобы добавить поддержку Kerberos, перекомпилируйте библиотеку.
+   </span>
+  </p></blockquote>
+ </div><hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="imap.setup.html">Установка и настройка</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="imap.installation.html">Установка</a></div>
+ <div class="up"><a href="imap.setup.html">Установка и настройка</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

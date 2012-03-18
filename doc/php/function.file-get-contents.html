@@ -1,0 +1,296 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Читает содержимое файла в строку</title>
+
+ </head>
+ <body><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.file-exists.html">file_exists</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.file-put-contents.html">file_put_contents</a></div>
+ <div class="up"><a href="ref.filesystem.html">Файловая система</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.file-get-contents" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">file_get_contents</h1>
+  <p class="verinfo">(PHP 4 &gt;= 4.3.0, PHP 5)</p><p class="refpurpose"><span class="refname">file_get_contents</span> &mdash; <span class="dc-title">Читает содержимое файла в строку</span></p>
+
+ </div>
+
+ <div class="refsect1 description" id="refsect1-function.file-get-contents-description">
+  <h3 class="title">Описание</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">string</span> <span class="methodname"><b>file_get_contents</b></span>
+    ( <span class="methodparam"><span class="type">string</span> <tt class="parameter">$filename</tt></span>
+   [, <span class="methodparam"><span class="type">bool</span> <tt class="parameter">$use_include_path</tt><span class="initializer"> = false</span></span>
+   [, <span class="methodparam"><span class="type">resource</span> <tt class="parameter">$context</tt></span>
+   [, <span class="methodparam"><span class="type">int</span> <tt class="parameter">$offset</tt><span class="initializer"> = -1</span></span>
+   [, <span class="methodparam"><span class="type">int</span> <tt class="parameter">$maxlen</tt></span>
+  ]]]] )</div>
+
+  <p class="para rdfs-comment">
+   Данная функция похожа на функцию <span class="function"><a href="function.file.html" class="function">file()</a></span> с той только
+   разницей, что <span class="function"><b>file_get_contents()</b></span> возвращает
+   содержимое файла в строке, начиная с указанного смещения
+   <i><tt class="parameter">offset</tt></i> и до <i><tt class="parameter">maxlen</tt></i>
+   байт. В случае неудачи, <span class="function"><b>file_get_contents()</b></span> вернёт <b><tt>FALSE</tt></b>.
+  </p>
+  <p class="para">
+   Использование функции <span class="function"><b>file_get_contents()</b></span>
+   наиболее предпочтительно в случае необходимости получить
+   содержимое файла целиком, поскольку для улучшения производительности
+   функция использует технику отображения файла в память
+   (memory mapping), если она поддерживается вашей операционной системой.
+  </p>
+  <blockquote class="note"><p><b class="note">Замечание</b>: 
+   <p class="para">
+    Если вы открываете URI содержащий спецсимволы, такие как пробел,
+    вам нужно закодировать URI при помощи <span class="function"><a href="function.urlencode.html" class="function">urlencode()</a></span>.
+   </p>
+  </p></blockquote>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-function.file-get-contents-parameters">
+  <h3 class="title">Список параметров</h3>
+  <p class="para">
+   <dl>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">filename</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Имя читаемого файла.
+      </p>
+     </dd>
+
+    </dt>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">use_include_path</tt></i></span>
+     <dd>
+
+      <blockquote class="note"><p><b class="note">Замечание</b>: 
+       <p class="para">
+        Начиная с версии PHP 5 можно использовать константу
+        <b><tt>FILE_USE_INCLUDE_PATH</tt></b> для поиска файла
+        в <a href="ini.core.html#ini.include-path" class="link">include path</a>.
+       </p>
+      </p></blockquote>
+      
+     </dd>
+
+    </dt>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">context</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Корректный ресурс контекста, созданный с помощью функции
+       <span class="function"><a href="function.stream-context-create.html" class="function">stream_context_create()</a></span>. Если в использовании
+       особого контекста нет необходимости, можно пропустить этот параметр
+       передав в него значение <b><tt>NULL</tt></b>.
+      </p>
+     </dd>
+
+    </dt>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">offset</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Смещение, с которого начнется чтение оригинального потока.
+      </p>
+      <p class="para">
+       Поиск смещения (<i><tt class="parameter">offset</tt></i>) не поддерживается при
+       работе с удаленными файлами. Попытка поиска смещения на нелокальных
+       файлах может работать при небольших смещениях, но этот
+       результат является непредсказуемым, так как он работает на
+       буферизованном потоке.
+      </p>
+     </dd>
+
+    </dt>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">maxlen</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Максимальный размер читаемых данных. По умолчанию чтение
+       осуществляется пока не будет достигнут конец файла. Учтите, что
+       этот параметр применяется и к потоку с фильтрами.
+      </p>
+     </dd>
+
+    </dt>
+
+   </dl>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-function.file-get-contents-returnvalues">
+  <h3 class="title">Возвращаемые значения</h3>
+  <p class="para">
+   Функция возвращает прочтенные данные или <b><tt>FALSE</tt></b> в случае возникновения ошибки.
+  </p>
+ </div>
+
+
+ <div class="refsect1 errors" id="refsect1-function.file-get-contents-errors">
+  <h3 class="title">Ошибки</h3>
+  <p class="para">
+   Будет сгенерирована ошибка уровня <b><tt>E_WARNING</tt></b>, если
+   параметр <i><tt class="parameter">maxlength</tt></i> меньше нуля или
+   <i><tt class="parameter">offset</tt></i> превышает длину потока.
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-function.file-get-contents-examples">
+  <h3 class="title">Примеры</h3>
+  <p class="para">
+   <div class="example" id="example-2113">
+    <p><b>Пример #1 Получить и вывести исходный код домашней страницы вебсайта</b></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$homepage&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">file_get_contents</span><span style="color: #007700">(</span><span style="color: #DD0000">'http://www.example.com/'</span><span style="color: #007700">);<br />echo&nbsp;</span><span style="color: #0000BB">$homepage</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+   <div class="example" id="example-2114">
+    <p><b>Пример #2 Поиск файлов в include_path</b></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">//&nbsp;&lt;=&nbsp;PHP&nbsp;5<br /></span><span style="color: #0000BB">$file&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">file_get_contents</span><span style="color: #007700">(</span><span style="color: #DD0000">'./people.txt'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">true</span><span style="color: #007700">);<br /></span><span style="color: #FF8000">//&nbsp;&gt;&nbsp;PHP&nbsp;5<br /></span><span style="color: #0000BB">$file&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">file_get_contents</span><span style="color: #007700">(</span><span style="color: #DD0000">'./people.txt'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">FILE_USE_INCLUDE_PATH</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+   <div class="example" id="example-2115">
+    <p><b>Пример #3 Чтение секции файла</b></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">//&nbsp;Читаем&nbsp;14&nbsp;символов,&nbsp;начиная&nbsp;с&nbsp;21&nbsp;символа<br /></span><span style="color: #0000BB">$section&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">file_get_contents</span><span style="color: #007700">(</span><span style="color: #DD0000">'./people.txt'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">NULL</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">NULL</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">20</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">14</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$section</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+    <div class="example-contents"><p>Результатом выполнения данного примера
+будет что-то подобное:</p></div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+string(14) &quot;lle Bjori Ro&quot;
+</pre></div>
+    </div>
+   </div>
+   <div class="example" id="example-2116">
+    <p><b>Пример #4 Использование потоковых контекстов</b></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">//&nbsp;Создаем&nbsp;поток<br /></span><span style="color: #0000BB">$opts&nbsp;</span><span style="color: #007700">=&nbsp;array(<br />&nbsp;&nbsp;</span><span style="color: #DD0000">'http'</span><span style="color: #007700">=&gt;array(<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'method'</span><span style="color: #007700">=&gt;</span><span style="color: #DD0000">"GET"</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'header'</span><span style="color: #007700">=&gt;</span><span style="color: #DD0000">"Accept-language:&nbsp;en\r\n"&nbsp;</span><span style="color: #007700">.<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">"Cookie:&nbsp;foo=bar\r\n"<br />&nbsp;&nbsp;</span><span style="color: #007700">)<br />);<br /><br /></span><span style="color: #0000BB">$context&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">stream_context_create</span><span style="color: #007700">(</span><span style="color: #0000BB">$opts</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;Открываем&nbsp;файл&nbsp;с&nbsp;помощью&nbsp;установленных&nbsp;выше&nbsp;HTTP-заголовков<br /></span><span style="color: #0000BB">$file&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">file_get_contents</span><span style="color: #007700">(</span><span style="color: #DD0000">'http://www.example.com/'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">false</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$context</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+  </p>
+ </div>
+
+
+ <div class="refsect1 changelog" id="refsect1-function.file-get-contents-changelog">
+  <h3 class="title">Список изменений</h3>
+  <p class="para">
+   <table class="doctable informaltable">
+    
+     <thead valign="middle">
+      <tr valign="middle">
+       <th>Версия</th>
+       <th>Описание</th>
+      </tr>
+
+     </thead>
+
+     <tbody valign="middle" class="tbody">
+      
+      <tr valign="middle">
+       <td align="left">5.1.0</td>
+       <td align="left">
+        Добавлены аргументы <i><tt class="parameter">offset</tt></i> и
+        <i><tt class="parameter">maxlen</tt></i>.
+       </td>
+      </tr>
+
+      <tr valign="middle">
+       <td align="left">5.0.0</td>
+       <td align="left">
+        Добавлена поддержка контекста.
+       </td>
+      </tr>
+
+     </tbody>
+    
+   </table>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 notes" id="refsect1-function.file-get-contents-notes">
+  <h3 class="title">Примечания</h3>
+  <blockquote class="note"><p><b class="note">Замечание</b>: <span class="simpara">Эта функция безопасна
+для обработки данных в двоичной форме.</span></p></blockquote>
+  <div class="tip"><b class="tip">Подсказка</b><p class="simpara">Для этой функции вы можете использовать URL
+в качестве имени файла, если была включена опция <a href="filesystem.configuration.html#ini.allow-url-fopen" class="link">fopen wrappers</a>. Смотрите более
+подробную информацию об определении имени файла в описании функции
+<span class="function"><a href="function.fopen.html" class="function">fopen()</a></span>. Смотрите также список поддерживаемых оберток URL, их возможности, замечания по использованию и список
+предопределенных констант в <a href="wrappers.html" class="xref">Поддерживаемые протоколы и обработчики (wrappers)</a>.</p></div>
+  <div class="warning"><b class="warning">Внимание</b><p class="para">При использовании SSL,
+Microsoft IIS нарушает протокол, закрывая соединение без отправки
+индикатора <i>close_notify</i>. PHP сообщит об этом как &quot;SSL: Fatal Protocol Error&quot;
+в тот момент, когда вы достигнете конца данных. Чтобы обойти это, вы должны
+установить <a href="errorfunc.configuration.html#ini.error-reporting" class="link">error_reporting</a> на
+уровень, исключающий E_WARNING.
+PHP версий 4.3.7 и старше умеет определять, что на стороне сервера находится
+проблемный IIS при открытии потока с помощью обертки <i>https://</i> и не выводит предупреждение.
+Если вы используете <span class="function"><a href="function.fsockopen.html" class="function">fsockopen()</a></span> для создания <i>ssl://</i> сокета,
+вы сами отвечаете за определение и подавление этого предупреждения.</p></div>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-function.file-get-contents-seealso">
+  <h3 class="title">Смотрите также</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><span class="function"><a href="function.file.html" class="function" rel="rdfs-seeAlso">file()</a> - Читает содержимое файла и помещает его в массив</span></li>
+    <li class="member"><span class="function"><a href="function.fgets.html" class="function" rel="rdfs-seeAlso">fgets()</a> - Читает строку из файла</span></li>
+    <li class="member"><span class="function"><a href="function.fread.html" class="function" rel="rdfs-seeAlso">fread()</a> - Бинарно-безопасное чтение файла</span></li>
+    <li class="member"><span class="function"><a href="function.readfile.html" class="function" rel="rdfs-seeAlso">readfile()</a> - Выводит файл</span></li>
+    <li class="member"><span class="function"><a href="function.file-put-contents.html" class="function" rel="rdfs-seeAlso">file_put_contents()</a> - Пишет строку в файл</span></li>
+    <li class="member"><span class="function"><a href="function.stream-get-contents.html" class="function" rel="rdfs-seeAlso">stream_get_contents()</a> - Читает оставшуюся часть потока в строку</span></li>
+    <li class="member"><span class="function"><a href="function.stream-context-create.html" class="function" rel="rdfs-seeAlso">stream_context_create()</a> - Создаёт контекст потока</span></li>
+    <li class="member"><a href="reserved.variables.httpresponseheader.html" class="link">$http_response_header</a></li>
+   </ul>
+  </p>
+ </div>
+
+
+</div><hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.file-exists.html">file_exists</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.file-put-contents.html">file_put_contents</a></div>
+ <div class="up"><a href="ref.filesystem.html">Файловая система</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

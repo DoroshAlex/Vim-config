@@ -1,0 +1,192 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Предопределенные константы</title>
+
+ </head>
+ <body><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="fileinfo.resources.html">Типы ресурсов</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="ref.fileinfo.html">Функции расширения Fileinfo</a></div>
+ <div class="up"><a href="book.fileinfo.html">Fileinfo</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="fileinfo.constants" class="appendix">
+ <h1>Предопределенные константы</h1>
+
+ <p class="simpara">
+Перечисленные ниже константы определены данным расширением и могут быть
+доступны только в том случае, если PHP был собран с
+поддержкой этого расширения или же в том случае, если
+данное расширение было подгружено во время выполнения.
+</p>
+ <dl>
+
+  <dt>
+
+   <span class="term">
+    <b><tt>FILEINFO_NONE</tt></b>
+     (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
+   </span>
+   <dd>
+
+    <span class="simpara">
+     Нет специальной обработки.
+    </span>
+   </dd>
+
+  </dt>
+
+  <dt>
+
+   <span class="term">
+    <b><tt>FILEINFO_SYMLINK</tt></b>
+     (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
+   </span>
+   <dd>
+
+    <span class="simpara">
+     Следовать по символическим ссылкам.
+    </span>
+   </dd>
+
+  </dt>
+
+  <dt>
+
+   <span class="term">
+    <b><tt>FILEINFO_MIME_TYPE</tt></b>
+     (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
+   </span>
+   <dd>
+
+    <span class="simpara">
+     Возвращать mime-тип.
+    </span>
+    <span class="simpara">
+     Доступно начиная с PHP 5.3.0.
+    </span>
+   </dd>
+
+  </dt>
+
+  <dt>
+
+   <span class="term">
+    <b><tt>FILEINFO_MIME_ENCODING</tt></b>
+     (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
+   </span>
+   <dd>
+
+    <span class="simpara">
+     Возвращать mime-кодировку файла.
+    </span>
+    <span class="simpara">
+     Доступно начиная с PHP 5.3.0.
+    </span>
+   </dd>
+
+  </dt>
+
+  <dt>
+
+   <span class="term">
+    <b><tt>FILEINFO_MIME</tt></b>
+     (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
+   </span>
+   <dd>
+
+    <span class="simpara">
+     Возвращать mime-тип и mime-кодировку по стандарту RFC 2045.
+    </span>
+   </dd>
+
+  </dt>
+
+  <dt>
+
+   <span class="term">
+    <b><tt>FILEINFO_COMPRESS</tt></b>
+     (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
+   </span>
+   <dd>
+
+    <span class="simpara">
+     Распаковывать запакованные файлы.
+    </span>
+    <span class="simpara">
+     Отключено начиная с PHP 5.3.0 по соображениям безопасности.
+    </span>
+   </dd>
+
+  </dt>
+
+  <dt>
+
+   <span class="term">
+    <b><tt>FILEINFO_DEVICES</tt></b>
+     (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
+   </span>
+   <dd>
+
+    <span class="simpara">
+     Смотреть содержимое блочных и символьных устройств.
+    </span>
+   </dd>
+
+  </dt>
+
+  <dt>
+
+   <span class="term">
+    <b><tt>FILEINFO_CONTINUE</tt></b>
+     (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
+   </span>
+   <dd>
+
+    <span class="simpara">
+     Возвращать все совпадения, а не только первое.
+    </span>
+   </dd>
+
+  </dt>
+
+  <dt>
+
+   <span class="term">
+    <b><tt>FILEINFO_PRESERVE_ATIME</tt></b>
+     (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
+   </span>
+   <dd>
+
+    <span class="simpara">
+     По возможности, сохранять исходное время доступа.
+    </span>
+   </dd>
+
+  </dt>
+
+  <dt>
+
+   <span class="term">
+    <b><tt>FILEINFO_RAW</tt></b>
+     (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
+   </span>
+   <dd>
+
+    <span class="simpara">
+     Не переводить непечатные символы в <i>\ooo</i> восьмеричное
+     представление.
+    </span>
+   </dd>
+
+  </dt>
+
+ </dl>
+
+</div>
+<hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="fileinfo.resources.html">Типы ресурсов</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="ref.fileinfo.html">Функции расширения Fileinfo</a></div>
+ <div class="up"><a href="book.fileinfo.html">Fileinfo</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

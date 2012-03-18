@@ -1,0 +1,165 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Testing</title>
+
+ </head>
+ <body><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="oci8.installation.html">Установка</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="oci8.configuration.html">Настройка во время выполнения</a></div>
+ <div class="up"><a href="oci8.setup.html">Установка и настройка</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="oci8.test" class="section">
+  <h2 class="title">Testing</h2>
+   <div class="section" id="oci8.testing">
+    <p class="para">
+     Набор тестов для OCI8 находится в директории 
+     <var class="filename">ext/oci8/tests</var>. После прогона этих тестов, в этой
+     директории также окажутся файлы журналов произошедших событий и ошибок.
+    </p>
+   </div>
+   <div class="section">
+    <p class="para">
+     Перед запуском тестов необходимо отредактировать файл
+     <var class="filename">details.inc</var> и задать значения переменным
+     $user, $password и строке соединения $dbase. Набор тестов OCI8
+     разрабатывался с использованием учетной записи
+     <i>SYSTEM</i>. Некоторые тесты не будут выполняться, если
+     у тестирующего пользователя нет аналогичных прав доступа.
+    </p>
+    <p class="para">
+     Для тестирования функции Oracle 11g создания пулов соединений
+     (Database Resident Connection Pooling) необходимо установить переменную
+     $test_drcp в <i>TRUE</i>, а также убедитесь, что в строке
+     соединения задан соответствующий адрес DRCP сервера.
+    </p>
+    <p class="para">
+     В качестве альтернативы редактированию файла
+     <var class="filename">details.inc</var> можно задать значения переменным
+     окружения, например:
+     <div class="example-contents">
+<div class="cdata"><pre>
+    $ export PHP_OCI8_TEST_USER=system
+    $ export PHP_OCI8_TEST_PASS=oracle
+    $ export PHP_OCI8_TEST_DB=localhost/XE
+    $ export PHP_OCI8_TEST_DRCP=FALSE
+</pre></div>
+     </div>
+
+     Обратите внимание, что в некоторых оболочках эти переменные могут
+     неправильно транслироваться в PHP процесс, и в тестах будут возникать
+     ошибки подключения к базе данных. Будьте аккуратны при использовании этого
+     метода настройки расширения.
+    </p>
+    <p class="para">
+     Далее необходимо задать окружение базы данных Oracle. Для Oracle 10gR2 XE
+     это:
+     <div class="example-contents">
+<div class="cdata"><pre>
+    $ . /usr/lib/oracle/xe/app/oracle/product/10.2.0/server/bin/oracle_env.sh
+</pre></div>
+     </div>
+
+    </p>
+    <p class="para">
+     Для Oracle 11gR2 XE:
+     <div class="example-contents">
+<div class="cdata"><pre>
+    $ . /u01/app/oracle/product/11.2.0/xe/bin/oracle_env.sh
+</pre></div>
+     </div>
+
+    </p>
+    <p class="para">
+     Для других версий:
+     <div class="example-contents">
+<div class="cdata"><pre>
+    $ . /usr/local/bin/oraenv
+</pre></div>
+     </div>
+
+    </p>
+    <p class="para">
+     Некоторые оболочки требуют, чтобы в <var class="filename">php.ini</var> параметр
+     variables_order содержал литеру <i>E</i>, например:
+     <div class="example-contents">
+<div class="cdata"><pre>
+    variables_order = &quot;EGPCS&quot;
+</pre></div>
+     </div>
+
+    </p>
+    <p class="para">
+     Запуск всех PHP тестов можно осуществить командой:
+     <div class="example-contents">
+<div class="cdata"><pre>
+    $ cd your_php_src_directory
+    $ make test
+</pre></div>
+     </div>
+
+     либо можно запустить только OCI8 тесты:
+     <div class="example-contents">
+<div class="cdata"><pre>
+    $ cd your_php_src_directory
+    $ make test TESTS=ext/oci8
+</pre></div>
+     </div>
+
+    </p>
+    <p class="para">
+     По завершении тестирования, просмотрите журналы на наличие ошибок.
+     На слабых машинах время выполнения некоторых тестов может превысить
+     значение настройки таймаута в файле <var class="filename">run-tests.php</var>.
+     Чтобы это исправить, задайте переменной окружения
+     <i>TEST_TIMEOUT</i> значение по-больше (значение в секундах).
+    </p>
+    <p class="para">
+     На быстрых вычислительных системах с локальной базой данных, рассчитанных
+     на небольшие нагрузки (например Oracle 11gR2 XE), некоторые тесты могут
+     вызывать ORA-12516 или ORA-12520 ошибки. Для их предотвращения необходимо
+     увеличить значение параметра базы данных <i>PROCESSES</i>
+     по инструкции ниже:
+    </p>
+    <p class="para">
+     Подключиться к базе данных в роли суперпользователя:
+     <div class="example-contents">
+<div class="cdata"><pre>
+    $ su - oracle
+</pre></div>
+     </div>
+
+    </p>
+    <p class="para">
+     Задать необходимое окружение с помощью сценариев
+     <var class="filename">oracle_env.sh</var> или
+     <var class="filename">oraenv</var>, как описано выше.
+    </p>
+    <p class="para">
+     Запустить утилиту командной строки SQL*Plus и увеличить значение 
+     <i>PROCESSES</i>
+     <div class="example-contents">
+<div class="cdata"><pre>
+    $ sqlplus / as sysdba
+    SQL&gt; alter system set processes=100 scope=spfile
+</pre></div>
+     </div>
+
+    </p>
+    <p class="para">
+     Перезапустить базу данных:
+     <div class="example-contents">
+<div class="cdata"><pre>
+    SQL&gt; startup force
+</pre></div>
+     </div>
+
+    </p>
+   </div>
+ </div><hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="oci8.installation.html">Установка</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="oci8.configuration.html">Настройка во время выполнения</a></div>
+ <div class="up"><a href="oci8.setup.html">Установка и настройка</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

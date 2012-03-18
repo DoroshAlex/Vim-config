@@ -1,0 +1,158 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Список параметров контекста FTP</title>
+
+ </head>
+ <body><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="context.http.html">Опции контекста HTTP</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="context.ssl.html">Опции контекста SSL</a></div>
+ <div class="up"><a href="context.html">Контекстные опции и параметры</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="context.ftp" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">Параметры контекста FTP</h1>
+  <p class="refpurpose"><span class="refname">Параметры контекста FTP</span> &mdash; <span class="dc-title">Список параметров контекста FTP</span></p>
+
+ </div>
+ 
+ <div class="refsect1 description" id="refsect1-context.ftp-description">
+  <h3 class="title">Описание</h3>
+  <p class="para">
+   Параметры контекста для транспортных протоколов <i>ftp://</i> и <i>ftps://</i>
+  </p>
+ </div>
+
+
+ <div class="refsect1 options" id="refsect1-context.ftp-options">
+  <h3 class="title">Опции</h3>
+  <p class="para">
+   <dl>
+
+    <dt id="context.ftp.overwrite">
+     <span class="term">
+      <i><tt class="parameter">overwrite</tt></i>
+      <span class="type"><a href="language.types.boolean.html" class="type boolean">boolean</a></span>
+     </span>
+     <dd>
+
+      <p class="para">
+       Разрешает перезаписывать существующие файлы на удаленном сервере.
+       Работает только в режиме записи (upload).
+      </p>
+      <p class="para">
+       По умолчанию <b><tt>FALSE</tt></b>.
+      </p>
+     </dd>
+
+    </dt>
+
+    <dt id="context.ftp.resume-pos">
+     <span class="term">
+      <i><tt class="parameter">resume_pos</tt></i>
+      <span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>
+     </span>
+     <dd>
+
+      <p class="para">
+       Смещение в файле, с которого начинается передача. Работает только в режиме чтения (download).
+      </p>
+      <p class="para">
+       По умолчанию <i>0</i> (Начало файла).
+      </p>
+     </dd>
+
+    </dt>
+
+    <dt id="context.ftp.proxy">
+     <span class="term">
+      <i><tt class="parameter">proxy</tt></i>
+      <span class="type"><a href="language.types.string.html" class="type string">string</a></span>
+     </span>
+     <dd>
+
+      <p class="para">
+       FTP-запрос через прокси-сервер HTTP. Применяется только при операции чтения файла.
+       Пример: <i>tcp://squid.example.com:8000</i>.
+      </p>
+     </dd>
+
+    </dt>
+
+   </dl>
+
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 changelog" id="refsect1-context.ftp-changelog">
+  <h3 class="title">Список изменений</h3>
+  <p class="para">
+   <table class="doctable informaltable">
+    
+     <thead valign="middle">
+      <tr valign="middle">
+       <th>Версия</th>
+       <th>Описание</th>
+      </tr>
+
+     </thead>
+
+     <tbody valign="middle" class="tbody">
+      <tr valign="middle">
+       <td align="left">5.1.0</td>
+       <td align="left">
+        Добавлен параметр <i><tt class="parameter">proxy</tt></i>.
+       </td>
+      </tr>
+
+      <tr valign="middle">
+       <td align="left">5.0.0</td>
+       <td align="left">
+        Добавлены параметры <i><tt class="parameter">overwrite</tt></i> и <i><tt class="parameter">resume_pos</tt></i>.
+       </td>
+      </tr>
+
+     </tbody>
+    
+   </table>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 notes" id="refsect1-context.ftp-notes">
+  <h3 class="title">Примечания</h3>
+  <blockquote class="note"><p><b class="note">Замечание</b>: 
+   <b>Опции контекста низлежащего потока в сокете</b><br />
+   <span class="simpara">
+    Дополнительные опции контекста могут поддерживаться
+    <a href="transports.inet.html" class="link">низлежащим транспортным протоколом</a>.
+    Для потоков <i>ftp://</i>, это относится к опциям
+    контекста для транспортного протокола <i>tcp://</i>. Для
+    потоков <i>ftps://</i>, это относится к опциям контекста
+    для транспортного протокола <i>ssl://</i>.
+   </span>
+  </p></blockquote>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-context.ftp-seealso">
+  <h3 class="title">Смотрите также</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><a href="wrappers.ftp.html" class="xref">ftp://</a></li>
+    <li class="member"><a href="context.socket.html" class="xref">Контекстные опции сокета</a></li>
+    <li class="member"><a href="context.ssl.html" class="xref">Опции контекста SSL</a></li>
+   </ul>
+  </p>
+ </div>
+
+
+</div><hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="context.http.html">Опции контекста HTTP</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="context.ssl.html">Опции контекста SSL</a></div>
+ <div class="up"><a href="context.html">Контекстные опции и параметры</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

@@ -1,0 +1,104 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Определяет, сохранять ли список замещающих пар 
+  вместе со списком слов</title>
+
+ </head>
+ <body><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.pspell-config-runtogether.html">pspell_config_runtogether</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.pspell-new-config.html">pspell_new_config</a></div>
+ <div class="up"><a href="ref.pspell.html">Функции Pspell</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.pspell-config-save-repl" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">pspell_config_save_repl</h1>
+  <p class="verinfo">(PHP 4 &gt;= 4.0.2, PHP 5)</p><p class="refpurpose"><span class="refname">pspell_config_save_repl</span> &mdash; <span class="dc-title">Определяет, сохранять ли список замещающих пар 
+  вместе со списком слов</span></p>
+
+ </div>
+ 
+ <div class="refsect1 description" id="refsect1-function.pspell-config-save-repl-description">
+  <h3 class="title">Описание</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">bool</span> <span class="methodname"><b>pspell_config_save_repl</b></span>
+    ( <span class="methodparam"><span class="type">int</span> <tt class="parameter">$dictionary_link</tt></span>
+   , <span class="methodparam"><span class="type">bool</span> <tt class="parameter">$flag</tt></span>
+   )</div>
+
+  <p class="para rdfs-comment">
+   <span class="function"><b>pspell_config_save_repl()</b></span> определяет, будет ли
+   <span class="function"><a href="function.pspell-save-wordlist.html" class="function">pspell_save_wordlist()</a></span> сохранять замещающие пары 
+   вместе со списком слов. Обычно нет необходимости использовать эту функцию,
+   поскольку, если используется <span class="function"><a href="function.pspell-config-repl.html" class="function">pspell_config_repl()</a></span>, 
+   замещающие пары будут сохранены
+   <span class="function"><a href="function.pspell-save-wordlist.html" class="function">pspell_save_wordlist()</a></span> в любом случае, и, если она не используется,
+   замещающие пары не будут сохраняться.
+  </p>
+  <p class="para">
+   <span class="function"><b>pspell_config_save_repl()</b></span> должна быть использвана для конфигурации
+   до вызова <span class="function"><a href="function.pspell-new-config.html" class="function">pspell_new_config()</a></span>. 
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-function.pspell-config-save-repl-parameters">
+  <h3 class="title">Список параметров</h3>
+  <p class="para">
+   <dl>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">dictionary_link</tt></i></span>
+     <dd>
+
+      <p class="para">
+      </p>
+     </dd>
+
+    </dt>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">flag</tt></i></span>
+     <dd>
+
+      <p class="para">
+       <b><tt>TRUE</tt></b> если замещающие пары должны сохраняться, <b><tt>FALSE</tt></b> в противном случае.
+      </p>
+     </dd>
+
+    </dt>
+
+   </dl>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-function.pspell-config-save-repl-returnvalues">
+  <h3 class="title">Возвращаемые значения</h3>
+  <p class="para">
+   Возвращает <b><tt>TRUE</tt></b> в случае успешного завершения  или <b><tt>FALSE</tt></b> в случае возникновения ошибки.
+  </p>
+ </div>
+
+
+ <div class="refsect1 notes" id="refsect1-function.pspell-config-save-repl-notes">
+  <h3 class="title">Примечания</h3>
+  <blockquote class="note"><p><b class="note">Замечание</b>: 
+   <p class="para">
+    Эта функция не будет работать, если у вас нет pspell .11.2 и aspell .32.5
+    или выше.
+   </p>
+  </p></blockquote>
+ </div>
+
+
+</div><hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.pspell-config-runtogether.html">pspell_config_runtogether</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.pspell-new-config.html">pspell_new_config</a></div>
+ <div class="up"><a href="ref.pspell.html">Функции Pspell</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

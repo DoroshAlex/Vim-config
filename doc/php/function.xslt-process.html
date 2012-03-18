@@ -1,0 +1,307 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Запуск XSLT преобразования</title>
+
+ </head>
+ <body><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.xslt-getopt.html">xslt_getopt</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.xslt-set-base.html">xslt_set_base</a></div>
+ <div class="up"><a href="ref.xslt.html">XSLT (PHP 4) Функции</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.xslt-process" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">xslt_process</h1>
+  <p class="verinfo">(PHP 4 &gt;= 4.0.3)</p><p class="refpurpose"><span class="refname">xslt_process</span> &mdash; <span class="dc-title">
+   Запуск <acronym title="eXtensible Stylesheet Language Transformations">XSLT</acronym> преобразования
+  </span></p>
+
+ </div>
+ 
+ <div class="refsect1 description" id="refsect1-function.xslt-process-description">
+  <h3 class="title">Описание</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type"><a href="language.pseudo-types.html#language.types.mixed" class="type mixed">mixed</a></span> <span class="methodname"><b>xslt_process</b></span>
+    ( <span class="methodparam"><span class="type">resource</span> <tt class="parameter">$xh</tt></span>
+   , <span class="methodparam"><span class="type">string</span> <tt class="parameter">$xmlcontainer</tt></span>
+   , <span class="methodparam"><span class="type">string</span> <tt class="parameter">$xslcontainer</tt></span>
+   [, <span class="methodparam"><span class="type">string</span> <tt class="parameter">$resultcontainer</tt></span>
+   [, <span class="methodparam"><span class="type">array</span> <tt class="parameter">$arguments</tt></span>
+   [, <span class="methodparam"><span class="type">array</span> <tt class="parameter">$parameters</tt></span>
+  ]]] )</div>
+
+  <p class="para rdfs-comment">
+   <span class="function"><b>xslt_process()</b></span> - главная функция расширения
+   <acronym title="eXtensible Stylesheet Language Transformations">XSLT</acronym>. Она позволяет применить <acronym title="eXtensible Stylesheet Language Transformations">XSLT</acronym>
+   преобразование практически к любому типу входных данных - контейнеров. Это
+   возможно, благодаря использованию буферов аргументов - концепция, взятая
+   из <span class="productname">Sablotron</span> <acronym title="eXtensible Stylesheet Language Transformations">XSLT</acronym> процессора
+   (на данный момент это расширение поддерживает только <acronym title="eXtensible Stylesheet Language Transformations">XSLT</acronym>
+   процессор). По умолчанию, контейнеры - файлы содержащие документ для 
+   преобразования.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-function.xslt-process-parameters">
+  <h3 class="title">Список параметров</h3>
+  <p class="para">
+   <dl>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">xh</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Ресурс <acronym title="eXtensible Stylesheet Language Transformations">XSLT</acronym>-процессора, возвращаемый функцией 
+       <span class="function"><a href="function.xslt-create.html" class="function">xslt_create()</a></span>.
+      </p>
+     </dd>
+
+    </dt>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">xmlcontainer</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Путь к <acronym title="eXtensible Markup Language">XML</acronym> файлу или псевдопеременная для
+       <acronym title="eXtensible Markup Language">XML</acronym> аргумента.
+      </p>
+     </dd>
+
+    </dt>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">xslcontainer</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Путь к <acronym>XSL</acronym> файлу или псевдопеременная для
+       <acronym title="eXtensible Markup Language">XML</acronym> аргумента. 
+      </p>
+     </dd>
+
+    </dt>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">resultcontainer</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Контейнер для результата. По умолчанию, это имя файла для записи
+       преобразованного документа. Если не задано - то есть <b><tt>NULL</tt></b> -
+       то результат будет возвращен из функции.
+      </p>
+     </dd>
+
+    </dt>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">arguments</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Вместо явного указания аргументов <acronym title="eXtensible Markup Language">XML</acronym> и 
+       <acronym title="eXtensible Stylesheet Language Transformations">XSLT</acronym> в функции <span class="function"><b>xslt_process()</b></span>
+       можно задать &quot;псевдопеременные&quot;, которые будут заменяться
+       значениями из отдельного массива аргументов
+       <i><tt class="parameter">arguments</tt></i>.
+      </p>
+     </dd>
+
+    </dt>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">parameters</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Массив параметров, которые будут передаваться в XSLT-документ. Доступ
+       к этим параметрам из XSL файлов можно получить, используя инструкцию
+       <i>&lt;xsl:param name=&quot;имя_параметра&quot;&gt;</i>.
+       Параметры должны быть закодированы в UTF-8, а их значения будут
+       интерпретированы <span class="productname">Sablotron</span> процессором, как
+       символьные строки. Другими словами, нельзя передавать
+       <i>узлы и поддеревья</i> в качестве параметров в
+       <acronym title="eXtensible Stylesheet Language Transformations">XSLT</acronym> документ.
+      </p>
+     </dd>
+
+    </dt>
+
+   </dl>
+
+  </p>
+  <p class="para">
+   Контейнеры также могут быть заданы в виде массива
+   <i><tt class="parameter">arguments</tt></i> (см. ниже).
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-function.xslt-process-returnvalues">
+  <h3 class="title">Возвращаемые значения</h3>
+  <p class="para">
+   Возвращает <b><tt>TRUE</tt></b> в случае успешного завершения  или <b><tt>FALSE</tt></b> в случае возникновения ошибки. Если контейнер для результата не задан - т.е. <b><tt>NULL</tt></b> -
+   будет возвращен результат преобразования.
+  </p>
+ </div>
+
+
+ <div class="refsect1 changelog" id="refsect1-function.xslt-process-changelog">
+  <h3 class="title">Список изменений</h3>
+  <p class="para">
+   <table class="doctable informaltable">
+    
+     <thead valign="middle">
+      <tr valign="middle">
+       <th>Версия</th>
+       <th>Описание</th>
+      </tr>
+
+     </thead>
+
+     <tbody valign="middle" class="tbody">
+      <tr valign="middle">
+       <td align="left">4.0.6</td>
+       <td align="left">
+        Эта функция больше не принимает XML строки в качестве значений
+        <i><tt class="parameter">xmlcontainer</tt></i> или 
+        <i><tt class="parameter">xslcontainer</tt></i>. Передача строк с XML данными в
+        качестве какого-либо из этих параметров приведет к ошибке распределения 
+        памяти в версиях Sablotron ранее 0.95 включительно.
+       </td>
+      </tr>
+
+     </tbody>
+    
+   </table>
+
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 examples" id="refsect1-function.xslt-process-examples">
+  <h3 class="title">Примеры</h3>
+  <p class="para">
+   Простейший тип преобразования с помощью функции
+   <span class="function"><b>xslt_process()</b></span> - это преобразование 
+   <acronym title="eXtensible Markup Language">XML</acronym> файла с файлом <acronym title="eXtensible Stylesheet Language Transformations">XSLT</acronym> и помещение
+   результата в третий файл, который будет содержать новый
+   <acronym title="eXtensible Markup Language">XML</acronym> (или HTML) документ. Делать подобные преобразования
+   с помощью <span class="productname">Sablotron</span> довольно просто...
+  </p>
+  <div class="example" id="example-5039">
+   <p><b>Пример #1 
+    Использование функции <span class="function"><b>xslt_process()</b></span> для преобразования
+    <acronym title="eXtensible Markup Language">XML</acronym> и <acronym>XSL</acronym> файлов в новый 
+    <acronym title="eXtensible Markup Language">XML</acronym> файл
+   </b></p>
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /><br /></span><span style="color: #FF8000">//&nbsp;Создание&nbsp;нового&nbsp;XSLT&nbsp;процессора<br /></span><span style="color: #0000BB">$xh&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">xslt_create</span><span style="color: #007700">();<br /><br /></span><span style="color: #FF8000">//&nbsp;Преобразование&nbsp;документа<br /></span><span style="color: #007700">if&nbsp;(</span><span style="color: #0000BB">xslt_process</span><span style="color: #007700">(</span><span style="color: #0000BB">$xh</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'sample.xml'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'sample.xsl'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'result.xml'</span><span style="color: #007700">))&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"УСПЕХ,&nbsp;sample.xml&nbsp;преобразован&nbsp;в&nbsp;соответствии&nbsp;с&nbsp;sample.xsl&nbsp;в&nbsp;result.xml"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">",&nbsp;содержимое&nbsp;result.xml:\n&lt;br&nbsp;/&gt;\n"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"&lt;pre&gt;\n"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">readfile</span><span style="color: #007700">(</span><span style="color: #DD0000">'result.xml'</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"&lt;/pre&gt;\n"</span><span style="color: #007700">;<br />}&nbsp;else&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"К&nbsp;сожалению,&nbsp;sample.xml&nbsp;не&nbsp;может&nbsp;быть&nbsp;преобразован&nbsp;в&nbsp;соответсвии&nbsp;с&nbsp;sample.xsl&nbsp;в"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"&nbsp;&nbsp;result.xml&nbsp;по&nbsp;следующей&nbsp;причине:&nbsp;"&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">xslt_error</span><span style="color: #007700">(</span><span style="color: #0000BB">$xh</span><span style="color: #007700">)&nbsp;.&nbsp;</span><span style="color: #DD0000">",&nbsp;код&nbsp;ошибки:&nbsp;"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #0000BB">xslt_errno</span><span style="color: #007700">(</span><span style="color: #0000BB">$xh</span><span style="color: #007700">);<br />}<br /><br /></span><span style="color: #0000BB">xslt_free</span><span style="color: #007700">(</span><span style="color: #0000BB">$xh</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+   </div>
+
+  </div>
+  <p class="para">
+   Зачастую, особенно это относится к web окружению, требуется прямой вывод 
+   результата преобразования. Этого можно добиться, если опустить третий 
+   аргумент функции <span class="function"><b>xslt_process()</b></span> (или передать в качестве
+   него <b><tt>NULL</tt></b>). В этом случае функция вернет результат
+   <acronym title="eXtensible Stylesheet Language Transformations">XSLT</acronym> преобразования без помещения его в файл...
+  </p>
+  <p class="para">
+   <div class="example" id="example-5040">
+   <p><b>Пример #2 
+    Использование функции <span class="function"><b>xslt_process()</b></span>
+    для преобразования <acronym title="eXtensible Markup Language">XML</acronym> и <acronym>XSL</acronym>
+    файлов в переменную, содержащую результирующие XML данные
+    </b></p>
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /><br /></span><span style="color: #FF8000">//&nbsp;Создание&nbsp;нового&nbsp;XSLT&nbsp;processor<br /></span><span style="color: #0000BB">$xh&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">xslt_create</span><span style="color: #007700">();<br /><br /></span><span style="color: #FF8000">//&nbsp;Преобразование&nbsp;документа,&nbsp;возврат&nbsp;результата&nbsp;в&nbsp;переменную&nbsp;$result<br /></span><span style="color: #0000BB">$result&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">xslt_process</span><span style="color: #007700">(</span><span style="color: #0000BB">$xh</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'sample.xml'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'sample.xsl'</span><span style="color: #007700">);<br />if&nbsp;(</span><span style="color: #0000BB">$result</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"&nbsp;УСПЕХ,&nbsp;sample.xml&nbsp;преобразован&nbsp;в&nbsp;соответствии&nbsp;с&nbsp;sample.xsl&nbsp;в&nbsp;переменную&nbsp;\$result"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">",&nbsp;содержимое&nbsp;переменной&nbsp;\$result&nbsp;следующее:\n&lt;br&nbsp;/&gt;\n"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"&lt;pre&gt;\n"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #0000BB">$result</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"&lt;/pre&gt;\n"</span><span style="color: #007700">;<br />}&nbsp;else&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"&nbsp;К&nbsp;сожалению,&nbsp;sample.xml&nbsp;не&nbsp;может&nbsp;быть&nbsp;преобразован&nbsp;в&nbsp;соответсвии&nbsp;с&nbsp;sample.xsl&nbsp;в"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"&nbsp;переменную&nbsp;\$result&nbsp;по&nbsp;следующей&nbsp;причине:&nbsp;"&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">xslt_error</span><span style="color: #007700">(</span><span style="color: #0000BB">$xh</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">".&nbsp;Код&nbsp;ошибки:&nbsp;"&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">xslt_errno</span><span style="color: #007700">(</span><span style="color: #0000BB">$xh</span><span style="color: #007700">);<br />}<br /><br /></span><span style="color: #0000BB">xslt_free</span><span style="color: #007700">(</span><span style="color: #0000BB">$xh</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+  </p>
+  <p class="para">
+   Приведенные выше ситуации и примеры являются наиболее общими и используются
+   чаще всего. Однако, в ряде случаев <acronym title="eXtensible Markup Language">XML</acronym> и <acronym title="eXtensible Stylesheet Language Transformations">XSLT</acronym>
+   может быть получен из внешних источников, таких как база данных или сокет.
+   В этих случаях <acronym title="eXtensible Markup Language">XML</acronym> и/или <acronym title="eXtensible Stylesheet Language Transformations">XSLT</acronym> данные
+   хранятся в переменных, а помещение их в файлы создаст дополнительные
+   временные затраты, что для некоторых приложений критично. В этих
+   исключительных ситуациях на помощь придет особый синтаксис
+   &quot;аргументов&quot; <acronym title="eXtensible Stylesheet Language Transformations">XSLT</acronym>. Вместо
+   <acronym title="eXtensible Markup Language">XML</acronym> и <acronym title="eXtensible Stylesheet Language Transformations">XSLT</acronym> файлов в качестве
+   аргументов в функции <span class="function"><b>xslt_process()</b></span> можно задать
+   &quot;псевдопеременные&quot;, на места которых будут подставлены значения
+   отдельного массива аргументов (5й аргумент функции
+   <span class="function"><b>xslt_process()</b></span>). Ниже представлен пример, в котором
+   <acronym title="eXtensible Markup Language">XML</acronym> и <acronym title="eXtensible Stylesheet Language Transformations">XSLT</acronym> преобразуются с
+   сохранением результата в переменной и без использования файлов вообще.
+  </p>
+  <p class="para">
+   <div class="example" id="example-5041">
+    <p><b>Пример #3 
+     Использование функции <span class="function"><b>xslt_process()</b></span> для преобразования
+     <acronym title="eXtensible Markup Language">XML</acronym> и <acronym>XSL</acronym> данных, содержащихся в
+     переменных и сохранения результата в другую переменную с
+     <acronym title="eXtensible Markup Language">XML</acronym> кодом.
+    </b></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">//&nbsp;$xml&nbsp;и&nbsp;$xsl&nbsp;содержат&nbsp;XML&nbsp;и&nbsp;XSL&nbsp;данные<br /><br /></span><span style="color: #0000BB">$arguments&nbsp;</span><span style="color: #007700">=&nbsp;array(<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'/_xml'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">$xml</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'/_xsl'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">$xsl<br /></span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;Создаем&nbsp;новый&nbsp;XSLT-процессор<br /></span><span style="color: #0000BB">$xh&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">xslt_create</span><span style="color: #007700">();<br /><br /></span><span style="color: #FF8000">//&nbsp;Преобразование&nbsp;документа<br /></span><span style="color: #0000BB">$result&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">xslt_process</span><span style="color: #007700">(</span><span style="color: #0000BB">$xh</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'arg:/_xml'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'arg:/_xsl'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">NULL</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$arguments</span><span style="color: #007700">);<br />if&nbsp;(</span><span style="color: #0000BB">$result</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"&nbsp;УСПЕХ,&nbsp;sample.xml&nbsp;преобразован&nbsp;в&nbsp;соответствии&nbsp;с&nbsp;sample.xsl&nbsp;в&nbsp;переменную&nbsp;\$result"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">",&nbsp;содержимое&nbsp;переменной&nbsp;\$result&nbsp;следующее:\n&lt;br&nbsp;/&gt;\n"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"&lt;pre&gt;\n"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #0000BB">$result</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"&lt;/pre&gt;\n"</span><span style="color: #007700">;<br />}&nbsp;else&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"&nbsp;К&nbsp;сожалению,&nbsp;sample.xml&nbsp;не&nbsp;может&nbsp;быть&nbsp;преобразован&nbsp;в&nbsp;соответсвии&nbsp;с&nbsp;sample.xsl&nbsp;в"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"&nbsp;переменную&nbsp;\$result&nbsp;по&nbsp;следующей&nbsp;причине:&nbsp;"&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">xslt_error</span><span style="color: #007700">(</span><span style="color: #0000BB">$xh</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">".&nbsp;Код&nbsp;ошибки:&nbsp;"&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">xslt_errno</span><span style="color: #007700">(</span><span style="color: #0000BB">$xh</span><span style="color: #007700">);<br />}<br /></span><span style="color: #0000BB">xslt_free</span><span style="color: #007700">(</span><span style="color: #0000BB">$xh</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+  </p>
+  <p class="para">
+   <div class="example" id="example-5042">
+    <p><b>Пример #4 Передача PHP переменных в XSL файлы</b></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /><br /></span><span style="color: #FF8000">//&nbsp;XML&nbsp;строка<br /></span><span style="color: #0000BB">$xml&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'&lt;?xml&nbsp;version="1.0"?&gt;<br />&lt;para&gt;<br />&nbsp;change&nbsp;me<br />&lt;/para&gt;'</span><span style="color: #007700">;<br /><br /></span><span style="color: #FF8000">//&nbsp;XSL&nbsp;строка<br /></span><span style="color: #0000BB">$xsl&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'<br />&lt;xsl:stylesheet&nbsp;version="1.0"&nbsp;xmlns:xsl="http://www.w3.org/1999/XSL/Transform"&gt;<br />&lt;xsl:output&nbsp;method="html"&nbsp;encoding="ISO-8859-1"&nbsp;indent="no"<br />&nbsp;omit-xml-declaration="yes"&nbsp;&nbsp;media-type="text/html"/&gt;<br />&nbsp;&lt;xsl:param&nbsp;name="myvar"/&gt;<br />&nbsp;&lt;xsl:param&nbsp;name="mynode"/&gt;<br />&nbsp;&lt;xsl:template&nbsp;match="/"&gt;<br />Моя&nbsp;PHP&nbsp;переменная&nbsp;:&nbsp;&lt;xsl:value-of&nbsp;select="$myvar"/&gt;&lt;br&nbsp;/&gt;<br />Мой&nbsp;набор&nbsp;узлов&nbsp;:&nbsp;&lt;xsl:value-of&nbsp;select="$mynode"/&gt;<br />&nbsp;&lt;/xsl:template&gt;<br />&lt;/xsl:stylesheet&gt;'</span><span style="color: #007700">;<br /><br /><br /></span><span style="color: #0000BB">$xh&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">xslt_create</span><span style="color: #007700">();<br /><br /></span><span style="color: #FF8000">//&nbsp;второй&nbsp;параметр&nbsp;будет&nbsp;интерпретирован&nbsp;как&nbsp;строка<br /></span><span style="color: #0000BB">$parameters&nbsp;</span><span style="color: #007700">=&nbsp;array&nbsp;(<br />&nbsp;&nbsp;</span><span style="color: #DD0000">'myvar'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'test'</span><span style="color: #007700">,<br />&nbsp;&nbsp;</span><span style="color: #DD0000">'mynode'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'&lt;foo&gt;bar&lt;/foo&gt;'<br /></span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">$arguments&nbsp;</span><span style="color: #007700">=&nbsp;array&nbsp;(<br />&nbsp;&nbsp;</span><span style="color: #DD0000">'/_xml'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">$xml</span><span style="color: #007700">,<br />&nbsp;&nbsp;</span><span style="color: #DD0000">'/_xsl'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">$xsl<br /></span><span style="color: #007700">);<br /><br />echo&nbsp;</span><span style="color: #0000BB">xslt_process</span><span style="color: #007700">(</span><span style="color: #0000BB">$xh</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'arg:/_xml'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'arg:/_xsl'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">NULL</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$arguments</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$parameters</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+    <div class="example-contents"><p>Результат выполнения данного примера:</p></div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+Моя PHP переменная : test&lt;br&gt;
+Мой набор узлов : &amp;lt;foo&amp;gt;bar&amp;lt;/foo&amp;gt;
+</pre></div>
+    </div>
+   </div>
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 notes" id="refsect1-function.xslt-process-notes">
+  <h3 class="title">Примечания</h3>
+  <blockquote class="note"><p><b class="note">Замечание</b>: <p class="para">Учтите, что в случае использования Windows,
+вам нужно указать <i>file://</i> в начале пути.</p></p></blockquote>
+ </div>
+
+
+</div><hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.xslt-getopt.html">xslt_getopt</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.xslt-set-base.html">xslt_set_base</a></div>
+ <div class="up"><a href="ref.xslt.html">XSLT (PHP 4) Функции</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

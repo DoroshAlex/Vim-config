@@ -1,0 +1,127 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Вставка в HTML</title>
+
+ </head>
+ <body><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="language.basic-syntax.html">Основы синтаксиса</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="language.basic-syntax.instruction-separation.html">Разделение инструкций</a></div>
+ <div class="up"><a href="language.basic-syntax.html">Основы синтаксиса</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="language.basic-syntax.phpmode" class="sect1">
+   <h2 class="title">Вставка в HTML</h2>
+   <p class="para">
+    Когда PHP обрабатывает файл, он ищет открывающие и закрывающие теги,
+    которые указывают PHP, когда начинать и заканчивать обработку кода
+    между ними. Подобный способ обработки позволяет PHP внедряться во
+    все виды различных документов, так как всё, что находится вне пары
+    открывающих и закрывающих тегов, будет проигнорировано парсером PHP.
+    В большинстве случаев PHP внедряется в HTML-документы, как это показано
+    в следующем примере.
+    <div class="informalexample">
+     <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+&lt;p&gt;Это&nbsp;будет&nbsp;проигнорировано.&lt;/p&gt;<br /><span style="color: #0000BB">&lt;?php&nbsp;</span><span style="color: #007700">echo&nbsp;</span><span style="color: #DD0000">'А&nbsp;это&nbsp;будет&nbsp;обработано.'</span><span style="color: #007700">;&nbsp;</span><span style="color: #0000BB">?&gt;<br /></span>&lt;p&gt;Это&nbsp;тоже&nbsp;будет&nbsp;проигнорировано.&lt;/p&gt;</span>
+</code></div>
+     </div>
+
+    </div>
+   </p>
+   <p class="para">
+    Можно использовать и более продвинутые структуры:
+    <div class="example" id="example-64">
+     <p><b>Пример #1 Продвинутое внедрение</b></p>
+     <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">if&nbsp;(</span><span style="color: #0000BB">$expression</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">?&gt;<br /></span>&nbsp;&nbsp;&nbsp;&nbsp;&lt;strong&gt;Это&nbsp;истина.&lt;/strong&gt;<br />&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">}&nbsp;else&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">?&gt;<br /></span>&nbsp;&nbsp;&nbsp;&nbsp;&lt;strong&gt;Это&nbsp;ложь.&lt;/strong&gt;<br />&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">}<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+     </div>
+
+    </div>
+    Это работает так, как и ожидается, потому что когда PHP встречает
+    закрывающие теги ?&gt;, он просто начинает выводить все, что встретит
+    (за исключением перевода строки, стоящим сразу после закрывающего тега -
+    смотрите <a href="language.basic-syntax.instruction-separation.html" class="link">
+    разделение инструкций</a>), пока не встретит следующий открывающий
+    тег. Вышеуказанный пример, разумеется, надуман, но при больших объемах
+    текста выход из режима PHP обычно более эффективен, чем посылка всего текста
+    через <span class="function"><a href="function.echo.html" class="function">echo()</a></span> или <span class="function"><a href="function.print.html" class="function">print()</a></span>.
+   </p>
+   <p class="para">
+    Существует четыре набора тегов, которые могут быть использованы
+    для обозначения PHP-кода. Из них только два &lt;?php ?&gt; и &lt;script
+    language=&quot;php&quot;&gt; &lt;/script&gt;) всегда доступны. Другими двумя являются
+    короткие теги и теги в стиле <span class="productname">ASP</span>, которые могут быть
+    включены или выключены в конфигурационном файле <var class="filename">php.ini</var>.
+    Хотя короткие теги и теги в стиле <span class="productname">ASP</span> могут быть
+    удобны, они не так переносимы, как длинные версии, и поэтому не рекомендуются.
+    <blockquote class="note"><p><b class="note">Замечание</b>: 
+     <p class="para">
+      Кроме того, если вы намереваетесь вставлять PHP-код в XML или XHTML,
+      чтобы соответствовать XML стандартам, ам следует использовать форму
+      &lt;?php ?&gt;.
+     </p>
+    </p></blockquote>
+   </p>
+   <p class="para">
+    <div class="example" id="example-65">
+     <p><b>Пример #2 Открывающие и закрывающие теги PHP</b></p>
+     <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+1.&nbsp;&nbsp;<span style="color: #0000BB">&lt;?php&nbsp;</span><span style="color: #007700">echo&nbsp;</span><span style="color: #DD0000">'если&nbsp;вы&nbsp;хотите&nbsp;работать&nbsp;с&nbsp;документами&nbsp;XHTML&nbsp;или&nbsp;XML,&nbsp;делайте&nbsp;так'</span><span style="color: #007700">;&nbsp;</span><span style="color: #0000BB">?&gt;<br /></span><br />2.&nbsp;&nbsp;<span style="color: #0000BB">&lt;script&nbsp;language="php"&gt;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">echo&nbsp;</span><span style="color: #DD0000">'некоторые&nbsp;редакторы&nbsp;(например,&nbsp;FrontPage)&nbsp;не<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;любят&nbsp;инструкции&nbsp;обработки'</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">&lt;/script&gt;<br /></span><br />3.&nbsp;&nbsp;<span style="color: #0000BB">&lt;?&nbsp;</span><span style="color: #007700">echo&nbsp;</span><span style="color: #DD0000">'это&nbsp;простейшая&nbsp;инструкция&nbsp;обработки&nbsp;SGML'</span><span style="color: #007700">;&nbsp;</span><span style="color: #0000BB">?&gt;<br /></span>&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #0000BB">&lt;?=&nbsp;выражение&nbsp;?&gt;</span>&nbsp;Это&nbsp;синоним&nbsp;для&nbsp;"<span style="color: #0000BB">&lt;?&nbsp;</span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">выражение&nbsp;?&gt;</span>"<br /><br />4.&nbsp;&nbsp;&lt;%&nbsp;echo&nbsp;'Вы&nbsp;можете&nbsp;по&nbsp;выбору&nbsp;использовать&nbsp;теги&nbsp;в&nbsp;стиле&nbsp;ASP';&nbsp;%&gt;<br />&nbsp;&nbsp;&nbsp;&nbsp;&lt;%=&nbsp;$variable;&nbsp;#&nbsp;Это&nbsp;синоним&nbsp;для&nbsp;"&lt;%&nbsp;echo&nbsp;.&nbsp;.&nbsp;."&nbsp;%&gt;</span>
+</code></div>
+     </div>
+
+    </div>
+   </p>
+   <p class="para">
+    Несмотря на то, что теги указанные в первых двух примерах всегда доступны,
+    наиболее широко используется (и рекомендуется) первый пример из этих двух.
+   </p>
+   <p class="para">
+    Короткие теги (третий пример) доступны только когда они включены с помощью
+    директивы <a href="ini.core.html#ini.short-open-tag" class="link">short_open_tag</a> в
+    конфигурационном файле <var class="filename">php.ini</var>, либо если PHP был скомпилирован с опцией
+    <strong class="option unknown">--enable-short-tags</strong>
+.
+   </p>
+   <p class="para">
+    Теги в стиле <span class="productname">ASP</span> (четвертый пример) доступны только
+    когда они были с помощью директивы <a href="ini.core.html#ini.asp-tags" class="link">asp_tags</a>
+    в конфигурационном файле <var class="filename">php.ini</var>.
+   </p>
+   <p class="para">
+    <blockquote class="note"><p><b class="note">Замечание</b>: 
+     <p class="para">
+      Следует избегать использования коротких тегов при разработке
+      приложений или библиотек, предназначенных для распространения
+      или размещения на PHP-серверах, не находящихся под вашим
+      контролем, так как короткие теги могут не поддерживаться на
+      целевом сервере. Для создания переносимого, совместимого
+      кода, не используйте короткие теги.
+     </p>
+    </p></blockquote>
+    <blockquote class="note"><p><b class="note">Замечание</b>: 
+     <p class="para">
+      В PHP 5.2 и более ранних версиях парсер не позволял файлам содержать только
+      один открытый тег <i>&lt;?php</i>. Это было разрешено, начиная
+      с версии PHP 5.3.
+     </p>
+    </p></blockquote>
+    <blockquote class="note"><p><b class="note">Замечание</b>: 
+     <p class="para">
+       Начиная с версии PHP 5.4, короткий тег вывода <i>&lt;?=</i>
+       распознается всегда, вне зависимости от значения директивы
+      <a href="ini.core.html#ini.short-open-tag" class="link">short_open_tag</a>.
+     </p>
+    </p></blockquote>
+   </p>
+  </div><hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="language.basic-syntax.html">Основы синтаксиса</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="language.basic-syntax.instruction-separation.html">Разделение инструкций</a></div>
+ <div class="up"><a href="language.basic-syntax.html">Основы синтаксиса</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

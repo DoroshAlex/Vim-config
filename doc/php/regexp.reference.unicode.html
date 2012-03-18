@@ -1,0 +1,346 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Свойства Unicode-символов</title>
+
+ </head>
+ <body><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="regexp.reference.escape.html">Экранирующие последовательности</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="regexp.reference.anchors.html">Якоря</a></div>
+ <div class="up"><a href="reference.pcre.pattern.syntax.html">Описание синтаксиса Perl-совместимых регулярных выражений</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="regexp.reference.unicode" class="section">
+  <h2 class="title">Свойства Unicode-символов</h2>
+  <p class="para">
+   Начиная с версии 5.1.0, были добавлены три дополнительные управляющие
+   последовательности, совпадающих с некоторыми общими символьными типами
+   <em class="emphasis">в режиме UTF-8</em>. Вот они:
+  </p>
+  <dl>
+
+   <dt>
+
+    <span class="term"><em class="emphasis">\p{xx}</em></span>
+    <dd>
+<span class="simpara">символ со свойством xx</span></dd>
+
+   </dt>
+
+   <dt>
+
+    <span class="term"><em class="emphasis">\P{xx}</em></span>
+    <dd>
+<span class="simpara">символ без свойства xx</span></dd>
+
+   </dt>
+
+   <dt>
+
+    <span class="term"><em class="emphasis">\X</em></span>
+    <dd>
+<span class="simpara">расширенная последовательность Unicode</span></dd>
+
+   </dt>
+
+  </dl>
+
+  <p class="para">
+   Имена свойств, представленные выше как <i>xx</i>, ограничены
+   общими категориями свойств  Unicode. Каждый символ имеет ровно одно такое свойство,
+   указываемое двубуквенной аббревиатурой. Для совместимости с Perl также можно указать
+   отрицание добавлением знака &quot;^&quot; между открывающей скобкой и именем свойства.
+   Например, <i>\p{^Lu}</i> - это то же самое, что и <i>\P{Lu}</i>.
+  </p>
+  <p class="para">
+   Если с <i>\p</i> или <i>\P</i> указана только одна буква,
+   она включает все свойства, которые начинаются с этой буквы.
+   В этом случае, если не используется отрицание, фигурные скобки необязательны;
+   следующие два примера эквивалентны:
+  </p>
+  <div class="informalexample">
+   <div class="example-contents">
+<div class="cdata"><pre>
+\p{L}
+\pL
+</pre></div>
+   </div>
+
+  </div>
+  <table class="doctable table">
+   <caption><b>Поддерживаемые коды свойств</b></caption>
+   
+    <thead valign="middle">
+     <tr valign="middle">
+      <th>Свойство</th>
+      <th>Совпадение</th>
+      <th>Замечание</th>
+     </tr>
+
+    </thead>
+
+    <tbody valign="middle" class="tbody">
+     <tr valign="middle">
+      <td align="left"><i>C</i></td>
+      <td align="left">Другое</td>
+      <td class="empty">&nbsp;</td>
+     </tr>
+
+     <tr valign="middle">
+      <td align="left"><i>Cc</i></td>
+      <td align="left">Control</td>
+      <td class="empty">&nbsp;</td>
+     </tr>
+
+     <tr valign="middle">
+      <td align="left"><i>Cf</i></td>
+      <td align="left">Формат</td>
+      <td class="empty">&nbsp;</td>
+     </tr>
+
+     <tr valign="middle">
+      <td align="left"><i>Cn</i></td>
+      <td align="left">Не присвоено</td>
+      <td class="empty">&nbsp;</td>
+     </tr>
+
+     <tr valign="middle">
+      <td align="left"><i>Co</i></td>
+      <td align="left">Частное использование</td>
+      <td class="empty">&nbsp;</td>
+     </tr>
+
+     <tr valign="middle">
+      <td align="left"><i>Cs</i></td>
+      <td align="left">Суррогат</td>
+      <td class="empty">&nbsp;</td>
+     </tr>
+
+     <tr valign="middle">
+      <td align="left"><i>L</i></td>
+      <td align="left">Буква</td>
+      <td align="left">
+       Включает следующие свойства: <i>Ll</i>,
+       <i>Lm</i>, <i>Lo</i>, <i>Lt</i> и
+       <i>Lu</i>.
+      </td>
+     </tr>
+
+     <tr valign="middle">
+      <td align="left"><i>Ll</i></td>
+      <td align="left">Строчная буква</td>
+      <td class="empty">&nbsp;</td>
+     </tr>
+
+     <tr valign="middle">
+      <td align="left"><i>Lm</i></td>
+      <td align="left">Модификатор буквы</td>
+      <td class="empty">&nbsp;</td>
+     </tr>
+
+     <tr valign="middle">
+      <td align="left"><i>Lo</i></td>
+      <td align="left">Другая буква</td>
+      <td class="empty">&nbsp;</td>
+     </tr>
+
+     <tr valign="middle">
+      <td align="left"><i>Lt</i></td>
+      <td align="left">Заглавная буква</td>
+      <td class="empty">&nbsp;</td>
+     </tr>
+
+     <tr valign="middle">
+      <td align="left"><i>Lu</i></td>
+      <td align="left">Прописная буква</td>
+      <td class="empty">&nbsp;</td>
+     </tr>
+
+     <tr valign="middle">
+      <td align="left"><i>M</i></td>
+      <td align="left">Знак</td>
+      <td class="empty">&nbsp;</td>
+     </tr>
+
+     <tr valign="middle">
+      <td align="left"><i>Mc</i></td>
+      <td align="left">Пробельный знак</td>
+      <td class="empty">&nbsp;</td>
+     </tr>
+
+     <tr valign="middle">
+      <td align="left"><i>Me</i></td>
+      <td align="left">Окружающий знак</td>
+      <td class="empty">&nbsp;</td>
+     </tr>
+
+     <tr valign="middle">
+      <td align="left"><i>Mn</i></td>
+      <td align="left">Непробельный знак</td>
+      <td class="empty">&nbsp;</td>
+     </tr>
+
+     <tr valign="middle">
+      <td align="left"><i>N</i></td>
+      <td align="left">Число</td>
+      <td class="empty">&nbsp;</td>
+     </tr>
+
+     <tr valign="middle">
+      <td align="left"><i>Nd</i></td>
+      <td align="left">Десятичное число</td>
+      <td class="empty">&nbsp;</td>
+     </tr>
+
+     <tr valign="middle">
+      <td align="left"><i>Nl</i></td>
+      <td align="left">Буквенное число</td>
+      <td class="empty">&nbsp;</td>
+     </tr>
+
+     <tr valign="middle">
+      <td align="left"><i>No</i></td>
+      <td align="left">Другое число</td>
+      <td class="empty">&nbsp;</td>
+     </tr>
+
+     <tr valign="middle">
+      <td align="left"><i>P</i></td>
+      <td align="left">Пунктуация</td>
+      <td class="empty">&nbsp;</td>
+     </tr>
+
+     <tr valign="middle">
+      <td align="left"><i>Pc</i></td>
+      <td align="left">Соединяющая пунктуация</td>
+      <td class="empty">&nbsp;</td>
+     </tr>
+
+     <tr valign="middle">
+      <td align="left"><i>Pd</i></td>
+      <td align="left">Знаки тире</td>
+      <td class="empty">&nbsp;</td>
+     </tr>
+
+     <tr valign="middle">
+      <td align="left"><i>Pe</i></td>
+      <td align="left">Закрывающая пунктуация</td>
+      <td class="empty">&nbsp;</td>
+     </tr>
+
+     <tr valign="middle">
+      <td align="left"><i>Pf</i></td>
+      <td align="left">Заключительная пунктуация</td>
+      <td class="empty">&nbsp;</td>
+     </tr>
+
+     <tr valign="middle">
+      <td align="left"><i>Pi</i></td>
+      <td align="left">Начальная пунктуация</td>
+      <td class="empty">&nbsp;</td>
+     </tr>
+
+     <tr valign="middle">
+      <td align="left"><i>Po</i></td>
+      <td align="left">Другая пунктуация</td>
+      <td class="empty">&nbsp;</td>
+     </tr>
+
+     <tr valign="middle">
+      <td align="left"><i>Ps</i></td>
+      <td align="left">Открывающая пунктуация</td>
+      <td class="empty">&nbsp;</td>
+     </tr>
+
+     <tr valign="middle">
+      <td align="left"><i>S</i></td>
+      <td align="left">Символ</td>
+      <td class="empty">&nbsp;</td>
+     </tr>
+
+     <tr valign="middle">
+      <td align="left"><i>Sc</i></td>
+      <td align="left">Денежный знак</td>
+      <td class="empty">&nbsp;</td>
+     </tr>
+
+     <tr valign="middle">
+      <td align="left"><i>Sk</i></td>
+      <td align="left">Модификатор символа</td>
+      <td class="empty">&nbsp;</td>
+     </tr>
+
+     <tr valign="middle">
+      <td align="left"><i>Sm</i></td>
+      <td align="left">Математический символ</td>
+      <td class="empty">&nbsp;</td>
+     </tr>
+
+     <tr valign="middle">
+      <td align="left"><i>So</i></td>
+      <td align="left">Другой символ</td>
+      <td class="empty">&nbsp;</td>
+     </tr>
+
+     <tr valign="middle">
+      <td align="left"><i>Z</i></td>
+      <td align="left">Разделитель</td>
+      <td class="empty">&nbsp;</td>
+     </tr>
+
+     <tr valign="middle">
+      <td align="left"><i>Zl</i></td>
+      <td align="left">Разделитель строки</td>
+      <td class="empty">&nbsp;</td>
+     </tr>
+
+     <tr valign="middle">
+      <td align="left"><i>Zp</i></td>
+      <td align="left">Разделитель абзаца</td>
+      <td class="empty">&nbsp;</td>
+     </tr>
+
+     <tr valign="middle">
+      <td align="left"><i>Zs</i></td>
+      <td align="left">Пробельный разделитель</td>
+      <td class="empty">&nbsp;</td>
+     </tr>
+
+    </tbody>
+   
+  </table>
+
+  <p class="para">
+   Расширенные свойства, такие как греческие (&quot;Greek&quot;) или музыкальные символы
+   (&quot;InMusicalSymbols&quot;) не поддерживаются в PCRE.
+  </p>
+  <p class="para">
+   Указывание регистро-независимого (безрегистрового) режима не влияет на эти
+   управляющие последовательности. Например, <i>\p{Lu}</i> всегда
+   совпадает только с прописными буквами.
+  </p>
+  <p class="para">
+   Последовательность <i>\X</i> совпадает с любым числом Unicode символов,
+   формирующих расширенную Unicode последовательность. <i>\X</i>
+   эквивалентно <i>(?&gt;\PM\pM*)</i>.
+  </p>
+  <p class="para">
+   Это означает, что совпадет символ без свойства &quot;знака&quot; (&quot;mark&quot; property),
+   за которым идет ноль или более символов со свойством &quot;знака&quot;, и вся
+   последовательность обрабатывается как одна неделимая группа (смотрите ниже).
+   Символы со свойством &quot;знака&quot; - это обычно знаки ударения, влияющие на
+   предыдущий символ.
+  </p>
+  <p class="para">
+   Совпадение символов по Unicode свойству не является быстрой операцией,
+   потому для этой цели PCRE необходимо осуществить поиск в структуре данных
+   с более чем пятнадцатью тысяч символов. Поэтому традиционные управляющие
+   последовательности в PCRE, такие как <i>\d</i> и <i>\w</i>,
+   не используют Unicode свойства.
+  </p>
+ </div><hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="regexp.reference.escape.html">Экранирующие последовательности</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="regexp.reference.anchors.html">Якоря</a></div>
+ <div class="up"><a href="reference.pcre.pattern.syntax.html">Описание синтаксиса Perl-совместимых регулярных выражений</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

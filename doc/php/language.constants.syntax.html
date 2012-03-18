@@ -1,0 +1,132 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Синтаксис</title>
+
+ </head>
+ <body><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="language.constants.html">Константы</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="language.constants.predefined.html">&quot;Волшебные&quot; константы</a></div>
+ <div class="up"><a href="language.constants.html">Константы</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="language.constants.syntax" class="sect1">
+   <h2 class="title">Синтаксис</h2>
+   <p class="simpara">
+    Вы можете определить константу с помощью функции <span class="function"><a href="function.define.html" class="function">define()</a></span>
+    или с помощью ключевого слова <i>const</i> вне объявления класса
+    начиная с версии PHP 5.3.0. После того, как константа определена, ее значение
+    не может быть изменено или аннулировано.
+   </p>
+   <p class="simpara">
+    Константы могут содержать только скалярные данные
+    (<span class="type"><a href="language.types.boolean.html" class="type boolean">boolean</a></span>, <span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>, <span class="type"><a href="language.types.float.html" class="type float">float</a></span> и
+    <span class="type"><a href="language.types.string.html" class="type string">string</a></span> типов). Возможно также определять константы типа
+    <span class="type"><a href="language.types.resource.html" class="type resource">resource</a></span>, но этого следует избегать, так как это может
+    привести к неожиданным результатам.
+   </p>
+   <p class="simpara">
+    Получить значение константы можно, указав ее имя. В отличие от переменных,
+    вам <em class="emphasis">не нужно</em> предварять имя константы символом
+    <i>$</i>.
+    Также вы можете использовать функцию <span class="function"><a href="function.constant.html" class="function">constant()</a></span> для
+    получения значения константы, если вы формируете имя константы динамически.
+    Используйте функцию <span class="function"><a href="function.get-defined-constants.html" class="function">get_defined_constants()</a></span> для получения
+    списка всех объявленных констант.
+   </p>
+   <blockquote class="note"><p><b class="note">Замечание</b>: 
+    <span class="simpara">
+     Константы и (глобальные) переменные находятся в разных пространствах имен.
+     Это означает, что, например, <b><tt>TRUE</tt></b> и <var class="varname"><var class="varname">$TRUE</var></var> являются
+     совершенно разными вещами.
+    </span>
+   </p></blockquote>
+   <p class="simpara">
+    Если вы используете неопределенную константу, PHP предполагает, что
+    вы имеете ввиду само имя константы, как если бы вы указали литерал типа
+    <span class="type"><a href="language.types.string.html" class="type string">string</a></span> (CONSTANT вместо &quot;CONSTANT&quot;). При этом будет сгенерирована
+    ошибка уровня <a href="ref.errorfunc.html" class="link">E_NOTICE</a>.
+    Смотрите также главу руководства, которая разъясняет, почему
+    <a href="language.types.array.html#language.types.array.foo-bar" class="link">$foo[bar]</a> - это неправильно
+    (конечно, если вы перед этим не объявили <i>bar</i> как константу с
+    помощью <span class="function"><a href="function.define.html" class="function">define()</a></span>). Если вы просто хотите проверить,
+    определена ли константа, используйте функцию <span class="function"><a href="function.defined.html" class="function">defined()</a></span>.
+   </p>
+   <p class="para">
+    Различия между константами и переменными:
+    <ul class="itemizedlist">
+     <li class="listitem">
+      <span class="simpara">
+       У констант нет приставки в виде знака доллара (<i>$</i>);
+      </span>
+     </li>
+     <li class="listitem">
+      <span class="simpara">
+       Константы можно определить только с помощью функции
+       <span class="function"><a href="function.define.html" class="function">define()</a></span>, а не присваиванием значения;
+      </span>
+     </li>
+     <li class="listitem">
+      <span class="simpara">
+       Константы могут быть определены и доступны в любом месте без учета
+       области видимости;
+      </span>
+     </li>
+     <li class="listitem">
+      <span class="simpara">
+       Константы не могут быть переопределены или аннулированы после первоначального объявления; и
+      </span>
+     </li>
+     <li class="listitem">
+      <span class="simpara">
+       Константы могут иметь только скалярные значения.
+       </span>
+     </li>
+    </ul>
+   </p>
+
+   <p class="para">
+    <div class="example" id="example-102">
+     <p><b>Пример #1 Определение констант</b></p>
+     <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />define</span><span style="color: #007700">(</span><span style="color: #DD0000">"CONSTANT"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"Здравствуй,&nbsp;мир."</span><span style="color: #007700">);<br />echo&nbsp;</span><span style="color: #0000BB">CONSTANT</span><span style="color: #007700">;&nbsp;</span><span style="color: #FF8000">//&nbsp;выводит&nbsp;"Здравствуй,&nbsp;мир."<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">Constant</span><span style="color: #007700">;&nbsp;</span><span style="color: #FF8000">//&nbsp;выводит&nbsp;"Constant"&nbsp;и&nbsp;предупреждение.<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+     </div>
+
+    </div>
+   </p>
+
+   <p class="para">
+    <div class="example" id="example-103">
+     <p><b>Пример #2 Определение констант с помощью ключевого слова <i>const</i></b></p>
+     <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">//&nbsp;Работает,&nbsp;начиная&nbsp;с&nbsp;версии&nbsp;PHP&nbsp;5.3.0<br /></span><span style="color: #007700">const&nbsp;</span><span style="color: #0000BB">CONSTANT&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'Здравствуй,&nbsp;мир.'</span><span style="color: #007700">;<br /><br />echo&nbsp;</span><span style="color: #0000BB">CONSTANT</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+     </div>
+
+    </div>
+   </p>
+
+   <blockquote class="note"><p><b class="note">Замечание</b>: 
+    <p class="para">
+     В отличие от определения констант с помощью функции <span class="function"><a href="function.define.html" class="function">define()</a></span>,
+     константы, объявленные с помощью ключевого слова <i>const</i>
+     должны быть объявлены в самой верхней области видимости, потому что они
+     определяются при компилировании скрипта. Это означает, что их нельзя объявлять
+     внутри функций, циклов или выражений <i>if</i>.
+    </p>
+   </p></blockquote>
+
+   <p class="simpara">
+    Смотрите также <a href="language.oop5.constants.html" class="link">Константы классов</a>.
+   </p>
+  </div><hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="language.constants.html">Константы</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="language.constants.predefined.html">&quot;Волшебные&quot; константы</a></div>
+ <div class="up"><a href="language.constants.html">Константы</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

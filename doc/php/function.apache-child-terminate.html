@@ -1,0 +1,101 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Завершить процесс Apache по окончании текущего запроса</title>
+
+ </head>
+ <body><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="ref.apache.html">Apache</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.apache-get-modules.html">apache_get_modules</a></div>
+ <div class="up"><a href="ref.apache.html">Apache</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.apache-child-terminate" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">apache_child_terminate</h1>
+  <p class="verinfo">(PHP 4 &gt;= 4.0.5, PHP 5)</p><p class="refpurpose"><span class="refname">apache_child_terminate</span> &mdash; <span class="dc-title">Завершить процесс Apache по окончании текущего запроса</span></p>
+
+ </div>
+ 
+ <div class="refsect1 description" id="refsect1-function.apache-child-terminate-description">
+  <h3 class="title">Описание</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">bool</span> <span class="methodname"><b>apache_child_terminate</b></span>
+    ( <span class="methodparam">void</span>
+   )</div>
+
+  <p class="para rdfs-comment">
+   <span class="function"><b>apache_child_terminate()</b></span> регистрирует процесс Apache,
+   обслуживающий текущий запрос PHP с тем, чтобы завершить его по окончании
+   выполнения PHP скрипта. Эта функция может быть использована для
+   завершения процесса, для работы которого понадобилось значительное
+   количество оперативной памяти, не возвращенной операционной системе
+   по завершении работы PHP скрипта.
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 returnvalues" id="refsect1-function.apache-child-terminate-returnvalues">
+  <h3 class="title">Возвращаемые значения</h3>
+  <p class="para">
+   Возвращает <b><tt>TRUE</tt></b>, если PHP работает в качестве Apache 1 модуля, версия Apache не является
+   многопоточной и параметр конфигурации PHP 
+   <a href="apache.configuration.html#ini.child-terminate" class="link">child_terminate</a> включен (по умолчанию
+   выключен). В противном случае функция возвратит <b><tt>FALSE</tt></b> и сгенерирует
+   ошибку уровня <b><tt>E_WARNING</tt></b>.
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 changelog" id="refsect1-function.apache-child-terminate-changelog">
+  <h3 class="title">Список изменений</h3>
+  <p class="para">
+   <table class="doctable informaltable">
+    
+     <thead valign="middle">
+      <tr valign="middle">
+       <th>Версия</th>
+       <th>Описание</th>
+      </tr>
+
+     </thead>
+
+     <tbody valign="middle" class="tbody">
+      <tr valign="middle">
+       <td align="left">5.4.0</td>
+       <td align="left">
+        Эта функция стала доступной в режиме FastCGI. Ранее она поддерживалась 
+        только при запуске PHP в качестве модуля для Apache.
+       </td>
+      </tr>
+
+     </tbody>
+    
+   </table>
+
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 notes" id="refsect1-function.apache-child-terminate-notes">
+  <h3 class="title">Примечания</h3>
+  <blockquote class="note"><p><b class="note">Замечание</b>: <span class="simpara">Для Windows-платформ
+эта функция не реализована.</span></p></blockquote>
+ </div>
+
+ 
+ <div class="refsect1 seealso" id="refsect1-function.apache-child-terminate-seealso">
+  <h3 class="title">Смотрите также</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><span class="function"><a href="function.exit.html" class="function" rel="rdfs-seeAlso">exit()</a> - Выводит сообщение и прекращает выполнение текущего скрипта</span></li>
+   </ul>
+  </p>
+ </div>
+
+</div><hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="ref.apache.html">Apache</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.apache-get-modules.html">apache_get_modules</a></div>
+ <div class="up"><a href="ref.apache.html">Apache</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

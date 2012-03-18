@@ -1,0 +1,127 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Возвращает все заголовки HTTP-запроса</title>
+
+ </head>
+ <body><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.apache-setenv.html">apache_setenv</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.virtual.html">virtual</a></div>
+ <div class="up"><a href="ref.apache.html">Apache</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.getallheaders" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">getallheaders</h1>
+  <p class="verinfo">(PHP 4, PHP 5)</p><p class="refpurpose"><span class="refname">getallheaders</span> &mdash; <span class="dc-title">Возвращает все заголовки HTTP-запроса</span></p>
+
+ </div>
+
+ <div class="refsect1 description" id="refsect1-function.getallheaders-description">
+  <h3 class="title">Описание</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">array</span> <span class="methodname"><b>getallheaders</b></span>
+    ( <span class="methodparam">void</span>
+   )</div>
+
+  <p class="para rdfs-comment">
+   Возвращает все заголовки для текущего HTTP-запроса.
+  </p>
+  <p class="para">
+   Эта функция является псевдонимом функции <span class="function"><a href="function.apache-request-headers.html" class="function">apache_request_headers()</a></span>.
+   Пожалуйста, обратитесь к описанию функции <span class="function"><a href="function.apache-request-headers.html" class="function">apache_request_headers()</a></span>
+   для получения детальной информации о ее работе.
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-function.getallheaders-returnvalues">
+  <h3 class="title">Возвращаемые значения</h3>
+  <p class="para">
+   Ассоциативный массив, содержащий все HTTP-заголовки для данного запроса или
+   <b><tt>FALSE</tt></b> в случае возникновения ошибок.
+  </p>
+ </div>
+
+
+ <div class="refsect1 changelog" id="refsect1-function.getallheaders-changelog">
+  <h3 class="title">Список изменений</h3>
+  <p class="para">
+   <table class="doctable informaltable">
+    
+     <thead valign="middle">
+      <tr valign="middle">
+       <th>Версия</th>
+       <th>Описание</th>
+      </tr>
+
+     </thead>
+
+     <tbody valign="middle" class="tbody">
+      <tr valign="middle">
+       <td align="left">5.4.0</td>
+       <td align="left">
+        Эта функция стала доступной при использовании FastCGI. Ранее она была
+        доступна только если PHP был установлен, как модуль Apache.
+       </td>
+      </tr>
+
+      <tr valign="middle">
+       <td align="left">4.3.3</td>
+       <td align="left">
+        <p class="para">Начиная с PHP 4.3.3 вы также
+можете использовать эти функции с <a href="ref.nsapi.html" class="link">модулем NSAPI</a>
+в серверах Netscape/iPlanet/SunONE.</p>
+       </td>
+      </tr>
+
+      <tr valign="middle">
+       <td align="left">4.3.0</td>
+       <td align="left">
+        Функция стала псевдонимом для <span class="function"><a href="function.apache-request-headers.html" class="function">apache_request_headers()</a></span>.
+        Соответственно, она была переименована. Это связано
+        с тем, что данная функция работоспособна только в том случае,
+        если PHP был собран в качестве модуля Apache.
+       </td>
+      </tr>
+
+     </tbody>
+    
+   </table>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-function.getallheaders-examples">
+  <h3 class="title">Примеры</h3>
+  <p class="para">
+   <div class="example" id="example-4269">
+    <p><b>Пример #1 Пример использования <span class="function"><b>getallheaders()</b></span></b></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /><br /></span><span style="color: #007700">foreach&nbsp;(</span><span style="color: #0000BB">getallheaders</span><span style="color: #007700">()&nbsp;as&nbsp;</span><span style="color: #0000BB">$name&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">$value</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"</span><span style="color: #0000BB">$name</span><span style="color: #DD0000">:&nbsp;</span><span style="color: #0000BB">$value</span><span style="color: #DD0000">\n"</span><span style="color: #007700">;<br />}<br /><br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+  </p>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-function.getallheaders-seealso">
+  <h3 class="title">Смотрите также</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><span class="function"><a href="function.apache-response-headers.html" class="function" rel="rdfs-seeAlso">apache_response_headers()</a> - Возвращает список всех HTTP заголовков ответа Apache</span></li>
+   </ul>
+  </p>
+ </div>
+
+</div><hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.apache-setenv.html">apache_setenv</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.virtual.html">virtual</a></div>
+ <div class="up"><a href="ref.apache.html">Apache</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

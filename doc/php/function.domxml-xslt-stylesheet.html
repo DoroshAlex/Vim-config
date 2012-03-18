@@ -1,0 +1,87 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Создает объект DomXsltStylesheet из строки XSL</title>
+
+ </head>
+ <body><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.domxml-xslt-stylesheet-file.html">domxml_xslt_stylesheet_file</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.domxml-xslt-version.html">domxml_xslt_version</a></div>
+ <div class="up"><a href="ref.domxml.html">DOM XML (PHP 4) Функции</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.domxml-xslt-stylesheet" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">domxml_xslt_stylesheet</h1>
+  <p class="verinfo">(PHP 4 &gt;= 4.2.0)</p><p class="refpurpose"><span class="refname">domxml_xslt_stylesheet</span> &mdash; <span class="dc-title">
+   Создает объект DomXsltStylesheet из строки XSL
+  </span></p>
+
+ </div>
+ <div class="refsect1 description" id="refsect1-function.domxml-xslt-stylesheet-description">
+  <h3 class="title">Описание</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type"><span class="type DomXsltStylesheet">DomXsltStylesheet</span></span> <span class="methodname"><b>domxml_xslt_stylesheet</b></span>
+    ( <span class="methodparam"><span class="type">string</span> <tt class="parameter">$xsl_buf</tt></span>
+   )</div>
+
+  <p class="para rdfs-comment">
+   Создает объект класса <b class="classname">DomXsltStylesheet</b> из переданного
+   XSL буфера.
+  </p>
+ </div>
+
+ <div class="refsect1 parameters" id="refsect1-function.domxml-xslt-stylesheet-parameters">
+  <h3 class="title">Список параметров</h3>
+  <p class="para">
+   <dl>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">xsl_buf</tt></i></span>
+     <dd>
+
+      <p class="para">
+       XSL документ в виде строки.
+      </p>
+     </dd>
+
+    </dt>
+
+   </dl>
+
+  </p>
+ </div>
+
+ <div class="refsect1 returnvalues" id="refsect1-function.domxml-xslt-stylesheet-returnvalues">
+  <h3 class="title">Возвращаемые значения</h3>
+  <p class="para">
+   Возвращает новый экземпляр класса <b class="classname">DomXsltStylesheet</b>.
+  </p>
+ </div>
+
+ <div class="refsect1 migration" id="refsect1-function.domxml-xslt-stylesheet-migration">
+  <h3 class="title">Переход на PHP 5</h3>
+  <p class="para">
+   Вызывайте <span class="function"><a href="xsltprocessor.importstylesheet.html" class="function">XSLTProcessor::importStylesheet()</a></span> с аргументом
+   <i>DOMDocument::loadXML($xsl_buf)</i>.
+  </p>
+ </div>
+
+ <div class="refsect1 seealso" id="refsect1-function.domxml-xslt-stylesheet-seealso">
+  <h3 class="title">Смотрите также</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><a href="function.domxsltstylesheet-process.html" class="xref">DomXsltStylesheet-&gt;process</a></li>
+    <li class="member"><span class="function"><a href="function.domxml-xslt-stylesheet-file.html" class="function" rel="rdfs-seeAlso">domxml_xslt_stylesheet_file()</a> - Создает объект DomXsltStylesheet из XML файла</span></li>
+    <li class="member"><span class="function"><a href="function.domxml-xslt-stylesheet-doc.html" class="function" rel="rdfs-seeAlso">domxml_xslt_stylesheet_doc()</a> - Создает объект класса DomXsltStylesheet из объекта DomDocument</span></li>
+   </ul>
+  </p>
+ </div>
+
+</div><hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.domxml-xslt-stylesheet-file.html">domxml_xslt_stylesheet_file</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.domxml-xslt-version.html">domxml_xslt_version</a></div>
+ <div class="up"><a href="ref.domxml.html">DOM XML (PHP 4) Функции</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

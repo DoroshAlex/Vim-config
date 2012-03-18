@@ -1,0 +1,194 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Настройка во время выполнения</title>
+
+ </head>
+ <body><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="pgsql.installation.html">Установка</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="pgsql.resources.html">Типы ресурсов</a></div>
+ <div class="up"><a href="pgsql.setup.html">Установка и настройка</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="pgsql.configuration" class="section">
+ <h2 class="title">Настройка во время выполнения</h2>
+ <p class="simpara">
+Поведение этих функций зависит от установок в <var class="filename">php.ini</var>.
+</p>
+ <p class="para">
+ <table class="doctable table">
+  <caption><b>Параметры конфигурации PostgreSQL</b></caption>
+  
+   <thead valign="middle">
+    <tr valign="middle">
+     <th>Имя</th>
+     <th>Значение по умолчанию</th>
+     <th>Возможные значения</th>
+     <th>Changelog</th>
+    </tr>
+
+   </thead>
+
+   <tbody valign="middle" class="tbody">
+    <tr valign="middle">
+     <td align="left"><a href="pgsql.configuration.html#ini.pgsql.allow-persistent" class="link">pgsql.allow_persistent</a></td>
+     <td align="left">&quot;1&quot;</td>
+     <td align="left">PHP_INI_SYSTEM</td>
+     <td class="empty">&nbsp;</td>
+    </tr>
+
+    <tr valign="middle">
+     <td align="left"><a href="pgsql.configuration.html#ini.pgsql.max-persistent" class="link">pgsql.max_persistent</a></td>
+     <td align="left">&quot;-1&quot;</td>
+     <td align="left">PHP_INI_SYSTEM</td>
+     <td class="empty">&nbsp;</td>
+    </tr>
+
+    <tr valign="middle">
+     <td align="left"><a href="pgsql.configuration.html#ini.pgsql.max-links" class="link">pgsql.max_links</a></td>
+     <td align="left">&quot;-1&quot;</td>
+     <td align="left">PHP_INI_SYSTEM</td>
+     <td class="empty">&nbsp;</td>
+    </tr>
+
+    <tr valign="middle">
+     <td align="left"><a href="pgsql.configuration.html#ini.pgsql.auto-reset-persistent" class="link">pgsql.auto_reset_persistent</a></td>
+     <td align="left">&quot;0&quot;</td>
+     <td align="left">PHP_INI_SYSTEM</td>
+     <td align="left">Доступно с версии PHP 4.2.0.</td>
+    </tr>
+
+    <tr valign="middle">
+     <td align="left"><a href="pgsql.configuration.html#ini.pgsql.ignore-notice" class="link">pgsql.ignore_notice</a></td>
+     <td align="left">&quot;0&quot;</td>
+     <td align="left">PHP_INI_ALL</td>
+     <td align="left">Доступна с версии PHP 4.3.0.</td>
+    </tr>
+
+    <tr valign="middle">
+     <td align="left"><a href="pgsql.configuration.html#ini.pgsql.log-notice" class="link">pgsql.log_notice</a></td>
+     <td align="left">&quot;0&quot;</td>
+     <td align="left">PHP_INI_ALL</td>
+     <td align="left">Доступно с версии PHP 4.3.0.</td>
+    </tr>
+
+   </tbody>
+  
+ </table>
+
+  Для подробного описания констант
+PHP_INI_*, обратитесь к разделу <a href="configuration.changes.modes.html" class="xref">Где могут быть установлены параметры конфигурации</a>.
+  </p>
+  
+  <p class="para">Краткое разъяснение конфигурационных
+директив.</p>
+  
+  <p class="para">
+  <dl>
+
+   
+   <dt id="ini.pgsql.allow-persistent">
+    <span class="term">
+     <i><tt class="parameter">pgsql.allow_persistent</tt></i>
+     <span class="type"><a href="language.types.boolean.html" class="type boolean">boolean</a></span>
+    </span>
+    <dd>
+
+     <p class="para">
+      Следует ли разрешить постоянное соединение с Postgres.
+     </p>
+    </dd>
+
+   </dt>
+
+   
+   <dt id="ini.pgsql.max-persistent">
+    <span class="term">
+     <i><tt class="parameter">pgsql.max_persistent</tt></i>
+     <span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>
+    </span>
+    <dd>
+
+     <p class="para">
+      Максимальное количество постоянных соединений на один процесс.
+     </p>
+    </dd>
+
+   </dt>
+
+   
+   <dt id="ini.pgsql.max-links">
+    <span class="term">
+     <i><tt class="parameter">pgsql.max_links</tt></i>
+     <span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>
+    </span>
+    <dd>
+
+     <p class="para">
+      Максимальное количество соединений Postgres на один процесс,
+      включая постоянные соединения.
+     </p>
+    </dd>
+
+   </dt>
+
+   
+   <dt id="ini.pgsql.auto-reset-persistent">
+    <span class="term">
+     <i><tt class="parameter">pgsql.auto_reset_persistent</tt></i>
+     <span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>
+    </span>
+    <dd>
+
+     <p class="para">
+      Определять разорванные постоянные ссылки с <span class="function"><a href="function.pg-pconnect.html" class="function">pg_pconnect()</a></span>.
+      Требуются небольшие дополнительные ресурсы.
+     </p>
+    </dd>
+
+   </dt>
+
+
+   <dt id="ini.pgsql.ignore-notice">
+    <span class="term">
+     <i><tt class="parameter">pgsql.ignore_notice</tt></i>
+     <span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>
+    </span>
+    <dd>
+
+     <p class="para">
+      Игнорировать или нет уведомления от PostgreSQL. 
+     </p>
+    </dd>
+
+   </dt>
+
+
+   <dt id="ini.pgsql.log-notice">
+    <span class="term">
+     <i><tt class="parameter">pgsql.log_notice</tt></i>
+     <span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>
+    </span>
+    <dd>
+
+     <p class="para">
+      Записывать ли в лог уведомления от PostgreSQL. Для записи в лог
+      уведомлений также необходимо отключить директиву PHP
+      <a href="pgsql.configuration.html#ini.pgsql.ignore-notice" class="link">
+      pgsql.ignore_notice</a>.
+     </p>
+    </dd>
+
+   </dt>
+
+
+  </dl>
+
+ </p>
+
+</div><hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="pgsql.installation.html">Установка</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="pgsql.resources.html">Типы ресурсов</a></div>
+ <div class="up"><a href="pgsql.setup.html">Установка и настройка</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

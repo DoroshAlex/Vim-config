@@ -1,0 +1,173 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Задает критерий сортировки</title>
+
+ </head>
+ <body><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.yaz-set-option.html">yaz_set_option</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.yaz-syntax.html">yaz_syntax</a></div>
+ <div class="up"><a href="ref.yaz.html">YAZ Функции</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.yaz-sort" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">yaz_sort</h1>
+  <p class="verinfo">(PHP 4 &gt;= 4.0.7, PECL yaz &gt;= 0.9.0)</p><p class="refpurpose"><span class="refname">yaz_sort</span> &mdash; <span class="dc-title">Задает критерий сортировки</span></p>
+
+ </div>
+ <div class="refsect1 description" id="refsect1-function.yaz-sort-description">
+  <h3 class="title">Описание</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type"><span class="type void">void</span></span> <span class="methodname"><b>yaz_sort</b></span>
+    ( <span class="methodparam"><span class="type">resource</span> <tt class="parameter">$id</tt></span>
+   , <span class="methodparam"><span class="type">string</span> <tt class="parameter">$criteria</tt></span>
+   )</div>
+
+  <p class="para rdfs-comment">
+   Функция задает критерий сортировки и включает сортировку по Z39.50.
+  </p>
+  <p class="para">
+   Эта функция должна быть вызвана <em class="emphasis">до</em> 
+   <span class="function"><a href="function.yaz-search.html" class="function">yaz_search()</a></span>. Вызов этой функции отдельно не имеет 
+   никакого смысла. Когда она используется совместно с 
+   <span class="function"><a href="function.yaz-search.html" class="function">yaz_search()</a></span>, параметры сортировки будут отосланы
+   после поискового запроса и до того, как какая-либо запись
+   будет получена по Z39.50 (<span class="function"><a href="function.yaz-present.html" class="function">yaz_present()</a></span>).
+  </p>
+ </div>
+
+ <div class="refsect1 parameters" id="refsect1-function.yaz-sort-parameters">
+  <h3 class="title">Список параметров</h3>
+  <p class="para">
+   <dl>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">id</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Дескриптор соединения, возвращаемый <span class="function"><a href="function.yaz-connect.html" class="function">yaz_connect()</a></span>.
+      </p>
+     </dd>
+
+    </dt>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">criteria</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Строка, принимающая вид <span class="replaceable">поле1 флаг1 поле2 
+       флаг2</span>, где поле1 устанавливает первый атрибут сортировки,
+       поле2 - второй и т.д.
+      </p>
+      <p class="para">
+       Поле может определяться либо как числовая комбинация, состоящая из пары 
+       тип=значение и разделяемое запятой (например, <i>1=4,2=1</i>),
+       либо как строковый параметр (например, <i>title</i>). Флаг 
+       представляет собой последовательность символов, которая не может быть 
+       разделена пробелом.
+      </p>
+      <p class="para">
+       <dl>
+
+        <strong class="title">Флаги сортировки</strong>
+        <dt>
+
+         <span class="term"><i>a</i></span>
+         <dd>
+
+          <p class="para">
+           Сортировка по возрастанию
+          </p>
+         </dd>
+
+        </dt>
+
+        <dt>
+
+         <span class="term"><i>d</i></span>
+         <dd>
+
+          <p class="para">
+           Сортировка по убыванию
+          </p>
+         </dd>
+
+        </dt>
+
+        <dt>
+
+         <span class="term"><i>i</i></span>
+         <dd>
+
+          <p class="para">
+           Сортировка без учета регистра символов
+          </p>
+         </dd>
+
+        </dt>
+
+        <dt>
+
+         <span class="term"><i>s</i></span>
+         <dd>
+
+          <p class="para">
+           Сортировка с учетом регистра символов
+          </p>
+         </dd>
+
+        </dt>
+
+       </dl>
+
+      </p>
+     </dd>
+
+    </dt>
+
+   </dl>
+
+  </p>
+ </div>
+
+ <div class="refsect1 returnvalues" id="refsect1-function.yaz-sort-returnvalues">
+  <h3 class="title">Возвращаемые значения</h3>
+  <p class="para">
+   Эта функция не возвращает значения после выполнения.
+  </p>
+ </div>
+
+ <div class="refsect1 examples" id="refsect1-function.yaz-sort-examples">
+  <h3 class="title">Примеры</h3>
+  <div class="example" id="example-4205">
+   <p><b>Пример #1 Критерии сортировки</b></p>
+   <div class="example-contents"><p>
+    Чтобы отсортировать записи по заглавию, без учета регистра по
+    возрастанию следует использовать следующий критерий:
+    <div class="example-contents screen">
+<div class="examplescode"><pre class="examplescode">1=4 ia</pre>
+</div>
+    </div>
+   </p></div>
+   <div class="example-contents"><p>
+    Если второй критерий сортировки должен идти по автору с учетом
+    регистра и по возрастанию, критерий будет выглядеть как:
+    <div class="example-contents screen">
+<div class="examplescode"><pre class="examplescode">1=4 ia 1=1003 sa</pre>
+</div>
+    </div>
+   </p></div>
+  </div>
+ </div>
+
+</div><hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.yaz-set-option.html">yaz_set_option</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.yaz-syntax.html">yaz_syntax</a></div>
+ <div class="up"><a href="ref.yaz.html">YAZ Функции</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

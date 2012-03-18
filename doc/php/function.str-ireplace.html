@@ -1,0 +1,217 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Регистро-независимый вариант функции str_replace</title>
+
+ </head>
+ <body><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.str-getcsv.html">str_getcsv</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.str-pad.html">str_pad</a></div>
+ <div class="up"><a href="ref.strings.html">Обработка строк</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.str-ireplace" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">str_ireplace</h1>
+  <p class="verinfo">(PHP 5)</p><p class="refpurpose"><span class="refname">str_ireplace</span> &mdash; <span class="dc-title">Регистро-независимый вариант функции <span class="function"><a href="function.str-replace.html" class="function">str_replace()</a></span></span></p>
+
+ </div>
+
+ <div class="refsect1 description" id="refsect1-function.str-ireplace-description">
+  <h3 class="title">Описание</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type"><a href="language.pseudo-types.html#language.types.mixed" class="type mixed">mixed</a></span> <span class="methodname"><b>str_ireplace</b></span>
+    ( <span class="methodparam"><span class="type"><a href="language.pseudo-types.html#language.types.mixed" class="type mixed">mixed</a></span> <tt class="parameter">$search</tt></span>
+   , <span class="methodparam"><span class="type"><a href="language.pseudo-types.html#language.types.mixed" class="type mixed">mixed</a></span> <tt class="parameter">$replace</tt></span>
+   , <span class="methodparam"><span class="type"><a href="language.pseudo-types.html#language.types.mixed" class="type mixed">mixed</a></span> <tt class="parameter">$subject</tt></span>
+   [, <span class="methodparam"><span class="type">int</span> <tt class="parameter reference">&$count</tt></span>
+  ] )</div>
+
+  <p class="para rdfs-comment">
+   Эта функция возвращает строку или массив, в котором все
+   вхождения <i><tt class="parameter">search</tt></i> в <i><tt class="parameter">subject</tt></i>
+   заменены на <i><tt class="parameter">replace</tt></i> (без учета регистра символов).
+   Если не нужны сложные правила поиска/замены, использование этой
+   функции предпочтительнее <span class="function"><a href="function.preg-replace.html" class="function">preg_replace()</a></span> с модификатором
+   <i>i</i>.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-function.str-ireplace-parameters">
+  <h3 class="title">Список параметров</h3>
+  <p class="para">
+   Если <i><tt class="parameter">search</tt></i> и <i><tt class="parameter">replace</tt></i>
+   - массивы, то <span class="function"><b>str_ireplace()</b></span> использует каждое
+   значение из соответствующего массива для поиска и замены в
+   <i><tt class="parameter">subject</tt></i>. Если в массиве
+   <i><tt class="parameter">replace</tt></i> меньше элементов, чем в
+   <i><tt class="parameter">search</tt></i>, в качестве строки замены для
+   оставшихся значений будет использована пустая строка.
+   Если <i><tt class="parameter">search</tt></i> - массив, а
+   <i><tt class="parameter">replace</tt></i> - строка, то
+   эта строка замены будет использована для каждого элемента
+   массива <i><tt class="parameter">search</tt></i>. Обратный случай смысла
+   не имеет.
+  </p>
+  <p class="para">
+   Если <i><tt class="parameter">search</tt></i> или
+   <i><tt class="parameter">replace</tt></i> являются массивами, их элементы
+   будут обработаны от первого к последнему.
+  </p>
+  <p class="para">
+   <dl>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">search</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Искомое значение, также известное как <em class="emphasis">needle</em>
+       (иголка). Для множества искомых значений можно использовать массив.
+      </p>
+     </dd>
+
+    </dt>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">replace</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Значение замены, будет использовано для замены искомых значений
+       <i><tt class="parameter">search</tt></i>. Для множества значений можно использовать
+       массив.
+      </p>
+     </dd>
+
+    </dt>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">subject</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Строка или массив, в котором производится поиск и замена,
+       также известный как <em class="emphasis">haystack</em> (стог сена).
+      </p>
+      <p class="para">
+       Если <i><tt class="parameter">subject</tt></i> является массивом, то поиск
+       с заменой будет осуществляться над каждым элементом
+       <i><tt class="parameter">subject</tt></i>, а результатом функции также
+       будет являться массив.
+      </p>
+     </dd>
+
+    </dt>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">count</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Если передан, то будет установлен в количество произведенных замен.
+      </p>
+     </dd>
+
+    </dt>
+
+   </dl>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-function.str-ireplace-returnvalues">
+  <h3 class="title">Возвращаемые значения</h3>
+  <p class="para">
+   Возвращает строку или массив с замененными значениями.
+  </p>
+ </div>
+
+
+ <div class="refsect1 changelog" id="refsect1-function.str-ireplace-changelog">
+  <h3 class="title">Список изменений</h3>
+  <p class="para">
+   <table class="doctable informaltable">
+    
+     <thead valign="middle">
+      <tr valign="middle">
+       <th>Версия</th>
+       <th>Описание</th>
+      </tr>
+
+     </thead>
+
+     <tbody valign="middle" class="tbody">
+      <tr valign="middle">
+       <td align="left">5.0.0</td>
+       <td align="left">
+        Добавлен параметр <i><tt class="parameter">count</tt></i>.
+       </td>
+      </tr>
+
+     </tbody>
+    
+   </table>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-function.str-ireplace-examples">
+  <h3 class="title">Примеры</h3>
+  <p class="para">
+   <div class="example" id="example-4381">
+    <p><b>Пример #1 Пример использования <span class="function"><b>str_ireplace()</b></span></b></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$bodytag&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">str_ireplace</span><span style="color: #007700">(</span><span style="color: #DD0000">"%body%"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"black"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"&lt;body&nbsp;text=%BODY%&gt;"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+  </p>
+ </div>
+
+
+ <div class="refsect1 notes" id="refsect1-function.str-ireplace-notes">
+  <h3 class="title">Примечания</h3>
+  <blockquote class="note"><p><b class="note">Замечание</b>: <span class="simpara">Эта функция безопасна
+для обработки данных в двоичной форме.</span></p></blockquote>
+  <div class="caution"><b class="caution">Предостережение</b>
+   <h1 class="title">Замечание о порядке замены</h1>
+   <p class="para">
+    Так как <span class="function"><b>str_ireplace()</b></span> осуществляет замену
+    слева направо, то при использовании множественных замен
+    она может заменить ранее вставленное значение на другое.
+    Пример №2 в документации <span class="function"><a href="function.str-replace.html" class="function">str_replace()</a></span> поясняет
+    как это работает на практике.
+   </p>
+  </div>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-function.str-ireplace-seealso">
+  <h3 class="title">Смотрите также</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><span class="function"><a href="function.str-replace.html" class="function" rel="rdfs-seeAlso">str_replace()</a> - Заменяет все вхождения строки поиска на строку замены</span></li>
+    <li class="member"><span class="function"><a href="function.preg-replace.html" class="function" rel="rdfs-seeAlso">preg_replace()</a> - Выполняет поиск и замену по регулярному выражению</span></li>
+    <li class="member"><span class="function"><a href="function.strtr.html" class="function" rel="rdfs-seeAlso">strtr()</a> - Преобразует заданные символы или заменяет подстроки</span></li>
+   </ul>
+  </p>
+ </div>
+
+
+</div><hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.str-getcsv.html">str_getcsv</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.str-pad.html">str_pad</a></div>
+ <div class="up"><a href="ref.strings.html">Обработка строк</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

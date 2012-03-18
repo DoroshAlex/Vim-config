@@ -1,0 +1,75 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Обзор пространств имен</title>
+
+ </head>
+ <body><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="language.namespaces.html">Пространства имен</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="language.namespaces.definition.html">Определение пространств имен</a></div>
+ <div class="up"><a href="language.namespaces.html">Пространства имен</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="language.namespaces.rationale" class="sect1">
+  <h2 class="title">Обзор пространств имен</h2>
+  <p class="verinfo">(PHP 5 &gt;= 5.3.0)</p>
+  <p class="simpara">
+   Что такое пространства имен? В широком смысле - это один из способов инкапсуляции элементов.
+   Такое абстрактное понятие можно увидеть во многих местах. Например, в любой операционной
+   системе директории служат для группировки связанных файлов и выступают в качестве 
+   пространства имен для находящихся в них файлов. В качестве конкретного примера файл
+   <i>foo.txt</i> может находиться сразу в обоих директориях: <i>/home/greg</i> 
+   и <i>/home/other</i>, но две копии <i>foo.txt</i> не могут
+   существовать в одной директории. Кроме того, для доступа к <i>foo.txt</i> извне 
+   директории <i>/home/greg</i>, мы должны добавить имя директории перед именем файла
+   используя разделитель, чтобы получить <i>/home/greg/foo.txt</i>. Этот же принцип 
+   распространяется и на пространства имен в программировании.
+  </p>
+  <p class="simpara">
+   В PHP пространства имен используются для решения двух проблем, с которыми
+   сталкиваются авторы библиотек и приложений при создании повторно используемых
+   элементов кода, таких как классы и функции:
+  </p>
+  <p class="para">
+   <ol type="1">
+    <li class="listitem">
+     <span class="simpara">
+      Конфликт имен между вашим кодом и
+   внутренними классами/функциями/константами PHP или сторонними.
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      Возможность создавать псевдонимы (или сокращения) для Ну_Очень_Длинных_Имен, чтобы облегчить
+      первую проблему и улучшить читаемость исходного кода.
+     </span>
+    </li>
+   </ol>
+  </p>
+  <p class="simpara">
+   Пространства имен PHP предоставляют возможность группировать логически связанные
+   классы, интерфейсы, функции и константы.
+  </p>
+  <div class="example" id="example-219">
+   <p><b>Пример #1 Пример синтаксиса, использующего пространство имен</b></p>
+   <div class="example-contents">
+   <div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">namespace&nbsp;</span><span style="color: #0000BB">my</span><span style="color: #007700">\</span><span style="color: #0000BB">name</span><span style="color: #007700">;&nbsp;</span><span style="color: #FF8000">//&nbsp;см.&nbsp;раздел&nbsp;"Определение&nbsp;пространств&nbsp;имен"<br /><br /></span><span style="color: #007700">class&nbsp;</span><span style="color: #0000BB">MyClass&nbsp;</span><span style="color: #007700">{}<br />function&nbsp;</span><span style="color: #0000BB">myfunction</span><span style="color: #007700">()&nbsp;{}<br />const&nbsp;</span><span style="color: #0000BB">MYCONST&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">1</span><span style="color: #007700">;<br /><br /></span><span style="color: #0000BB">$a&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">MyClass</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$c&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;\</span><span style="color: #0000BB">my</span><span style="color: #007700">\</span><span style="color: #0000BB">name</span><span style="color: #007700">\</span><span style="color: #0000BB">MyClass</span><span style="color: #007700">;&nbsp;</span><span style="color: #FF8000">//&nbsp;см.&nbsp;раздел&nbsp;"Глобальная&nbsp;область&nbsp;видимости"<br /><br /></span><span style="color: #0000BB">$a&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">strlen</span><span style="color: #007700">(</span><span style="color: #DD0000">'hi'</span><span style="color: #007700">);&nbsp;</span><span style="color: #FF8000">//&nbsp;см.&nbsp;раздел&nbsp;"Использование&nbsp;пространств&nbsp;имен:&nbsp;возврат<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;к&nbsp;глобальной&nbsp;функции/константе"<br /><br /></span><span style="color: #0000BB">$d&nbsp;</span><span style="color: #007700">=&nbsp;namespace\</span><span style="color: #0000BB">MYCONST</span><span style="color: #007700">;&nbsp;</span><span style="color: #FF8000">//&nbsp;см.&nbsp;раздел&nbsp;"оператор&nbsp;пространства&nbsp;имен&nbsp;и<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;константа&nbsp;__NAMESPACE__"<br /></span><span style="color: #0000BB">$d&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">__NAMESPACE__&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #DD0000">'\MYCONST'</span><span style="color: #007700">;<br />echo&nbsp;</span><span style="color: #0000BB">constant</span><span style="color: #007700">(</span><span style="color: #0000BB">$d</span><span style="color: #007700">);&nbsp;</span><span style="color: #FF8000">//&nbsp;см.&nbsp;раздел&nbsp;"Пространства&nbsp;имен&nbsp;и&nbsp;динамические&nbsp;особенности&nbsp;языка"<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+   </div>
+
+  </div>
+  <blockquote class="note"><p><b class="note">Замечание</b>: 
+   <p class="para">
+    Названия пространств имен <i>PHP</i> и <i>php</i>, и составные названия,
+ начинающиеся с этих (такие как <i>PHP\Classes</i>), являются зарезервированными для
+ нужд языка и их не следует использовать в пользовательском коде.
+   </p>
+  </p></blockquote>
+ </div><hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="language.namespaces.html">Пространства имен</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="language.namespaces.definition.html">Определение пространств имен</a></div>
+ <div class="up"><a href="language.namespaces.html">Пространства имен</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

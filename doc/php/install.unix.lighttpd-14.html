@@ -1,0 +1,163 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Установка PHP на Lighttpd 1.4 на Unix системах</title>
+
+ </head>
+ <body><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="install.unix.apache2.html">Apache 2.x на Unix системах</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="install.unix.sun.html">Sun, iPlanet and Netscape servers on Sun Solaris</a></div>
+ <div class="up"><a href="install.unix.html">Установка на Unix системы</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="install.unix.lighttpd-14" class="sect1">
+ <h2 class="title">Установка PHP на Lighttpd 1.4 на Unix системах</h2>
+
+ <p class="para">
+  Этот раздел содержит информацию по установке PHP на Unix-системы
+  с сервером Lighttpd 1.4.
+ </p>
+
+ <p class="para">
+  Прочитайте, пожалуйста, инструкции по установке Lighttpd в 
+  <a href="http://trac.lighttpd.net/trac/" class="link external">&raquo;&nbsp;документации по Lighttpd</a>
+  перед установкой PHP.
+ </p>
+ 
+ <p class="para">
+  Fastcgi - предпочитаемый интерфейс для связи PHP и Lighttpd. Fastcgi доступен
+  по умолчанию в PHP начиная с версии 5.3. Для предыдущих версий необходимо
+  конфигурировать PHP с флагом --enable-fastcgi. Чтобы убедиться, что PHP 
+  скомпилирован с поддержкой fastcgi, необходимо проверить наличие
+  <i>(cgi-fcgi)</i> в выводе команды <i>php -v</i>. Для версии 
+  5.2.5 это будет выглядеть так: <i>PHP 5.2.5 (cgi-fcgi)</i>.
+  До версии 5.2.3 не существовало отдельного файла php-cgi, fastcgi встривался 
+  в основной бинарный файл php.
+ </p>
+ 
+ <div class="sect2" id="install.unix.lighttpd-14.lighttpd-spawn">
+  <h3 class="title">Управление процессами php через Lighttpd</h3>
+
+  <p class="para">
+   Для настройки Lighttpd на соединение с PHP и порождения процессов fastcgi
+   необходимо отредактировать конфигурационный файл lighttpd.conf. Предпочтительнее
+   подключаться к процессам fastcgi используя unix-сокеты.
+  </p>
+
+  <div class="example" id="example-27">
+   <p><b>Пример #1 Пример части файла lighttpd.conf</b></p>
+   <div class="example-contents screen">
+<div class="cdata"><pre>
+server.modules += ( &quot;mod_fastcgi&quot; )
+
+fastcgi.server = ( &quot;.php&quot; =&gt;
+  ((
+    &quot;socket&quot; =&gt; &quot;/tmp/php.socket&quot;,
+    &quot;bin-path&quot; =&gt; &quot;/usr/local/bin/php-cgi&quot;,
+    &quot;bin-environment&quot; =&gt; (
+      &quot;PHP_FCGI_CHILDREN&quot; =&gt; &quot;16&quot;,
+      &quot;PHP_FCGI_MAX_REQUESTS&quot; =&gt; &quot;10000&quot;
+    ),
+    &quot;min-procs&quot; =&gt; 1,
+    &quot;max-procs&quot; =&gt; 1,
+    &quot;idle-timeout&quot; =&gt; 20
+  ))
+)
+</pre></div>
+
+   </div>
+  </div>
+
+  <p class="para">
+   Директива <i>bin-path</i> задает путь к исполняемому
+   файлу php. Lighttpd будет динамически создавать дочерние процессы php, 
+   согласно переменной окружения PHP_FCGI_CHILDREN.
+   Директива <i>bin-environment</i> задает настройки для
+   дочерних процессов. PHP_FCGI_MAX_REQUESTS определяет порог, при достижении
+   которого PHP завершит дочерний процесс. Директив &quot;min-procs&quot; и &quot;max-procs&quot;
+   обычно стоит избегать. PHP управляет только своими дочерними процессами, и 
+   инструменты кэширования в байткод (например, APC) будут использоваться 
+   только в этих дочерних процессах.
+   Если значение &quot;min-procs&quot; установлено больше 1, общее количество процессов,
+   обрабатывающих запросы, будет равно PHP_FCGI_CHILDREN * min-procs.
+  </p>
+ </div>
+
+ <div class="sect2" id="install.unix.lighttpd-14.spawn-fcgi">
+  <h3 class="title">Управление процессами с помощью spawn-fcgi</h3>  
+
+  <p class="para">
+   Lighttpd предоставляет программу spawn-fcgi для облегчения управления
+   дочерними процессами.
+  </p>
+ </div>
+
+ <div class="sect2" id="install.unix.lighttpd-14.spawn-php">
+  <h3 class="title">Управление процессами с помощью php-cgi</h3>
+
+  <p class="para">
+   Управлять процессами можно и без spawn-fcgi, но это потребует некоторых 
+   доработок. Переменная окружения PHP_FCGI_CHILDREN указывает количество 
+   дочерних процессов, запускаемых PHP для обработки входящих запросов. 
+   Переменная PHP_FCGI_MAX_REQUESTS отвечает за количество запросов, 
+   которые обработает один процесс. Ниже приведен простой bash-скрипт, 
+   облегчающий создание дочерних процессов.
+  </p>
+     
+  <div class="example" id="example-28">
+   <p><b>Пример #2 Создание FastCGI-обработчиков</b></p>
+   <div class="example-contents screen">
+<div class="cdata"><pre>
+#!/bin/sh
+
+# Местоположение бинарного файла php-cgi
+PHP=/usr/local/bin/php-cgi
+
+# Местоположение PID-файла
+PHP_PID=/tmp/php.pid
+
+# Привязка к адресу
+#FCGI_BIND_ADDRESS=10.0.1.1:10000
+# Привязка к сокету
+FCGI_BIND_ADDRESS=/tmp/php.sock
+
+PHP_FCGI_CHILDREN=16
+PHP_FCGI_MAX_REQUESTS=10000
+
+env -i PHP_FCGI_CHILDREN=$PHP_FCGI_CHILDREN \
+       PHP_FCGI_MAX_REQUESTS=$PHP_FCGI_MAX_REQUESTS \
+       $PHP -b $FCGI_BIND_ADDRESS &amp;
+
+echo $! &gt; &quot;$PHP_PID&quot;
+
+</pre></div>
+   </div>
+  </div>
+ </div>
+
+ <div class="sect2" id="install.unix.lighttpd-14.remote-fcgi">
+  <h3 class="title">Подключение к удаленным процессам FCGI</h3>
+
+  <p class="para">
+   Обработчики fastcgi могут находиться на нескольких отдельных машинах
+   для маштабирования нагрузки.
+  </p>
+   
+  <div class="example" id="example-29">
+   <p><b>Пример #3 Подключение к удаленным процессам fastcgi</b></p>
+   <div class="example-contents screen">
+<div class="cdata"><pre>
+fastcgi.server = ( &quot;.php&quot; =&gt;
+   (( &quot;host&quot; =&gt; &quot;10.0.0.2&quot;, &quot;port&quot; =&gt; 1030 ),
+    ( &quot;host&quot; =&gt; &quot;10.0.0.3&quot;, &quot;port&quot; =&gt; 1030 ))
+)
+</pre></div>
+   </div>
+  </div>
+ </div>
+</div><hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="install.unix.apache2.html">Apache 2.x на Unix системах</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="install.unix.sun.html">Sun, iPlanet and Netscape servers on Sun Solaris</a></div>
+ <div class="up"><a href="install.unix.html">Установка на Unix системы</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

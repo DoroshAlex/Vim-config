@@ -1,0 +1,113 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Клонирование объектов</title>
+
+ </head>
+ <body><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="language.oop5.final.html">Ключевое слово &quot;final&quot;</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="language.oop5.object-comparison.html">Сравнение объектов</a></div>
+ <div class="up"><a href="language.oop5.html">Классы и объекты</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="language.oop5.cloning" class="sect1">
+  <h2 class="title">Клонирование объектов</h2>
+  
+  <p class="para">
+   Создание копии объекта с абсолютно идентичными свойствами
+   не всегда является приемлемым вариантом. Хорошим примером
+   необходимости копирования конструкторов может послужить
+   ситуация, когда у вас есть объект, представляющий собой
+   окно GTK и содержащий ресурс-идентификатор этого окна; когда
+   вы создаете копию этого объекта, вам может понадобиться,
+   чтобы копия объекта содержала ресурс-идентификатор
+   нового окна. Другим примером может послужить ситуация,
+   когда ваш объект содержит ссылку на какой-либо другой используемый
+   объект и, когда вы создаёте копию родительского объекта,
+   вам нужно также создать новый экземпляр этого другого объекта,
+   так, чтобы копия объекта-контейнера содержала собственный отдельный
+   экземпляр содержащегося объекта.
+  </p>
+
+  <p class="para">
+   Копия объекта создается с использованием ключевого слова clone
+   (который вызывает метод <a href="language.oop5.cloning.html" class="link">__clone()</a>
+   объекта, если это возможно). Вызов метода <a href="language.oop5.cloning.html" class="link">__clone()</a>
+   не может быть осуществлён непосредственно.
+  </p>
+
+  <div class="informalexample">
+   <div class="example-contents">
+<div class="cdata"><pre>
+$copy_of_object = clone $object;
+</pre></div>
+   </div>
+
+  </div>
+
+  <p class="para">
+   При клонировании объекта, PHP 5 выполняет неполную копию
+   всех свойств объекта. Любые свойства, являющиеся ссылками на другие 
+   переменные, останутся ссылками.
+  </p>
+ 
+  <p class="para">
+   По завершении клонирования, если у класса был определен метод
+   <a href="language.oop5.cloning.html" class="link">__clone()</a>, то этот
+   метод <a href="language.oop5.cloning.html" class="link">__clone()</a>
+   вызывается у свежесозданной копии объекта, для возможного
+   изменения всех необходимых свойств.
+  </p>
+
+  <div class="example" id="example-211">
+   <p><b>Пример #1 Клонирование объекта</b></p>
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">class&nbsp;</span><span style="color: #0000BB">SubObject<br /></span><span style="color: #007700">{<br />&nbsp;&nbsp;&nbsp;&nbsp;static&nbsp;</span><span style="color: #0000BB">$instances&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;</span><span style="color: #0000BB">$instance</span><span style="color: #007700">;<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;function&nbsp;</span><span style="color: #0000BB">__construct</span><span style="color: #007700">()&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">instance&nbsp;</span><span style="color: #007700">=&nbsp;++</span><span style="color: #0000BB">self</span><span style="color: #007700">::</span><span style="color: #0000BB">$instances</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;function&nbsp;</span><span style="color: #0000BB">__clone</span><span style="color: #007700">()&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">instance&nbsp;</span><span style="color: #007700">=&nbsp;++</span><span style="color: #0000BB">self</span><span style="color: #007700">::</span><span style="color: #0000BB">$instances</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />}<br /><br />class&nbsp;</span><span style="color: #0000BB">MyCloneable<br /></span><span style="color: #007700">{<br />&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;</span><span style="color: #0000BB">$object1</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;</span><span style="color: #0000BB">$object2</span><span style="color: #007700">;<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;function&nbsp;</span><span style="color: #0000BB">__clone</span><span style="color: #007700">()<br />&nbsp;&nbsp;&nbsp;&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;Принудительно&nbsp;копируем&nbsp;this-&gt;object,&nbsp;иначе<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;он&nbsp;будет&nbsp;указывать&nbsp;на&nbsp;один&nbsp;и&nbsp;тот&nbsp;же&nbsp;объект.<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">object1&nbsp;</span><span style="color: #007700">=&nbsp;clone&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">object1</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />}<br /><br /></span><span style="color: #0000BB">$obj&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">MyCloneable</span><span style="color: #007700">();<br /><br /></span><span style="color: #0000BB">$obj</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">object1&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">SubObject</span><span style="color: #007700">();<br /></span><span style="color: #0000BB">$obj</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">object2&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">SubObject</span><span style="color: #007700">();<br /><br /></span><span style="color: #0000BB">$obj2&nbsp;</span><span style="color: #007700">=&nbsp;clone&nbsp;</span><span style="color: #0000BB">$obj</span><span style="color: #007700">;<br /><br /><br />print(</span><span style="color: #DD0000">"Оригинальный&nbsp;объект:\n"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">print_r</span><span style="color: #007700">(</span><span style="color: #0000BB">$obj</span><span style="color: #007700">);<br /><br />print(</span><span style="color: #DD0000">"Клонированный&nbsp;объект:\n"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">print_r</span><span style="color: #007700">(</span><span style="color: #0000BB">$obj2</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+   </div>
+
+   <div class="example-contents"><p>Результат выполнения данного примера:</p></div>
+   <div class="example-contents screen">
+<div class="cdata"><pre>
+Оригинальный объект:
+MyCloneable Object
+(
+    [object1] =&gt; SubObject Object
+        (
+            [instance] =&gt; 1
+        )
+
+    [object2] =&gt; SubObject Object
+        (
+            [instance] =&gt; 2
+        )
+
+)
+Клонированный объект:
+MyCloneable Object
+(
+    [object1] =&gt; SubObject Object
+        (
+            [instance] =&gt; 3
+        )
+
+    [object2] =&gt; SubObject Object
+        (
+            [instance] =&gt; 2
+        )
+
+)
+</pre></div>
+
+   </div>
+
+  </div>
+
+ </div><hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="language.oop5.final.html">Ключевое слово &quot;final&quot;</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="language.oop5.object-comparison.html">Сравнение объектов</a></div>
+ <div class="up"><a href="language.oop5.html">Классы и объекты</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

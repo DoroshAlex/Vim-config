@@ -1,0 +1,168 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Общая информация</title>
+
+ </head>
+ <body><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="faq.html">ЧАВО</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="faq.mailinglist.html">Списки рассылки</a></div>
+ <div class="up"><a href="faq.html">ЧАВО</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="faq.general" class="chapter">
+  <h1>Общая информация</h1>
+
+  
+
+  <p class="para">
+   Этот раздел содержит наиболее общие вопросы по PHP:
+   что это такое и что он делает.
+  </p>
+
+  <div class="qandaset"><ol class="qandaset_questions"><li><a href="#faq.general.what">
+     Что такое PHP?
+    </a></li><li><a href="#faq.general.acronym">
+     Что означает PHP?
+    </a></li><li><a href="#faq.general.relation-versions">
+     Какая связь между версиями PHP?
+    </a></li><li><a href="#faq.general.running-concurent">
+     Могу ли я одновременно запускать несколько версий PHP?
+    </a></li><li><a href="#faq.general.differences-45">
+     Какие отличия между PHP 4 и PHP 5?
+    </a></li><li><a href="#faq.general.bug">
+     
+      Я думаю, Я нашёл ошибку! Кому я должен сказать?
+     
+    </a></li></ol></div>
+   <dl class="qandaentry" id="faq.general.what">
+    <dt><strong>
+     Что такое PHP?
+    </strong></dt>
+    <dd class="answer">
+     <p class="para">
+      Из <a href="preface.html" class="link">предисловия к руководству</a>:
+     </p>
+     <p class="para">
+      PHP - это скриптовый язык, который может быть встроен в HTML. 
+      Синтаксис языка в большинстве заимствован из C, Java и Perl c добавлением нескольких
+      специфичных для PHP особенностей. Цель языка - позволить 
+      web-разработчикам
+      легко создавать динамически генерируемые страницы.
+     </p>
+    </dd>
+   </dl>
+
+   <dl class="qandaentry" id="faq.general.acronym">
+    <dt><strong>
+     Что означает PHP?
+    </strong></dt>
+    <dd class="answer">
+     <p class="para">
+     PHP означает <em class="emphasis">PHP: Hypertext Preprocessor</em>.
+     Это название смущает многих людей, так как первое слово в акрониме 
+     также является акронимом. Такой тип акронимов называется рекурсивным.
+     Любопытствующие могут посетить
+     <a href="http://foldoc.org/" class="link external">&raquo;&nbsp;бесплатный вычислительный онлайн-словарь</a>
+     или <a href="http://en.wikipedia.org/wiki/Recursive_acronym" class="link external">&raquo;&nbsp;статью Википедии по рекурсивным акронимам</a>.
+     </p>
+    </dd>
+   </dl>
+
+   <dl class="qandaentry" id="faq.general.relation-versions">
+    <dt><strong>
+     Какая связь между версиями PHP?
+    </strong></dt>
+    <dd class="answer">
+     <p class="para">
+      PHP/FI 2.0 - ранняя и более неподдерживаемия версия PHP. PHP 3 -
+      улучшенная замена PHP/FI 2.0. PHP 5 - текущая версия, которая
+      использует <a href="http://www.zend.com/" class="link external">&raquo;&nbsp;Zend
+      engine 2</a>, которая, кроме прочего, предлагает множество дополнительных
+      возможностей для <a href="language.oop5.html" class="link">объектно-ориентированного
+      программирования</a>.
+     </p>
+    </dd>
+   </dl>
+
+   <dl class="qandaentry" id="faq.general.running-concurent">
+    <dt><strong>
+     Могу ли я одновременно запускать несколько версий PHP?
+    </strong></dt>
+    <dd class="answer">
+     <p class="para">
+      Да. Смотрите файл <var class="filename">INSTALL</var> из дистрибутива 
+      исходников PHP.
+     </p>
+    </dd>
+   </dl>
+
+   <dl class="qandaentry" id="faq.general.differences-45">
+    <dt><strong>
+     Какие отличия между PHP 4 и PHP 5?
+    </strong></dt>
+    <dd class="answer">
+     <p class="para">
+      В то время как PHP 5 был специально задуман быть максимально
+      совместиым со всеми предыдущими версиями, есть несколько
+      важных изменений. Некоторые из них:
+      <ul class="itemizedlist">
+       <li class="listitem">
+        <span class="simpara"><a href="language.oop5.html" class="link">Новая ООП модель</a>,
+        основанная на <em class="emphasis">Zend Engine 2.0</em></span>
+       </li>
+       <li class="listitem">
+        <span class="simpara">Новое расширение для улучшенной поддержки MySQL</span>
+       </li>
+       <li class="listitem">
+        <span class="simpara">Встроенная родная поддержка SQLite</span>
+       </li>
+       <li class="listitem">
+        <span class="simpara">Новая константа уровня ошибок
+         <a href="migrating5.errorrep.html" class="link">E_STRICT</a>,
+         для замечаний во время выполнения кода.
+        </span>
+       </li>
+       <li class="listitem">
+        <span class="simpara">Множество новых <a href="migration5.functions.html" class="link">функций</a>,
+         упрощающих написание кода (и уменьшающих необходимость писать
+         свои собственные функции для многих общих процедур)
+        </span>
+       </li>
+      </ul>
+      За более подробной информацией смотрите разделы
+      <a href="faq.migration5.html" class="link">Миграция с PHP 4 на
+      PHP 5</a> и
+      <a href="migration5.incompatible.html" class="link">Несовместимые
+      изменения</a>.
+     </p>
+    </dd>
+   </dl>
+
+   <dl class="qandaentry" id="faq.general.bug">
+    <dt><strong>
+     
+      Я думаю, Я нашёл ошибку! Кому я должен сказать?
+     
+    </strong></dt>
+    <dd class="answer">
+     <p class="para">
+      Вам надо обратиться к базе данных ошибок в PHP и убедиться,
+      что ошибка ещё не известна. Если вы не видите её в базе данных,
+      заполните форму сообщения об ошибках. При занесении в базу данных, 
+      ошибка получает номер, по которому вы можете отслеживать её статус,
+      поэтому важно использовать базу данных, а не просто послать сообщение 
+      в один из списков рассылки, так как это позволит вам позже
+      вернуться и проверить состояние ошибки. База данных ошибок может быть найдена по адресу
+      <a href="http://bugs.php.net/" class="link external">&raquo;&nbsp;http://bugs.php.net/</a>.
+     </p>
+    </dd>
+   </dl>
+  
+ </div>
+<hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="faq.html">ЧАВО</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="faq.mailinglist.html">Списки рассылки</a></div>
+ <div class="up"><a href="faq.html">ЧАВО</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

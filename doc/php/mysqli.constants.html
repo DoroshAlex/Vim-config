@@ -1,0 +1,956 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Предопределенные константы</title>
+
+ </head>
+ <body><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="mysqli.persistconns.html">The mysqli Extension and Persistent Connections</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="mysqli.summary.html">Основная информация о функциях расширения MySQLi</a></div>
+ <div class="up"><a href="book.mysqli.html">mysqli</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="mysqli.constants" class="appendix">
+ <h1>Предопределенные константы</h1>
+
+ <div class="section">
+  <dl>
+
+   <dt id="constantmysqli-read-default-group">
+    <span class="term"><b><tt>MYSQLI_READ_DEFAULT_GROUP</tt></b></span>
+    <dd>
+
+     <p class="para">
+      Читать опции из указанной группы в файле <var class="filename">my.cnf</var> или файле, указанном
+      с помощью <b><tt>MYSQLI_READ_DEFAULT_FILE</tt></b>
+     </p>
+    </dd>
+
+   </dt>
+
+   <dt id="constantmysqli-read-default-file">
+    <span class="term"><b><tt>MYSQLI_READ_DEFAULT_FILE</tt></b></span>
+    <dd>
+
+     <p class="para">
+      Читать опции из указанного файла, вместо <var class="filename">my.cnf</var>
+     </p>
+    </dd>
+
+   </dt>
+
+   <dt id="constantmysqli-opt-connect-timeout">
+    <span class="term"><b><tt>MYSQLI_OPT_CONNECT_TIMEOUT</tt></b></span>
+    <dd>
+
+     <p class="para">
+      Тайм-аут подключения в секундах.
+     </p>
+    </dd>
+
+   </dt>
+
+   <dt id="constantmysqli-opt-local-infile">
+    <span class="term"><b><tt>MYSQLI_OPT_LOCAL_INFILE</tt></b></span>
+    <dd>
+
+     <p class="para">
+      Включает команду <i>LOAD LOCAL INFILE</i>.
+     </p>
+    </dd>
+
+   </dt>
+
+   <dt id="constantmysqli-init-command">
+    <span class="term"><b><tt>MYSQLI_INIT_COMMAND</tt></b></span>
+    <dd>
+
+     <p class="para">
+      Команда, которая будет выполнена при подключении к серверу MySQL. 
+      Эта команда будет повторно вызвана при переподключении.
+     </p>
+    </dd>
+
+   </dt>
+
+   <dt id="constantmysqli-client-ssl">
+    <span class="term"><b><tt>MYSQLI_CLIENT_SSL</tt></b></span>
+    <dd>
+
+     <p class="para">
+      Использовать SSL (шифрованый протокол). Эта опция не может быть уставовлена приложениями; 
+      она устанавливается внутри библиотеки клиента MySQL.
+     </p>
+    </dd>
+
+   </dt>
+
+   <dt id="constantmysqli-client-compress">
+    <span class="term"><b><tt>MYSQLI_CLIENT_COMPRESS</tt></b></span>
+    <dd>
+
+     <p class="para">
+      Использовать компрессию.
+     </p>
+    </dd>
+
+   </dt>
+
+   <dt id="constantmysqli-client-interactive">
+    <span class="term"><b><tt>MYSQLI_CLIENT_INTERACTIVE</tt></b></span>
+    <dd>
+
+     <p class="para">
+      Ждать <i>interactive_timeout</i> секунд (вместо
+      <i>wait_timeout</i>) бездействия перед закрытием 
+      соединения. Переменная сессии клиента <i>wait_timeout</i>
+      будет установлена в значение переменной сессии
+      <i>interactive_timeout</i>. 
+     </p>
+    </dd>
+
+   </dt>
+
+   <dt id="constantmysqli-client-ignore-space">
+    <span class="term"><b><tt>MYSQLI_CLIENT_IGNORE_SPACE</tt></b></span>
+    <dd>
+
+     <p class="para">
+      Разрешить пробелы после имен функций. Делает все имена функций зарезервированными словами. 
+     </p>
+    </dd>
+
+   </dt>
+
+   <dt id="constantmysqli-client-no-schema">
+    <span class="term"><b><tt>MYSQLI_CLIENT_NO_SCHEMA</tt></b></span>
+    <dd>
+
+     <p class="para">
+      Запретить синтаксис <i>db_name.tbl_name.col_name</i>.
+     </p>
+    </dd>
+
+   </dt>
+
+   <dt id="constantmysqli-client-multi-queries">
+    <span class="term"><b><tt>MYSQLI_CLIENT_MULTI_QUERIES</tt></b></span>
+    <dd>
+
+     <p class="para">
+      Разрешить выполнение в одном вызове функции <span class="function"><a href="mysqli.query.html" class="function">mysqli_query()</a></span> нескольких запросов,
+      разделенных точкой с запятой.
+     </p>
+    </dd>
+
+   </dt>
+
+   <dt id="constantmysqli-store-result">
+    <span class="term"><b><tt>MYSQLI_STORE_RESULT</tt></b></span>
+    <dd>
+
+     <p class="para">
+      Для использования буферизации наборов данных.
+     </p>
+    </dd>
+
+   </dt>
+
+   <dt id="constantmysqli-use-result">
+    <span class="term"><b><tt>MYSQLI_USE_RESULT</tt></b></span>
+    <dd>
+
+     <p class="para">
+      Для использования небуферизированных наборов данных.
+     </p>
+    </dd>
+
+   </dt>
+
+   <dt id="constantmysqli-assoc">
+    <span class="term"><b><tt>MYSQLI_ASSOC</tt></b></span>
+    <dd>
+
+     <p class="para">
+      Результат возвращается в виде ассоциативного массива с именами полей в качестве индексов.
+     </p>
+    </dd>
+
+   </dt>
+
+   <dt id="constantmysqli-num">
+    <span class="term"><b><tt>MYSQLI_NUM</tt></b></span>
+    <dd>
+
+     <p class="para">
+      Результат возвращается в виде индексного массива.
+     </p>
+    </dd>
+
+   </dt>
+
+   <dt id="constantmysqli-both">
+    <span class="term"><b><tt>MYSQLI_BOTH</tt></b></span>
+    <dd>
+
+     <p class="para">
+      Результат возвращается в виде массива, который содержит как числовой, так и ассоциативный индексы.
+     </p>
+    </dd>
+
+   </dt>
+
+   <dt id="constantmysqli-not-null-flag">
+    <span class="term"><b><tt>MYSQLI_NOT_NULL_FLAG</tt></b></span>
+    <dd>
+
+     <p class="para">
+      Информирует о том, что поле определено как <i>NOT NULL</i>.
+     </p>
+    </dd>
+
+   </dt>
+
+   <dt id="constantmysqli-pri-key-flag">
+    <span class="term"><b><tt>MYSQLI_PRI_KEY_FLAG</tt></b></span>
+    <dd>
+
+     <p class="para">
+      Поле является частью первичного индекса.
+     </p>
+    </dd>
+
+   </dt>
+
+   <dt id="constantmysqli-unique-key-flag">
+    <span class="term"><b><tt>MYSQLI_UNIQUE_KEY_FLAG</tt></b></span>
+    <dd>
+
+     <p class="para">
+      Поле является частью уникального индекса.
+     </p>
+    </dd>
+
+   </dt>
+
+
+   <dt id="constantmysqli-multiple-key-flag">
+    <span class="term"><b><tt>MYSQLI_MULTIPLE_KEY_FLAG</tt></b></span>
+    <dd>
+
+     <p class="para">
+      Поле является частью индекса.
+     </p>
+    </dd>
+
+   </dt>
+
+   <dt id="constantmysqli-blob-flag">
+    <span class="term"><b><tt>MYSQLI_BLOB_FLAG</tt></b></span>
+    <dd>
+
+     <p class="para">
+      Поле определено как <i>BLOB</i>.
+     </p>
+    </dd>
+
+   </dt>
+
+   <dt id="constantmysqli-unsigned-flag">
+    <span class="term"><b><tt>MYSQLI_UNSIGNED_FLAG</tt></b></span>
+    <dd>
+
+     <p class="para">
+      Поле определено как <i>UNSIGNED</i>.
+     </p>
+    </dd>
+
+   </dt>
+
+   <dt id="constantmysqli-zerofill-flag">
+    <span class="term"><b><tt>MYSQLI_ZEROFILL_FLAG</tt></b></span>
+    <dd>
+
+     <p class="para">
+      Поле определено как <i>ZEROFILL</i>.
+     </p>
+    </dd>
+
+   </dt>
+
+   <dt id="constantmysqli-auto-increment-flag">
+    <span class="term"><b><tt>MYSQLI_AUTO_INCREMENT_FLAG</tt></b></span>
+    <dd>
+
+     <p class="para">
+      Поле определено как <i>AUTO_INCREMENT</i>.
+     </p>
+    </dd>
+
+   </dt>
+
+   <dt id="constantmysqli-timestamp-flag">
+    <span class="term"><b><tt>MYSQLI_TIMESTAMP_FLAG</tt></b></span>
+    <dd>
+
+     <p class="para">
+      Поле определено как <i>TIMESTAMP</i>.
+     </p>
+    </dd>
+
+   </dt>
+
+   <dt id="constantmysqli-set-flag">
+    <span class="term"><b><tt>MYSQLI_SET_FLAG</tt></b></span>
+    <dd>
+
+     <p class="para">
+      Поле определено как <i>SET</i>.
+     </p>
+    </dd>
+
+   </dt>
+
+   <dt id="constantmysqli-num-flag">
+    <span class="term"><b><tt>MYSQLI_NUM_FLAG</tt></b></span>
+    <dd>
+
+     <p class="para">
+      Поле определено как <i>NUMERIC</i>.
+     </p>
+    </dd>
+
+   </dt>
+
+   <dt id="constantmysqli-part-key-flag">
+    <span class="term"><b><tt>MYSQLI_PART_KEY_FLAG</tt></b></span>
+    <dd>
+
+     <p class="para">
+      Поле является частью мульти-индекса.
+     </p>
+    </dd>
+
+   </dt>
+
+   <dt id="constantmysqli-group-flag">
+    <span class="term"><b><tt>MYSQLI_GROUP_FLAG</tt></b></span>
+    <dd>
+
+     <p class="para">
+      Поле является частью <i>GROUP BY</i>.
+     </p>
+    </dd>
+
+   </dt>
+
+   <dt id="constantmysqli-type-decimal">
+    <span class="term"><b><tt>MYSQLI_TYPE_DECIMAL</tt></b></span>
+    <dd>
+
+     <p class="para">
+      Поле определено как <i>DECIMAL</i>.
+     </p>
+    </dd>
+
+   </dt>
+
+   <dt id="constantmysqli-type-newdecimal">
+    <span class="term"><b><tt>MYSQLI_TYPE_NEWDECIMAL</tt></b></span>
+    <dd>
+
+     <p class="para">
+      Математическая точность полей <i>DECIMAL</i> или 
+      <i>NUMERIC</i> (MySQL 5.0.3 и выше).
+     </p>
+    </dd>
+
+   </dt>
+
+   <dt id="constantmysqli-type-bit">
+    <span class="term"><b><tt>MYSQLI_TYPE_BIT</tt></b></span>
+    <dd>
+
+     <p class="para">
+      Поле определено как <i>BIT</i> (MySQL 5.0.3 и выше).
+     </p>
+    </dd>
+
+   </dt>
+
+   <dt id="constantmysqli-type-tiny">
+    <span class="term"><b><tt>MYSQLI_TYPE_TINY</tt></b></span>
+    <dd>
+
+     <p class="para">
+      Поле определено как <i>TINYINT</i>.
+     </p>
+    </dd>
+
+   </dt>
+
+   <dt id="constantmysqli-type-short">
+    <span class="term"><b><tt>MYSQLI_TYPE_SHORT</tt></b></span>
+    <dd>
+
+     <p class="para">
+      Поле определено как <i>SMALLINT</i>.
+     </p>
+    </dd>
+
+   </dt>
+
+   <dt id="constantmysqli-type-long">
+    <span class="term"><b><tt>MYSQLI_TYPE_LONG</tt></b></span>
+    <dd>
+
+     <p class="para">
+      Поле определено как <i>INT</i>.
+     </p>
+    </dd>
+
+   </dt>
+
+   <dt id="constantmysqli-type-fload">
+    <span class="term"><b><tt>MYSQLI_TYPE_FLOAT</tt></b></span>
+    <dd>
+
+     <p class="para">
+      Поле определено как <i>FLOAT</i>.
+     </p>
+    </dd>
+
+   </dt>
+
+   <dt id="constantmysqli-type-double">
+    <span class="term"><b><tt>MYSQLI_TYPE_DOUBLE</tt></b></span>
+    <dd>
+
+     <p class="para">
+      Поле определено как <i>DOUBLE</i>.
+     </p>
+    </dd>
+
+   </dt>
+
+   <dt id="constantmysqli-type-null">
+    <span class="term"><b><tt>MYSQLI_TYPE_NULL</tt></b></span>
+    <dd>
+
+     <p class="para">
+      Поле определено как <i>DEFAULT NULL</i>.
+     </p>
+    </dd>
+
+   </dt>
+
+   <dt id="constantmysqli-type-timestamp">
+    <span class="term"><b><tt>MYSQLI_TYPE_TIMESTAMP</tt></b></span>
+    <dd>
+
+     <p class="para">
+      Поле определено как <i>TIMESTAMP</i>.
+     </p>
+    </dd>
+
+   </dt>
+
+   <dt id="constantmysqli-type-longlong">
+    <span class="term"><b><tt>MYSQLI_TYPE_LONGLONG</tt></b></span>
+    <dd>
+
+     <p class="para">
+      Поле определено как <i>BIGINT</i>.
+     </p>
+    </dd>
+
+   </dt>
+
+   <dt id="constantmysqli-type-int24">
+    <span class="term"><b><tt>MYSQLI_TYPE_INT24</tt></b></span>
+    <dd>
+
+     <p class="para">
+      Поле определено как <i>MEDIUMINT</i>.
+     </p>
+    </dd>
+
+   </dt>
+
+   <dt id="constantmysqli-type-date">
+    <span class="term"><b><tt>MYSQLI_TYPE_DATE</tt></b></span>
+    <dd>
+
+     <p class="para">
+      Поле определено как <i>DATE</i>.
+     </p>
+    </dd>
+
+   </dt>
+
+   <dt id="constantmysqli-type-time">
+    <span class="term"><b><tt>MYSQLI_TYPE_TIME</tt></b></span>
+    <dd>
+
+     <p class="para">
+      Поле определено как <i>TIME</i>.
+     </p>
+    </dd>
+
+   </dt>
+
+   <dt id="constantmysqli-type-datetime">
+    <span class="term"><b><tt>MYSQLI_TYPE_DATETIME</tt></b></span>
+    <dd>
+
+     <p class="para">
+      Поле определено как <i>DATETIME</i>.
+     </p>
+    </dd>
+
+   </dt>
+
+   <dt id="constantmysqli-type-year">
+    <span class="term"><b><tt>MYSQLI_TYPE_YEAR</tt></b></span>
+    <dd>
+
+     <p class="para">
+      Поле определено как <i>YEAR</i>.
+     </p>
+    </dd>
+
+   </dt>
+
+   <dt id="constantmysqli-type-newdate">
+    <span class="term"><b><tt>MYSQLI_TYPE_NEWDATE</tt></b></span>
+    <dd>
+
+     <p class="para">
+      Поле определено как <i>DATE</i>.
+     </p>
+    </dd>
+
+   </dt>
+
+   <dt id="constantmysqli-type-interval">
+    <span class="term"><b><tt>MYSQLI_TYPE_INTERVAL</tt></b></span>
+    <dd>
+
+     <p class="para">
+      Поле определено как <i>INTERVAL</i>
+     </p>
+    </dd>
+
+   </dt>
+
+   <dt id="constantmysqli-type-enum">
+    <span class="term"><b><tt>MYSQLI_TYPE_ENUM</tt></b></span>
+    <dd>
+
+     <p class="para">
+      Поле определено как <i>ENUM</i>.
+     </p>
+    </dd>
+
+   </dt>
+
+   <dt id="constantmysqli-type-set">
+    <span class="term"><b><tt>MYSQLI_TYPE_SET</tt></b></span>
+    <dd>
+
+     <p class="para">
+      Поле определено как <i>SET</i>.
+     </p>
+    </dd>
+
+   </dt>
+
+   <dt id="constantmysqli-type-tiny-blob">
+    <span class="term"><b><tt>MYSQLI_TYPE_TINY_BLOB</tt></b></span>
+    <dd>
+
+     <p class="para">
+      Поле определено как <i>TINYBLOB</i>.
+     </p>
+    </dd>
+
+   </dt>
+
+   <dt id="constantmysqli-type-medium-blob">
+    <span class="term"><b><tt>MYSQLI_TYPE_MEDIUM_BLOB</tt></b></span>
+    <dd>
+
+     <p class="para">
+      Поле определено как <i>MEDIUMBLOB</i>.
+     </p>
+    </dd>
+
+   </dt>
+
+   <dt id="constantmysqli-type-long-blob">
+    <span class="term"><b><tt>MYSQLI_TYPE_LONG_BLOB</tt></b></span>
+    <dd>
+
+     <p class="para">
+      Поле определено как <i>LONGBLOB</i>.
+     </p>
+    </dd>
+
+   </dt>
+
+   <dt id="constantmysqli-type-blob">
+    <span class="term"><b><tt>MYSQLI_TYPE_BLOB</tt></b></span>
+    <dd>
+
+     <p class="para">
+      Поле определено как <i>BLOB</i>.
+     </p>
+    </dd>
+
+   </dt>
+
+   <dt id="constantmysqli-type-var-string">
+    <span class="term"><b><tt>MYSQLI_TYPE_VAR_STRING</tt></b></span>
+    <dd>
+
+     <p class="para">
+      Поле определено как <i>VARCHAR</i>.
+     </p>
+    </dd>
+
+   </dt>
+
+   <dt id="constantmysqli-type-string">
+    <span class="term"><b><tt>MYSQLI_TYPE_STRING</tt></b></span>
+    <dd>
+
+     <p class="para">
+      Поле определено как <i>STRING</i>
+     </p>
+    </dd>
+
+   </dt>
+
+   <dt id="constantmysqli-type-char">
+    <span class="term"><b><tt>MYSQLI_TYPE_CHAR</tt></b></span>
+    <dd>
+
+     <p class="para">
+      Поле определено как <i>CHAR</i>.
+     </p>
+    </dd>
+
+   </dt>
+
+   <dt id="constantmysqli-type-geometry">
+    <span class="term"><b><tt>MYSQLI_TYPE_GEOMETRY</tt></b></span>
+    <dd>
+
+     <p class="para">
+      Поле определено как <i>GEOMETRY</i>.
+     </p>
+    </dd>
+
+   </dt>
+
+   <dt id="constantmysqli-need-data">
+    <span class="term"><b><tt>MYSQLI_NEED_DATA</tt></b></span>
+    <dd>
+
+     <p class="para">
+      Имеются еще данные, доступные для связанных переменных.
+     </p>
+    </dd>
+
+   </dt>
+
+   <dt id="constantmysqli-no-data">
+    <span class="term"><b><tt>MYSQLI_NO_DATA</tt></b></span>
+    <dd>
+
+     <p class="para">
+      Больше нет доступных данных для связанных переменных.
+     </p>
+    </dd>
+
+   </dt>
+
+   <dt id="constantmysqli-data-truncated">
+    <span class="term"><b><tt>MYSQLI_DATA_TRUNCATED</tt></b></span>
+    <dd>
+
+     <p class="para">
+      Произошло усечение данных. Доступно начиная с PHP 5.1.0 и MySQL 5.0.5.
+     </p>
+    </dd>
+
+   </dt>
+
+   <dt id="constantmysqli-enum-flag">
+    <span class="term"><b><tt>MYSQLI_ENUM_FLAG</tt></b></span>
+    <dd>
+
+     <p class="para">
+      Поле определено как <i>ENUM</i>. Доступно начиная с PHP 5.3.0.
+     </p>
+    </dd>
+
+   </dt>
+
+   <dt id="constantmysqli-cursor-type-for-update">
+    <span class="term"><b><tt>MYSQLI_CURSOR_TYPE_FOR_UPDATE</tt></b></span>
+    <dd>
+
+     <p class="para">
+     </p>
+    </dd>
+
+   </dt>
+
+   <dt id="constantmysqli-cursor-type-no-cursor">
+    <span class="term"><b><tt>MYSQLI_CURSOR_TYPE_NO_CURSOR</tt></b></span>
+    <dd>
+
+     <p class="para">
+     </p>
+    </dd>
+
+   </dt>
+
+   <dt id="constantmysqli-cursor-type-read-only">
+    <span class="term"><b><tt>MYSQLI_CURSOR_TYPE_READ_ONLY</tt></b></span>
+    <dd>
+
+     <p class="para">
+     </p>
+    </dd>
+
+   </dt>
+
+   <dt id="constantmysqli-cursor-type-scrollable">
+    <span class="term"><b><tt>MYSQLI_CURSOR_TYPE_SCROLLABLE</tt></b></span>
+    <dd>
+
+     <p class="para">
+     </p>
+    </dd>
+
+   </dt>
+
+   <dt id="constantmysqli-stmt-attr-cursor-type">
+    <span class="term"><b><tt>MYSQLI_STMT_ATTR_CURSOR_TYPE</tt></b></span>
+    <dd>
+
+     <p class="para">
+     </p>
+    </dd>
+
+   </dt>
+
+   <dt id="constantmysqli-stmt-attr-prefetch-rows">
+    <span class="term"><b><tt>MYSQLI_STMT_ATTR_PREFETCH_ROWS</tt></b></span>
+    <dd>
+
+     <p class="para">
+     </p>
+    </dd>
+
+   </dt>
+
+   <dt id="constantmysqli-stmt-attr-update-max-length">
+    <span class="term"><b><tt>MYSQLI_STMT_ATTR_UPDATE_MAX_LENGTH</tt></b></span>
+    <dd>
+
+     <p class="para">
+     </p>
+    </dd>
+
+   </dt>
+
+   <dt id="constantmysqli-set-charset-name">
+    <span class="term"><b><tt>MYSQLI_SET_CHARSET_NAME</tt></b></span>
+    <dd>
+
+     <p class="para">
+     </p>
+    </dd>
+
+   </dt>
+
+   <dt id="constantmysqli-report-index">
+    <span class="term"><b><tt>MYSQLI_REPORT_INDEX</tt></b></span>
+    <dd>
+
+     <p class="para">
+      Уведомлять, если индекс, используемый в запросе, не указан либо превышает максимум.
+     </p>
+    </dd>
+
+   </dt>
+
+   <dt id="constantmysqli-report-error">
+    <span class="term"><b><tt>MYSQLI_REPORT_ERROR</tt></b></span>
+    <dd>
+
+     <p class="para">
+      Уведомлять об ошибках вызова функций mysqli.
+     </p>
+    </dd>
+
+   </dt>
+
+   <dt id="constantmysqli-report-strict">
+    <span class="term"><b><tt>MYSQLI_REPORT_STRICT</tt></b></span>
+    <dd>
+
+     <p class="para">
+      Обрабатывать <i>mysqli_sql_exception</i> как ошибки, а не как предупреждения.
+     </p>
+    </dd>
+
+   </dt>
+
+   <dt id="constantmysqli-report-all">
+    <span class="term"><b><tt>MYSQLI_REPORT_ALL</tt></b></span>
+    <dd>
+
+     <p class="para">
+      Включить все уведомления.
+     </p>
+    </dd>
+
+   </dt>
+
+   <dt id="constantmysqli-report-off">
+    <span class="term"><b><tt>MYSQLI_REPORT_OFF</tt></b></span>
+    <dd>
+
+     <p class="para">
+      Отключает уведомления.
+     </p>
+    </dd>
+
+   </dt>
+
+   <dt id="constantmysqli-debug-trace-enabled">
+    <span class="term"><b><tt>MYSQLI_DEBUG_TRACE_ENABLED</tt></b></span>
+    <dd>
+
+     <p class="para">
+      Установлено в 1 если используется функция <span class="function"><a href="mysqli.debug.html" class="function">mysqli_debug()</a></span>.
+     </p>
+    </dd>
+
+   </dt>
+
+   <dt id="constantmysqli-server-query-no-good-index-used">
+    <span class="term"><b><tt>MYSQLI_SERVER_QUERY_NO_GOOD_INDEX_USED</tt></b></span>
+    <dd>
+
+     <p class="para">
+     </p>
+    </dd>
+
+   </dt>
+
+   <dt id="constantmysqli-server-query-no-index-used">
+    <span class="term"><b><tt>MYSQLI_SERVER_QUERY_NO_INDEX_USED</tt></b></span>
+    <dd>
+
+     <p class="para">
+     </p>
+    </dd>
+
+   </dt>
+
+   <dt id="constantmysqli-refresh-grant">
+    <span class="term"><b><tt>MYSQLI_REFRESH_GRANT</tt></b></span>
+    <dd>
+
+     <p class="para">
+     </p>
+    </dd>
+
+   </dt>
+
+   <dt id="constantmysqli-refresh-log">
+    <span class="term"><b><tt>MYSQLI_REFRESH_LOG</tt></b></span>
+    <dd>
+
+     <p class="para">
+     </p>
+    </dd>
+
+   </dt>
+
+   <dt id="constantmysqli-refresh-tables">
+    <span class="term"><b><tt>MYSQLI_REFRESH_TABLES</tt></b></span>
+    <dd>
+
+     <p class="para">
+     </p>
+    </dd>
+
+   </dt>
+
+   <dt id="constantmysqli-refresh-hosts">
+    <span class="term"><b><tt>MYSQLI_REFRESH_HOSTS</tt></b></span>
+    <dd>
+
+     <p class="para">
+     </p>
+    </dd>
+
+   </dt>
+
+   <dt id="constantmysqli-refresh-status">
+    <span class="term"><b><tt>MYSQLI_REFRESH_STATUS</tt></b></span>
+    <dd>
+
+     <p class="para">
+     </p>
+    </dd>
+
+   </dt>
+
+   <dt id="constantmysqli-refresh-threads">
+    <span class="term"><b><tt>MYSQLI_REFRESH_THREADS</tt></b></span>
+    <dd>
+
+     <p class="para">
+     </p>
+    </dd>
+
+   </dt>
+
+   <dt id="constantmysqli-refresh-slave">
+    <span class="term"><b><tt>MYSQLI_REFRESH_SLAVE</tt></b></span>
+    <dd>
+
+     <p class="para">
+     </p>
+    </dd>
+
+   </dt>
+
+   <dt id="constantmysqli-refresh-master">
+    <span class="term"><b><tt>MYSQLI_REFRESH_MASTER</tt></b></span>
+    <dd>
+
+     <p class="para">
+     </p>
+    </dd>
+
+   </dt>
+
+
+  </dl>
+
+ </div>
+</div>
+<hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="mysqli.persistconns.html">The mysqli Extension and Persistent Connections</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="mysqli.summary.html">Основная информация о функциях расширения MySQLi</a></div>
+ <div class="up"><a href="book.mysqli.html">mysqli</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

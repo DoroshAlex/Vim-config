@@ -1,0 +1,126 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Суперглобальные переменные - это встроенные переменные, которые всегда доступны во всех областях видимости</title>
+
+ </head>
+ <body><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="reserved.variables.html">Предопределённые переменные</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="reserved.variables.globals.html">$GLOBALS</a></div>
+ <div class="up"><a href="reserved.variables.html">Предопределённые переменные</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="language.variables.superglobals" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">Суперглобальные переменные</h1>
+  <p class="refpurpose"><span class="refname">Суперглобальные переменные</span> &mdash; <span class="dc-title">Суперглобальные переменные - это встроенные переменные, которые всегда доступны во всех областях видимости</span></p>
+
+ </div>
+ 
+ <div class="refsect1 description" id="refsect1-language.variables.superglobals-description">
+  <h3 class="title">Описание</h3>
+  <p class="para">
+   Некоторые предопределённые переменные в PHP являются &quot;суперглобальными&quot;,
+   что означает, что они доступны в любом месте скрипта. Нет необходимости 
+   использовать синтаксис <strong class="command">global $variable;</strong> для доступа к
+   ним в функциях и методах.
+  </p>
+  <p class="para">
+   Суперглобальными переменными являются:
+   <ul class="simplelist">
+    <li class="member"><var class="varname"><var class="varname"><a href="reserved.variables.globals.html" class="classname">$GLOBALS</a></var></var></li>
+    <li class="member"><var class="varname"><var class="varname"><a href="reserved.variables.server.html" class="classname">$_SERVER</a></var></var></li>
+    <li class="member"><var class="varname"><var class="varname"><a href="reserved.variables.get.html" class="classname">$_GET</a></var></var></li>
+    <li class="member"><var class="varname"><var class="varname"><a href="reserved.variables.post.html" class="classname">$_POST</a></var></var></li>
+    <li class="member"><var class="varname"><var class="varname"><a href="reserved.variables.files.html" class="classname">$_FILES</a></var></var></li>
+    <li class="member"><var class="varname"><var class="varname"><a href="reserved.variables.cookies.html" class="classname">$_COOKIE</a></var></var></li>
+    <li class="member"><var class="varname"><var class="varname"><a href="reserved.variables.session.html" class="classname">$_SESSION</a></var></var></li>
+    <li class="member"><var class="varname"><var class="varname"><a href="reserved.variables.request.html" class="classname">$_REQUEST</a></var></var></li>
+    <li class="member"><var class="varname"><var class="varname"><a href="reserved.variables.environment.html" class="classname">$_ENV</a></var></var></li>
+   </ul>
+  </p>
+ </div>
+
+
+ <div class="refsect1 changelog" id="refsect1-language.variables.superglobals-changelog">
+  <h3 class="title">Список изменений</h3>
+  <p class="para">
+   <table class="doctable informaltable">
+    
+     <thead valign="middle">
+      <tr valign="middle">
+       <th>Версия</th>
+       <th>Описание</th>
+      </tr>
+
+     </thead>
+
+     <tbody valign="middle" class="tbody">
+      <tr valign="middle">
+       <td align="left">4.1.0</td>
+       <td align="left">
+        Суперглобальные переменные впервые появились в PHP.
+       </td>
+      </tr>
+
+     </tbody>
+    
+   </table>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 notes" id="refsect1-language.variables.superglobals-notes">
+  <h3 class="title">Примечания</h3>
+  <blockquote class="note"><p><b class="note">Замечание</b>: 
+   <b>Доступность переменных</b><br />
+   <p class="para">
+    По умолчанию все суперглобальные переменные доступны всегда, однако
+    существуют настройки, которые могут на это влиять. За дальнейшей
+    информацией обращайтесь к описанию директивы
+    <a href="ini.core.html#ini.variables-order" class="link">variables_order</a>.
+   </p>
+  </p></blockquote>
+  <blockquote class="note"><p><b class="note">Замечание</b>: 
+   <b>Работа с register_globals</b><br />
+   <p class="para">
+    В случае, если устаревшая директива <a href="ini.core.html#ini.register-globals" class="link">register_globals</a>
+    включена (<i>on</i>), содержание суперглобальных массивов становится доступно в виде
+    отдельных переменных. Например, <var class="varname"><var class="varname"><a href="reserved.variables.post.html" class="classname">$_POST['foo']</a></var></var> будет
+    также доступна в виде <var class="varname"><var class="varname">$foo</var></var>.
+   </p>
+   <p class="para">
+    За дополнительной информацией обращайтесь к ЧАВО под названием
+    &quot;<a href="faq.using.html#faq.register-globals" class="link">Как register_globals касаются меня?</a>&quot;
+   </p>
+  </p></blockquote>
+  <blockquote class="note"><p><b class="note">Замечание</b>: 
+   <b>Переменные переменных</b><br />
+   <p class="para">
+    Суперглобальные переменные не могут быть использованы в качестве
+    <a href="language.variables.variable.html" class="link">переменных переменных</a>
+    внутри функций и методов.
+   </p>
+  </p></blockquote>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-language.variables.superglobals-seealso">
+  <h3 class="title">Смотрите также</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><a href="language.variables.scope.html" class="link">variable scope</a></li>
+    <li class="member">Директива <a href="ini.core.html#ini.variables-order" class="link">variables_order</a></li>
+    <li class="member">&quot;<a href="book.filter.html" class="link">Функции фильтрации данных</a>&quot;</li>
+   </ul>
+  </p>
+ </div>
+
+
+</div><hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="reserved.variables.html">Предопределённые переменные</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="reserved.variables.globals.html">$GLOBALS</a></div>
+ <div class="up"><a href="reserved.variables.html">Предопределённые переменные</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

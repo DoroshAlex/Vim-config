@@ -1,0 +1,268 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Преобразует локальное время/дату в целое число</title>
+
+ </head>
+ <body><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.gmstrftime.html">gmstrftime</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.localtime.html">localtime</a></div>
+ <div class="up"><a href="ref.datetime.html">Функции даты и времени</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.idate" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">idate</h1>
+  <p class="verinfo">(PHP 5)</p><p class="refpurpose"><span class="refname">idate</span> &mdash; <span class="dc-title">Преобразует локальное время/дату в целое число</span></p>
+
+ </div>
+
+ <div class="refsect1 description" id="refsect1-function.idate-description">
+  <h3 class="title">Описание</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">int</span> <span class="methodname"><b>idate</b></span>
+    ( <span class="methodparam"><span class="type">string</span> <tt class="parameter">$format</tt></span>
+   [, <span class="methodparam"><span class="type">int</span> <tt class="parameter">$timestamp</tt><span class="initializer"> = time()</span></span>
+  ] )</div>
+
+  <p class="para rdfs-comment">
+   Преобразует текущую дату и время в целое число в соответствии со строкой 
+   форматирования <i><tt class="parameter">format</tt></i>. Если аргумент 
+   <i><tt class="parameter">timestamp</tt></i> задан, расчет будет произведен для 
+   этой временной метки, если нет - будет использовано локальное время. 
+   Другими словами, <i><tt class="parameter">timestamp</tt></i> - необязательный 
+   аргумент и по умолчанию равен значению <span class="function"><a href="function.time.html" class="function">time()</a></span>.
+  </p>
+  <p class="para">
+   В отличие от функции <span class="function"><a href="function.date.html" class="function">date()</a></span>, <span class="function"><b>idate()</b></span>
+   принимает только один символ в аргументе <i><tt class="parameter">format</tt></i>.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-function.idate-parameters">
+  <h3 class="title">Список параметров</h3>
+  <p class="para">
+   <dl>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">format</tt></i></span>
+     <dd>
+
+      <p class="para">
+       <table class="doctable table">
+        <caption><b>
+         Допустимые символы в строке аргумента <i><tt class="parameter">format</tt></i></b></caption>
+        
+         <thead valign="middle">
+          <tr valign="middle">
+           <th><i><tt class="parameter">format</tt></i> символ</th>
+           <th>Описание</th>
+          </tr>
+
+         </thead>
+
+         <tbody valign="middle" class="tbody">
+          <tr valign="middle">
+           <td align="left"><i>B</i></td>
+           <td align="left">Эталонное время/Время Интернета</td>
+          </tr>
+
+          <tr valign="middle">
+           <td align="left"><i>d</i></td>
+           <td align="left">День месяца</td>
+          </tr>
+
+          <tr valign="middle">
+           <td align="left"><i>h</i></td>
+           <td align="left">Час (12 часовой формат)</td>
+          </tr>
+
+          <tr valign="middle">
+           <td align="left"><i>H</i></td>
+           <td align="left">Час (24 часовой формат)</td>
+          </tr>
+
+          <tr valign="middle">
+           <td align="left"><i>i</i></td>
+           <td align="left">Минуты</td>
+          </tr>
+
+          <tr valign="middle">
+           <td align="left"><i>I</i> (i в верхнем регистре)</td>
+           <td align="left">возвращает <i>1</i> если активировано DST, или 
+            <i>0</i> в противном случае</td>
+          </tr>
+
+          <tr valign="middle">
+           <td align="left"><i>L</i> (l в верхнем регистре)</td>
+           <td align="left">возвращает <i>1</i> для високосного года,
+            <i>0</i> в противном случае</td>
+          </tr>
+
+          <tr valign="middle">
+           <td align="left"><i>m</i></td>
+           <td align="left">Номер месяца</td>
+          </tr>
+
+          <tr valign="middle">
+           <td align="left"><i>s</i></td>
+           <td align="left">Секунды</td>
+          </tr>
+
+          <tr valign="middle">
+           <td align="left"><i>t</i></td>
+           <td align="left">Количество дней в текущем месяце</td>
+          </tr>
+
+          <tr valign="middle">
+           <td align="left"><i>U</i></td>
+           <td align="left">Время в секундах, от начала эпохи UNIX - 1 января 1970 00:00:00 UTC -
+            то же, что <span class="function"><a href="function.time.html" class="function">time()</a></span></td>
+          </tr>
+
+          <tr valign="middle">
+           <td align="left"><i>w</i></td>
+           <td align="left">День недели (<i>0</i> - Воскресенье)</td>
+          </tr>
+
+          <tr valign="middle">
+           <td align="left"><i>W</i></td>
+           <td align="left">ISO-8601 - Номер недели года, неделя начинается с понедельника</td>
+          </tr>
+
+          <tr valign="middle">
+           <td align="left"><i>y</i></td>
+           <td align="left">Год (1 или 2 цифры - см. примечание ниже)</td>
+          </tr>
+
+          <tr valign="middle">
+           <td align="left"><i>Y</i></td>
+           <td align="left">Год (4 цифры)</td>
+          </tr>
+
+          <tr valign="middle">
+           <td align="left"><i>z</i></td>
+           <td align="left">День года</td>
+          </tr>
+
+          <tr valign="middle">
+           <td align="left"><i>Z</i></td>
+           <td align="left">Временная зона - смещение в секундах</td>
+          </tr>
+
+         </tbody>
+        
+       </table>
+
+      </p>
+     </dd>
+
+    </dt>
+
+    
+    
+<dt>
+<span class="term"><i><tt class="parameter">timestamp</tt></i></span><dd>
+<p class="para">
+ Необязательный параметр <i><tt class="parameter">timestamp</tt></i> представляет собой
+ <span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span> метку времени, по умолчанию равную текущему локальному времени, если <i><tt class="parameter">timestamp</tt></i>
+ не указан. Другими словами, значение по умолчанию равно результату функции <span class="function"><a href="function.time.html" class="function">time()</a></span>.
+ </p></dd>
+</dt>
+
+      
+   </dl>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-function.idate-returnvalues">
+  <h3 class="title">Возвращаемые значения</h3>
+  <p class="para">
+   Возвращает целое число <span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>.
+  </p>
+  <p class="para">
+   <span class="function"><b>idate()</b></span> всегда возвращает 
+   <span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span> и не может начинаться с нуля, поэтому 
+   <span class="function"><b>idate()</b></span> может вернуть меньше цифр, чем вы 
+   ожидаете. См. примеры ниже.
+  </p>
+ </div>
+
+
+ <div class="refsect1 errors" id="refsect1-function.idate-errors">
+  <h3 class="title">Ошибки</h3>
+   
+   <p class="para">
+Каждый вызов к функциям даты/времени при неправильных настройках временной зоны сгенерирует ошибку уровня <b><tt>E_NOTICE</tt></b>,
+и/или ошибку уровня <b><tt>E_STRICT</tt></b> или <b><tt>E_WARNING</tt></b> при использовании системных
+настроек или переменной окружения <var class="varname"><var class="varname">TZ</var></var>. Смотрите также <span class="function"><a href="function.date-default-timezone-set.html" class="function">date_default_timezone_set()</a></span></p>
+ 
+ </div>
+
+
+ <div class="refsect1 changelog" id="refsect1-function.idate-changelog">
+  <h3 class="title">Список изменений</h3>
+  <p class="para">
+   <table class="doctable informaltable">
+    
+     <thead valign="middle">
+      <tr valign="middle">
+       <th>Версия</th>
+       <th>Описание</th>
+      </tr>
+
+     </thead>
+
+     <tbody valign="middle" class="tbody">
+      
+      <tr valign="middle"><td align="left">5.1.0</td><td align="left"><p class="para">
+Теперь ошибки, связанные с временными зонами, генерируют ошибки уровня <b><tt>E_STRICT</tt></b> и <b><tt>E_NOTICE</tt></b>.
+</p></td></tr>
+
+     
+     </tbody>
+    
+   </table>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-function.idate-examples">
+  <h3 class="title">Примеры</h3>
+  <p class="para">
+   <div class="example" id="example-655">
+    <p><b>Пример #1 Пример использования <span class="function"><b>idate()</b></span></b></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$timestamp&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">strtotime</span><span style="color: #007700">(</span><span style="color: #DD0000">'1st&nbsp;January&nbsp;2004'</span><span style="color: #007700">);&nbsp;</span><span style="color: #FF8000">//1072915200<br /><br />//&nbsp;это&nbsp;выведет&nbsp;год&nbsp;в&nbsp;2-х&nbsp;знаковом&nbsp;представлении&nbsp;<br />//&nbsp;поскольку&nbsp;первая&nbsp;цифра&nbsp;"0",&nbsp;будет&nbsp;выведено&nbsp;<br />//&nbsp;только&nbsp;"4"<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">idate</span><span style="color: #007700">(</span><span style="color: #DD0000">'y'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$timestamp</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+  </p>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-function.idate-seealso">
+  <h3 class="title">Смотрите также</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><span class="function"><a href="function.date.html" class="function" rel="rdfs-seeAlso">date()</a> - Форматирует вывод системной даты/времени</span></li>
+    <li class="member"><span class="function"><a href="function.getdate.html" class="function" rel="rdfs-seeAlso">getdate()</a> - Возвращает информацию о дате/времени</span></li>
+    <li class="member"><span class="function"><a href="function.time.html" class="function" rel="rdfs-seeAlso">time()</a> - Возвращает текущую метку времени Unix</span></li>
+   </ul>
+  </p>
+ </div>
+
+</div><hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.gmstrftime.html">gmstrftime</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.localtime.html">localtime</a></div>
+ <div class="up"><a href="ref.datetime.html">Функции даты и времени</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

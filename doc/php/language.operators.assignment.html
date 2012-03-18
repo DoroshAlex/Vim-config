@@ -1,0 +1,118 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Оператор присваивания</title>
+
+ </head>
+ <body><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="language.operators.arithmetic.html">Арифметические операторы</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="language.operators.bitwise.html">Побитовые операторы</a></div>
+ <div class="up"><a href="language.operators.html">Операторы</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="language.operators.assignment" class="sect1">
+   <h2 class="title">Оператор присваивания</h2>
+   <p class="simpara">
+    Базовый оператор присваивания обозначается как &quot;=&quot;. На первый взгляд
+    может показаться, что это оператор &quot;равно&quot;. На самом деле это не так.
+    В действительности, оператор присваивания означает, что левый операнд
+    получает значение правого выражения, (т.е. устанавливается значением).
+   </p>
+   <p class="para">
+    Результатом выполнения оператора присваивания является само присвоенное значение.
+    Таким образом, результат выполнения &quot;<i>$a = 3</i>&quot; будет равен
+    3. Это позволяет делать трюки наподобие:
+    <div class="informalexample">
+     <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /><br />$a&nbsp;</span><span style="color: #007700">=&nbsp;(</span><span style="color: #0000BB">$b&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">4</span><span style="color: #007700">)&nbsp;+&nbsp;</span><span style="color: #0000BB">5</span><span style="color: #007700">;&nbsp;</span><span style="color: #FF8000">//&nbsp;$a&nbsp;теперь&nbsp;равно&nbsp;9,&nbsp;а&nbsp;$b&nbsp;было&nbsp;присвоено&nbsp;4.<br /><br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+     </div>
+
+    </div>
+   </p>
+   <p class="para">
+    Для массивов (<span class="type"><a href="language.types.array.html" class="type array">array</a></span>), присвоение значения именованному ключу происходит
+    с помощью оператора &quot;=&gt;&quot;. <a href="language.operators.precedence.html" class="link">Приоритет</a>
+    этого оператора такой же, как и у остальных операторов присваивания.
+   </p>
+   <p class="para">
+    В дополнение к базовому оператору присваивания имеются &quot;комбинированные операторы&quot; для
+    всех  <a href="language.operators.html" class="link">бинарных арифметических</a>операций, 
+    операций объединения массивов и строковых операций, которые позволяют
+    использовать некоторое значение в выражении, а затем установить его как
+    результат данного выражения. Например:
+    <div class="informalexample">
+     <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /><br />$a&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">3</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$a&nbsp;</span><span style="color: #007700">+=&nbsp;</span><span style="color: #0000BB">5</span><span style="color: #007700">;&nbsp;</span><span style="color: #FF8000">//&nbsp;устанавливает&nbsp;$a&nbsp;в&nbsp;8,&nbsp;как&nbsp;если&nbsp;бы&nbsp;мы&nbsp;написали:&nbsp;$a&nbsp;=&nbsp;$a&nbsp;+&nbsp;5;<br /></span><span style="color: #0000BB">$b&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">"Hello&nbsp;"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$b&nbsp;</span><span style="color: #007700">.=&nbsp;</span><span style="color: #DD0000">"There!"</span><span style="color: #007700">;&nbsp;</span><span style="color: #FF8000">//&nbsp;устанавливает&nbsp;$b&nbsp;в&nbsp;"Hello&nbsp;There!",&nbsp;&nbsp;как&nbsp;и&nbsp;$b&nbsp;=&nbsp;$b&nbsp;.&nbsp;"There!";<br /><br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+     </div>
+
+    </div>
+   </p>
+   <p class="para">
+    Обратите внимание, что присвоение копирует оригинальную переменную в новую
+    (присвоение по значению), таким образом все последующие изменения
+    одной из переменных никак не отразятся на другой. Это также следует учитывать,
+    если вам надо скопировать что-то типа большого массива в длинном цикле.
+   </p>
+   <p class="para">
+    Исключением из обычного для PHP способа присваивания по значению явлаются объекты 
+    (<span class="type"><a href="language.types.object.html" class="type object">object</a></span>), которые, начиная с версии PHP 5, присваиваются по ссылке.
+    Принудительно скопировать объекты по значению можно с помощью 
+    специального ключевого слова <a href="language.oop5.cloning.html" class="link">clone</a>.
+   </p>
+
+   <div class="sect2" id="language.operators.assignment.reference">
+    <h3 class="title">Присваивание по ссылке</h3>
+    <p class="para">
+     Присваивание по ссылке также поддерживается, для него используется синтаксис
+     <span class="computeroutput">$var = &amp;$othervar;</span>.
+     &#039;Присваивание по ссылке&#039; означает, что обе переменные указывают на
+     одни и те же данные и никакого копирования не происходит.
+    </p>
+    <p class="para">
+     <div class="example" id="example-105">
+      <p><b>Пример #1 Присваивание по ссылке</b></p>
+      <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$a&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">3</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$b&nbsp;</span><span style="color: #007700">=&nbsp;&amp;</span><span style="color: #0000BB">$a</span><span style="color: #007700">;&nbsp;</span><span style="color: #FF8000">//&nbsp;$b&nbsp;-&nbsp;это&nbsp;ссылка&nbsp;на&nbsp;$a<br /><br /></span><span style="color: #007700">print&nbsp;</span><span style="color: #DD0000">"</span><span style="color: #0000BB">$a</span><span style="color: #DD0000">\n"</span><span style="color: #007700">;&nbsp;</span><span style="color: #FF8000">//&nbsp;печатает&nbsp;3<br /></span><span style="color: #007700">print&nbsp;</span><span style="color: #DD0000">"</span><span style="color: #0000BB">$b</span><span style="color: #DD0000">\n"</span><span style="color: #007700">;&nbsp;</span><span style="color: #FF8000">//&nbsp;печатает&nbsp;3<br /><br /></span><span style="color: #0000BB">$a&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">4</span><span style="color: #007700">;&nbsp;</span><span style="color: #FF8000">//&nbsp;меняем&nbsp;$a<br /><br /></span><span style="color: #007700">print&nbsp;</span><span style="color: #DD0000">"</span><span style="color: #0000BB">$a</span><span style="color: #DD0000">\n"</span><span style="color: #007700">;&nbsp;</span><span style="color: #FF8000">//&nbsp;печатает&nbsp;4<br /></span><span style="color: #007700">print&nbsp;</span><span style="color: #DD0000">"</span><span style="color: #0000BB">$b</span><span style="color: #DD0000">\n"</span><span style="color: #007700">;&nbsp;</span><span style="color: #FF8000">//&nbsp;также&nbsp;печатает&nbsp;4,&nbsp;так&nbsp;как&nbsp;$b&nbsp;является&nbsp;ссылкой&nbsp;на&nbsp;$a,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;а&nbsp;значение&nbsp;переменной&nbsp;$a&nbsp;успело&nbsp;измениться<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+      </div>
+
+     </div>
+    </p>
+    <p class="para">
+     Начиная с версии PHP 5, оператор <a href="language.oop5.basic.html#language.oop5.basic.new" class="link">new</a>
+     автоматически возвращает ссылку, поэтому присваивание результата операции
+     <a href="language.oop5.basic.html#language.oop5.basic.new" class="link">new</a> по ссылке начиная с версии PHP 5.3 
+     генерирует ошибку уровня <b><tt>E_DEPRECATED</tt></b>, а в более ранних версиях
+     - ошибку уровня <b><tt>E_STRICT</tt></b>.
+    </p>
+    <p class="para">
+     Например, следующий код выдаст предупреждение:
+     <div class="informalexample">
+      <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">class&nbsp;</span><span style="color: #0000BB">C&nbsp;</span><span style="color: #007700">{}<br /><br /></span><span style="color: #FF8000">/*&nbsp;Следующая&nbsp;строка&nbsp;сгенерирует&nbsp;следующее&nbsp;сообщение&nbsp;об&nbsp;ошибке:<br />&nbsp;*&nbsp;Deprecated:&nbsp;Assigning&nbsp;the&nbsp;return&nbsp;value&nbsp;of&nbsp;new&nbsp;by&nbsp;reference&nbsp;is&nbsp;deprecated&nbsp;in...<br />&nbsp;*&nbsp;(Устаревший&nbsp;код:&nbsp;Присвоение&nbsp;результата&nbsp;работы&nbsp;new&nbsp;по&nbsp;ссылке&nbsp;устарело&nbsp;в...)<br />&nbsp;*/<br /></span><span style="color: #0000BB">$o&nbsp;</span><span style="color: #007700">=&nbsp;&amp;new&nbsp;</span><span style="color: #0000BB">C</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+      </div>
+
+     </div>
+    </p>
+    <p class="para">
+     Для получения более полной информации о ссылках и их возможностях обратитесь к разделу
+     <a href="language.references.html" class="link">Подробно о ссылках</a>.
+    </p>
+   </div>
+  </div><hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="language.operators.arithmetic.html">Арифметические операторы</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="language.operators.bitwise.html">Побитовые операторы</a></div>
+ <div class="up"><a href="language.operators.html">Операторы</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

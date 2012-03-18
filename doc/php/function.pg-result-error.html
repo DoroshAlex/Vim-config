@@ -1,0 +1,117 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Возвращает сообщение об ошибке, связанной с запросом результата</title>
+
+ </head>
+ <body><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.pg-result-error-field.html">pg_result_error_field</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.pg-result-seek.html">pg_result_seek</a></div>
+ <div class="up"><a href="ref.pgsql.html">PostgreSQL</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.pg-result-error" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">pg_result_error</h1>
+  <p class="verinfo">(PHP 4 &gt;= 4.2.0, PHP 5)</p><p class="refpurpose"><span class="refname">pg_result_error</span> &mdash; <span class="dc-title">
+   Возвращает сообщение об ошибке, связанной с запросом результата
+  </span></p>
+
+ </div>
+
+ <div class="refsect1 description" id="refsect1-function.pg-result-error-description">
+  <h3 class="title">Описание</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">string</span> <span class="methodname"><b>pg_result_error</b></span>
+    ( <span class="methodparam"><span class="type">resource</span> <tt class="parameter">$result</tt></span>
+   )</div>
+
+  <p class="para rdfs-comment">
+   <span class="function"><b>pg_result_error()</b></span> возвращает сообщение о любой 
+   ошибке, связанной с ресурсом <i><tt class="parameter">result</tt></i>. 
+   Таким образом, возможно получить более верное сообщение об ошибке, 
+   чем при использовании <span class="function"><a href="function.pg-last-error.html" class="function">pg_last_error()</a></span>.
+  </p>
+  <p class="para">
+   Функция <span class="function"><a href="function.pg-result-error-field.html" class="function">pg_result_error_field()</a></span> может дать гораздо более 
+   детальную информацию об ошибке, чем <span class="function"><b>pg_result_error()</b></span>.
+  </p>
+  <p class="para">
+   Так как <span class="function"><a href="function.pg-query.html" class="function">pg_query()</a></span> возвращает <b><tt>FALSE</tt></b> в случае ошибки запроса, 
+   необходимо использовать <span class="function"><a href="function.pg-send-query.html" class="function">pg_send_query()</a></span> и
+   <span class="function"><a href="function.pg-get-result.html" class="function">pg_get_result()</a></span> для получения дескриптора результата.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-function.pg-result-error-parameters">
+  <h3 class="title">Список параметров</h3>
+  <p class="para">
+   <dl>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">result</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Ресурс результата запроса PostgreSQL, возвращенный <span class="function"><a href="function.pg-query.html" class="function">pg_query()</a></span>,
+       <span class="function"><a href="function.pg-query-params.html" class="function">pg_query_params()</a></span> или <span class="function"><a href="function.pg-execute.html" class="function">pg_execute()</a></span>
+       (и прочими).
+      </p>
+     </dd>
+
+    </dt>
+
+   </dl>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-function.pg-result-error-returnvalues">
+  <h3 class="title">Возвращаемые значения</h3>
+  <p class="para">
+   Возвращает строку (<span class="type"><a href="language.types.string.html" class="type string">string</a></span>) если есть ошибка, связанная с
+   параметром <i><tt class="parameter">result</tt></i>, иначе <b><tt>FALSE</tt></b>.
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 examples" id="refsect1-function.pg-result-error-examples">
+  <h3 class="title">Примеры</h3>
+  <p class="para">
+   <div class="example" id="example-1948">
+    <p><b>Пример #1 Пример использования <span class="function"><b>pg_result_error()</b></span></b></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />&nbsp;&nbsp;$dbconn&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">pg_connect</span><span style="color: #007700">(</span><span style="color: #DD0000">"dbname=publisher"</span><span style="color: #007700">)&nbsp;or&nbsp;die(</span><span style="color: #DD0000">"Could&nbsp;not&nbsp;connect"</span><span style="color: #007700">);<br /><br />&nbsp;&nbsp;if&nbsp;(!</span><span style="color: #0000BB">pg_connection_busy</span><span style="color: #007700">(</span><span style="color: #0000BB">$dbconn</span><span style="color: #007700">))&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">pg_send_query</span><span style="color: #007700">(</span><span style="color: #0000BB">$dbconn</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"select&nbsp;*&nbsp;from&nbsp;doesnotexist;"</span><span style="color: #007700">);<br />&nbsp;&nbsp;}<br />&nbsp;&nbsp;<br />&nbsp;&nbsp;</span><span style="color: #0000BB">$res1&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">pg_get_result</span><span style="color: #007700">(</span><span style="color: #0000BB">$dbconn</span><span style="color: #007700">);<br />&nbsp;&nbsp;echo&nbsp;</span><span style="color: #0000BB">pg_result_error</span><span style="color: #007700">(</span><span style="color: #0000BB">$res1</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+  </p>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-function.pg-result-error-seealso">
+  <h3 class="title">Смотрите также</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><span class="function"><a href="function.pg-result-error-field.html" class="function" rel="rdfs-seeAlso">pg_result_error_field()</a> - Возвращает конкретное поле из отчета об ошибках</span></li>
+    <li class="member"><span class="function"><a href="function.pg-query.html" class="function" rel="rdfs-seeAlso">pg_query()</a> - Выполняет запрос</span></li>
+    <li class="member"><span class="function"><a href="function.pg-send-query.html" class="function" rel="rdfs-seeAlso">pg_send_query()</a> - Отправляет асинхронный запрос</span></li>
+    <li class="member"><span class="function"><a href="function.pg-get-result.html" class="function" rel="rdfs-seeAlso">pg_get_result()</a> - Получение результата асинхронного запроса</span></li>
+    <li class="member"><span class="function"><a href="function.pg-last-error.html" class="function" rel="rdfs-seeAlso">pg_last_error()</a> - Получает сообщение о последней произошедшей ошибке на соединении с базой данных</span></li>
+    <li class="member"><span class="function"><a href="function.pg-last-notice.html" class="function" rel="rdfs-seeAlso">pg_last_notice()</a> - Возвращает последнее уведомление от сервера PostgreSQL</span></li>
+   </ul>
+  </p>
+ </div>
+
+</div><hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.pg-result-error-field.html">pg_result_error_field</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.pg-result-seek.html">pg_result_seek</a></div>
+ <div class="up"><a href="ref.pgsql.html">PostgreSQL</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

@@ -1,0 +1,125 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Экспортирует содержимое директории SVN</title>
+
+ </head>
+ <body><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.svn-diff.html">svn_diff</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.svn-fs-abort-txn.html">svn_fs_abort_txn</a></div>
+ <div class="up"><a href="ref.svn.html">SVN</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.svn-export" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">svn_export</h1>
+  <p class="verinfo">(PECL svn &gt;= 0.3.0)</p><p class="refpurpose"><span class="refname">svn_export</span> &mdash; <span class="dc-title">Экспортирует содержимое директории SVN</span></p>
+
+ </div>
+
+ <div class="refsect1 description" id="refsect1-function.svn-export-description">
+  <h3 class="title">Описание</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">bool</span> <span class="methodname"><b>svn_export</b></span>
+    ( <span class="methodparam"><span class="type">string</span> <tt class="parameter">$frompath</tt></span>
+   , <span class="methodparam"><span class="type">string</span> <tt class="parameter">$topath</tt></span>
+   [, <span class="methodparam"><span class="type">bool</span> <tt class="parameter">$working_copy</tt><span class="initializer"> = true</span></span>
+   [, <span class="methodparam"><span class="type">int</span> <tt class="parameter">$revision_no</tt><span class="initializer"> = -1</span></span>
+  ]] )</div>
+
+  <p class="para rdfs-comment">
+   Экспортирует данные как из рабочей копии, так и из репозитория в
+   &#039;чистую&#039; директорию. 
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-function.svn-export-parameters">
+  <h3 class="title">Список параметров</h3>
+  <p class="para">
+   <dl>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">frompath</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Путь к текущему репозиторию или к рабочей копии.
+      </p>
+     </dd>
+
+    </dt>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">topath</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Путь к &quot;чистой&quot; папке для экспорта.
+      </p>
+     </dd>
+
+    </dt>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">working_copy</tt></i></span>
+     <dd>
+
+      <p class="para">
+       При <b><tt>TRUE</tt></b> из рабочей копии будут так же экспортированы не отправленные в репозиторий файлы.
+      </p>
+     </dd>
+
+    </dt>
+
+   </dl>
+
+  </p>
+ </div>
+
+
+
+ <div class="refsect1 returnvalues" id="refsect1-function.svn-export-returnvalues">
+  <h3 class="title">Возвращаемые значения</h3>
+  <p class="para">
+   Возвращает <b><tt>TRUE</tt></b> в случае успешного завершения  или <b><tt>FALSE</tt></b> в случае возникновения ошибки.
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-function.svn-export-examples">
+  <h3 class="title">Примеры</h3>
+  <p class="para">
+   <div class="example" id="example-4186">
+    <p><b>Пример #1 Пример использования <span class="function"><b>svn_export()</b></span></b></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$working_dir&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'../'</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$new_working_dir&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'/home/user/devel/foo/trunk'</span><span style="color: #007700">;<br /><br /></span><span style="color: #0000BB">svn_export</span><span style="color: #007700">(</span><span style="color: #0000BB">$working_dir</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$new_working_dir</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+  </p>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-function.svn-export-seealso">
+  <h3 class="title">Смотрите также</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><span class="function"><a href="function.svn-import.html" class="function" rel="rdfs-seeAlso">svn_import()</a> - Импорт пути без версии в репозитории</span></li>
+   </ul>
+  </p>
+ </div>
+
+
+</div><hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.svn-diff.html">svn_diff</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.svn-fs-abort-txn.html">svn_fs_abort_txn</a></div>
+ <div class="up"><a href="ref.svn.html">SVN</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

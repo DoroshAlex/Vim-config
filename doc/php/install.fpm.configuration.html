@@ -1,0 +1,598 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Настройка</title>
+
+ </head>
+ <body><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="install.fpm.install.html">Установка</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="install.pecl.html">Установка расширений PECL</a></div>
+ <div class="up"><a href="install.fpm.html">FastCGI Process Manager (FPM)</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="install.fpm.configuration" class="sect1">
+ <h2 class="title">Настройка</h2>
+ <p class="para">
+  FPM использует синтаксис <var class="filename">php.ini</var> для своего файла конфигурации <var class="filename">php-fpm.conf</var>.
+ </p>
+ <div class="sect2">
+  <h3 class="title">Список глобальных директив <var class="filename">php-fpm.conf</var></h3>
+  <dl>
+
+   <dt id="pid">
+    <span class="term">
+     <i><tt class="parameter">pid</tt></i>
+     <span class="type"><a href="language.types.string.html" class="type string">string</a></span>
+    </span>
+    <dd>
+
+     <p class="para">
+      Путь к PID файлу. Значение по умолчанию: none.
+     </p>
+    </dd>
+
+   </dt>
+
+   <dt id="error-log">
+    <span class="term">
+     <i><tt class="parameter">error_log</tt></i>
+     <span class="type"><a href="language.types.string.html" class="type string">string</a></span>
+    </span>
+    <dd>
+
+     <p class="para">
+      Путь к файлу журнала ошибок. Значение по умолчанию:
+      <i>#INSTALL_PREFIX#/log/php-fpm.log</i>.
+     </p>
+    </dd>
+
+   </dt>
+
+   <dt id="log-level">
+    <span class="term">
+     <i><tt class="parameter">log_level</tt></i>
+     <span class="type"><a href="language.types.string.html" class="type string">string</a></span>
+    </span>
+    <dd>
+
+     <p class="para">
+      Уровень журналирования ошибок. Возможные значения: alert, error, warning, notice,
+      debug. Значение по умолчанию: notice.
+     </p>
+    </dd>
+
+   </dt>
+
+   <dt id="emergency-restart-threshold">
+    <span class="term">
+     <i><tt class="parameter">emergency_restart_threshold</tt></i>
+     <span class="type"><a href="language.types.integer.html" class="type int">int</a></span>
+    </span>
+    <dd>
+
+     <p class="para">
+      При данном числе рабочих процессов, завершенных с SIGSEGV или SIGBUS
+      за промежуток времени, установленный <i>emergency_restart_interval</i>
+      FPM будет перезагружен. Значение 0 означает &#039;Off&#039; (отключено). Значение по умолчанию: 0 (Off).
+     </p>
+    </dd>
+
+   </dt>
+
+   <dt id="emergency-restart-interval">
+    <span class="term">
+     <i><tt class="parameter">emergency_restart_interval</tt></i>
+     <span class="type"><a href="language.pseudo-types.html#language.types.mixed" class="type mixed">mixed</a></span>
+    </span>
+    <dd>
+
+     <p class="para">
+      Интервал времени, используемый emergency_restart_interval, чтобы
+      определить, когда FPM будет мягко перезагружен.
+      Это полезно для избежания случайных повреждений 
+   общей памяти ускорителя (accelerator).
+      Доступные единицы измерения: s(секунды), m(минуты), h(часы), или d(дни).
+      Единица измерения по умолчанию: секунды. Значение по умолчанию: 0 (Off).
+     </p>
+    </dd>
+
+   </dt>
+
+   <dt id="process-control-timeout">
+    <span class="term">
+     <i><tt class="parameter">process_control_timeout</tt></i>
+     <span class="type"><a href="language.pseudo-types.html#language.types.mixed" class="type mixed">mixed</a></span>
+    </span>
+    <dd>
+
+     <p class="para">
+      Время, в течение которого дочерние процессы ждут ответа на сигналы мастер-процессу.
+      Доступные единицы измерения: s(секунды), m(минуты), h(часы) или d(дни).
+      Единица измерения по умолчанию: секунды. Значение по умолчанию: 0.
+     </p>
+    </dd>
+
+   </dt>
+
+   <dt id="daemonize">
+    <span class="term">
+     <i><tt class="parameter">daemonize</tt></i>
+     <span class="type"><a href="language.types.boolean.html" class="type boolean">boolean</a></span>
+    </span>
+    <dd>
+
+     <p class="para">
+      Запустить FPM в фоновом режиме. Установите значение &#039;no&#039;, чтобы запустить FPM
+      в диспетчере для отладки. Значение по умолчанию: yes.
+     </p>
+    </dd>
+
+   </dt>
+
+  </dl>
+
+ </div>
+ 
+ <div class="sect2">
+  <h3 class="title">Список директив для пулов.</h3>
+  <p class="para">
+   Вы можете запускать несколько FPM пулов процессов с различными настройками.
+   Эти параметры могут быть переданы пулу.
+  </p>
+  <dl>
+
+   <dt id="listen">
+    <span class="term">
+     <i><tt class="parameter">listen</tt></i>
+     <span class="type"><a href="language.types.string.html" class="type string">string</a></span>
+    </span>
+    <dd>
+
+     <p class="para">
+      Адрес, который будет принимать FastCGI-запросы.
+      Синтаксис: &#039;ip.add.re.ss:port&#039;, &#039;port&#039;, &#039;/path/to/unix/socket&#039;.
+      Эта опция обязательна для каждого пула.
+     </p>
+    </dd>
+
+   </dt>
+
+   <dt id="listen-backlog">
+    <span class="term">
+     <i><tt class="parameter">listen.backlog</tt></i>
+     <span class="type"><a href="language.types.integer.html" class="type int">int</a></span>
+    </span>
+    <dd>
+
+     <p class="para">
+      Устанавливает listen(2) backlog. Значение &#039;-1&#039; означает неограничено.
+      Значение по умолчанию: -1.
+     </p>
+    </dd>
+
+   </dt>
+
+   <dt id="listen-allowed-clients">
+    <span class="term">
+     <i><tt class="parameter">listen.allowed_clients</tt></i>
+     <span class="type"><a href="language.types.string.html" class="type string">string</a></span>
+    </span>
+    <dd>
+
+     <p class="para">
+      Список IPv4 адресов FastCGI-клиентов, которые имеют право подключения.
+      Эквивалент переменной окружения среды FCGI_WEB_SERVER_ADDRS в
+      оригинальном PHP FastCGI (5.2.2+). Имеет смысл только с TCP-сокетом.
+      Каждый адрес должен быть отделен запятой. Если оставить значение пустым,
+      то соединения будут приниматься с любого IP. Значение по умолчанию: any.
+     </p>
+    </dd>
+
+   </dt>
+
+   <dt id="listen-owner">
+    <span class="term">
+     <i><tt class="parameter">listen.owner</tt></i>
+     <span class="type"><a href="language.types.string.html" class="type string">string</a></span>
+    </span>
+    <dd>
+
+     <p class="para">
+      Задает права для unix socket, если они используются. В Linux, чтобы разрешить соединения web серверу,
+   должны быть установлены права на чтение/запись.
+      Во многих основанных на BSD системах возможность соединения не зависит от прав доступа.
+      Значение по умолчанию: используется пользователь и группа, от имени которого запущен сервер, установлен режим 0666.
+     </p>
+    </dd>
+
+   </dt>
+
+   <dt id="listen-group">
+    <span class="term">
+     <i><tt class="parameter">listen.group</tt></i>
+     <span class="type"><a href="language.types.string.html" class="type string">string</a></span>
+    </span>
+    <dd>
+
+     <p class="para">
+      См. <i>listen.owner</i>.
+     </p>
+    </dd>
+
+   </dt>
+
+   <dt id="listen-mode">
+    <span class="term">
+     <i><tt class="parameter">listen.mode</tt></i>
+     <span class="type"><a href="language.types.string.html" class="type string">string</a></span>
+    </span>
+    <dd>
+
+     <p class="para">
+      См. <i>listen.owner</i>.
+     </p>
+    </dd>
+
+   </dt>
+
+   <dt id="user">
+    <span class="term">
+     <i><tt class="parameter">user</tt></i>
+     <span class="type"><a href="language.types.string.html" class="type string">string</a></span>
+    </span>
+    <dd>
+
+     <p class="para">
+      Unix-пользователь FPM-процессов. Этот параметр является обязательным.
+     </p>
+    </dd>
+
+   </dt>
+
+   <dt id="group">
+    <span class="term">
+     <i><tt class="parameter">group</tt></i>
+     <span class="type"><a href="language.types.string.html" class="type string">string</a></span>
+    </span>
+    <dd>
+
+     <p class="para">
+      Unix-группа FPM-процессов. Если не установлен, группа по умолчанию равняется имени пользователя.
+     </p>
+    </dd>
+
+   </dt>
+
+   <dt id="pm">
+    <span class="term">
+     <i><tt class="parameter">pm</tt></i>
+     <span class="type"><a href="language.types.string.html" class="type string">string</a></span>
+    </span>
+    <dd>
+
+     <p class="para">
+      Выбор того, как менеджер процессов будет контролировать создание дочерних процессов.
+      Возможные значения: <i>static</i>, <i>dynamic</i>.
+      Этот параметр является обязательным.
+     </p>
+     <p class="para">
+      <i>static</i> - фиксированное число дочерних процессов (<i>pm.max_children</i>).
+     </p>
+     <p class="para">
+      <i>dynamic</i> - динамически изменяющееся число дочерних процессов, задается на основании
+      следующих директив: <i>pm.max_children</i>, <i>pm.start_servers</i>,
+      <i>pm.min_spare_servers</i>, <i>pm.max_spare_servers</i>.
+     </p>
+    </dd>
+
+   </dt>
+
+   <dt id="pm.max-chidlren">
+    <span class="term">
+     <i><tt class="parameter">pm.max_children</tt></i>
+     <span class="type"><a href="language.types.integer.html" class="type int">int</a></span>
+    </span>
+    <dd>
+
+     <p class="para">
+      Число дочерних процессов, которые будут созданы, когда <i>pm</i> установлен в
+      <i>static</i>, или же  максимальное число процессов, которые будут созданы,
+      когда <i>pm</i> установлен в <i>dynamic</i>.
+      Этот параметр является обязательным.
+     </p>
+     <p class="para">
+      Этот параметр устанавливает ограничение на число одновременных запросов,
+      которые будут обслуживаться. Эквивалент директивы ApacheMaxClients с
+      mpm_prefork и переменной окружения среды <var class="varname"><var class="varname">PHP_FCGI_CHILDREN</var></var> в
+      в оригинальном PHP FastCGI.
+     </p>
+    </dd>
+
+   </dt>
+
+   <dt id="pm.start-servers">
+    <span class="term">
+     <i><tt class="parameter">pm.start_servers</tt></i>
+     <span class="type"><span class="type in">in</span></span>
+    </span>
+    <dd>
+
+     <p class="para">
+      Число дочерних процессов, содаваемых при запуске.
+      Используется, только когда <i>pm</i> установлен в <i>dynamic</i>.
+      Значение по умолчанию: min_spare_servers + (max_spare_servers -
+      min_spare_servers) / 2.
+     </p>
+    </dd>
+
+   </dt>
+
+   <dt id="pm.min-spare-servers">
+    <span class="term">
+     <i><tt class="parameter">pm.min_spare_servers</tt></i>
+     <span class="type"><a href="language.types.integer.html" class="type int">int</a></span>
+    </span>
+    <dd>
+
+     <p class="para">
+      Желаемое минимальное число неактивных процессов сервера. Используется, только когда
+      <i>pm</i> установлено в <i>dynamic</i>. Кроме того,
+      это обязательный параметр в этом случае.
+     </p>
+    </dd>
+
+   </dt>
+
+   <dt id="pm.max-spare-servers">
+    <span class="term">
+     <i><tt class="parameter">pm.max_spare_servers</tt></i>
+     <span class="type"><a href="language.types.integer.html" class="type int">int</a></span>
+    </span>
+    <dd>
+
+     <p class="para">
+      Желаемое максимальное число неактивных процессов сервера. Используется, только когда
+      <i>pm</i> установлен в <i>dynamic</i>. Кроме того,
+      это обязательный параметр в этом случае.
+     </p>
+    </dd>
+
+   </dt>
+
+   <dt id="pm.max-requests">
+    <span class="term">
+     <i><tt class="parameter">pm.max_requests</tt></i>
+     <span class="type"><a href="language.types.integer.html" class="type int">int</a></span>
+    </span>
+    <dd>
+
+     <p class="para">
+      Число запросов дочернего процесса, после которого процесс будет перезапущен.
+      Это полезно для избежания утечек памяти при использовании сторонних
+      библиотек. Для бесконечной обработки запросов укажите &#039;0&#039;. Эквивалент
+      <var class="varname"><var class="varname">PHP_FCGI_MAX_REQUESTS</var></var>. Значение по умолчанию: 0.
+     </p>
+    </dd>
+
+   </dt>
+
+   <dt id="pm.status-path">
+    <span class="term">
+     <i><tt class="parameter">pm.status_path</tt></i>
+     <span class="type"><a href="language.types.string.html" class="type string">string</a></span>
+    </span>
+    <dd>
+
+     <p class="para">
+      Ссылка, по которой можно посмотреть страницу состояния FPM. Если значение не установлено, то
+      страница статуса отображаться не будет. Значение по умолчанию: none.
+     </p>
+    </dd>
+
+   </dt>
+
+   <dt id="ping.path">
+    <span class="term">
+     <i><tt class="parameter">ping.path</tt></i>
+     <span class="type"><a href="language.types.string.html" class="type string">string</a></span>
+    </span>
+    <dd>
+
+     <p class="para">
+      Ссылка на ping-страницу мониторинга FPM. Если значение не становлено,
+      ping-страница отображаться не будет. Может быть использовано для тестирования
+      извне, чтобы убедиться, что FPM жив и реагирует. Обратите внимание, что значение должно
+      начинаться с косой черты (/).
+     </p>
+    </dd>
+
+   </dt>
+
+   <dt id="ping.response">
+    <span class="term">
+     <i><tt class="parameter">ping.response</tt></i>
+     <span class="type"><a href="language.types.string.html" class="type string">string</a></span>
+    </span>
+    <dd>
+
+     <p class="para">
+      Эта директива может быть использована на настройки ответа на ping-запрос. 
+   Ответ формируется как text/plain со кодом ответа 200.
+      Значение по умолчанию: pong.
+     </p>
+    </dd>
+
+   </dt>
+
+   <dt id="request-terminate-timeout">
+    <span class="term">
+     <i><tt class="parameter">request_terminate_timeout</tt></i>
+     <span class="type"><a href="language.pseudo-types.html#language.types.mixed" class="type mixed">mixed</a></span>
+    </span>
+    <dd>
+
+     <p class="para">
+      Таймаут для обслуживания одного запроса, после чего рабочий процесс
+      будет завершен. Этот вариант следует использовать, когда опция 
+   &#039;max_execution_time&#039; в php.ini не останавливает выполнение скрипта по каким-то причинам.
+      Значение &#039;0&#039; означает &#039;выключено&#039;.
+      Доступные единицы измерения: s(секунды), m(минуты), h(часы) или d(дни).
+      Значение по умолчению: 0.
+     </p>
+    </dd>
+
+   </dt>
+
+   <dt id="request-slowlog-timeout">
+    <span class="term">
+     <i><tt class="parameter">request_slowlog_timeout</tt></i>
+     <span class="type"><a href="language.pseudo-types.html#language.types.mixed" class="type mixed">mixed</a></span>
+    </span>
+    <dd>
+
+     <p class="para">
+      Таймаут для обслуживания одного запроса, после чего PHP backtrace
+      будет сохранен в файл &#039;showlog&#039;. Значение &#039;0&#039; означает &#039;выключено&#039;.
+      Доступные единицы измерения: s(секунды), m(минуты), h(часы) или d(дни).
+      Значение по умолчению: 0.
+     </p>
+    </dd>
+
+   </dt>
+
+   <dt id="slowlog">
+    <span class="term">
+     <i><tt class="parameter">slowlog</tt></i>
+     <span class="type"><a href="language.types.string.html" class="type string">string</a></span>
+    </span>
+    <dd>
+
+     <p class="para">
+      Лог-файл для медленных запросов. Значение по умолчанию:
+      <i>#INSTALL_PREFIX#/log/php-fpm.log.slow</i>.
+     </p>
+    </dd>
+
+   </dt>
+
+   <dt id="rlimit-files">
+    <span class="term">
+     <i><tt class="parameter">rlimit_files</tt></i>
+     <span class="type"><a href="language.types.integer.html" class="type int">int</a></span>
+    </span>
+    <dd>
+
+     <p class="para">
+      Устанавливает лимит дестрипторов открытых файлов rlimit.
+      Значение по умолчанию: определяется значением системы.
+     </p>
+    </dd>
+
+   </dt>
+
+   <dt id="rlimit-core">
+    <span class="term">
+     <i><tt class="parameter">rlimit_core</tt></i>
+     <span class="type"><a href="language.types.integer.html" class="type int">int</a></span>
+    </span>
+    <dd>
+
+     <p class="para">
+      Устанавливает максимальное количество используемых ядер rlimit.
+      Возможные значения: &#039;unlimited&#039; или целое число большее или равное 0.
+      Значение по умолчанию: определяется значением системы.
+     </p>
+    </dd>
+
+   </dt>
+
+   <dt id="chroot">
+    <span class="term">
+     <i><tt class="parameter">chroot</tt></i>
+     <span class="type"><a href="language.types.string.html" class="type string">string</a></span>
+    </span>
+    <dd>
+
+     <p class="para">
+      Директория chroot окружения при старте. Это значение должно быть определено
+      как абсолютный путь. Если значение не установлено, chroot не используется.
+     </p>
+    </dd>
+
+   </dt>
+
+   <dt id="chdir">
+    <span class="term">
+     <i><tt class="parameter">chdir</tt></i>
+     <span class="type"><a href="language.types.string.html" class="type string">string</a></span>
+    </span>
+    <dd>
+
+     <p class="para">
+      Chdir изменяет текущую директорию при старте. Это значение должно быть определено
+      как абсолютный путь. Значение по умолчанию: текущая директория или / при использовании chroot.
+     </p>
+    </dd>
+
+   </dt>
+
+   <dt id="catch-workers-output">
+    <span class="term">
+     <i><tt class="parameter">catch_workers_output</tt></i>
+     <span class="type"><a href="language.types.boolean.html" class="type boolean">boolean</a></span>
+    </span>
+    <dd>
+
+     <p class="para">
+      Перенаправление STDOUT и STDERR рабочего процесса в главный лог ошибок.
+      Если не установлен, STDOUT и STDERR будут перенаправлены в /dev/null
+      в соответствуии со спецификацией FastCGI.
+      Значение по умолчанию: no.
+     </p>
+    </dd>
+
+   </dt>
+
+  </dl>
+
+  <p class="para">
+   Можно передать дополнительные переменные окружения и обновить настройки PHP для определенного пула.
+   Для этого вам необходимо добавить следующие параметры в <var class="filename">php-fpm.conf</var>
+   <div class="example" id="example-60">
+    <p><b>Пример #1 Передача переменных окружения и настроек PHP пулу</b></p>
+    <div class="example-contents">
+<div class="inicode"><pre class="inicode">env[HOSTNAME] = $HOSTNAME
+       env[PATH] = /usr/local/bin:/usr/bin:/bin
+       env[TMP] = /tmp
+       env[TMPDIR] = /tmp
+       env[TEMP] = /tmp
+
+       php_admin_value[sendmail_path] = /usr/sbin/sendmail -t -i -f www@my.domain.com
+       php_flag[display_errors] = off
+       php_admin_value[error_log] = /var/log/fpm-php.www.log
+       php_admin_flag[log_errors] = on
+       php_admin_value[memory_limit] = 32M</pre>
+</div>
+    </div>
+
+   </div>
+   PHP настройки, переданные через <i>php_value</i> или
+   <i>php_flag</i> перезапишут их предыдущие значения.
+   Пожалуйста, обратите внимание, что определения
+   <a href="ini.core.html#ini.disable-functions" class="link">disable_functions</a> или
+   <a href="ini.core.html#ini.disable-classes" class="link">disable_classes</a> не
+   будут будут перезаписывать ранее определенные в <var class="filename">php.ini</var> значения,
+   а добавят новые значения.
+  </p>
+  <p class="para">
+   Настройки, определенные через <i>php_admin_value</i> и <i>php_admin_flag</i>,
+   не могут быть перезаписаны через <span class="function"><a href="function.ini-set.html" class="function">ini_set()</a></span>.
+  </p>
+ </div>
+ 
+</div><hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="install.fpm.install.html">Установка</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="install.pecl.html">Установка расширений PECL</a></div>
+ <div class="up"><a href="install.fpm.html">FastCGI Process Manager (FPM)</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

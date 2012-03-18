@@ -1,0 +1,178 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Фильтрует элементы массива с помощью callback-функции</title>
+
+ </head>
+ <body><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.array-fill.html">array_fill</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.array-flip.html">array_flip</a></div>
+ <div class="up"><a href="ref.array.html">Функции для работы с массивами</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.array-filter" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">array_filter</h1>
+  <p class="verinfo">(PHP 4 &gt;= 4.0.6, PHP 5)</p><p class="refpurpose"><span class="refname">array_filter</span> &mdash; <span class="dc-title">Фильтрует элементы массива с помощью callback-функции</span></p>
+
+ </div>
+
+ <div class="refsect1 description" id="refsect1-function.array-filter-description">
+  <h3 class="title">Описание</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">array</span> <span class="methodname"><b>array_filter</b></span>
+    ( <span class="methodparam"><span class="type">array</span> <tt class="parameter">$input</tt></span>
+   [, <span class="methodparam"><span class="type"><a href="language.pseudo-types.html#language.types.callback" class="type callback">callback</a></span> <tt class="parameter">$callback</tt></span>
+  ] )</div>
+
+  <p class="para rdfs-comment">
+   Обходит каждое значение массива <i><tt class="parameter">input</tt></i>,
+   передавая его в <i><tt class="parameter">callback</tt></i>-функцию. Если
+   <i><tt class="parameter">callback</tt></i>-функция возвращает true, данное
+   значение возвращается в массив <i><tt class="parameter">input</tt></i>.
+   Ключи массива сохраняются.
+  </p>
+</div>
+
+
+ <div class="refsect1 parameters" id="refsect1-function.array-filter-parameters">
+  <h3 class="title">Список параметров</h3>
+  <p class="para">
+   <dl>
+
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">input</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Итерируемый массив
+      </p>
+     </dd>
+
+    </dt>
+
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">callback</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Используемая callback-функция
+      </p>
+      <p class="para">
+       Если <i><tt class="parameter">callback</tt></i>-функция не передана, все значения
+       массива <i><tt class="parameter">input</tt></i> равные <b><tt>FALSE</tt></b> (см.
+       <a href="language.types.boolean.html#language.types.boolean.casting" class="link">преобразование в
+        булевый тип</a>) будут удалены.
+      </p>
+     </dd>
+
+    </dt>
+
+
+   </dl>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-function.array-filter-returnvalues">
+  <h3 class="title">Возвращаемые значения</h3>
+  <p class="para">
+   Возвращает отфильтрованный массив.
+  </p>
+ </div>
+
+
+
+
+ <div class="refsect1 examples" id="refsect1-function.array-filter-examples">
+  <h3 class="title">Примеры</h3>
+  <p class="para">
+   <div class="example" id="example-4449">
+    <p><b>Пример #1 Пример использования <span class="function"><b>array_filter()</b></span></b></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">function&nbsp;</span><span style="color: #0000BB">odd</span><span style="color: #007700">(</span><span style="color: #0000BB">$var</span><span style="color: #007700">)<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;является&nbsp;ли&nbsp;переданное&nbsp;число&nbsp;нечетным<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">return(</span><span style="color: #0000BB">$var&nbsp;</span><span style="color: #007700">&amp;&nbsp;</span><span style="color: #0000BB">1</span><span style="color: #007700">);<br />}<br /><br />function&nbsp;</span><span style="color: #0000BB">even</span><span style="color: #007700">(</span><span style="color: #0000BB">$var</span><span style="color: #007700">)<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;является&nbsp;ли&nbsp;переданное&nbsp;число&nbsp;четным<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">return(!(</span><span style="color: #0000BB">$var&nbsp;</span><span style="color: #007700">&amp;&nbsp;</span><span style="color: #0000BB">1</span><span style="color: #007700">));<br />}<br /><br /></span><span style="color: #0000BB">$array1&nbsp;</span><span style="color: #007700">=&nbsp;array(</span><span style="color: #DD0000">"a"</span><span style="color: #007700">=&gt;</span><span style="color: #0000BB">1</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"b"</span><span style="color: #007700">=&gt;</span><span style="color: #0000BB">2</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"c"</span><span style="color: #007700">=&gt;</span><span style="color: #0000BB">3</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"d"</span><span style="color: #007700">=&gt;</span><span style="color: #0000BB">4</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"e"</span><span style="color: #007700">=&gt;</span><span style="color: #0000BB">5</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$array2&nbsp;</span><span style="color: #007700">=&nbsp;array(</span><span style="color: #0000BB">6</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">7</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">8</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">9</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">10</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">11</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">12</span><span style="color: #007700">);<br /><br />echo&nbsp;</span><span style="color: #DD0000">"Нечетные:\n"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">print_r</span><span style="color: #007700">(</span><span style="color: #0000BB">array_filter</span><span style="color: #007700">(</span><span style="color: #0000BB">$array1</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"odd"</span><span style="color: #007700">));<br />echo&nbsp;</span><span style="color: #DD0000">"Четные:\n"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">print_r</span><span style="color: #007700">(</span><span style="color: #0000BB">array_filter</span><span style="color: #007700">(</span><span style="color: #0000BB">$array2</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"even"</span><span style="color: #007700">));<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+    <div class="example-contents"><p>Результат выполнения данного примера:</p></div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+Нечетные:
+Array
+(
+    [a] =&gt; 1
+    [c] =&gt; 3
+    [e] =&gt; 5
+)
+Четные:
+Array
+(
+    [0] =&gt; 6
+    [2] =&gt; 8
+    [4] =&gt; 10
+    [6] =&gt; 12
+)
+</pre></div>
+    </div>
+   </div>
+   <div class="example" id="example-4450">
+    <p><b>Пример #2 Использование <span class="function"><b>array_filter()</b></span> без
+    <i><tt class="parameter">callback</tt></i>-функции</b></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /><br />$entry&nbsp;</span><span style="color: #007700">=&nbsp;array(<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">0&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'foo'</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">1&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">false</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">2&nbsp;</span><span style="color: #007700">=&gt;&nbsp;-</span><span style="color: #0000BB">1</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">3&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">null</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">4&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">''<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">print_r</span><span style="color: #007700">(</span><span style="color: #0000BB">array_filter</span><span style="color: #007700">(</span><span style="color: #0000BB">$entry</span><span style="color: #007700">));<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+    <div class="example-contents"><p>Результат выполнения данного примера:</p></div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+Array
+(
+    [0] =&gt; foo
+    [2] =&gt; -1
+)
+</pre></div>
+    </div>
+   </div>
+  </p>
+ </div>
+
+
+ <div class="refsect1 notes" id="refsect1-function.array-filter-notes">
+  <h3 class="title">Примечания</h3>
+  <div class="caution"><b class="caution">Предостережение</b>
+   <p class="para">
+    Если callback-функция изменяет массив (например, добавляет или
+    удаляет элементы), поведение этой функции неопределено.
+   </p>
+  </div>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-function.array-filter-seealso">
+  <h3 class="title">Смотрите также</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><span class="function"><a href="function.array-map.html" class="function" rel="rdfs-seeAlso">array_map()</a> - Применяет callback-функцию ко всем элементам указанных массивов</span></li>
+    <li class="member"><span class="function"><a href="function.array-reduce.html" class="function" rel="rdfs-seeAlso">array_reduce()</a> - Итеративно уменьшает массив к единственному значению, используя callback-функцию</span></li>
+    <li class="member"><span class="function"><a href="function.array-walk.html" class="function" rel="rdfs-seeAlso">array_walk()</a> - Применяет пользовательскую функцию к каждому элементу массива</span></li>
+   </ul>
+  </p>
+ </div>
+
+
+</div><hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.array-fill.html">array_fill</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.array-flip.html">array_flip</a></div>
+ <div class="up"><a href="ref.array.html">Функции для работы с массивами</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

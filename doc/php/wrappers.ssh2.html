@@ -1,0 +1,298 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Secure Shell 2</title>
+
+ </head>
+ <body><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="wrappers.phar.html">phar://</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="wrappers.rar.html">rar://</a></div>
+ <div class="up"><a href="wrappers.html">Поддерживаемые протоколы и обработчики (wrappers)</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="wrappers.ssh2" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">ssh2://</h1>
+  <p class="refpurpose"><span class="refname">ssh2://</span> &mdash; <span class="dc-title">Secure Shell 2</span></p>
+
+ </div>
+
+ <div class="refsect1 description" id="refsect1-wrappers.ssh2-description">
+  <h3 class="title">Описание</h3>
+  <p class="para">
+   <var class="filename">ssh2.shell://</var>
+   <var class="filename">ssh2.exec://</var>
+   <var class="filename">ssh2.tunnel://</var>
+   <var class="filename">ssh2.sftp://</var>
+   <var class="filename">ssh2.scp://</var>
+   PHP 4.3.0 и более поздние (PECL)
+  </p>
+
+  <blockquote class="note"><p><b class="note">Замечание</b>: 
+   <b>Эта обертка не включена по умолчанию</b><br />
+   <span class="simpara">
+    Для того, чтобы использовать обертки <var class="filename">ssh2.*://</var>
+    вам необходимо установить расширение <a href="http://pecl.php.net/package/ssh2" class="link external">&raquo;&nbsp;SSH2</a>,
+    доступное в <a href="http://pecl.php.net/" class="link external">&raquo;&nbsp;PECL</a>.
+   </span>
+  </p></blockquote>
+
+  <p class="simpara">
+   В дополнение для принятия традиционных аутентификационных данных URI, обертки ssh2
+   будут также повторно использовать открытые соединения, передавая аутентификационную информацию
+   в хост-части URL.
+   
+  </p>
+ </div>
+
+
+ <div class="refsect1 usage" id="refsect1-wrappers.ssh2-usage"> 
+  <h3 class="title">Опции</h3>
+  <ul class="itemizedlist">
+   <li class="listitem"><span class="simpara"><var class="filename">ssh2.shell://user:pass@example.com:22/xterm</var></span></li>
+   <li class="listitem"><span class="simpara"><var class="filename">ssh2.exec://user:pass@example.com:22/usr/local/bin/somecmd</var></span></li>
+   <li class="listitem"><span class="simpara"><var class="filename">ssh2.tunnel://user:pass@example.com:22/192.168.0.1:14</var></span></li>
+   <li class="listitem"><span class="simpara"><var class="filename">ssh2.sftp://user:pass@example.com:22/path/to/filename</var></span></li>
+  </ul>
+ </div>
+ 
+
+ <div class="refsect1 options" id="refsect1-wrappers.ssh2-options">
+  <h3 class="title">Опции</h3>
+  <p class="para">
+   <table class="doctable table">
+    <caption><b>Основная информация</b></caption>
+    
+     <thead valign="middle">
+      <tr valign="middle">
+       <th>Атрибут</th>
+       <th>ssh2.shell</th>
+       <th>ssh2.exec</th>
+       <th>ssh2.tunnel</th>
+       <th>ssh2.sftp</th>
+       <th>ssh2.scp</th>
+      </tr>
+
+     </thead>
+
+     <tbody valign="middle" class="tbody">
+      <tr valign="middle">
+       <td align="left">Ограничение по <a href="filesystem.configuration.html#ini.allow-url-fopen" class="link">allow_url_fopen</a></td>
+       <td align="left">Да</td>
+       <td align="left">Да</td>
+       <td align="left">Да</td>
+       <td align="left">Да</td>
+       <td align="left">Да</td>
+      </tr>
+
+      <tr valign="middle">
+       <td align="left">Чтение</td>
+       <td align="left">Да</td>
+       <td align="left">Да</td>
+       <td align="left">Да</td>
+       <td align="left">Да</td>
+       <td align="left">Да</td>
+      </tr>
+
+      <tr valign="middle">
+       <td align="left">Запись</td>
+       <td align="left">Да</td>
+       <td align="left">Да</td>
+       <td align="left">Да</td>
+       <td align="left">Да</td>
+       <td align="left">Нет</td>
+      </tr>
+
+      <tr valign="middle">
+       <td align="left">Добавление</td>
+       <td align="left">Нет</td>
+       <td align="left">Нет</td>
+       <td align="left">Нет</td>
+       <td align="left">Да (когда поддерживается сервером)</td>
+       <td align="left">Нет</td>
+      </tr>
+
+      <tr valign="middle">
+       <td align="left">Одновременная чтение и запись</td>
+       <td align="left">Да</td>
+       <td align="left">Да</td>
+       <td align="left">Да</td>
+       <td align="left">Да</td>
+       <td align="left">Нет</td>
+      </tr>
+
+      <tr valign="middle">
+       <td align="left">Поддержка <span class="function"><a href="function.stat.html" class="function">stat()</a></span></td>
+       <td align="left">Нет</td>
+       <td align="left">Нет</td>
+       <td align="left">Нет</td>
+       <td align="left">Да</td>
+       <td align="left">Нет</td>
+      </tr>
+
+      <tr valign="middle">
+       <td align="left">Поддержка <span class="function"><a href="function.unlink.html" class="function">unlink()</a></span></td>
+       <td align="left">Нет</td>
+       <td align="left">Нет</td>
+       <td align="left">Нет</td>
+       <td align="left">Да</td>
+       <td align="left">Нет</td>
+      </tr>
+
+      <tr valign="middle">
+       <td align="left">Поддержка <span class="function"><a href="function.rename.html" class="function">rename()</a></span></td>
+       <td align="left">Нет</td>
+       <td align="left">Нет</td>
+       <td align="left">Нет</td>
+       <td align="left">Да</td>
+       <td align="left">Нет</td>
+      </tr>
+
+      <tr valign="middle">
+       <td align="left">Поддержка <span class="function"><a href="function.mkdir.html" class="function">mkdir()</a></span></td>
+       <td align="left">Нет</td>
+       <td align="left">Нет</td>
+       <td align="left">Нет</td>
+       <td align="left">Да</td>
+       <td align="left">Нет</td>
+      </tr>
+
+      <tr valign="middle">
+       <td align="left">Поддержка <span class="function"><a href="function.rmdir.html" class="function">rmdir()</a></span></td>
+       <td align="left">Нет</td>
+       <td align="left">Нет</td>
+       <td align="left">Нет</td>
+       <td align="left">Да</td>
+       <td align="left">Нет</td>
+      </tr>
+
+     </tbody>
+    
+   </table>
+
+  </p>
+
+
+  
+  <p class="para">
+   <table class="doctable table">
+    <caption><b>Опции контекста</b></caption>
+    
+     <thead valign="middle">
+      <tr valign="middle">
+       <th>Имя</th>
+       <th>Использование</th>
+       <th>По умолчанию</th>
+      </tr>
+
+     </thead>
+
+     <tbody valign="middle" class="tbody">
+      <tr valign="middle">
+       <td align="left"><i>session</i></td>
+       <td align="left">Предварительно соединенный ресурс ssh2 для повторного использования</td>
+       <td class="empty">&nbsp;</td>
+      </tr>
+
+      <tr valign="middle">
+       <td align="left"><i>sftp</i></td>
+       <td align="left">Предварительно выделенный ресурс sftp для повторного использования</td>
+       <td class="empty">&nbsp;</td>
+      </tr>
+
+      <tr valign="middle">
+       <td align="left"><i>methods</i></td>
+       <td align="left">Обмен ключами, ключ хоста, шифр, компрессия, и MAC методы для использования</td>
+       <td class="empty">&nbsp;</td>
+      </tr>
+
+      <tr valign="middle">
+       <td align="left"><i>callbacks</i></td>
+       <td class="empty">&nbsp;</td>
+       <td class="empty">&nbsp;</td>
+      </tr>
+
+      <tr valign="middle">
+       <td align="left"><i>username</i></td>
+       <td align="left">Имя пользователя для соединения</td>
+       <td class="empty">&nbsp;</td>
+      </tr>
+
+      <tr valign="middle">
+       <td align="left"><i>password</i></td>
+       <td align="left">Пароль для аутентификации</td>
+       <td class="empty">&nbsp;</td>
+      </tr>
+
+      <tr valign="middle">
+       <td align="left"><i>pubkey_file</i></td>
+       <td align="left">Имя файла, в котором находится публичный ключ для аутентификации</td>
+       <td class="empty">&nbsp;</td>
+      </tr>
+
+      <tr valign="middle">
+       <td align="left"><i>privkey_file</i></td>
+       <td align="left">Имя файла, в котором находится приватный ключ для аутентификации</td>
+       <td class="empty">&nbsp;</td>
+      </tr>
+
+      <tr valign="middle">
+       <td align="left"><i>env</i></td>
+       <td align="left">Ассоциативный массив с переменными окружения, которые необходимо установить</td>
+       <td class="empty">&nbsp;</td>
+      </tr>
+
+      <tr valign="middle">
+       <td align="left"><i>term</i></td>
+       <td align="left">Тип эмуляции терминала для запроса, когда выделяется pty</td>
+       <td class="empty">&nbsp;</td>
+      </tr>
+
+      <tr valign="middle">
+       <td align="left"><i>term_width</i></td>
+       <td align="left">Ширина терминала, запрашивается когда выделяется pty</td>
+       <td class="empty">&nbsp;</td>
+      </tr>
+
+      <tr valign="middle">
+       <td align="left"><i>term_height</i></td>
+       <td align="left">Высота терминала, запращивается когда выделяется pty</td>
+       <td class="empty">&nbsp;</td>
+      </tr>
+
+      <tr valign="middle">
+       <td align="left"><i>term_units</i></td>
+       <td align="left">Единицы, в которых измеряются term_width и term_height</td>
+       <td align="left"><b><tt>SSH2_TERM_UNIT_CHARS</tt></b></td>
+      </tr>
+
+     </tbody>
+    
+   </table>
+
+  </p>
+ </div>
+ 
+
+ <div class="refsect1 examples" id="refsect1-wrappers.ssh2-examples">
+  <h3 class="title">Примеры</h3>
+  <div class="example" id="example-302">
+   <p><b>Пример #1 Открытие потока из активного соединения</b></p>
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$session&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">ssh2_connect</span><span style="color: #007700">(</span><span style="color: #DD0000">'example.com'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">22</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">ssh2_auth_pubkey_file</span><span style="color: #007700">(</span><span style="color: #0000BB">$session</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'username'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'/home/username/.ssh/id_rsa.pub'</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'/home/username/.ssh/id_rsa'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'secret'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$stream&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">fopen</span><span style="color: #007700">(</span><span style="color: #DD0000">"ssh2.tunnel://</span><span style="color: #0000BB">$session</span><span style="color: #DD0000">/remote.example.com:1234"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'r'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+   </div>
+
+  </div>
+
+ </div>
+
+
+</div><hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="wrappers.phar.html">phar://</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="wrappers.rar.html">rar://</a></div>
+ <div class="up"><a href="wrappers.html">Поддерживаемые протоколы и обработчики (wrappers)</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

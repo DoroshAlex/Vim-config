@@ -1,0 +1,354 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Apache 2.x на Unix системах</title>
+
+ </head>
+ <body><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="install.unix.apache.html">Apache 1.3.x на системах Unix</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="install.unix.lighttpd-14.html">Установка PHP на Lighttpd 1.4 на Unix системах</a></div>
+ <div class="up"><a href="install.unix.html">Установка на Unix системы</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="install.unix.apache2" class="sect1">
+    <h2 class="title">Apache 2.x на Unix системах</h2>
+    <p class="para">
+     Этот раздел описывает установку PHP c Apache 2.x на Unix системах.
+    </p>
+   
+    <div class="warning"><b class="warning">Внимание</b><p class="para">Мы не рекомендуем использовать
+потоковый MPM в промышленной среде вместе с Apache 2. Вместо этого, используйте prefork MPM, используемый по умолчанию
+в Apache 2.0 и 2.2. Подробную информацию по этому вопросу вы можете найти в соответствующем разделе FAQ
+<a href="faq.installation.html#faq.installation.apache2" class="link">Apache2 и потоковый MPM</a></p></div>
+    
+    <p class="para">
+     Самым авторитетным источником информации по Apache 2.x является
+     <a href="http://httpd.apache.org/docs/current/" class="link external">&raquo;&nbsp;документация Apache</a>.
+     Более подробная информация о настройках при установке может быть найдена
+     там.
+    </p>
+
+    <p class="para">
+     Самая последняя версия Apache Http Server может быть получена
+     на <a href="http://httpd.apache.org/" class="link external">&raquo;&nbsp;странице загрузки Apache</a>,
+     а адрес соответствующей версии PHP был указан выше.
+     Это краткое руководство описывает лишь базовую установку Apache 2.x и PHP.
+     Для получения более детальной информации прочитайте <a href="http://httpd.apache.org/docs/current/" class="link external">&raquo;&nbsp;документацию Apache</a>.
+     В инструкции ниже опущены номера версий - замените &#039;NN&#039; на
+     номер, соответствующий скачанной вами версии Apache.
+    </p>
+
+    <p class="para">
+     На данный момент есть две версии Apache 2.x - 2.0 и 2.2.
+     Хотя для выбора каждой из них существуют отдельные доводы, 2.2 является
+     наиболее свежей и рекомендуемой версией, если вас устраивает такой выбор.
+     Тем не менее, данные инструкции будут работать как для 2.0, так и для 2.2.
+    </p>
+
+     <ol type="1">
+     <li class="listitem">
+     <p class="para">Скачайте Apache HTTP server как было указано выше и распакуйте его:</p>
+
+     <div class="example" id="example-12">
+     <div class="example-contents screen">
+<div class="cdata"><pre>
+gzip -d httpd-2_x_NN.tar.gz
+tar -xf httpd-2_x_NN.tar
+</pre></div>
+     </div>
+     </div>
+     </li>
+
+     <li class="listitem">
+     <p class="para">Аналогично, скачайте и распакуйте исходные коды PHP:</p>
+
+     <div class="example" id="example-13">
+     <div class="example-contents screen">
+<div class="cdata"><pre>
+gunzip php-NN.tar.gz
+tar -xf php-NN.tar
+</pre></div>
+     </div>
+     </div>
+     </li>
+
+     <li class="listitem">
+     <p class="para">
+     Скомпилируйте и установите Apache. Более подробную информацию по сборке 
+     Apache смотрите в его документации.
+     </p>
+
+     <div class="example" id="example-14">
+     <div class="example-contents screen">
+<div class="cdata"><pre>
+cd httpd-2_x_NN
+./configure --enable-so
+make
+make install
+</pre></div>
+     </div>
+     </div>
+     </li>
+
+     <li class="listitem">
+ <p class="para">
+    Теперь ваш Apache 2.x.NN доступен как /usr/local/apache2,
+    сконфигурирован с поддержкой подгружаемых модулей и стандартным
+    мульти-процессным модулем (MPM) prefork.
+    Чтобы простестировать правильность установки используйте стандартную
+    процедуру запуска Apache, такую как:
+
+    <div class="example" id="example-15">
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+/usr/local/apache2/bin/apachectl start
+</pre></div>
+    </div>
+    </div>
+
+    Затем остановите сервер, чтобы сконфигурировать и установить PHP:
+
+    <div class="example" id="example-16">
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+/usr/local/apache2/bin/apachectl stop
+</pre></div>
+    </div>
+    </div>
+ </p>
+ </li>
+
+ <li class="listitem">
+
+<p class="para">
+Теперь мы сконфигурируем и соберем PHP. Здесь вы можете настроить установку
+PHP с помощью различных опций, указывающих, например, какие расширения нужно включить.
+Просмотрите вывод команды ./configure --help для получения полного списка параметров
+конфигурации. В нашем примере мы сконфигурируем PHP очень просто -
+с поддержкой Apache и MySQL.
+</p>
+
+<p class="para">
+Если вы собирали Apache из исходников, как было описано выше, то используйте
+путь до apxs как указано в следующем примере, иначе, корректируйте этот путь
+соответствующим вашей установке образом. Учтите также, что в некоторых
+дистрибутивах apxs может иметь имя apxs2.
+ </p>
+     <div class="example" id="example-17">
+     <div class="example-contents screen">
+<div class="cdata"><pre>
+cd ../php-NN
+./configure --with-apxs2=/usr/local/apache2/bin/apxs --with-mysql
+make
+make install
+</pre></div>
+      </div>
+     </div>
+
+     <p class="para">
+    Если вы решите изменить параметры конфигурации после установки, вам надо
+    будет повторить только три последних шага (configure, make, make install).
+    Вам нужно будет только перезапустить Apache, чтобы новые модули подгрузились и начали работать.
+    Перекомпиляция Apache для этого не требуется.
+    </p>
+
+    <p class="para">
+    Заметьте, что если не указано обратное, то &#039;make install&#039; установит так же PEAR,
+    различные инструменты PHP - такие как phpize, версию PHP для командной
+    строки (PHP CLI) и т.д.
+    </p>
+
+    </li>
+
+  <li class="listitem">
+  <p class="para">
+  Настройка вашего php.ini
+  </p>
+
+     <div class="example" id="example-18">
+     <div class="example-contents screen">
+<div class="cdata"><pre>
+cp php.ini-development /usr/local/lib/php.ini
+</pre></div>
+      </div>
+     </div>
+
+    <p class="para">
+    Вероятно, вы захотите изменить некоторые настройки в php.ini.
+    Если вы предпочитаете держать файл php.ini в другом месте, используйте
+    параметр --with-config-file-path=/some/path в шаге 5.
+    </p>
+
+    <p class="para">
+    Если же вы используетеphp.ini-production, прочитайте его, чтобы знать какие изменения в
+    поведении PHP это повлечет.
+    </p>
+
+    </li>
+
+    <li class="listitem">
+ <p class="para">
+   Отредактируйте ваш httpd.conf, чтобы Apache загружал модуль PHP. Путь в
+   правой части инструкции LoadModule должен указывать на модуль PHP. Команда make
+   install может добавить эту иструкцию автоматически, но этого может и не
+   произойти, поэтому проверьте, чтобы убедиться.
+ </p>
+
+      <div class="example" id="example-19">
+        <div class="example-contents">
+<div class="apache-confcode"><pre class="apache-confcode">LoadModule php5_module modules/libphp5.so</pre>
+</div>
+       </div>
+
+      </div>
+
+      </li>
+
+      <li class="listitem">
+
+    <p class="para">
+    Теперь следует сконфигурировать Apache, чтобы он передавал файлы с
+    некоторыми расширениями на обработку модулю PHP. В нашем примере сделаем
+    это для .php файлов. Вместо обычного использования директивы
+    Apache AddType, мы хотим избежать интерпретации как PHP потенциально опасных загрузок и
+    файлов наподобие exploit.php.jpg. С помощью данного примера можно
+    указать для интерпретации PHP любые расширения, просто добавив их
+    в конец списка. Продемонстрируем это на расширении .php.
+    </p>
+
+
+      <div class="example" id="example-20">
+        <div class="example-contents">
+<div class="apache-confcode"><pre class="apache-confcode">&lt;FilesMatch \.php$&gt;
+    SetHandler application/x-httpd-php
+&lt;/FilesMatch&gt;</pre>
+</div>
+       </div>
+
+      </div>
+
+    <p class="para">
+Или, если мы хотим добавить расширения .php, .php2, .php3, .php4, .php5, .php6 и
+    .phtml, это можно записать так:
+    </p>
+
+      <div class="example" id="example-21">
+        <div class="example-contents">
+<div class="apache-confcode"><pre class="apache-confcode">&lt;FilesMatch &quot;\.ph(p[2-6]?|tml)$&quot;&gt;
+    SetHandler application/x-httpd-php
+&lt;/FilesMatch&gt;</pre>
+</div>
+       </div>
+
+      </div>
+
+    <p class="para">
+     Чтобы PHP отображал содержимое файлов .phps с подсветкой синтаксиса, нужно
+     внести соответствующую директиву
+    </p>
+
+      <div class="example" id="example-22">
+        <div class="example-contents">
+<div class="apache-confcode"><pre class="apache-confcode">&lt;FilesMatch &quot;\.phps$&quot;&gt;
+    SetHandler application/x-httpd-php-source
+&lt;/FilesMatch&gt;</pre>
+</div>
+       </div>
+
+      </div>
+
+    <p class="para">
+    Можно использовать mod_rewrite для отображения любого .php файла
+    с подсветкой синтаксиса, без нужды его переименования в .phps:
+   </p>
+
+      <div class="example" id="example-23">
+        <div class="example-contents">
+<div class="apache-confcode"><pre class="apache-confcode">RewriteEngine On
+RewriteRule (.*\.php)s$ $1 [H=application/x-httpd-php-source]</pre>
+</div>
+       </div>
+
+      </div>
+
+    <p class="para">
+    Данный фильтр, отображающий исходный код, должен быть отключен в
+    промышленном использовании, так как он может открыть конфиденциальную
+    или другую важную информацию, включенную в исходный код.
+    </p>
+
+    </li>
+
+    <li class="listitem">
+   <p class="para">
+   Используйте стандартную процедуру запуска Apache, например:
+   </p>
+
+   <div class="example" id="example-24">
+   <div class="example-contents screen">
+<div class="cdata"><pre>
+/usr/local/apache2/bin/apachectl start
+</pre></div>
+       </div>
+      </div>
+
+          <p class="para">ИЛИ</p>
+
+   <div class="example" id="example-25">
+   <div class="example-contents screen">
+<div class="cdata"><pre>
+service httpd restart
+</pre></div>
+       </div>
+      </div>
+
+   </li>
+     </ol>
+
+    <p class="para">
+     Если вы следовали инструкциям выше, то на данном этапе должны иметь запущенный
+     веб-сервер Apache2 с поддержкой PHP, как модуля <i>SAPI</i>.
+     Конечно, для PHP и Apache доступно гораздо больше параметров конфигурации.
+     Используйте <strong class="command">./configure --help</strong> в соответствующей папке с
+     исходными кодами для получения полного списка параметров конфигурации.
+    </p>
+    <p class="para">
+     Если вы хотите собрать многопоточную версию Apache,
+     то при сборке вам следует указать модуль MPM <var class="filename">worker</var>
+     вместо стандартного модуля MPM <var class="filename">prefork</var>.
+     Чтобы сделать это, нужно добавить следующий аргумент к ./configure на шаге 3:
+    </p>
+    <div class="example" id="example-26">
+    <div class="example-contents screen"><br />
+     --with-mpm=worker<br />
+    </div>
+    </div>
+    <p class="para">
+     Не следует бездумно использовать эту настройку, используйте ее только если вы
+     понимаете все последствия этого решения. Документация Apache
+     по <a href="http://httpd.apache.org/docs/current/mpm.html" class="link external">&raquo;&nbsp;модулям MPM</a>
+     значительно глубже раскрывает эту тему.
+    </p>
+    <blockquote class="note"><p><b class="note">Замечание</b>: 
+     <p class="para">
+      Если вы хотите использовать зависимый контент (content negotiation),
+      прочитайте  
+      <a href="faq.installation.html#faq.installation.apache.multiviews" class="link">Apache MultiViews 
+      FAQ</a>.
+     </p>
+    </p></blockquote>
+    <blockquote class="note"><p><b class="note">Замечание</b>: 
+     <p class="para">
+      Для сборки многопоточной версии Apache, ваша система должна
+      поддерживать потоки. Это так же подразумевает сборку PHP c
+      экспериментальной поддержкой Zend Thread Safety (ZTS). И, как следствие,
+      не все расширения PHP смогут работать. Рекомендуется установка Apache с
+      модулем MPM по умолчанию - <var class="filename">prefork</var>.
+     </p>
+    </p></blockquote>
+   </div><hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="install.unix.apache.html">Apache 1.3.x на системах Unix</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="install.unix.lighttpd-14.html">Установка PHP на Lighttpd 1.4 на Unix системах</a></div>
+ <div class="up"><a href="install.unix.html">Установка на Unix системы</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

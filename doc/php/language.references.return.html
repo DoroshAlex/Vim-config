@@ -1,0 +1,89 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Возвращение по ссылке</title>
+
+ </head>
+ <body><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="language.references.pass.html">Передача по ссылке</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="language.references.unset.html">Сброс переменных-ссылок</a></div>
+ <div class="up"><a href="language.references.html">Ссылки. Разъяснения</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="language.references.return" class="sect1">
+   <h2 class="title">Возвращение по ссылке</h2>
+   <p class="para">
+    Возвращение по ссылке используется в тех случаях, когда вы хотите
+    использовать функцию для выбора переменной, с которой должна быть связана
+    данная ссылка. <em class="emphasis">Не</em> используйте возврат по ссылке 
+    для увеличения производительности. Ядро PHP само занимается оптимизацией.
+    Применяйте возврат по ссылке только имея технические причины на это.
+    При возвращении по ссылке используйте такой синтаксис:
+    <div class="informalexample">
+     <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">class&nbsp;</span><span style="color: #0000BB">foo&nbsp;</span><span style="color: #007700">{<br />&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;</span><span style="color: #0000BB">$value&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">42</span><span style="color: #007700">;<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;function&nbsp;&amp;</span><span style="color: #0000BB">getValue</span><span style="color: #007700">()&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">value</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />}<br /><br /></span><span style="color: #0000BB">$obj&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">foo</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$myValue&nbsp;</span><span style="color: #007700">=&nbsp;&amp;</span><span style="color: #0000BB">$obj</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getValue</span><span style="color: #007700">();&nbsp;</span><span style="color: #FF8000">//&nbsp;$myValue&nbsp;указывает&nbsp;на&nbsp;$obj-&gt;value,&nbsp;равное&nbsp;42.<br /></span><span style="color: #0000BB">$obj</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">value&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">2</span><span style="color: #007700">;<br />echo&nbsp;</span><span style="color: #0000BB">$myValue</span><span style="color: #007700">;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;отобразит&nbsp;новое&nbsp;значение&nbsp;$obj-&gt;value,&nbsp;т.е.&nbsp;2.<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+     </div>
+
+    </div>
+    В этом примере устанавливается свойство объекта, возвращённого функцией
+    <var class="varname"><var class="varname">getValue</var></var>, а не его копии, как было бы без использования
+    ссылок.
+   </p>
+   <blockquote class="note"><p><b class="note">Замечание</b>: 
+    <span class="simpara">
+     В отличие от передачи параметров по ссылке, <i>&amp;</i>
+     здесь нужно использовать в обоих местах - для указания на то, что вы
+     возвращаете ссылку, а не копию, как обычно, и для указания того, что
+     происходит связывание по ссылке, а не обычное присвоение 
+     для <var class="varname"><var class="varname">$myValue</var></var>.
+    </span>
+   </p></blockquote>
+   <blockquote class="note"><p><b class="note">Замечание</b>: 
+    <span class="simpara">
+     Если вы возвращаете ссылку из функции используя следующий синтаксис:
+     <i>return ($this-&gt;value);</i>, это <em class="emphasis">не</em>
+     будет работать, так как вы возвращаете по ссылке результат
+     <em class="emphasis">выражения</em>, а не переменную. По ссылке можно
+     возвращать только переменные и ничего больше. Начиная с PHP 4.4.0 и PHP 5.1.0,
+     если код пытается вернуть по ссылке динамическое выражение или результат оператора
+     <i>new</i>, будет выброшено предупреждение <b><tt>E_NOTICE</tt></b>.
+    </span>
+   </p></blockquote>
+   <p class="para">
+   Для использования возвращаемой ссылки вы должны применять присвоение по ссылке:
+    <div class="informalexample">
+     <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">function&nbsp;&amp;</span><span style="color: #0000BB">collector</span><span style="color: #007700">()&nbsp;{<br />&nbsp;&nbsp;static&nbsp;</span><span style="color: #0000BB">$collection&nbsp;</span><span style="color: #007700">=&nbsp;array();<br />&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">$collection</span><span style="color: #007700">;<br />}<br /></span><span style="color: #0000BB">$collection&nbsp;</span><span style="color: #007700">=&nbsp;&amp;</span><span style="color: #0000BB">collector</span><span style="color: #007700">();<br /></span><span style="color: #0000BB">$collection</span><span style="color: #007700">[]&nbsp;=&nbsp;</span><span style="color: #DD0000">'foo'</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+     </div>
+
+    </div>
+   Для передачи возвращаемой ссылки в другую функцию, принимающую ссылку, вы можете
+   использовать следующий синтаксис:
+    <div class="informalexample">
+     <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">function&nbsp;&amp;</span><span style="color: #0000BB">collector</span><span style="color: #007700">()&nbsp;{<br />&nbsp;&nbsp;static&nbsp;</span><span style="color: #0000BB">$collection&nbsp;</span><span style="color: #007700">=&nbsp;array();<br />&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">$collection</span><span style="color: #007700">;<br />}<br /></span><span style="color: #0000BB">array_push</span><span style="color: #007700">(</span><span style="color: #0000BB">collector</span><span style="color: #007700">(),&nbsp;</span><span style="color: #DD0000">'foo'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+     </div>
+
+    </div>
+   </p>
+   <blockquote class="note"><p><b class="note">Замечание</b>: 
+    <span class="simpara">
+      Заметим, что <i>array_push(&amp;collector(), &#039;foo&#039;);</i>
+      <em class="emphasis">не</em> сработает, а приведет к неисправимой ошибке.
+    </span>
+   </p></blockquote>
+  </div><hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="language.references.pass.html">Передача по ссылке</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="language.references.unset.html">Сброс переменных-ссылок</a></div>
+ <div class="up"><a href="language.references.html">Ссылки. Разъяснения</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

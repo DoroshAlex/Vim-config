@@ -1,0 +1,240 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Настройка во время выполнения</title>
+
+ </head>
+ <body><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="filesystem.installation.html">Установка</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="filesystem.resources.html">Типы ресурсов</a></div>
+ <div class="up"><a href="filesystem.setup.html">Установка и настройка</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="filesystem.configuration" class="section">
+ <h2 class="title">Настройка во время выполнения</h2>
+ <p class="simpara">
+Поведение этих функций зависит от установок в <var class="filename">php.ini</var>.
+</p>
+ <p class="para">
+  <table class="doctable table">
+   <caption><b>Директивы конфигурации файловой системы и потоков</b></caption>
+   
+    <thead valign="middle">
+     <tr valign="middle">
+      <th>Имя</th>
+      <th>Значение по умолчанию</th>
+      <th>Область изменения</th>
+      <th>История изменения</th>
+     </tr>
+
+    </thead>
+
+    <tbody valign="middle" class="tbody">
+     <tr valign="middle">
+      <td align="left"><a href="filesystem.configuration.html#ini.allow-url-fopen" class="link">allow_url_fopen</a></td>
+      <td align="left">&quot;1&quot;</td>
+      <td align="left">PHP_INI_ALL</td>
+      <td align="left">PHP_INI_ALL в PHP &lt;= 4.3.4. PHP_INI_SYSTEM в PHP &lt; 6. Доступна начиная с версии PHP 4.0.4.</td>
+      
+     </tr>
+
+     <tr valign="middle">
+      <td align="left"><a href="filesystem.configuration.html#ini.allow-url-include" class="link">allow_url_include</a></td>
+      <td align="left">&quot;0&quot;</td>
+      <td align="left">PHP_INI_ALL</td>
+      <td align="left">PHP_INI_SYSTEM в PHP 5. Доступна начиная с версии PHP 5.2.0.</td>
+     </tr>
+
+     <tr valign="middle">
+      <td align="left"><a href="filesystem.configuration.html#ini.user-agent" class="link">user_agent</a></td>
+      <td align="left">NULL</td>
+      <td align="left">PHP_INI_ALL</td>
+      <td align="left">Доступна начиная с версии PHP 4.3.0.</td>
+     </tr>
+
+     <tr valign="middle">
+      <td align="left"><a href="filesystem.configuration.html#ini.default-socket-timeout" class="link">default_socket_timeout</a></td>
+      <td align="left">&quot;60&quot;</td>
+      <td align="left">PHP_INI_ALL</td>
+      <td align="left">Доступна начиная с версии PHP 4.3.0.</td>
+    </tr>
+
+     <tr valign="middle">
+      <td align="left"><a href="filesystem.configuration.html#ini.from" class="link">from</a></td>
+      <td align="left">&quot;&quot;</td>
+      <td align="left">PHP_INI_ALL</td>
+      <td class="empty">&nbsp;</td>
+     </tr>
+
+     <tr valign="middle">
+      <td align="left"><a href="filesystem.configuration.html#ini.auto-detect-line-endings" class="link">auto_detect_line_endings</a></td>
+      <td align="left">&quot;0&quot;</td>
+      <td align="left">PHP_INI_ALL</td>
+      <td align="left">Доступна начиная с версии PHP 4.3.0.</td>
+     </tr>
+
+    </tbody>
+   
+  </table>
+
+ </p>
+ 
+ <p class="para">Краткое разъяснение конфигурационных
+директив.</p>
+ 
+ <p class="para">
+  <dl>
+
+   <dt id="ini.allow-url-fopen">
+    <span class="term">
+     <i><tt class="parameter">allow_url_fopen</tt></i>
+     <span class="type"><a href="language.types.boolean.html" class="type boolean">boolean</a></span>
+    </span>
+    <dd>
+
+     <p class="para">
+      Данная директива включает поддержку оберток URL (URL wrappers),
+      которые позволяют работать с объектами URL как с обычными файлами.
+      Обертки, доступные по умолчанию, служат для работы с
+      <a href="features.remote-files.html" class="link">удаленными файлами</a>
+      с использованием ftp или http протокола. Некоторые расширения,
+      например, <a href="ref.zlib.html" class="link">zlib</a>, могут регистрировать
+      собственные обертки.
+     </p>
+     <blockquote class="note"><p><b class="note">Замечание</b>: 
+      <p class="para">
+       Эта директива была представлена сразу же после выхода PHP версии
+       4.0.3. В этой и в последующих версиях эта функциональность
+       может быть отключена только во время компиляции PHP с помощью
+       ключа <a href="configure.about.html#configure.disable-url-fopen-wrapper" class="link"><i><tt class="parameter">
+       --disable-url-fopen-wrapper</tt></i></a>.
+      </p>
+     </p></blockquote>
+     <div class="warning"><b class="warning">Внимание</b>
+      <p class="para"> 
+       В версиях PHP для платформ Windows, более ранних, чем 4.3.0,
+       поддержка работы с удаленными файлами отсутствует для следующих
+       функций: <span class="function"><b>include()</b></span>, <span class="function"><b>include_once()</b></span>,
+       <span class="function"><b>require()</b></span>, <span class="function"><b>require_once()</b></span> и функции
+       imagecreatefromXXX расширения <a href="ref.image.html" class="xref">GD и функции для работы с изображениями Функции</a>.
+      </p>
+     </div>
+    </dd>
+
+   </dt>
+
+   
+   <dt id="ini.allow-url-include">
+    <span class="term">
+     <i><tt class="parameter">allow_url_include</tt></i>
+     <span class="type"><a href="language.types.boolean.html" class="type boolean">boolean</a></span>
+    </span>
+    <dd>
+
+     <p class="para">
+      Эта опция позволяет использование оберток fopen, которые поддерживают
+      работу с URL, в функциях <span class="function"><b>include()</b></span>, <span class="function"><b>include_once()</b></span>,
+      <span class="function"><b>require()</b></span>, <span class="function"><b>require_once()</b></span>.
+     </p>
+     <blockquote class="note"><p><b class="note">Замечание</b>: 
+      <p class="para">
+       Эта опция требует включения опции allow_url_fopen.
+      </p>
+     </p></blockquote>
+    </dd>
+
+   </dt>
+
+   
+   <dt id="ini.user-agent">
+    <span class="term">
+     <i><tt class="parameter">user_agent</tt></i>
+     <span class="type"><a href="language.types.string.html" class="type string">string</a></span>
+    </span>
+    <dd>
+
+     <p class="para">
+      Устанавливает отсылаемую PHP строку &quot;User-Agent&quot;.
+     </p>
+    </dd>
+
+   </dt>
+
+   
+   <dt id="ini.default-socket-timeout">
+    <span class="term">
+     <i><tt class="parameter">default_socket_timeout</tt></i>
+     <span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>
+    </span>
+    <dd>
+
+     <p class="para">
+      Значение таймаута по умолчанию (в секундах) для потоков, использующих сокеты.
+     </p>
+     <blockquote class="note"><p><b class="note">Замечание</b>: 
+      <span class="simpara">
+       Данная директива стала доступна с версии PHP 4.3.0
+      </span>
+     </p></blockquote>
+    </dd>
+
+   </dt>
+
+   
+   <dt id="ini.from">
+    <span class="term">
+     <i><tt class="parameter">from</tt></i>
+     <span class="type"><a href="language.types.string.html" class="type string">string</a></span>
+    </span>
+    <dd>
+
+     <p class="para">
+      Адрес email, используемый в соединениях FTP без авторизации,
+      а также в качестве значения заголовка From в HTTP соединениях
+      при использовании ftp и http оберток, соответственно.
+     </p>
+    </dd>
+
+   </dt>
+
+   
+   <dt id="ini.auto-detect-line-endings">
+    <span class="term">
+     <i><tt class="parameter">auto_detect_line_endings</tt></i>
+     <span class="type"><a href="language.types.boolean.html" class="type boolean">boolean</a></span>
+    </span>
+    <dd>
+
+     <p class="para">
+      Когда данная директива включена, PHP проверяет данные,
+      получаемые функциями <span class="function"><a href="function.fgets.html" class="function">fgets()</a></span> и <span class="function"><a href="function.file.html" class="function">file()</a></span>
+      с тем, чтобы определить способ завершения строк (Unix, MS-Dos или Macintosh).
+     </p>
+     <p class="para">
+      Данная директива позволяет PHP взаимодействовать с системами
+      Macintosh, однако, по умолчанию эта директива выключена,
+      поскольку при ее использовании возникает (несущественная)
+      потребность в дополнительных ресурсах для определения
+      символа окончания первой строки, а также потому, что
+      программисты, использующие в системах Unix символы возврата
+      каретки в качестве разделителей, столкнутся с обратно-несовместимым
+      поведением PHP.
+     </p>
+     <blockquote class="note"><p><b class="note">Замечание</b>: 
+      <span class="simpara">
+       Эта директива стала доступна с версии PHP 4.3.0
+      </span>
+     </p></blockquote>
+    </dd>
+
+   </dt>
+
+  </dl>
+
+ </p>
+</div><hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="filesystem.installation.html">Установка</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="filesystem.resources.html">Типы ресурсов</a></div>
+ <div class="up"><a href="filesystem.setup.html">Установка и настройка</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

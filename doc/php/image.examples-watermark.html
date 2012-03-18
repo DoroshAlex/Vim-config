@@ -1,0 +1,41 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Добавление водяных знаков на изображения с помощью альфа-каналов</title>
+
+ </head>
+ <body><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="image.examples-png.html">Создание PNG средствами PHP</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="image.examples.merged-watermark.html">Использование imagecopymerge чтобы создать полупрозрачный водяной знак</a></div>
+ <div class="up"><a href="image.examples.html">Примеры</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="image.examples-watermark" class="section">
+  <h2 class="title">Добавление водяных знаков на изображения с помощью альфа-каналов</h2>
+  <p class="para">
+   <div class="example" id="example-2871">
+    <p><b>Пример #1 Добавление водяных знаков на изображения с помощью альфа-каналов</b></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">//&nbsp;Загрузка&nbsp;штампа&nbsp;и&nbsp;фото,&nbsp;для&nbsp;которого&nbsp;применяется&nbsp;водяной&nbsp;знак&nbsp;(называется&nbsp;штамп&nbsp;или&nbsp;печать)<br /></span><span style="color: #0000BB">$stamp&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">imagecreatefrompng</span><span style="color: #007700">(</span><span style="color: #DD0000">'stamp.png'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$im&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">imagecreatefromjpeg</span><span style="color: #007700">(</span><span style="color: #DD0000">'photo.jpeg'</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;Установка&nbsp;полей&nbsp;для&nbsp;штампа&nbsp;и&nbsp;получение&nbsp;высоты/ширины&nbsp;штампа<br /></span><span style="color: #0000BB">$marge_right&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">10</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$marge_bottom&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">10</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$sx&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">imagesx</span><span style="color: #007700">(</span><span style="color: #0000BB">$stamp</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$sy&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">imagesy</span><span style="color: #007700">(</span><span style="color: #0000BB">$stamp</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;Копирование&nbsp;изображения&nbsp;штампа&nbsp;на&nbsp;фотографию&nbsp;с&nbsp;помощью&nbsp;смещения&nbsp;края<br />//&nbsp;и&nbsp;ширины&nbsp;фотографии&nbsp;для&nbsp;расчета&nbsp;позиционирования&nbsp;штампа.&nbsp;<br /></span><span style="color: #0000BB">imagecopy</span><span style="color: #007700">(</span><span style="color: #0000BB">$im</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$stamp</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">imagesx</span><span style="color: #007700">(</span><span style="color: #0000BB">$im</span><span style="color: #007700">)&nbsp;-&nbsp;</span><span style="color: #0000BB">$sx&nbsp;</span><span style="color: #007700">-&nbsp;</span><span style="color: #0000BB">$marge_right</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">imagesy</span><span style="color: #007700">(</span><span style="color: #0000BB">$im</span><span style="color: #007700">)&nbsp;-&nbsp;</span><span style="color: #0000BB">$sy&nbsp;</span><span style="color: #007700">-&nbsp;</span><span style="color: #0000BB">$marge_bottom</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">imagesx</span><span style="color: #007700">(</span><span style="color: #0000BB">$stamp</span><span style="color: #007700">),&nbsp;</span><span style="color: #0000BB">imagesy</span><span style="color: #007700">(</span><span style="color: #0000BB">$stamp</span><span style="color: #007700">));<br /><br /></span><span style="color: #FF8000">//&nbsp;Вывод&nbsp;и&nbsp;освобождение&nbsp;памяти<br /></span><span style="color: #0000BB">header</span><span style="color: #007700">(</span><span style="color: #DD0000">'Content-type:&nbsp;image/png'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">imagepng</span><span style="color: #007700">(</span><span style="color: #0000BB">$im</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">imagedestroy</span><span style="color: #007700">(</span><span style="color: #0000BB">$im</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+    <div class="mediaobject">
+     
+     <div class="imageobject">
+      <img src="images/21009b70229598c6a80eef8b45bf282b-watermarks.png" alt="Добавление водяных знаков на изображения с помощью альфа-каналов" width="320" height="240" />
+     </div>
+    </div>
+   </div>
+   Этот пример является простым способом добавить водяные знаки и штампы на фотографии и изображения,  
+   защищенные авторским правом. Обратите внимание, что наличие альфа-канала в изображении
+   штампа, как текст сглаживается. Это сохранилось во время копирования.
+  </p>
+ </div><hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="image.examples-png.html">Создание PNG средствами PHP</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="image.examples.merged-watermark.html">Использование imagecopymerge чтобы создать полупрозрачный водяной знак</a></div>
+ <div class="up"><a href="image.examples.html">Примеры</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

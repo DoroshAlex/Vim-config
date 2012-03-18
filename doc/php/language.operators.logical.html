@@ -1,0 +1,99 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Логические операторы</title>
+
+ </head>
+ <body><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="language.operators.increment.html">Операторы инкремента и декремента</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="language.operators.string.html">Строковые операторы</a></div>
+ <div class="up"><a href="language.operators.html">Операторы</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="language.operators.logical" class="sect1">
+   <h2 class="title">Логические операторы</h2>
+
+   <table class="doctable table">
+    <caption><b>Логические операторы</b></caption>
+    
+     <thead valign="middle">
+      <tr valign="middle">
+       <th>Пример</th>
+       <th>Название</th>
+       <th>Результат</th>
+      </tr>
+
+     </thead>
+
+     <tbody valign="middle" class="tbody">
+      <tr valign="middle">
+       <td align="left">$a and $b</td>
+       <td align="left">И</td>
+       <td align="left"><b><tt>TRUE</tt></b> если и <var class="varname"><var class="varname">$a</var></var>, и <var class="varname"><var class="varname">$b</var></var> <b><tt>TRUE</tt></b>.</td>
+      </tr>
+
+      <tr valign="middle">
+       <td align="left">$a or $b</td>
+       <td align="left">Или</td>
+       <td align="left"><b><tt>TRUE</tt></b> если или <var class="varname"><var class="varname">$a</var></var>, или <var class="varname"><var class="varname">$b</var></var> <b><tt>TRUE</tt></b>.</td>
+      </tr>
+
+      <tr valign="middle">
+       <td align="left">$a xor $b</td>
+       <td align="left">Исключающее или</td>
+       <td align="left"><b><tt>TRUE</tt></b> если <var class="varname"><var class="varname">$a</var></var>, или <var class="varname"><var class="varname">$b</var></var> <b><tt>TRUE</tt></b>, но не оба.</td>
+      </tr>
+
+      <tr valign="middle">
+       <td align="left">! $a</td>
+       <td align="left">Отрицание</td>
+       <td align="left"><b><tt>TRUE</tt></b> если <var class="varname"><var class="varname">$a</var></var> не <b><tt>TRUE</tt></b>.</td>
+      </tr>
+
+      <tr valign="middle">
+       <td align="left">$a &amp;&amp; $b</td>
+       <td align="left">И</td>
+       <td align="left"><b><tt>TRUE</tt></b> если и <var class="varname"><var class="varname">$a</var></var>, и <var class="varname"><var class="varname">$b</var></var> <b><tt>TRUE</tt></b>.</td>
+      </tr>
+
+      <tr valign="middle">
+       <td align="left">$a || $b</td>
+       <td align="left">Или</td>
+       <td align="left"><b><tt>TRUE</tt></b> если или <var class="varname"><var class="varname">$a</var></var>, или <var class="varname"><var class="varname">$b</var></var> <b><tt>TRUE</tt></b>.</td>
+      </tr>
+
+     </tbody>
+    
+   </table>
+
+   <p class="simpara">
+    Смысл двух разных вариантов для операторов &quot;and&quot; и &quot;or&quot; в том, что
+    они работают с различными приоритетами (смотрите таблицу
+    <a href="language.operators.precedence.html" class="link">Приоритет выполнения операторов</a>).
+   </p>
+   <div class="example" id="example-113">
+    <p><b>Пример #1 Объяснение логических операторов</b></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /><br /></span><span style="color: #FF8000">//&nbsp;--------------------<br />//&nbsp;foo()&nbsp;никогда&nbsp;не&nbsp;буде&nbsp;вызвана,&nbsp;так&nbsp;как&nbsp;эти&nbsp;операторы&nbsp;являются&nbsp;шунтирующими&nbsp;(short-circuit)<br /><br /></span><span style="color: #0000BB">$a&nbsp;</span><span style="color: #007700">=&nbsp;(</span><span style="color: #0000BB">false&nbsp;</span><span style="color: #007700">&amp;&amp;&nbsp;</span><span style="color: #0000BB">foo</span><span style="color: #007700">());<br /></span><span style="color: #0000BB">$b&nbsp;</span><span style="color: #007700">=&nbsp;(</span><span style="color: #0000BB">true&nbsp;&nbsp;</span><span style="color: #007700">||&nbsp;</span><span style="color: #0000BB">foo</span><span style="color: #007700">());<br /></span><span style="color: #0000BB">$c&nbsp;</span><span style="color: #007700">=&nbsp;(</span><span style="color: #0000BB">false&nbsp;</span><span style="color: #007700">and&nbsp;</span><span style="color: #0000BB">foo</span><span style="color: #007700">());<br /></span><span style="color: #0000BB">$d&nbsp;</span><span style="color: #007700">=&nbsp;(</span><span style="color: #0000BB">true&nbsp;&nbsp;</span><span style="color: #007700">or&nbsp;&nbsp;</span><span style="color: #0000BB">foo</span><span style="color: #007700">());<br /><br /></span><span style="color: #FF8000">//&nbsp;--------------------<br />//&nbsp;"||"&nbsp;имеет&nbsp;больший&nbsp;приоритет,&nbsp;чем&nbsp;"or"<br /><br />//&nbsp;Результат&nbsp;выражения&nbsp;(false&nbsp;||&nbsp;true)&nbsp;присваивается&nbsp;переменной&nbsp;$e<br />//&nbsp;Действует&nbsp;как:&nbsp;($e&nbsp;=&nbsp;(false&nbsp;||&nbsp;true))<br /></span><span style="color: #0000BB">$e&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">false&nbsp;</span><span style="color: #007700">||&nbsp;</span><span style="color: #0000BB">true</span><span style="color: #007700">;<br /><br /></span><span style="color: #FF8000">//&nbsp;Константа&nbsp;false&nbsp;присваивается&nbsp;$f,&nbsp;а&nbsp;затем&nbsp;значение&nbsp;true&nbsp;игнорируется<br />//&nbsp;Действует&nbsp;как:&nbsp;(($f&nbsp;=&nbsp;false)&nbsp;or&nbsp;true)<br /></span><span style="color: #0000BB">$f&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">false&nbsp;</span><span style="color: #007700">or&nbsp;</span><span style="color: #0000BB">true</span><span style="color: #007700">;<br /><br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$e</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$f</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;--------------------<br />//&nbsp;"&amp;&amp;"&nbsp;имеет&nbsp;больший&nbsp;приоритет,&nbsp;чем&nbsp;"and"<br /><br />//&nbsp;Результат&nbsp;выражения&nbsp;(true&nbsp;&amp;&amp;&nbsp;false)&nbsp;присваивается&nbsp;переменной&nbsp;$g<br />//&nbsp;Действует&nbsp;как:&nbsp;($g&nbsp;=&nbsp;(true&nbsp;&amp;&amp;&nbsp;false))<br /></span><span style="color: #0000BB">$g&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">true&nbsp;</span><span style="color: #007700">&amp;&amp;&nbsp;</span><span style="color: #0000BB">false</span><span style="color: #007700">;<br /><br /></span><span style="color: #FF8000">//&nbsp;Константа&nbsp;true&nbsp;присваивается&nbsp;$h,&nbsp;а&nbsp;затем&nbsp;значение&nbsp;false&nbsp;игнорируется<br />//&nbsp;Действует&nbsp;как:&nbsp;(($h&nbsp;=&nbsp;true)&nbsp;and&nbsp;false)<br /></span><span style="color: #0000BB">$h&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">true&nbsp;</span><span style="color: #007700">and&nbsp;</span><span style="color: #0000BB">false</span><span style="color: #007700">;<br /><br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$g</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$h</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+    <div class="example-contents"><p>Результатом выполнения данного примера
+будет что-то подобное:</p></div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+bool(true)
+bool(false)
+bool(false)
+bool(true)
+</pre></div>
+    </div>
+   </div>
+  </div><hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="language.operators.increment.html">Операторы инкремента и декремента</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="language.operators.string.html">Строковые операторы</a></div>
+ <div class="up"><a href="language.operators.html">Операторы</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

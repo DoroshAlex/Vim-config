@@ -1,0 +1,119 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Получает строку из потокового ресурса до указанного разделителя</title>
+
+ </head>
+ <body><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.stream-get-filters.html">stream_get_filters</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.stream-get-meta-data.html">stream_get_meta_data</a></div>
+ <div class="up"><a href="ref.stream.html">Stream Функции</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.stream-get-line" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">stream_get_line</h1>
+  <p class="verinfo">(PHP 5)</p><p class="refpurpose"><span class="refname">stream_get_line</span> &mdash; <span class="dc-title">Получает строку из потокового ресурса до указанного разделителя</span></p>
+
+ </div>
+ <div class="refsect1 description" id="refsect1-function.stream-get-line-description">
+  <h3 class="title">Описание</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">string</span> <span class="methodname"><b>stream_get_line</b></span>
+    ( <span class="methodparam"><span class="type">resource</span> <tt class="parameter">$handle</tt></span>
+   , <span class="methodparam"><span class="type">int</span> <tt class="parameter">$length</tt></span>
+   [, <span class="methodparam"><span class="type">string</span> <tt class="parameter">$ending</tt></span>
+  ] )</div>
+
+  <p class="para rdfs-comment">
+   Получает строку из указанного дескриптора.
+  </p>
+  <p class="para">
+   Чтение заканчивается, когда прочитано <i><tt class="parameter">length</tt></i> количество байт, когда
+   строка, указанная в параметре <i><tt class="parameter">ending</tt></i> найдена (она 
+   <em class="emphasis">не</em> включается в возвращаемое значение), или достигнут <acronym title="End Of File">EOF</acronym>
+   (смотря что произойдет раньше).
+  </p>
+  <p class="para">
+   Функция очень похожа на функцию <span class="function"><a href="function.fgets.html" class="function">fgets()</a></span>, кроме того,
+   что она позволяет использовать разделители строк, отличающиеся от стандартных \n, \r, и
+   \r\n, и  <em class="emphasis">не</em> возвращает сам разделитель.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-function.stream-get-line-parameters">
+  <h3 class="title">Список параметров</h3>
+  <p class="para">
+   <dl>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">handle</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Допустимый дескриптор файла.
+      </p>
+     </dd>
+
+    </dt>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">length</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Количество байт для чтения из дескриптора.
+      </p>
+     </dd>
+
+    </dt>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">ending</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Необязательный разделитель строки.
+      </p>
+     </dd>
+
+    </dt>
+
+   </dl>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-function.stream-get-line-returnvalues">
+  <h3 class="title">Возвращаемые значения</h3>
+  <p class="para">
+   Возвращает строку длиной до  <i><tt class="parameter">length</tt></i> байт, прочитанную из файла
+   указанного параметром <i><tt class="parameter">handle</tt></i>.
+  </p>
+  <p class="para">
+   Если возникает ошибка, возвращает  <b><tt>FALSE</tt></b>.
+  </p>
+ </div>
+
+  
+ <div class="refsect1 seealso" id="refsect1-function.stream-get-line-seealso">
+  <h3 class="title">Смотрите также</h3>
+  <ul class="simplelist">
+   <li class="member"><span class="function"><a href="function.fread.html" class="function" rel="rdfs-seeAlso">fread()</a> - Бинарно-безопасное чтение файла</span></li>
+   <li class="member"><span class="function"><a href="function.fgets.html" class="function" rel="rdfs-seeAlso">fgets()</a> - Читает строку из файла</span></li>
+   <li class="member"><span class="function"><a href="function.fgetc.html" class="function" rel="rdfs-seeAlso">fgetc()</a> - Считывает символ из файла</span></li>
+  </ul>
+ </div>
+
+
+</div><hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.stream-get-filters.html">stream_get_filters</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.stream-get-meta-data.html">stream_get_meta_data</a></div>
+ <div class="up"><a href="ref.stream.html">Stream Функции</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

@@ -1,0 +1,289 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Новые функции</title>
+
+ </head>
+ <body><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="migration52.parameters.html">Новые параметры</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="migration52.methods.html">Новые методы</a></div>
+ <div class="up"><a href="migration52.html">Переход с PHP 5.1.x на PHP 5.2.x</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="migration52.functions" class="section">
+  <h2 class="title">Новые функции</h2>
+  <p class="para">
+   В PHP 5.2.x было добавлено несколько новых функций:
+  </p>
+  
+  <p class="para">Ядро PHP:</p>
+  <ul class="itemizedlist">
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="function.array-fill-keys.html" class="function">array_fill_keys()</a></span>
+     - Создаёт массив, используя элементы первого параметра в виде ключей и
+     присваивая всем значение <i>val</i>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="function.error-get-last.html" class="function">error_get_last()</a></span>
+     - Возвращает последнюю ошибку в ассоциативном массиве или <b><tt>NULL</tt></b>,
+     если ошибок не было.
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="function.image-type-to-extension.html" class="function">image_type_to_extension()</a></span>
+     - Возвращает расширение файла для типа изображения, полученного
+     из <span class="function"><a href="function.getimagesize.html" class="function">getimagesize()</a></span>, <span class="function"><a href="function.exif-read-data.html" class="function">exif_read_data()</a></span>,
+     <span class="function"><a href="function.exif-thumbnail.html" class="function">exif_thumbnail()</a></span>, <span class="function"><a href="function.exif-imagetype.html" class="function">exif_imagetype()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="function.memory-get-peak-usage.html" class="function">memory_get_peak_usage()</a></span>
+     - Возвращает максимум выделенной для PHP памяти
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="function.sys-get-temp-dir.html" class="function">sys_get_temp_dir()</a></span>
+     - Возвращает путь к директории для временных файлов. (Добавлено в 5.2.1)
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="function.timezone-abbreviations-list.html" class="function">timezone_abbreviations_list()</a></span>
+     - Возвращает ассоциативный массив, содержащий для каждой аббревиатуры временной зоны 
+     флаг летнего времени (DST), смещение от стандартного времени и название пояса.
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="function.timezone-identifiers-list.html" class="function">timezone_identifiers_list()</a></span>
+     - Возвращает массив идентификаторов всех временных зон.     
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="function.timezone-name-from-abbr.html" class="function">timezone_name_from_abbr()</a></span>
+     - Возвращает название временной зоны по аббревиатуре
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="function.stream-socket-shutdown.html" class="function">stream_socket_shutdown()</a></span>
+     - Закрывает соединение или его часть на сокете, связанном
+     с потоком, который будет закрыт. Начиная с PHP 5.2.1.
+    </span>
+   </li>
+  </ul>
+  
+  <p class="para"><a href="ref.image.html" class="link">Image</a>:</p>
+  <ul class="itemizedlist">
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="function.imagegrabscreen.html" class="function">imagegrabscreen()</a></span>
+     - Делает снимок всего экрана. Начиная с PHP 5.2.2.
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="function.imagegrabwindow.html" class="function">imagegrabwindow()</a></span>
+     - Делает снимок окна. Начиная с PHP 5.2.2.
+    </span>
+   </li>
+  </ul>
+  
+  <p class="para"><a href="book.libxml.html" class="link">libXML</a>:</p>
+  <ul class="itemizedlist">
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="function.libxml-disable-entity-loader.html" class="function">libxml_disable_entity_loader()</a></span>
+     - Отключает возможность загрузки внешних сущностей. Начиная с PHP 5.2.11.
+    </span>
+   </li>
+  </ul>
+  
+  <p class="para"><a href="ref.mbstring.html" class="link">mbstring</a>:</p>
+  <ul class="itemizedlist">
+   
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="function.mb-stripos.html" class="function">mb_stripos()</a></span>
+     - Находит позицию первого вхождения строки в другой строке. Регистронезависимая.
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="function.mb-stristr.html" class="function">mb_stristr()</a></span>
+     - Находит первое вхождение строки в другой строке. Регистронезависимая.
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="function.mb-strrchr.html" class="function">mb_strrchr()</a></span>
+     - Находит последнее вхождение символа строки в другой строке.
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="function.mb-strrichr.html" class="function">mb_strrichr()</a></span>
+     - Находит последнее вхождение символа из строки в другой строке. Регистронезависимая.
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="function.mb-strripos.html" class="function">mb_strripos()</a></span>
+     - Находит позицию последнего вхождения строки в другой строке. Регистронезависимая.
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="function.mb-strstr.html" class="function">mb_strstr()</a></span>
+     - Находит первое вхождение строки в другой строке.
+    </span>
+   </li>
+  </ul>
+  
+  <p class="para"><a href="ref.ming.html" class="link">ming</a> (Начиная с PHP 5.2.1):</p>
+  <ul class="itemizedlist">
+   <li class="listitem">
+    <span class="simpara">
+     void ming_setSWFCompression(int num)
+     - Устанавливает сжатие выходного потока.
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     void swfmovie::namedanchor(string name)
+     - Создаёт якорь.
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     void swfmovie::protect([string password])
+     - Защищает выходной поток.
+    </span>
+   </li>
+  </ul>
+  
+  <p class="para"><a href="ref.openssl.html" class="link">openssl</a>:</p>
+  <ul class="itemizedlist">
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="function.openssl-csr-get-public-key.html" class="function">openssl_csr_get_public_key()</a></span>
+     - Извлекает открытый ключ из CERT и подготавливает его к использованию.
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="function.openssl-csr-get-subject.html" class="function">openssl_csr_get_subject()</a></span>
+     - Возвращает предмет (subject) CERT
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="function.openssl-pkey-get-details.html" class="function">openssl_pkey_get_details()</a></span>
+     - Возвращает массив с информацией о ключе (bits, pkey, type)
+    </span>
+   </li>
+  </ul>
+  
+  <p class="para"><a href="ref.spl.html" class="link">spl</a>:</p>
+  <ul class="itemizedlist">
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="function.spl-object-hash.html" class="function">spl_object_hash()</a></span>
+     - Возвращает хэш-значение для данного объекта
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     int iterator_apply(Traversable it, mixed function [, mixed params])
+     - Вызывает функцию для каждого элемента итератора.
+    </span>
+   </li>
+  </ul>
+  
+  <p class="para"><a href="ref.pcre.html" class="link">pcre</a>:</p>
+  <ul class="itemizedlist">
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="function.preg-last-error.html" class="function">preg_last_error()</a></span>
+     - Возвращает код ошибки для последнего поиска по регулярному выражению.
+    </span>
+   </li>
+  </ul>
+  
+  <p class="para"><a href="ref.pgsql.html" class="link">pgsql</a>:</p>
+  <ul class="itemizedlist">
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="function.pg-field-table.html" class="function">pg_field_table()</a></span>
+     - Возвращает название таблицы, которой принадлежит поле, или oid
+     таблицы, если <i>oid_only</i> содержит <b><tt>TRUE</tt></b>
+    </span>
+   </li>
+  </ul>
+  
+  <p class="para"><a href="ref.posix.html" class="link">posix</a>:</p>
+  <ul class="itemizedlist">
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="function.posix-initgroups.html" class="function">posix_initgroups()</a></span>
+     - Вычисляет список доступа группы по имени пользователя.
+    </span>
+   </li>
+  </ul>
+  
+  <p class="para"><a href="ref.gmp.html" class="link">gmp</a>:</p>
+  <ul class="itemizedlist">
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="function.gmp-nextprime.html" class="function">gmp_nextprime()</a></span>
+     - Находит следующее простое число.
+    </span>
+   </li>
+  </ul>
+  
+  <p class="para"><a href="ref.xmlwriter.html" class="link">xmlwriter</a>:</p>
+  <ul class="itemizedlist">
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="function.xmlwriter-full-end-element.html" class="function">xmlwriter_full_end_element()</a></span>
+     - Закрывает текущий элемент, возвращает <b><tt>FALSE</tt></b> при ошибке.
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="function.xmlwriter-write-raw.html" class="function">xmlwriter_write_raw()</a></span>
+     - Пишет текст, возвращает <b><tt>FALSE</tt></b> при ошибке.
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="function.xmlwriter-start-dtd-entity.html" class="function">xmlwriter_start_dtd_entity()</a></span>
+     - Начинает DTD-сущность, возвращает <b><tt>FALSE</tt></b> при ошибке.
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="function.xmlwriter-end-dtd-entity.html" class="function">xmlwriter_end_dtd_entity()</a></span>
+     - Заканчивает текущую DTD-сущность, возвращает <b><tt>FALSE</tt></b> при ошибке.
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="function.xmlwriter-write-dtd-entity.html" class="function">xmlwriter_write_dtd_entity()</a></span>
+     - Записывает полную DTD-сущность, возвращает <b><tt>FALSE</tt></b> при ошибке.
+    </span>
+   </li>
+  </ul>
+ </div><hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="migration52.parameters.html">Новые параметры</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="migration52.methods.html">Новые методы</a></div>
+ <div class="up"><a href="migration52.html">Переход с PHP 5.1.x на PHP 5.2.x</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

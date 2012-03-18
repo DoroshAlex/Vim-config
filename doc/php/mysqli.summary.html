@@ -1,0 +1,867 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Основная информация о функциях расширения MySQLi</title>
+
+ </head>
+ <body><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="mysqli.constants.html">Предопределенные константы</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="class.mysqli.html">MySQLi</a></div>
+ <div class="up"><a href="book.mysqli.html">mysqli</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="mysqli.summary" class="chapter">
+
+ <h1>Основная информация о функциях расширения MySQLi</h1>
+
+
+ <table class="doctable informaltable">
+  
+   <thead valign="middle">
+    <tr valign="middle">
+     <th>Класс MySQLi</th>
+    </tr>
+
+    <tr valign="middle">
+     <th>ООП-интерфейс</th>
+     <th>Процедурный интерфейс</th>
+     <th>Синоним (не используйте!)</th>
+     <th>Описание</th>
+    </tr>
+
+   </thead>
+
+   <tbody valign="middle" class="tbody">
+    <tr valign="middle">
+     <td align="left"><em class="emphasis">Свойства</em></td>
+    </tr>
+
+    <tr valign="middle">
+     <td align="left"><a href="mysqli.affected-rows.html" class="link">$mysqli::affected_rows</a></td>
+     <td align="left"><span class="function"><a href="mysqli.affected-rows.html" class="function">mysqli_affected_rows()</a></span></td>
+     <td align="left">-</td>
+     <td align="left">Получает число рядов, затронутых предыдущей операцией MySQL</td>
+    </tr>
+
+    <tr valign="middle">
+     <td align="left"><a href="mysqli.client-info.html" class="link">$mysqli::client_info</a></td>
+     <td align="left"><span class="function"><a href="mysqli.get-client-info.html" class="function">mysqli_get_client_info()</a></span></td>
+     <td align="left">-</td>
+     <td align="left">Возвращает информацию о версии клиента MySQL в виде строки (string)</td>
+    </tr>
+
+    <tr valign="middle">
+     <td align="left"><a href="mysqli.client-version.html" class="link">$mysqli::client_version</a></td>
+     <td align="left"><span class="function"><a href="mysqli.get-client-version.html" class="function">mysqli_get_client_version()</a></span></td>
+     <td align="left">-</td>
+     <td align="left">Возвращает информацию о версии клиента MySQL в виде числа (integer)</td>
+    </tr>
+
+    <tr valign="middle">
+     <td align="left"><a href="mysqli.connect-errno.html" class="link">$mysqli::connect_errno</a></td>
+     <td align="left"><span class="function"><a href="mysqli.connect-errno.html" class="function">mysqli_connect_errno()</a></span></td>
+     <td align="left">-</td>
+     <td align="left">Возвращает код ошибки последнего соединения</td>
+    </tr>
+
+    <tr valign="middle">
+     <td align="left"><a href="mysqli.connect-error.html" class="link">$mysqli::connect_error</a></td>
+     <td align="left"><span class="function"><a href="mysqli.connect-error.html" class="function">mysqli_connect_error()</a></span></td>
+     <td align="left">-</td>
+     <td align="left">Возвращает строковое описание ошибки последнего подключения</td>
+    </tr>
+
+    <tr valign="middle">
+     <td align="left"><a href="mysqli.errno.html" class="link">$mysqli::errno</a></td>
+     <td align="left"><span class="function"><a href="mysqli.errno.html" class="function">mysqli_errno()</a></span></td>
+     <td align="left">-</td>
+     <td align="left">Возвращает код ошибки последнего вызова функции</td>
+    </tr>
+
+    <tr valign="middle">
+     <td align="left"><a href="mysqli.error.html" class="link">$mysqli::error</a></td>
+     <td align="left"><span class="function"><a href="mysqli.error.html" class="function">mysqli_error()</a></span></td>
+     <td align="left">-</td>
+     <td align="left">Возвращает строковое описание последней ошибки</td>
+    </tr>
+
+    <tr valign="middle">
+     <td align="left"><a href="mysqli.field-count.html" class="link">$mysqli::field_count</a></td>
+     <td align="left"><span class="function"><a href="mysqli.field-count.html" class="function">mysqli_field_count()</a></span></td>
+     <td align="left">-</td>
+     <td align="left">Возвращает число столбцов для последнего запроса</td>
+    </tr>
+
+    <tr valign="middle">
+     <td align="left"><a href="mysqli.get-host-info.html" class="link">$mysqli::host_info</a></td>
+     <td align="left"><span class="function"><a href="mysqli.get-host-info.html" class="function">mysqli_get_host_info()</a></span></td>
+     <td align="left">-</td>
+     <td align="left">Возвращает строку, содержащую тип используемого соединения</td>
+    </tr>
+
+    <tr valign="middle">
+     <td align="left"><a href="mysqli.get-proto-info.html" class="link">$mysqli::protocol_version</a></td>
+     <td align="left"><span class="function"><a href="mysqli.get-proto-info.html" class="function">mysqli_get_proto_info()</a></span></td>
+     <td align="left">-</td>
+     <td align="left">Возвращает версию используемого протокола MySQL</td>
+    </tr>
+
+    <tr valign="middle">
+     <td align="left"><a href="mysqli.get-server-info.html" class="link">$mysqli::server_info</a></td>
+     <td align="left"><span class="function"><a href="mysqli.get-server-info.html" class="function">mysqli_get_server_info()</a></span></td>
+     <td align="left">-</td>
+     <td align="left">Возвращает версию сервера MySQL</td>
+    </tr>
+
+    <tr valign="middle">
+     <td align="left"><a href="mysqli.get-server-version.html" class="link">$mysqli::server_version</a></td>
+     <td align="left"><span class="function"><a href="mysqli.get-server-version.html" class="function">mysqli_get_server_version()</a></span></td>
+     <td align="left">-</td>
+     <td align="left">Возвращает версию сервера MySQL в виде числа (integer)</td>
+    </tr>
+
+    <tr valign="middle">
+     <td align="left"><a href="mysqli.info.html" class="link">$mysqli::info</a></td>
+     <td align="left"><span class="function"><a href="mysqli.info.html" class="function">mysqli_info()</a></span></td>
+     <td align="left">-</td>
+     <td align="left">Отображает информацию о наиболее часто исполняемом запросе</td>
+    </tr>
+
+    <tr valign="middle">
+     <td align="left"><a href="mysqli.insert-id.html" class="link">$mysqli::insert_id</a></td>
+     <td align="left"><span class="function"><a href="mysqli.insert-id.html" class="function">mysqli_insert_id()</a></span></td>
+     <td align="left">-</td>
+     <td align="left">Возвращает автоматически сгенерированный id, использованный в последнем запросе</td>
+    </tr>
+
+    <tr valign="middle">
+     <td align="left"><a href="mysqli.sqlstate.html" class="link">$mysqli::sqlstate</a></td>
+     <td align="left"><span class="function"><a href="mysqli.sqlstate.html" class="function">mysqli_sqlstate()</a></span></td>
+     <td align="left">-</td>
+     <td align="left">Возвращает ошибку SQLSTATE предыдущей операции MySQL</td>
+    </tr>
+
+    <tr valign="middle">
+     <td align="left"><a href="mysqli.warning-count.html" class="link">$mysqli::warning_count</a></td>
+     <td align="left"><span class="function"><a href="mysqli.warning-count.html" class="function">mysqli_warning_count()</a></span></td>
+     <td align="left">-</td>
+     <td align="left">Возвращает число предупреждений последнего запроса для заданной ссылки</td>
+    </tr>
+
+    <tr valign="middle">
+     <td align="left"><em class="emphasis">Методы</em></td>
+    </tr>
+
+    <tr valign="middle">
+     <td align="left"> <span class="methodname"><a href="mysqli.autocommit.html" class="methodname">mysqli::autocommit()</a></span></td>
+     <td align="left"><span class="function"><a href="mysqli.autocommit.html" class="function">mysqli_autocommit()</a></span></td>
+     <td align="left">-</td>
+     <td align="left">Выключает или выключает автоматическое подтверждение изменений базы данных</td>
+    </tr>
+
+    <tr valign="middle">
+     <td align="left"> <span class="methodname"><a href="mysqli.change-user.html" class="methodname">mysqli::change_user()</a></span></td>
+     <td align="left"><span class="function"><a href="mysqli.change-user.html" class="function">mysqli_change_user()</a></span></td>
+     <td align="left">-</td>
+     <td align="left">Изменяет пользователя (user) для указанного соединения с базой данных</td>
+    </tr>
+
+    <tr valign="middle">
+     <td align="left"> <span class="methodname"><a href="mysqli.character-set-name.html" class="methodname">mysqli::character_set_name()</a></span>,<a href="mysqli.character-set-name.html" class="link">
+      mysqli::client_encoding</a></td>
+     <td align="left"><span class="function"><a href="mysqli.character-set-name.html" class="function">mysqli_character_set_name()</a></span></td>
+     <td align="left"><span class="function"><a href="function.mysqli-client-encoding.html" class="function">mysqli_client_encoding()</a></span></td>
+     <td align="left">Возвращает кодировку, установленную по умолчанию для соединения с базой данных</td>
+    </tr>
+
+    <tr valign="middle">
+     <td align="left"> <span class="methodname"><a href="mysqli.close.html" class="methodname">mysqli::close()</a></span></td>
+     <td align="left"><span class="function"><a href="mysqli.close.html" class="function">mysqli_close()</a></span></td>
+     <td align="left">-</td>
+     <td align="left">Закрывает открытое соединение с базой данных</td>
+    </tr>
+
+    <tr valign="middle">
+     <td align="left"> <span class="methodname"><a href="mysqli.commit.html" class="methodname">mysqli::commit()</a></span></td>
+     <td align="left"><span class="function"><a href="mysqli.commit.html" class="function">mysqli_commit()</a></span></td>
+     <td align="left">-</td>
+     <td align="left">Фиксирует текущую транзакцию</td>
+    </tr>
+
+    <tr valign="middle">
+     <td align="left"> <span class="methodname"><a href="mysqli.connect.html" class="methodname">mysqli::__construct()</a></span></td>
+     <td align="left"><span class="function"><a href="function.mysqli-connect.html" class="function">mysqli_connect()</a></span></td>
+     <td align="left">-</td>
+     <td align="left">Открыть новое соединение с MySQL сервером [Примечание: статический метод
+      (т.е. класс)]</td>
+    </tr>
+
+    <tr valign="middle">
+     <td align="left"> <span class="methodname"><a href="mysqli.debug.html" class="methodname">mysqli::debug()</a></span></td>
+     <td align="left"><span class="function"><a href="mysqli.debug.html" class="function">mysqli_debug()</a></span></td>
+     <td align="left">-</td>
+     <td align="left">Выполняет операции отладки</td>
+    </tr>
+
+    <tr valign="middle">
+     <td align="left"> <span class="methodname"><a href="mysqli.dump-debug-info.html" class="methodname">mysqli::dump_debug_info()</a></span></td>
+     <td align="left"><span class="function"><a href="mysqli.dump-debug-info.html" class="function">mysqli_dump_debug_info()</a></span></td>
+     <td align="left">-</td>
+     <td align="left">Сбор отладочной информации в лог</td>
+    </tr>
+
+    <tr valign="middle">
+     <td align="left"> <span class="methodname"><a href="mysqli.get-charset.html" class="methodname">mysqli::get_charset()</a></span></td>
+     <td align="left"><span class="function"><a href="mysqli.get-charset.html" class="function">mysqli_get_charset()</a></span></td>
+     <td align="left">-</td>
+     <td align="left">Возвращает объект кодировки</td>
+    </tr>
+
+    <tr valign="middle">
+     <td align="left"> <span class="methodname"><a href="mysqli.get-connection-stats.html" class="methodname">mysqli::get_connection_stats()</a></span></td>
+     <td align="left"><span class="function"><a href="mysqli.get-connection-stats.html" class="function">mysqli_get_connection_stats()</a></span></td>
+     <td align="left">-</td>
+     <td align="left">Возвращает статистку соединения клиента. Доступно только с расширением <a href="book.mysqlnd.html" class="link">mysqlnd</a>.</td>
+    </tr>
+
+    <tr valign="middle">
+     <td align="left"> <span class="methodname"><a href="mysqli.get-client-info.html" class="methodname">mysqli::get_client_info()</a></span></td>
+     <td align="left"><span class="function"><a href="mysqli.get-client-info.html" class="function">mysqli_get_client_info()</a></span></td>
+     <td align="left">-</td>
+     <td align="left">Возвращает версию клиента MySQL в виде строки</td>
+    </tr>
+
+    <tr valign="middle">
+     <td align="left"> <span class="methodname"><a href="mysqli.get-client-stats.html" class="methodname">mysqli::get_client_stats()</a></span></td>
+     <td align="left"><span class="function"><a href="mysqli.get-client-stats.html" class="function">mysqli_get_client_stats()</a></span></td>
+     <td align="left">-</td>
+     <td align="left">Возвращает статистку клиента для каждого процесса. Доступно только с расширением <a href="book.mysqlnd.html" class="link">mysqlnd</a>.</td>
+    </tr>
+
+    <tr valign="middle">
+     <td align="left"> <span class="methodname"><a href="mysqli.get-cache-stats.html" class="methodname">mysqli::get_cache_stats()</a></span></td>
+     <td align="left"><span class="function"><a href="mysqli.get-cache-stats.html" class="function">mysqli_get_cache_stats()</a></span></td>
+     <td align="left">-</td>
+     <td align="left">Возвращает статистику клиента по кэшу Zval. Доступно только с расширением <a href="book.mysqlnd.html" class="link">mysqlnd</a>.</td>
+    </tr>
+
+    <tr valign="middle">
+     <td align="left"> <span class="methodname"><a href="mysqli.get-server-info.html" class="methodname">mysqli::get_server_info()</a></span></td>
+     <td align="left"><span class="function"><a href="mysqli.get-server-info.html" class="function">mysqli_get_server_info()</a></span></td>
+     <td align="left">-</td>
+     <td align="left">Не документировано</td>
+    </tr>
+
+    <tr valign="middle">
+     <td align="left"> <span class="methodname"><a href="mysqli.get-warnings.html" class="methodname">mysqli::get_warnings()</a></span></td>
+     <td align="left"><span class="function"><a href="mysqli.get-warnings.html" class="function">mysqli_get_warnings()</a></span></td>
+     <td align="left">-</td>
+     <td align="left">Не документировано</td>
+    </tr>
+
+    <tr valign="middle">
+     <td align="left"> <span class="methodname"><a href="mysqli.init.html" class="methodname">mysqli::init()</a></span></td>
+     <td align="left"><span class="function"><a href="mysqli.init.html" class="function">mysqli_init()</a></span></td>
+     <td align="left">-</td>
+     <td align="left">Инициализирует MySQLi и возвращает ресурс для
+      использования с mysqli_real_connect. 
+      [Не вызывается из объекта, так как возвращает
+      объект $mysqli.]</td>
+    </tr>
+
+    <tr valign="middle">
+     <td align="left"> <span class="methodname"><a href="mysqli.kill.html" class="methodname">mysqli::kill()</a></span></td>
+     <td align="left"><span class="function"><a href="mysqli.kill.html" class="function">mysqli_kill()</a></span></td>
+     <td align="left">-</td>
+     <td align="left">Создает запрос серверу на уничтожение MySQL потока</td>
+    </tr>
+
+    <tr valign="middle">
+     <td align="left"> <span class="methodname"><a href="mysqli.more-results.html" class="methodname">mysqli::more_results()</a></span></td>
+     <td align="left"><span class="function"><a href="mysqli.more-results.html" class="function">mysqli_more_results()</a></span></td>
+     <td align="left">-</td>
+     <td align="left">Проверяет на наличие дополнительных результатов запроса из мульти-запроса</td>
+    </tr>
+
+    <tr valign="middle">
+     <td align="left"> <span class="methodname"><a href="mysqli.multi-query.html" class="methodname">mysqli::multi_query()</a></span></td>
+     <td align="left"><span class="function"><a href="mysqli.multi-query.html" class="function">mysqli_multi_query()</a></span></td>
+     <td align="left">-</td>
+     <td align="left">Выполняет запрос к базе данных</td>
+    </tr>
+
+    <tr valign="middle">
+     <td align="left"> <span class="methodname"><a href="mysqli.next-result.html" class="methodname">mysqli::next_result()</a></span></td>
+     <td align="left"><span class="function"><a href="mysqli.next-result.html" class="function">mysqli_next_result()</a></span></td>
+     <td align="left">-</td>
+     <td align="left">Выполняет подготовку следующего результата из multi_query</td>
+    </tr>
+
+    <tr valign="middle">
+     <td align="left"> <span class="methodname"><a href="mysqli.options.html" class="methodname">mysqli::options()</a></span></td>
+     <td align="left"><span class="function"><a href="mysqli.options.html" class="function">mysqli_options()</a></span></td>
+     <td align="left"><span class="function"><a href="function.mysqli-set-opt.html" class="function">mysqli_set_opt()</a></span></td>
+     <td align="left">Устанавливает опции</td>
+    </tr>
+
+    <tr valign="middle">
+     <td align="left"> <span class="methodname"><a href="mysqli.ping.html" class="methodname">mysqli::ping()</a></span></td>
+     <td align="left"><span class="function"><a href="mysqli.ping.html" class="function">mysqli_ping()</a></span></td>
+     <td align="left">-</td>
+     <td align="left">Производит пинг соединения с сервером, либо переподключение, если соединение было
+     сброшено</td>
+    </tr>
+
+    <tr valign="middle">
+     <td align="left"> <span class="methodname"><a href="mysqli.prepare.html" class="methodname">mysqli::prepare()</a></span></td>
+     <td align="left"><span class="function"><a href="mysqli.prepare.html" class="function">mysqli_prepare()</a></span></td>
+     <td align="left">-</td>
+     <td align="left">Выполняет подготовку SQL оператора для запуска</td>
+    </tr>
+
+    <tr valign="middle">
+     <td align="left"> <span class="methodname"><a href="mysqli.query.html" class="methodname">mysqli::query()</a></span></td>
+     <td align="left"><span class="function"><a href="mysqli.query.html" class="function">mysqli_query()</a></span></td>
+     <td align="left">-</td>
+     <td align="left">Выполняет запрос к базе данных</td>
+    </tr>
+
+    <tr valign="middle">
+     <td align="left"> <span class="methodname"><a href="mysqli.real-connect.html" class="methodname">mysqli::real_connect()</a></span></td>
+     <td align="left"><span class="function"><a href="mysqli.real-connect.html" class="function">mysqli_real_connect()</a></span></td>
+     <td align="left">-</td>
+     <td align="left">Открывает соединение с сервером MySQL</td>
+    </tr>
+
+    <tr valign="middle">
+     <td align="left"> <span class="methodname"><a href="mysqli.real-escape-string.html" class="methodname">mysqli::real_escape_string()</a></span>,
+       <span class="methodname"><a href="function.mysqli-escape-string.html" class="methodname">mysqli::escape_string()</a></span></td>
+     <td align="left"><span class="function"><a href="mysqli.real-escape-string.html" class="function">mysqli_real_escape_string()</a></span></td>
+     <td align="left"><span class="function"><a href="function.mysqli-escape-string.html" class="function">mysqli_escape_string()</a></span></td>
+     <td align="left">Экранирует специальные символы в строке, используемой в SQL-запросе, принмимая во
+      внимание кодировку соединения</td>
+    </tr>
+
+    <tr valign="middle">
+     <td align="left"> <span class="methodname"><a href="mysqli.real-query.html" class="methodname">mysqli::real_query()</a></span></td>
+     <td align="left"><span class="function"><a href="mysqli.real-query.html" class="function">mysqli_real_query()</a></span></td>
+     <td align="left">-</td>
+     <td align="left">Выполняет SQL запрос</td>
+    </tr>
+
+    <tr valign="middle">
+     <td align="left"> <span class="methodname"><a href="mysqli.refresh.html" class="methodname">mysqli::refresh()</a></span></td>
+     <td align="left"><span class="function"><a href="mysqli.refresh.html" class="function">mysqli_refresh()</a></span></td>
+     <td align="left">N/A</td>
+     <td align="left">Очищает таблицы или кеш, или сбрасывает информацию сервера репликации</td>
+    </tr>
+
+    <tr valign="middle">
+     <td align="left"> <span class="methodname"><a href="mysqli.rollback.html" class="methodname">mysqli::rollback()</a></span></td>
+     <td align="left"><span class="function"><a href="mysqli.rollback.html" class="function">mysqli_rollback()</a></span></td>
+     <td align="left">-</td>
+     <td align="left">Отменяет текущую транзакцию</td>
+    </tr>
+
+    <tr valign="middle">
+     <td align="left"> <span class="methodname"><a href="mysqli.select-db.html" class="methodname">mysqli::select_db()</a></span></td>
+     <td align="left"><span class="function"><a href="mysqli.select-db.html" class="function">mysqli_select_db()</a></span></td>
+     <td align="left">-</td>
+     <td align="left">Выбирает базу данных по умолчанию для выполнения запросов</td>
+    </tr>
+
+    <tr valign="middle">
+     <td align="left"> <span class="methodname"><a href="mysqli.set-charset.html" class="methodname">mysqli::set_charset()</a></span></td>
+     <td align="left"><span class="function"><a href="mysqli.set-charset.html" class="function">mysqli_set_charset()</a></span></td>
+     <td align="left">-</td>
+     <td align="left">Устанавливает кодировку клиента по умолчанию</td>
+    </tr>
+
+    <tr valign="middle">
+     <td align="left"> <span class="methodname"><a href="mysqli.set-local-infile-default.html" class="methodname">mysqli::set_local_infile_default()</a></span></td>
+     <td align="left"><span class="function"><a href="mysqli.set-local-infile-default.html" class="function">mysqli_set_local_infile_default()</a></span></td>
+     <td align="left">-</td>
+     <td align="left">Сбрасывает пользовательский обработчик для загрузки команды из локального файла</td>
+    </tr>
+
+    <tr valign="middle">
+     <td align="left"> <span class="methodname"><a href="mysqli.set-local-infile-handler.html" class="methodname">mysqli::set_local_infile_handler()</a></span></td>
+     <td align="left"><span class="function"><a href="mysqli.set-local-infile-handler.html" class="function">mysqli_set_local_infile_handler()</a></span></td>
+     <td align="left">-</td>
+     <td align="left">Установить функцию-обработчик команды LOAD DATA LOCAL INFILE</td>
+    </tr>
+
+    <tr valign="middle">
+     <td align="left"> <span class="methodname"><a href="mysqli.ssl-set.html" class="methodname">mysqli::ssl_set()</a></span></td>
+     <td align="left"><span class="function"><a href="mysqli.ssl-set.html" class="function">mysqli_ssl_set()</a></span></td>
+     <td align="left">-</td>
+     <td align="left">Используется для установления защищенных соединений, используя SSL</td>
+    </tr>
+
+    <tr valign="middle">
+     <td align="left"> <span class="methodname"><a href="mysqli.stat.html" class="methodname">mysqli::stat()</a></span></td>
+     <td align="left"><span class="function"><a href="mysqli.stat.html" class="function">mysqli_stat()</a></span></td>
+     <td align="left">-</td>
+     <td align="left">Получает текущее состояние системы</td>
+    </tr>
+
+    <tr valign="middle">
+     <td align="left"> <span class="methodname"><a href="mysqli.stmt-init.html" class="methodname">mysqli::stmt_init()</a></span></td>
+     <td align="left"><span class="function"><a href="mysqli.stmt-init.html" class="function">mysqli_stmt_init()</a></span></td>
+     <td align="left">-</td>
+     <td align="left">Инициализирует и возвращает объект для использования с
+      mysqli_stmt_prepare</td>
+    </tr>
+
+    <tr valign="middle">
+     <td align="left"> <span class="methodname"><a href="mysqli.store-result.html" class="methodname">mysqli::store_result()</a></span></td>
+     <td align="left"><span class="function"><a href="mysqli.store-result.html" class="function">mysqli_store_result()</a></span></td>
+     <td align="left">-</td>
+     <td align="left">Передает результат, полученный последним запросом</td>
+    </tr>
+
+    <tr valign="middle">
+     <td align="left"> <span class="methodname"><a href="mysqli.thread-id.html" class="methodname">mysqli::thread_id()</a></span></td>
+     <td align="left"><span class="function"><a href="mysqli.thread-id.html" class="function">mysqli_thread_id()</a></span></td>
+     <td align="left">-</td>
+     <td align="left">Возвращает ID потока для текущего соединения</td>
+    </tr>
+
+    <tr valign="middle">
+     <td align="left"> <span class="methodname"><a href="mysqli.thread-safe.html" class="methodname">mysqli::thread_safe()</a></span></td>
+     <td align="left"><span class="function"><a href="mysqli.thread-safe.html" class="function">mysqli_thread_safe()</a></span></td>
+     <td align="left">-</td>
+     <td align="left">Возвращает состояние безопасности потока</td>
+    </tr>
+
+    <tr valign="middle">
+     <td align="left"> <span class="methodname"><a href="mysqli.use-result.html" class="methodname">mysqli::use_result()</a></span></td>
+     <td align="left"><span class="function"><a href="mysqli.use-result.html" class="function">mysqli_use_result()</a></span></td>
+     <td align="left">-</td>
+     <td align="left">Инициирует получение результата</td>
+    </tr>
+
+   </tbody>
+  
+ </table>
+
+
+ <table class="doctable informaltable">
+  
+   <thead valign="middle">
+    <tr valign="middle">
+     <th>MySQL_STMT</th>
+    </tr>
+
+    <tr valign="middle">
+     <th>ООП-интерфейс</th>
+     <th>Процедурный интерфейс</th>
+     <th>Синоним (не используйте!)</th>
+     <th>Описание</th>
+    </tr>
+
+   </thead>
+
+   <tbody valign="middle" class="tbody">
+    <tr valign="middle">
+     <td align="left"><em class="emphasis">Свойства</em></td>
+    </tr>
+
+    <tr valign="middle">
+     <td align="left"><a href="mysqli-stmt.affected-rows.html" class="link">$mysqli_stmt::affected_rows</a></td>
+     <td align="left"><span class="function"><a href="mysqli-stmt.affected-rows.html" class="function">mysqli_stmt_affected_rows()</a></span></td>
+     <td align="left">-</td>
+     <td align="left">Возвращает число рядов, измененных, удаленных или вставленных при
+      выполнении последней инструкции</td>
+    </tr>
+
+    <tr valign="middle">
+     <td align="left"><a href="mysqli-stmt.errno.html" class="link">$mysqli_stmt::errno</a></td>
+     <td align="left"><span class="function"><a href="mysqli-stmt.errno.html" class="function">mysqli_stmt_errno()</a></span></td>
+     <td align="left">-</td>
+     <td align="left">Возвращает код ошибки последней вызванной инструкции</td>
+    </tr>
+
+    <tr valign="middle">
+     <td align="left"><a href="mysqli-stmt.error.html" class="link">$mysqli_stmt::error</a></td>
+     <td align="left"><span class="function"><a href="mysqli-stmt.error.html" class="function">mysqli_stmt_error()</a></span></td>
+     <td align="left">-</td>
+     <td align="left">Возвращает строковое описание ошибки последней инструкции</td>
+    </tr>
+
+    <tr valign="middle">
+     <td align="left"><a href="mysqli-stmt.field-count.html" class="link">$mysqli_stmt::field_count</a></td>
+     <td align="left"><span class="function"><a href="mysqli-stmt.field-count.html" class="function">mysqli_stmt_field_count()</a></span></td>
+     <td align="left">-</td>
+     <td align="left">Возвращает число полей в заданной инструкции - не документировано</td>
+    </tr>
+
+    <tr valign="middle">
+     <td align="left"><a href="mysqli-stmt.insert-id.html" class="link">$mysqli_stmt::insert_id</a></td>
+     <td align="left"><span class="function"><a href="mysqli-stmt.insert-id.html" class="function">mysqli_stmt_insert_id()</a></span></td>
+     <td align="left">-</td>
+     <td align="left">Получает ID, сгенерированное последней операцией INSERT</td>
+    </tr>
+
+    <tr valign="middle">
+     <td align="left"><a href="mysqli-stmt.num-rows.html" class="link">$mysqli_stmt::num_rows</a></td>
+     <td align="left"><span class="function"><a href="mysqli-stmt.num-rows.html" class="function">mysqli_stmt_num_rows()</a></span></td>
+     <td align="left">-</td>
+     <td align="left">Возвращает число рядов в результате выполнения инструкции</td>
+    </tr>
+
+    <tr valign="middle">
+     <td align="left"><a href="mysqli-stmt.param-count.html" class="link">$mysqli_stmt::param_count</a></td>
+     <td align="left"><span class="function"><a href="mysqli-stmt.param-count.html" class="function">mysqli_stmt_param_count()</a></span></td>
+     <td align="left"><span class="function"><a href="function.mysqli-param-count.html" class="function">mysqli_param_count()</a></span></td>
+     <td align="left">Возвращает число параметров для заданной инструкции</td>
+    </tr>
+
+    <tr valign="middle">
+     <td align="left"><a href="mysqli-stmt.sqlstate.html" class="link">$mysqli_stmt::sqlstate</a></td>
+     <td align="left"><span class="function"><a href="mysqli-stmt.sqlstate.html" class="function">mysqli_stmt_sqlstate()</a></span></td>
+     <td align="left">-</td>
+     <td align="left">Возвращает ошибку SQLSTATE для предыдущей операции инструкции</td>
+    </tr>
+
+    <tr valign="middle">
+     <td align="left"><em class="emphasis">Методы</em></td>
+    </tr>
+
+    <tr valign="middle">
+     <td align="left"> <span class="methodname"><a href="mysqli-stmt.attr-get.html" class="methodname">mysqli_stmt::attr_get()</a></span></td>
+     <td align="left"><span class="function"><a href="mysqli-stmt.attr-get.html" class="function">mysqli_stmt_attr_get()</a></span></td>
+     <td align="left">-</td>
+     <td align="left">Используется для получения текущего значения атрибута инструкции</td>
+    </tr>
+
+    <tr valign="middle">
+     <td align="left"> <span class="methodname"><a href="mysqli-stmt.attr-set.html" class="methodname">mysqli_stmt::attr_set()</a></span></td>
+     <td align="left"><span class="function"><a href="mysqli-stmt.attr-set.html" class="function">mysqli_stmt_attr_set()</a></span></td>
+     <td align="left">-</td>
+     <td align="left">Используется для модификации поведения подготовленной инструкции</td>
+    </tr>
+
+    <tr valign="middle">
+     <td align="left"> <span class="methodname"><a href="mysqli-stmt.bind-param.html" class="methodname">mysqli_stmt::bind_param()</a></span></td>
+     <td align="left"><span class="function"><a href="mysqli-stmt.bind-param.html" class="function">mysqli_stmt_bind_param()</a></span></td>
+     <td align="left"><span class="function"><a href="function.mysqli-bind-param.html" class="function">mysqli_bind_param()</a></span></td>
+     <td align="left">Передается переменные в подготовленную инструкцию как параметры</td>
+    </tr>
+
+    <tr valign="middle">
+     <td align="left"> <span class="methodname"><a href="mysqli-stmt.bind-result.html" class="methodname">mysqli_stmt::bind_result()</a></span></td>
+     <td align="left"><span class="function"><a href="mysqli-stmt.bind-result.html" class="function">mysqli_stmt_bind_result()</a></span></td>
+     <td align="left"><span class="function"><a href="function.mysqli-bind-result.html" class="function">mysqli_bind_result()</a></span></td>
+     <td align="left">Передает переменные в подготовленную инструкцию для хранения результатов</td>
+    </tr>
+
+    <tr valign="middle">
+     <td align="left"> <span class="methodname"><a href="mysqli-stmt.close.html" class="methodname">mysqli_stmt::close()</a></span></td>
+     <td align="left"><span class="function"><a href="mysqli-stmt.close.html" class="function">mysqli_stmt_close()</a></span></td>
+     <td align="left">-</td>
+     <td align="left">Закрывает подготовленную инструкцию</td>
+    </tr>
+
+    <tr valign="middle">
+     <td align="left"> <span class="methodname"><a href="mysqli-stmt.data-seek.html" class="methodname">mysqli_stmt::data_seek()</a></span></td>
+     <td align="left"><span class="function"><a href="mysqli-stmt.data-seek.html" class="function">mysqli_stmt_data_seek()</a></span></td>
+     <td align="left">-</td>
+     <td align="left">Производит поиск произвольной строки в результатах инструкции</td>
+    </tr>
+
+    <tr valign="middle">
+     <td align="left"> <span class="methodname"><a href="mysqli-stmt.execute.html" class="methodname">mysqli_stmt::execute()</a></span></td>
+     <td align="left"><span class="function"><a href="mysqli-stmt.execute.html" class="function">mysqli_stmt_execute()</a></span></td>
+     <td align="left"><span class="function"><a href="function.mysqli-execute.html" class="function">mysqli_execute()</a></span></td>
+     <td align="left">Исполняет подготовленный запрос</td>
+    </tr>
+
+    <tr valign="middle">
+     <td align="left"> <span class="methodname"><a href="mysqli-stmt.fetch.html" class="methodname">mysqli_stmt::fetch()</a></span></td>
+     <td align="left"><span class="function"><a href="mysqli-stmt.fetch.html" class="function">mysqli_stmt_fetch()</a></span></td>
+     <td align="left"><span class="function"><a href="function.mysqli-fetch.html" class="function">mysqli_fetch()</a></span></td>
+     <td align="left">Выборка результатов подготовленной инструкции в связанные переменные</td>
+    </tr>
+
+    <tr valign="middle">
+     <td align="left"> <span class="methodname"><a href="mysqli-stmt.free-result.html" class="methodname">mysqli_stmt::free_result()</a></span></td>
+     <td align="left"><span class="function"><a href="mysqli-stmt.free-result.html" class="function">mysqli_stmt_free_result()</a></span></td>
+     <td align="left">-</td>
+     <td align="left">Освобождает память, хранящую результаты заданной дескриптором инструкции</td>
+    </tr>
+
+    <tr valign="middle">
+     <td align="left"> <span class="methodname"><a href="mysqli-stmt.get-result.html" class="methodname">mysqli_stmt::get_result()</a></span></td>
+     <td align="left"><span class="function"><a href="mysqli-stmt.get-result.html" class="function">mysqli_stmt_get_result()</a></span></td>
+     <td align="left">-</td>
+     <td align="left">Получает результаты подготовленной инструкции. Доступно только с расширением <a href="book.mysqlnd.html" class="link">mysqlnd</a>.</td>
+    </tr>
+
+    <tr valign="middle">
+     <td align="left"> <span class="methodname"><a href="mysqli-stmt.get-warnings.html" class="methodname">mysqli_stmt::get_warnings()</a></span></td>
+     <td align="left"><span class="function"><a href="mysqli-stmt.get-warnings.html" class="function">mysqli_stmt_get_warnings()</a></span></td>
+     <td align="left">-</td>
+     <td align="left">Не документировано</td>
+    </tr>
+
+    <tr valign="middle">
+     <td align="left">$mysqli_stmt::more_results()</td>
+     <td align="left">mysqli_stmt_more_results()</td>
+     <td align="left">-</td>
+     <td align="left">Не документировано Доступно только с расширением <a href="book.mysqlnd.html" class="link">mysqlnd</a>.</td>
+    </tr>
+
+    <tr valign="middle">
+     <td align="left">$mysqli_stmt::next_result()</td>
+     <td align="left">mysqli_stmt_next_result()</td>
+     <td align="left">-</td>
+     <td align="left">Не документировано Доступно только с расширением <a href="book.mysqlnd.html" class="link">mysqlnd</a>.</td>
+    </tr>
+
+    <tr valign="middle">
+     <td align="left"> <span class="methodname"><a href="mysqli-stmt.num-rows.html" class="methodname">mysqli_stmt::num_rows()</a></span></td>
+     <td align="left"><span class="function"><a href="mysqli-stmt.num-rows.html" class="function">mysqli_stmt_num_rows()</a></span></td>
+     <td align="left">-</td>
+     <td align="left">См. также <a href="mysqli-stmt.num-rows.html" class="link">$mysqli_stmt::num_rows</a></td>
+    </tr>
+
+    <tr valign="middle">
+     <td align="left"> <span class="methodname"><a href="mysqli-stmt.prepare.html" class="methodname">mysqli_stmt::prepare()</a></span></td>
+     <td align="left"><span class="function"><a href="mysqli-stmt.prepare.html" class="function">mysqli_stmt_prepare()</a></span></td>
+     <td align="left">-</td>
+     <td align="left">Выполняет подготовку инструкции SQL для запуска</td>
+    </tr>
+
+    <tr valign="middle">
+     <td align="left"> <span class="methodname"><a href="mysqli-stmt.reset.html" class="methodname">mysqli_stmt::reset()</a></span></td>
+     <td align="left"><span class="function"><a href="mysqli-stmt.reset.html" class="function">mysqli_stmt_reset()</a></span></td>
+     <td align="left">-</td>
+     <td align="left">Сбрасывает подготовленную инструкцию</td>
+    </tr>
+
+    <tr valign="middle">
+     <td align="left"> <span class="methodname"><a href="mysqli-stmt.result-metadata.html" class="methodname">mysqli_stmt::result_metadata()</a></span></td>
+     <td align="left"><span class="function"><a href="mysqli-stmt.result-metadata.html" class="function">mysqli_stmt_result_metadata()</a></span></td>
+     <td align="left"><span class="function"><a href="function.mysqli-get-metadata.html" class="function">mysqli_get_metadata()</a></span></td>
+     <td align="left">Возвращает метаданные результатов подготовленной инструкции</td>
+    </tr>
+
+    <tr valign="middle">
+     <td align="left"> <span class="methodname"><a href="mysqli-stmt.send-long-data.html" class="methodname">mysqli_stmt::send_long_data()</a></span></td>
+     <td align="left"><span class="function"><a href="mysqli-stmt.send-long-data.html" class="function">mysqli_stmt_send_long_data()</a></span></td>
+     <td align="left"><span class="function"><a href="function.mysqli-send-long-data.html" class="function">mysqli_send_long_data()</a></span></td>
+     <td align="left">Передача данных блоками</td>
+    </tr>
+
+    <tr valign="middle">
+     <td align="left"> <span class="methodname"><a href="mysqli-stmt.store-result.html" class="methodname">mysqli_stmt::store_result()</a></span></td>
+     <td align="left"><span class="function"><a href="mysqli-stmt.store-result.html" class="function">mysqli_stmt_store_result()</a></span></td>
+     <td align="left">-</td>
+     <td align="left">Передает результат из подготовленной инструкции</td>
+    </tr>
+
+   </tbody>
+  
+ </table>
+
+
+ <table class="doctable informaltable">
+  
+   <thead valign="middle">
+    <tr valign="middle">
+     <th>MySQLi_RESULT</th>
+    </tr>
+
+    <tr valign="middle">
+     <th>OOP Interface</th>
+     <th>Procedural Interface</th>
+     <th>Alias (Do not use)</th>
+     <th>Description</th>
+    </tr>
+
+   </thead>
+
+   <tbody valign="middle" class="tbody">
+    <tr valign="middle">
+     <td align="left"><em class="emphasis">Свойства</em></td>
+    </tr>
+
+    <tr valign="middle">
+     <td align="left"><a href="mysqli-result.current-field.html" class="link">$mysqli_result::current_field</a></td>
+     <td align="left"><span class="function"><a href="mysqli-result.current-field.html" class="function">mysqli_field_tell()</a></span></td>
+     <td align="left">-</td>
+     <td align="left">Получить смещение указателя на результат для текущего поля</td>
+    </tr>
+
+    <tr valign="middle">
+     <td align="left"><a href="mysqli-result.field-count.html" class="link">$mysqli_result::field_count</a></td>
+     <td align="left"><span class="function"><a href="mysqli-result.field-count.html" class="function">mysqli_num_fields()</a></span></td>
+     <td align="left">-</td>
+     <td align="left">Получить количество полей в результате</td>
+    </tr>
+
+    <tr valign="middle">
+     <td align="left"><a href="mysqli-result.lengths.html" class="link">$mysqli_result::lengths</a></td>
+     <td align="left"><span class="function"><a href="mysqli-result.lengths.html" class="function">mysqli_fetch_lengths()</a></span></td>
+     <td align="left">-</td>
+     <td align="left">Возвращает длины столбцов текущего ряда в наборе результатов</td>
+    </tr>
+
+    <tr valign="middle">
+     <td align="left"><a href="mysqli-result.num-rows.html" class="link">$mysqli_result::num_rows</a></td>
+     <td align="left"><span class="function"><a href="mysqli-result.num-rows.html" class="function">mysqli_num_rows()</a></span></td>
+     <td align="left">-</td>
+     <td align="left">Получает число рядов в результате</td>
+    </tr>
+
+    <tr valign="middle">
+     <td align="left"><em class="emphasis">Methods</em></td>
+    </tr>
+
+    <tr valign="middle">
+     <td align="left"> <span class="methodname"><a href="mysqli-result.data-seek.html" class="methodname">mysqli_result::data_seek()</a></span></td>
+     <td align="left"><span class="function"><a href="mysqli-result.data-seek.html" class="function">mysqli_data_seek()</a></span></td>
+     <td align="left">-</td>
+     <td align="left">Устанавливает указатель результата на произвольную строку в результатах</td>
+    </tr>
+
+    <tr valign="middle">
+     <td align="left"> <span class="methodname"><a href="mysqli-result.fetch-all.html" class="methodname">mysqli_result::fetch_all()</a></span></td>
+     <td align="left"><span class="function"><a href="mysqli-result.fetch-all.html" class="function">mysqli_fetch_all()</a></span></td>
+     <td align="left">-</td>
+     <td align="left">Получает все результирующие строки и возвращает массив со строками в виде ассоциативного массива и/или нумерованного массива. Доступно только с расширением <a href="book.mysqlnd.html" class="link">mysqlnd</a>.</td>
+    </tr>
+
+    <tr valign="middle">
+     <td align="left"> <span class="methodname"><a href="mysqli-result.fetch-array.html" class="methodname">mysqli_result::fetch_array()</a></span></td>
+     <td align="left"><span class="function"><a href="mysqli-result.fetch-array.html" class="function">mysqli_fetch_array()</a></span></td>
+     <td align="left">-</td>
+     <td align="left">Получает результирующую строку в виде ассоциативного массива и/или нумерованного массива</td>
+    </tr>
+
+    <tr valign="middle">
+     <td align="left"> <span class="methodname"><a href="mysqli-result.fetch-assoc.html" class="methodname">mysqli_result::fetch_assoc()</a></span></td>
+     <td align="left"><span class="function"><a href="mysqli-result.fetch-assoc.html" class="function">mysqli_fetch_assoc()</a></span></td>
+     <td align="left">-</td>
+     <td align="left">Получает результирующую строку в виде ассоциативного массива</td>
+    </tr>
+
+    <tr valign="middle">
+     <td align="left"> <span class="methodname"><a href="mysqli-result.fetch-field-direct.html" class="methodname">mysqli_result::fetch_field_direct()</a></span></td>
+     <td align="left"><span class="function"><a href="mysqli-result.fetch-field-direct.html" class="function">mysqli_fetch_field_direct()</a></span></td>
+     <td align="left">-</td>
+     <td align="left">Получает мета-данные для одного поля</td>
+    </tr>
+
+    <tr valign="middle">
+     <td align="left"> <span class="methodname"><a href="mysqli-result.fetch-field.html" class="methodname">mysqli_result::fetch_field()</a></span></td>
+     <td align="left"><span class="function"><a href="mysqli-result.fetch-field.html" class="function">mysqli_fetch_field()</a></span></td>
+     <td align="left">-</td>
+     <td align="left">Возвращает из результата следующее поле</td>
+    </tr>
+
+    <tr valign="middle">
+     <td align="left"> <span class="methodname"><a href="mysqli-result.fetch-fields.html" class="methodname">mysqli_result::fetch_fields()</a></span></td>
+     <td align="left"><span class="function"><a href="mysqli-result.fetch-fields.html" class="function">mysqli_fetch_fields()</a></span></td>
+     <td align="left">-</td>
+     <td align="left">Возвращает массив объектов из полей результата</td>
+    </tr>
+
+    <tr valign="middle">
+     <td align="left"> <span class="methodname"><a href="mysqli-result.fetch-object.html" class="methodname">mysqli_result::fetch_object()</a></span></td>
+     <td align="left"><span class="function"><a href="mysqli-result.fetch-object.html" class="function">mysqli_fetch_object()</a></span></td>
+     <td align="left">-</td>
+     <td align="left">Возвращает текущую строку результата в виде объекта</td>
+    </tr>
+
+    <tr valign="middle">
+     <td align="left"> <span class="methodname"><a href="mysqli-result.fetch-row.html" class="methodname">mysqli_result::fetch_row()</a></span></td>
+     <td align="left"><span class="function"><a href="mysqli-result.fetch-row.html" class="function">mysqli_fetch_row()</a></span></td>
+     <td align="left">-</td>
+     <td align="left">Получает ряд результата как нумерованный массив</td>
+    </tr>
+
+    <tr valign="middle">
+     <td align="left"> <span class="methodname"><a href="mysqli-result.field-seek.html" class="methodname">mysqli_result::field_seek()</a></span></td>
+     <td align="left"><span class="function"><a href="mysqli-result.field-seek.html" class="function">mysqli_field_seek()</a></span></td>
+     <td align="left">-</td>
+     <td align="left">Устанавливает смещение указателя результата на определенное поле</td>
+    </tr>
+
+    <tr valign="middle">
+     <td align="left"> <span class="methodname"><a href="mysqli-result.free.html" class="methodname">mysqli_result::free()</a></span>,
+      <a href="mysqli-result.free.html" class="link">mysqli_result::close</a>,
+      <a href="mysqli-result.free.html" class="link">mysqli_result::free_result</a></td>
+     <td align="left"><span class="function"><a href="mysqli-result.free.html" class="function">mysqli_free_result()</a></span></td>
+     <td align="left">-</td>
+     <td align="left">Освобождает память, определенную под результат</td>
+    </tr>
+
+   </tbody>
+  
+ </table>
+
+
+ <table class="doctable informaltable">
+  
+   <thead valign="middle">
+    <tr valign="middle">
+     <th>MySQL_Driver</th>
+    </tr>
+
+    <tr valign="middle">
+     <th>ООП-интерфейс</th>
+     <th>Процедурный интерфейс</th>
+     <th>Синоним (не используйте!)</th>
+     <th>Описание</th>
+    </tr>
+
+   </thead>
+
+   <tbody valign="middle" class="tbody">
+    <tr valign="middle">
+     <td align="left"><em class="emphasis">Свойства</em></td>
+    </tr>
+
+    <tr valign="middle">
+     <td align="left">-</td>
+    </tr>
+
+    <tr valign="middle">
+     <td align="left"><em class="emphasis">Методы</em></td>
+    </tr>
+
+    <tr valign="middle">
+     <td align="left"> <span class="methodname"><a href="mysqli-driver.embedded-server-end.html" class="methodname">mysqli_driver::embedded_server_end()</a></span></td>
+     <td align="left"><span class="function"><a href="mysqli-driver.embedded-server-end.html" class="function">mysqli_embedded_server_end()</a></span></td>
+     <td align="left">-</td>
+     <td align="left">Не документировано</td>
+    </tr>
+
+    <tr valign="middle">
+     <td align="left"> <span class="methodname"><a href="mysqli-driver.embedded-server-start.html" class="methodname">mysqli_driver::embedded_server_start()</a></span></td>
+     <td align="left"><span class="function"><a href="mysqli-driver.embedded-server-start.html" class="function">mysqli_embedded_server_start()</a></span></td>
+     <td align="left">-</td>
+     <td align="left">Не документировано</td>
+    </tr>
+
+   </tbody>
+  
+ </table>
+
+
+ <blockquote class="note"><p><b class="note">Замечание</b>: 
+  <p class="para">
+   Псевдонимы функций предназначены только для обеспечения обратной совместимости.
+   Не используйте их в новых проектах.
+  </p>
+ </p></blockquote>
+
+</div>
+<hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="mysqli.constants.html">Предопределенные константы</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="class.mysqli.html">MySQLi</a></div>
+ <div class="up"><a href="book.mysqli.html">mysqli</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

@@ -1,0 +1,172 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Проверяет, пуста ли переменная</title>
+
+ </head>
+ <body><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.doubleval.html">doubleval</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.floatval.html">floatval</a></div>
+ <div class="up"><a href="ref.var.html">Функции для работы с переменными</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.empty" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">empty</h1>
+  <p class="verinfo">(PHP 4, PHP 5)</p><p class="refpurpose"><span class="refname">empty</span> &mdash; <span class="dc-title">Проверяет, пуста ли переменная</span></p>
+
+ </div>
+ <div class="refsect1 description" id="refsect1-function.empty-description">
+  <h3 class="title">Описание</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">bool</span> <span class="methodname"><b>empty</b></span>
+    ( <span class="methodparam"><span class="type"><a href="language.pseudo-types.html#language.types.mixed" class="type mixed">mixed</a></span> <tt class="parameter">$var</tt></span>
+   )</div>
+
+  <p class="para rdfs-comment">
+   Проверяет, пуста ли переменная.
+  </p>
+ </div>
+
+ <div class="refsect1 parameters" id="refsect1-function.empty-parameters">
+  <h3 class="title">Список параметров</h3>
+  <p class="para">
+   <dl>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">var</tt></i></span>
+     <dd>
+
+      <p class="para">
+       Проверяемая переменная
+      </p>
+      <blockquote class="note"><p><b class="note">Замечание</b>: 
+       <p class="para">
+        <span class="function"><b>empty()</b></span> проверяет только переменные,
+        и попытка проверить что-то еще вызовет ошибку синтаксиса.
+        Другими словами, следующий код не будет работать:
+        <strong class="command">empty(trim($name))</strong>.
+       </p>
+      </p></blockquote>
+      <p class="para">
+       <span class="function"><b>empty()</b></span> является противоположностью
+       <i>(boolean) var</i>, за исключением того,
+       что в случае неопределенной переменной не будет сгенерировано
+       предупреждения.
+      </p>
+     </dd>
+
+    </dt>
+
+   </dl>
+
+  </p>
+ </div>
+
+ <div class="refsect1 returnvalues" id="refsect1-function.empty-returnvalues">
+  <h3 class="title">Возвращаемые значения</h3>
+  <p class="para">
+   Возвращает <b><tt>FALSE</tt></b>, если <i><tt class="parameter">var</tt></i> содержит непустое
+   и ненулевое значение.
+  </p>
+  <p class="para">
+   Следующие значения воспринимаются как пустые:
+   <ul class="simplelist">
+    <li class="member"><i>&quot;&quot;</i> (пустая строка)</li>
+    <li class="member"><i>0</i> (целое число)</li>
+    <li class="member"><i>0.0</i> (дробное число)</li>
+    <li class="member"><i>&quot;0&quot;</i> (строка)</li>
+    <li class="member"><b><tt>NULL</tt></b></li>
+    <li class="member"><b><tt>FALSE</tt></b></li>
+    <li class="member"><i>array()</i> (пустой массив)</li>
+    <li class="member"><i>var $var;</i> (переменная объявлена, но не имеет значения в классе)</li>
+   </ul>
+  </p>
+ </div>
+
+ <div class="refsect1 changelog" id="refsect1-function.empty-changelog">
+  <h3 class="title">Список изменений</h3>
+  <p class="para">
+   <table class="doctable informaltable">
+    
+     <thead valign="middle">
+      <tr valign="middle">
+       <th>Версия</th>
+       <th>Описание</th>
+      </tr>
+
+     </thead>
+
+     <tbody valign="middle" class="tbody">
+      <tr valign="middle">
+       <td align="left">PHP 5.0.0</td>
+       <td align="left">
+        <p class="para">
+         Начиная с PHP 5, объекты без свойств более не считаются пустыми.
+        </p>
+       </td>
+      </tr>
+
+     </tbody>
+    
+   </table>
+
+  </p>
+ </div>
+
+ <div class="refsect1 examples" id="refsect1-function.empty-examples">
+  <h3 class="title">Примеры</h3>
+  <p class="para">
+   <div class="example" id="example-4729">
+    <p><b>Пример #1 
+     Простое сравнение <span class="function"><b>empty()</b></span> и <span class="function"><a href="function.isset.html" class="function">isset()</a></span>.
+    </b></p>  
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$var&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">;<br /><br /></span><span style="color: #FF8000">//&nbsp;Принимает&nbsp;значение&nbsp;true,&nbsp;потому&nbsp;что&nbsp;$var&nbsp;пусто<br /></span><span style="color: #007700">if&nbsp;(empty(</span><span style="color: #0000BB">$var</span><span style="color: #007700">))&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">'$var&nbsp;или&nbsp;0,&nbsp;или&nbsp;пусто,&nbsp;или&nbsp;вообще&nbsp;не&nbsp;определена'</span><span style="color: #007700">;<br />}<br /><br /></span><span style="color: #FF8000">//&nbsp;Принимает&nbsp;значение&nbsp;true,&nbsp;потому&nbsp;что&nbsp;$var&nbsp;определена<br /></span><span style="color: #007700">if&nbsp;(isset(</span><span style="color: #0000BB">$var</span><span style="color: #007700">))&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">'$var&nbsp;определена,&nbsp;даже&nbsp;если&nbsp;она&nbsp;пустая'</span><span style="color: #007700">;<br />}<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+  </p>
+ </div>
+
+ <div class="refsect1 notes" id="refsect1-function.empty-notes">
+  <h3 class="title">Примечания</h3>
+  <blockquote class="note"><p><b class="note">Замечание</b>: <span class="simpara">Поскольку это языковая
+конструкция, а не функция, она не может вызываться при помощи
+<a href="functions.variable-functions.html" class="link">переменных функций</a></span>
+</p></blockquote>
+  <blockquote class="note"><p><b class="note">Замечание</b>: 
+   <p class="para">
+    При использовании функции <span class="function"><b>empty()</b></span> на
+    недоступных (необъявленных) свойствах объекта будет вызван
+    встроенный метод объекта <a href="language.oop5.overloading.html#language.oop5.overloading.members" class="link">__isset</a>,
+    если он определен.
+   </p>
+  </p></blockquote>
+ </div>
+
+ <div class="refsect1 seealso" id="refsect1-function.empty-seealso">
+  <h3 class="title">Смотрите также</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><span class="function"><a href="function.isset.html" class="function" rel="rdfs-seeAlso">isset()</a> - Определяет, была ли установлена переменная значением отличным от NULL</span></li>
+    <li class="member"><a href="language.oop5.overloading.html#language.oop5.overloading.members" class="link">__isset</a></li>
+    <li class="member"><span class="function"><a href="function.unset.html" class="function" rel="rdfs-seeAlso">unset()</a> - Удаляет переменную</span></li>
+    <li class="member"><span class="function"><a href="function.array-key-exists.html" class="function" rel="rdfs-seeAlso">array_key_exists()</a> - Проверяет, присутствует ли в массиве указанный ключ или индекс</span></li>
+    <li class="member"><span class="function"><a href="function.count.html" class="function" rel="rdfs-seeAlso">count()</a> - Подсчитывает количество элементов массива или что-то в объекте</span></li> 
+    <li class="member"><span class="function"><a href="function.strlen.html" class="function" rel="rdfs-seeAlso">strlen()</a> - Возвращает длину строки</span></li>
+    <li class="member"><a href="types.comparisons.html" class="link">Таблица сравнения типов</a></li>
+   </ul>
+  </p>
+ </div>
+
+</div><hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.doubleval.html">doubleval</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.floatval.html">floatval</a></div>
+ <div class="up"><a href="ref.var.html">Функции для работы с переменными</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>
