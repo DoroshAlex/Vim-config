@@ -399,6 +399,19 @@ imap <C-j> <ESC><ESC>
 nmap <C-j> <PageDown>
 nmap <C-k> <PageUp>
 
+map ,ca           <Plug>NERDCommenterAltDelims
+map ,cu           <Plug>NERDCommenterUncomment
+map ,cb           <Plug>NERDCommenterAlignBoth
+map ,cl           <Plug>NERDCommenterAlignLeft
+map ,cy           <Plug>NERDCommenterYank
+map ,cs           <Plug>NERDCommenterSexy
+map ,ci           <Plug>NERDCommenterInvert
+map ,c$           <Plug>NERDCommenterToEOL
+map ,cn           <Plug>NERDCommenterNested
+map ,cm           <Plug>NERDCommenterMinimal
+map ,c<Space>     <Plug>NERDCommenterToggle
+map ,cc           <Plug>NERDCommenterComment
+
 "key mapping for tab navigation
 nmap <Tab> gt
 nmap <S-Tab> gT
