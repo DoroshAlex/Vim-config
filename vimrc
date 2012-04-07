@@ -302,7 +302,7 @@ map <A-j> :cnext<CR>
 map <A-k> :cprevious<CR>
 
 "key mapping for Gundo
-nnoremap <F4> :GundoToggle<CR>
+"nnoremap <F4> :GundoToggle<CR>
 
 "snipmate setup
 try
@@ -510,15 +510,15 @@ let php_htmlInStrings=1
 let php_baselib = 1
 
 " Автозавершение слов по tab =)
-function InsertTabWrapper()
- let col = col('.') - 1
- if !col || getline('.')[col - 1] !~ '\k'
- return "\<tab>"
- else
- return "\<c-p>"
- endif
-endfunction
-imap <tab> <c-r>=InsertTabWrapper()<cr>
+"function InsertTabWrapper()
+ "let col = col('.') - 1
+ "if !col || getline('.')[col - 1] !~ '\k'
+ "return "\<tab>"
+ "else
+ "return "\<c-p>"
+ "endif
+"endfunction
+"imap <tab> <c-r>=InsertTabWrapper()<cr>
 
 " Слова откуда будем завершать
 set complete=""
@@ -532,6 +532,28 @@ set complete+=b
 set complete+=t
 
 "starDict"
+if !executable('sdcv')
+    finish
+endif
+
+fun! Translate(word)
+    let word = system('sdcv -n ' . a:word)
+    return word
+endfun
+
+fun! WinTranslate(word)
+    let word = Translate(a:word)
+    if word == '' || word =~# 'Ничего похожего на'
+        echoerr "No translation found!"
+        return
+    endif
+
+    silent new
+    silent put =word
+    silent exec 'file "Translation for '.a:word.'"'
+    silent setl nomodified nomodifiable filetype=sdviv
+    silent 1
+endfun
 map <F4> :call WinTranslate(expand('<cword>'))<cr>
 
 if !executable('sdcv')
@@ -552,3 +574,5 @@ fun! WinTranslate(word)
 
     echo  word
 endfun
+
+nmap <C-d> :call PhpDocSingle()<CR>
