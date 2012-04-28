@@ -23,6 +23,11 @@ set showmode    "show current mode down the bottom
 
 set incsearch   "find the next match as we type the search
 set hlsearch    "hilight searches by default
+set ignorecase
+set smartcase
+
+"Убарть подсветку поиска при нажатии space"
+nnoremap <silent> <Space> :nohl<Bar>:echo<CR>
 
 set number      "add line numbers
 set showbreak=...
@@ -394,7 +399,6 @@ map <C-l> <C-w>l
 "key mapping for saving file
 nmap <C-s> :w<CR>
 imap <C-s> :w<CR>
-nmap <C-z> u<CR>
 imap <C-j> <ESC><ESC>
 nmap <C-j> <PageDown>
 nmap <C-k> <PageUp>
