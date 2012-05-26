@@ -1,48 +1,23 @@
 /**
- * $1Controller
- * @package       ${2}
- * @author        ${3:`g:snips_author`}
- * @copyright     (c) `strftime("%Y")`
+ * ${1:Index}Controller
+ *
+ * @uses Controller
+ * @package
+ * @version 0.1
+ * @copyright
+ * @author Alexandr Dorosh <dorosh.alexandr@gmail.com>
+ * @license PHP Version 5.3
  */
 class ${1:Index}Controller extends Controller
 {
-    public function filters()
-    {
-	return array('accessControl');
-    }
-
-    /*
-     * Правила доступа
-     */
-    public function accessRules()
-    {
-        return array(
-            array('allow',  // allow anonim
-                'actions'=>array('index'),
-                'users'=>array('?'),
-            ),
-            array('allow', // allow authenticated user
-                'actions'=>array(),
-                'users'=>array('@'),
-            ),
-            array('deny', //deny authenticated
-                'actions' => array(),
-                'users' => array('@')
-            ),
-            array('deny',  // deny all users
-                'users'=>array('*'),
-            ),
-        );
-    }
-
     /**
-     * indexAction
+     * actionIndex
      *
      * @access public
      * @return void
      */
-    public function indexAction()
+    public function actionIndex()
     {
-	    ${4:// some code}
+	${2:// some code}
     }
 }
