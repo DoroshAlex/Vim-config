@@ -280,12 +280,6 @@ nnoremap <silent> <C-f> :call FindInNERDTree()<CR>
 nnoremap <C-L> :nohls<CR><C-L>
 inoremap <C-L> <C-O>:nohls<CR>
 
-"map to bufexplorer
-nnoremap <leader>b :BufExplorer<cr>
-
-"map to CommandT TextMate style finder
-nnoremap <leader>t :CommandT<CR>
-
 "map Q to something useful
 noremap Q gq
 
@@ -450,6 +444,7 @@ nnoremap <silent> <C-f> :NERDTreeToggle<CR>
 nnoremap <silent> <C-g> :GundoToggle<CR>
 
 nnoremap <silent> <C-b> :BufExplorerHorizontalSplit<CR>
+nnoremap <silent> <C-h> :TaskList<CR>
 
 let ScreenShot = {'Icon':0, 'Credits':0, 'force_background':'#FFFFFF'}
 
@@ -533,3 +528,6 @@ fun! WinTranslate(word)
 endfun
 
 nmap <C-d> :call PhpDocSingle()<CR>
+
+"python"
+set dictionary=~/.vim/dic/python
