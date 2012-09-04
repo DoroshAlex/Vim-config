@@ -5,6 +5,10 @@ let g:CSApprox_verbose_level = 0
 filetype on
 filetype off
 
+" Временные файл
+set backupdir=~/.tmpvim/
+set directory=~/.tmpvim/
+
 "load pathogen managed plugins
 call pathogen#runtime_append_all_bundles()
 
