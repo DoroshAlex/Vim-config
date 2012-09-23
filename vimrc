@@ -2,7 +2,7 @@
 let g:CSApprox_verbose_level = 0
 
 "necessary on some Linux distros for pathogen to properly load bundles
-filetype on
+"filetype on
 filetype off
 
 " Временные файл
@@ -534,4 +534,7 @@ endfun
 nmap <C-d> :call PhpDocSingle()<CR>
 
 "python"
-set dictionary=~/.vim/dic/python
+" Load show documentation plugin
+let g:pymode_doc = 1
+" Key for show python documentation
+let g:pymode_doc_key = 'K'
