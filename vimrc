@@ -421,7 +421,6 @@ nmap <S-Tab> gT
 
 nmap <S-Tab> :bn<CR>
 
-map <silent> <F3> :TagbarToggle<CR>
 "taglist settings
 let Tlist_Compact_Format = 1
 let Tlist_Enable_Fold_Column = 0
@@ -449,6 +448,7 @@ nnoremap <silent> <C-d> :call PhpDocSingle()<CR>
 nnoremap <silent> <C-g> :GundoToggle<CR>
 nnoremap <silent> <C-b> :BufExplorerHorizontalSplit<CR>
 nnoremap <silent> <C-h> :TaskList<CR>
+map <silent> <F3> :TagbarToggle<CR>
 
 let ScreenShot = {'Icon':0, 'Credits':0, 'force_background':'#FFFFFF'}
 
