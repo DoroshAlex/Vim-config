@@ -82,6 +82,7 @@ set guioptions-=T
 "recalculate the trailing whitespace warning when idle, and after saving
 autocmd cursorhold,bufwritepost * unlet! b:statusline_trailing_space_warning
 
+
 "return '[\s]' if trailing white space is detected
 "return '' otherwise
 function! StatuslineTrailingSpaceWarning()
@@ -420,7 +421,7 @@ nmap <S-Tab> gT
 
 nmap <S-Tab> :bn<CR>
 
-map <silent> <F3> :TlistToggle<CR>
+map <silent> <F3> :TagbarToggle<CR>
 "taglist settings
 let Tlist_Compact_Format = 1
 let Tlist_Enable_Fold_Column = 0
@@ -442,11 +443,10 @@ nmap <D-]> >>
 vmap <D-[> <gv
 vmap <D-]> >gv
 
-nnoremap <silent> <C-f> :NERDTreeToggle<CR>
 :set modifiable
-
+nnoremap <silent> <C-f> :NERDTreeToggle<CR>
+nnoremap <silent> <C-d> :call PhpDocSingle()<CR>
 nnoremap <silent> <C-g> :GundoToggle<CR>
-
 nnoremap <silent> <C-b> :BufExplorerHorizontalSplit<CR>
 nnoremap <silent> <C-h> :TaskList<CR>
 
@@ -531,10 +531,14 @@ fun! WinTranslate(word)
     echo  word
 endfun
 
-nmap <C-d> :call PhpDocSingle()<CR>
+
 
 "python"
 " Load show documentation plugin
 let g:pymode_doc = 1
 " Key for show python documentation
 let g:pymode_doc_key = 'K'
+
+autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+let g:neocomplcache_enable_at_startup = 1
+
