@@ -539,6 +539,6 @@ let g:pymode_doc = 1
 " Key for show python documentation
 let g:pymode_doc_key = 'K'
 
-autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+"autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
 let g:neocomplcache_enable_at_startup = 1
 
