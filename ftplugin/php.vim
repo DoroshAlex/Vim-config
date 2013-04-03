@@ -26,7 +26,7 @@ let g:pdv_cfg_Uses = 1
  " Помимо прочего он умеет:
 
  " Включаем фолдинг для блоков классов/функций
-let php_folding = 1
+"let php_folding = 1
 
  " Не использовать короткие теги PHP для поиска PHP блоков
 let php_noShortTags = 0
