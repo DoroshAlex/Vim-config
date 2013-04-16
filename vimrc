@@ -415,6 +415,9 @@ map ,cm           <Plug>NERDCommenterMinimal
 map ,c<Space>     <Plug>NERDCommenterToggle
 map ,cc           <Plug>NERDCommenterComment
 
+" hide files in NERDTree
+let NERDTreeIgnore = ['\.pyc$', '\.class$']
+
 "key mapping for tab navigation
 nmap <Tab> gt
 nmap <S-Tab> gT
