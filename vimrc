@@ -2,8 +2,8 @@
 let g:CSApprox_verbose_level = 0
 
 "necessary on some Linux distros for pathogen to properly load bundles
-"filetype on
-filetype off
+filetype on
+"filetype off
 
 " Временные файл
 set backupdir=~/.tmpvim/
@@ -543,5 +543,25 @@ let g:pymode_doc = 1
 let g:pymode_doc_key = 'K'
 
 "autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
-let g:neocomplcache_enable_at_startup = 1
+"let g:neocomplcache_enable_at_startup = 1
 
+let g:airline_theme='dark'
+
+"Изменить тему во время работы:
+:AirlineTheme dark
+
+"Включить/выключить интеграцию со сторонними плагинами:
+let g:airline_enable_fugitive=1
+let g:airline_enable_syntastic=1
+let g:airline_enable_bufferline=1
+
+"Замена символов:
+let g:airline_left_sep = '▶'
+let g:airline_right_sep = '◀'
+let g:airline_linecolumn_prefix = '¶ '
+let g:airline_fugitive_prefix = '⎇ '
+let g:airline_paste_symbol = 'ρ'
+
+"Замена отдельных секций:
+let g:airline_section_b = '%{fugitive#head()}'
+let g:airline_section_c = '%t'
