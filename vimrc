@@ -456,8 +456,6 @@ map <silent> <F3> :TagbarToggle<CR>
 autocmd FileType php noremap <buffer>  <F8> :call PhpCsFixerFixFile()<cr>
 autocmd FileType python noremap <buffer>  <F8> :call Autopep8()<cr>
 
-let ScreenShot = {'Icon':0, 'Credits':0, 'force_background':'#FFFFFF'}
-
 "Gundo"
 set undofile
 
@@ -493,52 +491,6 @@ set complete+=b
 " из тегов
 set complete+=t
 
-"starDict"
-if !executable('sdcv')
-    finish
-endif
-
-fun! Translate(word)
-    let word = system('sdcv -n ' . a:word)
-    return word
-endfun
-
-fun! WinTranslate(word)
-    let word = Translate(a:word)
-    if word == '' || word =~# 'Ничего похожего на'
-        echoerr "No translation found!"
-        return
-    endif
-
-    silent new
-    silent put =word
-    silent exec 'file "Translation for '.a:word.'"'
-    silent setl nomodified nomodifiable filetype=sdviv
-    silent 1
-endfun
-map <F4> :call WinTranslate(expand('<cword>'))<cr>
-
-if !executable('sdcv')
-    finish
-endif
-
-fun! Translate(word)
-    let word = system('sdcv -n ' . a:word)
-    return word
-endfun
-
-fun! WinTranslate(word)
-    let word = Translate(a:word)
-    if word == '' || word =~# 'Ничего похожего на'
-        echoerr "No translation found!"
-        return
-    endif
-
-    echo  word
-endfun
-
-
-
 "python"
 " Load show documentation plugin
 let g:pymode_doc = 1
@@ -549,9 +501,6 @@ let g:pymode_doc_key = 'K'
 "let g:neocomplcache_enable_at_startup = 1
 
 let g:airline_theme='dark'
-
-"Изменить тему во время работы:
-:AirlineTheme dark
 
 "Включить/выключить интеграцию со сторонними плагинами:
 let g:airline_enable_fugitive=1
@@ -566,5 +515,5 @@ let g:airline_fugitive_prefix = '⎇ '
 let g:airline_paste_symbol = 'ρ'
 
 "Замена отдельных секций:
-let g:airline_section_b = '%{fugitive#head()}'
+"let g:airline_section_b = '%{fugitive#head()}'
 let g:airline_section_c = '%t'
