@@ -452,6 +452,8 @@ nnoremap <silent> <C-g> :GundoToggle<CR>
 nnoremap <silent> <C-b> :BufExplorerHorizontalSplit<CR>
 nnoremap <silent> <C-h> :TaskList<CR>
 map <silent> <F3> :TagbarToggle<CR>
+autocmd FileType php noremap <buffer>  <F8> :call PhpCsFixerFixFile()<cr>
+autocmd FileType python noremap <buffer>  <F8> :call Autopep8()<cr>
 
 let ScreenShot = {'Icon':0, 'Credits':0, 'force_background':'#FFFFFF'}
 
