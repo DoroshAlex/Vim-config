@@ -193,6 +193,8 @@ set softtabstop=4
 set expandtab
 set autoindent
 set tabstop=4
+set fileformat=unix
+set textwidth=79
 
 "folding settings
 set foldmethod=indent   "fold based on indent
@@ -490,6 +492,10 @@ set complete+=k
 set complete+=b
 " из тегов
 set complete+=t
+" other loaded windows
+set complete+=w
+" included files
+set complete+=i
 
 "python"
 " Load show documentation plugin
