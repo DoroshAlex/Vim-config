@@ -319,18 +319,6 @@ catch
 endtry
 autocmd vimenter * call s:SetupSnippets()
 function! s:SetupSnippets()
-
-    "if we're in a rails env then read in the rails snippets
-""    if filereadable("./config/environment.rb")
-""      try
-""        call ExtractSnips("~/.vim/snippets/ruby-rails", "ruby")
-""        call ExtractSnips("~/.vim/snippets/eruby-rails", "eruby")
-""      catch
-""        call ExtractSnips("~/vimfiles/snippets/ruby-rails", "ruby")
-""        call ExtractSnips("~/vimfiles/snippets/eruby-rails", "eruby")
-""      endtry
-""    endif
-
     try
       call ExtractSnips("~/.vim/snippets/html", "html")
       call ExtractSnips("~/.vim/snippets/php", "php")
