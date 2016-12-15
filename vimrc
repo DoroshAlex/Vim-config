@@ -511,3 +511,5 @@ let g:airline_paste_symbol = 'ρ'
 "Замена отдельных секций:
 "let g:airline_section_b = '%{fugitive#head()}'
 let g:airline_section_c = '%t'
+
+let g:autopep8_max_line_length=120
