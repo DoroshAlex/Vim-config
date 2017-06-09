@@ -393,6 +393,8 @@ imap <C-j> <ESC><ESC>
 nmap <C-j> <PageDown>
 nmap <C-k> <PageUp>
 
+""imap <C-n> <c-x><c-o>
+
 map ,ca           <Plug>NERDCommenterAltDelims
 map ,cu           <Plug>NERDCommenterUncomment
 map ,cb           <Plug>NERDCommenterAlignBoth
@@ -485,6 +487,8 @@ set complete+=w
 " included files
 set complete+=i
 
+let g:pymode_rope_guess_project=0
+
 "python"
 " Load show documentation plugin
 let g:pymode_doc = 1
@@ -513,3 +517,7 @@ let g:airline_paste_symbol = 'ρ'
 let g:airline_section_c = '%t'
 
 let g:autopep8_max_line_length=120
+
+" symfony autocomplete
+"let g:symfony_app_console_caller= "php"
+"let g:symfony_app_console_path= "app/console"
