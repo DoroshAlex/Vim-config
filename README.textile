@@ -1,4 +1,11 @@
 <pre><code>
+# Clone configs to ~/.vim directory 
+
+# Create symlink to vimrc
 echo "source ~/.vim/vimrc" > ~/.vimrc
+
+# directory for tmp files
+touch ~/.tmpvim
+
 </code></pre>
 
