@@ -393,6 +393,8 @@ imap <C-j> <ESC><ESC>
 nmap <C-j> <PageDown>
 nmap <C-k> <PageUp>
 
+""imap <C-n> <c-x><c-o>
+
 map ,ca           <Plug>NERDCommenterAltDelims
 map ,cu           <Plug>NERDCommenterUncomment
 map ,cb           <Plug>NERDCommenterAlignBoth
@@ -485,6 +487,8 @@ set complete+=w
 " included files
 set complete+=i
 
+let g:pymode_rope_guess_project=0
+
 "python"
 " Load show documentation plugin
 let g:pymode_doc = 1
@@ -511,5 +515,7 @@ let g:airline_paste_symbol = 'ρ'
 "Замена отдельных секций:
 "let g:airline_section_b = '%{fugitive#head()}'
 let g:airline_section_c = '%t'
+
+let g:autopep8_max_line_length=120
 
 let python_highlight_all = 1
