@@ -117,7 +117,7 @@ if sys.platform == 'win32':
 else:
     DEFAULT_CONFIG = os.path.join(os.getenv('XDG_CONFIG_HOME') or
                                   os.path.expanduser('~/.config'), 'pep8')
-MAX_LINE_LENGTH = 79
+MAX_LINE_LENGTH = 120
 REPORT_FORMAT = {
     'default': '%(path)s:%(row)d:%(col)d: %(code)s %(text)s',
     'pylint': '%(path)s:%(row)d: [%(code)s] %(text)s',

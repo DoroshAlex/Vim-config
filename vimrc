@@ -194,7 +194,7 @@ set expandtab
 set autoindent
 set tabstop=4
 set fileformat=unix
-set textwidth=79
+set textwidth=120
 
 "folding settings
 set foldmethod=indent   "fold based on indent
@@ -393,7 +393,7 @@ imap <C-j> <ESC><ESC>
 nmap <C-j> <PageDown>
 nmap <C-k> <PageUp>
 
-""imap <C-n> <c-x><c-o>
+"imap <C-n> <c-x><c-o>
 
 map ,ca           <Plug>NERDCommenterAltDelims
 map ,cu           <Plug>NERDCommenterUncomment
@@ -498,6 +498,7 @@ let g:pymode_doc_key = 'K'
 "autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
 "let g:neocomplcache_enable_at_startup = 1
 
+let g:airline#extensions#tagbar#enabled = 0
 let g:airline_theme='dark'
 
 "Включить/выключить интеграцию со сторонними плагинами:
@@ -523,4 +524,11 @@ let python_highlight_all = 1
 let g:flake8_quickfix_height=7
 let g:flake8_show_in_gutter=1
 let g:flake8_show_in_file=1
-autocmd BufWritePost *.py call Flake8()
+let g:syntastic_python_checkers=["flake8"]
+let g:syntastic_python_flake8_args="--ignore=E501,W601"
+"autocmd BufWritePost *.py call Flake8()
+
+"JS
+let g:javascript_plugin_jsdoc = 1
+let g:javascript_plugin_ngdoc = 1
+

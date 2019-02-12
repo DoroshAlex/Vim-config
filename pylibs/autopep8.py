@@ -57,7 +57,7 @@ PEP8_PASSES_MAX = 100
 CR = '\r'
 LF = '\n'
 CRLF = '\r\n'
-MAX_LINE_WIDTH = 79
+MAX_LINE_WIDTH = 120
 
 def open_with_encoding(filename, encoding, mode='r'):
     """Return opened file with a specific encoding."""
