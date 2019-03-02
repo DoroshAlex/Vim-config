@@ -313,21 +313,21 @@ map <A-k> :cprevious<CR>
 
 "snipmate setup
 try
-  source ~/.vim/snippets/support_functions.vim
+    source ~/.vim/snippets/support_functions.vim
 catch
-  source ~/vimfiles/snippets/support_functions.vim
+    source ~/vimfiles/snippets/support_functions.vim
 endtry
 autocmd vimenter * call s:SetupSnippets()
 function! s:SetupSnippets()
     try
-      call ExtractSnips("~/.vim/snippets/html", "html")
-      call ExtractSnips("~/.vim/snippets/php", "php")
-      call ExtractSnips("~/.vim/snippets/html", "php")
-      call ExtractSnips("~/.vim/snippets/yii", "php")
+        call ExtractSnips("~/.vim/snippets/html", "html")
+        call ExtractSnips("~/.vim/snippets/php", "php")
+        call ExtractSnips("~/.vim/snippets/html", "php")
+        call ExtractSnips("~/.vim/snippets/yii", "php")
     catch
-      call ExtractSnips("~/vimfiles/snippets/html", "eruby")
-      call ExtractSnips("~/vimfiles/snippets/html", "xhtml")
-      call ExtractSnips("~/vimfiles/snippets/html", "php")
+        call ExtractSnips("~/vimfiles/snippets/html", "eruby")
+        call ExtractSnips("~/vimfiles/snippets/html", "xhtml")
+        call ExtractSnips("~/vimfiles/snippets/html", "php")
     endtry
 endfunction
 
@@ -447,6 +447,7 @@ nnoremap <silent> <C-h> :TaskList<CR>
 map <silent> <F3> :TagbarToggle<CR>
 autocmd FileType php noremap <buffer>  <F8> :call PhpCsFixerFixFile()<cr>
 autocmd FileType python noremap <buffer>  <F8> :call Autopep8()<cr>
+noremap <F8> :Autoformat<CR>
 
 "Gundo"
 set undofile
@@ -457,20 +458,20 @@ let NERDShutUp=1 " отключения конфликта с дополнени
 
 "Enabling Zencoding
 let g:user_zen_settings = {
-  \  'php' : {
-  \    'extends' : 'html',
-  \    'filters' : 'c',
-  \  },
-  \  'xml' : {
-  \    'extends' : 'html',
-  \  },
-  \  'haml' : {
-  \    'extends' : 'html',
-  \  },
-  \  'erb' : {
-  \    'extends' : 'html',
-  \  },
- \}
+            \  'php' : {
+            \    'extends' : 'html',
+            \    'filters' : 'c',
+            \  },
+            \  'xml' : {
+            \    'extends' : 'html',
+            \  },
+            \  'haml' : {
+            \    'extends' : 'html',
+            \  },
+            \  'erb' : {
+            \    'extends' : 'html',
+            \  },
+            \}
 
 " Слова откуда будем завершать
 set complete=""
