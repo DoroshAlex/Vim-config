@@ -317,19 +317,6 @@ try
 catch
     source ~/vimfiles/snippets/support_functions.vim
 endtry
-autocmd vimenter * call s:SetupSnippets()
-function! s:SetupSnippets()
-    try
-        call ExtractSnips("~/.vim/snippets/html", "html")
-        call ExtractSnips("~/.vim/snippets/php", "php")
-        call ExtractSnips("~/.vim/snippets/html", "php")
-        call ExtractSnips("~/.vim/snippets/yii", "php")
-    catch
-        call ExtractSnips("~/vimfiles/snippets/html", "eruby")
-        call ExtractSnips("~/vimfiles/snippets/html", "xhtml")
-        call ExtractSnips("~/vimfiles/snippets/html", "php")
-    endtry
-endfunction
 
 "visual search mappings
 function! s:VSetSearch()
