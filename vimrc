@@ -520,3 +520,12 @@ let g:syntastic_python_flake8_args="--ignore=E501,W601"
 let g:javascript_plugin_jsdoc = 1
 let g:javascript_plugin_ngdoc = 1
 
+set langmap=ФИСВУАПРШОЛДЬТЩЗЙКЫЕГМЦЧНЯ;ABCDEFGHIJKLMNOPQRSTUVWXYZ,фисвуапршолдьтщзйкыегмцчня;abcdefghijklmnopqrstuvwxyz
+
+au BufWritePost *.php silent! !eval '[ -f ".git/hooks/ctags" ] && .git/hooks/ctags' &
+
+" dart
+let dart_html_in_string=v:true
+let dart_corelib_highlight=v:false
+let dart_style_guide = 2
+let dart_format_on_save = 1
