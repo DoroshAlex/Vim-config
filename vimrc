@@ -16,6 +16,8 @@ call pathogen#runtime_append_all_bundles()
 "This must be first, because it changes other options as a side effect.
 set nocompatible
 
+set path+=**
+
 "allow backspacing over everything in insert mode
 set backspace=indent,eol,start
 
@@ -66,9 +68,6 @@ set statusline=%f       "tail of the filename
 
 "Git
 set statusline+=%{fugitive#statusline()}
-
-"RVM
-set statusline+=%{exists('g:loaded_rvm')?rvm#statusline():''}
 
 set statusline+=%=      "left/right separator
 set statusline+=%c,     "cursor column
@@ -201,9 +200,11 @@ set foldmethod=indent   "fold based on indent
 set foldnestmax=3       "deepest fold is 3 levels
 set nofoldenable        "dont fold by default
 
+
 set wildmode=list:longest   "make cmdline tab completion similar to bash
 set wildmenu                "enable ctrl-n and ctrl-p to scroll thru matches
-set wildignore=*.o,*.obj,*~ "stuff to ignore when tab completing
+set wildignore=*.o,*.obj,*~,.* "stuff to ignore when tab completing
+set wildignore+=*/vendor/*,*/node_modules/*
 
 "display tabs and trailing spaces
 "set list
