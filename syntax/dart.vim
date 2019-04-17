@@ -87,6 +87,8 @@ syntax region  dartMultilineString     start=+\z("\{3\}\|'\{3\}\)+ end=+\z1+ con
 syntax region  dartRawMultilineString     start=+r\z("\{3\}\|'\{3\}\)+ end=+\z1+ contains=@dartSRawtringContains keepend
 syntax match   dartInterpolation contained "\$\(\w\+\|{[^}]\+}\)" extend
 syntax match   dartSpecialChar   contained "\\\(u\x\{4\}\|u{\x\+}\|x\x\x\|x{\x\+}\|.\)" extend
+syntax match   dartType           "\<[A-Z][A-Za-z0-9_]*\>"
+syntax match   dartConstant       "\<[A-Z][A-Z0-9_]\+\>"
 
 " The default highlighting.
 highlight default link dartBranch          Conditional

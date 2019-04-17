@@ -556,7 +556,7 @@ syn case ignore
     " functions/methods/classes
     syn cluster phpClTop add=@phpClInFunction,@phpClInMethod,@phpClInClass
   endif
-  
+
   " Note: these are the old clusters ... they are deprecated now, but still
   " here just in case someone is using them elsewhere
   syn cluster phpClInside add=@phpClExpressions
@@ -1307,8 +1307,7 @@ syn case ignore
 
   " array functions
   syn keyword phpCoreConstant contained CASE_LOWER CASE_UPPER SORT_ASC SORT_DESC SORT_REGULAR SORT_NUMERIC SORT_STRING SORT_LOCALE_STRING COUNT_NORMAL COUNT_RECURSIVE EXTR_OVERWRITE EXTR_SKIP EXTR_PREFIX_SAME EXTR_PREFIX_ALL EXTR_PREFIX_INVALID EXTR_PREFIX_IF_EXISTS EXTR_IF_EXISTS EXTR_REFS
-  syn keyword phpFunctions contained array_change_key_case array_chunk array_combine array_count_values array_diff_assoc array_diff_key array_diff_uassoc array_diff_ukey array_diff array_fill_keys array_fill array_filter array_flip array_intersect_assoc array_intersect_key array_intersect_uassoc array_intersect_ukey array_intersect array_key_exists array_keys array_map array_merge_recursive array_merge array_multisort array_pad array_pop array_product array_push array_rand array_reduce array_reverse array_search array_shift array_slice array_splice array_sum array_udiff_assoc array_udiff_uassoc array_udiff array_uintersect_assoc array_uintersect_uassoc array_uintersect array_unique array_unshift array_values array_walk_recursive array_walk arsort asort compact count current each end extract in_array key krsort ksort natcasesort natsort next pos prev range reset rsort shuffle sizeof sort uasort uksort usort
-
+  syn keyword phpFunctions abs acos acosh addcslashes addslashes array_change_key_case array_chunk array_column array_combine array_count_values array_diff array_diff_assoc array_diff_key array_diff_uassoc array_diff_ukey array_fill array_fill_keys array_filter array_flip array_intersect array_intersect_assoc array_intersect_key array_intersect_uassoc array_intersect_ukey array_key_exists array_key_first array_key_last array_keys array_map array_merge array_merge_recursive array_multisort array_pad array_pop array_product array_push array_rand array_reduce array_replace array_replace_recursive array_reverse array_search array_shift array_slice array_splice array_sum array_udiff array_udiff_assoc array_udiff_uassoc array_uintersect array_uintersect_assoc array_uintersect_uassoc array_unique array_unshift array_values array_walk array_walk_recursive arsort asin asinh asort assert assert_options atan atan2 atanh base64_decode base64_encode base_convert basename bin2hex bindec boolval call_user_func call_user_func_array call_user_method call_user_method_array ceil chdir checkdnsrr chgrp chmod chop chown chr chroot chunk_split clearstatcache cli_get_process_title cli_set_process_title closedir closelog compact connection_aborted connection_status constant convert_cyr_string convert_uudecode convert_uuencode copy cos cosh count count_chars crc32 crypt current debug_zval_dump decbin dechex decoct deg2rad dir dirname disk_free_space disk_total_space diskfreespace dl dns_check_record dns_get_mx dns_get_record doubleval end error_clear_last error_get_last error_log escapeshellarg escapeshellcmd exec exp explode expm1 extract ezmlm_hash fclose feof fflush fgetc fgetcsv fgets fgetss file file_exists file_get_contents file_put_contents fileatime filectime filegroup fileinode filemtime fileowner fileperms filesize filetype floatval flock floor flush fmod fnmatch fopen forward_static_call forward_static_call_array fpassthru fprintf fputcsv fputs fread fscanf fseek fsockopen fstat ftell ftok ftruncate fwrite get_browser get_cfg_var get_current_user get_headers get_html_translation_table get_include_path get_magic_quotes_gpc get_magic_quotes_runtime get_meta_tags getcwd getenv gethostbyaddr gethostbyname gethostbynamel gethostname getimagesize getimagesizefromstring getlastmod getmxrr getmygid getmyinode getmypid getmyuid getopt getprotobyname getprotobynumber getrandmax getrusage getservbyname getservbyport gettimeofday gettype glob header header_register_callback header_remove headers_list headers_sent hebrev hebrevc hex2bin hexdec highlight_file highlight_string hrtime html_entity_decode htmlentities htmlspecialchars htmlspecialchars_decode http_build_query http_response_code hypot ignore_user_abort image_type_to_extension image_type_to_mime_type implode in_array inet_ntop inet_pton ini_alter ini_get ini_get_all ini_restore ini_set intdiv intval ip2long iptcembed iptcparse is_array is_bool is_callable is_countable is_dir is_double is_executable is_file is_finite is_float is_infinite is_int is_integer is_iterable is_link is_long is_nan is_null is_numeric is_object is_readable is_real is_resource is_scalar is_string is_uploaded_file is_writable is_writeable join key key_exists krsort ksort lcfirst lcg_value lchgrp lchown levenshtein link linkinfo localeconv log log1p log10 long2ip lstat ltrim magic_quotes_runtime mail max md5 md5_file memory_get_peak_usage memory_get_usage metaphone microtime min mkdir money_format move_uploaded_file mt_getrandmax mt_rand mt_srand natcasesort natsort net_get_interfaces next nl2br nl_langinfo number_format ob_clean ob_end_clean ob_end_flush ob_flush ob_get_clean ob_get_contents ob_get_flush ob_get_length ob_get_level ob_get_status ob_implicit_flush ob_list_handlers ob_start octdec opendir openlog ord output_add_rewrite_var output_reset_rewrite_vars pack parse_ini_file parse_ini_string parse_str parse_url passthru password_get_info password_hash password_needs_rehash password_verify pathinfo pclose pfsockopen php_ini_loaded_file php_ini_scanned_files php_sapi_name php_strip_whitespace php_uname phpcredits phpinfo phpversion pi popen pos pow prev print_r printf proc_close proc_get_status proc_nice proc_open proc_terminate putenv quoted_printable_decode quoted_printable_encode quotemeta rad2deg rand random_bytes random_int range rawurldecode rawurlencode readdir readfile readlink realpath realpath_cache_get realpath_cache_size register_shutdown_function register_tick_function rename reset restore_include_path rewind rewinddir rmdir round rsort rtrim scandir serialize set_file_buffer set_include_path set_magic_quotes_runtime set_socket_blocking set_time_limit setcookie setlocale setrawcookie settype sha1 sha1_file shell_exec show_source shuffle similar_text sin sinh sizeof sleep socket_get_status socket_set_blocking socket_set_timeout sort soundex sprintf sqrt srand sscanf stat str_getcsv str_ireplace str_pad str_repeat str_replace str_rot13 str_shuffle str_split str_word_count strchr strcoll strcspn stream_bucket_append stream_bucket_make_writeable stream_bucket_new stream_bucket_prepend stream_context_create stream_context_get_default stream_context_get_options stream_context_get_params stream_context_set_default stream_context_set_option stream_context_set_params stream_copy_to_stream stream_filter_append stream_filter_prepend stream_filter_register stream_filter_remove stream_get_contents stream_get_filters stream_get_line stream_get_meta_data stream_get_transports stream_get_wrappers stream_is_local stream_isatty stream_register_wrapper stream_resolve_include_path stream_select stream_set_blocking stream_set_chunk_size stream_set_read_buffer stream_set_timeout stream_set_write_buffer stream_socket_accept stream_socket_client stream_socket_enable_crypto stream_socket_get_name stream_socket_pair stream_socket_recvfrom stream_socket_sendto stream_socket_server stream_socket_shutdown stream_supports_lock stream_wrapper_register stream_wrapper_restore stream_wrapper_unregister strip_tags stripcslashes stripos stripslashes stristr strnatcasecmp strnatcmp strpbrk strpos strptime strrchr strrev strripos strrpos strspn strstr strtok strtolower strtoupper strtr strval substr substr_compare substr_count substr_replace symlink sys_get_temp_dir sys_getloadavg syslog system tan tanh tempnam time_nanosleep time_sleep_until tmpfile touch trim uasort ucfirst ucwords uksort umask uniqid unlink unpack unregister_tick_function unserialize urldecode urlencode usleep usort utf8_decode utf8_encode var_dump var_export version_compare vfprintf vprintf vsprintf wordwrap contained
   " NOTE: aspell is deprecated as of PHP 4.3.0
   " syn keyword	phpFunctions	aspell_check aspell_new aspell_suggest	contained
 
@@ -1364,7 +1363,7 @@ syn case ignore
   syn keyword phpFunctions contained checkdate date_create date_date_set date_default_timezone_get date_default_timezone_set date_format date_isodate_set date_modify date_offset_get date_parse date_sun_info date_sunrise date_sunset date_time_set date_timezone_get date_timezone_set date getdate gettimeofday gmdate gmmktime gmstrftime idate localtime microtime mktime strftime strptime strtotime time timezone_abbreviations_list timezone_identifiers_list timezone_name_from_abbr timezone_name_get timezone_offset_get timezone_open timezone_transitions_get
   syn keyword phpClasses contained DateTime DateTimeZone
 
-  " Database (dbm-style) Abstraction Layer Functions 
+  " Database (dbm-style) Abstraction Layer Functions
   syn keyword phpFunctions contained dba_close dba_delete dba_exists dba_fetch dba_firstkey dba_handlers dba_insert dba_key_split dba_list dba_nextkey dba_open dba_optimize dba_popen dba_replace dba_sync
 
   " dBase functions
@@ -1436,7 +1435,7 @@ syn case ignore
   syn keyword phpFunctions contained basename chgrp chmod chown clearstatcache copy delete dirname disk_free_space disk_total_space diskfreespace fclose feof fflush fgetc fgetcsv fgets fgetss file_exists file_get_contents file_put_contents file fileatime filectime filegroup fileinode filemtime fileowner fileperms filesize filetype flock fnmatch fopen fpassthru fputcsv fputs fread fscanf fseek fstat ftell ftruncate fwrite glob is_dir is_executable is_file is_link is_readable is_uploaded_file is_writable is_writeable lchgrp lchown link linkinfo lstat mkdir move_uploaded_file parse_ini_file pathinfo pclose popen readfile readlink realpath rename rewind rmdir set_file_buffer stat symlink tempnam tmpfile touch umask unlink
 
   " Filter extension
-  syn keyword phpCoreConstant contained INPUT_POST INPUT_GET INPUT_COOKIE INPUT_ENV INPUT_SERVER INPUT_SESSION INPUT_REQUEST FILTER_FLAG_NONE FILTER_REQUIRE_SCALAR FILTER_REQUIRE_ARRAY FILTER_FORCE_ARRAY FILTER_NULL_ON_FAILURE FILTER_VALIDATE_INT FILTER_VALIDATE_BOOLEAN FILTER_VALIDATE_FLOAT FILTER_VALIDATE_REGEXP FILTER_VALIDATE_URL FILTER_VALIDATE_EMAIL FILTER_VALIDATE_IP FILTER_DEFAULT FILTER_UNSAFE_RAW FILTER_SANITIZE_STRING FILTER_SANITIZE_STRIPPED FILTER_SANITIZE_ENCODED FILTER_SANITIZE_SPECIAL_CHARS FILTER_SANITIZE_EMAIL FILTER_SANITIZE_URL FILTER_SANITIZE_NUMBER_INT FILTER_SANITIZE_NUMBER_FLOAT FILTER_SANITIZE_MAGIC_QUOTES FILTER_CALLBACK FILTER_FLAG_ALLOW_OCTAL FILTER_FLAG_ALLOW_HEX FILTER_FLAG_STRIP_LOW FILTER_FLAG_STRIP_HIGH FILTER_FLAG_ENCODE_LOW FILTER_FLAG_ENCODE_HIGH FILTER_FLAG_ENCODE_AMP FILTER_FLAG_NO_ENCODE_QUOTES FILTER_FLAG_EMPTY_STRING_NULL FILTER_FLAG_ALLOW_FRACTION FILTER_FLAG_ALLOW_THOUSAND FILTER_FLAG_ALLOW_SCIENTIFIC FILTER_FLAG_SCHEME_REQUIRED FILTER_FLAG_HOST_REQUIRED FILTER_FLAG_PATH_REQUIRED FILTER_FLAG_QUERY_REQUIRED FILTER_FLAG_IPV4 FILTER_FLAG_IPV6 FILTER_FLAG_NO_RES_RANGE FILTER_FLAG_NO_PRIV_RANGE 
+  syn keyword phpCoreConstant contained INPUT_POST INPUT_GET INPUT_COOKIE INPUT_ENV INPUT_SERVER INPUT_SESSION INPUT_REQUEST FILTER_FLAG_NONE FILTER_REQUIRE_SCALAR FILTER_REQUIRE_ARRAY FILTER_FORCE_ARRAY FILTER_NULL_ON_FAILURE FILTER_VALIDATE_INT FILTER_VALIDATE_BOOLEAN FILTER_VALIDATE_FLOAT FILTER_VALIDATE_REGEXP FILTER_VALIDATE_URL FILTER_VALIDATE_EMAIL FILTER_VALIDATE_IP FILTER_DEFAULT FILTER_UNSAFE_RAW FILTER_SANITIZE_STRING FILTER_SANITIZE_STRIPPED FILTER_SANITIZE_ENCODED FILTER_SANITIZE_SPECIAL_CHARS FILTER_SANITIZE_EMAIL FILTER_SANITIZE_URL FILTER_SANITIZE_NUMBER_INT FILTER_SANITIZE_NUMBER_FLOAT FILTER_SANITIZE_MAGIC_QUOTES FILTER_CALLBACK FILTER_FLAG_ALLOW_OCTAL FILTER_FLAG_ALLOW_HEX FILTER_FLAG_STRIP_LOW FILTER_FLAG_STRIP_HIGH FILTER_FLAG_ENCODE_LOW FILTER_FLAG_ENCODE_HIGH FILTER_FLAG_ENCODE_AMP FILTER_FLAG_NO_ENCODE_QUOTES FILTER_FLAG_EMPTY_STRING_NULL FILTER_FLAG_ALLOW_FRACTION FILTER_FLAG_ALLOW_THOUSAND FILTER_FLAG_ALLOW_SCIENTIFIC FILTER_FLAG_SCHEME_REQUIRED FILTER_FLAG_HOST_REQUIRED FILTER_FLAG_PATH_REQUIRED FILTER_FLAG_QUERY_REQUIRED FILTER_FLAG_IPV4 FILTER_FLAG_IPV6 FILTER_FLAG_NO_RES_RANGE FILTER_FLAG_NO_PRIV_RANGE
   syn keyword phpFunctions contained filter_has_var filter_id filter_input_array filter_input filter_list filter_var_array filter_var
 
   " Firebird / interbase functions
@@ -1494,7 +1493,7 @@ syn case ignore
   syn keyword phpFunctions contained hw_Array2Objrec hw_changeobject hw_Children hw_ChildrenObj hw_Close hw_Connect hw_connection_info hw_cp hw_Deleteobject hw_DocByAnchor hw_DocByAnchorObj hw_Document_Attributes hw_Document_BodyTag hw_Document_Content hw_Document_SetContent hw_Document_Size hw_dummy hw_EditText hw_Error hw_ErrorMsg hw_Free_Document hw_GetAnchors hw_GetAnchorsObj hw_GetAndLock hw_GetChildColl hw_GetChildCollObj hw_GetChildDocColl hw_GetChildDocCollObj hw_GetObject hw_GetObjectByQuery hw_GetObjectByQueryColl hw_GetObjectByQueryCollObj hw_GetObjectByQueryObj hw_GetParents hw_GetParentsObj hw_getrellink hw_GetRemote hw_getremotechildren hw_GetSrcByDestObj hw_GetText hw_getusername hw_Identify hw_InCollections hw_Info hw_InsColl hw_InsDoc hw_insertanchors hw_InsertDocument hw_InsertObject hw_mapid hw_Modifyobject hw_mv hw_New_Document hw_objrec2array hw_Output_Document hw_pConnect hw_PipeDocument hw_Root hw_setlinkroot hw_stat hw_Unlock hw_Who
 
   " Hyperwave API
-  syn keyword phpClasses contained HW_API HW_API_Object HW_API_Attribute HW_API_Error HW_API_Content HW_API_Reason 
+  syn keyword phpClasses contained HW_API HW_API_Object HW_API_Attribute HW_API_Error HW_API_Content HW_API_Reason
   syn keyword phpFunctions contained hw_api_object hw_api_content hwapi_hgcsp hw_api_attribute
 
   " NOTE: i18n functions are not yet available
@@ -1600,7 +1599,7 @@ syn case ignore
   syn keyword phpFunctions contained memcache_add memcache_add_server memcache_close memcache_connect memcache_debug memcache_decrement memcache_delete memcache_flush memcache_get memcache_get_extended_stats memcache_get_server_status memcache_get_stats memcache_get_version memcache_increment memcache_pconnect memcache_replace memcache_set memcache_set_compress_threshold memcache_set_server_params
 
   " MHash functions
-  syn keyword phpCoreConstant contained MHASH_ADLER32 MHASH_CRC32 MHASH_CRC32B MHASH_GOST MHASH_HAVAL128 MHASH_HAVAL160 MHASH_HAVAL192 MHASH_HAVAL256 MHASH_MD4 MHASH_MD5 MHASH_RIPEMD160 MHASH_SHA1 MHASH_SHA256 MHASH_TIGER MHASH_TIGER128 MHASH_TIGER160 
+  syn keyword phpCoreConstant contained MHASH_ADLER32 MHASH_CRC32 MHASH_CRC32B MHASH_GOST MHASH_HAVAL128 MHASH_HAVAL160 MHASH_HAVAL192 MHASH_HAVAL256 MHASH_MD4 MHASH_MD5 MHASH_RIPEMD160 MHASH_SHA1 MHASH_SHA256 MHASH_TIGER MHASH_TIGER128 MHASH_TIGER160
   syn keyword phpFunctions contained mhash_count mhash_get_block_size mhash_get_hash_name mhash_keygen_s2k mhash
 
   " Mimetype functions
@@ -1821,7 +1820,7 @@ syn case ignore
   syn keyword phpFunctions	spl_autoload_register spl_autoload_unregister spl_autoload
   syn keyword phpFunctions	spl_classes spl_object_hash
   syn keyword phpFunctions	class_implements class_parents iterator_count iterator_to_array
-  
+
   " }}}2
 
   if s:show_baselib
@@ -2143,7 +2142,7 @@ if s:strict_blocks
 
   " CLASSES: class myFoo extends baseFoo implements foo, Iterator { }: {{{2
   " I MATCH: <class myFoo> extends baseFoo implements foo, Iterator { }: {{{3
-  
+
     " 2: match the start of the class declaration
     syn keyword phpStructure contained class
           \ nextgroup=phpDefineClassName skipwhite skipempty
@@ -2238,7 +2237,7 @@ if s:strict_blocks
 
   " INTERFACES: interface myFoo extends baseFoo { }: {{{2
   " I MATCH: <interface myFoo> extends baseFoo { }: {{{3
-  
+
     " 1: match the start of the interface declaration
     syn keyword phpStructure contained interface
           \ nextgroup=phpDefineInterfaceName skipwhite skipempty
@@ -2391,7 +2390,7 @@ if s:strict_blocks
     "    NOTE: how the function block will end at the next function
     "    declaration: this helps stop the region extending indefinitely,
     "    forcing the recalculation of all { } blocks for the rest of the file.
-    "    Otherwise, inserting an open-brace will 
+    "    Otherwise, inserting an open-brace will
     "    NOTE: that the error can't happen on a 'final', 'abstract', 'class',
     "    or 'interface' keyword because they can't be contained in a function
     syn cluster phpClDefineFuncBlock add=phpFuncBlock
@@ -2425,21 +2424,21 @@ if s:strict_blocks
 "      endif
 "    endif
 
-        execute 'syn region phpFuncBlock keepend extend matchgroup=phpBraceFunc'
-              \ 'end=/}/ start=/{/'
-              \ 'matchgroup=Error end=/\%(^\|\s\)\%(public\|private\|protected\)\>/'
-              \ s:endEarly
-              \ 'contained contains=@phpClInFunction'
-              \ s:foldHere
-        " for manual folding, we use an alternate start
-        if s:fold_manual
-          execute 'syn region phpFuncBlock keepend extend matchgroup=phpBraceFunc'
-                \ 'start=#{\ze\s*//\s*fold\s*$\c# end=/}/'
-                \ 'matchgroup=Error end=/\%(^\|\s\)\%(public\|private\|protected\)\>/'
-                \ s:endEarly
-                \ 'contained contains=@phpClInFunction'
-                \ s:foldHere
-        endif
+        "execute 'syn region phpFuncBlock keepend extend matchgroup=phpBraceFunc'
+              "\ 'end=/}/ start=/{/'
+              "\ 'matchgroup=Error end=/\%(^\|\s\)\%(public\|private\|protected\)\>/'
+              "\ s:endEarly
+              "\ 'contained contains=@phpClInFunction'
+              "\ s:foldHere
+        "" for manual folding, we use an alternate start
+        "if s:fold_manual
+          "execute 'syn region phpFuncBlock keepend extend matchgroup=phpBraceFunc'
+                "\ 'start=#{\ze\s*//\s*fold\s*$\c# end=/}/'
+                "\ 'matchgroup=Error end=/\%(^\|\s\)\%(public\|private\|protected\)\>/'
+                "\ s:endEarly
+                "\ 'contained contains=@phpClInFunction'
+                "\ s:foldHere
+        "endif
     unlet s:foldHere s:endEarly
 
   " }}}2
@@ -2493,12 +2492,12 @@ if s:strict_blocks
   " EXCEPTIONS: try/catch { } {{{2
 
     syn cluster phpClCode add=phpException
-  
+
     " 1: match the start of a try block
     syn keyword phpException try contained nextgroup=@phpClTryBlock skipwhite skipnl
 
     " TODO: 2: allow having comments preceding the { } block?
-  
+
     " 3: match the try block
     syn cluster phpClTryBlock add=phpTryBlock
     " TODO: manual folding from here (search for \<fold\>)
@@ -2670,13 +2669,13 @@ syn keyword phpSPLMethods contained hasChildren getChildren current next key val
 " OuterIterator
 syn keyword phpSPLMethods contained getInnerIterator current next key valid rewind
 " SeekableIterator
-syn keyword phpSPLMethods contained seek current next key valid rewind 
+syn keyword phpSPLMethods contained seek current next key valid rewind
 " Countable
-syn keyword phpSPLMethods contained count 
+syn keyword phpSPLMethods contained count
 " SplObserver
 syn keyword phpSPLMethods contained update
 " SplSubject
-syn keyword phpSPLMethods contained attach detach notify 
+syn keyword phpSPLMethods contained attach detach notify
 " Reflector
 syn keyword phpSPLMethods contained export
 hi link phpSPLMethods phpSpecialMethods
@@ -3103,9 +3102,9 @@ if s:show_pcre
       syn match pregClassExcEscapeKnown /\\\o\{1,3}/ contained display
         \ containedin=@pregClassExc_Q,@pregClassExcRange_Q
 
-      syn match pregClassEscapeMainQuote /\\'/ contained transparent display contains=pregEscapePHP 
+      syn match pregClassEscapeMainQuote /\\'/ contained transparent display contains=pregEscapePHP
         \ containedin=@pregClass_any_S,@pregClassRange_any_S
-      syn match pregClassEscapeMainQuote /\\"/ contained transparent display contains=pregEscapePHP 
+      syn match pregClassEscapeMainQuote /\\"/ contained transparent display contains=pregEscapePHP
         \ containedin=@pregClass_any_D,@pregClassRange_any_D
 
       syn match pregClassEscape /\\\\\ze\\'/ contained display
@@ -3262,7 +3261,7 @@ if s:show_pcre
         else
           syn match phpPREGArray /\%((\_s*\)\@<=array/ contained
                 \ nextgroup=phpPREGArrayRegion skipwhite skipempty
-          
+
           syn region phpPREGArrayRegion matchgroup=phpParent start=/(/ end=/)/
                 \ keepend extend
                 \ contained
@@ -3272,9 +3271,9 @@ if s:show_pcre
 
         " a special match to open a pattern string immediately after a '('
         " TODO: will this work as a match instead?
-"        syn region phpPREGStringStarter start=/\%((\_s*\)\@<=\z(['"]\)/ end=/\z1/ extend 
+"        syn region phpPREGStringStarter start=/\%((\_s*\)\@<=\z(['"]\)/ end=/\z1/ extend
 "              \ contained contains=@phpPREGString_any
-        syn match phpPREGStringStarter /\%((\_s*\)\@<=['"]/ extend 
+        syn match phpPREGStringStarter /\%((\_s*\)\@<=['"]/ extend
               \ contained contains=@phpPREGString_any
 
         " TODO: move 'hi link' commands out of here
@@ -3518,7 +3517,7 @@ if s:show_pcre
       hi link pregClassQuoteError Error
 
     " }}}
-      
+
     " 9) Look for escaping using \Q and \E {{{
       syn region pregNonSpecial_S matchgroup=pregParens start=/\C\\Q/ end=/\C\\E/
             \ contained containedin=pregPattern_S

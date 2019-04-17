@@ -3,7 +3,7 @@ if exists('b:did_ftplugin')
 endif
 let b:did_ftplugin = 1
 
-" Enable automatic indentation (2 spaces) if variable g:dart_style_guide is set 
+" Enable automatic indentation (2 spaces) if variable g:dart_style_guide is set
 if exists('g:dart_style_guide')
   setlocal expandtab
   setlocal shiftwidth=2
